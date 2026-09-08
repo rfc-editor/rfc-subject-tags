@@ -8,13 +8,12 @@ body:
       value: |
         Thanks for suggesting a new subject tag. Please fill in the fields below.
 
-  - type: textarea
+  - type: input
     id: subject-tag
     attributes:
       label: Subject tag
       description: The proposed name of the subject tag.
       placeholder: e.g. "SMTP", "Email"
-      render: text
     validations:
       required: true
 
