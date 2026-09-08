@@ -1,0 +1,49 @@
+name: Suggest a new subject tag
+description: Propose a new subject tag for RFCs on rfc-editor.org
+title: "[New subject tag]: "
+labels: ["new subject tag"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new subject tag. Please fill in the fields below.
+
+  - type: input
+    id: subject-tag
+    attributes:
+      label: Subject tag
+      description: The proposed name of the subject tag.
+      placeholder: e.g. "SMTP", "Email"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What does this subject tag cover? Which kinds of RFCs should it apply to?
+      placeholder: A short description of the subject area this tag represents.
+    validations:
+      required: true
+
+  - type: textarea
+    id: aliases
+    attributes:
+      label: Aliases (optional)
+      description: Other names or abbreviations that should map to this subject tag, one per line.
+      placeholder: |
+        SMTP
+        Electronic mail
+    validations:
+      required: false
+
+  - type: textarea
+    id: suggested-rfcs
+    attributes:
+      label: Suggested RFCs to tag (optional)
+      description: RFCs that should receive this subject tag, one per line.
+      placeholder: |
+        RFC 5321
+        RFC 5322
+    validations:
+      required: false
