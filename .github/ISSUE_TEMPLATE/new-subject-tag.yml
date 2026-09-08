@@ -8,12 +8,13 @@ body:
       value: |
         Thanks for suggesting a new subject tag. Please fill in the fields below.
 
-  - type: input
+  - type: textarea
     id: subject-tag
     attributes:
       label: Subject tag
       description: The proposed name of the subject tag.
       placeholder: e.g. "SMTP", "Email"
+      render: text
     validations:
       required: true
 
@@ -23,6 +24,7 @@ body:
       label: Description
       description: What does this subject tag cover? Which kinds of RFCs should it apply to?
       placeholder: A short description of the subject area this tag represents.
+      render: text
     validations:
       required: true
 
@@ -34,6 +36,7 @@ body:
       placeholder: |
         SMTP
         Electronic mail
+      render: text
     validations:
       required: false
 
@@ -45,5 +48,6 @@ body:
       placeholder: |
         RFC 5321
         RFC 5322
+      render: text
     validations:
       required: false
