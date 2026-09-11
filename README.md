@@ -236,3 +236,4 @@ Tags have no alias list. On the full-text-search test above, aliases are worth h
 ### Residual noise
 
 Keyword-derived assignments remain the main source of false positives. The title-only rule tier and the suppression table contain it; the scans in validation.md are how new cases are found.
+
