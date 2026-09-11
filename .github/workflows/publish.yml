@@ -1,0 +1,85 @@
+# Builds the taxonomy artifacts and publishes them to GitHub Pages.
+#
+# The build fetches the RFC index fresh each run, so the published page tracks the
+# current corpus. regen.py also rewrites taxonomy.yaml, README.md and validation.md;
+# those edits are discarded here. Keeping them current is a curator step, run locally
+# and committed by a person — this workflow commits nothing.
+#
+# Requires: repository Settings > Pages > Source set to "GitHub Actions".
+
+name: Build and publish
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Daily, to pick up newly published RFCs. Note GitHub disables scheduled
+    # workflows after 60 days without repository activity.
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.14'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build corpus
+        run: python3 make_corpus_from_index.py
+
+      - name: Assign tags
+        run: python3 engine.py
+
+      - name: Regenerate artifacts
+        run: python3 regen.py
+
+      - name: Stage site
+        run: |
+          mkdir -p _site
+          cp rfc-tags.html _site/index.html
+          cp rfc-tags.json rfc-tags.csv rfcs.json _site/
+
+      # On a pull request, build only: Pages serves one live site, so a PR must not
+      # deploy over it. The staged site is attached to the run instead — download it
+      # and open index.html to review the page a merge would publish.
+      - name: Upload preview (pull requests)
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v7
+        with:
+          name: site-preview
+          path: _site
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

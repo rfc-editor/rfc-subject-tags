@@ -1,0 +1,1503 @@
+# RFC subject tag taxonomy, version 3
+#
+# Two parts, per item 3 of alternate_starting_prompt.md:
+#
+#   categories  a first-level classification for browsing. NOT tags. Never assigned
+#               to an RFC, and never part of a tag's id.
+#   tags        at most two levels deep, ids unique across the whole vocabulary.
+#               `category` says which drawer a tag lives in.
+#
+#   name/desc   reader-facing
+#   aliases     the words a reader would type. Displayed and searched (item 5).
+#   match       classifier regexes. Implementation: never displayed, never searched.
+#   groups      datatracker WG/RG acronyms, consulted only after 2002 (item 12).
+version: 3.0.0
+categories:
+  - id: routing
+    name: Routing and Forwarding
+    desc: How reachability information is computed, distributed and used to forward traffic.
+  - id: transport
+    name: Transport Protocols
+    desc: End-to-end delivery, connection management and congestion behaviour.
+  - id: internet-layer
+    name: Internet Protocol and Addressing
+    desc: The IP layer itself - datagram formats, addressing and address management.
+  - id: link-layer
+    name: Link Layer and Physical Networks
+    desc: Carrying Internet traffic over a specific medium or layer-2 technology.
+  - id: naming
+    name: Naming, Numbering and Directories
+    desc: Assigning names and identifiers, and looking them up.
+  - id: web
+    name: Web and Hypertext
+    desc: The World Wide Web - its transfer protocol, content model and platform.
+  - id: email
+    name: Electronic Mail
+    desc: Message transfer, submission, storage and the format of mail itself.
+  - id: realtime
+    name: Real-Time Communication and Media
+    desc: Interactive voice, video and conferencing across the Internet.
+  - id: security
+    name: Security
+    desc: Protecting Internet communication, its participants and the data they exchange.
+  - id: management
+    name: Network Management and Operations
+    desc: Configuring, monitoring and operating deployed networks.
+  - id: data-formats
+    name: Data Formats, Encoding and Internationalization
+    desc: How information is represented so that different systems agree on its meaning.
+  - id: mobility
+    name: Mobility and Roaming
+    desc: Keeping sessions alive as a host or network changes its point of attachment.
+  - id: multicast
+    name: Multicast and Group Communication
+    desc: Delivering the same data to many receivers at once.
+  - id: vpn-overlay
+    name: VPNs, Pseudowires and Network Virtualization
+    desc: Building virtual networks on top of a shared infrastructure.
+  - id: measurement
+    name: Measurement, Performance and Benchmarking
+    desc: Quantifying how a network or an implementation actually behaves.
+  - id: storage
+    name: Storage and File Access
+    desc: Reading, writing and transferring files and block storage over a network.
+  - id: constrained
+    name: Constrained Devices and the Internet of Things
+    desc: Networking for devices limited in power, memory or bandwidth.
+  - id: time-synchronization
+    name: Time, Clocks and Synchronization
+    desc: Distributing accurate time and representing it unambiguously.
+  - id: arpanet
+    name: ARPANET and Early Internet Operations
+    desc: The ARPANET era - its host protocols, its operation and the running record of it.
+  - id: internet-architecture
+    name: Internet Architecture and Design Principles
+    desc: How the Internet is put together and the reasoning that holds it together.
+  - id: standards-process
+    name: Standards Process, Registries and Policy
+    desc: How the IETF and the RFC series operate, and the registries and policies they maintain.
+  - id: internet-community
+    name: Internet Community, Education and User Guidance
+    desc: Documents written for people using or joining the Internet rather than for implementers.
+tags:
+  - id: ad-hoc
+    category: routing
+    name: Ad Hoc and Mesh Routing
+    desc: Routing for mobile ad hoc, mesh and low-power lossy networks.
+    match: [ad hoc network, \bmanet\b, \baodv\b, \bolsr\b, mesh network, \brpl\b, 'low-?power and lossy',
+      \bdsr\b routing]
+    aliases: [MANET, ad hoc network, mesh network, AODV, OLSR, RPL, LLN, low-power lossy network, DSR]
+    groups: [manet, roll]
+  - id: bgp
+    category: routing
+    name: BGP and Inter-Domain Routing
+    desc: The Border Gateway Protocol, its attributes, extensions and inter-domain policy.
+    match: [\bbgp\b, border gateway protocol, 'inter-?domain routing', \bas path\b, autonomous system,
+      \begp\b, exterior gateway protocol, \bidrp\b]
+    aliases: [BGP, BGP-4, Border Gateway Protocol, inter-domain routing, EGP, autonomous system, AS path,
+      peering]
+    groups: [idr, grow, bess, sidr, sidrops, rtgwg]
+  - id: bgp.security
+    category: routing
+    name: Inter-Domain Routing Security
+    desc: Securing BGP - RPKI, route origin validation, BGPsec and route leaks.
+    match: [\brpki\b, resource public key infrastructure, bgpsec, route origin, route leak, 'secure inter-?domain',
+      prefix hijack]
+    aliases: [RPKI, BGPsec, route origin validation, ROA, ROV, route leak, prefix hijack, Resource Public
+        Key Infrastructure, SIDR]
+    groups: [sidr, sidrops]
+  - id: bgp.vpn
+    category: routing
+    name: BGP-Signalled VPN Services
+    desc: L2VPN, L3VPN, EVPN and other services provisioned with BGP.
+    match: [\bevpn\b, bgp/mpls, l3vpn, l2vpn, 'bgp.{0,20}vpn', virtual private lan]
+    aliases: [EVPN, L3VPN, L2VPN, BGP/MPLS VPN, VPLS, virtual private LAN service]
+    groups: [bess, l3vpn, l2vpn]
+  - id: igp
+    category: routing
+    name: Interior Gateway Protocols
+    desc: Link-state and distance-vector routing inside one administrative domain.
+    match: [\bigp\b, interior gateway, 'link-?state routing', \bospf\b, open shortest path, '\bis-?is\b',
+      intermediate system to intermediate, \brip\b, routing information protocol, \beigrp\b]
+    aliases: [IGP, interior gateway protocol, link-state routing, RIP, EIGRP, distance vector]
+    groups: [ospf, isis, lsr, rtgwg]
+  - id: igp.isis
+    category: routing
+    name: IS-IS
+    desc: Intermediate System to Intermediate System routing.
+    match: ['\bis-?is\b', intermediate system to intermediate system]
+    aliases: [IS-IS, ISIS, Intermediate System to Intermediate System]
+    groups: [isis]
+  - id: igp.ospf
+    category: routing
+    name: OSPF
+    desc: The Open Shortest Path First protocol and its extensions.
+    match: ['\bospf(v2|v3)?\b', open shortest path first]
+    aliases: [OSPF, OSPFv2, OSPFv3, Open Shortest Path First]
+    groups: [ospf]
+  - id: multicast-routing
+    category: routing
+    name: Multicast Routing
+    desc: Building and maintaining multicast distribution trees.
+    match: ['\bpim(-sm|-dm|-ssm)?\b', protocol independent multicast, multicast routing, \bmsdp\b, \bbidir\b,
+      rendezvous point, \bmvpn\b, multicast vpn]
+    aliases: [PIM, PIM-SM, PIM-SSM, protocol independent multicast, MSDP, MVPN, rendezvous point, BIER]
+    groups: [pim, mboned, bier]
+  - id: multipath
+    category: routing
+    name: Routing Resilience and Multipath
+    desc: Fast reroute, loop-free alternates, ECMP and convergence behaviour.
+    match: ['fast re-?route', \bfrr\b, 'loop-?free alternate', \becmp\b, equal cost multi, graceful restart,
+      route convergence, 'micro-?loop']
+    aliases: [fast reroute, FRR, LFA, loop-free alternate, ECMP, graceful restart, convergence, microloop]
+    groups: [rtgwg]
+  - id: policy-operations
+    category: routing
+    name: Routing Operations and Policy
+    desc: Operating the global routing system - policy expression, registries and practice.
+    match: [routing polic, \brpsl\b, routing registry, routing operation, global routing, \birr\b, route
+        server, peering]
+    aliases: [routing policy, RPSL, routing registry, IRR, route server, peering policy, global routing]
+    groups: [grow, rpsec, idr]
+  - id: router-redundancy
+    category: routing
+    name: First-Hop Router Redundancy
+    desc: Keeping a default gateway available when a router fails.
+    match: [\bvrrp\b, virtual router redundancy, \bhsrp\b, \bcarp\b, hot standby, 'first-?hop redundancy',
+      gateway redundancy]
+    aliases: [hot standby, first-hop redundancy, CARP, HSRP, VRRP]
+  - id: routing-design
+    category: routing
+    name: Routing Architecture and Design
+    desc: How a routing system is put together, and proposals to change it.
+    match: [routing (architecture|design|model|system), future routing, \bbabel\b, \bnsfnet\b, 'policy-?based
+        routing', recursion]
+    aliases: [policy routing, NSFNET, Babel, routing architecture, routing, forwarding, router, routes,
+      FIB, RIB]
+    weak_match: [\brouting\b, '\brouter(s)?\b', \bforwarding\b, \brouting protocol]
+  - id: segment-routing
+    category: routing
+    name: Segment Routing
+    desc: Source-routed paths expressed as segment lists, over MPLS or IPv6.
+    match: [segment routing, \bsrv6\b, '\bsr-?mpls\b', \bsrh\b, segment identifier, \bspring\b]
+    aliases: [segment routing, SR, SRv6, SR-MPLS, SRH, SPRING, segment identifier, SID]
+    groups: [spring]
+  - id: traffic-engineering
+    category: routing
+    name: Traffic Engineering and Path Computation
+    desc: Constraint-based path selection, TE extensions, PCE and RSVP-TE signalling.
+    match: [traffic engineering, '\bte\b.{0,15}(lsp|tunnel|extension)', \bpce\b, path computation, \bpcep\b,
+      '\brsvp-?te\b', 'constraint-?based']
+    aliases: [traffic engineering, TE, PCE, PCEP, RSVP-TE, path computation, CSPF, constraint-based routing]
+    groups: [pce, teas, ccamp, mpls]
+  - id: application-frameworks
+    category: transport
+    name: Generic Application Protocol Frameworks
+    desc: Reusable frameworks for building application protocols on top of a transport.
+    match: [\bbeep\b, blocks extensible exchange, application exchange, \bapex\b, remote procedure call,
+      \brpc\b, \bonc rpc\b, \bxdr\b, \bsoap\b, messaging framework, session layer]
+    aliases: [BEEP, APEX, RPC, ONC RPC, XDR, SOAP, remote procedure call]
+    groups: [beep, apex, oncrpc, rpcsec]
+  - id: congestion-control
+    category: transport
+    name: Congestion Control
+    desc: Detecting and responding to congestion, and queue behaviour that supports it.
+    match: [congestion control, congestion avoidance, congestion notification, \becn\b, \baqm\b, active
+        queue management, \bbufferbloat\b, slow start, flow control, \bcubic\b, \bbbr\b, \bred\b algorithm]
+    aliases: [congestion control, congestion avoidance, ECN, AQM, active queue management, BBR, CUBIC,
+      Reno, bufferbloat, slow start, RED, CoDel]
+    groups: [tcpm, tsvwg, iccrg, rmcat]
+  - id: dccp
+    category: transport
+    name: DCCP
+    desc: The Datagram Congestion Control Protocol.
+    match: [\bdccp\b, datagram congestion control protocol]
+    aliases: [DCCP, Datagram Congestion Control Protocol]
+    groups: [dccp]
+  - id: deterministic
+    category: transport
+    name: Deterministic and Time-Sensitive Networking
+    desc: Bounded latency and jitter for traffic that cannot tolerate variance.
+    match: [deterministic networking, \bdetnet\b, 'time-?sensitive network', bounded latency]
+    aliases: [DetNet, deterministic networking, TSN, time-sensitive networking, bounded latency]
+    groups: [detnet, raw]
+  - id: quality-of-service
+    category: transport
+    name: Quality of Service and Differentiated Treatment
+    desc: Marking, scheduling and reserving so that some traffic gets different treatment.
+    match: [quality of service, \bqos\b, differentiated services, \bdiffserv\b, \bdscp\b, integrated services,
+      \bintserv\b, 'per-?hop behavio', \brsvp\b, resource reservation, admission control]
+    aliases: [QoS, quality of service, DiffServ, DSCP, IntServ, RSVP, per-hop behavior, admission control,
+      traffic shaping]
+    groups: [diffserv, intserv, tsvwg, nsis, rsvp]
+  - id: quic
+    category: transport
+    name: QUIC
+    desc: The QUIC transport protocol and the protocols carried over it.
+    match: [\bquic\b]
+    aliases: [QUIC, HTTP/3, MASQUE]
+    groups: [quic, masque]
+  - id: reliable-multicast
+    category: transport
+    name: Reliable Multicast Transport
+    desc: Reliable and scalable bulk delivery to groups.
+    match: [reliable multicast, \bnorm\b protocol, \bflute\b, \balc\b, forward error correction, \bfec\b
+        building, asynchronous layered coding]
+    aliases: [reliable multicast, NORM, FLUTE, ALC, FEC, forward error correction, raptor]
+    groups: [rmt, tsvwg]
+  - id: sctp
+    category: transport
+    name: SCTP
+    desc: The Stream Control Transmission Protocol.
+    match: [\bsctp\b, stream control transmission]
+    aliases: [SCTP, Stream Control Transmission Protocol]
+    groups: [sctp, tsvwg]
+  - id: tcp
+    category: transport
+    name: TCP
+    desc: The Transmission Control Protocol and its extensions.
+    match: [\btcp\b, transmission control protocol]
+    aliases: [TCP, Transmission Control Protocol, SACK, TCP options, three-way handshake]
+    groups: [tcpm, tcpimpl, tcpsat]
+  - id: transport-design
+    category: transport
+    name: Transport Architecture
+    desc: The design of end-to-end delivery and the services a transport owes its users.
+    match: [transport (architecture|service|design), 'end-?to-?end', \bnetblt\b, \brdp\b, reliable data,
+      transport multiplexing]
+    aliases: [RDP, NETBLT, transport architecture, transport protocol, transport layer, end-to-end, connection
+        management]
+    weak_match: [transport protocol, transport layer, reliable data protocol, \btmux\b, multiplexing protocol,
+      connection (management|status|establishment)]
+  - id: udp
+    category: transport
+    name: UDP and Datagram Transport
+    desc: UDP, its usage guidelines and lightweight datagram transports.
+    match: [\budp\b, user datagram protocol, '\budp-?lite\b', datagram transport]
+    aliases: [UDP, User Datagram Protocol, UDP-Lite, datagram]
+  - id: address-configuration
+    category: internet-layer
+    name: Host Address Configuration
+    desc: How a host obtains an address and its network parameters.
+    match: ['\bdhcp(v4|v6)?\b', dynamic host configuration, stateless address autoconfiguration, \bslaac\b,
+      address autoconfig, \bbootp\b, router advertisement, neighbor discovery, \bnd\b protocol, \barp\b,
+      address resolution protocol, 'link-?local address']
+    aliases: [DHCP, DHCPv6, BOOTP, SLAAC, autoconfiguration, router advertisement, neighbor discovery,
+      ARP, link-local]
+    groups: [dhc, 6man, dhcwg]
+  - id: addressing
+    category: internet-layer
+    name: Address Architecture and Allocation
+    desc: How addresses are structured, delegated and assigned.
+    match:
+      - address (architecture|allocation|assignment|space|plan|extension)
+      - \bnsap\b
+      - \bosi\b
+      - \bcidr\b
+      - classless inter-?domain
+      - address prefix
+      - private address
+      - special-?purpose address
+      - unique local address
+      - address registry
+      - subnet(ting)?\b
+    aliases: [addressing, address allocation, CIDR, subnet, prefix, ULA, unique local address, special-purpose
+        address, NSAP]
+  - id: host-requirements
+    category: internet-layer
+    name: Host and Router Requirements
+    desc: What a conforming host or router must do, gathered across the protocol suite.
+    match: [host requirement, router requirement, requirements for internet hosts, node requirement, ip
+        forwarding behavio]
+    aliases: [host requirements, router requirements, node requirements, conformance]
+  - id: ip-datagram
+    category: internet-layer
+    name: IP Datagram Service
+    desc: 'The datagram itself: its header, options, fragmentation and delivery model.'
+    match: [\bip datagram, "internet protocol\b", \bip layer\b, \bip header\b, fragmentation, ip option,
+      packet format, datagram service]
+    aliases: [fragmentation, IP, Internet Protocol, datagram, IP header, packet]
+    weak_match: [internet protocol\b]
+  - id: ipv4
+    category: internet-layer
+    name: IPv4
+    desc: IP version 4 specifics, including its address space and legacy behaviour.
+    match: [\bipv4\b, ip version 4, internet protocol version 4]
+    aliases: [IPv4, IP version 4]
+  - id: ipv6
+    category: internet-layer
+    name: IPv6
+    desc: IP version 6 - its specification, addressing and deployment.
+    match: [\bipv6\b, ip version 6, \bipng\b]
+    aliases: [IPv6, IPng, IP version 6, 6man]
+    groups: [ipv6, 6man, v6ops, ipngwg]
+  - id: ipv6.transition
+    category: internet-layer
+    name: IPv4/IPv6 Coexistence and Transition
+    desc: Running IPv4 and IPv6 together - translation, tunnelling and dual stack.
+    match: [transition (to|mechanism), 'dual-?stack', \bnat64\b, \bdns64\b, \b6to4\b, \bteredo\b, \b6rd\b,
+      '\bds-?lite\b', ipv4/ipv6 (translation|coexist), '\bmap-?e\b', '\bmap-?t\b', \b464xlat\b, softwire]
+    aliases: [IPv6 transition, dual stack, NAT64, DNS64, 6to4, Teredo, 6rd, DS-Lite, MAP-E, MAP-T, 464XLAT,
+      softwire]
+    groups: [v6ops, behave, softwire, ngtrans, sunset4]
+  - id: nat-middlebox
+    category: internet-layer
+    name: NAT and Middlebox Behaviour
+    desc: Address translation, firewall traversal and the behaviour of on-path devices.
+    match: [network address translation, \bnat\b, \bnapt\b, middlebox, \bstun\b, \bturn\b, \bice\b protocol,
+      interactive connectivity establishment, firewall traversal, port control protocol, \bpcp\b, \bupnp\b,
+      'carrier-?grade nat', \bcgn\b]
+    aliases: [NAT, NAPT, middlebox, firewall traversal, PCP, port control protocol, UPnP, CGN, carrier-grade
+        NAT]
+    groups: [behave, midcom, pcp, nat, tram]
+  - id: nat-middlebox.nat-traversal
+    category: internet-layer
+    name: NAT Traversal for Media
+    desc: Discovering and opening a path through a NAT so two endpoints can exchange media.
+    match: [\bstun\b, \bturn\b, \bice\b protocol, interactive connectivity establishment, nat traversal,
+      hole punch, relay candidate, server reflexive]
+    aliases: [STUN, TURN, ICE, interactive connectivity establishment, NAT traversal, hole punching, TRAM]
+    groups: [tram, mmusic, behave, rtcweb]
+  - id: tunneling
+    category: internet-layer
+    name: IP Tunnelling and Encapsulation
+    desc: Carrying IP inside another protocol - generic encapsulations and their headers.
+    match: [\bgre\b, generic routing encapsulation, 'ip-?in-?ip', encapsulat(ion|ing), \bl2tp\b, layer
+        two tunneling, \bgeneve\b, \bvxlan\b, \bnvgre\b, tunnel endpoint]
+    aliases: [GRE, tunneling, encapsulation, IP-in-IP, L2TP, tunnel endpoint]
+    groups: [l2tpext, nvo3, intarea]
+  - id: cellular-broadband
+    category: link-layer
+    name: Cellular and Broadband Access
+    desc: Running IP over cellular, cable, DSL and other access networks.
+    match: [\b3gpp\b, \bgprs\b, \blte\b, \b5g\b, cellular, \bdocsis\b, cable modem, \badsl\b, \bvdsl\b,
+      \bdsl\b, broadband (access|forum), access network]
+    aliases: [3GPP, LTE, 5G, GPRS, cellular, DOCSIS, cable modem, ADSL, VDSL, DSL, broadband access]
+    groups: [adslmib, ipcdn, dna]
+  - id: ethernet-bridging
+    category: link-layer
+    name: Ethernet and Bridging
+    desc: Ethernet, VLANs, bridging and shortest-path layer-2 forwarding.
+    match: [\bethernet\b, '\bieee 802\.[13]\b', \bvlan\b, bridg(e|ing), \btrill\b, spanning tree, transparent
+        interconnection, data link switching, \bdlsw\b, \batmarp\b, \bilmi\b, \blane\b, lan emulation]
+    aliases: [Ethernet, '802.3', '802.1', VLAN, bridging, TRILL, spanning tree, DLSw]
+    groups: [trill, bridge, rbridge]
+  - id: link-technologies
+    category: link-layer
+    name: Legacy and Circuit Link Technologies
+    desc: Carrying IP over ATM, frame relay, X.25 and other pre-Ethernet link technologies.
+    match: [\batm\b, asynchronous transfer mode, frame relay, \bx\.25\b, \bsmds\b, \bmars\b, \bnhrp\b,
+      classical ip, link layer, "layer 2\b", transmission of ip, \bip over\b, ip datagrams over]
+    aliases: [classical IP, MARS, NHRP, SMDS, X.25, frame relay, ATM, link layer, layer 2, MAC, framing,
+      IP over]
+    weak_match: [layer 2\b, \bmac layer\b, 'transmission of ip.{0,25}(over|on)', framing, \bhippi\b, \bfddi\b,
+      token ring, \barcnet\b, serial line]
+  - id: low-power-radio
+    category: link-layer
+    name: Low-Power and Short-Range Radio
+    desc: IP over constrained radio links such as 802.15.4, BLE and LPWAN.
+    match: [802\.15\.4, \b6lowpan\b, bluetooth, \bble\b, \blpwan\b, '\blora(wan)?\b', '\bnb-?iot\b', \bsigfox\b,
+      \bzigbee\b, \bdect\b]
+    aliases: [802.15.4, 6LoWPAN, Bluetooth, BLE, LPWAN, LoRa, LoRaWAN, NB-IoT, Sigfox, Zigbee, DECT]
+    groups: [6lo, 6lowpan, lpwan, lwig]
+  - id: optical-transport
+    category: link-layer
+    name: Optical and Circuit-Switched Transport
+    desc: Wavelength, SONET/SDH, OTN and other circuit transport under IP.
+    match: [\bsonet\b, \bsdh\b, \botn\b, optical transport, wavelength, \bwson\b, \bgmpls\b, 'generalized
+        multi-?protocol', lambda, circuit switched, \bdwdm\b]
+    aliases: [SONET, SDH, OTN, GMPLS, WSON, optical, wavelength, DWDM, lambda]
+    groups: [ccamp, ipo, gmpls]
+  - id: point-to-point
+    category: link-layer
+    name: Point-to-Point Links
+    desc: PPP, serial links and the negotiation protocols that run over them.
+    match: [\bppp\b, 'point-?to-?point protocol', \bslip\b, \bhdlc\b, \blcp\b, \bncp\b link, \bpppoe\b]
+    aliases: [PPP, point-to-point protocol, SLIP, HDLC, PPPoE, LCP]
+    groups: [pppext]
+  - id: wireless-lan
+    category: link-layer
+    name: Wireless LAN
+    desc: 802.11 networks and the control and provisioning of access points.
+    match: [802\.11, wireless lan, \bwlan\b, '\bwi-?fi\b', \bcapwap\b, access point]
+    aliases: ['802.11', Wi-Fi, WLAN, wireless LAN, CAPWAP, access point]
+    groups: [capwap, mboned]
+  - id: directory
+    category: naming
+    name: Directory Services
+    desc: Hierarchical directories and the protocols that query them.
+    match: [\bldap\b, lightweight directory, \bx\.500\b, directory access protocol, \bdap\b, whois\+\+,
+      \bcosine\b, white pages, directory (assistance|service|system), nomenclator, resource discovery,
+      directory access gateway, common indexing, \bcip\b, \bsoif\b, index (object|server), \bgopher\b,
+      \bwais\b, \barchie\b, information retrieval, yellow pages, \bsolo\b query]
+    aliases: [LDAP, X.500, directory, DAP, whois++, white pages, Gopher, WAIS, Archie, CIP, resource discovery]
+    groups: [ldapbis, ldapext, asid, ids, osids]
+  - id: dns
+    category: naming
+    name: DNS
+    desc: The Domain Name System - its protocol, records, operation and deployment.
+    match: [\bdns\b, domain name system, domain name, resource record, \bzone (file|transfer|apex), \bresolver\b,
+      \bnameserver\b, name server]
+    aliases: [DNS, Domain Name System, domain name, resource record, zone, resolver, nameserver, EDNS]
+    groups: [dnsop, dnsext, dnsind, dprive, doh, dnssd, add, deleg]
+  - id: dns.dnssec
+    category: naming
+    name: DNSSEC
+    desc: Cryptographic authentication of DNS data.
+    match: [\bdnssec\b, dns security extension, \bdnskey\b, \brrsig\b, '\bnsec3?\b', \bds record\b, 'chain
+        of trust.{0,20}dns', 'trust anchor.{0,20}dns']
+    aliases: [DNSSEC, DNSKEY, RRSIG, NSEC, NSEC3, DS record, chain of trust, trust anchor, zone signing]
+    groups: [dnssec, dnsext, dnsop]
+  - id: dns.privacy
+    category: naming
+    name: Encrypted and Private DNS
+    desc: Protecting DNS queries in transit and limiting what resolvers learn.
+    match: ['dns.?over.?(tls|https|quic)', \bdoh\b, \bdot\b query, dns privacy, query minimisation, query
+        minimization, oblivious dns, 'encrypted client hello.{0,20}dns']
+    aliases: [DoH, DoT, DoQ, DNS over HTTPS, DNS over TLS, DNS over QUIC, oblivious DNS, query minimisation,
+      encrypted DNS]
+    groups: [dprive, doh, add]
+  - id: identifiers
+    category: naming
+    name: Identifier Schemes
+    desc: General-purpose identifiers and the rules for minting them.
+    match: [\buuid\b, \boid\b, \bhandle\b, identifier (scheme|syntax|assignment|format), unique identifier,
+      naming\b, name resolution, object identifier]
+    aliases: [object identifier, handle, URN, OID, UUID, naming, identifier, name resolution, directory]
+    weak_match: [identifier, directory service]
+  - id: registration-data
+    category: naming
+    name: Registration Data and Registry Protocols
+    desc: Provisioning and publishing registry data for names and numbers.
+    match: [\bwhois\b, \brdap\b, registration data access, \bepp\b, extensible provisioning protocol,
+      domain registr(y|ar|ation), 'registry.{0,15}object']
+    aliases: [WHOIS, RDAP, EPP, registration data, domain registry, registrar, provisioning protocol]
+    groups: [regext, provreg, weirds, crisp]
+  - id: service-discovery
+    category: naming
+    name: Service Discovery
+    desc: Finding services and their parameters without prior configuration.
+    match: [service discovery, \bmdns\b, multicast dns, '\bdns-?sd\b', 'zero ?conf', \bslp\b, service
+        location protocol, \bsrv record, \bnaptr\b, service binding, \bsvcb\b, \bhttps rr\b]
+    aliases: [mDNS, DNS-SD, service discovery, Zeroconf, SLP, SRV record, NAPTR, SVCB, HTTPS RR, Bonjour]
+    groups: [dnssd, zeroconf, svrloc, add]
+  - id: telephone-numbers
+    category: naming
+    name: Telephone Number Mapping
+    desc: Mapping E.164 numbers into Internet identifiers and routing on them.
+    match: [\benum\b, e\.164, telephone number, number portability, \btel uri\b, dialing plan, \bdrinks\b]
+    aliases: [ENUM, E.164, telephone number, tel URI, number portability, DRINKS]
+    groups: [enum, drinks, stir]
+  - id: uri
+    category: naming
+    name: URIs, URNs and Web Identifiers
+    desc: Uniform identifiers, their schemes and their registration.
+    match: [\buri\b, \burl\b, \burn\b, uniform resource (identifier|locator|name), iri\b, internationalized
+        resource identifier, uri scheme, '\bwell-?known uri', \bdid\b document]
+    aliases: [URI, URL, URN, IRI, uniform resource identifier, uniform resource locator, URI scheme, well-known
+        URI, DID]
+    groups: [urn, uri, urnbis, iri]
+  - id: content-delivery
+    category: web
+    name: Content Delivery and Distribution
+    desc: Distributing content at scale - CDNs, their interconnection and adaptive delivery.
+    match: [content delivery network, \bcdn\b, content distribution, \bcdni\b, content internetworking,
+      \bcdi\b, adaptive streaming, 'request routing.{0,20}content']
+    aliases: [CDN, content delivery network, CDNI, content internetworking, adaptive streaming, request
+        routing]
+    groups: [cdni, alto, decade]
+  - id: electronic-commerce
+    category: web
+    name: Electronic Commerce and Payments
+    desc: Trading, payment instruments and financial messaging carried over the Internet.
+    match: ['e-?commerce', electronic commerce, payment, credit card, trading protocol, \biotp\b, \becml\b,
+      cybercash, micropayment, invoice, purchase, financial (message|transaction), digital (cash|currency)]
+    aliases: [e-commerce, payment, IOTP, ECML, micropayment, credit card, digital cash, invoice]
+    groups: [trade, ecml, iotp]
+  - id: http
+    category: web
+    name: HTTP
+    desc: The Hypertext Transfer Protocol, its versions, headers and semantics.
+    match: [\bhttp\b, hypertext transfer, '\bhttp/[123]', http header, http semantics, \bhpack\b, \bqpack\b]
+    aliases: [HTTP, HTTP/1.1, HTTP/2, HTTP/3, hypertext transfer protocol, HPACK, QPACK, header field,
+      status code]
+    groups: [httpbis, http, httpauth, httpstate]
+  - id: http.caching-proxies
+    category: web
+    name: HTTP Caching and Intermediaries
+    desc: Caches, proxies, gateways and how they may alter a request or response.
+    match: [http cach, web cach, \bproxy\b, surrogate, content negotiation, reverse proxy, \bwpad\b, \bicap\b,
+      internet cache protocol, \bicp\b, cache (digest|hierarch)]
+    aliases: [HTTP cache, web cache, proxy, surrogate, content negotiation, ICAP, WPAD, CDN edge]
+    groups: [wrec, opes]
+  - id: linked-data
+    category: web
+    name: Structured Web Data and Feeds
+    desc: Publishing machine-readable data and change feeds on the web.
+    match: [\batom\b feed, syndication, \brss\b, \bwebfinger\b, linked data, '\bjson-?ld\b', activitypub,
+      \bhostmeta\b, link relation]
+    aliases: [Atom, RSS, syndication, WebFinger, JSON-LD, linked data, ActivityPub, link relation, host-meta]
+    groups: [atompub, appsawg]
+  - id: web-platform
+    category: web
+    name: Web Application Platform
+    desc: Protocols the browser exposes to applications beyond plain HTTP.
+    match: [\bwebsocket, \bwebdav\b, 'server-?sent event', \bcors\b, 'cross-?origin', 'same-?origin polic',
+      web platform, browser, \bwebtransport\b, \bwebpush\b]
+    aliases: [WebSocket, WebDAV, CORS, cross-origin, server-sent events, WebTransport, WebPush, same-origin
+        policy, web, World Wide Web, hypertext, browser, robots.txt, user agent]
+    groups: [hybi, webpush, webdav, webtrans]
+    weak_match: [world wide web, \bweb\b, 'hyper ?text', robots (exclusion|\.txt), web crawler, user agent]
+  - id: access
+    category: email
+    name: Mailbox Access and Storage
+    desc: Reading and managing a mailbox on a server.
+    match: [\bimap\b, '\bpop3?\b', post office protocol, mail access, mailstore, message store, \bsieve\b,
+      mail filtering, \bacap\b, \bjmap\b]
+    aliases: [mailbox access, message store, mailstore, JMAP, ACAP]
+    groups: [imapext, extra, sieve, lemonade, jmap, imap5]
+  - id: access.imap
+    category: email
+    name: IMAP
+    desc: The Internet Message Access Protocol and its extensions.
+    match: ['\bimap4?\b', internet message access protocol]
+    aliases: [IMAP, IMAP4, Internet Message Access Protocol]
+    groups: [imapext, extra, lemonade, imap5]
+  - id: access.sieve
+    category: email
+    name: Sieve Mail Filtering
+    desc: The Sieve language for filtering mail at the point of delivery.
+    match: [\bsieve\b, mail filtering, managesieve, vacation (extension|response)]
+    aliases: [Sieve, mail filtering, ManageSieve, vacation]
+    groups: [sieve, extra]
+  - id: authentication-antispam
+    category: email
+    name: Mail Authentication and Abuse Prevention
+    desc: Establishing who sent a message and limiting unsolicited or forged mail.
+    match: [\bspf\b, sender policy framework, \bdkim\b, domainkeys, \bdmarc\b, \barc\b seal, spam, unsolicited
+        (bulk|commercial), abuse report, \barf\b, sender authentication, mail authentication]
+    aliases: [SPF, DKIM, DMARC, ARC, sender policy framework, DomainKeys, spam, abuse report, ARF, mail
+        authentication]
+    groups: [dkim, marid, dmarc, asrg, masc, marf, appsawg]
+  - id: instant-messaging
+    category: email
+    name: Instant Messaging and Presence
+    desc: Real-time text messaging and the publication of presence.
+    match: [instant messag, \bxmpp\b, \bjabber\b, presence (information|document|protocol), \bpidf\b,
+      \bsimple\b presence, \bimpp\b, \bmsrp\b, chat\b]
+    aliases: [XMPP, Jabber, instant messaging, presence, PIDF, MSRP, IMPP, chat, SIMPLE]
+    groups: [xmpp, simple, impp, mmox]
+  - id: mailing-lists
+    category: email
+    name: Mailing Lists and Group Messaging
+    desc: Distributing a message to a subscribed group and managing that subscription.
+    match: [mailing list, 'list-?unsubscribe', list header, \bnetnews\b, \bnntp\b, \busenet\b, news article]
+    aliases: [mailing list, List-Unsubscribe, NNTP, Netnews, Usenet, news article]
+    groups: [nntpext, usefor, listext]
+  - id: message-format
+    category: email
+    name: Message Format and Header Fields
+    desc: The structure of a mail message and the meaning of its header fields.
+    match: [message format, header field, internet message format, '\brfc ?822\b', 'message-?id', address
+        syntax, mail header]
+    aliases: [message format, header field, RFC 822, RFC 5322, Message-ID, address syntax, internet message
+        format]
+    groups: [drums, emailcore, appsawg]
+  - id: transfer
+    category: email
+    name: Mail Transfer and Submission
+    desc: Moving messages between systems - SMTP and the submission path.
+    match: [\bsmtp\b, simple mail transfer, message submission, mail transfer agent, \bmta\b, mail routing,
+      delivery status notification, \bdsn\b, bounce message, message posting, mail protocol, mail server,
+      \bx\.400\b, message handling system, mail gateway, mail exchange]
+    aliases: [SMTP, ESMTP, mail transfer, MTA, message submission, DSN, delivery status notification,
+      X.400, bounce, email, e-mail, electronic mail, mailbox, message]
+    groups: [smtpext, yam, appsawg, emailcore, drums]
+    weak_match:
+      - \be-?mail\b
+      - electronic mail
+      - mail (message|system|transfer|user|service|priority|meeting|box)
+      - mail ?box
+      - junk mail
+      - role mailbox
+      - \bmailbox\b
+      - message (transmission|send|archiving|retrieval) (protocol|service)
+      - messaging system
+  - id: codecs
+    category: realtime
+    name: Media Codecs and Payload Formats
+    desc: How specific audio and video encodings are packetised and negotiated.
+    match: [\bcodec\b, \bopus\b, \bg\.7\d\d\b, \bamr\b, '\bh\.26[3-6]\b', '\bvp[89]\b', \bav1\b, \baac\b,
+      video (codec|encoding), audio (codec|encoding), \bmpeg\b, \bevs\b]
+    aliases: [codec, Opus, G.711, G.722, AMR, H.264, H.265, VP8, VP9, AV1, AAC, EVS, audio codec, video
+        codec]
+    groups: [payload, codec, avt]
+  - id: conferencing
+    category: realtime
+    name: Conferencing and Web Real-Time Communication
+    desc: Multi-party sessions and real-time communication inside the browser.
+    match: [conferenc(e|ing), \bxcon\b, centralized conferencing, \bwebrtc\b, rtcweb, floor control, \bbfcp\b,
+      media (server|mixer), multiparty]
+    aliases: [conferencing, XCON, floor control, BFCP, media mixer, multiparty, CLUE, telepresence]
+    groups: [xcon, rtcweb, mmusic, clue, avtcore, wish]
+  - id: conferencing.webrtc
+    category: realtime
+    name: WebRTC
+    desc: Real-time audio, video and data between browsers, and the protocols a browser exposes for it.
+    match: [\bwebrtc\b, rtcweb, \bjsep\b, 'browser-?based (real-?time|application)', javascript session
+        establishment, data channel, getusermedia]
+    aliases: [WebRTC, RTCWEB, JSEP, browser-based real-time, getUserMedia, peer connection, data channel]
+    groups: [rtcweb, wish, avtcore]
+  - id: emergency-services
+    category: realtime
+    name: Emergency Services and Location
+    desc: Reaching emergency services over IP, and the location data required to do so.
+    match: [emergency (call|service|context), \becrit\b, \bpsap\b, \bsos\b urn, geolocation, geographic
+        location, \bgeopriv\b, location (object|information|conveyance), civic address, \blost\b protocol]
+    aliases: [emergency services, ECRIT, PSAP, '911', '112', LoST, geolocation, GEOPRIV, civic address,
+      location conveyance]
+    groups: [ecrit, geopriv, lost]
+  - id: multimedia-architecture
+    category: realtime
+    name: Multimedia Architecture and Keying
+    desc: How real-time media systems are assembled, and how their keys are established.
+    match: [\bmikey\b, media keying, multimedia (architecture|system|conferencing|service), 'real-?time
+        (communication|architecture)', telephony (architecture|routing)]
+    aliases: [multimedia architecture, media keying, MIKEY, real-time communication, multimedia, VoIP,
+      voice over IP, telephony]
+    weak_match: ['real-?time (communication|transport|media)', multimedia, voice over ip, \bvoip\b, telephony]
+  - id: pstn-interworking
+    category: realtime
+    name: PSTN and Facsimile Interworking
+    desc: Bridging the Internet to the telephone network, including fax over IP.
+    match: [\bpstn\b, public switched telephone, \bfax\b, facsimile, '\bt\.3[78]\b', \bisdn\b, \bss7\b,
+      signalling system, \bsigtran\b, telephone (gateway|call), voice (gateway|profile), 'circuit-?switched
+        (network|call)', \bpint\b, \bspirits\b]
+    aliases: [PSTN, fax, facsimile, T.38, ISDN, SS7, SIGTRAN, PINT, SPIRITS, telephone gateway]
+    groups: [fax, pint, spirits, sigtran, iptel, megaco, stir, modern]
+  - id: rtp
+    category: realtime
+    name: RTP and Media Transport
+    desc: Carrying media streams and reporting on their delivery.
+    match: [\brtp\b, 'real-?time transport protocol', \brtcp\b, payload format, \bsrtp\b, media transport,
+      \brtsp\b, streaming]
+    aliases: [RTP, RTCP, real-time transport protocol, RTSP, payload format, SRTP, media transport, streaming]
+    groups: [avt, avtcore, avtext, payload, xrblock, mmusic, rmcat]
+  - id: sip
+    category: realtime
+    name: SIP and Session Signalling
+    desc: Establishing, modifying and tearing down interactive sessions.
+    match: [\bsip\b, session initiation protocol, \bsdp\b, session description protocol, 'offer/?answer',
+      \bsip uri\b, \bb2bua\b, call (control|flow|transfer), \bh\.323\b, \bmegaco\b, \bmgcp\b]
+    aliases: [SIP, Session Initiation Protocol, SDP, session description protocol, offer/answer, B2BUA,
+      H.323, MGCP, Megaco, call control]
+    groups: [sip, sipping, sipcore, mmusic, sipbrandy, bliss, cuss, salud, insipid, dispatch, iptel, megaco,
+      sigtran]
+  - id: telephone-identity
+    category: realtime
+    name: Caller Identity and Robocall Mitigation
+    desc: Asserting and verifying who is placing a call.
+    match: [caller id, calling party, secure telephone identity, \bstir\b, \bshaken\b, robocall, spoofed
+        call, \bpassport\b token]
+    aliases: [STIR, SHAKEN, caller ID, calling party, robocall, PASSporT, spoofed call]
+    groups: [stir, modern]
+  - id: aaa
+    category: security
+    name: Network Access Authentication and Accounting
+    desc: Authenticating subscribers onto a network and accounting for their use.
+    match: [\bradius\b, \bdiameter\b, \baaa\b, accounting (protocol|record), network access server, \bnas\b,
+      \btacacs\b, \b802\.1x\b, network access control]
+    aliases: [RADIUS, Diameter, AAA, accounting, NAS, network access server, TACACS, 802.1X, network access
+        control]
+    groups: [radext, dime, aaa, radius, nasreq, emu]
+  - id: authentication
+    category: security
+    name: Authentication and Identity
+    desc: Establishing who a party is, and carrying that claim between systems.
+    match: [authenticat, \beap\b, extensible authentication, \bsasl\b, \bkerberos\b, '\bgss-?api\b', 'one-?time
+        password', \botp\b, 'multi-?factor', password, \bcredential\b, \bwebauthn\b, \bfido\b, digest
+        authentication, identity provider, \bsaml\b, 'single sign-?on']
+    aliases: [authentication, SASL, one-time password, OTP, password, credential, WebAuthn, FIDO, digital
+        identity, SAML, single sign-on, multi-factor]
+    groups: [kitten, krb-wg, emu, sasl, otp, httpauth, oauth, secevent, scim]
+  - id: authentication.eap
+    category: security
+    name: EAP Methods
+    desc: The Extensible Authentication Protocol framework and the methods carried inside it.
+    match: [\beap\b, extensible authentication protocol, eap method, '\beap-?tls\b', \bpeap\b, '\beap-?ttls\b']
+    aliases: [EAP, EAP-TLS, EAP-TTLS, PEAP, extensible authentication protocol, EAP method]
+    groups: [emu, eap]
+  - id: authentication.kerberos
+    category: security
+    name: Kerberos and GSS-API
+    desc: Ticket-based authentication and the generic interface applications use to reach it.
+    match: [\bkerberos\b, '\bgss-?api\b', '\bkrb5?\b', \bkdc\b, 'ticket-?granting', generic security service]
+    aliases: [Kerberos, GSS-API, krb5, KDC, ticket, realm]
+    groups: [krb-wg, kitten, cat]
+  - id: authorization
+    category: security
+    name: Authorization and Access Control
+    desc: Deciding what an authenticated party is permitted to do.
+    match: [authoriz, access control, \boauth\b, access token, \bjwt\b, json web token, bearer token,
+      \bacl\b, capabilit(y|ies) token, delegat(ion|ed) (access|authority), policy decision point, \bxacml\b]
+    aliases: [authorization, access control, ACL, capability, policy decision point, XACML, delegated
+        access]
+    groups: [oauth, ace, gnap, sacm]
+  - id: authorization.oauth
+    category: security
+    name: OAuth and Token-Based Authorization
+    desc: Delegated authorization and the bearer tokens that carry it between services.
+    match: [\boauth\b, \bjwt\b, json web token, bearer token, access token, \bgnap\b, openid, token introspection]
+    aliases: [OAuth, OAuth 2.0, JWT, JSON web token, bearer token, access token, GNAP, OpenID]
+    groups: [oauth, gnap, secevent]
+  - id: content-security
+    category: security
+    name: Object and Content Security
+    desc: Protecting data itself, independent of the channel that carries it.
+    match: [\bs/mime\b, \bpgp\b, \bopenpgp\b, \bcms\b, cryptographic message syntax, \bjose\b, \bjws\b,
+      \bjwe\b, \bcose\b, object security, 'end-?to-?end encryption', \boscore\b, \bmls\b, messaging layer
+        security, signed (object|content)]
+    aliases: [object security, end-to-end encryption, OSCORE, MLS, messaging layer security, signed content]
+    groups: [smime, openpgp, jose, cose, lamps, mls, core]
+  - id: content-security.jose-cose
+    category: security
+    name: JOSE and COSE
+    desc: Signing and encrypting JSON and CBOR objects.
+    match: [\bjose\b, \bjws\b, \bjwe\b, \bjwk\b, \bcose\b, \bcwt\b, json web (signature|encryption|key),
+      cbor object signing]
+    aliases: [JOSE, JWS, JWE, JWK, COSE, CWT, signed JSON, signed CBOR]
+    groups: [jose, cose]
+  - id: content-security.openpgp
+    category: security
+    name: OpenPGP
+    desc: The OpenPGP message format and its web-of-trust key model.
+    match: [\bpgp\b, openpgp, \bgnupg\b, web of trust, key ring]
+    aliases: [PGP, OpenPGP, GnuPG, GPG, key ring, web of trust]
+    groups: [openpgp]
+  - id: content-security.smime-cms
+    category: security
+    name: S/MIME and CMS
+    desc: Signing and encrypting message content with the Cryptographic Message Syntax.
+    match: [s/mime, \bcms\b, cryptographic message syntax, 'pkcs ?#?7', 'enveloped-?data', 'signed-?data']
+    aliases: [S/MIME, CMS, cryptographic message syntax, PKCS#7, signed data, enveloped data]
+    groups: [smime, lamps]
+  - id: cryptographic-algorithms
+    category: security
+    name: Cryptographic Algorithms
+    desc: Ciphers, hashes, signature schemes and their parameters.
+    match: [\baes\b, \bdes\b, \btriple des\b, '\bmd[245]\b', message digest, test vector, stream cipher,
+      block cipher, 'zero-?knowledge', cryptanaly, '\brc[245]\b', \bidea\b cipher, \bblowfish\b, \bcamellia\b,
+      \bgost\b, '\bsm[234]\b', schnorr, threshold signature, '\bsha-?\d', \bmd5\b, \bhmac\b, \brsa\b,
+      \becdsa\b, \beddsa\b, \bed25519\b, \bcurve25519\b, elliptic curve, 'diffie-?hellman', \bchacha20\b,
+      \bpoly1305\b, cipher suite, encryption algorithm, hash (function|algorithm), digital signature,
+      random number, 'post-?quantum', \bkyber\b, '\bml-?kem\b', '\bml-?dsa\b', key derivation, \bhkdf\b,
+      \bcryptograph]
+    aliases: [AES, DES, 3DES, SHA-1, SHA-2, SHA-3, MD5, HMAC, RSA, ECDSA, EdDSA, Ed25519, Curve25519,
+      elliptic curve, Diffie-Hellman, ChaCha20, Poly1305, cipher suite, post-quantum, ML-KEM, ML-DSA,
+      Kyber, HKDF, key derivation, random number, test vectors]
+    groups: [cfrg, curdle, lamps, pquip]
+  - id: operational-security
+    category: security
+    name: Operational and Infrastructure Security
+    desc: Defending running networks - filtering, incident handling and abuse response.
+    match: [\bddos\b, denial of service, \bworm\b, \bvirus\b, helminthiasis, security incident, incident
+        (response|handling|report), \bidr\b threat, intrusion, '\bbcp ?38\b', ingress filtering, source
+        address validation, \bsavi\b, blackhol, \bflowspec\b, security operations, threat (signalling|signaling),
+      \bmile\b, \biodef\b, \brid\b protocol, malware, botnet]
+    aliases: [DDoS, denial of service, incident response, DOTS, IODEF, MILE, BCP 38, ingress filtering,
+      SAVI, flowspec, malware, botnet, worm]
+    groups: [opsec, dots, mile, savi, inch, grow]
+  - id: pki
+    category: security
+    name: Public Key Infrastructure and Certificates
+    desc: Issuing, validating and revoking certificates and the trust that rests on them.
+    match: [\bpki\b, 'public.?key infrastructure', certificate, \bx\.509\b, \bcrl\b, \bocsp\b, certification
+        authority, \bacme\b, certificate transparency, \bcmp\b, \bcmc\b, \bscep\b, trust anchor, \bpkcs\b]
+    aliases: [PKI, X.509, certificate, CRL, OCSP, certification authority, CA, certificate transparency,
+      PKCS, CMP, SCEP, trust anchor]
+    groups: [pkix, lamps, acme, trans, spasm]
+  - id: pki.acme
+    category: security
+    name: Automated Certificate Issuance
+    desc: 'Getting a certificate without a human in the loop: challenge, validation and issuance.'
+    match: [\bacme\b, automated certificate management, certificate issuance, domain validation, let's
+        encrypt]
+    aliases: [ACME, Let's Encrypt, automated certificate management, certificate issuance, challenge]
+    groups: [acme]
+  - id: privacy
+    category: security
+    name: Privacy and Data Protection
+    desc: Limiting what a protocol discloses about the people using it.
+    match: [\bprivacy\b, pervasive monitoring, data protection, personally identifiable, 'anonymit(y)?',
+      pseudonym, tracking, unlinkabilit, oblivious, confidentialit]
+    aliases: [privacy, pervasive monitoring, data protection, PII, anonymity, pseudonym, tracking, unlinkability,
+      oblivious]
+    groups: [dprive, privacypass, ohai, masque, geopriv, pearg]
+  - id: security-analysis
+    category: security
+    name: Security Analysis and Guidance
+    desc: Assessing a protocol's security and writing down what implementers must do.
+    match: [security consideration, threat analysis, security requirement, security architecture, attack
+        surface, security assessment, security review, security glossary, 'best current practice.{0,20}security']
+    aliases: [security considerations, threat analysis, security requirements, security architecture,
+      attack surface, security review, security glossary, security, threat model, attack, vulnerability]
+    groups: [saag, opsec, pearg]
+    weak_match: [\bsecurity\b, \bsecure\b, threat model, attack\b, vulnerab]
+  - id: transport-security
+    category: security
+    name: Transport and Channel Security
+    desc: Protecting a channel between two endpoints.
+    match: [\btls\b, transport layer security, \bssl\b, \bdtls\b, \bipsec\b, '\bike(v2)?\b', internet
+        key exchange, \besp\b header, authentication header, \bssh\b, secure shell, channel binding, \bwireguard\b,
+      \bmacsec\b]
+    aliases: [channel security, transport security, MACsec, WireGuard, channel binding]
+    groups: [tls, uta, ipsecme, ipsec, secsh, curdle, ipseckey, msec]
+  - id: transport-security.ipsec
+    category: security
+    name: IPsec and IKE
+    desc: The IP security architecture and the key exchange that establishes its associations.
+    match: [\bipsec\b, '\bike(v1|v2)?\b', internet key exchange, \besp\b, authentication header, security
+        association, \bikev2\b]
+    aliases: [IPsec, IKE, IKEv2, ESP, AH, Internet Key Exchange, security association, SA, VPN tunnel]
+    groups: [ipsecme, ipsec, ipseckey, kink]
+  - id: transport-security.ssh
+    category: security
+    name: Secure Shell
+    desc: 'SSH: remote login and file transfer over an authenticated encrypted channel.'
+    match: [\bssh\b, secure shell, \bsftp\b, host key]
+    aliases: [SSH, Secure Shell, SFTP, SSH keys, host key]
+    groups: [secsh, curdle]
+  - id: transport-security.tls
+    category: security
+    name: TLS and DTLS
+    desc: 'Transport Layer Security and its datagram form: the handshake, cipher negotiation and the extensions
+      around them.'
+    match: [\btls\b, transport layer security, \bdtls\b, \bssl\b, cipher suite, \bech\b, encrypted client
+        hello, \besni\b]
+    aliases: [TLS, TLS 1.3, DTLS, SSL, Transport Layer Security, cipher suite negotiation, ESNI, ECH]
+    groups: [tls, uta, curdle]
+  - id: autonomic-zerotouch
+    category: management
+    name: Autonomic Networking and Zero-Touch Onboarding
+    desc: Devices that bring themselves up and secure themselves without an operator.
+    match: [autonomic, \banima\b, 'zero.?touch', \bbrski\b, bootstrapping remote, secure device onboard,
+      \bteep\b, remote attestation, \brats\b]
+    aliases: [autonomic networking, ANIMA, zero-touch, BRSKI, bootstrapping, RATS, remote attestation,
+      TEEP, secure onboarding]
+    groups: [anima, rats, teep, sacm, suit]
+  - id: model-driven
+    category: management
+    name: Model-Driven Configuration
+    desc: Configuration expressed as data against a schema, and the protocols that move it.
+    match: [\byang\b, \bnetconf\b, \brestconf\b, data model, configuration (data|datastore), \byang module,
+      \bnmda\b, \bnetmod\b]
+    aliases: [model-driven management, data model, configuration datastore, NMDA]
+    groups: [netmod, netconf, ccamp, teas, opsawg, i2rs, ivy]
+  - id: model-driven.netconf
+    category: management
+    name: NETCONF and RESTCONF
+    desc: The protocols that carry configuration to and from a device.
+    match: [\bnetconf\b, \brestconf\b, \bcoreconf\b, network configuration protocol, candidate datastore]
+    aliases: [NETCONF, RESTCONF, CORECONF, configuration protocol]
+    groups: [netconf]
+  - id: model-driven.yang
+    category: management
+    name: YANG Data Models
+    desc: The YANG modelling language and the modules written in it.
+    match: [\byang\b, yang module, yang data model, yang grouping, \bnmda\b]
+    aliases: [YANG, YANG module, YANG data model, YANG grouping]
+    groups: [netmod, ccamp, teas, opsawg, ivy]
+  - id: monitoring-telemetry
+    category: management
+    name: Monitoring, Telemetry and Flow Export
+    desc: Exporting what a network is actually doing, in flows, logs and streams.
+    match: [\bipfix\b, \bnetflow\b, flow (record|export|information), \bsyslog\b, logging, telemetry,
+      streaming updates, \bipperf\b, traffic accounting, \bpsamp\b, packet sampling]
+    aliases: [IPFIX, NetFlow, flow export, syslog, logging, telemetry, PSAMP, packet sampling, traffic
+        accounting]
+    groups: [ipfix, psamp, syslog, opsawg, nvo3, grow]
+  - id: operations-practice
+    category: management
+    name: Operational Practice
+    desc: 'How networks are actually run: coexistence, transition and day-to-day operations.'
+    match: [network management, network operation, operational (consideration|practice|experience|model),
+      management (framework|architecture|model|infrastructure), coexistence]
+    aliases: [coexistence, network management, operations, operational considerations, OAM]
+    weak_match: [operational (consideration|practice|experience), management (framework|architecture)]
+  - id: policy-provisioning
+    category: management
+    name: Policy and Service Provisioning
+    desc: Expressing intent and pushing it into devices and services.
+    match: [policy (framework|based|server|management), \bcops\b, provisioning, \bpcim\b, service activation,
+      'intent-?based', \bacap\b policy, configuration management]
+    aliases: [policy management, COPS, provisioning, PCIM, intent-based, service activation, configuration
+        management, load balancing]
+    groups: [rap, policy, opsawg, anima, ivy]
+  - id: snmp-mib
+    category: management
+    name: SNMP and MIB Modules
+    desc: The SNMP framework and the managed object definitions it carries.
+    match: [\bsnmp\b, simple network management, '\bmibs?\b', entity management, \bhems\b, management
+        information base, managed objects, \bsmiv2\b, structure of management information, \brmon\b, textual
+        convention]
+    aliases: [SNMP, MIB, management information base, managed objects, SMIv2, RMON, textual convention,
+      HEMS]
+    groups: [snmpv3, mib2, adslmib, ipcdn, imss, entmib, ifmib, bridge, atommib, hubmib, disman, eos,
+      snmpconf, rmonmib]
+  - id: calendaring-contacts
+    category: data-formats
+    name: Calendaring and Contact Data
+    desc: Representing and exchanging calendars, schedules and contact records.
+    match: [\bicalendar\b, \bical\b, \bvcard\b, \bcaldav\b, \bcarddav\b, 'calendar(ing)?\b', 'scheduling.{0,15}calendar',
+      \bitip\b, \bimip\b]
+    aliases: [iCalendar, iCal, vCard, CalDAV, CardDAV, calendaring, scheduling, iTIP, iMIP]
+    groups: [calext, calsify, vcarddav, ediint]
+  - id: compression
+    category: data-formats
+    name: Compression
+    desc: Reducing the size of headers or payloads on the wire.
+    match: [compress(ion|ed), header compression, \brohc\b, \bvan jacobson\b, \bdeflate\b, \bgzip\b, \bbrotli\b,
+      \bzstd\b, \bshoc\b, \bsigcomp\b]
+    aliases: [compression, header compression, ROHC, SigComp, deflate, gzip, brotli, zstd, Van Jacobson
+        compression]
+    groups: [rohc, crisp, avt, lpwan]
+  - id: document-formats
+    category: data-formats
+    name: Specification and Document Formats
+    desc: The formats in which the specifications themselves are written and published.
+    match: [\bxml2rfc\b, rfc format, \bnroff\b, 'canonical format.{0,20}rfc', \bv3 vocabular, document
+        format, \bhtml\b, \bsgml\b, postscript, \bpdf\b, markup, 'rich ?text', \btroff\b, page description,
+      hypertext markup, text/(plain|html|richtext), facsimile file format]
+    aliases: [xml2rfc, RFC format, HTML, SGML, PostScript, PDF, markup, nroff, richtext, document format]
+    groups: [rfcform, xml2rfc, rswg]
+  - id: encoding-schemes
+    category: data-formats
+    name: Encoding and Presentation
+    desc: 'Turning values into bytes and back: string encodings, syntax and presentation.'
+    match: [\bencoding\b, data format, serializ, character set, syntax\b, string (format|representation),
+      presentation, printing, feature (set|tag)]
+    aliases: [presentation, encoding, data format, serialization, character set, syntax]
+    weak_match: []
+  - id: internationalization
+    category: data-formats
+    name: Internationalization and Character Sets
+    desc: Making protocols work in scripts and languages beyond ASCII.
+    match: [internationaliz, \bi18n\b, \bebcdic\b, \bascii\b, unicode, '\butf-?8\b', character (set|encoding|repertoire),
+      '\bidn(a)?\b', internationalized domain, \bpunycode\b, language tag, localization, \bstringprep\b,
+      \bprecis\b, bidirectional text]
+    aliases: [internationalization, i18n, Unicode, UTF-8, character set, IDN, IDNA, internationalized
+        domain name, Punycode, language tag, stringprep, PRECIS, bidi, localization, EBCDIC, ASCII]
+    groups: [idn, idnabis, precis, eai, ltru, iri]
+  - id: mime
+    category: data-formats
+    name: MIME and Media Types
+    desc: Typed content bodies and the registry of media types.
+    match: [\bmime\b, multipurpose internet mail extensions, media type, 'content-?type', base64, 'quoted-?printable',
+      'content-?disposition', multipart/]
+    aliases: [MIME, media type, content-type, base64, quoted-printable, multipart, content-disposition]
+    groups: [mediaman, appsawg, ediint, mimesgml]
+  - id: notation-grammar
+    category: data-formats
+    name: Notation and Grammar
+    desc: The metalanguages specifications use to define syntax precisely.
+    match: [\bnotation\b, equation, mathematic, \babnf\b, augmented backus, 'backus-?naur', grammar\b,
+      formal (notation|language|syntax), 'key words.{0,45}requirement levels', \bkey words\b]
+    aliases: [ABNF, augmented Backus-Naur, BNF, grammar, formal syntax, notation, key words, RFC 2119
+        keywords]
+    groups: [xml2rfc]
+  - id: structured-data
+    category: data-formats
+    name: Structured Data Formats
+    desc: General-purpose formats for carrying structured values.
+    match: [\bxml\b, \bjson\b, \bcbor\b, concise binary object, \byaml\b, \basn\.1\b, \bber\b encoding,
+      \bder\b encoding, \bjson (patch|pointer|schema|path), \bcddl\b, canonicalization, \bedn\b, 'base
+        ?(16|32|64)', hexadecimal, 'binary-?to-?text', string representation, attribute syntax, image
+        (format|file), file format]
+    aliases: [structured data, ASN.1, BER, DER, canonicalization, base32, base64, hexadecimal]
+    groups: [cbor, appsawg, json, jsonpath, xml2rfc]
+  - id: structured-data.cbor
+    category: data-formats
+    name: CBOR
+    desc: Concise Binary Object Representation and its data-definition language.
+    match: [\bcbor\b, concise binary object, \bcddl\b, \bedn\b, diagnostic notation]
+    aliases: [CBOR, concise binary object representation, CDDL, EDN, diagnostic notation]
+    groups: [cbor, core]
+  - id: structured-data.json
+    category: data-formats
+    name: JSON
+    desc: JavaScript Object Notation and the specifications built directly on it.
+    match: [\bjson\b, json (patch|pointer|schema|path|text sequence), '\bi-?json\b', javascript object
+        notation]
+    aliases: [JSON, JSON Patch, JSON Pointer, JSON Schema, JSONPath, I-JSON, JSON-LD]
+    groups: [json, jsonpath, appsawg]
+  - id: structured-data.xml
+    category: data-formats
+    name: XML
+    desc: XML and the schema, query and namespace machinery around it.
+    match: [\bxml\b, xml schema, \bxpath\b, \bxslt\b, xml namespace, \bsgml\b]
+    aliases: [XML, XML Schema, XPath, XSLT, namespace, SGML]
+    groups: [xml2rfc, appsawg]
+  - id: mobile-ip
+    category: mobility
+    name: Mobile IP
+    desc: Home agents, care-of addresses and the tunnels that follow a moving host.
+    match: ['mobile ipv?[46]?\b', '\bmip6?\b', home agent, 'care-?of address', binding update, proxy mobile,
+      \bpmipv6\b, \bnemo\b, network mobility]
+    aliases: [Mobile IP, Mobile IPv6, MIPv6, PMIPv6, proxy mobile IPv6, home agent, care-of address, binding
+        update, NEMO, network mobility]
+    groups: [mip4, mip6, mext, netext, mipshop, nemo, monami6, dna]
+  - id: mobility-architecture
+    category: mobility
+    name: Mobility Management Architecture
+    desc: Frameworks and problem statements for managing a moving host or network.
+    match: [mobility (management|architecture|framework), \bnetlmm\b, localized mobility, distributed
+        mobility, handover (framework|problem), \bmobility\b, roaming]
+    aliases: [distributed mobility, NETLMM, mobility management, mobility, mobile node, roaming, handover,
+      handoff]
+    weak_match: [mobile (node|host|ip|network), handover, handoff, point of attachment]
+  - id: multihoming
+    category: mobility
+    name: Multihoming and Locator Agility
+    desc: Using more than one attachment or address, and separating identity from location.
+    match: [multihom, \bshim6\b, \bhip\b, host identity protocol, 'locator/?id', \blisp\b, 'identifier.?locator',
+      \bilnp\b, multipath tcp, \bmptcp\b, address selection]
+    aliases: [multihoming, SHIM6, HIP, host identity protocol, LISP, locator/ID separation, ILNP, MPTCP,
+      multipath TCP, address selection]
+    groups: [shim6, hip, lisp, multi6, mptcp, rrg]
+  - id: group-management
+    category: multicast
+    name: Group Membership Management
+    desc: How a host joins and leaves a multicast group, and how routers learn of it.
+    match: [\bigmp\b, \bmld\b, group membership, multicast listener, group management, \bmulticast\b,
+      group communication, group address, '\bany ?cast\b', broadcast\b]
+    aliases: [multicast listener, multicast, group communication, IGMP, MLD, group membership, anycast,
+      broadcast]
+    weak_match: []
+  - id: group-security
+    category: multicast
+    name: Group Key Management and Multicast Security
+    desc: Establishing and rekeying keys shared by a group.
+    match: [group key, group security, multicast security, \bgdoi\b, \bgsakmp\b, rekey, group domain of
+        interpretation]
+    aliases: [group key management, GDOI, GSAKMP, multicast security, rekeying, group domain of interpretation]
+    groups: [msec, smug]
+  - id: multicast-deployment
+    category: multicast
+    name: Multicast Deployment and Operations
+    desc: Making multicast work across real networks and administrative boundaries.
+    match: [multicast (deployment|operation|address allocation), \bmbone\b, 'inter-?domain multicast',
+      \bamt\b, automatic multicast tunnel, 'source-?specific multicast', \bssm\b]
+    aliases: [MBONE, multicast deployment, AMT, automatic multicast tunneling, SSM, source-specific multicast,
+      multicast address allocation]
+    groups: [mboned, malloc]
+  - id: datacenter-overlay
+    category: vpn-overlay
+    name: Data Centre and Cloud Overlays
+    desc: Virtualized networks inside and between data centres.
+    match: ['data ?cent(er|re)', \bnvo3\b, network virtualization over, \bvxlan\b, \bgeneve\b, tenant
+        (network|system), cloud (network|provider), \bsfc\b, service function chain, network slic]
+    aliases: [data center, VXLAN, Geneve, NVGRE, NVO3, tenant network, service function chaining, SFC,
+      network slicing, cloud networking]
+    groups: [nvo3, sfc, bess, teas]
+  - id: mpls
+    category: vpn-overlay
+    name: MPLS
+    desc: Label switching - its data plane, label distribution and applications.
+    match: [\bmpls\b, 'multi-?protocol label switching', label (switching|distribution|stack|switched
+        path), \bldp\b, \blsp\b, \bfec\b label, '\bmpls-?tp\b', \bentropy label\b, tag switching, '\bcr-?ldp\b']
+    aliases: [MPLS, label switching, LDP, LSP, label switched path, MPLS-TP, entropy label, tag switching,
+      CR-LDP]
+    groups: [mpls, pals, pwe3, ccamp, teas, spring, detnet]
+  - id: pseudowire
+    category: vpn-overlay
+    name: Pseudowires and Circuit Emulation
+    desc: Carrying a layer-2 service across a packet network.
+    match: [pseudowire, \bpwe3\b, circuit emulation, \bcesopsn\b, \bsatop\b, attachment circuit, emulated
+        (service|circuit)]
+    aliases: [pseudowire, PWE3, circuit emulation, CESoPSN, SAToP, attachment circuit]
+    groups: [pwe3, pals, l2vpn]
+  - id: software-defined
+    category: vpn-overlay
+    name: Programmable and Software-Defined Networking
+    desc: Separating control from forwarding and driving the network from outside it.
+    match: ['software-?defined', \bsdn\b, \bovsdb\b, vswitch, packet filter, \bbpf\b, load balanc, \bforces\b,
+      forwarding and control element, control plane separation, \bi2rs\b, interface to the routing system,
+      '\bpce(p)?\b central', programmable (network|forwarding)]
+    aliases: [SDN, software-defined networking, ForCES, I2RS, OVSDB, Open vSwitch, BPF, programmable forwarding,
+      control plane separation]
+    groups: [forces, i2rs, sdnrg, alto]
+  - id: vpn-architecture
+    category: vpn-overlay
+    name: VPN Architecture and Requirements
+    desc: What a provider-provisioned virtual network must do, before any one technology.
+    match: [virtual private network, \bvpn\b, 'provider-?provisioned', \bppvpn\b, network virtualiz, overlay
+        network, virtual network]
+    aliases: [provider-provisioned, PPVPN, VPN, virtual private network, overlay network, network virtualization]
+    weak_match: []
+  - id: benchmarking
+    category: measurement
+    name: Benchmarking Methodology
+    desc: Repeatable laboratory methodology for comparing network devices.
+    match: [benchmarking (methodolog|terminolog), device benchmark, forwarding rate, test (methodolog|setup),
+      'lab(oratory)? test']
+    aliases: [benchmarking, BMWG, benchmarking methodology, forwarding rate, test methodology]
+    groups: [bmwg]
+  - id: operational-analysis
+    category: measurement
+    name: Network Analysis and Diagnostics
+    desc: Finding out what is wrong with a path, a device or a deployment.
+    match: [\btraceroute\b, \bping\b, \bicmp\b, \bbfd\b, bidirectional forwarding detection, \boam\b,
+      'operations, administration', fault (detection|management|isolation), connectivity (verification|check),
+      path mtu, \bpmtud\b, troubleshoot, diagnos]
+    aliases: [traceroute, ping, ICMP, BFD, bidirectional forwarding detection, OAM, path MTU, PMTUD, fault
+        isolation, connectivity verification, troubleshooting, diagnostics]
+    groups: [bfd, ippm, opsawg, mpls, nvo3, lime]
+  - id: performance-metrics
+    category: measurement
+    name: Standard Performance Metrics
+    desc: Defining metrics precisely enough that two parties measure the same thing.
+    match: [\bippm\b, ip performance metric, \bowamp\b, \btwamp\b, \bstamp\b, metric definition, registry
+        of metrics, active measurement, passive measurement]
+    aliases: [IPPM, IP performance metrics, OWAMP, TWAMP, STAMP, one-way delay, active measurement, passive
+        measurement, LMAP]
+    groups: [ippm, lmap, ipfix]
+  - id: traffic-analysis
+    category: measurement
+    name: Traffic Measurement and Analysis
+    desc: Observing real traffic at scale and reporting what it shows.
+    match: [\bmeasurement\b, traffic (analysis|measurement|characteriz|statistics), flow analysis, \bsenml\b,
+      sensor measurement, 'large-?scale measurement', data set]
+    aliases: [flow analysis, traffic analysis, SenML, traffic measurement, measurement, performance, benchmark,
+      throughput, latency, packet loss, jitter, delay]
+    weak_match: [performance metric, benchmark, throughput, latency, packet loss, delay variation, jitter,
+      'one-?way delay', 'round-?trip']
+  - id: block-storage
+    category: storage
+    name: IP Storage and Storage Networking
+    desc: Carrying block storage traffic and fabric management over IP.
+    match: [memory space, remote memory, \biscsi\b, \bfcip\b, \bifcp\b, fibre channel, storage area network,
+      ip storage, \bisns\b, \bnvme\b, \brdma\b, \biwarp\b, \bddp\b]
+    aliases: [iSCSI, FCIP, iFCP, Fibre Channel, SAN, storage area network, iSNS, NVMe, RDMA, iWARP, DDP]
+    groups: [ips, imss, storm, rddp, nfsv4]
+  - id: file-transfer
+    category: storage
+    name: File Transfer
+    desc: Moving whole files between systems on request.
+    match: [\bftp\b, file transfer protocol, \btftp\b, trivial file transfer, \bsftp\b, \brsync\b, 'bulk
+        (data )?transfer', anonymous ftp]
+    aliases: [FTP, TFTP, file transfer protocol, SFTP, rsync, anonymous FTP, bulk transfer, storage, file
+        access, file system, block device]
+    groups: [ftpext, ftpext2]
+    weak_match: [file (transfer|system|access|service), storage, block device]
+  - id: network-file-systems
+    category: storage
+    name: Network File Systems
+    desc: Remote file systems and the protocols that export them.
+    match: ['\bnfs(v[234])?\b', network file system, \bsmb\b, \bafs\b, \bwebdav\b, \bpnfs\b, file locking,
+      \bnlm\b, remote file]
+    aliases: [NFS, NFSv4, pNFS, network file system, SMB, AFS, WebDAV, file locking]
+    groups: [nfsv4, nfs, webdav]
+  - id: peer-to-peer
+    category: storage
+    name: Peer-to-Peer and Distributed Storage
+    desc: Distributing content and lookup across participating peers.
+    match: ['peer-?to-?peer', \bp2p\b, distributed hash, \bdht\b, \breload\b protocol, 'overlay.{0,15}(peer|storage)',
+      decoupled application data]
+    aliases: [peer-to-peer, P2P, DHT, distributed hash table, RELOAD, PPSP, overlay storage]
+    groups: [p2psip, ppsp, decade, alto]
+  - id: coap
+    category: constrained
+    name: CoAP and Constrained Application Protocols
+    desc: RESTful application protocols sized for constrained nodes.
+    match: [\bcoap\b, constrained application protocol, \bcore\b link format, resource directory, \bcoaps\b,
+      \boscore\b]
+    aliases: [CoAP, constrained application protocol, CoAPS, resource directory, CoRE link format, OSCORE]
+    groups: [core, ace]
+  - id: iot-architecture
+    category: constrained
+    name: Constrained Networking Architecture
+    desc: Frameworks, terminology and problem statements for constrained and IoT networks.
+    match: [internet of things, \biot\b, constrained (node|device|network|environment|architecture), \bm2m\b,
+      'machine-?to-?machine', sensor network, semantic (definition|interoperab)]
+    aliases: [constrained networking, IoT, internet of things, constrained device, constrained node, M2M,
+      sensor network, embedded, low-power]
+    weak_match: [constrained (node|device|network|environment), embedded device, 'low-?power']
+  - id: iot-security
+    category: constrained
+    name: Constrained Device Security and Lifecycle
+    desc: Authenticating, authorizing and updating devices too small for ordinary machinery.
+    match: [\bace\b framework, 'constrained.{0,20}(authoriz|authentic)', firmware update, \bsuit\b manifest,
+      'software update.{0,20}(iot|constrained)', device (identity|onboarding|lifecycle), \bedhoc\b, \bmud\b,
+      manufacturer usage description]
+    aliases: [ACE, firmware update, SUIT, device onboarding, EDHOC, MUD, manufacturer usage description,
+      device identity, software update]
+    groups: [ace, suit, teep, rats, opsawg]
+  - id: network-time
+    category: time-synchronization
+    name: Time Distribution Protocols
+    desc: Protocols that carry accurate time across a network.
+    match: [\bntp\b, network time protocol, \bsntp\b, \bptp\b, precision time, clock synchroniz, time
+        synchroniz, roughtime, time (server|service|standard)]
+    aliases: [NTP, network time protocol, SNTP, PTP, precision time protocol, clock synchronization, timestamp,
+      date and time, leap second, time zone, Roughtime, RFC 3339]
+    weak_match: [timestamp format, 'date and time.{0,15}(format|internet)', y\d+k\b, year 2000, millennium,
+      date (representation|format|arithmetic), leap second, time zone, \btzdist\b]
+  - id: time-formats
+    category: time-synchronization
+    name: Date and Time Representation
+    desc: Writing a date, a time or a zone down so that two systems agree what it means.
+    match: [timestamp, date and time, date (representation|format|arithmetic), time zone, \btzdist\b,
+      leap second, y\d+k\b, year 2000, millennium, \biso 8601\b]
+    aliases: [date format, leap second, time zone, timestamp, RFC 3339, ISO 8601]
+  - id: early-host-protocols
+    category: arpanet
+    name: Early Host and Terminal Protocols
+    desc: The first generation of host-to-host and terminal protocols.
+    match: [\btelnet\b, network virtual terminal, \bnvt\b, remote job entry, \brje\b, data reconfiguration,
+      graphics protocol, network graphics, 'host-?(to-?)?host protocol', \bnetrjs\b, \bnetrjt\b, initial
+        connection protocol, echo protocol, discard protocol, daytime protocol, character generator, quote
+        of the day, \bfinger\b, \bwhois\b protocol, \bsocket\b, link number, logger protocol, reconnection,
+      protocol synch, \brfnm\b, memory allocation, host software, 'out-?of-?band (control|signal)', character
+        display, front end, host mnemonic, decode encode language, terminal (protocol|handling|emulation),
+      connecting host, loader debugger, transaction processing, descriptive language, subprogram, documentation
+        convention, 'message (data types?|forms|synchroniz)', interrupt key, 'user-?user protocol', connection
+        by name, time sharing, interchange language, \\bgraphic, 'level (0|iii?)\\b', \bsupdup\b, \bmultics\b,
+      \btenex\b, \btso\b, \bimlac\b, 'pdp-?10', datacomputer, data computer, datalanguage, '\bmix(al)?\b',
+      macsyma, \bnetbank\b, \bsmfs\b, \bjanus\b, information management system, computer based instruction,
+      \bcbi\b, mathematical software, executive program, 'd[ae]?emon process', login and logout, console,
+      very distant host, bbn 1822, ready line, procedure calling, 'unified user-?level', lost message,
+      resynchronization of connection, duplicate database, extensible field, network journal, quick reference,
+      \btnls\b, \bnls\b, network map]
+    aliases: [Telnet, NVT, network virtual terminal, RJE, remote job entry, SUPDUP, MULTICS, TENEX, socket,
+      Finger, echo protocol, discard protocol, daytime, quote of the day, character generator, network
+        graphics]
+  - id: imp-subnet
+    category: arpanet
+    name: The IMP Subnet and Host Interface
+    desc: The packet switches under the ARPANET and the interface a host used to reach them.
+    match: ['\bimp(sys|s|-imp)?\b', interface message processor, '1822', host access protocol, very distant
+        host, going down, 'host/?imp', teletype, host interface]
+    aliases: [host access protocol, interface message processor, '1822', IMP]
+  - id: network-administration
+    category: arpanet
+    name: Early Network Administration and Community Record
+    desc: Host tables, site announcements, meeting records and the running administration of the early
+      network.
+    match:
+      - host table
+      - assigned numbers
+      - official protocol
+      - protocol standard
+      - meeting (announcement|notes|schedule|reservation)
+      - network (mail|meeting|announcement)
+      - site (report|status)
+      - policy statement
+      - new host
+      - directory of
+      - list of.{0,15}(host|site|number)
+      - nwg/rfc
+      - response to rfc
+      - comments on rfc
+      - request for comments on
+      - reservations for
+      - unknown host
+      - modifications to rfc
+      - status (report|of)
+      - announcement
+      - schedule
+      - questionnaire
+      - survey\b
+      - current status
+      - administrative procedure
+      - getting rid of
+      - historic moments
+      - pressure from
+      - local guide
+      - distribution list
+      - workshop
+      - notebook
+      - consulting
+      - user group
+      - call for papers
+      - \\btribute\\b
+      - in memoriam
+      - joining the net
+      - node is now up
+      - address (table|change)
+      - site ident
+      - host (port|address|name|call letter)
+      - network (number|map|checkout|checkpoint|make-?work|control cent)
+      - sockets in use
+      - weather
+      - load average
+      - available|unavailable
+      - commercializ
+      - terms of reference
+      - start-?up
+      - clarification
+      - exposition
+      - brief list
+      - list by number
+      - rfc (index|list)
+      - link \d
+      - link usage
+      - bandwidth
+      - satellite
+      - echoing
+      - ipc facilit
+      - reliable communication
+      - checkout
+      - attachment
+      - \bnwg\b
+      - agenda
+      - attendance
+      - timetable
+      - typographical error
+      - conversation with
+      - proposed meeting
+      - moratorium
+      - facility documentation
+      - on-?line operator
+      - reference information
+      - summary of \d
+      - note on
+      - comments on
+      - proposal for
+      - proposed\b
+      - thoughts on
+      - suggestion
+      - recommendation
+      - discussion
+      - position paper
+      - plateau
+      - best laid plans
+      - protocol notes?
+    aliases: [host table, assigned numbers, official protocols, NWG meeting, distribution list, network
+        map, site report, RFC index, ARPANET, IMP, NCP, NIC, network working group, host status, DARPA,
+      catenet, early Internet]
+    max_year: 1990
+    weak_match: [\barpanet\b, '\bimp(sys|s)?\b', \bncp\b, network working group, \bnic\b, network information
+        cent, host status, network liaison, station agent, \btip\b, interface message processor, network
+        measurement, \bucsb\b, \bucla\b, '\bsri-?arc\b', catenet, \bdarpa\b, \bnetwork use\b, socket number,
+      host (number|name|accounting|questionnaire), site (certification|report), network (host|site|server|service
+        cent), computer network, data sharing, resource (sharing|evaluation), remote usage, service cent(er|re),
+      network fortran, traffic statistic, byte size, 'flow-?control scheme', network/440, host access
+        protocol]
+  - id: evolution-deployment
+    category: internet-architecture
+    name: Protocol Evolution and Deployability
+    desc: How protocols get extended, deployed and eventually retired.
+    match: [extensibilit, protocol evolution, \bossification\b, incremental deployment, deployment (consideration|experience|status),
+      transition plan, deprecat, 'moving.{0,20}to historic', obsoleting, sunset, migration (path|strategy),
+      interoperability report, implementation (report|status|experience)]
+    aliases: [extensibility, protocol evolution, ossification, incremental deployment, deprecation, sunset,
+      migration, interoperability report, implementation status]
+    groups: [iab, intarea, sunset4, curdle]
+  - id: information-centric
+    category: internet-architecture
+    name: Information-Centric and Named-Data Networking
+    desc: Architectures that route on the name of content rather than the address of a host.
+    match: ['information-?centric', \bicn\b, named data network, \bndn\b, 'content-?centric', 'name-?based
+        routing', 'in-?network (caching|storage)']
+    aliases: [ICN, information-centric networking, NDN, named data networking, content-centric, in-network
+        caching]
+    groups: [icnrg, decade]
+  - id: requirements-terminology
+    category: internet-architecture
+    name: Requirements, Terminology and Frameworks
+    desc: The documents that fix what a thing must do and what its words mean, before anyone builds it.
+    match: [requirements for, terminology, problem statement, applicability statement, framework for,
+      use cases, gap analysis, taxonomy of, reference model, design (principle|philosophy|rationale),
+      architectural (principle|consideration|guideline)]
+    aliases: [architecture, design principles, end-to-end argument, layering, reference model, terminology,
+      problem statement, use cases, requirements, gap analysis, applicability statement, framework]
+    weak_match: [centraliz, decentraliz, protocol suite, 'end-?to-?end argument', internet architecture,
+      layering, protocol (design|implementation|engineering), terminology\b, use cases and requirements,
+      modularity, fault toleran, distributed system, open system, protocol concept]
+  - id: scaling-naming-addressing
+    category: internet-architecture
+    name: Naming, Addressing and Routing Scalability
+    desc: Long-run pressure on the address space and the routing table, and proposals to relieve it.
+    match: [routing (scalab|table growth), address (exhaust|depletion|scarcity), ipv4 exhaustion, scalability
+        of, address space (growth|consumption), renumbering, provider independent, \bpi\b address]
+    aliases: [routing scalability, address exhaustion, IPv4 exhaustion, renumbering, provider independent,
+      routing table growth]
+    groups: [rrg, grow, sunset4, intarea]
+  - id: iana-registries
+    category: standards-process
+    name: IANA Registries and Code Point Allocation
+    desc: Creating registries and the rules for allocating values out of them.
+    match: [\biana\b, \bripe\b, \bapnic\b, \barin\b, regional internet registr, \brir\b, registr(y|ies|ation
+        procedure), code point, assigned number, allocation (guideline|polic|procedure), expert review,
+      specification required, first come first served, protocol parameter, 'well-?known port', port number,
+      media type registration, namespace registr, private enterprise number, \boid\b arc]
+    aliases: [IANA, registry, code point, assigned numbers, expert review, specification required, port
+        number, protocol parameter, RIR, RIPE, ARIN, APNIC, media type registration]
+  - id: ietf-procedures
+    category: standards-process
+    name: IETF and IAB Procedures
+    desc: How the IETF and IAB organise themselves, choose people and run their process.
+    match: ['standards? (process|track|action|maturity|body)', ietf (process|procedure|administrat|meeting|mission|trust),
+      working group (guideline|procedure|chair|creation), \biesg\b, \biab\b, \birtf\b, \bisoc\b, \bnomcom\b,
+      nominating committee, appeal\b, selection, guidelines for conduct, 'birds-?of-?a-?feather', \bbof\b,
+      workshop, recommendation, resource allocation, \bbcp\b, internet standard\b, rough consensus, standards
+        organization, statement of work, hackathon, datatracker, running code, code sprint, ietf (hackathon|community|tool),
+      tools team]
+    aliases: [IETF process, standards process, BCP, IESG, IAB, IRTF, ISOC, NomCom, RFC series, working
+        group procedures, rough consensus, BOF, appeal]
+    weak_match: [rfc (series|editor|publication|number|summary), document (series|shepherd), last call,
+      request for comments summary, bibliography of, index of, defining the ietf, mission statement, contribute
+        research, internet (society|assigned numbers authority), charter of, guidelines to authors, 'instructions
+        to (rfc )?authors', \bgithub\b, version control, issue tracker, stream document, \bicann\b, appointment,
+      official protocol standards, policy issue, interconnecting network, standardization collaboration,
+      \bmou\b, summary of \d]
+  - id: intellectual-property
+    category: standards-process
+    name: Intellectual Property, Legal and Antitrust
+    desc: Rights in contributions and specifications, and the legal constraints on the process.
+    match: [intellectual property, \bipr\b, patent, copyright, trademark, licens(e|ing), antitrust, trust
+        legal provision, \btlp\b, 'contribution.{0,20}rights', note well, 'confidentialit(y)? (agreement|obligation)',
+      legal (consideration|provision), disclosure (of|obligation), incorporat(e|ing) by reference, copyright
+        notice]
+    aliases: [IPR, intellectual property, patent, copyright, trademark, license, antitrust, Note Well,
+      Trust Legal Provisions, TLP, disclosure]
+    groups: [ipr, iprwg]
+  - id: liaison-external
+    category: standards-process
+    name: External Coordination and Liaison
+    desc: Working with other standards bodies and formal liaison relationships.
+    match: [liaison, '\bitu-?t?\b', \biso\b, \bieee\b, \betsi\b, \b3gpp\b coordination, \bw3c\b, other
+        standards (body|organization|development), \bsdo\b, joint work, cooperation with]
+    aliases: [liaison, ITU-T, ISO, IEEE, ETSI, 3GPP, W3C, SDO, standards development organization]
+    groups: [liaison, iab]
+  - id: operations-of-the-series
+    category: standards-process
+    name: RFC Series Publication and Streams
+    desc: How RFCs are produced, streamed, numbered, corrected and archived.
+    match: [rfc editor (model|function|role), independent submission, editorial stream, errata, publication
+        (process|request), auth48, stream (definition|manager), document stream, status change, 'obsoleted
+        by\b.{0,20}series', move rfc \d+ to historic, to historic status, characterization of, statement
+        of work, reclassif]
+    aliases: [RFC Editor, independent submission, editorial stream, errata, AUTH48, document stream, status
+        change, publication process]
+    groups: [rfcefdp, rswg, rfced-future]
+  - id: internet-numbers-and-history
+    category: internet-community
+    name: Internet History and Retrospectives
+    desc: Accounts of how the network came to be as it is, written after the fact.
+    match: [history of, 'historic(al)? (account|note|perspective)', retrospective, evolution of the internet,
+      lessons learned, the first \d+ years, looking back, anniversar]
+    aliases: [Internet history, retrospective, lessons learned, anniversary, in memoriam]
+  - id: user-guides
+    category: internet-community
+    name: Guides, Glossaries and FAQs
+    desc: Documents written to explain the Internet to people joining it.
+    match: [netiquette, user (guide|guidance|education), frequently asked question, \bfaq\b, tutorial,
+      primer, introduction to, glossary, \bfyi\b, bibliograph, handbook, for schools, librar(y|ies), acceptable
+        use, code of conduct, outreach]
+    aliases: [glossary, FYI, netiquette, user guide, FAQ, tutorial, primer, outreach, education, acceptable
+        use, code of conduct, community]
+    weak_match: [\\btribute\\b, in memoriam, obituar, remembering, poem, poetry, internet is for, \bnren\b,
+      national research and education, responding to user, user need, symposium, invitation to, hitchhiker,
+      'k-?12', humanities, social (issue|impact), community (guide|network), harassment, diversity, training,
+      glossary for]

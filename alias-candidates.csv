@@ -1,0 +1,776 @@
+tag,alias candidate,RFCs using the term,source
+6lowpan,802.15.4,21,robert-taxonomy-2026-09-01.yaml
+6lowpan,BLE,1,robert-taxonomy-2026-09-01.yaml
+6lowpan,Bluetooth,6,robert-taxonomy-2026-09-01.yaml
+6lowpan,DECT,2,robert-taxonomy-2026-09-01.yaml
+6lowpan,LoRa,1,robert-taxonomy-2026-09-01.yaml
+6lowpan,LoRaWAN,3,robert-taxonomy-2026-09-01.yaml
+6lowpan,NB-IoT,3,robert-taxonomy-2026-09-01.yaml
+6lowpan,Sigfox,3,robert-taxonomy-2026-09-01.yaml
+6lowpan,Zigbee,1,robert-taxonomy-2026-09-01.yaml
+aaa,802.1X,5,robert-taxonomy-2026-09-01.yaml
+aaa,NAS,26,robert-taxonomy-2026-09-01.yaml
+aaa,accounting,82,robert-taxonomy-2026-09-01.yaml
+aaa,network access control,3,robert-taxonomy-2026-09-01.yaml
+aaa,network access server,29,robert-taxonomy-2026-09-01.yaml
+abnf,BNF,6,robert-taxonomy-2026-09-01.yaml
+abnf,RFC 2119 keywords,0,robert-taxonomy-2026-09-01.yaml
+abnf,augmented Backus-Naur,6,robert-taxonomy-2026-09-01.yaml
+abnf,formal syntax,4,robert-taxonomy-2026-09-01.yaml
+abnf,grammar,9,robert-taxonomy-2026-09-01.yaml
+abnf,key words,3,robert-taxonomy-2026-09-01.yaml
+abnf,notation,55,robert-taxonomy-2026-09-01.yaml
+ace,SUIT,0,robert-taxonomy-2026-09-01.yaml
+ace,device identity,4,robert-taxonomy-2026-09-01.yaml
+ace,device onboarding,2,robert-taxonomy-2026-09-01.yaml
+ace,manufacturer usage description,3,robert-taxonomy-2026-09-01.yaml
+ace,software update,1,robert-taxonomy-2026-09-01.yaml
+acme,Let's Encrypt,0,robert-taxonomy-2026-09-01.yaml
+acme,automated certificate management,11,robert-taxonomy-2026-09-01.yaml
+acme,certificate issuance,4,robert-taxonomy-2026-09-01.yaml
+acme,challenge,34,robert-taxonomy-2026-09-01.yaml
+addressing,NSAP,9,robert-taxonomy-2026-09-01.yaml
+addressing,ULA,1,robert-taxonomy-2026-09-01.yaml
+addressing,address allocation,26,robert-taxonomy-2026-09-01.yaml
+addressing,prefix,155,robert-taxonomy-2026-09-01.yaml
+addressing,special-purpose address,2,robert-taxonomy-2026-09-01.yaml
+addressing,subnet,63,robert-taxonomy-2026-09-01.yaml
+addressing,unique local address,0,robert-taxonomy-2026-09-01.yaml
+aes,3DES,5,robert-taxonomy-2026-09-01.yaml
+aes,Diffie-Hellman,52,robert-taxonomy-2026-09-01.yaml
+aes,ECDSA,19,robert-taxonomy-2026-09-01.yaml
+aes,Ed25519,7,robert-taxonomy-2026-09-01.yaml
+aes,HKDF,7,robert-taxonomy-2026-09-01.yaml
+aes,Kyber,3,robert-taxonomy-2026-09-01.yaml
+aes,ML-DSA,4,robert-taxonomy-2026-09-01.yaml
+aes,ML-KEM,5,robert-taxonomy-2026-09-01.yaml
+aes,Poly1305,6,robert-taxonomy-2026-09-01.yaml
+aes,SHA-1,28,robert-taxonomy-2026-09-01.yaml
+aes,SHA-2,13,robert-taxonomy-2026-09-01.yaml
+aes,SHA-3,0,robert-taxonomy-2026-09-01.yaml
+aes,cipher suite,5,robert-taxonomy-2026-09-01.yaml
+aes,key derivation,31,robert-taxonomy-2026-09-01.yaml
+aes,random number,5,robert-taxonomy-2026-09-01.yaml
+aes,test vectors,11,robert-taxonomy-2026-09-01.yaml
+amt,MBONE,4,robert-taxonomy-2026-09-01.yaml
+amt,automatic multicast tunneling,4,robert-taxonomy-2026-09-01.yaml
+amt,multicast address allocation,6,robert-taxonomy-2026-09-01.yaml
+amt,multicast deployment,2,robert-taxonomy-2026-09-01.yaml
+amt,source-specific multicast,20,robert-taxonomy-2026-09-01.yaml
+arpanet,DARPA,22,robert-taxonomy-2026-09-01.yaml
+arpanet,IMP,45,robert-taxonomy-2026-09-01.yaml
+arpanet,NIC,48,robert-taxonomy-2026-09-01.yaml
+arpanet,NWG meeting,5,robert-taxonomy-2026-09-01.yaml
+arpanet,RFC index,1,robert-taxonomy-2026-09-01.yaml
+arpanet,assigned numbers,59,robert-taxonomy-2026-09-01.yaml
+arpanet,catenet,0,robert-taxonomy-2026-09-01.yaml
+arpanet,distribution list,2,robert-taxonomy-2026-09-01.yaml
+arpanet,early Internet,0,robert-taxonomy-2026-09-01.yaml
+arpanet,host status,22,robert-taxonomy-2026-09-01.yaml
+arpanet,host table,5,robert-taxonomy-2026-09-01.yaml
+arpanet,network map,2,robert-taxonomy-2026-09-01.yaml
+arpanet,network working group,12,robert-taxonomy-2026-09-01.yaml
+arpanet,official protocols,9,robert-taxonomy-2026-09-01.yaml
+arpanet,site report,0,robert-taxonomy-2026-09-01.yaml
+asn1,BER,3,robert-taxonomy-2026-09-01.yaml
+asn1,DER,0,robert-taxonomy-2026-09-01.yaml
+asn1,base32,3,robert-taxonomy-2026-09-01.yaml
+asn1,canonicalization,8,robert-taxonomy-2026-09-01.yaml
+asn1,hexadecimal,4,robert-taxonomy-2026-09-01.yaml
+asn1,structured data,11,robert-taxonomy-2026-09-01.yaml
+atom,ActivityPub,0,robert-taxonomy-2026-09-01.yaml
+atom,JSON-LD,0,robert-taxonomy-2026-09-01.yaml
+atom,RSS,0,robert-taxonomy-2026-09-01.yaml
+atom,host-meta,0,robert-taxonomy-2026-09-01.yaml
+atom,link relation,19,robert-taxonomy-2026-09-01.yaml
+atom,linked data,0,robert-taxonomy-2026-09-01.yaml
+atom,syndication,7,robert-taxonomy-2026-09-01.yaml
+authentication,FIDO,2,robert-taxonomy-2026-09-01.yaml
+authentication,SAML,10,robert-taxonomy-2026-09-01.yaml
+authentication,credential,12,robert-taxonomy-2026-09-01.yaml
+authentication,digital identity,3,robert-taxonomy-2026-09-01.yaml
+authentication,multi-factor,2,robert-taxonomy-2026-09-01.yaml
+authentication,one-time password,12,robert-taxonomy-2026-09-01.yaml
+authentication,password,75,robert-taxonomy-2026-09-01.yaml
+authentication,single sign-on,3,robert-taxonomy-2026-09-01.yaml
+authorization,ACL,10,robert-taxonomy-2026-09-01.yaml
+authorization,access control,88,robert-taxonomy-2026-09-01.yaml
+authorization,capability,164,robert-taxonomy-2026-09-01.yaml
+authorization,delegated access,0,robert-taxonomy-2026-09-01.yaml
+authorization,policy decision point,2,robert-taxonomy-2026-09-01.yaml
+autonomic-networking,ANIMA,0,robert-taxonomy-2026-09-01.yaml
+autonomic-networking,RATS,5,robert-taxonomy-2026-09-01.yaml
+autonomic-networking,bootstrapping,26,robert-taxonomy-2026-09-01.yaml
+autonomic-networking,secure onboarding,0,robert-taxonomy-2026-09-01.yaml
+autonomic-networking,zero-touch,4,robert-taxonomy-2026-09-01.yaml
+babel,FIB,4,robert-taxonomy-2026-09-01.yaml
+babel,NSFNET,8,robert-taxonomy-2026-09-01.yaml
+babel,RIB,13,robert-taxonomy-2026-09-01.yaml
+babel,forwarding,292,robert-taxonomy-2026-09-01.yaml
+babel,policy routing,4,robert-taxonomy-2026-09-01.yaml
+babel,router,302,robert-taxonomy-2026-09-01.yaml
+babel,routes,86,robert-taxonomy-2026-09-01.yaml
+beep,RPC,38,robert-taxonomy-2026-09-01.yaml
+beep,SOAP,7,robert-taxonomy-2026-09-01.yaml
+beep,XDR,9,robert-taxonomy-2026-09-01.yaml
+beep,remote procedure call,23,robert-taxonomy-2026-09-01.yaml
+benchmarking,BMWG,5,robert-taxonomy-2026-09-01.yaml
+benchmarking,benchmarking methodology,21,robert-taxonomy-2026-09-01.yaml
+benchmarking,forwarding rate,0,robert-taxonomy-2026-09-01.yaml
+benchmarking,test methodology,3,robert-taxonomy-2026-09-01.yaml
+bgp,AS path,5,robert-taxonomy-2026-09-01.yaml
+bgp,BGP-4,37,robert-taxonomy-2026-09-01.yaml
+bgp,Border Gateway Protocol,108,robert-taxonomy-2026-09-01.yaml
+bgp,autonomous system,98,robert-taxonomy-2026-09-01.yaml
+bgp,inter-domain routing,17,robert-taxonomy-2026-09-01.yaml
+bgp,peering,28,robert-taxonomy-2026-09-01.yaml
+cbor,EDN,0,robert-taxonomy-2026-09-01.yaml
+cbor,concise binary object representation,31,robert-taxonomy-2026-09-01.yaml
+cbor,diagnostic notation,0,robert-taxonomy-2026-09-01.yaml
+cdn,CDNI,18,robert-taxonomy-2026-09-01.yaml
+cdn,adaptive streaming,4,robert-taxonomy-2026-09-01.yaml
+cdn,content delivery network,19,robert-taxonomy-2026-09-01.yaml
+cdn,content internetworking,2,robert-taxonomy-2026-09-01.yaml
+cdn,request routing,9,robert-taxonomy-2026-09-01.yaml
+cellular,3GPP,55,robert-taxonomy-2026-09-01.yaml
+cellular,5G,13,robert-taxonomy-2026-09-01.yaml
+cellular,ADSL,5,robert-taxonomy-2026-09-01.yaml
+cellular,GPRS,6,robert-taxonomy-2026-09-01.yaml
+cellular,LTE,10,robert-taxonomy-2026-09-01.yaml
+cellular,VDSL,3,robert-taxonomy-2026-09-01.yaml
+cellular,broadband access,5,robert-taxonomy-2026-09-01.yaml
+cellular,cable modem,8,robert-taxonomy-2026-09-01.yaml
+coap,CoAPS,1,robert-taxonomy-2026-09-01.yaml
+coap,CoRE link format,0,robert-taxonomy-2026-09-01.yaml
+coap,constrained application protocol,39,robert-taxonomy-2026-09-01.yaml
+coap,resource directory,2,robert-taxonomy-2026-09-01.yaml
+codecs,AAC,2,robert-taxonomy-2026-09-01.yaml
+codecs,AV1,0,robert-taxonomy-2026-09-01.yaml
+codecs,EVS,0,robert-taxonomy-2026-09-01.yaml
+codecs,G.711,4,robert-taxonomy-2026-09-01.yaml
+codecs,G.722,4,robert-taxonomy-2026-09-01.yaml
+codecs,H.265,2,robert-taxonomy-2026-09-01.yaml
+codecs,audio codec,18,robert-taxonomy-2026-09-01.yaml
+codecs,codec,61,robert-taxonomy-2026-09-01.yaml
+codecs,video codec,10,robert-taxonomy-2026-09-01.yaml
+compression,Van Jacobson compression,0,robert-taxonomy-2026-09-01.yaml
+conferencing,CLUE,8,robert-taxonomy-2026-09-01.yaml
+conferencing,floor control,7,robert-taxonomy-2026-09-01.yaml
+conferencing,media mixer,0,robert-taxonomy-2026-09-01.yaml
+conferencing,multiparty,8,robert-taxonomy-2026-09-01.yaml
+congestion-control,BBR,0,robert-taxonomy-2026-09-01.yaml
+congestion-control,RED,1,robert-taxonomy-2026-09-01.yaml
+congestion-control,Reno,2,robert-taxonomy-2026-09-01.yaml
+congestion-control,active queue management,14,robert-taxonomy-2026-09-01.yaml
+congestion-control,bufferbloat,4,robert-taxonomy-2026-09-01.yaml
+congestion-control,congestion avoidance,14,robert-taxonomy-2026-09-01.yaml
+congestion-control,slow start,7,robert-taxonomy-2026-09-01.yaml
+content-negotiation,CDN edge,0,robert-taxonomy-2026-09-01.yaml
+content-negotiation,HTTP cache,3,robert-taxonomy-2026-09-01.yaml
+content-negotiation,ICAP,1,robert-taxonomy-2026-09-01.yaml
+content-negotiation,WPAD,0,robert-taxonomy-2026-09-01.yaml
+content-negotiation,proxy,128,robert-taxonomy-2026-09-01.yaml
+content-negotiation,surrogate,1,robert-taxonomy-2026-09-01.yaml
+content-negotiation,web cache,0,robert-taxonomy-2026-09-01.yaml
+dccp,Datagram Congestion Control Protocol,20,robert-taxonomy-2026-09-01.yaml
+detnet,TSN,7,robert-taxonomy-2026-09-01.yaml
+detnet,bounded latency,4,robert-taxonomy-2026-09-01.yaml
+detnet,deterministic networking,23,robert-taxonomy-2026-09-01.yaml
+detnet,time-sensitive networking,3,robert-taxonomy-2026-09-01.yaml
+dhcp,BOOTP,14,robert-taxonomy-2026-09-01.yaml
+dhcp,autoconfiguration,33,robert-taxonomy-2026-09-01.yaml
+dhcp,link-local,39,robert-taxonomy-2026-09-01.yaml
+dhcp,router advertisement,26,robert-taxonomy-2026-09-01.yaml
+directory-services,Archie,2,robert-taxonomy-2026-09-01.yaml
+directory-services,CIP,7,robert-taxonomy-2026-09-01.yaml
+directory-services,DAP,9,robert-taxonomy-2026-09-01.yaml
+directory-services,directory,191,robert-taxonomy-2026-09-01.yaml
+directory-services,resource discovery,7,robert-taxonomy-2026-09-01.yaml
+directory-services,white pages,8,robert-taxonomy-2026-09-01.yaml
+dns,Domain Name System,155,robert-taxonomy-2026-09-01.yaml
+dns,domain name,251,robert-taxonomy-2026-09-01.yaml
+dns,nameserver,4,robert-taxonomy-2026-09-01.yaml
+dns,resolver,38,robert-taxonomy-2026-09-01.yaml
+dns,resource record,68,robert-taxonomy-2026-09-01.yaml
+dns,zone,68,robert-taxonomy-2026-09-01.yaml
+dns-privacy,DNS over HTTPS,3,robert-taxonomy-2026-09-01.yaml
+dns-privacy,DNS over QUIC,4,robert-taxonomy-2026-09-01.yaml
+dns-privacy,DNS over TLS,6,robert-taxonomy-2026-09-01.yaml
+dns-privacy,DoQ,7,robert-taxonomy-2026-09-01.yaml
+dns-privacy,encrypted DNS,6,robert-taxonomy-2026-09-01.yaml
+dns-privacy,query minimisation,0,robert-taxonomy-2026-09-01.yaml
+dnssec,DNSKEY,12,robert-taxonomy-2026-09-01.yaml
+dnssec,DS record,1,robert-taxonomy-2026-09-01.yaml
+dnssec,NSEC,10,robert-taxonomy-2026-09-01.yaml
+dnssec,NSEC3,9,robert-taxonomy-2026-09-01.yaml
+dnssec,RRSIG,5,robert-taxonomy-2026-09-01.yaml
+dnssec,chain of trust,3,robert-taxonomy-2026-09-01.yaml
+dnssec,trust anchor,24,robert-taxonomy-2026-09-01.yaml
+dnssec,zone signing,1,robert-taxonomy-2026-09-01.yaml
+e-commerce,ECML,4,robert-taxonomy-2026-09-01.yaml
+e-commerce,credit card,1,robert-taxonomy-2026-09-01.yaml
+e-commerce,digital cash,0,robert-taxonomy-2026-09-01.yaml
+e-commerce,invoice,3,robert-taxonomy-2026-09-01.yaml
+e-commerce,micropayment,0,robert-taxonomy-2026-09-01.yaml
+e-commerce,payment,11,robert-taxonomy-2026-09-01.yaml
+eap,EAP method,11,robert-taxonomy-2026-09-01.yaml
+eap,EAP-TLS,4,robert-taxonomy-2026-09-01.yaml
+eap,EAP-TTLS,2,robert-taxonomy-2026-09-01.yaml
+eap,PEAP,2,robert-taxonomy-2026-09-01.yaml
+eap,extensible authentication protocol,71,robert-taxonomy-2026-09-01.yaml
+ecmp,FRR,18,robert-taxonomy-2026-09-01.yaml
+ecmp,LFA,10,robert-taxonomy-2026-09-01.yaml
+ecmp,convergence,50,robert-taxonomy-2026-09-01.yaml
+ecmp,fast reroute,34,robert-taxonomy-2026-09-01.yaml
+ecmp,graceful restart,11,robert-taxonomy-2026-09-01.yaml
+ecmp,loop-free alternate,4,robert-taxonomy-2026-09-01.yaml
+ecmp,microloop,0,robert-taxonomy-2026-09-01.yaml
+emergency-services,112,0,robert-taxonomy-2026-09-01.yaml
+emergency-services,911,0,robert-taxonomy-2026-09-01.yaml
+emergency-services,ECRIT,6,robert-taxonomy-2026-09-01.yaml
+emergency-services,GEOPRIV,13,robert-taxonomy-2026-09-01.yaml
+emergency-services,PSAP,6,robert-taxonomy-2026-09-01.yaml
+emergency-services,civic address,3,robert-taxonomy-2026-09-01.yaml
+emergency-services,location conveyance,2,robert-taxonomy-2026-09-01.yaml
+enum,DRINKS,1,robert-taxonomy-2026-09-01.yaml
+enum,E.164,21,robert-taxonomy-2026-09-01.yaml
+enum,number portability,4,robert-taxonomy-2026-09-01.yaml
+enum,telephone number,14,robert-taxonomy-2026-09-01.yaml
+ethernet,802.1,11,robert-taxonomy-2026-09-01.yaml
+ethernet,802.3,21,robert-taxonomy-2026-09-01.yaml
+ethernet,DLSw,3,robert-taxonomy-2026-09-01.yaml
+ethernet,VLAN,21,robert-taxonomy-2026-09-01.yaml
+ethernet,bridging,38,robert-taxonomy-2026-09-01.yaml
+ethernet,spanning tree,7,robert-taxonomy-2026-09-01.yaml
+evpn,BGP/MPLS VPN,4,robert-taxonomy-2026-09-01.yaml
+evpn,virtual private LAN service,26,robert-taxonomy-2026-09-01.yaml
+fax,PINT,4,robert-taxonomy-2026-09-01.yaml
+fax,PSTN,31,robert-taxonomy-2026-09-01.yaml
+fax,SPIRITS,4,robert-taxonomy-2026-09-01.yaml
+fax,SS7,6,robert-taxonomy-2026-09-01.yaml
+fax,T.38,5,robert-taxonomy-2026-09-01.yaml
+fax,facsimile,29,robert-taxonomy-2026-09-01.yaml
+fax,telephone gateway,0,robert-taxonomy-2026-09-01.yaml
+ftp,SFTP,2,robert-taxonomy-2026-09-01.yaml
+ftp,anonymous FTP,2,robert-taxonomy-2026-09-01.yaml
+ftp,block device,0,robert-taxonomy-2026-09-01.yaml
+ftp,bulk transfer,4,robert-taxonomy-2026-09-01.yaml
+ftp,file access,9,robert-taxonomy-2026-09-01.yaml
+ftp,file system,38,robert-taxonomy-2026-09-01.yaml
+ftp,file transfer protocol,44,robert-taxonomy-2026-09-01.yaml
+ftp,rsync,3,robert-taxonomy-2026-09-01.yaml
+hsrp,CARP,0,robert-taxonomy-2026-09-01.yaml
+hsrp,first-hop redundancy,0,robert-taxonomy-2026-09-01.yaml
+hsrp,hot standby,3,robert-taxonomy-2026-09-01.yaml
+html,PDF,9,robert-taxonomy-2026-09-01.yaml
+html,PostScript,2,robert-taxonomy-2026-09-01.yaml
+html,RFC format,3,robert-taxonomy-2026-09-01.yaml
+html,document format,15,robert-taxonomy-2026-09-01.yaml
+html,markup,120,robert-taxonomy-2026-09-01.yaml
+html,nroff,0,robert-taxonomy-2026-09-01.yaml
+html,richtext,2,robert-taxonomy-2026-09-01.yaml
+html,xml2rfc,4,robert-taxonomy-2026-09-01.yaml
+http,HPACK,3,robert-taxonomy-2026-09-01.yaml
+http,HTTP/1.1,22,robert-taxonomy-2026-09-01.yaml
+http,QPACK,2,robert-taxonomy-2026-09-01.yaml
+http,header field,116,robert-taxonomy-2026-09-01.yaml
+http,hypertext transfer protocol,65,robert-taxonomy-2026-09-01.yaml
+http,status code,13,robert-taxonomy-2026-09-01.yaml
+iana,APNIC,1,robert-taxonomy-2026-09-01.yaml
+iana,ARIN,1,robert-taxonomy-2026-09-01.yaml
+iana,RIPE,7,robert-taxonomy-2026-09-01.yaml
+iana,RIR,2,robert-taxonomy-2026-09-01.yaml
+iana,assigned numbers,59,robert-taxonomy-2026-09-01.yaml
+iana,code point,23,robert-taxonomy-2026-09-01.yaml
+iana,expert review,7,robert-taxonomy-2026-09-01.yaml
+iana,media type registration,19,robert-taxonomy-2026-09-01.yaml
+iana,port number,15,robert-taxonomy-2026-09-01.yaml
+iana,protocol parameter,4,robert-taxonomy-2026-09-01.yaml
+iana,registry,229,robert-taxonomy-2026-09-01.yaml
+iana,specification required,6,robert-taxonomy-2026-09-01.yaml
+icalendar,iCal,1,robert-taxonomy-2026-09-01.yaml
+icalendar,iMIP,4,robert-taxonomy-2026-09-01.yaml
+icalendar,iTIP,7,robert-taxonomy-2026-09-01.yaml
+icalendar,scheduling,33,robert-taxonomy-2026-09-01.yaml
+icn,NDN,7,robert-taxonomy-2026-09-01.yaml
+icn,content-centric,9,robert-taxonomy-2026-09-01.yaml
+icn,in-network caching,2,robert-taxonomy-2026-09-01.yaml
+icn,information-centric networking,19,robert-taxonomy-2026-09-01.yaml
+icn,named data networking,5,robert-taxonomy-2026-09-01.yaml
+ietf-process,BCP,28,robert-taxonomy-2026-09-01.yaml
+ietf-process,BOF,6,robert-taxonomy-2026-09-01.yaml
+ietf-process,IAB,145,robert-taxonomy-2026-09-01.yaml
+ietf-process,IESG,53,robert-taxonomy-2026-09-01.yaml
+ietf-process,IRTF,82,robert-taxonomy-2026-09-01.yaml
+ietf-process,ISOC,21,robert-taxonomy-2026-09-01.yaml
+ietf-process,appeal,1,robert-taxonomy-2026-09-01.yaml
+ietf-process,rough consensus,2,robert-taxonomy-2026-09-01.yaml
+ietf-process,standards process,20,robert-taxonomy-2026-09-01.yaml
+ietf-process,working group procedures,0,robert-taxonomy-2026-09-01.yaml
+imap,IMAP4,42,robert-taxonomy-2026-09-01.yaml
+imap,Internet Message Access Protocol,58,robert-taxonomy-2026-09-01.yaml
+instant-messaging,IMPP,1,robert-taxonomy-2026-09-01.yaml
+instant-messaging,Jabber,22,robert-taxonomy-2026-09-01.yaml
+instant-messaging,chat,7,robert-taxonomy-2026-09-01.yaml
+instant-messaging,presence,135,robert-taxonomy-2026-09-01.yaml
+internationalization,ASCII,64,robert-taxonomy-2026-09-01.yaml
+internationalization,EBCDIC,2,robert-taxonomy-2026-09-01.yaml
+internationalization,IDNA,19,robert-taxonomy-2026-09-01.yaml
+internationalization,Punycode,2,robert-taxonomy-2026-09-01.yaml
+internationalization,bidi,0,robert-taxonomy-2026-09-01.yaml
+internationalization,character set,18,robert-taxonomy-2026-09-01.yaml
+internationalization,i18n,7,robert-taxonomy-2026-09-01.yaml
+internationalization,internationalized domain name,3,robert-taxonomy-2026-09-01.yaml
+internationalization,language tag,7,robert-taxonomy-2026-09-01.yaml
+internationalization,localization,2,robert-taxonomy-2026-09-01.yaml
+internationalization,stringprep,8,robert-taxonomy-2026-09-01.yaml
+internet-history,anniversary,3,robert-taxonomy-2026-09-01.yaml
+internet-history,in memoriam,0,robert-taxonomy-2026-09-01.yaml
+internet-history,lessons learned,6,robert-taxonomy-2026-09-01.yaml
+internet-history,retrospective,1,robert-taxonomy-2026-09-01.yaml
+iot,M2M,6,robert-taxonomy-2026-09-01.yaml
+iot,constrained device,3,robert-taxonomy-2026-09-01.yaml
+iot,constrained networking,0,robert-taxonomy-2026-09-01.yaml
+iot,constrained node,9,robert-taxonomy-2026-09-01.yaml
+iot,embedded,30,robert-taxonomy-2026-09-01.yaml
+iot,internet of things,47,robert-taxonomy-2026-09-01.yaml
+iot,low-power,63,robert-taxonomy-2026-09-01.yaml
+iot,sensor network,11,robert-taxonomy-2026-09-01.yaml
+ipfix,NetFlow,5,robert-taxonomy-2026-09-01.yaml
+ipfix,flow export,1,robert-taxonomy-2026-09-01.yaml
+ipfix,logging,16,robert-taxonomy-2026-09-01.yaml
+ipfix,packet sampling,6,robert-taxonomy-2026-09-01.yaml
+ipfix,traffic accounting,1,robert-taxonomy-2026-09-01.yaml
+ipr,Note Well,0,robert-taxonomy-2026-09-01.yaml
+ipr,TLP,1,robert-taxonomy-2026-09-01.yaml
+ipr,Trust Legal Provisions,0,robert-taxonomy-2026-09-01.yaml
+ipr,antitrust,1,robert-taxonomy-2026-09-01.yaml
+ipr,copyright,12,robert-taxonomy-2026-09-01.yaml
+ipr,disclosure,16,robert-taxonomy-2026-09-01.yaml
+ipr,intellectual property,20,robert-taxonomy-2026-09-01.yaml
+ipr,license,1,robert-taxonomy-2026-09-01.yaml
+ipr,patent,6,robert-taxonomy-2026-09-01.yaml
+ipr,trademark,4,robert-taxonomy-2026-09-01.yaml
+ipsec,AH,26,robert-taxonomy-2026-09-01.yaml
+ipsec,IKEv2,80,robert-taxonomy-2026-09-01.yaml
+ipsec,Internet Key Exchange,99,robert-taxonomy-2026-09-01.yaml
+ipsec,SA,24,robert-taxonomy-2026-09-01.yaml
+ipsec,VPN tunnel,1,robert-taxonomy-2026-09-01.yaml
+ipsec,security association,32,robert-taxonomy-2026-09-01.yaml
+ipv4,IP version 4,9,robert-taxonomy-2026-09-01.yaml
+ipv6,6man,0,robert-taxonomy-2026-09-01.yaml
+ipv6,IP version 6,30,robert-taxonomy-2026-09-01.yaml
+ipv6-transition,MAP-E,11,robert-taxonomy-2026-09-01.yaml
+ipv6-transition,MAP-T,7,robert-taxonomy-2026-09-01.yaml
+ipv6-transition,dual stack,16,robert-taxonomy-2026-09-01.yaml
+is-is,Intermediate System to Intermediate System,48,robert-taxonomy-2026-09-01.yaml
+iscsi,DDP,8,robert-taxonomy-2026-09-01.yaml
+iscsi,FCIP,5,robert-taxonomy-2026-09-01.yaml
+iscsi,NVMe,1,robert-taxonomy-2026-09-01.yaml
+iscsi,SAN,5,robert-taxonomy-2026-09-01.yaml
+iscsi,iFCP,8,robert-taxonomy-2026-09-01.yaml
+iscsi,iSNS,4,robert-taxonomy-2026-09-01.yaml
+iscsi,iWARP,4,robert-taxonomy-2026-09-01.yaml
+iscsi,storage area network,3,robert-taxonomy-2026-09-01.yaml
+jmap,mailbox access,1,robert-taxonomy-2026-09-01.yaml
+jmap,mailstore,0,robert-taxonomy-2026-09-01.yaml
+jmap,message store,2,robert-taxonomy-2026-09-01.yaml
+jose,CWT,6,robert-taxonomy-2026-09-01.yaml
+jose,JWE,9,robert-taxonomy-2026-09-01.yaml
+jose,JWK,9,robert-taxonomy-2026-09-01.yaml
+jose,JWS,11,robert-taxonomy-2026-09-01.yaml
+jose,signed CBOR,0,robert-taxonomy-2026-09-01.yaml
+jose,signed JSON,0,robert-taxonomy-2026-09-01.yaml
+json,I-JSON,3,robert-taxonomy-2026-09-01.yaml
+json,JSON Patch,1,robert-taxonomy-2026-09-01.yaml
+json,JSON Pointer,1,robert-taxonomy-2026-09-01.yaml
+json,JSON Schema,0,robert-taxonomy-2026-09-01.yaml
+json,JSON-LD,0,robert-taxonomy-2026-09-01.yaml
+kerberos,KDC,9,robert-taxonomy-2026-09-01.yaml
+kerberos,krb5,0,robert-taxonomy-2026-09-01.yaml
+kerberos,realm,21,robert-taxonomy-2026-09-01.yaml
+kerberos,ticket,10,robert-taxonomy-2026-09-01.yaml
+mailing-lists,List-Unsubscribe,1,robert-taxonomy-2026-09-01.yaml
+mailing-lists,Usenet,12,robert-taxonomy-2026-09-01.yaml
+mailing-lists,mailing list,14,robert-taxonomy-2026-09-01.yaml
+mailing-lists,news article,1,robert-taxonomy-2026-09-01.yaml
+manet,LLN,18,robert-taxonomy-2026-09-01.yaml
+manet,ad hoc network,28,robert-taxonomy-2026-09-01.yaml
+manet,low-power lossy network,0,robert-taxonomy-2026-09-01.yaml
+manet,mesh network,9,robert-taxonomy-2026-09-01.yaml
+message-format,Message-ID,4,robert-taxonomy-2026-09-01.yaml
+message-format,RFC 5322,7,robert-taxonomy-2026-09-01.yaml
+message-format,RFC 822,14,robert-taxonomy-2026-09-01.yaml
+message-format,address syntax,0,robert-taxonomy-2026-09-01.yaml
+message-format,header field,116,robert-taxonomy-2026-09-01.yaml
+message-format,internet message format,6,robert-taxonomy-2026-09-01.yaml
+mime,content-disposition,5,robert-taxonomy-2026-09-01.yaml
+mime,content-type,30,robert-taxonomy-2026-09-01.yaml
+mime,media type,123,robert-taxonomy-2026-09-01.yaml
+mime,multipart,24,robert-taxonomy-2026-09-01.yaml
+mime,quoted-printable,0,robert-taxonomy-2026-09-01.yaml
+mobile-ipv6,MIPv6,26,robert-taxonomy-2026-09-01.yaml
+mobile-ipv6,Mobile IP,31,robert-taxonomy-2026-09-01.yaml
+mobile-ipv6,binding update,9,robert-taxonomy-2026-09-01.yaml
+mobile-ipv6,care-of address,18,robert-taxonomy-2026-09-01.yaml
+mobile-ipv6,home agent,41,robert-taxonomy-2026-09-01.yaml
+mobile-ipv6,network mobility,17,robert-taxonomy-2026-09-01.yaml
+mobile-ipv6,proxy mobile IPv6,40,robert-taxonomy-2026-09-01.yaml
+mpls,CR-LDP,8,robert-taxonomy-2026-09-01.yaml
+mpls,LSP,157,robert-taxonomy-2026-09-01.yaml
+mpls,entropy label,6,robert-taxonomy-2026-09-01.yaml
+mpls,label switched path,102,robert-taxonomy-2026-09-01.yaml
+mpls,label switching,264,robert-taxonomy-2026-09-01.yaml
+mpls,tag switching,1,robert-taxonomy-2026-09-01.yaml
+multicast,broadcast,72,robert-taxonomy-2026-09-01.yaml
+multicast,group communication,9,robert-taxonomy-2026-09-01.yaml
+multicast,group membership,5,robert-taxonomy-2026-09-01.yaml
+multicast,multicast listener,26,robert-taxonomy-2026-09-01.yaml
+multicast-security,GDOI,5,robert-taxonomy-2026-09-01.yaml
+multicast-security,GSAKMP,1,robert-taxonomy-2026-09-01.yaml
+multicast-security,group domain of interpretation,5,robert-taxonomy-2026-09-01.yaml
+multicast-security,group key management,8,robert-taxonomy-2026-09-01.yaml
+multicast-security,rekeying,3,robert-taxonomy-2026-09-01.yaml
+multihoming,address selection,14,robert-taxonomy-2026-09-01.yaml
+multihoming,host identity protocol,30,robert-taxonomy-2026-09-01.yaml
+multihoming,locator/ID separation,32,robert-taxonomy-2026-09-01.yaml
+multihoming,multipath TCP,12,robert-taxonomy-2026-09-01.yaml
+nat,NAPT,6,robert-taxonomy-2026-09-01.yaml
+nat,UPnP,1,robert-taxonomy-2026-09-01.yaml
+nat,carrier-grade NAT,7,robert-taxonomy-2026-09-01.yaml
+nat,firewall traversal,4,robert-taxonomy-2026-09-01.yaml
+nat,middlebox,23,robert-taxonomy-2026-09-01.yaml
+nat,port control protocol,14,robert-taxonomy-2026-09-01.yaml
+netconf,CORECONF,0,robert-taxonomy-2026-09-01.yaml
+netconf,configuration protocol,141,robert-taxonomy-2026-09-01.yaml
+network-management,coexistence,25,robert-taxonomy-2026-09-01.yaml
+network-management,operational considerations,14,robert-taxonomy-2026-09-01.yaml
+network-management,operations,293,robert-taxonomy-2026-09-01.yaml
+nfs,AFS,1,robert-taxonomy-2026-09-01.yaml
+nfs,NFSv4,26,robert-taxonomy-2026-09-01.yaml
+nfs,SMB,0,robert-taxonomy-2026-09-01.yaml
+nfs,file locking,3,robert-taxonomy-2026-09-01.yaml
+nfs,network file system,25,robert-taxonomy-2026-09-01.yaml
+nfs,pNFS,11,robert-taxonomy-2026-09-01.yaml
+nhrp,IP over,24,robert-taxonomy-2026-09-01.yaml
+nhrp,MAC,86,robert-taxonomy-2026-09-01.yaml
+nhrp,MARS,9,robert-taxonomy-2026-09-01.yaml
+nhrp,classical IP,6,robert-taxonomy-2026-09-01.yaml
+nhrp,framing,18,robert-taxonomy-2026-09-01.yaml
+nhrp,layer 2,77,robert-taxonomy-2026-09-01.yaml
+ntp,RFC 3339,3,robert-taxonomy-2026-09-01.yaml
+ntp,Roughtime,0,robert-taxonomy-2026-09-01.yaml
+ntp,SNTP,6,robert-taxonomy-2026-09-01.yaml
+ntp,clock synchronization,4,robert-taxonomy-2026-09-01.yaml
+ntp,date and time,8,robert-taxonomy-2026-09-01.yaml
+ntp,leap second,1,robert-taxonomy-2026-09-01.yaml
+ntp,network time protocol,34,robert-taxonomy-2026-09-01.yaml
+ntp,precision time protocol,9,robert-taxonomy-2026-09-01.yaml
+ntp,time zone,7,robert-taxonomy-2026-09-01.yaml
+ntp,timestamp,20,robert-taxonomy-2026-09-01.yaml
+oauth,JSON web token,24,robert-taxonomy-2026-09-01.yaml
+oauth,OAuth 2.0,35,robert-taxonomy-2026-09-01.yaml
+oauth,OpenID,7,robert-taxonomy-2026-09-01.yaml
+oauth,access token,11,robert-taxonomy-2026-09-01.yaml
+oauth,bearer token,3,robert-taxonomy-2026-09-01.yaml
+openpgp,GPG,1,robert-taxonomy-2026-09-01.yaml
+openpgp,GnuPG,1,robert-taxonomy-2026-09-01.yaml
+openpgp,PGP,7,robert-taxonomy-2026-09-01.yaml
+openpgp,key ring,0,robert-taxonomy-2026-09-01.yaml
+openpgp,web of trust,1,robert-taxonomy-2026-09-01.yaml
+operational-security,BCP 38,5,robert-taxonomy-2026-09-01.yaml
+operational-security,MILE,1,robert-taxonomy-2026-09-01.yaml
+operational-security,botnet,2,robert-taxonomy-2026-09-01.yaml
+operational-security,denial of service,29,robert-taxonomy-2026-09-01.yaml
+operational-security,flowspec,3,robert-taxonomy-2026-09-01.yaml
+operational-security,ingress filtering,11,robert-taxonomy-2026-09-01.yaml
+operational-security,malware,4,robert-taxonomy-2026-09-01.yaml
+operational-security,worm,2,robert-taxonomy-2026-09-01.yaml
+oscore,end-to-end encryption,3,robert-taxonomy-2026-09-01.yaml
+oscore,messaging layer security,2,robert-taxonomy-2026-09-01.yaml
+oscore,object security,11,robert-taxonomy-2026-09-01.yaml
+oscore,signed content,0,robert-taxonomy-2026-09-01.yaml
+ospf,OSPFv2,41,robert-taxonomy-2026-09-01.yaml
+ospf,Open Shortest Path First,60,robert-taxonomy-2026-09-01.yaml
+owamp,IP performance metrics,20,robert-taxonomy-2026-09-01.yaml
+owamp,IPPM,28,robert-taxonomy-2026-09-01.yaml
+owamp,active measurement,22,robert-taxonomy-2026-09-01.yaml
+owamp,one-way delay,8,robert-taxonomy-2026-09-01.yaml
+owamp,passive measurement,0,robert-taxonomy-2026-09-01.yaml
+p2p,DHT,4,robert-taxonomy-2026-09-01.yaml
+p2p,RELOAD,12,robert-taxonomy-2026-09-01.yaml
+p2p,distributed hash table,4,robert-taxonomy-2026-09-01.yaml
+p2p,overlay storage,0,robert-taxonomy-2026-09-01.yaml
+p2p,peer-to-peer,56,robert-taxonomy-2026-09-01.yaml
+pim,PIM-SM,22,robert-taxonomy-2026-09-01.yaml
+pim,PIM-SSM,4,robert-taxonomy-2026-09-01.yaml
+pim,protocol independent multicast,41,robert-taxonomy-2026-09-01.yaml
+pim,rendezvous point,11,robert-taxonomy-2026-09-01.yaml
+pki,CA,29,robert-taxonomy-2026-09-01.yaml
+pki,CRL,27,robert-taxonomy-2026-09-01.yaml
+pki,PKCS,30,robert-taxonomy-2026-09-01.yaml
+pki,SCEP,1,robert-taxonomy-2026-09-01.yaml
+pki,certificate,233,robert-taxonomy-2026-09-01.yaml
+pki,certification authority,26,robert-taxonomy-2026-09-01.yaml
+pki,trust anchor,24,robert-taxonomy-2026-09-01.yaml
+policy-management,PCIM,4,robert-taxonomy-2026-09-01.yaml
+policy-management,configuration management,4,robert-taxonomy-2026-09-01.yaml
+policy-management,intent-based,7,robert-taxonomy-2026-09-01.yaml
+policy-management,load balancing,15,robert-taxonomy-2026-09-01.yaml
+policy-management,provisioning,155,robert-taxonomy-2026-09-01.yaml
+policy-management,service activation,2,robert-taxonomy-2026-09-01.yaml
+ppp,HDLC,10,robert-taxonomy-2026-09-01.yaml
+ppp,LCP,13,robert-taxonomy-2026-09-01.yaml
+ppp,point-to-point protocol,55,robert-taxonomy-2026-09-01.yaml
+privacy,PII,0,robert-taxonomy-2026-09-01.yaml
+privacy,anonymity,12,robert-taxonomy-2026-09-01.yaml
+privacy,data protection,1,robert-taxonomy-2026-09-01.yaml
+privacy,oblivious,6,robert-taxonomy-2026-09-01.yaml
+privacy,pervasive monitoring,11,robert-taxonomy-2026-09-01.yaml
+privacy,pseudonym,2,robert-taxonomy-2026-09-01.yaml
+privacy,tracking,21,robert-taxonomy-2026-09-01.yaml
+privacy,unlinkability,2,robert-taxonomy-2026-09-01.yaml
+pseudowire,CESoPSN,2,robert-taxonomy-2026-09-01.yaml
+pseudowire,PWE3,29,robert-taxonomy-2026-09-01.yaml
+pseudowire,SAToP,1,robert-taxonomy-2026-09-01.yaml
+pseudowire,attachment circuit,9,robert-taxonomy-2026-09-01.yaml
+pseudowire,circuit emulation,10,robert-taxonomy-2026-09-01.yaml
+qos,DSCP,12,robert-taxonomy-2026-09-01.yaml
+qos,admission control,19,robert-taxonomy-2026-09-01.yaml
+qos,per-hop behavior,8,robert-taxonomy-2026-09-01.yaml
+qos,quality of service,75,robert-taxonomy-2026-09-01.yaml
+qos,traffic shaping,0,robert-taxonomy-2026-09-01.yaml
+rdp,connection management,2,robert-taxonomy-2026-09-01.yaml
+rdp,end-to-end,129,robert-taxonomy-2026-09-01.yaml
+rdp,transport architecture,0,robert-taxonomy-2026-09-01.yaml
+rdp,transport layer,224,robert-taxonomy-2026-09-01.yaml
+rdp,transport protocol,250,robert-taxonomy-2026-09-01.yaml
+reliable-multicast,ALC,6,robert-taxonomy-2026-09-01.yaml
+reliable-multicast,forward error correction,33,robert-taxonomy-2026-09-01.yaml
+reliable-multicast,raptor,5,robert-taxonomy-2026-09-01.yaml
+renumbering,IPv4 exhaustion,6,robert-taxonomy-2026-09-01.yaml
+renumbering,address exhaustion,7,robert-taxonomy-2026-09-01.yaml
+renumbering,provider independent,0,robert-taxonomy-2026-09-01.yaml
+renumbering,routing scalability,2,robert-taxonomy-2026-09-01.yaml
+renumbering,routing table growth,1,robert-taxonomy-2026-09-01.yaml
+rip,IGP,90,robert-taxonomy-2026-09-01.yaml
+rip,distance vector,10,robert-taxonomy-2026-09-01.yaml
+rip,interior gateway protocol,28,robert-taxonomy-2026-09-01.yaml
+rip,link-state routing,18,robert-taxonomy-2026-09-01.yaml
+rpki,ROA,8,robert-taxonomy-2026-09-01.yaml
+rpki,ROV,2,robert-taxonomy-2026-09-01.yaml
+rpki,Resource Public Key Infrastructure,55,robert-taxonomy-2026-09-01.yaml
+rpki,SIDR,7,robert-taxonomy-2026-09-01.yaml
+rpki,prefix hijack,0,robert-taxonomy-2026-09-01.yaml
+rpki,route leak,2,robert-taxonomy-2026-09-01.yaml
+rpki,route origin validation,2,robert-taxonomy-2026-09-01.yaml
+rpsl,IRR,4,robert-taxonomy-2026-09-01.yaml
+rpsl,global routing,4,robert-taxonomy-2026-09-01.yaml
+rpsl,peering policy,0,robert-taxonomy-2026-09-01.yaml
+rpsl,routing policy,20,robert-taxonomy-2026-09-01.yaml
+rpsl,routing registry,3,robert-taxonomy-2026-09-01.yaml
+rtp,media transport,7,robert-taxonomy-2026-09-01.yaml
+rtp,payload format,101,robert-taxonomy-2026-09-01.yaml
+rtp,real-time transport protocol,139,robert-taxonomy-2026-09-01.yaml
+s-mime,PKCS#7,0,robert-taxonomy-2026-09-01.yaml
+s-mime,cryptographic message syntax,96,robert-taxonomy-2026-09-01.yaml
+s-mime,enveloped data,1,robert-taxonomy-2026-09-01.yaml
+s-mime,signed data,4,robert-taxonomy-2026-09-01.yaml
+sctp,Stream Control Transmission Protocol,58,robert-taxonomy-2026-09-01.yaml
+sdn,BPF,1,robert-taxonomy-2026-09-01.yaml
+sdn,Open vSwitch,1,robert-taxonomy-2026-09-01.yaml
+sdn,control plane separation,0,robert-taxonomy-2026-09-01.yaml
+sdn,programmable forwarding,0,robert-taxonomy-2026-09-01.yaml
+sdn,software-defined networking,11,robert-taxonomy-2026-09-01.yaml
+security,attack,72,robert-taxonomy-2026-09-01.yaml
+security,attack surface,2,robert-taxonomy-2026-09-01.yaml
+security,security architecture,9,robert-taxonomy-2026-09-01.yaml
+security,security considerations,42,robert-taxonomy-2026-09-01.yaml
+security,security glossary,3,robert-taxonomy-2026-09-01.yaml
+security,security requirements,17,robert-taxonomy-2026-09-01.yaml
+security,security review,0,robert-taxonomy-2026-09-01.yaml
+security,threat analysis,13,robert-taxonomy-2026-09-01.yaml
+security,threat model,9,robert-taxonomy-2026-09-01.yaml
+security,vulnerability,20,robert-taxonomy-2026-09-01.yaml
+segment-routing,SID,17,robert-taxonomy-2026-09-01.yaml
+segment-routing,SPRING,9,robert-taxonomy-2026-09-01.yaml
+segment-routing,SR,61,robert-taxonomy-2026-09-01.yaml
+segment-routing,SRH,5,robert-taxonomy-2026-09-01.yaml
+segment-routing,segment identifier,13,robert-taxonomy-2026-09-01.yaml
+senml,benchmark,6,robert-taxonomy-2026-09-01.yaml
+senml,delay,150,robert-taxonomy-2026-09-01.yaml
+senml,flow analysis,0,robert-taxonomy-2026-09-01.yaml
+senml,jitter,25,robert-taxonomy-2026-09-01.yaml
+senml,latency,80,robert-taxonomy-2026-09-01.yaml
+senml,measurement,123,robert-taxonomy-2026-09-01.yaml
+senml,packet loss,63,robert-taxonomy-2026-09-01.yaml
+senml,performance,277,robert-taxonomy-2026-09-01.yaml
+senml,throughput,39,robert-taxonomy-2026-09-01.yaml
+senml,traffic analysis,1,robert-taxonomy-2026-09-01.yaml
+senml,traffic measurement,2,robert-taxonomy-2026-09-01.yaml
+service-discovery,Bonjour,2,robert-taxonomy-2026-09-01.yaml
+service-discovery,HTTPS RR,1,robert-taxonomy-2026-09-01.yaml
+service-discovery,NAPTR,17,robert-taxonomy-2026-09-01.yaml
+service-discovery,SRV record,1,robert-taxonomy-2026-09-01.yaml
+service-discovery,SVCB,5,robert-taxonomy-2026-09-01.yaml
+service-discovery,Zeroconf,2,robert-taxonomy-2026-09-01.yaml
+sieve,ManageSieve,2,robert-taxonomy-2026-09-01.yaml
+sieve,mail filtering,14,robert-taxonomy-2026-09-01.yaml
+sieve,vacation,4,robert-taxonomy-2026-09-01.yaml
+sip,B2BUA,5,robert-taxonomy-2026-09-01.yaml
+sip,Session Initiation Protocol,293,robert-taxonomy-2026-09-01.yaml
+sip,call control,20,robert-taxonomy-2026-09-01.yaml
+sip,offer/answer,28,robert-taxonomy-2026-09-01.yaml
+sip,session description protocol,119,robert-taxonomy-2026-09-01.yaml
+smtp,DSN,11,robert-taxonomy-2026-09-01.yaml
+smtp,ESMTP,15,robert-taxonomy-2026-09-01.yaml
+smtp,MTA,11,robert-taxonomy-2026-09-01.yaml
+smtp,bounce,1,robert-taxonomy-2026-09-01.yaml
+smtp,delivery status notification,4,robert-taxonomy-2026-09-01.yaml
+smtp,electronic mail,64,robert-taxonomy-2026-09-01.yaml
+smtp,mail transfer,50,robert-taxonomy-2026-09-01.yaml
+smtp,mailbox,51,robert-taxonomy-2026-09-01.yaml
+smtp,message,835,robert-taxonomy-2026-09-01.yaml
+smtp,message submission,5,robert-taxonomy-2026-09-01.yaml
+snmp,SMIv2,71,robert-taxonomy-2026-09-01.yaml
+snmp,managed objects,247,robert-taxonomy-2026-09-01.yaml
+snmp,management information base,389,robert-taxonomy-2026-09-01.yaml
+snmp,textual convention,4,robert-taxonomy-2026-09-01.yaml
+sonet,DWDM,9,robert-taxonomy-2026-09-01.yaml
+sonet,OTN,11,robert-taxonomy-2026-09-01.yaml
+sonet,SDH,45,robert-taxonomy-2026-09-01.yaml
+sonet,WSON,9,robert-taxonomy-2026-09-01.yaml
+sonet,lambda,6,robert-taxonomy-2026-09-01.yaml
+sonet,optical,87,robert-taxonomy-2026-09-01.yaml
+sonet,wavelength,23,robert-taxonomy-2026-09-01.yaml
+spf,ARF,8,robert-taxonomy-2026-09-01.yaml
+spf,DomainKeys,18,robert-taxonomy-2026-09-01.yaml
+spf,abuse report,0,robert-taxonomy-2026-09-01.yaml
+spf,mail authentication,1,robert-taxonomy-2026-09-01.yaml
+spf,sender policy framework,6,robert-taxonomy-2026-09-01.yaml
+ssh,SFTP,2,robert-taxonomy-2026-09-01.yaml
+ssh,SSH keys,0,robert-taxonomy-2026-09-01.yaml
+ssh,Secure Shell,45,robert-taxonomy-2026-09-01.yaml
+ssh,host key,0,robert-taxonomy-2026-09-01.yaml
+stir,PASSporT,11,robert-taxonomy-2026-09-01.yaml
+stir,SHAKEN,1,robert-taxonomy-2026-09-01.yaml
+stir,caller ID,2,robert-taxonomy-2026-09-01.yaml
+stir,calling party,5,robert-taxonomy-2026-09-01.yaml
+stir,robocall,1,robert-taxonomy-2026-09-01.yaml
+stir,spoofed call,0,robert-taxonomy-2026-09-01.yaml
+stun,TRAM,0,robert-taxonomy-2026-09-01.yaml
+stun,hole punching,0,robert-taxonomy-2026-09-01.yaml
+stun,interactive connectivity establishment,19,robert-taxonomy-2026-09-01.yaml
+tcp,SACK,10,robert-taxonomy-2026-09-01.yaml
+tcp,TCP options,12,robert-taxonomy-2026-09-01.yaml
+tcp,Transmission Control Protocol,73,robert-taxonomy-2026-09-01.yaml
+tcp,three-way handshake,3,robert-taxonomy-2026-09-01.yaml
+telnet,MULTICS,4,robert-taxonomy-2026-09-01.yaml
+telnet,NVT,1,robert-taxonomy-2026-09-01.yaml
+telnet,TENEX,12,robert-taxonomy-2026-09-01.yaml
+telnet,character generator,2,robert-taxonomy-2026-09-01.yaml
+telnet,daytime,1,robert-taxonomy-2026-09-01.yaml
+telnet,discard protocol,1,robert-taxonomy-2026-09-01.yaml
+telnet,echo protocol,1,robert-taxonomy-2026-09-01.yaml
+telnet,network virtual terminal,1,robert-taxonomy-2026-09-01.yaml
+telnet,quote of the day,1,robert-taxonomy-2026-09-01.yaml
+telnet,remote job entry,7,robert-taxonomy-2026-09-01.yaml
+telnet,socket,27,robert-taxonomy-2026-09-01.yaml
+terminology,applicability statement,40,robert-taxonomy-2026-09-01.yaml
+terminology,architecture,551,robert-taxonomy-2026-09-01.yaml
+terminology,design principles,8,robert-taxonomy-2026-09-01.yaml
+terminology,end-to-end argument,0,robert-taxonomy-2026-09-01.yaml
+terminology,framework,527,robert-taxonomy-2026-09-01.yaml
+terminology,gap analysis,7,robert-taxonomy-2026-09-01.yaml
+terminology,layering,11,robert-taxonomy-2026-09-01.yaml
+terminology,problem statement,79,robert-taxonomy-2026-09-01.yaml
+terminology,reference model,13,robert-taxonomy-2026-09-01.yaml
+terminology,requirements,726,robert-taxonomy-2026-09-01.yaml
+terminology,use cases,131,robert-taxonomy-2026-09-01.yaml
+tls,ECH,3,robert-taxonomy-2026-09-01.yaml
+tls,ESNI,1,robert-taxonomy-2026-09-01.yaml
+tls,SSL,11,robert-taxonomy-2026-09-01.yaml
+tls,TLS 1.3,31,robert-taxonomy-2026-09-01.yaml
+tls,Transport Layer Security,192,robert-taxonomy-2026-09-01.yaml
+tls,cipher suite negotiation,0,robert-taxonomy-2026-09-01.yaml
+traceroute,bidirectional forwarding detection,45,robert-taxonomy-2026-09-01.yaml
+traceroute,connectivity verification,10,robert-taxonomy-2026-09-01.yaml
+traceroute,diagnostics,8,robert-taxonomy-2026-09-01.yaml
+traceroute,fault isolation,4,robert-taxonomy-2026-09-01.yaml
+traceroute,path MTU,14,robert-taxonomy-2026-09-01.yaml
+traceroute,ping,18,robert-taxonomy-2026-09-01.yaml
+traceroute,troubleshooting,16,robert-taxonomy-2026-09-01.yaml
+traffic-engineering,CSPF,1,robert-taxonomy-2026-09-01.yaml
+traffic-engineering,PCEP,65,robert-taxonomy-2026-09-01.yaml
+traffic-engineering,TE,196,robert-taxonomy-2026-09-01.yaml
+traffic-engineering,constraint-based routing,2,robert-taxonomy-2026-09-01.yaml
+traffic-engineering,path computation,111,robert-taxonomy-2026-09-01.yaml
+tunneling,encapsulation,191,robert-taxonomy-2026-09-01.yaml
+tunneling,tunnel endpoint,0,robert-taxonomy-2026-09-01.yaml
+udp,User Datagram Protocol,30,robert-taxonomy-2026-09-01.yaml
+udp,datagram,148,robert-taxonomy-2026-09-01.yaml
+uri,DID,0,robert-taxonomy-2026-09-01.yaml
+uri,URI scheme,34,robert-taxonomy-2026-09-01.yaml
+uri,URL,49,robert-taxonomy-2026-09-01.yaml
+uri,uniform resource identifier,70,robert-taxonomy-2026-09-01.yaml
+uri,uniform resource locator,17,robert-taxonomy-2026-09-01.yaml
+uri,well-known URI,4,robert-taxonomy-2026-09-01.yaml
+urn,OID,6,robert-taxonomy-2026-09-01.yaml
+urn,directory,191,robert-taxonomy-2026-09-01.yaml
+urn,handle,73,robert-taxonomy-2026-09-01.yaml
+urn,identifier,322,robert-taxonomy-2026-09-01.yaml
+urn,name resolution,15,robert-taxonomy-2026-09-01.yaml
+urn,object identifier,9,robert-taxonomy-2026-09-01.yaml
+user-guides,FAQ,4,robert-taxonomy-2026-09-01.yaml
+user-guides,FYI,26,robert-taxonomy-2026-09-01.yaml
+user-guides,acceptable use,1,robert-taxonomy-2026-09-01.yaml
+user-guides,code of conduct,1,robert-taxonomy-2026-09-01.yaml
+user-guides,community,2601,robert-taxonomy-2026-09-01.yaml
+user-guides,education,7,robert-taxonomy-2026-09-01.yaml
+user-guides,glossary,10,robert-taxonomy-2026-09-01.yaml
+user-guides,netiquette,1,robert-taxonomy-2026-09-01.yaml
+user-guides,outreach,0,robert-taxonomy-2026-09-01.yaml
+user-guides,primer,3,robert-taxonomy-2026-09-01.yaml
+user-guides,tutorial,9,robert-taxonomy-2026-09-01.yaml
+user-guides,user guide,0,robert-taxonomy-2026-09-01.yaml
+vpn,PPVPN,4,robert-taxonomy-2026-09-01.yaml
+vpn,network virtualization,21,robert-taxonomy-2026-09-01.yaml
+vpn,overlay network,10,robert-taxonomy-2026-09-01.yaml
+vpn,provider-provisioned,9,robert-taxonomy-2026-09-01.yaml
+vpn,virtual private network,55,robert-taxonomy-2026-09-01.yaml
+vxlan,NVO3,8,robert-taxonomy-2026-09-01.yaml
+vxlan,cloud networking,0,robert-taxonomy-2026-09-01.yaml
+vxlan,data center,27,robert-taxonomy-2026-09-01.yaml
+vxlan,network slicing,11,robert-taxonomy-2026-09-01.yaml
+vxlan,service function chaining,18,robert-taxonomy-2026-09-01.yaml
+vxlan,tenant network,0,robert-taxonomy-2026-09-01.yaml
+webrtc,JSEP,3,robert-taxonomy-2026-09-01.yaml
+webrtc,RTCWEB,9,robert-taxonomy-2026-09-01.yaml
+webrtc,browser-based real-time,0,robert-taxonomy-2026-09-01.yaml
+webrtc,data channel,16,robert-taxonomy-2026-09-01.yaml
+webrtc,getUserMedia,0,robert-taxonomy-2026-09-01.yaml
+webrtc,peer connection,2,robert-taxonomy-2026-09-01.yaml
+websocket,CORS,0,robert-taxonomy-2026-09-01.yaml
+websocket,WebTransport,0,robert-taxonomy-2026-09-01.yaml
+websocket,World Wide Web,19,robert-taxonomy-2026-09-01.yaml
+websocket,browser,19,robert-taxonomy-2026-09-01.yaml
+websocket,cross-origin,1,robert-taxonomy-2026-09-01.yaml
+websocket,hypertext,85,robert-taxonomy-2026-09-01.yaml
+websocket,same-origin policy,1,robert-taxonomy-2026-09-01.yaml
+websocket,server-sent events,2,robert-taxonomy-2026-09-01.yaml
+websocket,user agent,81,robert-taxonomy-2026-09-01.yaml
+whois,domain registry,3,robert-taxonomy-2026-09-01.yaml
+whois,provisioning protocol,40,robert-taxonomy-2026-09-01.yaml
+whois,registrar,21,robert-taxonomy-2026-09-01.yaml
+whois,registration data,23,robert-taxonomy-2026-09-01.yaml
+wifi,802.11,23,robert-taxonomy-2026-09-01.yaml
+wifi,WLAN,11,robert-taxonomy-2026-09-01.yaml
+wifi,access point,11,robert-taxonomy-2026-09-01.yaml
+wifi,wireless LAN,12,robert-taxonomy-2026-09-01.yaml
+xml,XML Schema,17,robert-taxonomy-2026-09-01.yaml
+xml,XPath,2,robert-taxonomy-2026-09-01.yaml
+xml,XSLT,0,robert-taxonomy-2026-09-01.yaml
+xml,namespace,124,robert-taxonomy-2026-09-01.yaml
+yang,YANG data model,90,robert-taxonomy-2026-09-01.yaml
+yang,YANG grouping,1,robert-taxonomy-2026-09-01.yaml
+yang,YANG module,38,robert-taxonomy-2026-09-01.yaml

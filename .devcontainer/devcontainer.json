@@ -1,0 +1,19 @@
+{
+	"name": "rfc-subject-tags",
+	"build": {
+		"dockerfile": "../Dockerfile",
+		"target": "dev"
+	},
+	"workspaceFolder": "/work",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/work,type=bind",
+	"remoteUser": "vscode",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"redhat.vscode-yaml"
+			]
+		}
+	},
+	"postCreateCommand": "python3 -c 'import yaml; print(\"PyYAML\", yaml.__version__)'"
+}

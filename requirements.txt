@@ -1,0 +1,4 @@
+# The pipeline's only third-party dependency; everything else is the standard library.
+# Floor rather than an exact pin: engine.py and regen.py use only safe_load, dump,
+# SafeDumper and add_representer, stable across 6.x.
+PyYAML>=6.0

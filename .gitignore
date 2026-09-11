@@ -1,0 +1,22 @@
+# A scratch directory that persists beyond the container lifetime, if a developer 
+# chooses to make one. Nothing in the repository reads or writes here.
+tmp/
+
+# Build products. The pipeline reads and writes in the working directory, so these
+# all appear at the repository root. See code.md.
+#
+#   rfc-index.xml   downloaded by make_corpus_from_index.py
+#   rfcs.json       make_corpus_from_index.py or make_corpus_from_local.py
+#   rfc-tags.json   engine.py
+#   rfc-tags.csv    regen.py
+#   rfc-tags.html   regen.py
+#   __pycache__     regen.py does `import engine`
+/rfc-index.xml
+/rfcs.json
+/rfc-tags.json
+/rfc-tags.csv
+/rfc-tags.html
+__pycache__/
+
+# Local virtual environment, as CONTRIBUTING.md suggests creating.
+.venv/
