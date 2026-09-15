@@ -29,7 +29,7 @@ The checks a rebuild must pass, and the figures from the current build. Each che
 Both directions:
 
 - every `humor` document carries nothing else;
-- every day-dated or `HUMOR_EXTRA` document carries `humor`.
+- every day-dated document, and every RFC listed in the `humor` tag's `documents` field, carries `humor`.
 
 ### Unused and single-document tags (R9, R13)
 
