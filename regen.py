@@ -1,6 +1,6 @@
 """Regenerate all derived deliverables from taxonomy.yaml and the engine outputs, and refresh document figures.
 Run after: python3 engine.py. Writes rfc-tags.csv and rfc-tags.html, the stats block in taxonomy.yaml,
-and refreshes the figures in README.md and validation.md. Everything is read and written in the
+and refreshes the figures in README.md and validation.md and the generated blocks in code.md. Everything is read and written in the
 working directory; the three tracked files are rewritten in place.
 """
 import json, collections, statistics, csv, re
@@ -124,4 +124,22 @@ r=re.sub(r'- `routing` about \d+,', f'- `routing` about {round(per["routing"]/5)
 r=re.sub(r'- `network-management` about \d+\.', f'- `network-management` about {round(per["network-management"]/5)}.', r)
 r=re.sub(r'Dormant tags are equally legitimate: \d+ of the \d+ tags have had no RFC since 2021\.', f'Dormant tags are equally legitimate: {dormant} of the {len(tax.by_id)} tags have had no RFC since 2021.', r)
 open(p,'w').write(r)
+
+# ---- generated blocks in code.md
+def fill(text, name, body):
+    return re.sub(r'(<!-- generated:%s -->).*?(<!-- /generated -->)' % name, lambda m: m.group(1)+body+m.group(2), text, flags=re.S)
+cov=f"Coverage: {len(rfcs):,} RFCs; {sum(1 for x in rfcs if x.get('wg')):,} with a working group; {sum(1 for x in rfcs if x.get('keywords')):,} with keywords; {sum(1 for x in rfcs if x.get('abstract')):,} with abstracts."
+comp=['','| Composite tag | Becomes |','|---|---|']
+for t in tax.order:
+    if t in tax.decomp: comp.append(f"| `{t}` | {' + '.join('`'+x+'`' for x in tax.decomp[t])} |")
+comp.append('')
+byt=collections.defaultdict(list)
+for t in tax.order:
+    for x in tax.implies.get(t,[]): byt[x].append(t)
+imp=['','| Topic | Implied by |','|---|---|']
+for x in sorted(byt, key=lambda x:-len(byt[x])): imp.append(f"| `{x}` | {', '.join(byt[x])} |")
+imp.append('')
+p='code.md'; c=open(p).read()
+c=fill(c,'coverage',cov); c=fill(c,'composites','\n'.join(comp)); c=fill(c,'implies','\n'.join(imp))
+open(p,'w').write(c)
 print(f'regenerated: {len(tax.by_id)} tags, mean {statistics.mean(counts):.2f}, unused {len([t for t in tax.by_id if t not in used])}, zero-topic {sum(1 for x in oc if x==0)}')
