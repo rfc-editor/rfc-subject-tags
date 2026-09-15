@@ -17,7 +17,7 @@ How the tag system is built: the input corpus, the taxonomy file, the engine tha
 | `engine.py` | Reads `taxonomy.yaml`, validates it, assigns tags to RFC records, derives the two-axis view |
 | `make_corpus_from_index.py` | Builds `rfcs.json` from the RFC Editor's `rfc-index.xml`, downloading it if absent |
 | `make_corpus_from_local.py` | Builds `rfcs.json` from a directory of per-RFC metadata files instead |
-| `regen.py` | Regenerates the generated files, writes the `stats` blocks into `taxonomy.yaml`, and refreshes the figures in validation.md and README.md |
+| `regen.py` | Regenerates the generated files, writes the `stats` blocks into `taxonomy.yaml`, and refreshes the figures in validation.md and README.md and the generated blocks in this file |
 | `browser_template.html` | The review page (five views: Vocabulary, Co-occurrence, Lifespan, Overlap, All RFCs) with its data removed; `regen.py` embeds the current data to produce `rfc-tags.html`. Fonts are embedded so the page works offline |
 
 ### Generated (never edit by hand)
@@ -78,7 +78,7 @@ One record per published RFC:
 
 ### Sources
 
-- The rfc-editor.org index (`rfc-index.xml`), parsed to `rfcs.json` by `make_corpus_from_index.py`. Coverage: 9,835 RFCs; 6,333 with a working group; 7,428 with keywords; 9,128 with abstracts.
+- The rfc-editor.org index (`rfc-index.xml`), parsed to `rfcs.json` by `make_corpus_from_index.py`. <!-- generated:coverage -->Coverage: 9,835 RFCs; 7,243 with a working group; 7,428 with keywords; 9,128 with abstracts.<!-- /generated -->
 - A local directory of per-RFC `.json` files, via `make_corpus_from_local.py`. It expects one file per RFC, named `rfcNNNN.json`; the script defaults to `~/Data/RFCs` and takes the directory as its first argument. Field names vary between sources, so the script's `FIELD_MAP` is configurable — for example, the producing group may be under `source` rather than `wg`.
 
 ### The `day` assumption
@@ -188,46 +188,54 @@ Nothing is decided by hand at this stage; editing `taxonomy.yaml` and re-running
 
 ### The composites
 
+<!-- generated:composites -->
 | Composite tag | Becomes |
 |---|---|
-| `dns-privacy` | `privacy` (`dns` arrives as its ancestor) |
-| `routing-security`, `web-security` | `security` |
-| `multicast-security` | `multicast` + `security` |
+| `dns-privacy` | `privacy` |
+| `web-security` | `security` |
 | `email-authentication` | `security` + `authentication` |
+| `routing-security` | `security` |
+| `multicast-security` | `multicast` + `security` |
 | `operational-security` | `security` + `network-management` |
+<!-- /generated -->
 
 ### Implication, by topic
 
+<!-- generated:implies -->
 | Topic | Implied by |
 |---|---|
-| `privacy` | doh, dot, oblivious-dns, oblivious-http, privacy-pass |
-| `network-management` | mib, yang, snmp, netconf, restconf, syslog, bmp, i2rs, ovsdb |
-| `performance-measurement` | ipfix, owamp, twamp, stamp, lmap, rmon, packet-capture |
-| `congestion-control` | aqm, codel, pie, ecn, ledbat, pcn, conex |
-| `qos` | diffserv, intserv, rsvp, nsis, cops, detnet |
-| `traffic-engineering` | rsvp-te, pce |
-| `multicast` | pim, igmp, mld, msdp, ssm, amt, bier, mospf, mvpn, flute, norm |
-| `ip-mobility` | mobile-ipv4, mobile-ipv6, pmipv6, nemo, manet, hip |
-| `multihoming` | shim6, hip |
-| `ipv6-transition` | 6to4, teredo, ds-lite, map, 6rd, 464xlat, nat64, dns64, happy-eyeballs |
-| `tunneling` | gre, ip-in-ip, l2tp, vxlan, geneve, pseudowire, masque |
+| `security` | dnssec, dane, cookies, hsts, token-binding, stir, srtp, sframe, rpki, bgpsec, tcpcrypt, send, savi, teep, supply-chain-integrity, oscore, edhoc, firmware-update, mud |
+| `authentication` | http-authentication, stir, kerberos, gssapi, sasl, eap, pana, aaa, radius, diameter, tacacs, scim, federated-authentication, otp, pake, ident |
+| `iot` | teep, coap, oscore, senml, sdf, 6lowpan, rpl, 6tisch, lpwan, schc, edhoc, firmware-update, mud |
+| `multicast` | pim, igmp, mld, msdp, mospf, ssm, amt, bier, flute, norm, mvpn |
+| `network-management` | bmp, snmp, mib, agentx, netconf, restconf, yang, syslog, i2rs, ovsdb |
+| `ipv6-transition` | dns64, nat64, 6to4, teredo, ds-lite, map, 6rd, 464xlat, happy-eyeballs |
+| `tunneling` | masque, pseudowire, vxlan, geneve, gre, ip-in-ip, l2tp |
+| `congestion-control` | ecn, aqm, codel, pie, ledbat, pcn, conex |
+| `performance-measurement` | rmon, owamp, twamp, stamp, lmap, ipfix, packet-capture |
+| `privacy` | doh, dot, oblivious-dns, masque, oblivious-http, privacy-pass |
+| `internationalization` | idn, eai, utf-8, unicode, language-tags, precis |
+| `qos` | detnet, rsvp, diffserv, intserv, nsis, cops |
+| `ip-mobility` | manet, mobile-ipv4, mobile-ipv6, pmipv6, nemo, hip |
+| `compression` | rohc, deflate, gzip, brotli, zstd, ipcomp |
+| `authorization` | oauth, gnap, xacml, ace |
+| `transport-mapping` | doh, dot, http3 |
 | `nat-traversal` | ice, stun, turn |
-| `authorization` | oauth, gnap, ace, xacml |
-| `transport-mapping` | http3, doh, dot |
-| `oam` | bfd |
-| `addressing` | slaac |
-| `routing-architecture` | lisp, ilnp |
-| `routing` | rpl |
-| `iot` | coap, 6lowpan, rpl, 6tisch, schc, lpwan, senml, sdf, mud, firmware-update, oscore, edhoc, ace, teep |
 | `time-synchronization` | ntp, ptp, time-zones |
-| `storage` | iscsi, nfs, rdma |
-| `calendaring` | icalendar, caldav |
-| `internationalization` | idn, precis, language-tags, utf-8, unicode, eai |
+| `storage` | nfs, iscsi, rdma |
 | `service-discovery` | dns-sd, slp |
-| `authentication` | kerberos, eap, radius, diameter, tacacs, gssapi, sasl, oauth, gnap, otp, pake, http-authentication, ident, pana, aaa, scim, federated-authentication, stir |
-| `security` | rpki, bgpsec, srtp, sframe, dnssec, dane, send, savi, stir, hsts, token-binding, tcpcrypt, cookies, supply-chain-integrity, mud, firmware-update — plus everything under the `security` root, through closure |
+| `reliable-multicast` | flute, norm |
+| `traffic-engineering` | rsvp-te, pce |
+| `routing-architecture` | lisp, ilnp |
+| `multihoming` | shim6, hip |
+| `calendaring` | icalendar, caldav |
+| `oam` | bfd |
+| `header-compression` | rohc |
+| `addressing` | slaac |
+| `routing` | rpl |
+<!-- /generated -->
 
-The `implies` field is consulted over the ancestor closure, so `dkim` inherits `security` through `email-authentication`.
+The `implies` field is consulted over the ancestor closure, so `dkim` inherits `security` through `email-authentication`. Two things the tables do not show because closure supplies them: every tag under the `security` root reaches `security` without an `implies` entry, and a composite's technology context (`dns` for `dns-privacy`) arrives as its ancestor.
 
 ## Regeneration
 
