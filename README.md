@@ -1,6 +1,6 @@
 # RFC Subject Tags
 
-A subject tag system for the RFC series, validated across all 9,835 published RFCs.
+A subject tag system for the RFC series, validated across every published RFC. Current figures are in [validation.md](validation.md).
 
 This document covers what the system is for, the requirements it meets, how search and subscriptions behave, what the generated taxonomy looks like, and the open choices. Two companion documents cover the rest:
 
