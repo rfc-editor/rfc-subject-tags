@@ -85,7 +85,7 @@ List non-ancestor tag pairs with Jaccard similarity above 0.35 over their docume
 
 ### Root leaks (R12)
 
-For each root, count the RFCs carrying it as a leaf tag beside a technology from another root, and read the titles. Correct co-occurrence looks like RFC 1812 (`ipv4`, `routing`) or RFC 5095 (`ipv6`, `routing`): the title is about the root's subject. A leak looks like RFC 3268 (`tls`, `transport`): the root's rule matched a word inside a protocol name — Transport Layer Security, Real-Time Transport Protocol, Generic Routing Encapsulation, JSON Web Token. In the Overlap view of `rfc-tags.html` leaks show as a root nested inside an unrelated technology. Leaks matter more than search noise: every one fires a notification to every subscriber of the root.
+For each root, count the RFCs carrying it as a leaf tag beside a technology from another root, and read the titles. Correct co-occurrence looks like RFC 1812 (`ipv4`, `routing`) or RFC 5095 (`ipv6`, `routing`): the title is about the root's subject. A leak looks like RFC 3268 (`tls`, `transport`): the root's rule matched a word inside a protocol name — Transport Layer Security, Real-Time Transport Protocol, Generic Routing Encapsulation, JSON Web Token. In the Overlap view of `rfc-tags.html` leaks show as a root nested inside an unrelated technology. The check has a second half: after tightening a root rule, list documents that carried the root before and no longer do, and read those titles too — RFC 3222 (FIB-based router performance) and RFC 6192 (the router control plane) are routing documents that a tightened `routing` rule once dropped. A document that loses its only tag falls to the abstract fallback and may pick up unrelated tags there. Leaks matter more than search noise: every one fires a notification to every subscriber of the root.
 
 ### Topic gaps (R8, R10)
 
@@ -111,22 +111,22 @@ When the engine or the YAML schema changes, re-run against the previous `rfc-tag
 
 ### Curated tree
 
-- **Tags:** 541 — 18 roots, 265 at level 2, 233 at level 3, 25 at level 4; 460 technology, 81 topic.
+- **Tags:** 542 — 18 roots, 266 at level 2, 233 at level 3, 25 at level 4; 461 technology, 81 topic.
 - **Coverage:** 0 untagged.
 - **Tags per RFC (with ancestors):** mean 3.63, median 3, max 16.
-- **Distribution:** 1:641 · 2:2,616 · 3:2,176 · 4:1,589 · 5:1,352 · 6:698 · 7:389 · 8:207 · 9:93 · 10:36 · 11:22 · 12:8 · 13:4 · 14:3 · 16:1.
+- **Distribution:** 1:642 · 2:2,611 · 3:2,181 · 4:1,587 · 5:1,352 · 6:699 · 7:389 · 8:207 · 9:93 · 10:36 · 11:22 · 12:8 · 13:4 · 14:3 · 16:1.
 - **Over ten tags:** 38 documents (0.4%), all multi-technology cross-area specifications.
 - **Unused tags:** 0.
 - **Single-document tags:** 22 — amateur-radio, arc, data-center-networking, ebpf, eigrp, ffv1, http-caching, irtp, lpwan, mospf, oblivious-dns, ovsdb, password-hashing, ratp, sdf, sframe, teep, tmux, tvr, whip, xacml, y2k.
 - **Humor:** 74 documents, 0 exclusivity violations.
-- **Stability replay:** 9,303 RFCs debut no tag, 524 debut one, 7 debut two, 1 debut three. The 8 multi-debut cases are parent-and-child pairs founding a branch, plus RFC 2430 preceding the MPLS architecture into print.
+- **Stability replay:** 9,302 RFCs debut no tag, 525 debut one, 7 debut two, 1 debut three. The 8 multi-debut cases are parent-and-child pairs founding a branch, plus RFC 2430 preceding the MPLS architecture into print.
 
 ### Served view
 
-- **Axes:** 460 technology tags, 75 topics.
-- **Zero-technology documents:** 1,439 — governance, process, humor, ARPANET-era notes, general-subject documents.
+- **Axes:** 461 technology tags, 75 topics.
+- **Zero-technology documents:** 1,440 — governance, process, humor, ARPANET-era notes, general-subject documents.
 - **Zero-topic documents:** 0.
 - **Per RFC:** technology mean 1.75, topic mean 2.00, combined mean 3.75.
 - **Over ten combined:** 44 documents (0.4%); maximum 16.
-- **Documents whose only topics are roots:** 5,349.
+- **Documents whose only topics are roots:** 5,350.
 - **Topic replay:** 5 documents debut two topics, all in the founding years. Debuts since 2003: emergency-services (2003), nat-traversal (2003), iot (2006), energy-management (2013), autonomic-networking (2014), telemetry (2019), sustainability (2024).

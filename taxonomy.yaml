@@ -1200,10 +1200,10 @@ tags:
   - 'real-?time (communication|media|application)s?|\bvoip\b|voice over IP'
   stats:
     direct: 8
-    total: 919
+    total: 918
     first_year: 1986
     last_year: 2026
-    served: 919
+    served: 918
 - id: sip
   parent: real-time-communications
   kind: technology
@@ -1717,10 +1717,10 @@ tags:
   - spirits
   stats:
     direct: 20
-    total: 66
+    total: 65
     first_year: 1995
     last_year: 2019
-    served: 66
+    served: 65
 - id: sigtran
   parent: pstn-interop
   kind: technology
@@ -1729,8 +1729,8 @@ tags:
   - '\bsigtran\b|\bSS7\b|signall?ing system|signall?ing transport|user adaptation layer|\bTALI\b|\bDPNSS\b|terminal endpoint identifier'
   - transport adapter layer
   stats:
-    direct: 22
-    total: 22
+    direct: 21
+    total: 21
     first_year: 1999
     last_year: 2013
 - id: megaco
@@ -1800,18 +1800,19 @@ tags:
   kind: topic
   desc: 'Routing in general: routers, routing systems and cross-protocol routing matters'
   match_title_only:
-  - '(?<!mail )(?<!message )(?<!generic )(?<!to the )(?<!source )\brouting\b(?! protocol for low| encapsulation| system\b| bridge)|router requirements|requirements for [a-z0-9 .]{0,25}routers\b'
+  - '(?<!mail )(?<!message )(?<!generic )(?<!to the )(?<!source )\brouting\b(?! protocol for low| encapsulation| system\b| bridge)'
+  - '\brouter (control plane|performance|architecture|preferences?|requirements)\b|requirements for [a-z0-9 .]{0,25}routers\b|more-specific routes|forwarding information base|\bFIB\b'
   yields_to:
   - dns
   - email
   - smtp
   - x400
   stats:
-    direct: 70
-    total: 1845
+    direct: 75
+    total: 1848
     first_year: 1982
     last_year: 2026
-    served: 1871
+    served: 1874
 - id: routing-architecture
   parent: routing
   kind: topic
@@ -2116,8 +2117,8 @@ tags:
   match:
   - fast.?reroute|loop-free alternate
   stats:
-    direct: 28
-    total: 28
+    direct: 27
+    total: 27
     first_year: 2005
     last_year: 2025
 - id: multicast
@@ -2136,10 +2137,10 @@ tags:
   - sip
   stats:
     direct: 123
-    total: 304
+    total: 303
     first_year: 1985
     last_year: 2026
-    served: 323
+    served: 322
 - id: madcap
   parent: multicast
   kind: technology
@@ -2179,8 +2180,8 @@ tags:
   implies:
   - multicast
   stats:
-    direct: 25
-    total: 25
+    direct: 24
+    total: 24
     first_year: 1989
     last_year: 2023
 - id: mld
@@ -2194,8 +2195,8 @@ tags:
   implies:
   - multicast
   stats:
-    direct: 27
-    total: 27
+    direct: 26
+    total: 26
     first_year: 1999
     last_year: 2025
 - id: msdp
@@ -3374,10 +3375,10 @@ tags:
   - 'internet protocol suite|\bIP (layer|datagrams?)\b|network layer'
   stats:
     direct: 6
-    total: 1441
+    total: 1443
     first_year: 1971
     last_year: 2026
-    served: 1441
+    served: 1443
 - id: icn
   parent: internet-layer
   kind: technology
@@ -3601,8 +3602,8 @@ tags:
   - '\bIPv4\b|IP version 4'
   - DoD standard internet protocol|IP (datagram|header|option)|internet protocol.{0,3}(handbook|timestamp)
   stats:
-    direct: 254
-    total: 254
+    direct: 253
+    total: 253
     first_year: 1980
     last_year: 2026
 - id: addressing
@@ -3783,6 +3784,17 @@ tags:
     total: 36
     first_year: 1981
     last_year: 2020
+- id: router-alert
+  parent: internet-layer
+  kind: technology
+  desc: 'The IP Router Alert option for IPv4 and IPv6: signalling that a router should examine a packet'
+  match:
+  - router alert
+  stats:
+    direct: 7
+    total: 7
+    first_year: 1997
+    last_year: 2025
 - id: pmtud
   parent: internet-layer
   kind: technology
