@@ -22,9 +22,14 @@ on:
 permissions:
   contents: read
 
+# Deploying runs share one group so they queue instead of racing: Pages serves a
+# single live site. Pull requests do not deploy, so each gets its own group. While
+# they shared the 'pages' group, GitHub kept only one run queued per group and
+# cancelled the rest — two pull requests opened together could each cancel the
+# other's build, and merge with the build having never run.
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.ref) || 'pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
