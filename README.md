@@ -31,17 +31,17 @@ There are two coordinated representations of the same tags.
 
 **The curated tree** is what people edit. It is a single hierarchy, at most four levels deep, in which every level is an assignable tag:
 
-- The 18 roots are the top-level subjects — routing, transport, security, naming, and so on.
+- The 19 roots are the top-level subjects — routing, transport, security, cryptography, naming, and so on.
 - A document about a subject in general carries the root alone: `/link-layer`.
 - A specific document carries the deepest applicable tag together with its ancestors: `/link-layer/ppp/pppoe`.
 - Every tag is declared in `taxonomy.yaml` as either a **technology** (a named protocol, system or format) or a **topic** (a subject or cross-cutting aspect). Roots are always topics.
 
 **The served view** is derived from the tree mechanically and is what search and subscriptions run on. It separates the tags into two axes:
 
-- **technology** — 461 tags, keeping the hierarchy;
-- **topic** — 75 tags, flat: the root subjects plus cross-cutting aspects such as `privacy`, `multicast` and `ip-mobility`.
+- **technology** — 553 tags, keeping the hierarchy;
+- **topic** — 76 tags, flat: the root subjects plus cross-cutting aspects such as `privacy`, `multicast` and `ip-mobility`.
 
-A document's topics are the roots of its paths plus any aspect tags it carries, plus the topics its technologies *imply*: TLS implies security, PIM implies multicast, QUIC implies transport. This is what lets "quic AND security" find RFC 9001 without anyone having coined a tag for the intersection.
+A document's topics are the roots of its paths plus any aspect tags it carries, plus the topics its tags *imply*: TLS implies security, PIM implies multicast, QUIC implies transport, and the `cryptography` root implies security. This is what lets "quic AND security" find RFC 9001 without anyone having coined a tag for the intersection.
 
 Curators edit one file, `taxonomy.yaml`, in which each tag's entry carries everything known about it; the served view is derived from it.
 
@@ -142,7 +142,7 @@ Broad topics are legitimate subscription targets even though they are busy, beca
 - `routing` about 56,
 - `network-management` about 33.
 
-Dormant tags are equally legitimate: 205 of the 542 tags have had no RFC since 2021. A subscription to one is a standing request to be told if the technology revives.
+Dormant tags are equally legitimate: 274 of the 635 tags have had no RFC since 2021. A subscription to one is a standing request to be told if the technology revives.
 
 ## What the taxonomy looks like
 
@@ -150,9 +150,9 @@ The taxonomy is `taxonomy.yaml` — one entry per tag with its place in the tree
 
 ### Size and shape
 
-- 542 tags: 18 roots, 266 at level 2, 233 at level 3, 25 at level 4.
-- 461 technologies and 81 topics in the tree (75 topics reach the served view; six composite topics decompose into their parts).
-- Mean 3.63 tags per RFC including ancestors; no RFC untagged; no tag unused.
+- 635 tags: 19 roots, 289 at level 2, 281 at level 3, 46 at level 4.
+- 553 technologies and 82 topics in the tree (76 topics reach the served view; six composite topics decompose into their parts).
+- Mean 3.66 tags per RFC including ancestors; no RFC untagged; no tag unused.
 
 ### The roots
 
@@ -166,7 +166,8 @@ The taxonomy is `taxonomy.yaml` — one entry per tag with its place in the tree
 | `transport` | TCP, UDP, QUIC, SCTP, congestion control, QoS, header compression |
 | `internet-layer` | IPv4, IPv6, addressing, transition mechanisms, mobility, NAT, tunnelling |
 | `link-layer` | PPP, Ethernet, cellular, DSL, ATM and other media |
-| `security` | TLS, IPsec, PKI, cryptography, authentication, authorization, privacy |
+| `security` | TLS, IPsec, PKI, authentication, authorization, privacy |
+| `cryptography` | ciphers, hashes, signatures, key exchange, post-quantum, key management, PAKE |
 | `network-management` | SNMP/MIB, NETCONF/YANG, measurement, OAM, telemetry, time synchronization |
 | `applications` | FTP, Telnet, LDAP, storage, calendaring, e-commerce |
 | `data-formats` | JSON, CBOR, XML, ASN.1, character sets, compression formats |
@@ -223,6 +224,10 @@ Three topics name document forms but are kept because each is a subject readers 
 ### Tag counts
 
 Because roots count as tags, 0.4% of documents exceed ten tags. All are multi-technology cross-area specifications. A hard cap can be added if the average-based budget (R6) is judged insufficient.
+
+### Depth
+
+Four levels is the limit (R3). Level-4 tags exist under `addressing`, `congestion-control`, `dns`, `domain-registration`, `email`, `http`, `internationalization`, `ipsec`, `ipv6`, `mpls`, `multicast`, `nat` and `storage`; those branches cannot be split again without restructuring above them. `cryptography` is a root for this reason: algorithm families are level 2 and their members level 3, leaving room beneath.
 
 ### Placements most open to revision
 

@@ -53,11 +53,14 @@ jobs:
       - name: Regenerate artifacts
         run: python3 regen.py
 
+      - name: Harvest tag candidates
+        run: python3 tag_candidates.py
+
       - name: Stage site
         run: |
           mkdir -p _site
           cp rfc-tags.html _site/index.html
-          cp rfc-tags.json rfc-tags.csv rfcs.json _site/
+          cp rfc-tags.json rfc-tags.csv rfcs.json tag-candidates.json _site/
 
       # On a pull request, build only: Pages serves one live site, so a PR must not
       # deploy over it. The staged site is attached to the run instead — download it
