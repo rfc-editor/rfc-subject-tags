@@ -13,7 +13,7 @@ The taxonomy itself is `taxonomy.yaml`; the generated review page — published 
 
 The tags exist for two things people do with RFCs:
 
-1. **Search** — find RFCs by technology (`quic`, `dkim`) or by topic (`privacy`, `congestion-control`), including intersections such as "BGP and security".
+1. **Search** — find RFCs by technology (`QUIC`, `DKIM`) or by topic (`privacy`, `congestion-control`), including intersections such as "BGP and security".
 2. **Subscribe** — be told when a new RFC is published that matches a tag or a combination of tags.
 
 Tags complement full-text search rather than duplicating it. Where a document uses a term, the text index already finds it. The tag system earns its place by supplying what text cannot:
@@ -33,7 +33,7 @@ There are two coordinated representations of the same tags.
 
 - The 19 roots are the top-level subjects — routing, transport, security, cryptography, naming, and so on.
 - A document about a subject in general carries the root alone: `/link-layer`.
-- A specific document carries the deepest applicable tag together with its ancestors: `/link-layer/ppp/pppoe`.
+- A specific document carries the deepest applicable tag together with its ancestors: `/link-layer/PPP/PPPoE`.
 - Every tag is declared in `taxonomy.yaml` as either a **technology** (a named protocol, system or format) or a **topic** (a subject or cross-cutting aspect). Roots are always topics.
 
 **The served view** is derived from the tree mechanically and is what search and subscriptions run on. It separates the tags into two axes:
@@ -47,7 +47,7 @@ Curators edit one file, `taxonomy.yaml`, in which each tag's entry carries every
 
 ## Requirements
 
-Each requirement has an identifier, R1–R20. The validation procedure in validation.md cites these identifiers to say which requirement each check serves.
+Each requirement has an identifier, R1–R21. The validation procedure in validation.md cites these identifiers to say which requirement each check serves.
 
 ### Purpose
 
@@ -88,6 +88,10 @@ Each requirement has an identifier, R1–R20. The validation procedure in valida
 - **R17** Published tags change rarely; the expected operations are split and rename.
 - **R18** New tags are created only for novel technologies or topics, and an RFC should rarely introduce more than one new tag. This is tested by replaying the corpus in publication order, not asserted.
 
+### Accessibility
+
+- **R21** A tag's id is written the way the documents write the term — `DKIM`, `IPv6`, `DoH`, `Kerberos`, `WebDAV` — and a phrase with no conventional form is lowercase (`congestion-control`). A screen reader spells an all-capital token letter by letter and pronounces a lower-case one, so a lower-case `dkim` would be read as a word; the documents' own casing is the form readers recognise. Ids are unique without regard to case.
+
 ### Topic axis
 
 - **R19** A topic records what a document is *about*, not what properties its subject *has*.
@@ -105,7 +109,7 @@ A document matches a tag when the tag is in its **closed set**:
 
 Consequences:
 
-- Subscribing to `dns` covers DNSSEC, DoH and every other descendant.
+- Subscribing to `DNS` covers DNSSEC, DoH and every other descendant.
 - Subscribing to `security` covers every document whose technologies imply security.
 - Combinations work across axes: `quic AND security` delivers RFC 9001 and the QUIC documents that carry a security technology, but not the QUIC base specification (R19, R20). `bgp AND yang` delivers the BGP YANG modules.
 
@@ -171,25 +175,25 @@ The taxonomy is `taxonomy.yaml` — one entry per tag with its place in the tree
 | `network-management` | SNMP/MIB, NETCONF/YANG, measurement, OAM, telemetry, time synchronization |
 | `applications` | FTP, Telnet, LDAP, storage, calendaring, e-commerce |
 | `data-formats` | JSON, CBOR, XML, ASN.1, character sets, compression formats |
-| `iot` | CoAP, 6LoWPAN, RPL and other constrained-network technologies |
+| `IoT` | CoAP, 6LoWPAN, RPL and other constrained-network technologies |
 | `internet-governance` | IETF process, IANA, IPR, the RFC series, terminology, user guides |
 | `internet-architecture` | architectural principles (stands alone) |
 | `internet-history` | documents about the history of the Internet (stands alone) |
-| `arpanet` | the ARPANET's own protocols and working notes |
+| `ARPANET` | the ARPANET's own protocols and working notes |
 | `humor` | the April 1st series and other whimsical RFCs (stands alone) |
 
 ### Placement rules
 
-- A protocol family with several named members becomes a parent: `email` → `smtp`, `imap`, `pop3`, …
+- A protocol family with several named members becomes a parent: `email` → `SMTP`, `IMAP`, `POP3`, …
 - A single-tag technology sits directly under its root.
 - Cross-cutting aspect topics live under the root where they most often occur: `privacy` under `security`, `multicast` under `routing`, `transport-mapping` under `transport`.
-- The fourth level is used once: `congestion-control` → `aqm` → `codel`, `pie`.
+- The fourth level is used once: `congestion-control` → `AQM` → `CoDel`, `PIE`.
 
 ### Descriptions
 
 Each tag has one description, which is also its display text. The convention:
 
-- It contains the tag's correct-case name — DNS, IPv6, S/MIME, iCalendar, robots.txt — never a form inferred from the slug.
+- It contains the tag's name in the conventional prose form — DNS, IPv6, S/MIME, iCalendar, robots.txt — the same casing as the id, with punctuation the id cannot carry.
 - Where the name is an acronym or abbreviation, the expansion follows in parentheses.
 - The rest states the scope, and never repeats the name or the expansion.
 
@@ -205,9 +209,9 @@ The served topics are the tree's topic tags minus the six composites that decomp
 
 Roots aside, whether a tag is a technology or a topic is a judgement, and a few sit on the line:
 
-- typed as **technologies**: `nat`, `fec`, `checksum`, `pmtud`;
+- typed as **technologies**: `NAT`, `FEC`, `checksum`, `PMTUD`;
 - typed as **topics**: `multicast`, `addressing`, `nat-traversal`;
-- `mib` and `yang` are technologies that imply the `network-management` topic.
+- `MIB` and `YANG` are technologies that imply the `network-management` topic.
 
 Flipping a tag between axes after subscriptions exist is a breaking change, so these should be settled before launch.
 
@@ -227,7 +231,7 @@ Because roots count as tags, 0.4% of documents exceed ten tags. All are multi-te
 
 ### Depth
 
-Four levels is the limit (R3). Level-4 tags exist under `addressing`, `congestion-control`, `dns`, `domain-registration`, `email`, `http`, `internationalization`, `ipsec`, `ipv6`, `mpls`, `multicast`, `nat` and `storage`; those branches cannot be split again without restructuring above them. `cryptography` is a root for this reason: algorithm families are level 2 and their members level 3, leaving room beneath.
+Four levels is the limit (R3). Level-4 tags exist under `addressing`, `congestion-control`, `DNS`, `domain-registration`, `email`, `HTTP`, `internationalization`, `IPsec`, `IPv6`, `MPLS`, `multicast`, `NAT` and `storage`; those branches cannot be split again without restructuring above them. `cryptography` is a root for this reason: algorithm families are level 2 and their members level 3, leaving room beneath.
 
 ### Placements most open to revision
 
@@ -236,7 +240,7 @@ Four levels is the limit (R3). Level-4 tags exist under `addressing`, `congestio
 
 ### Aliases
 
-Tags have no alias list. On the full-text-search test above, aliases are worth having only for synonyms and variant names a reader might type into a tag lookup — SNTP for `ntp`, IKEv2 for `ike`, ESMTP for `smtp`, SMIv2 for `mib`. Sub-features and related terms belong to full-text search. An `aliases` field on the tag entry in `taxonomy.yaml`, held to that criterion, is the intended home for them.
+Tags have no alias list. On the full-text-search test above, aliases are worth having only for synonyms and variant names a reader might type into a tag lookup — SNTP for `NTP`, IKEv2 for `IKE`, ESMTP for `SMTP`, SMIv2 for `MIB`. Sub-features and related terms belong to full-text search. An `aliases` field on the tag entry in `taxonomy.yaml`, held to that criterion, is the intended home for them.
 
 ### Residual noise
 
