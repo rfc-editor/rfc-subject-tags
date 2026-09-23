@@ -40,11 +40,11 @@ class Taxonomy:
 
     def _validate(self):
         ids = [t['id'] for t in self.tags]
-        dup = [i for i, c in collections.Counter(ids).items() if c > 1]
-        assert not dup, f'duplicate tag ids: {dup}'
+        dup = [i for i, c in collections.Counter(i.lower() for i in ids).items() if c > 1]
+        assert not dup, f'duplicate tag ids (ids are unique case-insensitively): {dup}'
         for e in self.tags:
             assert e['kind'] in ('technology', 'topic'), e['id']
-            assert not any(b in e['id'] for b in ('misc', 'other', 'general')), f'catch-all name: {e["id"]}'
+            assert not any(b in e['id'].lower() for b in ('misc', 'other', 'general')), f'catch-all name: {e["id"]}'
             if 'parent' in e: assert e['parent'] in self.by_id, f'{e["id"]}: unknown parent {e["parent"]}'
             else: assert e['kind'] == 'topic', f'root {e["id"]} must be a topic'
             for f in ('yields_to', 'implies', 'decomposes_to'):

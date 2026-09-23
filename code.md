@@ -95,7 +95,7 @@ In the rfc-editor index only the April 1st series carries a day of month: 71 doc
 ### Tag entry
 
 ```yaml
-- id: dkim                       # slug; the tag name used everywhere
+- id: DKIM                       # written as the documents write it; unique case-insensitively
   parent: email-authentication   # omitted for roots
   kind: technology               # or topic; roots must be topic
   desc: DKIM (DomainKeys Identified Mail)
@@ -133,7 +133,7 @@ Description convention: the correct-case name, the expansion in parentheses for 
 |---|---|---|
 | `max_leaf_tags` | 7 | Cap on leaf tags per RFC before closure |
 | `abstract_fallback_max_tags` | 3 | Cap when only the abstract matched |
-| `era_fallback` | `arpanet`, ≤ 1982, Legacy stream | Tag for otherwise-unmatched early working notes |
+| `era_fallback` | `ARPANET`, ≤ 1982, Legacy stream | Tag for otherwise-unmatched early working notes |
 | `humor.tag` | `humor` | Sole tag for day-dated or listed documents |
 
 ### Editing the file
@@ -157,7 +157,7 @@ Description convention: the correct-case name, the expansion in parentheses for 
 3. **Match rules.** Every tag with a `match` regex that hits the title or author keywords.
 4. **Title-only rules.** Every tag with a `match_title_only` regex that hits the title.
 5. **Abstract fallback.** If nothing has matched, `match` regexes run against the abstract; at most `abstract_fallback_max_tags` are kept.
-6. **Era fallback.** If still nothing, a Legacy-stream document from 1982 or earlier takes `arpanet`.
+6. **Era fallback.** If still nothing, a Legacy-stream document from 1982 or earlier takes `ARPANET`.
 7. **Suppression.** A tag is removed when a tag in its `yields_to` is present and *settled* — that is, not itself about to be removed. This makes the result independent of file order while still letting a keyword-noise tag be removed before it can suppress something else.
 8. **Ancestor rule.** A tag never sits in the leaf set beside its own descendant, so a root is a leaf only for documents about the subject in general.
    A topic that a present technology implies is likewise dropped from the leaf set; the served view adds it back, so it appears once, by implication.
@@ -172,7 +172,7 @@ Matching is case-insensitive over title and keywords, which makes several failur
 - **Anchor short words** with `\b` and handle plurals explicitly (`\bMIBs?\b`). Unanchored stems match inside longer words: "tribute" in *Attribute*, "graphic" in *cryptographic*, "port control protocol" inside *Transport Control Protocol*.
 - **Never match a bare acronym that is also an English word** — SEND, TURN, STAMP, TRIP, LOST, OPAQUE, SIMPLE. Require the parenthesised form `(TURN)` or the expansion.
 - **Disambiguate acronyms that collide across fields** by phrase or by `yields_to`: FEC (forward error correction vs forwarding equivalence class), JWT (the token vs the Joint Working Team), SPF (sender policy framework vs shortest path first).
-- **Exclude compound uses**: "TCP/IP" from TCP; "mail routing", "Generic Routing Encapsulation" and "Routing Protocol for Low-Power…" from `routing`; "JSON Web Signature/Token" from `web`; "Constrained Application Protocol" from `applications`; "Transport Layer Security", "Real-Time Transport Protocol" and SSH's "Transport Layer Protocol" from `transport`; "Integrated Services Digital Network" from `intserv`; "Point-to-Point (P2P)" from `p2p`. Where a regex cannot exclude a name cleanly, `yields_to` does the job — `transport` yields to `tls`, `dtls`, `rtp`, `rtcp`, `srtp` and `ssh`. The general root rules are the most exposed to this, because protocol names routinely contain the words routing, web, application and data format; the Overlap view of `rfc-tags.html` shows such leaks as a root nested inside an unrelated technology.
+- **Exclude compound uses**: "TCP/IP" from TCP; "mail routing", "Generic Routing Encapsulation" and "Routing Protocol for Low-Power…" from `routing`; "JSON Web Signature/Token" from `web`; "Constrained Application Protocol" from `applications`; "Transport Layer Security", "Real-Time Transport Protocol" and SSH's "Transport Layer Protocol" from `transport`; "Integrated Services Digital Network" from `Intserv`; "Point-to-Point (P2P)" from `P2P`. Where a regex cannot exclude a name cleanly, `yields_to` does the job — `transport` yields to `TLS`, `DTLS`, `RTP`, `RTCP`, `SRTP` and `SSH`. The general root rules are the most exposed to this, because protocol names routinely contain the words routing, web, application and data format; the Overlap view of `rfc-tags.html` shows such leaks as a root nested inside an unrelated technology.
 - **Adjectives are not evidence.** Documents about security say "security"; "Secure Transport" in a title does not earn `security`.
 - **A working group is not a tag.** When a group's output is a named technology with a following, the technology gets its own entry and the group goes in its `groups` (R10, R11).
 
@@ -207,38 +207,38 @@ Nothing is decided by hand at this stage; editing `taxonomy.yaml` and re-running
 <!-- generated:implies -->
 | Topic | Implied by |
 |---|---|
-| `security` | dnssec, dane, cookies, hsts, token-binding, stir, srtp, sframe, rpki, bgpsec, tcpcrypt, send, savi, teep, supply-chain-integrity, cryptography, oscore, edhoc, firmware-update, mud |
-| `authentication` | http-authentication, stir, kerberos, gssapi, sasl, eap, pana, aaa, radius, diameter, tacacs, scim, federated-authentication, ident, otp, pake |
-| `iot` | teep, coap, oscore, senml, sdf, 6lowpan, rpl, 6tisch, lpwan, schc, edhoc, firmware-update, mud |
-| `multicast` | pim, igmp, mld, msdp, mospf, ssm, amt, bier, flute, norm, mvpn |
-| `network-management` | bmp, snmp, mib, agentx, netconf, restconf, yang, syslog, i2rs, ovsdb |
-| `ipv6-transition` | dns64, nat64, 6to4, teredo, ds-lite, map, 6rd, 464xlat, happy-eyeballs |
-| `tunneling` | masque, pseudowire, vxlan, geneve, gre, ip-in-ip, l2tp |
-| `congestion-control` | ecn, aqm, codel, pie, ledbat, pcn, conex |
-| `performance-measurement` | rmon, owamp, twamp, stamp, lmap, ipfix, packet-capture |
-| `privacy` | doh, dot, oblivious-dns, masque, oblivious-http, privacy-pass |
-| `internationalization` | idn, eai, utf-8, unicode, language-tags, precis |
-| `qos` | detnet, rsvp, diffserv, intserv, nsis, cops |
-| `ip-mobility` | manet, mobile-ipv4, mobile-ipv6, pmipv6, nemo, hip |
-| `compression` | rohc, deflate, gzip, brotli, zstd, ipcomp |
-| `authorization` | oauth, gnap, xacml, ace |
-| `transport-mapping` | doh, dot, http3 |
-| `nat-traversal` | ice, stun, turn |
-| `time-synchronization` | ntp, ptp, time-zones |
-| `storage` | nfs, iscsi, rdma |
-| `service-discovery` | dns-sd, slp |
-| `reliable-multicast` | flute, norm |
-| `traffic-engineering` | rsvp-te, pce |
-| `routing-architecture` | lisp, ilnp |
-| `multihoming` | shim6, hip |
-| `calendaring` | icalendar, caldav |
-| `oam` | bfd |
-| `header-compression` | rohc |
-| `addressing` | slaac |
-| `routing` | rpl |
+| `security` | DNSSEC, DANE, cookies, HSTS, token-binding, STIR, SRTP, SFrame, RPKI, BGPsec, tcpcrypt, SEND, SAVI, TEEP, supply-chain-integrity, cryptography, OSCORE, EDHOC, firmware-update, MUD |
+| `authentication` | http-authentication, STIR, Kerberos, GSSAPI, SASL, EAP, PANA, AAA, RADIUS, Diameter, TACACS, SCIM, federated-authentication, Ident, OTP, PAKE |
+| `IoT` | TEEP, CoAP, OSCORE, SenML, SDF, 6LoWPAN, RPL, 6TiSCH, LPWAN, SCHC, EDHOC, firmware-update, MUD |
+| `multicast` | PIM, IGMP, MLD, MSDP, MOSPF, SSM, AMT, BIER, FLUTE, NORM, MVPN |
+| `network-management` | BMP, SNMP, MIB, AgentX, NETCONF, RESTCONF, YANG, syslog, I2RS, OVSDB |
+| `IPv6-transition` | DNS64, NAT64, 6to4, Teredo, DS-Lite, MAP, 6rd, 464XLAT, happy-eyeballs |
+| `tunneling` | MASQUE, pseudowire, VXLAN, Geneve, GRE, IP-in-IP, L2TP |
+| `congestion-control` | ECN, AQM, CoDel, PIE, LEDBAT, PCN, ConEx |
+| `performance-measurement` | RMON, OWAMP, TWAMP, STAMP, LMAP, IPFIX, packet-capture |
+| `privacy` | DoH, DoT, oblivious-dns, MASQUE, oblivious-http, privacy-pass |
+| `internationalization` | IDN, EAI, UTF-8, Unicode, language-tags, PRECIS |
+| `QoS` | DetNet, RSVP, Diffserv, Intserv, NSIS, COPS |
+| `ip-mobility` | MANET, Mobile-IPv4, Mobile-IPv6, PMIPv6, NEMO, HIP |
+| `compression` | ROHC, DEFLATE, gzip, Brotli, zstd, IPComp |
+| `authorization` | OAuth, GNAP, XACML, ACE |
+| `transport-mapping` | DoH, DoT, HTTP3 |
+| `nat-traversal` | ICE, STUN, TURN |
+| `time-synchronization` | NTP, PTP, time-zones |
+| `storage` | NFS, iSCSI, RDMA |
+| `service-discovery` | DNS-SD, SLP |
+| `reliable-multicast` | FLUTE, NORM |
+| `traffic-engineering` | RSVP-TE, PCE |
+| `routing-architecture` | LISP, ILNP |
+| `multihoming` | Shim6, HIP |
+| `calendaring` | iCalendar, CalDAV |
+| `OAM` | BFD |
+| `header-compression` | ROHC |
+| `addressing` | SLAAC |
+| `routing` | RPL |
 <!-- /generated -->
 
-The `implies` field is consulted over the ancestor closure, so `dkim` inherits `security` through `email-authentication`. Two things the tables do not show because closure supplies them: every tag under the `security` root reaches `security` without an `implies` entry, and a composite's technology context (`dns` for `dns-privacy`) arrives as its ancestor.
+The `implies` field is consulted over the ancestor closure, so `DKIM` inherits `security` through `email-authentication`. Two things the tables do not show because closure supplies them: every tag under the `security` root reaches `security` without an `implies` entry, and a composite's technology context (`DNS` for `dns-privacy`) arrives as its ancestor.
 
 ## Regeneration
 

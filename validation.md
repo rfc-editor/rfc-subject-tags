@@ -64,7 +64,7 @@ A fixed list of well-known RFCs with expected results:
 | 2119 | terminology |
 | 1149 | humor |
 | 6762 | mdns, dns |
-| 5317 | no `jwt` |
+| 5317 | no `JWT` |
 
 ### Search grounding (R9)
 
@@ -87,7 +87,7 @@ List non-ancestor tag pairs with Jaccard similarity above 0.35 over their docume
 
 ### Root leaks (R12)
 
-For each root, count the RFCs carrying it as a leaf tag beside a technology from another root, and read the titles. Correct co-occurrence looks like RFC 1812 (`ipv4`, `routing`) or RFC 5095 (`ipv6`, `routing`): the title is about the root's subject. A leak looks like RFC 3268 (`tls`, `transport`): the root's rule matched a word inside a protocol name — Transport Layer Security, Real-Time Transport Protocol, Generic Routing Encapsulation, JSON Web Token. In the Overlap view of `rfc-tags.html` leaks show as a root nested inside an unrelated technology. The check has a second half: after tightening a root rule, list documents that carried the root before and no longer do, and read those titles too — RFC 3222 (FIB-based router performance) and RFC 6192 (the router control plane) are routing documents that a tightened `routing` rule once dropped. A document that loses its only tag falls to the abstract fallback and may pick up unrelated tags there. Leaks matter more than search noise: every one fires a notification to every subscriber of the root.
+For each root, count the RFCs carrying it as a leaf tag beside a technology from another root, and read the titles. Correct co-occurrence looks like RFC 1812 (`IPv4`, `routing`) or RFC 5095 (`IPv6`, `routing`): the title is about the root's subject. A leak looks like RFC 3268 (`TLS`, `transport`): the root's rule matched a word inside a protocol name — Transport Layer Security, Real-Time Transport Protocol, Generic Routing Encapsulation, JSON Web Token. In the Overlap view of `rfc-tags.html` leaks show as a root nested inside an unrelated technology. The check has a second half: after tightening a root rule, list documents that carried the root before and no longer do, and read those titles too — RFC 3222 (FIB-based router performance) and RFC 6192 (the router control plane) are routing documents that a tightened `routing` rule once dropped. A document that loses its only tag falls to the abstract fallback and may pick up unrelated tags there. Leaks matter more than search noise: every one fires a notification to every subscriber of the root.
 
 ### Topic gaps (R8, R10)
 
@@ -119,7 +119,7 @@ When the engine or the YAML schema changes, re-run against the previous `rfc-tag
 - **Distribution:** 1:679 · 2:2,570 · 3:2,132 · 4:1,588 · 5:1,330 · 6:719 · 7:418 · 8:216 · 9:102 · 10:39 · 11:24 · 12:10 · 13:4 · 14:3 · 15:1.
 - **Over ten tags:** 42 documents (0.4%), all multi-technology cross-area specifications.
 - **Unused tags:** 0.
-- **Single-document tags:** 44 — afs, amateur-radio, arc, bats, blake2, crc, cybercash, data-center-networking, dctcp, dragonfly, ebpf, eigrp, ffv1, gsakmp, hoba, http-caching, idxp, irtp, jpake, jscalendar, lpwan, mospf, nat-pmp, oblivious-dns, opaque, ovsdb, password-hashing, pgm, ratp, rbnf, scrypt, sdf, sframe, speex, tbrpf, teep, tetrys, tmux, tvr, vorbis, whip, xacml, y2k, yaml.
+- **Single-document tags:** 44 — AFS, ARC, BATS, BLAKE2, CRC, CyberCash, DCTCP, Dragonfly, EIGRP, FFV1, GSAKMP, HOBA, IDXP, IRTP, JPAKE, JSCalendar, LPWAN, MOSPF, NAT-PMP, OPAQUE, OVSDB, PGM, RATP, RBNF, SDF, SFrame, Speex, TBRPF, TEEP, TMux, TVR, Tetrys, Vorbis, WHIP, XACML, Y2K, YAML, amateur-radio, data-center-networking, eBPF, http-caching, oblivious-dns, password-hashing, scrypt.
 - **Humor:** 74 documents, 0 exclusivity violations.
 - **Stability replay:** 9,214 RFCs debut no tag, 609 debut one, 10 debut two, 2 debut three. The 12 multi-debut cases are parent-and-child pairs founding a branch, plus RFC 2430 preceding the MPLS architecture into print.
 
@@ -131,4 +131,4 @@ When the engine or the YAML schema changes, re-run against the previous `rfc-tag
 - **Per RFC:** technology mean 1.74, topic mean 2.06, combined mean 3.80.
 - **Over ten combined:** 48 documents (0.5%); maximum 15.
 - **Documents whose only topics are roots:** 5,335.
-- **Topic replay:** 5 documents debut two topics, all in the founding years. Debuts since 2003: emergency-services (2003), nat-traversal (2003), iot (2006), energy-management (2013), autonomic-networking (2014), telemetry (2019), sustainability (2024).
+- **Topic replay:** 5 documents debut two topics, all in the founding years. Debuts since 2003: emergency-services (2003), nat-traversal (2003), IoT (2006), energy-management (2013), SDN (2014), telemetry (2019), sustainability (2024).
