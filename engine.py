@@ -5,8 +5,23 @@ Usage:  python3 engine.py [taxonomy.yaml] [rfcs.json]
 Writes  rfc-tags.json: for every RFC its leaf tags, full paths, and technology/topic coordinates.
 All per-tag knowledge lives in the YAML; this file is the algorithm only.
 """
-import json, re, sys, collections
+import json, re, sys, collections, unicodedata
 import yaml
+
+# What an id may look like. Ids are written as the documents write the term, so they may
+# contain spaces and the punctuation those terms use; the character set is otherwise closed
+# so that the formats built on ids stay unambiguous:
+#   ' / ' joins a path        (rfc-tags.csv, the page)      -> ' / ' may not occur in an id
+#   ';'  separates list items (rfc-tags.csv)                -> ';' and '|' are not allowed
+#   ids are inserted into HTML attributes and text          -> no '"', '<', '>', '&' (and the page escapes anyway)
+#   lookalikes                                              -> ASCII only, single spaces, none leading or trailing
+ID_RE = re.compile(r'[A-Za-z0-9.][A-Za-z0-9._/+-]*(?: [A-Za-z0-9._/+-]+)*')
+
+def id_key(s):
+    """The identity of an id for uniqueness and for matching user input: case-folded, NFC,
+    whitespace collapsed. Every lookup the engine does on stored data is exact; this is for
+    deciding that two spellings would be the *same* id."""
+    return ' '.join(unicodedata.normalize('NFC', s).casefold().split())
 
 MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
 
@@ -33,6 +48,12 @@ class Taxonomy:
         self.decomp = {t: list(e.get('decomposes_to', [])) for t, e in self.by_id.items() if e.get('decomposes_to')}
         self.max_year = {t: e['max_year'] for t, e in self.by_id.items() if 'max_year' in e}
 
+    def lookup(self, text):
+        """Resolve user input to an id, ignoring case and spacing; None if there is no such tag.
+        This is the one place case-insensitive matching happens: stored references (parent,
+        implies, yields_to, decomposes_to, rfc-tags.json) are exact."""
+        return self.by_key.get(id_key(text))
+
     def _path(self, t):
         p = [t]
         while 'parent' in self.by_id[p[-1]]: p.append(self.by_id[p[-1]]['parent'])
@@ -40,8 +61,13 @@ class Taxonomy:
 
     def _validate(self):
         ids = [t['id'] for t in self.tags]
-        dup = [i for i, c in collections.Counter(i.lower() for i in ids).items() if c > 1]
-        assert not dup, f'duplicate tag ids (ids are unique case-insensitively): {dup}'
+        for i in ids:
+            assert ID_RE.fullmatch(i), (f'id {i!r} is not allowed: ids use letters, digits, space and . _ / + - only, '
+                                        'single spaces, none leading or trailing')
+            assert ' / ' not in i, f'id {i!r} contains the path separator " / "'
+        dup = [k for k, c in collections.Counter(id_key(i) for i in ids).items() if c > 1]
+        assert not dup, f'ids that would be confused with each other (same ignoring case and spacing): {dup}'
+        self.by_key = {id_key(t['id']): t['id'] for t in self.tags}
         for e in self.tags:
             assert e['kind'] in ('technology', 'topic'), e['id']
             assert not any(b in e['id'].lower() for b in ('misc', 'other', 'general')), f'catch-all name: {e["id"]}'

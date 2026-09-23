@@ -99,7 +99,7 @@ For each topic-implying technology, list assignments with no title evidence and 
 
 ### Id form (R21)
 
-- No two ids differ only by case (the loader fails otherwise).
+- Every id is in the allowed form and no two ids would be confused with each other after case-folding, normalisation and whitespace collapsing (the loader fails otherwise; see code.md, Identity of an id).
 - Ids read exactly as the documents write the term (`IPv6`, `HTTP/2`, `.onion`, `X.509`, `TACACS+`); phrases are written with spaces and their own casing (`congestion control`, `IP mobility`).
 - Paths are written as ids joined by ` / `.
 

@@ -122,10 +122,18 @@ Description convention: the correct-case name, the expansion in parentheses for 
 
 `engine.Taxonomy` refuses a file that has:
 
-- duplicate ids, or a parent, `yields_to`, `implies` or `decomposes_to` reference to a tag that does not exist;
+- an id outside the allowed form — letters, digits, single spaces and `. _ / + -`, none leading or trailing, ASCII only — or containing the path separator ` / `;
+- two ids that would be confused with each other: the same after case-folding, Unicode normalisation and whitespace collapsing;
+- a parent, `yields_to`, `implies` or `decomposes_to` reference to a tag that does not exist (references are exact);
 - a root that is not a topic, or a kind other than `technology`/`topic`;
 - a path deeper than four levels;
 - a catch-all name (`misc`, `other`, `general`).
+
+### Identity of an id
+
+Stored references and data files use ids exactly as written: `parent: IPv6` names the tag `IPv6` and nothing else. Uniqueness is stricter than that on purpose — two ids that differ only in case or spacing would be indistinguishable to a reader, so the loader refuses them — and that stricter test is also how user input is matched: `Taxonomy.lookup(text)` resolves `ipv6`, `Congestion  Control` or `http/2` to the stored id, or `None`. It is the one place case-insensitive matching happens; consumers matching user input should call it rather than compare strings themselves. The page's search applies the same folding.
+
+The character rule exists because ids appear inside other formats: ` / ` joins the ids of a path in `rfc-tags.csv` and the page, `;` and ` | ` delimit lists in the CSV, and the page places ids in HTML text and attributes (which it escapes regardless).
 
 ### Engine parameters
 
