@@ -539,8 +539,8 @@ var ROOTS=TAGS.filter(function(t){return t.d===0;});
 var maxCorpus=Math.max.apply(null,TAGS.map(function(t){return t.total;}));
 var maxRate=Math.max.apply(null,TAGS.map(function(t){return t.rate;}));
 function kcls(t){return t.kind==='topic'?'k-topic':'k-tech';}
-function name(t,extra){return '<span class="'+kcls(t)+(extra?' '+extra:'')+'">'+t.id+'</span>';}
-function chip(t,attr,extra){return '<button class="tagchip '+kcls(t)+(extra?' '+extra:'')+'" '+(attr||'')+' title="'+esc(t.desc)+'">'+t.id+'</button>';}
+function name(t,extra){return '<span class="'+kcls(t)+(extra?' '+extra:'')+'">'+esc(t.id)+'</span>';}
+function chip(t,attr,extra){return '<button class="tagchip '+kcls(t)+(extra?' '+extra:'')+'" '+(attr||'')+' title="'+esc(t.desc)+'">'+esc(t.id)+'</button>';}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 /* rolled-up membership: an RFC belongs to its tags and to their ancestors */
@@ -639,8 +639,8 @@ function drawTags(){
     if(root&&folded[t.id])second+=' <em class="hit">'+descCount[t.id]+' tags folded</em>';
     var kind=(root||flat)?'<span class="kind">'+(root?'root · topic':t.kind)+'</span>':(t.kind==='topic'?'<span class="kind">topic</span>':'');
     return '<li class="d'+(flat?0:t.d)+(root?' root':'')+(root&&folded[t.id]?' folded':'')+'">'+
-      '<button class="trow" aria-pressed="'+on+'" data-id="'+t.id+'">'+
-        '<span><span class="tline">'+(tree&&t.d>0?'<i class="conn">└</i>':'')+(root?'<span class="caret" data-fold="'+t.id+'" title="'+(folded[t.id]?'Expand':'Collapse')+'">&#9662;</span>':'')+'<span class="tname '+kcls(t)+'">'+t.id+kind+'</span></span>'+
+      '<button class="trow" aria-pressed="'+on+'" data-id="'+esc(t.id)+'">'+
+        '<span><span class="tline">'+(tree&&t.d>0?'<i class="conn">└</i>':'')+(root?'<span class="caret" data-fold="'+esc(t.id)+'" title="'+(folded[t.id]?'Expand':'Collapse')+'">&#9662;</span>':'')+'<span class="tname '+kcls(t)+'">'+esc(t.id)+kind+'</span></span>'+
         '<span class="tdesc" title="'+esc(t.desc)+'">'+second+'</span></span>'+
         '<span class="metric"><b>'+t.total.toLocaleString()+'</b>'+
           '<span class="bar"><span class="fill-count" style="width:'+pct(t.total,maxCorpus)+'%"></span></span></span>'+
@@ -693,7 +693,7 @@ function partnersFor(id){
 function crumb(t){
   return t.path.split(' / ').map(function(p){
     var x=byId[p];
-    return p===t.id?name(x,'here'):chip(x,'data-add="'+p+'"');
+    return p===t.id?name(x,'here'):chip(x,'data-add="'+esc(p)+'"');
   }).join('<i>/</i>');
 }
 function drawDetail(){
@@ -704,7 +704,7 @@ function drawDetail(){
   var head=sel.map(function(id){
     var t=byId[id];
     var kids=TAGS.filter(function(k){return k.parent===id;});
-    return '<div class="dsel"><h3 class="'+kcls(t)+'">'+t.id+'</h3><div class="crumb">'+crumb(t)+'</div>'+
+    return '<div class="dsel"><h3 class="'+kcls(t)+'">'+esc(t.id)+'</h3><div class="crumb">'+crumb(t)+'</div>'+
       '<p>'+esc(t.desc)+'</p>'+
       '<div class="pills">'+
       '<span class="pill '+(t.kind==='topic'?'on-topic':'on-tech')+'">'+(t.d===0?'root · topic':t.kind)+'</span>'+
@@ -874,7 +874,7 @@ function drawLife(){
   document.getElementById('lifeCount').textContent=list.length+' of '+TAGS.length+' tags';
   document.getElementById('lifeList').innerHTML=list.map(function(t){
     var l=(t.first-Y0)/(Y1-Y0)*100,w=Math.max(1.2,(t.last-t.first)/(Y1-Y0)*100);
-    return '<li><span class="tid '+kcls(t)+'" title="'+esc(t.desc)+'">'+t.id+'</span>'+
+    return '<li><span class="tid '+kcls(t)+'" title="'+esc(t.desc)+'">'+esc(t.id)+'</span>'+
       '<span class="track"><span class="span '+lifeClass(t)+'" style="left:'+l+'%;width:'+w+'%"></span></span>'+
       '<em>'+t.first+'&ndash;'+t.last+'</em></li>';}).join('');
 }
