@@ -207,6 +207,7 @@ tags:
   desc: DNS-SD (DNS-Based Service Discovery)
   aliases:
   - dnssd
+  - Bonjour
   match:
   - 'DNS-Based Service Discovery|\bDNS-SD\b'
   groups:
@@ -389,7 +390,6 @@ tags:
   desc: 'Service Discovery: discovering services and resources on a network'
   aliases:
   - Zeroconf
-  - Bonjour
   match:
   - service discovery|resource discovery|discovery of (services|servers)
   yields_to:
@@ -1712,7 +1712,6 @@ tags:
   desc: Interactive traversal of NATs for real-time media
   aliases:
   - UNSAF
-  - NAT-T
   match:
   - NAT traversal
   stats:
@@ -1773,7 +1772,6 @@ tags:
   aliases:
   - NETVC
   - AAC
-  - H.265
   - Theora
   match:
   - '\bcodec\b'
@@ -1921,6 +1919,8 @@ tags:
   parent: codecs
   kind: technology
   desc: HEVC (High Efficiency Video Coding), also published as ITU-T H.265, and its RTP payload format
+  aliases:
+  - H.265
   match:
   - '\bHEVC\b|\bH\.265\b|High Efficiency Video Coding'
   stats:
@@ -1978,8 +1978,6 @@ tags:
   desc: Media streaming delivery and operations
   aliases:
   - MOPS
-  - HLS
-  - DASH
   groups:
   - elegy
   - mops
@@ -2249,10 +2247,10 @@ tags:
   - X400
   stats:
     direct: 75
-    total: 1848
+    total: 1849
     first_year: 1982
     last_year: 2026
-    served: 1874
+    served: 1875
 - id: routing-architecture
   parent: routing
   kind: topic
@@ -2275,8 +2273,6 @@ tags:
   parent: routing-architecture
   kind: technology
   desc: ECMP (Equal-Cost Multipath) and load-balanced forwarding
-  aliases:
-  - LAG
   match:
   - '\bECMP\b|equal-cost multi'
   stats:
@@ -2315,8 +2311,8 @@ tags:
   - idr
   - rps
   stats:
-    direct: 238
-    total: 270
+    direct: 239
+    total: 271
     first_year: 1989
     last_year: 2026
 - id: BGP-communities
@@ -3098,7 +3094,7 @@ tags:
   - bess
   stats:
     direct: 20
-    total: 149
+    total: 150
     first_year: 1999
     last_year: 2026
 - id: L3VPN
@@ -3154,8 +3150,8 @@ tags:
   match:
   - '\bEVPN\b|ethernet vpn'
   stats:
-    direct: 32
-    total: 32
+    direct: 33
+    total: 33
     first_year: 2014
     last_year: 2026
 - id: MVPN
@@ -3717,9 +3713,7 @@ tags:
   kind: topic
   desc: Congestion control and avoidance across transports
   aliases:
-  - Reno
   - BBR
-  - Vegas
   match:
   - 'congestion (control|avoidance|exposure|notification|management|window)|slow start|retransmission timer|loss recovery|fast retransmit|highspeed TCP|\bRTO\b'
   - source quench|SQuID
@@ -3865,6 +3859,8 @@ tags:
   parent: congestion-control
   kind: technology
   desc: NewReno, the fast recovery and fast retransmit modification to TCP congestion control
+  aliases:
+  - Reno
   match:
   - '\bnew[- ]?reno\b'
   stats:
@@ -4002,8 +3998,6 @@ tags:
   parent: transport
   kind: topic
   desc: 'Header Compression: compressing protocol headers on constrained links'
-  aliases:
-  - ECRTP
   match:
   - header compression|compress(ing|ed|ion of)? .{0,20}headers?
   stats:
@@ -4036,6 +4030,8 @@ tags:
   parent: header-compression
   kind: technology
   desc: 'CRTP (Compressed RTP): compressing IP/UDP/RTP headers over low-speed serial links, including the enhanced variant for lossy, high-delay links'
+  aliases:
+  - ECRTP
   match:
   - '\bc-?rtp\b|\becrtp\b|enhanced compressed rtp|compress(ing|ed|ion of) +ip/udp/rtp headers?'
   stats:
@@ -4058,8 +4054,6 @@ tags:
   parent: transport
   kind: technology
   desc: Forward error correction (FEC), ARQ and network coding for loss recovery schemes for packet transport
-  aliases:
-  - RaptorQ
   match:
   - 'forward error correction|\bFEC\b'
   - 'network coding|\bBATS\b|tetrys|\braptorq?\b'
@@ -4093,6 +4087,8 @@ tags:
   parent: FEC
   kind: technology
   desc: Raptor fountain codes, including RaptorQ, for object delivery and FEC framework schemes
+  aliases:
+  - RaptorQ
   match:
   - '\braptor-?q?\b'
   stats:
@@ -4183,10 +4179,10 @@ tags:
   - 'internet protocol suite|\bIP (layer|datagrams?)\b|network layer'
   stats:
     direct: 6
-    total: 1443
+    total: 1444
     first_year: 1971
     last_year: 2026
-    served: 1443
+    served: 1444
 - id: ICN
   parent: internet-layer
   kind: technology
@@ -4479,11 +4475,11 @@ tags:
   - ARPANET
   - multicast
   stats:
-    direct: 109
-    total: 199
+    direct: 110
+    total: 200
     first_year: 1977
     last_year: 2026
-    served: 214
+    served: 215
 - id: CIDR
   parent: addressing
   kind: technology
@@ -5334,7 +5330,6 @@ tags:
   - LTE
   - 5G
   - UMTS
-  - 3GPP2
   - 3G
   - 4G
   match:
@@ -5359,6 +5354,8 @@ tags:
   parent: cellular
   kind: technology
   desc: 'cdma2000 (Code Division Multiple Access 2000): 3GPP2 packet-data networks, wireless IP, AAA and Mobile IP support'
+  aliases:
+  - 3GPP2
   match:
   - '\bcdma[\s-]?2000\b'
   stats:
@@ -5745,6 +5742,8 @@ tags:
   parent: security
   kind: technology
   desc: 'IPsec (Internet Protocol Security) architecture: ESP, AH, policy'
+  aliases:
+  - NAT-T
   match:
   - '\bIPsec\b|IP security|authentication header'
   groups:
@@ -6716,7 +6715,6 @@ tags:
   desc: TEEP (Trusted Execution Environment Provisioning)
   aliases:
   - OTrP
-  - TEE
   groups:
   - teep
   implies:
@@ -6974,9 +6972,6 @@ tags:
   - PQC
   - quantum-resistant
   - quantum-safe
-  - Kyber
-  - Dilithium
-  - SPHINCS+
   match:
   - 'post-quantum|\bML-KEM\b|\bML-DSA\b|\bSLH-DSA\b|hash-based signature'
   - quantum internet|quantum network
@@ -6991,6 +6986,8 @@ tags:
   parent: post-quantum
   kind: technology
   desc: ML-KEM (Module-Lattice-Based Key-Encapsulation Mechanism) key establishment and its use in IETF protocols
+  aliases:
+  - Kyber
   match:
   - '\bML-KEM\b|\bKyber\b'
   stats:
@@ -7002,6 +6999,8 @@ tags:
   parent: post-quantum
   kind: technology
   desc: ML-DSA (Module-Lattice-Based Digital Signature Algorithm) signatures and their use in IETF protocols
+  aliases:
+  - Dilithium
   match:
   - '\bML-DSA\b|\bDilithium\b'
   stats:
@@ -7013,6 +7012,8 @@ tags:
   parent: post-quantum
   kind: technology
   desc: SLH-DSA (Stateless Hash-Based Digital Signature Algorithm) signatures and their use in IETF protocols
+  aliases:
+  - SPHINCS+
   match:
   - '\bSLH-DSA\b|SPHINCS'
   stats:
@@ -7048,8 +7049,6 @@ tags:
   desc: 'Key Management: key establishment, provisioning and storage'
   aliases:
   - KEYPROV
-  - DSKPP
-  - PSKC
   match:
   - key (management|distribution|agreement|derivation|wrap|provisioning)
   - '\bMIKEY\b'
@@ -7640,8 +7639,6 @@ tags:
   parent: network-management
   kind: topic
   desc: 'SDN (Software-Defined Networking): separated, programmable control planes'
-  aliases:
-  - OpenFlow
   match_title_only:
   - 'software.defined network|\bSDN\b'
   stats:
@@ -7725,7 +7722,6 @@ tags:
   desc: 'Time Synchronization: clock synchronization over networks'
   aliases:
   - TICTOC
-  - Roughtime
   match:
   - clock (service|standard|synchroni)|time standard|network time
   - time protocol
@@ -8187,9 +8183,6 @@ tags:
   parent: applications
   kind: topic
   desc: Storage access and block/file protocols over IP
-  aliases:
-  - SMB
-  - CIFS
   match:
   - BagIt|memory space
   - digital library
@@ -8888,11 +8881,6 @@ tags:
   parent: data-formats
   kind: topic
   desc: Lossless data compression formats
-  aliases:
-  - LZW
-  - bzip2
-  - zip
-  - LZ77
   match:
   - compression
   yields_to:
@@ -8913,6 +8901,8 @@ tags:
   parent: compression
   kind: technology
   desc: DEFLATE and zlib
+  aliases:
+  - LZ77
   match:
   - '\bDEFLATE\b|zlib'
   implies:
@@ -9358,7 +9348,6 @@ tags:
   desc: IPR (Intellectual Property Rights), copyright and trust legal provisions
   aliases:
   - TLP
-  - patent
   match:
   - '\blicens'
   - antitrust

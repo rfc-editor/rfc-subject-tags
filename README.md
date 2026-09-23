@@ -234,6 +234,14 @@ Because roots count as tags, 0.4% of documents exceed ten tags. All are multi-te
 
 Four levels is the limit (R3). Level-4 tags exist under `addressing`, `congestion-control`, `DNS`, `domain-registration`, `email`, `HTTP`, `internationalization`, `IPsec`, `IPv6`, `MPLS`, `multicast`, `NAT` and `storage`; those branches cannot be split again without restructuring above them. `cryptography` is a root for this reason: algorithm families are level 2 and their members level 3, leaving room beneath.
 
+### Depth
+
+The tree allows four levels (R3) and 61 tags now sit at level 4, up from 25
+before the absorbed technologies were promoted. `PAKE`, `post-quantum`, `SHA`
+and `elliptic-curve` each have children at that limit, so none of them can be
+split further without restructuring the level above. Nothing is blocked today;
+it is recorded because the next promotion in those areas has nowhere to go.
+
 ### Placements most open to revision
 
 - `terminology` and `user-guides` under `internet-governance`;
