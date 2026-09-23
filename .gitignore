@@ -10,12 +10,14 @@ tmp/
 #   rfc-tags.json   engine.py
 #   rfc-tags.csv    regen.py
 #   rfc-tags.html   regen.py
+#   tag-candidates.json   tag_candidates.py
 #   __pycache__     regen.py does `import engine`
 /rfc-index.xml
 /rfcs.json
 /rfc-tags.json
 /rfc-tags.csv
 /rfc-tags.html
+/tag-candidates.json
 __pycache__/
 
 # Local virtual environment, as CONTRIBUTING.md suggests creating.

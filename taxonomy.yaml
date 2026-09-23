@@ -71,7 +71,7 @@ tags:
   decomposes_to:
   - privacy
   stats:
-    direct: 11
+    direct: 10
     total: 20
     first_year: 2015
     last_year: 2025
@@ -118,6 +118,17 @@ tags:
     total: 1
     first_year: 2022
     last_year: 2022
+- id: doq
+  parent: dns-privacy
+  kind: technology
+  desc: DoQ (DNS over QUIC), DNS resolution carried over dedicated QUIC connections
+  match:
+  - '\bDoQ\b|DNS[ -]over[ -](Dedicated[ -])?QUIC|QUIC[ -](Connections?[ -])?for[ -]DNS'
+  stats:
+    direct: 7
+    total: 7
+    first_year: 2022
+    last_year: 2024
 - id: dane
   parent: dns
   kind: technology
@@ -204,9 +215,20 @@ tags:
   match:
   - special-use domain
   stats:
-    direct: 5
+    direct: 3
     total: 5
     first_year: 2013
+    last_year: 2025
+- id: onion
+  parent: special-use-domain-names
+  kind: technology
+  desc: .onion, the reserved top-level domain for Tor hidden services and the self-authenticating addresses beneath it
+  match:
+  - '\.onion\b|onion (?:service|routing)'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 2015
     last_year: 2025
 - id: domain-registration
   parent: naming
@@ -265,10 +287,32 @@ tags:
   - find
   - wnils
   stats:
-    direct: 53
+    direct: 47
     total: 53
     first_year: 1982
     last_year: 2022
+- id: rwhois
+  parent: whois
+  kind: technology
+  desc: RWhois (Referral Whois), the referral-following protocol for distributed, hierarchical registration data lookup
+  match:
+  - '\brwhois\b|referral[- ]whois'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 1994
+    last_year: 1997
+- id: whoispp
+  parent: whois
+  kind: technology
+  desc: WHOIS++, the distributed white pages directory architecture with its centroid-based index and mesh servers
+  match:
+  - 'whois\+\+'
+  stats:
+    direct: 4
+    total: 4
+    first_year: 1995
+    last_year: 1996
 - id: idn
   parent: naming
   kind: technology
@@ -388,10 +432,10 @@ tags:
   - '(?<!json )\bweb\b(?! (signature|encryption|key|token|algorithm)s?\b)|world wide web'
   stats:
     direct: 12
-    total: 542
+    total: 541
     first_year: 1987
     last_year: 2026
-    served: 542
+    served: 541
 - id: robots-txt
   parent: web
   kind: technology
@@ -424,8 +468,8 @@ tags:
   - http
   - httpbis
   stats:
-    direct: 146
-    total: 230
+    direct: 145
+    total: 229
     first_year: 1987
     last_year: 2026
 - id: http2
@@ -474,10 +518,21 @@ tags:
   implies:
   - authentication
   stats:
-    direct: 7
+    direct: 6
     total: 7
     first_year: 2015
     last_year: 2017
+- id: hoba
+  parent: http-authentication
+  kind: technology
+  desc: HOBA (HTTP Origin-Bound Authentication), the digital-signature scheme binding a client key pair to an origin in place of a password
+  match:
+  - '\bHOBA\b'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2015
+    last_year: 2015
 - id: http-apis
   parent: http
   kind: technology
@@ -617,10 +672,21 @@ tags:
   - html
   - mhtml
   stats:
-    direct: 18
+    direct: 16
     total: 18
     first_year: 1995
     last_year: 2017
+- id: mhtml
+  parent: html
+  kind: technology
+  desc: MHTML (MIME Encapsulation of Aggregate Documents, such as HTML) for bundling a hypertext document and its inline resources into one MIME message
+  match:
+  - '\bMHTML\b|MIME Encapsulation of Aggregate Documents'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 1997
+    last_year: 1999
 - id: websocket
   parent: web
   kind: technology
@@ -743,10 +809,10 @@ tags:
   - '\bmessaging\b'
   stats:
     direct: 8
-    total: 908
+    total: 910
     first_year: 1971
     last_year: 2026
-    served: 908
+    served: 910
 - id: email
   parent: messaging
   kind: technology
@@ -770,7 +836,7 @@ tags:
   - spf
   - vpim
   stats:
-    direct: 72
+    direct: 71
     total: 473
     first_year: 1971
     last_year: 2026
@@ -862,8 +928,8 @@ tags:
   - security
   - authentication
   stats:
-    direct: 8
-    total: 50
+    direct: 4
+    total: 52
     first_year: 1988
     last_year: 2026
 - id: spf
@@ -923,6 +989,17 @@ tags:
     total: 1
     first_year: 2019
     last_year: 2019
+- id: arf
+  parent: email-authentication
+  kind: technology
+  desc: ARF (Abuse Reporting Format) for email feedback and authentication failure reports
+  match:
+  - 'Abuse Reporting Format|\bARF\b|Email Feedback Report'
+  stats:
+    direct: 8
+    total: 8
+    first_year: 2010
+    last_year: 2012
 - id: spam
   parent: email
   kind: topic
@@ -935,11 +1012,22 @@ tags:
   - marf
   - repute
   stats:
-    direct: 27
-    total: 27
+    direct: 26
+    total: 29
     first_year: 1999
-    last_year: 2013
-    served: 27
+    last_year: 2020
+    served: 29
+- id: dnsbl
+  parent: spam
+  kind: technology
+  desc: 'DNSBL (DNS-based blocklist): DNS query and response conventions for publishing and consulting lists of sending hosts and domains, including whitelists'
+  match:
+  - '\bdns[bw]ls?\b|\brbls?\b|dns[- ]?based (?:black|block|white|allow)list|dns (?:black|block|white|allow)list'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 2010
+    last_year: 2020
 - id: sieve
   parent: email
   kind: technology
@@ -1193,6 +1281,17 @@ tags:
     total: 2
     first_year: 1984
     last_year: 1986
+- id: sms
+  parent: messaging
+  kind: technology
+  desc: 'SMS (Short Message Service): mobile short text messages, their URI schemes, and gateways to Internet mail'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 2006
+    last_year: 2016
+  match:
+  - '\bSMS\b|\bshort message service\b'
 - id: real-time-communications
   kind: topic
   desc: Real-time voice, video and media communication in general
@@ -1200,10 +1299,10 @@ tags:
   - 'real-?time (communication|media|application)s?|\bvoip\b|voice over IP'
   stats:
     direct: 8
-    total: 918
+    total: 924
     first_year: 1986
     last_year: 2026
-    served: 918
+    served: 924
 - id: sip
   parent: real-time-communications
   kind: technology
@@ -1520,8 +1619,8 @@ tags:
   groups:
   - netvc
   stats:
-    direct: 31
-    total: 54
+    direct: 25
+    total: 64
     first_year: 1986
     last_year: 2026
 - id: opus
@@ -1603,6 +1702,105 @@ tags:
     total: 2
     first_year: 2020
     last_year: 2024
+- id: g711
+  parent: codecs
+  kind: technology
+  desc: G.711 ITU-T narrowband PCM speech coding, its lossless and wideband extensions, and their payload formats
+  match:
+  - '\bG\.711'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 2008
+    last_year: 2015
+- id: g729
+  parent: codecs
+  kind: technology
+  desc: G.729 ITU-T low-rate speech coding, its wideband extensions, and their payload formats
+  match:
+  - '\bG\.729'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 2006
+    last_year: 2009
+- id: g722
+  parent: codecs
+  kind: technology
+  desc: G.722 ITU-T wideband speech coding, its G.722.1 and G.722.2 variants, and their payload formats
+  match:
+  - '\bG\.722'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 2001
+    last_year: 2016
+- id: mp3
+  parent: codecs
+  kind: technology
+  desc: MP3 (MPEG-1/2 Audio Layer III) audio coding and its loss-tolerant RTP payload formats
+  match:
+  - '\bMP3\b'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 2001
+    last_year: 2008
+- id: hevc
+  parent: codecs
+  kind: technology
+  desc: HEVC (High Efficiency Video Coding), also published as ITU-T H.265, and its RTP payload format
+  match:
+  - '\bHEVC\b|\bH\.265\b|High Efficiency Video Coding'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 2016
+    last_year: 2025
+- id: vorbis
+  parent: codecs
+  kind: technology
+  desc: Vorbis open audio coding and its RTP payload format
+  match:
+  - '\bVorbis\b'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2008
+    last_year: 2008
+- id: speex
+  parent: codecs
+  kind: technology
+  desc: Speex open speech coding for voice over IP and its RTP payload format
+  match:
+  - '\bSpeex\b'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2009
+    last_year: 2009
+- id: ilbc
+  parent: codecs
+  kind: technology
+  desc: iLBC (internet Low Bit Rate Codec) narrowband speech coding for lossy links and its payload format
+  match:
+  - '\biLBC\b|Internet Low Bit Rate Codec'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 2004
+    last_year: 2004
+- id: ogg
+  parent: codecs
+  kind: technology
+  desc: Ogg encapsulation format, its media types, and its mappings for carrying coded audio
+  match:
+  - '\bOgg\b'
+  stats:
+    direct: 5
+    total: 5
+    first_year: 2003
+    last_year: 2018
 - id: streaming
   parent: real-time-communications
   kind: topic
@@ -1612,10 +1810,10 @@ tags:
   - mops
   stats:
     direct: 4
-    total: 14
+    total: 22
     first_year: 1998
     last_year: 2025
-    served: 14
+    served: 22
 - id: rtsp
   parent: streaming
   kind: technology
@@ -1637,6 +1835,17 @@ tags:
     direct: 3
     total: 3
     first_year: 2013
+    last_year: 2016
+- id: iptv
+  parent: streaming
+  kind: technology
+  desc: IPTV (Internet Protocol television) service delivery, channel distribution and operational requirements
+  match:
+  - '\biptv\b|\binternet protocol television\b'
+  stats:
+    direct: 8
+    total: 8
+    first_year: 2008
     last_year: 2016
 - id: conferencing
   parent: real-time-communications
@@ -1716,7 +1925,7 @@ tags:
   - pint
   - spirits
   stats:
-    direct: 20
+    direct: 13
     total: 65
     first_year: 1995
     last_year: 2019
@@ -1770,6 +1979,30 @@ tags:
     total: 4
     first_year: 2002
     last_year: 2019
+- id: pint
+  parent: pstn-interop
+  kind: technology
+  desc: 'PINT (PSTN/Internet Interworking): SIP and SDP extensions by which Internet applications request telephone call services such as click-to-dial, fax delivery and voice access, with the service protocol
+    and its MIB'
+  match:
+  - '\bPINT\b'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 1998
+    last_year: 2001
+- id: spirits
+  parent: pstn-interop
+  kind: technology
+  desc: 'SPIRITS (Services in the PSTN/IN Requesting Internet Services): architecture, requirements and protocol by which intelligent network service nodes invoke services hosted on the Internet, the direction
+    opposite to PINT'
+  match:
+  - '\bSPIRITS\b|PSTN/IN requesting'
+  stats:
+    direct: 4
+    total: 4
+    first_year: 2000
+    last_year: 2004
 - id: emergency-services
   parent: real-time-communications
   kind: topic
@@ -1780,7 +2013,7 @@ tags:
   - ecrit
   - ieprep
   stats:
-    direct: 27
+    direct: 25
     total: 35
     first_year: 2003
     last_year: 2021
@@ -1796,6 +2029,17 @@ tags:
     total: 8
     first_year: 2008
     last_year: 2021
+- id: ecall
+  parent: emergency-services
+  kind: technology
+  desc: 'eCall: pan-European in-vehicle emergency calling, including automatic crash notification and its IP-based next generation'
+  match:
+  - '\becall\b'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 2017
+    last_year: 2017
 - id: routing
   kind: topic
   desc: 'Routing in general: routers, routing systems and cross-protocol routing matters'
@@ -1827,21 +2071,21 @@ tags:
   - sdr
   stats:
     direct: 24
-    total: 46
+    total: 42
     first_year: 1984
     last_year: 2025
-    served: 88
+    served: 84
 - id: ecmp
   parent: routing-architecture
   kind: technology
   desc: ECMP (Equal-Cost Multipath) and load-balanced forwarding
   match:
-  - '\bECMP\b|equal-cost multi|link aggregation group'
+  - '\bECMP\b|equal-cost multi'
   stats:
-    direct: 22
-    total: 22
+    direct: 18
+    total: 18
     first_year: 1999
-    last_year: 2024
+    last_year: 2022
 - id: tvr
   parent: routing
   kind: technology
@@ -2136,11 +2380,11 @@ tags:
   - mdns
   - sip
   stats:
-    direct: 123
-    total: 303
+    direct: 121
+    total: 305
     first_year: 1985
     last_year: 2026
-    served: 322
+    served: 324
 - id: madcap
   parent: multicast
   kind: technology
@@ -2165,10 +2409,21 @@ tags:
   implies:
   - multicast
   stats:
-    direct: 71
+    direct: 56
     total: 71
     first_year: 1997
     last_year: 2026
+- id: pim-sm
+  parent: pim
+  kind: technology
+  desc: PIM-SM (Protocol Independent Multicast - Sparse Mode), the shared-tree and source-tree sparse mode specification and its extensions
+  match:
+  - '\bPIM-SM\b|\bPIM\s+sparse[- ]mode\b|protocol independent multicast\s*[-–]\s*sparse mode'
+  stats:
+    direct: 15
+    total: 15
+    first_year: 1997
+    last_year: 2022
 - id: igmp
   parent: multicast
   kind: technology
@@ -2282,10 +2537,43 @@ tags:
   - multicast
   - security
   stats:
-    direct: 18
-    total: 18
+    direct: 11
+    total: 22
     first_year: 2003
-    last_year: 2011
+    last_year: 2017
+- id: gdoi
+  parent: multicast-security
+  kind: technology
+  desc: GDOI (Group Domain of Interpretation), the ISAKMP group key management protocol distributing keys and policy to IPsec group members
+  match:
+  - '\bGDOI\b|\bGroup Domain of Interpretation\b'
+  stats:
+    direct: 5
+    total: 5
+    first_year: 2003
+    last_year: 2017
+- id: gsakmp
+  parent: multicast-security
+  kind: technology
+  desc: GSAKMP (Group Secure Association Key Management Protocol), group key creation and distribution with delegated group-owner policy
+  match:
+  - '\bGSAKMP\b|\bGroup Secure Association Key Management Protocol\b'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2006
+    last_year: 2006
+- id: tesla
+  parent: multicast-security
+  kind: technology
+  desc: TESLA (Timed Efficient Stream Loss-tolerant Authentication), delayed-key-disclosure source authentication for multicast and broadcast streams
+  match:
+  - '\bTESLA\b|\bTimed Efficient Stream Loss-tolerant Authentication\b'
+  stats:
+    direct: 5
+    total: 5
+    first_year: 2005
+    last_year: 2012
 - id: reliable-multicast
   parent: multicast
   kind: topic
@@ -2296,11 +2584,11 @@ tags:
   groups:
   - rmt
   stats:
-    direct: 22
-    total: 32
+    direct: 18
+    total: 33
     first_year: 1991
     last_year: 2022
-    served: 32
+    served: 33
 - id: flute
   parent: reliable-multicast
   kind: technology
@@ -2329,6 +2617,39 @@ tags:
     total: 7
     first_year: 2004
     last_year: 2017
+- id: pgm
+  parent: reliable-multicast
+  kind: technology
+  desc: PGM (Pragmatic General Multicast) reliable multicast transport with NAK-based loss recovery and router assistance
+  match:
+  - '\bpgm\b|pragmatic general multicast'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2001
+    last_year: 2001
+- id: alc
+  parent: reliable-multicast
+  kind: technology
+  desc: ALC (Asynchronous Layered Coding) protocol instantiation for massively scalable one-to-many reliable content delivery
+  match:
+  - '\balc\b|asynchronous layered coding'
+  stats:
+    direct: 6
+    total: 6
+    first_year: 2002
+    last_year: 2017
+- id: lct
+  parent: reliable-multicast
+  kind: technology
+  desc: LCT (Layered Coding Transport) building block for congestion-controlled layered multicast content delivery
+  match:
+  - '\blct\b|layered coding transport'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 2002
+    last_year: 2010
 - id: mpls
   parent: routing
   kind: technology
@@ -2349,10 +2670,21 @@ tags:
   match:
   - '\bLDP\b|label distribution protocol'
   stats:
-    direct: 64
+    direct: 57
     total: 64
     first_year: 1984
     last_year: 2024
+- id: cr-ldp
+  parent: ldp
+  kind: technology
+  desc: CR-LDP (Constraint-Based Routing Label Distribution Protocol), signalling of explicitly routed and traffic-engineered LSPs, including LSP modification and its managed objects
+  match:
+  - '\bCR[- ]?LDP\b|constraint-based (?:routing )?label distribution protocol|constraint-based LSP setup'
+  stats:
+    direct: 7
+    total: 7
+    first_year: 2002
+    last_year: 2003
 - id: mpls-tp
   parent: mpls
   kind: technology
@@ -2672,7 +3004,7 @@ tags:
   implies:
   - ip-mobility
   stats:
-    direct: 47
+    direct: 27
     total: 55
     first_year: 1989
     last_year: 2026
@@ -2709,6 +3041,39 @@ tags:
     total: 3
     first_year: 2003
     last_year: 2007
+- id: dlep
+  parent: manet
+  kind: technology
+  desc: DLEP (Dynamic Link Exchange Protocol) for exchanging link quality and status between a radio modem and its attached router
+  match:
+  - '\bDLEP\b|Dynamic Link Exchange Protocol'
+  stats:
+    direct: 9
+    total: 9
+    first_year: 2017
+    last_year: 2026
+- id: nhdp
+  parent: manet
+  kind: technology
+  desc: NHDP (Neighborhood Discovery Protocol) for one-hop and symmetric two-hop neighbour discovery in mobile ad hoc networks
+  match:
+  - '\bNHDP\b|Neighborhood Discovery Protocol'
+  stats:
+    direct: 11
+    total: 11
+    first_year: 2011
+    last_year: 2016
+- id: tbrpf
+  parent: manet
+  kind: technology
+  desc: TBRPF (Topology Dissemination Based on Reverse-Path Forwarding) proactive link-state routing for mobile ad hoc networks
+  match:
+  - '\bTBRPF\b|Topology Dissemination Based on Reverse-Path'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2004
+    last_year: 2004
 - id: lisp
   parent: routing
   kind: technology
@@ -2809,10 +3174,10 @@ tags:
   - '(?<!real-time )(?<!realtime )(?<!real time )\btransport (protocol|layer|service)s?\b(?! security)'
   stats:
     direct: 17
-    total: 851
+    total: 852
     first_year: 1973
     last_year: 2026
-    served: 851
+    served: 852
   yields_to:
   - dtls
   - rtcp
@@ -2845,10 +3210,21 @@ tags:
   - mib
   - yang
   stats:
-    direct: 19
+    direct: 18
     total: 19
     first_year: 1973
     last_year: 2024
+- id: crc
+  parent: checksum
+  kind: technology
+  desc: CRC (cyclic redundancy check) polynomial error detection over frames and payloads, and the choice of generator polynomials
+  match:
+  - '\bcrc(?:-?32c?|-?16|-?\d+)?\b|cyclic redundancy check'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2002
+    last_year: 2002
 - id: rdp
   parent: transport
   kind: technology
@@ -3041,11 +3417,11 @@ tags:
   - ecm
   - iccrg
   stats:
-    direct: 76
-    total: 131
+    direct: 72
+    total: 135
     first_year: 1984
     last_year: 2026
-    served: 131
+    served: 135
 - id: rtp-congestion-control
   parent: congestion-control
   kind: technology
@@ -3168,6 +3544,39 @@ tags:
     total: 5
     first_year: 2012
     last_year: 2016
+- id: newreno
+  parent: congestion-control
+  kind: technology
+  desc: NewReno, the fast recovery and fast retransmit modification to TCP congestion control
+  match:
+  - '\bnew[- ]?reno\b'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 1999
+    last_year: 2012
+- id: dctcp
+  parent: congestion-control
+  kind: technology
+  desc: DCTCP (Data Center TCP), the ECN-based congestion control for data center networks
+  match:
+  - '\bDCTCP\b|\bdata[- ]cent(?:er|re) TCP\b'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2017
+    last_year: 2017
+- id: tfrc
+  parent: congestion-control
+  kind: technology
+  desc: TFRC (TCP-Friendly Rate Control), equation-based rate control for streaming and DCCP, including its small-packet variant
+  match:
+  - '\bTFRC(?:-SP)?\b|TCP[- ]?friendly rate control'
+  stats:
+    direct: 6
+    total: 6
+    first_year: 2003
+    last_year: 2011
 - id: qos
   parent: transport
   kind: topic
@@ -3275,11 +3684,11 @@ tags:
   match:
   - header compression|compress(ing|ed|ion of)? .{0,20}headers?
   stats:
-    direct: 23
-    total: 49
+    direct: 19
+    total: 50
     first_year: 1990
     last_year: 2023
-    served: 49
+    served: 50
 - id: rohc
   parent: header-compression
   kind: technology
@@ -3298,6 +3707,28 @@ tags:
     total: 26
     first_year: 2001
     last_year: 2013
+- id: crtp
+  parent: header-compression
+  kind: technology
+  desc: 'CRTP (Compressed RTP): compressing IP/UDP/RTP headers over low-speed serial links, including the enhanced variant for lossy, high-delay links'
+  match:
+  - '\bc-?rtp\b|\becrtp\b|enhanced compressed rtp|compress(ing|ed|ion of) +ip/udp/rtp headers?'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 1999
+    last_year: 2003
+- id: iphc
+  parent: header-compression
+  kind: technology
+  desc: IPHC (IP Header Compression, RFC 2507) and its use over PPP
+  match:
+  - '\bIPHC\b|^IP Header Compression( over PPP)?(?= ;|$)'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 1999
+    last_year: 2003
 - id: fec
   parent: transport
   kind: technology
@@ -3314,7 +3745,7 @@ tags:
   - pce
   - pseudowire
   stats:
-    direct: 32
+    direct: 27
     total: 44
     first_year: 1999
     last_year: 2023
@@ -3331,6 +3762,50 @@ tags:
     total: 12
     first_year: 2010
     last_year: 2020
+- id: raptor
+  parent: fec
+  kind: technology
+  desc: Raptor fountain codes, including RaptorQ, for object delivery and FEC framework schemes
+  match:
+  - '\braptor-?q?\b'
+  stats:
+    direct: 5
+    total: 5
+    first_year: 2007
+    last_year: 2012
+- id: ldpc
+  parent: fec
+  kind: technology
+  desc: LDPC (low-density parity-check) staircase and triangle codes for packet erasure correction
+  match:
+  - '\bLDPC\b|low[ -]density parity[ -]check'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 2008
+    last_year: 2012
+- id: tetrys
+  parent: fec
+  kind: technology
+  desc: Tetrys on-the-fly network coding with feedback for elastic in-order loss recovery
+  match:
+  - '\btetrys\b'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2023
+    last_year: 2023
+- id: bats
+  parent: fec
+  kind: technology
+  desc: BATS (batched sparse) coding scheme for multi-hop transport with recoding at intermediate nodes
+  match:
+  - '\bBATS\b|batched sparse'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2023
+    last_year: 2023
 - id: taps
   parent: transport
   kind: technology
@@ -3417,8 +3892,8 @@ tags:
   - multi6
   - v6ops
   stats:
-    direct: 551
-    total: 726
+    direct: 544
+    total: 727
     first_year: 1993
     last_year: 2026
 - id: neighbor-discovery
@@ -3472,11 +3947,11 @@ tags:
   groups:
   - ngtrans
   stats:
-    direct: 38
-    total: 119
+    direct: 34
+    total: 127
     first_year: 1994
     last_year: 2025
-    served: 120
+    served: 128
 - id: softwire
   parent: ipv6-transition
   kind: technology
@@ -3594,6 +4069,28 @@ tags:
     total: 4
     first_year: 2012
     last_year: 2025
+- id: isatap
+  parent: ipv6-transition
+  kind: technology
+  desc: ISATAP (Intra-Site Automatic Tunnel Addressing Protocol), automatic host-to-router and host-to-host IPv6 tunnelling across an IPv4 intranet
+  match:
+  - ISATAP|Intra-Site Automatic Tunnel
+  stats:
+    direct: 7
+    total: 7
+    first_year: 2005
+    last_year: 2013
+- id: siit
+  parent: ipv6-transition
+  kind: technology
+  desc: SIIT (Stateless IP/ICMP Translation), the stateless algorithm for translating packet headers between IPv6 and IPv4
+  match:
+  - SIIT|Stateless IP/ICMP Translation
+  stats:
+    direct: 9
+    total: 9
+    first_year: 2000
+    last_year: 2019
 - id: ipv4
   parent: internet-layer
   kind: technology
@@ -3717,7 +4214,7 @@ tags:
   - stun
   - turn
   stats:
-    direct: 73
+    direct: 72
     total: 97
     first_year: 1994
     last_year: 2022
@@ -3731,9 +4228,20 @@ tags:
   - pcp
   stats:
     direct: 13
-    total: 13
+    total: 14
     first_year: 2013
     last_year: 2016
+- id: nat-pmp
+  parent: pcp
+  kind: technology
+  desc: NAT-PMP (NAT Port Mapping Protocol), the predecessor port mapping protocol that PCP succeeds and interworks with
+  match:
+  - '\bNAT-?PMP\b|\bNAT port mapping protocol\b'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2013
+    last_year: 2013
 - id: cgn
   parent: nat
   kind: technology
@@ -4123,11 +4631,11 @@ tags:
   match_title_only:
   - link.layer|data link
   stats:
-    direct: 10
-    total: 702
+    direct: 9
+    total: 714
     first_year: 1972
     last_year: 2026
-    served: 702
+    served: 714
 - id: ppp
   parent: link-layer
   kind: technology
@@ -4375,10 +4883,32 @@ tags:
   match:
   - '\b3GPP2?\b|\bcellular\b|\bLTE\b|\b5G\b|\bGPRS\b|\bUMTS\b'
   stats:
-    direct: 78
-    total: 78
+    direct: 73
+    total: 81
     first_year: 1994
     last_year: 2025
+- id: gsm
+  parent: cellular
+  kind: technology
+  desc: 'GSM (Global System for Mobile Communications): SIM-based authentication, SMS transport and second-generation interworking'
+  match:
+  - '\bGSM\b|\bGlobal System for Mobile\b'
+  stats:
+    direct: 6
+    total: 6
+    first_year: 2005
+    last_year: 2014
+- id: cdma2000
+  parent: cellular
+  kind: technology
+  desc: 'cdma2000 (Code Division Multiple Access 2000): 3GPP2 packet-data networks, wireless IP, AAA and Mobile IP support'
+  match:
+  - '\bcdma[\s-]?2000\b'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 2001
+    last_year: 2007
 - id: slip
   parent: link-layer
   kind: technology
@@ -4491,10 +5021,21 @@ tags:
   match:
   - 'MAPOS|SONET|\bSDH\b'
   stats:
-    direct: 33
+    direct: 24
     total: 33
     first_year: 1994
     last_year: 2011
+- id: mapos
+  parent: sonet
+  kind: technology
+  desc: MAPOS (Multiple Access Protocol over SONET/SDH), covering the protocol itself and its version, 16-bit address, multicast, node switching and address resolution extensions
+  match:
+  - '\bMAPOS\b'
+  stats:
+    direct: 9
+    total: 9
+    first_year: 1997
+    last_year: 2003
 - id: amateur-radio
   parent: link-layer
   kind: technology
@@ -4517,8 +5058,8 @@ tags:
   - snadlc
   - snanau
   stats:
-    direct: 21
-    total: 30
+    direct: 9
+    total: 31
     first_year: 1993
     last_year: 2011
 - id: tn3270
@@ -4534,6 +5075,39 @@ tags:
     total: 9
     first_year: 1994
     last_year: 2011
+- id: appn
+  parent: sna
+  kind: technology
+  desc: APPN (Advanced Peer-to-Peer Networking) peer-based SNA node networking, routing and its management objects
+  match:
+  - '\bAPPN\b|advanced peer-to-peer networking'
+  stats:
+    direct: 9
+    total: 9
+    first_year: 1994
+    last_year: 1999
+- id: dlsw
+  parent: sna
+  kind: technology
+  desc: DLSw (Data Link Switching) encapsulation of SNA and NetBIOS traffic over TCP/IP, and its switch-to-switch protocol
+  match:
+  - '\bDLSw\b|data link switching'
+  stats:
+    direct: 6
+    total: 6
+    first_year: 1993
+    last_year: 1997
+- id: link-aggregation
+  parent: link-layer
+  kind: technology
+  desc: 'Link aggregation (LAG, IEEE 802.1AX): bundling parallel links, and protocol behaviour over the bundle'
+  match:
+  - 'link aggregation|\(LAG\)'
+  stats:
+    direct: 8
+    total: 8
+    first_year: 2011
+    last_year: 2024
 - id: security
   kind: topic
   desc: 'Security in general: threat models, guidance and handbooks not specific to one mechanism'
@@ -4647,10 +5221,10 @@ tags:
   - xml-signatures
   stats:
     direct: 118
-    total: 1941
+    total: 1689
     first_year: 1974
     last_year: 2026
-    served: 2153
+    served: 2156
 - id: tls
   parent: security
   kind: technology
@@ -4695,7 +5269,7 @@ tags:
   - pki4ipsec
   - sec
   stats:
-    direct: 51
+    direct: 50
     total: 187
     first_year: 1988
     last_year: 2025
@@ -4706,8 +5280,8 @@ tags:
   match:
   - '\bIKEv?2?\b|internet key exchange|\bISAKMP\b|oakley|photuris'
   stats:
-    direct: 99
-    total: 103
+    direct: 95
+    total: 104
     first_year: 1995
     last_year: 2025
 - id: mobike
@@ -4723,6 +5297,28 @@ tags:
     total: 4
     first_year: 2006
     last_year: 2016
+- id: photuris
+  parent: ike
+  kind: technology
+  desc: Photuris, session-key management protocol for IPsec, with its extended schemes and attributes
+  match:
+  - '\bphoturis\b'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 1995
+    last_year: 1999
+- id: kink
+  parent: ike
+  kind: technology
+  desc: 'KINK (Kerberized Internet Negotiation of Keys): IPsec key management using Kerberos'
+  match:
+  - '\bKINK\b|kerberized internet negotiation'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 2001
+    last_year: 2006
 - id: esp
   parent: ipsec
   kind: technology
@@ -4861,8 +5457,8 @@ tags:
   - lamps
   - smime
   stats:
-    direct: 97
-    total: 173
+    direct: 98
+    total: 174
     first_year: 1998
     last_year: 2026
 - id: s-mime
@@ -4949,10 +5545,21 @@ tags:
   implies:
   - authentication
   stats:
-    direct: 66
-    total: 66
+    direct: 65
+    total: 67
     first_year: 1993
     last_year: 2024
+- id: spnego
+  parent: gssapi
+  kind: technology
+  desc: SPNEGO (Simple and Protected GSS-API Negotiation Mechanism), negotiation of a common security mechanism between peers and its use in HTTP authentication
+  match:
+  - '\bSPNEGO\b|simple and protected (?:GSS-?API )?negotiation'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 1998
+    last_year: 2006
 - id: sasl
   parent: security
   kind: technology
@@ -5211,252 +5818,6 @@ tags:
     total: 7
     first_year: 1998
     last_year: 2026
-- id: cryptography
-  parent: security
-  kind: technology
-  desc: 'Cryptography: cryptographic algorithms, parameters and usage'
-  match:
-  - '\bencrypt|\bcipher|cryptograph'
-  - 'PKCS ?#?\d'
-  groups:
-  - cfrg
-  - curdle
-  yields_to:
-  - dns-privacy
-  - doh
-  - dot
-  - performance-measurement
-  - user-guides
-  - aes
-  - chacha20
-  - cms
-  - cose
-  - curve25519
-  - des
-  - dtls
-  - eddsa
-  - edhoc
-  - elliptic-curve
-  - esp
-  - hmac
-  - ike
-  - ipsec
-  - jose
-  - jwt
-  - key-management
-  - md5
-  - mls
-  - openpgp
-  - oscore
-  - otp
-  - pake
-  - password-hashing
-  - pem
-  - post-quantum
-  - randomness
-  - rsa
-  - s-mime
-  - sha
-  - srtp
-  - ssh
-  - tcpcrypt
-  - tls
-  stats:
-    direct: 167
-    total: 517
-    first_year: 1986
-    last_year: 2026
-- id: aes
-  parent: cryptography
-  kind: technology
-  desc: The AES (Advanced Encryption Standard) block cipher and its modes
-  match:
-  - '\bAES\b|advanced encryption standard|rijndael'
-  stats:
-    direct: 38
-    total: 38
-    first_year: 2002
-    last_year: 2023
-- id: des
-  parent: cryptography
-  kind: technology
-  desc: DES (Data Encryption Standard) and Triple-DES (historic ciphers)
-  match:
-  - '\b3?DES\b|data encryption standard|triple-des'
-  stats:
-    direct: 19
-    total: 19
-    first_year: 1995
-    last_year: 2022
-- id: chacha20
-  parent: cryptography
-  kind: technology
-  desc: ChaCha20 and Poly1305
-  match:
-  - chacha20|poly1305|salsa20
-  stats:
-    direct: 6
-    total: 6
-    first_year: 2015
-    last_year: 2020
-- id: rsa
-  parent: cryptography
-  kind: technology
-  desc: RSA (Rivest-Shamir-Adleman) encryption and signatures
-  match:
-  - '\bRSA\b'
-  stats:
-    direct: 29
-    total: 29
-    first_year: 1998
-    last_year: 2026
-- id: elliptic-curve
-  parent: cryptography
-  kind: technology
-  desc: 'Elliptic-Curve Cryptography: elliptic curve cryptography'
-  match:
-  - 'elliptic curve|\bECDSA\b|\bECDH\b'
-  stats:
-    direct: 50
-    total: 71
-    first_year: 2002
-    last_year: 2026
-- id: curve25519
-  parent: elliptic-curve
-  kind: technology
-  desc: Curve25519 and Curve448
-  match:
-  - curve25519|curve448|x25519
-  stats:
-    direct: 10
-    total: 10
-    first_year: 2016
-    last_year: 2026
-- id: eddsa
-  parent: elliptic-curve
-  kind: technology
-  desc: EdDSA (Edwards-curve Digital Signature Algorithm)
-  match:
-  - '\bEdDSA\b|ed25519|ed448'
-  stats:
-    direct: 14
-    total: 14
-    first_year: 2015
-    last_year: 2024
-- id: sha
-  parent: cryptography
-  kind: technology
-  desc: The SHA (Secure Hash Algorithm) family of hash functions
-  match:
-  - '\bSHA-?[123]?\d*\b|secure hash'
-  stats:
-    direct: 40
-    total: 40
-    first_year: 1995
-    last_year: 2026
-- id: md5
-  parent: cryptography
-  kind: technology
-  desc: MD5 (Message Digest 5) and the MD2/MD4 message digests
-  match:
-  - '\bMD[245]\b|message digest'
-  stats:
-    direct: 33
-    total: 33
-    first_year: 1990
-    last_year: 2025
-- id: hmac
-  parent: cryptography
-  kind: technology
-  desc: HMAC (Hash-based Message Authentication Code)
-  match:
-  - '\bHMAC\b'
-  stats:
-    direct: 34
-    total: 34
-    first_year: 1997
-    last_year: 2022
-- id: post-quantum
-  parent: cryptography
-  kind: technology
-  desc: Post-Quantum Cryptography and migration
-  match:
-  - 'post-quantum|\bML-KEM\b|\bML-DSA\b|\bSLH-DSA\b|hash-based signature'
-  - quantum internet|quantum network
-  groups:
-  - pquip
-  stats:
-    direct: 30
-    total: 30
-    first_year: 2018
-    last_year: 2026
-- id: key-management
-  parent: cryptography
-  kind: topic
-  desc: 'Key Management: key establishment, provisioning and storage'
-  match:
-  - key (management|distribution|agreement|derivation|wrap|provisioning)
-  - '\bMIKEY\b'
-  groups:
-  - keyprov
-  - sacred
-  stats:
-    direct: 92
-    total: 92
-    first_year: 1989
-    last_year: 2026
-    served: 92
-- id: randomness
-  parent: cryptography
-  kind: technology
-  desc: Randomness requirements and generation
-  match:
-  - randomness|random number
-  - password generator
-  stats:
-    direct: 7
-    total: 7
-    first_year: 1986
-    last_year: 2026
-- id: otp
-  parent: cryptography
-  kind: technology
-  desc: One-Time Passwords (One-Time Password) systems
-  match:
-  - 'one-time password|\bOTP\b|\bHOTP\b|\bTOTP\b|s/key'
-  groups:
-  - otp
-  implies:
-  - authentication
-  stats:
-    direct: 13
-    total: 13
-    first_year: 1995
-    last_year: 2012
-- id: pake
-  parent: cryptography
-  kind: technology
-  desc: PAKE (Password-Authenticated Key Exchange)
-  match:
-  - '\bPAKE\b|password.authenticated key|\bSPAKE2\b'
-  implies:
-  - authentication
-  stats:
-    direct: 14
-    total: 14
-    first_year: 2010
-    last_year: 2025
-- id: password-hashing
-  parent: cryptography
-  kind: technology
-  desc: Password hashing and memory-hard functions
-  match:
-  - argon2|password hashing|memory-hard
-  stats:
-    direct: 1
-    total: 1
-    first_year: 2021
-    last_year: 2021
 - id: xml-signatures
   parent: security
   kind: technology
@@ -5516,10 +5877,10 @@ tags:
   - mile
   stats:
     direct: 5
-    total: 23
+    total: 24
     first_year: 1989
-    last_year: 2022
-    served: 23
+    last_year: 2024
+    served: 24
 - id: iodef
   parent: incident-response
   kind: technology
@@ -5534,6 +5895,17 @@ tags:
     total: 18
     first_year: 2001
     last_year: 2020
+- id: rid
+  parent: incident-response
+  kind: technology
+  desc: 'RID (Real-time Inter-network Defense): policy-governed exchange of IODEF incident reports and trace requests between network operators, and its transport bindings'
+  match:
+  - 'real-?time inter-?network defense|\(rid\)|\brid (messages|protocol|transport)\b'
+  stats:
+    direct: 5
+    total: 5
+    first_year: 2010
+    last_year: 2024
 - id: intrusion-detection
   parent: security
   kind: topic
@@ -5544,11 +5916,33 @@ tags:
   - idwg
   - oim
   stats:
-    direct: 6
+    direct: 3
     total: 6
     first_year: 1990
     last_year: 2007
     served: 6
+- id: idmef
+  parent: intrusion-detection
+  kind: technology
+  desc: IDMEF (Intrusion Detection Message Exchange Format)
+  match:
+  - '\bIDMEF\b|intrusion detection message exchange format'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 2007
+    last_year: 2007
+- id: idxp
+  parent: intrusion-detection
+  kind: technology
+  desc: IDXP (Intrusion Detection Exchange Protocol) over BEEP
+  match:
+  - '\bIDXP\b|intrusion detection exchange protocol'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2007
+    last_year: 2007
 - id: ddos
   parent: security
   kind: topic
@@ -5611,7 +6005,7 @@ tags:
     total: 149
     first_year: 1974
     last_year: 2026
-    served: 593
+    served: 595
 - id: webauthn
   parent: authentication
   kind: technology
@@ -5788,6 +6182,463 @@ tags:
     total: 5
     first_year: 2007
     last_year: 2011
+- id: cryptography
+  kind: topic
+  desc: 'Cryptography: algorithms, modes, parameters and their use in Internet protocols'
+  match:
+  - '\bencrypt|\bcipher|cryptograph'
+  - 'PKCS ?#?\d'
+  groups:
+  - cfrg
+  - curdle
+  yields_to:
+  - dns-privacy
+  - doh
+  - dot
+  - performance-measurement
+  - user-guides
+  - aes
+  - chacha20
+  - cms
+  - cose
+  - curve25519
+  - des
+  - dtls
+  - eddsa
+  - edhoc
+  - elliptic-curve
+  - esp
+  - hmac
+  - ike
+  - ipsec
+  - jose
+  - jwt
+  - key-management
+  - md5
+  - mls
+  - openpgp
+  - oscore
+  - otp
+  - pake
+  - password-hashing
+  - pem
+  - post-quantum
+  - randomness
+  - rsa
+  - s-mime
+  - sha
+  - srtp
+  - ssh
+  - tcpcrypt
+  - tls
+  stats:
+    direct: 152
+    total: 539
+    first_year: 1986
+    last_year: 2026
+    served: 539
+  implies:
+  - security
+- id: aes
+  parent: cryptography
+  kind: technology
+  desc: The AES (Advanced Encryption Standard) block cipher and its modes
+  match:
+  - '\bAES\b|advanced encryption standard|rijndael'
+  stats:
+    direct: 38
+    total: 38
+    first_year: 2002
+    last_year: 2023
+- id: des
+  parent: cryptography
+  kind: technology
+  desc: DES (Data Encryption Standard) and Triple-DES (historic ciphers)
+  match:
+  - '\b3?DES\b|data encryption standard|triple-des'
+  stats:
+    direct: 19
+    total: 19
+    first_year: 1995
+    last_year: 2022
+- id: chacha20
+  parent: cryptography
+  kind: technology
+  desc: ChaCha20 and Poly1305
+  match:
+  - chacha20|poly1305|salsa20
+  stats:
+    direct: 6
+    total: 6
+    first_year: 2015
+    last_year: 2020
+- id: rsa
+  parent: cryptography
+  kind: technology
+  desc: RSA (Rivest-Shamir-Adleman) encryption and signatures
+  match:
+  - '\bRSA\b'
+  stats:
+    direct: 29
+    total: 29
+    first_year: 1998
+    last_year: 2026
+- id: elliptic-curve
+  parent: cryptography
+  kind: technology
+  desc: 'Elliptic-Curve Cryptography: elliptic curve cryptography'
+  match:
+  - 'elliptic curve|\bECDH\b'
+  stats:
+    direct: 38
+    total: 71
+    first_year: 2002
+    last_year: 2026
+- id: curve25519
+  parent: elliptic-curve
+  kind: technology
+  desc: Curve25519 and Curve448
+  match:
+  - curve25519|curve448|x25519
+  stats:
+    direct: 10
+    total: 10
+    first_year: 2016
+    last_year: 2026
+- id: eddsa
+  parent: elliptic-curve
+  kind: technology
+  desc: EdDSA (Edwards-curve Digital Signature Algorithm)
+  match:
+  - '\bEdDSA\b|ed25519|ed448'
+  stats:
+    direct: 14
+    total: 14
+    first_year: 2015
+    last_year: 2024
+- id: ecdsa
+  parent: elliptic-curve
+  kind: technology
+  desc: ECDSA (Elliptic Curve Digital Signature Algorithm) and its curves and encodings
+  match:
+  - '\bECDSA\b'
+  stats:
+    direct: 14
+    total: 14
+    first_year: 2005
+    last_year: 2022
+- id: sha
+  parent: cryptography
+  kind: technology
+  desc: The SHA (Secure Hash Algorithm) family of hash functions
+  match:
+  - '\bSHA-?[123]?\d*\b|secure hash'
+  stats:
+    direct: 40
+    total: 40
+    first_year: 1995
+    last_year: 2026
+- id: md5
+  parent: cryptography
+  kind: technology
+  desc: MD5 (Message Digest 5) and the MD2/MD4 message digests
+  match:
+  - '\bMD[245]\b|message digest'
+  stats:
+    direct: 33
+    total: 33
+    first_year: 1990
+    last_year: 2025
+- id: hmac
+  parent: cryptography
+  kind: technology
+  desc: HMAC (Hash-based Message Authentication Code)
+  match:
+  - '\bHMAC\b'
+  stats:
+    direct: 34
+    total: 34
+    first_year: 1997
+    last_year: 2022
+- id: post-quantum
+  parent: cryptography
+  kind: technology
+  desc: Post-Quantum Cryptography and migration
+  match:
+  - 'post-quantum|\bML-KEM\b|\bML-DSA\b|\bSLH-DSA\b|hash-based signature'
+  - quantum internet|quantum network
+  groups:
+  - pquip
+  stats:
+    direct: 15
+    total: 31
+    first_year: 2018
+    last_year: 2026
+- id: ml-kem
+  parent: post-quantum
+  kind: technology
+  desc: ML-KEM (Module-Lattice-Based Key-Encapsulation Mechanism) key establishment and its use in IETF protocols
+  match:
+  - '\bML-KEM\b|\bKyber\b'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 2026
+    last_year: 2026
+- id: ml-dsa
+  parent: post-quantum
+  kind: technology
+  desc: ML-DSA (Module-Lattice-Based Digital Signature Algorithm) signatures and their use in IETF protocols
+  match:
+  - '\bML-DSA\b|\bDilithium\b'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 2025
+    last_year: 2026
+- id: slh-dsa
+  parent: post-quantum
+  kind: technology
+  desc: SLH-DSA (Stateless Hash-Based Digital Signature Algorithm) signatures and their use in IETF protocols
+  match:
+  - '\bSLH-DSA\b|SPHINCS'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 2025
+    last_year: 2025
+- id: xmss
+  parent: post-quantum
+  kind: technology
+  desc: XMSS (eXtended Merkle Signature Scheme) stateful hash-based signatures and their parameters
+  match:
+  - '\bXMSS\b|extended merkle signature'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 2018
+    last_year: 2025
+- id: lms
+  parent: post-quantum
+  kind: technology
+  desc: LMS (Leighton-Micali Signature) stateful hash-based signatures, including HSS and LM-OTS
+  match:
+  - 'Leighton-Micali|\bLMS\b|\bLM-OTS\b'
+  stats:
+    direct: 7
+    total: 7
+    first_year: 2019
+    last_year: 2025
+- id: key-management
+  parent: cryptography
+  kind: topic
+  desc: 'Key Management: key establishment, provisioning and storage'
+  match:
+  - key (management|distribution|agreement|derivation|wrap|provisioning)
+  - '\bMIKEY\b'
+  groups:
+  - keyprov
+  - sacred
+  stats:
+    direct: 75
+    total: 91
+    first_year: 1989
+    last_year: 2026
+    served: 91
+- id: mikey
+  parent: key-management
+  kind: technology
+  desc: 'MIKEY (Multimedia Internet KEYing): key establishment for real-time multimedia sessions, including its modes, extensions and algorithm profiles'
+  match:
+  - '\bMIKEY\b|Multimedia Internet KEYing'
+  stats:
+    direct: 16
+    total: 16
+    first_year: 2004
+    last_year: 2017
+- id: randomness
+  parent: cryptography
+  kind: technology
+  desc: Randomness requirements and generation
+  match:
+  - randomness|random number
+  - password generator
+  stats:
+    direct: 7
+    total: 7
+    first_year: 1986
+    last_year: 2026
+- id: otp
+  parent: cryptography
+  kind: technology
+  desc: One-Time Passwords (One-Time Password) systems
+  match:
+  - 'one-time password|\bOTP\b|\bHOTP\b|\bTOTP\b|s/key'
+  groups:
+  - otp
+  implies:
+  - authentication
+  stats:
+    direct: 13
+    total: 13
+    first_year: 1995
+    last_year: 2012
+- id: pake
+  parent: cryptography
+  kind: technology
+  desc: PAKE (Password-Authenticated Key Exchange)
+  match:
+  - '\bPAKE\b|password.authenticated key|\bSPAKE2\b'
+  implies:
+  - authentication
+  stats:
+    direct: 9
+    total: 17
+    first_year: 2000
+    last_year: 2025
+- id: spake2
+  parent: pake
+  kind: technology
+  desc: SPAKE2 (Simple Password-Based Encrypted Key Exchange), the CFRG balanced password-authenticated key exchange and its augmented variant
+  match:
+  - '\bSPAKE2\+?\b'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 2023
+    last_year: 2023
+- id: srp
+  parent: pake
+  kind: technology
+  desc: SRP (Secure Remote Password), the verifier-based password authentication and key exchange protocol and its use in TLS and EAP
+  match:
+  - 'Secure Remote Password|\(SRP\)|\bSRP-6a?\b|\bTLS-SRP\b'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 2000
+    last_year: 2007
+- id: dragonfly
+  parent: pake
+  kind: technology
+  desc: Dragonfly, the balanced key exchange from a shared password that resists offline dictionary attack, and its use in IKE and 802.11 SAE
+  match:
+  - '\bdragonfly\b'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2015
+    last_year: 2015
+- id: opaque
+  parent: pake
+  kind: technology
+  desc: OPAQUE, the asymmetric (augmented) password-authenticated key exchange built on an oblivious pseudorandom function, and its TLS and EAP bindings
+  match:
+  - '\bOPAQUE\b.*\b(PAKE|password|key exchange|OPRF)\b|\b(PAKE|password|key exchange|OPRF)\b.*\bOPAQUE\b'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2025
+    last_year: 2025
+- id: jpake
+  parent: pake
+  kind: technology
+  desc: J-PAKE (Password-Authenticated Key Exchange by Juggling), the balanced protocol built from zero-knowledge proofs of discrete logarithm, and its TLS and Thread use
+  match:
+  - '\bJ-?PAKE\b|key exchange by juggling'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2017
+    last_year: 2017
+- id: password-hashing
+  parent: cryptography
+  kind: technology
+  desc: Password hashing and memory-hard functions
+  match:
+  - argon2|password hashing|memory-hard
+  stats:
+    direct: 1
+    total: 5
+    first_year: 2011
+    last_year: 2025
+- id: scrypt
+  parent: password-hashing
+  kind: technology
+  desc: Memory-hard password-based key derivation and key stretching function, and its parameters and test vectors
+  match:
+  - scrypt
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2016
+    last_year: 2016
+- id: pbkdf2
+  parent: password-hashing
+  kind: technology
+  desc: 'PBKDF2 (Password-Based Key Derivation Function 2), the PKCS #5 iterated key stretching function and its test vectors'
+  match:
+  - 'pbkdf-?\s?2'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 2011
+    last_year: 2025
+- id: rc4
+  parent: cryptography
+  kind: technology
+  desc: 'RC4 (Rivest Cipher 4): stream cipher, its cipher suites in TLS and SSH, and its deprecation'
+  match:
+  - '\bRC-?4\b|\barcfour\b'
+  stats:
+    direct: 7
+    total: 7
+    first_year: 2006
+    last_year: 2020
+- id: camellia
+  parent: cryptography
+  kind: technology
+  desc: 'Camellia: 128-bit block cipher, its modes and its cipher suites in TLS, IPsec, CMS and S/MIME'
+  match:
+  - '\bcamellia\b'
+  stats:
+    direct: 10
+    total: 10
+    first_year: 2004
+    last_year: 2012
+- id: aria
+  parent: cryptography
+  kind: technology
+  desc: 'ARIA: Korean block cipher, its GCM and CCM modes and its use in TLS and CMS'
+  match:
+  - '\bARIA\b'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 2010
+    last_year: 2017
+- id: gost
+  parent: cryptography
+  kind: technology
+  desc: 'GOST: Russian national cryptographic algorithms -- block ciphers, hash functions and signature schemes -- and their use in IETF protocols'
+  match:
+  - '\bGOST\b|\bstreebog\b|\bkuznyechik\b'
+  stats:
+    direct: 21
+    total: 21
+    first_year: 2006
+    last_year: 2025
+- id: blake2
+  parent: cryptography
+  kind: technology
+  desc: 'BLAKE2: cryptographic hash function and its keyed MAC mode'
+  match:
+  - '\bblake-?2[bs]?\b'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2015
+    last_year: 2015
 - id: network-management
   kind: topic
   desc: 'Network operations and management: manageability, operational considerations, Network management architectures and operational practice'
@@ -5807,10 +6658,10 @@ tags:
   - opstat
   stats:
     direct: 66
-    total: 1183
+    total: 1185
     first_year: 1969
     last_year: 2026
-    served: 1189
+    served: 1191
 - id: snmp
   parent: network-management
   kind: technology
@@ -6332,6 +7183,17 @@ tags:
     total: 3
     first_year: 1995
     last_year: 2019
+- id: cmip
+  parent: network-management
+  kind: technology
+  desc: 'CMIP (Common Management Information Protocol): OSI-derived network management protocol and services, including its operation over TCP/IP'
+  match:
+  - '\bcmip\b|\bcmot\b|common management information'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 1989
+    last_year: 1990
 - id: applications
   kind: topic
   desc: Application protocols in general
@@ -6339,10 +7201,10 @@ tags:
   - (?<!meta )(?<!constrained )application (protocol|layer)s?
   stats:
     direct: 5
-    total: 796
+    total: 800
     first_year: 1971
     last_year: 2026
-    served: 796
+    served: 800
 - id: ftp
   parent: applications
   kind: technology
@@ -6461,11 +7323,11 @@ tags:
   - edi
   - x25
   stats:
-    direct: 6
-    total: 13
+    direct: 3
+    total: 15
     first_year: 1996
     last_year: 2020
-    served: 13
+    served: 15
 - id: iotp
   parent: e-commerce
   kind: technology
@@ -6477,6 +7339,28 @@ tags:
     total: 7
     first_year: 2000
     last_year: 2004
+- id: ecml
+  parent: e-commerce
+  kind: technology
+  desc: ECML (Electronic Commerce Modeling Language), field names and formats for passing payment, billing and shipping data to merchant checkout forms
+  match:
+  - '\bECML\b|electronic commerce model(?:l)?ing language'
+  stats:
+    direct: 4
+    total: 4
+    first_year: 1999
+    last_year: 2005
+- id: cybercash
+  parent: e-commerce
+  kind: technology
+  desc: CyberCash credit card payment protocol (historic)
+  match:
+  - cybercash
+  stats:
+    direct: 1
+    total: 1
+    first_year: 1996
+    last_year: 1996
 - id: p2p
   parent: applications
   kind: technology
@@ -6596,10 +7480,10 @@ tags:
   - decade
   stats:
     direct: 6
-    total: 146
+    total: 147
     first_year: 1973
     last_year: 2026
-    served: 146
+    served: 147
 - id: nfs
   parent: storage
   kind: technology
@@ -6643,10 +7527,21 @@ tags:
   - imss
   - ipfc
   stats:
-    direct: 29
+    direct: 22
     total: 29
     first_year: 1999
     last_year: 2013
+- id: ifcp
+  parent: fibre-channel
+  kind: technology
+  desc: iFCP (Internet Fibre Channel Protocol), gateway-to-gateway storage networking that carries Fibre Channel traffic over TCP/IP
+  match:
+  - '\biFCP\b|internet fibre channel protocol'
+  stats:
+    direct: 7
+    total: 7
+    first_year: 2005
+    last_year: 2011
 - id: rdma
   parent: storage
   kind: technology
@@ -6675,6 +7570,17 @@ tags:
     total: 36
     first_year: 1987
     last_year: 2026
+- id: afs
+  parent: storage
+  kind: technology
+  desc: AFS (Andrew File System), its cells, volume location and DNS-based service discovery
+  match:
+  - '\bAFS\b|Andrew File System'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2010
+    last_year: 2010
 - id: calendaring
   parent: applications
   kind: topic
@@ -6737,6 +7643,17 @@ tags:
     total: 7
     first_year: 2007
     last_year: 2024
+- id: jscalendar
+  parent: calendaring
+  kind: technology
+  desc: JSCalendar, the JSON data model for calendar events, tasks and groups, and its conversions to and from iCalendar
+  match:
+  - jscalendar
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2021
+    last_year: 2021
 - id: vcard
   parent: applications
   kind: technology
@@ -6788,11 +7705,22 @@ tags:
   groups:
   - geopriv
   stats:
-    direct: 46
-    total: 46
+    direct: 42
+    total: 47
     first_year: 1996
     last_year: 2024
-    served: 46
+    served: 47
+- id: held
+  parent: geolocation
+  kind: technology
+  desc: 'HELD (HTTP-Enabled Location Delivery): acquiring location from a location information server over HTTP, with its identity, dereference and routing extensions'
+  match:
+  - 'HTTP.?Enabled Location Delivery|\(HELD\)'
+  stats:
+    direct: 5
+    total: 5
+    first_year: 2010
+    last_year: 2016
 - id: alto
   parent: applications
   kind: technology
@@ -6896,10 +7824,10 @@ tags:
   - (?<!information )data (format|encoding|representation)s?|interchange format
   stats:
     direct: 14
-    total: 475
+    total: 479
     first_year: 1969
     last_year: 2026
-    served: 475
+    served: 479
 - id: abnf
   parent: data-formats
   kind: technology
@@ -6907,10 +7835,21 @@ tags:
   match:
   - '\bA?BNF\b|augmented BNF|backus-naur'
   stats:
-    direct: 9
+    direct: 8
     total: 9
     first_year: 1997
     last_year: 2021
+- id: rbnf
+  parent: abnf
+  kind: technology
+  desc: RBNF (Routing Backus-Naur Form), the notation used to form encoding rules in routing protocol specifications
+  match:
+  - '\bRBNF\b|routing backus-naur'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2009
+    last_year: 2009
 - id: base64
   parent: data-formats
   kind: technology
@@ -6956,8 +7895,8 @@ tags:
   - json
   - jsonbis
   stats:
-    direct: 77
-    total: 82
+    direct: 78
+    total: 83
     first_year: 2006
     last_year: 2026
 - id: jsonpath
@@ -7096,10 +8035,32 @@ tags:
   groups:
   - charset
   stats:
-    direct: 53
+    direct: 27
     total: 53
     first_year: 1969
     last_year: 2016
+- id: ascii
+  parent: character-sets
+  kind: technology
+  desc: ASCII (American Standard Code for Information Interchange), the seven-bit coded character set and its use in text interchange
+  stats:
+    direct: 26
+    total: 26
+    first_year: 1969
+    last_year: 2016
+  match:
+  - '\b(?:US-)?ASCII\b|\bANSI X3\.4\b'
+- id: ebcdic
+  parent: character-sets
+  kind: technology
+  desc: EBCDIC (Extended Binary Coded Decimal Interchange Code), the IBM mainframe character encoding and its translation to and from other character sets
+  match:
+  - '\bEBCDIC\b'
+  stats:
+    direct: 2
+    total: 2
+    first_year: 1971
+    last_year: 1972
 - id: language-tags
   parent: internationalization
   kind: technology
@@ -7145,7 +8106,7 @@ tags:
   - rohc
   - zstd
   stats:
-    direct: 43
+    direct: 40
     total: 62
     first_year: 1973
     last_year: 2026
@@ -7217,6 +8178,28 @@ tags:
     total: 5
     first_year: 1998
     last_year: 2001
+- id: lzs
+  parent: compression
+  kind: technology
+  desc: LZS (Lempel-Ziv-Stac) compression and its use in PPP, IP payload and TLS
+  match:
+  - '\blzs\b'
+  stats:
+    direct: 4
+    total: 4
+    first_year: 1996
+    last_year: 2004
+- id: zlib
+  parent: compression
+  kind: technology
+  desc: zlib compressed data format wrapping DEFLATE streams
+  match:
+  - '\bzlib\b'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 1996
+    last_year: 2020
 - id: content-negotiation
   parent: data-formats
   kind: technology
@@ -7230,6 +8213,28 @@ tags:
     total: 17
     first_year: 1998
     last_year: 2021
+- id: csv
+  parent: data-formats
+  kind: technology
+  desc: CSV (comma-separated values), the text/csv media type, its records and fields, and fragment identifiers into it
+  match:
+  - '\bcsv\b|comma[- ]separated values'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 2005
+    last_year: 2021
+- id: yaml
+  parent: data-formats
+  kind: technology
+  desc: YAML (YAML Ain't Markup Language), the application/yaml media type and its use as a serialisation and configuration format
+  match:
+  - '\byaml\b'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2024
+    last_year: 2024
 - id: iot
   kind: topic
   desc: 'IoT (Internet of Things): architectures, terminology, guidance for constrained devices'
@@ -7311,8 +8316,8 @@ tags:
   implies:
   - iot
   stats:
-    direct: 40
-    total: 40
+    direct: 39
+    total: 39
     first_year: 2007
     last_year: 2026
 - id: rpl
@@ -7372,6 +8377,28 @@ tags:
   stats:
     direct: 7
     total: 7
+    first_year: 2020
+    last_year: 2023
+- id: lorawan
+  parent: lpwan
+  kind: technology
+  desc: LoRaWAN (Long Range Wide Area Network) low-power radio networks and IP adaptation over them
+  match:
+  - '\bLoRaWAN\b'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 2020
+    last_year: 2023
+- id: sigfox
+  parent: lpwan
+  kind: technology
+  desc: Sigfox ultra-narrowband LPWAN and IP adaptation over it
+  match:
+  - '\bSigfox\b'
+  stats:
+    direct: 3
+    total: 3
     first_year: 2020
     last_year: 2023
 - id: ace

@@ -118,8 +118,9 @@ class Taxonomy:
             if t in self.decomp:
                 topic.update(self.decomp[t]); continue
             if self.kind[t] == 'topic':
-                topic.add(t); continue
-            tech.add(t)
+                topic.add(t)                          # a topic may imply another (cryptography -> security)
+            else:
+                tech.add(t)
             topic.update(self.implies.get(t, []))
         return sorted(tech), sorted(topic)
 

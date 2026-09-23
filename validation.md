@@ -56,6 +56,7 @@ A fixed list of well-known RFCs with expected results:
 | 2616 | http |
 | 8446 | tls |
 | 9000 | quic, udp — topic `transport` only |
+| 7748 | elliptic-curve — topics `cryptography` and `security` |
 | 9001 | quic + security |
 | 9002 | quic + congestion-control |
 | 9312 | quic + network-management |
@@ -76,7 +77,8 @@ For each topic, confirm the name is phrasing people search for, not a librarian'
 
 ### Working groups (R10, R11)
 
-- **Absorption.** For each working group mapped only to topics or to a parent technology, count its documents and the title mentions of the group's own name. Ten or more documents with no tag of their own is a missing technology.
+- **Absorption by working group.** For each working group mapped only to topics or to a parent technology, count its documents and the title mentions of the group's own name. Ten or more documents with no tag of their own is a missing technology.
+- **Absorption by title.** Run `tag_candidates.py` and read `tag-candidates.json` from the top. Each entry is a name an RFC title introduces beside its expansion — "Kerberized Internet Negotiation of Keys (KINK)" — that a reader cannot reach by searching the tag the RFC was filed under. This is R11's evidence test run over the whole corpus, and it finds what the working-group count cannot: technologies that never had a group of their own. About half the entries are components, versions or names for the tag itself; the rest are candidates for promotion, checked against R10 (a following), R13 (a single document may suffice) and R14–R15 (not an organisation).
 - **Names.** For every tag whose slug matches a working-group acronym, count RFCs whose title, keywords or abstract use the term other than as a reference to the group. Zero such uses means the tag is named for the group, not the technology, and must be renamed or removed.
 
 ### Overlap
@@ -111,22 +113,22 @@ When the engine or the YAML schema changes, re-run against the previous `rfc-tag
 
 ### Curated tree
 
-- **Tags:** 542 — 18 roots, 266 at level 2, 233 at level 3, 25 at level 4; 461 technology, 81 topic.
+- **Tags:** 635 — 19 roots, 289 at level 2, 281 at level 3, 46 at level 4; 553 technology, 82 topic.
 - **Coverage:** 0 untagged.
-- **Tags per RFC (with ancestors):** mean 3.63, median 3, max 16.
-- **Distribution:** 1:642 · 2:2,611 · 3:2,181 · 4:1,587 · 5:1,352 · 6:699 · 7:389 · 8:207 · 9:93 · 10:36 · 11:22 · 12:8 · 13:4 · 14:3 · 16:1.
-- **Over ten tags:** 38 documents (0.4%), all multi-technology cross-area specifications.
+- **Tags per RFC (with ancestors):** mean 3.66, median 3, max 15.
+- **Distribution:** 1:679 · 2:2,570 · 3:2,132 · 4:1,588 · 5:1,330 · 6:719 · 7:418 · 8:216 · 9:102 · 10:39 · 11:24 · 12:10 · 13:4 · 14:3 · 15:1.
+- **Over ten tags:** 42 documents (0.4%), all multi-technology cross-area specifications.
 - **Unused tags:** 0.
-- **Single-document tags:** 22 — amateur-radio, arc, data-center-networking, ebpf, eigrp, ffv1, http-caching, irtp, lpwan, mospf, oblivious-dns, ovsdb, password-hashing, ratp, sdf, sframe, teep, tmux, tvr, whip, xacml, y2k.
+- **Single-document tags:** 44 — afs, amateur-radio, arc, bats, blake2, crc, cybercash, data-center-networking, dctcp, dragonfly, ebpf, eigrp, ffv1, gsakmp, hoba, http-caching, idxp, irtp, jpake, jscalendar, lpwan, mospf, nat-pmp, oblivious-dns, opaque, ovsdb, password-hashing, pgm, ratp, rbnf, scrypt, sdf, sframe, speex, tbrpf, teep, tetrys, tmux, tvr, vorbis, whip, xacml, y2k, yaml.
 - **Humor:** 74 documents, 0 exclusivity violations.
-- **Stability replay:** 9,302 RFCs debut no tag, 525 debut one, 7 debut two, 1 debut three. The 8 multi-debut cases are parent-and-child pairs founding a branch, plus RFC 2430 preceding the MPLS architecture into print.
+- **Stability replay:** 9,214 RFCs debut no tag, 609 debut one, 10 debut two, 2 debut three. The 12 multi-debut cases are parent-and-child pairs founding a branch, plus RFC 2430 preceding the MPLS architecture into print.
 
 ### Served view
 
-- **Axes:** 461 technology tags, 75 topics.
-- **Zero-technology documents:** 1,440 — governance, process, humor, ARPANET-era notes, general-subject documents.
+- **Axes:** 553 technology tags, 76 topics.
+- **Zero-technology documents:** 1,483 — governance, process, humor, ARPANET-era notes, general-subject documents.
 - **Zero-topic documents:** 0.
-- **Per RFC:** technology mean 1.75, topic mean 2.00, combined mean 3.75.
-- **Over ten combined:** 44 documents (0.4%); maximum 16.
-- **Documents whose only topics are roots:** 5,350.
+- **Per RFC:** technology mean 1.74, topic mean 2.06, combined mean 3.80.
+- **Over ten combined:** 48 documents (0.5%); maximum 15.
+- **Documents whose only topics are roots:** 5,335.
 - **Topic replay:** 5 documents debut two topics, all in the founding years. Debuts since 2003: emergency-services (2003), nat-traversal (2003), iot (2006), energy-management (2013), autonomic-networking (2014), telemetry (2019), sustainability (2024).

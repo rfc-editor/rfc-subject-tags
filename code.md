@@ -18,6 +18,7 @@ How the tag system is built: the input corpus, the taxonomy file, the engine tha
 | `make_corpus_from_index.py` | Builds `rfcs.json` from the RFC Editor's `rfc-index.xml`, downloading it if absent |
 | `make_corpus_from_local.py` | Builds `rfcs.json` from a directory of per-RFC metadata files instead |
 | `regen.py` | Regenerates the generated files, writes the `stats` blocks into `taxonomy.yaml`, and refreshes the figures in validation.md and README.md and the generated blocks in this file |
+| `tag_candidates.py` | Harvests names that RFC titles introduce beside their expansion and that no tag makes reachable — candidates for absorbed technologies (R10); runs on every build, judges nothing |
 | `browser_template.html` | The review page (five views: Vocabulary, Co-occurrence, Lifespan, Overlap, All RFCs) with its data removed; `regen.py` embeds the current data to produce `rfc-tags.html`. Fonts are embedded so the page works offline |
 
 ### Generated (never edit by hand)
@@ -41,6 +42,7 @@ publish; the page carries its own build date so the two can be told apart.
 | `rfcs.json` | Corpus metadata, one record per RFC — the engine's input, produced by either corpus script. Fetched fresh at build time; the snapshot each build used is published alongside the other artifacts, so a published build can be reproduced exactly |
 | `rfc-tags.json` | Per RFC: title, year, leaf `tags`, full `paths` (R4), and `technology` / `topic` coordinates for the served view |
 | `rfc-tags.csv` | The same table for spreadsheet use; list fields are `;`-separated, paths `|`-separated |
+| `tag-candidates.json` | Output of `tag_candidates.py`: candidate names by tag, most-seen first, with example RFCs |
 | `rfc-tags.html` | Self-contained review page. **Vocabulary**: the tree with corpus count and notifications-per-year (since 2021) per tag, search, technology/topic filter, multi-select with AND/OR and the matching RFCs. **Co-occurrence**: tag pairs sharing RFCs. **Lifespan**: each tag's first-to-last year, live or dormant. **Overlap**: Jaccard and one-way overlap flags for redundant or nested pairs. **All RFCs**: look-up with tags and served technology/topic coordinates |
 
 ### To reproduce
@@ -51,6 +53,7 @@ python3 make_corpus_from_index.py                        # rfcs.json from rfc-in
 #   or: python3 make_corpus_from_local.py ~/Data/RFCs rfcs.json
 python3 engine.py taxonomy.yaml rfcs.json                # validates, assigns, derives; writes rfc-tags.json
 python3 regen.py                                         # rendered files and document figures
+python3 tag_candidates.py                                # tag-candidates.json for the next vocabulary review
 ```
 
 Every step reads and writes in the working directory. A full run leaves `rfc-index.xml`,
@@ -182,7 +185,7 @@ The mechanical checks that enforce these are in validation.md.
 1. Take the closure of the leaf tags.
 2. Send each tag to the axis its `kind` names. Roots are topics and closure always includes the root, so every document's subjects are the roots of its paths.
 3. Replace composite topics by their `decomposes_to` targets.
-4. Add each technology's `implies` topics (R20).
+4. Add each tag's `implies` topics (R20). Technologies imply the topic that is their purpose; a topic may imply another — the `cryptography` root implies `security`.
 
 Nothing is decided by hand at this stage; editing `taxonomy.yaml` and re-running re-derives the whole corpus.
 
@@ -204,8 +207,8 @@ Nothing is decided by hand at this stage; editing `taxonomy.yaml` and re-running
 <!-- generated:implies -->
 | Topic | Implied by |
 |---|---|
-| `security` | dnssec, dane, cookies, hsts, token-binding, stir, srtp, sframe, rpki, bgpsec, tcpcrypt, send, savi, teep, supply-chain-integrity, oscore, edhoc, firmware-update, mud |
-| `authentication` | http-authentication, stir, kerberos, gssapi, sasl, eap, pana, aaa, radius, diameter, tacacs, scim, federated-authentication, otp, pake, ident |
+| `security` | dnssec, dane, cookies, hsts, token-binding, stir, srtp, sframe, rpki, bgpsec, tcpcrypt, send, savi, teep, supply-chain-integrity, cryptography, oscore, edhoc, firmware-update, mud |
+| `authentication` | http-authentication, stir, kerberos, gssapi, sasl, eap, pana, aaa, radius, diameter, tacacs, scim, federated-authentication, ident, otp, pake |
 | `iot` | teep, coap, oscore, senml, sdf, 6lowpan, rpl, 6tisch, lpwan, schc, edhoc, firmware-update, mud |
 | `multicast` | pim, igmp, mld, msdp, mospf, ssm, amt, bier, flute, norm, mvpn |
 | `network-management` | bmp, snmp, mib, agentx, netconf, restconf, yang, syslog, i2rs, ovsdb |
