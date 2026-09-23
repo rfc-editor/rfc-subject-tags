@@ -68,6 +68,14 @@ def reachable(entry, term):
         return True
     if any(k == q or k.startswith(q) for k in words(entry.get("desc", ""))):
         return True
+    # An alias is reachable too: once a term is recorded as another name for this
+    # tag, a reader typing it lands here, so it is no longer evidence that the
+    # vocabulary has absorbed something. Without this every decided alias
+    # resurfaces as a tag candidate on every build.
+    for a in entry.get("aliases", []) or []:
+        a = str(a).lower()
+        if a == q or a.startswith(q):
+            return True
     return False
 
 

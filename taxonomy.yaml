@@ -66,6 +66,8 @@ tags:
   parent: DNS
   kind: topic
   desc: Encrypted and privacy-preserving DNS transport
+  aliases:
+  - DPRIVE
   groups:
   - add
   - dprive
@@ -110,6 +112,8 @@ tags:
   parent: dns-privacy
   kind: technology
   desc: Oblivious DNS over HTTPS
+  aliases:
+  - ODoH
   match:
   - '\boblivious DNS\b'
   implies:
@@ -149,6 +153,8 @@ tags:
   parent: DNS
   kind: technology
   desc: Extension Mechanisms for DNS (EDNS(0)) and EDNS options
+  aliases:
+  - EDNS0
   match:
   - '\bEDNS\b'
   stats:
@@ -160,6 +166,8 @@ tags:
   parent: DNS
   kind: technology
   desc: Dynamic DNS updates
+  aliases:
+  - DDNS
   match:
   - dynamic updates? in the domain|DNS update
   stats:
@@ -197,6 +205,8 @@ tags:
   parent: DNS
   kind: technology
   desc: DNS-SD (DNS-Based Service Discovery)
+  aliases:
+  - dnssd
   match:
   - 'DNS-Based Service Discovery|\bDNS-SD\b'
   groups:
@@ -213,6 +223,10 @@ tags:
   parent: DNS
   kind: technology
   desc: Special-use and reserved domain names
+  aliases:
+  - home.arpa
+  - localhost
+  - alt
   match:
   - special-use domain
   stats:
@@ -249,6 +263,8 @@ tags:
   parent: domain-registration
   kind: technology
   desc: EPP (Extensible Provisioning Protocol) for registry objects
+  aliases:
+  - provreg
   match:
   - '\bEPP\b|extensible provisioning protocol'
   - registry registrar protocol
@@ -265,6 +281,8 @@ tags:
   parent: domain-registration
   kind: technology
   desc: RDAP (Registration Data Access Protocol)
+  aliases:
+  - WEIRDS
   match:
   - '\bRDAP\b|registration data access'
   groups:
@@ -279,6 +297,9 @@ tags:
   parent: domain-registration
   kind: technology
   desc: WHOIS and legacy registration data directory services
+  aliases:
+  - NICNAME
+  - whois++
   match:
   - '\bwhois\b|nicname'
   groups:
@@ -318,6 +339,9 @@ tags:
   parent: naming
   kind: technology
   desc: 'IDN (Internationalized Domain Names): IDNA, punycode, label validity'
+  aliases:
+  - IDNA2008
+  - IDNA2003
   match:
   - 'internationalized domain|\bIDNA?2?0?0?8?\b|punycode'
   groups:
@@ -348,6 +372,8 @@ tags:
   parent: naming
   kind: technology
   desc: 'ENUM (E.164 Number Mapping): telephone numbers in the DNS'
+  aliases:
+  - E164
   match:
   - '\bENUM\b|E\.164.*(DNS|URI|resolution)'
   groups:
@@ -361,6 +387,9 @@ tags:
   parent: naming
   kind: topic
   desc: 'Service Discovery: discovering services and resources on a network'
+  aliases:
+  - Zeroconf
+  - Bonjour
   match:
   - service discovery|resource discovery|discovery of (services|servers)
   yields_to:
@@ -376,6 +405,10 @@ tags:
   parent: naming
   kind: technology
   desc: SLP (Service Location Protocol)
+  aliases:
+  - SLPv2
+  - SLPv1
+  - svrloc
   match:
   - 'service location protocol|\bSLPv?2?\b'
   groups:
@@ -391,6 +424,8 @@ tags:
   parent: naming
   kind: technology
   desc: UUID (Universally Unique Identifier)
+  aliases:
+  - GUID
   match:
   - '\bUUIDs?\b|universally unique identifier'
   groups:
@@ -404,6 +439,8 @@ tags:
   parent: naming
   kind: technology
   desc: 'Hostnames: host naming conventions and host tables'
+  aliases:
+  - HOSTS.TXT
   match:
   - '\bhost table\b|host names?\b'
   - 'hostnames?\b|host table'
@@ -429,6 +466,8 @@ tags:
 - id: web
   kind: topic
   desc: 'The web in general: architecture and cross-protocol web matters'
+  aliases:
+  - WWW
   match_title_only:
   - '(?<!json )\bweb\b(?! (signature|encryption|key|token|algorithm)s?\b)|world wide web'
   stats:
@@ -463,6 +502,11 @@ tags:
   parent: web
   kind: technology
   desc: 'HTTP (Hypertext Transfer Protocol): semantics, syntax, extensions'
+  aliases:
+  - HTTPS
+  - HTTP/1.1
+  - HTTP/1.0
+  - httpbis
   match:
   - '\bHTTPS?\b|hypertext transfer'
   groups:
@@ -477,6 +521,9 @@ tags:
   parent: HTTP
   kind: technology
   desc: HTTP/2 (Hypertext Transfer Protocol version 2)
+  aliases:
+  - SPDY
+  - h2c
   match:
   - '\bHTTP/2\b'
   yields_to:
@@ -514,6 +561,8 @@ tags:
   parent: HTTP
   kind: technology
   desc: HTTP Authentication schemes (Basic, Digest, and others)
+  aliases:
+  - httpauth
   groups:
   - httpauth
   implies:
@@ -538,6 +587,10 @@ tags:
   parent: HTTP
   kind: technology
   desc: Conventions for building APIs on HTTP (problem details, rate limits, etc.)
+  aliases:
+  - httpapi
+  - REST
+  - RESTful
   groups:
   - httpapi
   stats:
@@ -564,6 +617,9 @@ tags:
   parent: HTTP
   kind: technology
   desc: WebDAV (Web Distributed Authoring and Versioning)
+  aliases:
+  - DAV
+  - DeltaV
   match:
   - '\bWebDAV\b|distributed authoring'
   groups:
@@ -605,6 +661,9 @@ tags:
   parent: HTTP
   kind: technology
   desc: Oblivious HTTP relay-based request privacy
+  aliases:
+  - OHTTP
+  - ohai
   match:
   - oblivious HTTP
   groups:
@@ -620,6 +679,8 @@ tags:
   parent: web
   kind: technology
   desc: 'URIs (Uniform Resource Identifiers): syntax, schemes, resolution, templates'
+  aliases:
+  - URL
   match:
   - '\bURI\b|\bURL\b|uniform resource'
   - host metadata|well-known URI
@@ -667,6 +728,9 @@ tags:
   parent: web
   kind: technology
   desc: HTML (HyperText Markup Language) and hypertext document formats
+  aliases:
+  - XHTML
+  - HTML5
   match:
   - '\bHTML\b|hypertext markup'
   groups:
@@ -692,6 +756,9 @@ tags:
   parent: web
   kind: technology
   desc: The WebSocket protocol
+  aliases:
+  - wss
+  - WebSockets
   match:
   - '\bwebsocket\b'
   groups:
@@ -705,6 +772,8 @@ tags:
   parent: web
   kind: technology
   desc: Web push notification delivery
+  aliases:
+  - webpush
   groups:
   - webpush
   stats:
@@ -716,6 +785,9 @@ tags:
   parent: web
   kind: technology
   desc: Content delivery networks and CDN interconnection
+  aliases:
+  - CDNI
+  - CDI
   groups:
   - cdi
   - cdni
@@ -728,6 +800,8 @@ tags:
   parent: web
   kind: technology
   desc: Atom syndication format and publishing protocol
+  aliases:
+  - AtomPub
   match:
   - '\bAtom\b.*(format|protocol)|atom feed'
   - feed (paging|archiv)
@@ -755,6 +829,10 @@ tags:
   parent: web
   kind: topic
   desc: Web platform security mechanisms
+  aliases:
+  - websec
+  - CORS
+  - CSP
   groups:
   - websec
   decomposes_to:
@@ -781,6 +859,8 @@ tags:
   parent: web-security
   kind: technology
   desc: TLS token binding
+  aliases:
+  - tokbind
   match:
   - token binding
   groups:
@@ -796,6 +876,8 @@ tags:
   parent: web-security
   kind: technology
   desc: Secure HTTP (S-HTTP, historic)
+  aliases:
+  - shttp
   groups:
   - wts
   stats:
@@ -818,6 +900,8 @@ tags:
   parent: messaging
   kind: technology
   desc: 'Electronic mail (email): architecture, transport, access and formats'
+  aliases:
+  - e-mail
   match:
   - 'electronic mail|\be-?mail\b|computer mail|mail (meeting|service|transfer|transition|system|gateway)'
   yields_to:
@@ -845,6 +929,9 @@ tags:
   parent: email
   kind: technology
   desc: SMTP (Simple Mail Transfer Protocol) and mail relaying/submission
+  aliases:
+  - ESMTP
+  - SMTPS
   match:
   - '\bSMTP\b|simple mail transfer|mail relay|message submission'
   - mail submission
@@ -868,6 +955,14 @@ tags:
   parent: email
   kind: technology
   desc: 'Internet message format: headers, addressing, disposition'
+  aliases:
+  - '822'
+  - '2822'
+  - '5322'
+  - RFC822
+  - IMF
+  - RFC2822
+  - RFC5322
   match:
   - 'internet message format|mail header|message header|822\b.*header|text messages?\b|format of.{0,15}messages'
   - message encapsulation|digest message|encoding header
@@ -886,6 +981,12 @@ tags:
   parent: email
   kind: technology
   desc: IMAP (Internet Message Access Protocol)
+  aliases:
+  - IMAP4
+  - IMAP4rev1
+  - IMAP4rev2
+  - IMAP2
+  - IMAPS
   match:
   - '\bIMAP4?\b|interactive mail access|internet message access protocol'
   groups:
@@ -908,6 +1009,9 @@ tags:
   parent: email
   kind: technology
   desc: POP3 (Post Office Protocol version 3)
+  aliases:
+  - POP2
+  - POP3S
   match:
   - '\bPOP3?\b|post office protocol'
   groups:
@@ -921,6 +1025,8 @@ tags:
   parent: email
   kind: topic
   desc: Email domain authentication and anti-spoofing
+  aliases:
+  - MARF
   match:
   - Authentication-Results
   groups:
@@ -937,6 +1043,8 @@ tags:
   parent: email-authentication
   kind: technology
   desc: SPF (Sender Policy Framework)
+  aliases:
+  - spf1
   match:
   - '\bSPF\b|sender policy framework'
   groups:
@@ -1005,6 +1113,10 @@ tags:
   parent: email
   kind: topic
   desc: 'Spam: unsolicited bulk email: filtering, reporting, reputation'
+  aliases:
+  - UBE
+  - UCE
+  - RBL
   match:
   - '\bspam\b|unsolicited bulk'
   - abuse report
@@ -1060,6 +1172,9 @@ tags:
   parent: email
   kind: technology
   desc: Email address internationalization (EAI)
+  aliases:
+  - SMTPUTF8
+  - UTF8SMTP
   match:
   - internationalized email|email address internationalization
   groups:
@@ -1075,6 +1190,9 @@ tags:
   parent: email
   kind: technology
   desc: Mailing list protocols, headers and management
+  aliases:
+  - LISTSERV
+  - MLM
   match:
   - mailing list
   - listserv
@@ -1137,6 +1255,9 @@ tags:
   parent: messaging
   kind: technology
   desc: Instant messaging and presence
+  aliases:
+  - IMPP
+  - IM
   match:
   - 'instant messag|presence information|\bIMPP\b'
   - remote write|talk protocol
@@ -1166,6 +1287,8 @@ tags:
   parent: instant-messaging
   kind: technology
   desc: XMPP (Extensible Messaging and Presence Protocol)
+  aliases:
+  - Jabber
   match:
   - '\bXMPP\b|jabber'
   groups:
@@ -1181,6 +1304,8 @@ tags:
   parent: instant-messaging
   kind: technology
   desc: MSRP (Message Session Relay Protocol)
+  aliases:
+  - msrps
   match:
   - '\bMSRP\b'
   stats:
@@ -1192,6 +1317,9 @@ tags:
   parent: messaging
   kind: technology
   desc: X.400 (ITU-T message handling systems) and interworking
+  aliases:
+  - MHS
+  - MOTIS
   match:
   - '\bX\.400\b|message handling system|\bMHS\b'
   groups:
@@ -1209,6 +1337,10 @@ tags:
   parent: messaging
   kind: technology
   desc: 'Fax: facsimile over Internet mail and IP'
+  aliases:
+  - T.38
+  - T.37
+  - ifax
   match:
   - '\bfacsimile\b|\bfax\b|T\.38'
   groups:
@@ -1223,6 +1355,8 @@ tags:
   parent: messaging
   kind: technology
   desc: Radio and network paging protocols
+  aliases:
+  - SNPP
   match:
   - '(network|radio) paging|\bSNPP\b|TPC\.INT'
   stats:
@@ -1234,6 +1368,8 @@ tags:
   parent: messaging
   kind: technology
   desc: Netnews article format and distribution
+  aliases:
+  - Usenet
   match:
   - '\bnetnews\b|usenet|news article'
   groups:
@@ -1260,6 +1396,10 @@ tags:
   parent: messaging
   kind: technology
   desc: EDI (Electronic Data Interchange) over Internet transports
+  aliases:
+  - EDIINT
+  - EDIFACT
+  - X12
   match:
   - '\bEDI\b|electronic data interchange'
   groups:
@@ -1296,6 +1436,9 @@ tags:
 - id: real-time-communications
   kind: topic
   desc: Real-time voice, video and media communication in general
+  aliases:
+  - VoIP
+  - RTC
   match_title_only:
   - 'real-?time (communication|media|application)s?|\bvoip\b|voice over IP'
   stats:
@@ -1308,6 +1451,8 @@ tags:
   parent: real-time-communications
   kind: technology
   desc: 'SIP (Session Initiation Protocol): call signalling, extensions, deployment'
+  aliases:
+  - SIPS
   match:
   - '\bSIP\b|session initiation protocol'
   - P-(Asserted|Access|Preferred|Charging|Visited|Early|Served)[A-Za-z-]*
@@ -1374,6 +1519,8 @@ tags:
   parent: SIP
   kind: technology
   desc: SPEERMINT (Session PEERing for Multimedia INTerconnect) between SIP service providers, and peering provisioning
+  aliases:
+  - DRINKS
   match:
   - SPEERMINT|session peering
   groups:
@@ -1399,6 +1546,8 @@ tags:
   parent: SIP
   kind: technology
   desc: 'STIR (Secure Telephone Identity Revisited): caller-ID authentication'
+  aliases:
+  - SHAKEN
   match:
   - '\bSTIR\b|secure telephone identity|passport|\bSHAKEN\b'
   groups:
@@ -1509,6 +1658,8 @@ tags:
   parent: real-time-communications
   kind: technology
   desc: 'WebRTC (Web Real-Time Communication): browser real-time media architecture and transports'
+  aliases:
+  - rtcweb
   match:
   - '\bWebRTC\b|rtcweb'
   groups:
@@ -1535,6 +1686,8 @@ tags:
   parent: WebRTC
   kind: technology
   desc: WebRTC-HTTP ingestion (WHIP (WebRTC-HTTP Ingestion Protocol))
+  aliases:
+  - WISH
   groups:
   - wish
   stats:
@@ -1557,6 +1710,9 @@ tags:
   parent: real-time-communications
   kind: topic
   desc: Interactive traversal of NATs for real-time media
+  aliases:
+  - UNSAF
+  - NAT-T
   match:
   - NAT traversal
   stats:
@@ -1614,6 +1770,11 @@ tags:
   parent: real-time-communications
   kind: technology
   desc: Audio and video codec definitions and containers
+  aliases:
+  - NETVC
+  - AAC
+  - H.265
+  - Theora
   match:
   - '\bcodec\b'
   - voice file
@@ -1674,6 +1835,11 @@ tags:
   parent: codecs
   kind: technology
   desc: AMR (Adaptive Multi-Rate) and AMR-WB speech codecs
+  aliases:
+  - AMR-WB
+  - AMR-NB
+  - AMR-WB+
+  - G.722.2
   match:
   - '\bAMR(-WB)?\b'
   stats:
@@ -1696,6 +1862,10 @@ tags:
   parent: codecs
   kind: technology
   desc: Matroska media container
+  aliases:
+  - MKV
+  - WebM
+  - EBML
   match:
   - 'Matroska|\bEBML\b'
   stats:
@@ -1806,6 +1976,10 @@ tags:
   parent: real-time-communications
   kind: topic
   desc: Media streaming delivery and operations
+  aliases:
+  - MOPS
+  - HLS
+  - DASH
   groups:
   - elegy
   - mops
@@ -1830,6 +2004,9 @@ tags:
   parent: streaming
   kind: technology
   desc: PPSP (Peer-to-Peer Streaming Protocol)
+  aliases:
+  - PPSPP
+  - PPSTP
   groups:
   - ppsp
   stats:
@@ -1852,6 +2029,9 @@ tags:
   parent: real-time-communications
   kind: topic
   desc: Multiparty conferencing frameworks and control
+  aliases:
+  - teleconferencing
+  - videoconferencing
   match:
   - '\bconferencing\b|multiparty conference'
   groups:
@@ -1907,6 +2087,10 @@ tags:
   parent: real-time-communications
   kind: technology
   desc: 'MRCP (Media Resource Control Protocol): speech services'
+  aliases:
+  - MRCPv2
+  - MRCPv1
+  - SPEECHSC
   match:
   - '\bMRCP\b'
   groups:
@@ -1935,6 +2119,9 @@ tags:
   parent: pstn-interop
   kind: technology
   desc: 'SIGTRAN (Signaling Transport): SS7 and ISDN signalling transport over IP (M2PA, M2UA, M3UA, SUA, IUA, V5UA)'
+  aliases:
+  - TALI
+  - DPNSS
   match:
   - '\bsigtran\b|\bSS7\b|signall?ing system|signall?ing transport|user adaptation layer|\bTALI\b|\bDPNSS\b|terminal endpoint identifier'
   - transport adapter layer
@@ -1962,6 +2149,8 @@ tags:
   parent: pstn-interop
   kind: technology
   desc: MGCP (Media Gateway Control Protocol)
+  aliases:
+  - SGCP
   match:
   - '\bMGCP\b'
   stats:
@@ -2008,6 +2197,12 @@ tags:
   parent: real-time-communications
   kind: topic
   desc: 'Emergency Services: emergency calling and preparedness communications'
+  aliases:
+  - ECRIT
+  - IEPREP
+  - ETS
+  - '911'
+  - E911
   match:
   - 'emergency call|emergency service|\bETS\b|emergency telecom'
   groups:
@@ -2080,6 +2275,8 @@ tags:
   parent: routing-architecture
   kind: technology
   desc: ECMP (Equal-Cost Multipath) and load-balanced forwarding
+  aliases:
+  - LAG
   match:
   - '\bECMP\b|equal-cost multi'
   stats:
@@ -2104,6 +2301,9 @@ tags:
   parent: routing
   kind: technology
   desc: 'BGP (Border Gateway Protocol): protocol, policy, operations'
+  aliases:
+  - BGP4
+  - BGP-4
   match:
   - '\bBGP-?4?\b|border gateway protocol'
   - looking glass
@@ -2134,6 +2334,8 @@ tags:
   parent: BGP
   kind: technology
   desc: BGP Flow Specification for traffic filtering
+  aliases:
+  - flowspec
   match:
   - flow ?spec
   stats:
@@ -2145,6 +2347,8 @@ tags:
   parent: BGP
   kind: technology
   desc: BGP route reflection and confederations
+  aliases:
+  - reflector
   match:
   - route reflect
   stats:
@@ -2180,6 +2384,9 @@ tags:
   parent: routing
   kind: topic
   desc: 'Routing Security: securing routing protocols and infrastructure'
+  aliases:
+  - RPSEC
+  - KARP
   groups:
   - karp
   - rpsec
@@ -2194,6 +2401,10 @@ tags:
   parent: routing-security
   kind: technology
   desc: RPKI (Resource Public Key Infrastructure) and route origin validation
+  aliases:
+  - SIDR
+  - sidrops
+  - ROV
   match:
   - '\bRPKI\b|resource public key|route origin (validation|authorization)|\bROA\b'
   groups:
@@ -2223,6 +2434,8 @@ tags:
   parent: routing
   kind: technology
   desc: OSPF (Open Shortest Path First)
+  aliases:
+  - OSPFv2
   match:
   - '\bOSPF\b|open shortest path'
   - flexible algorithm
@@ -2248,6 +2461,8 @@ tags:
   parent: routing
   kind: technology
   desc: The IS-IS (Intermediate System to Intermediate System) link-state routing protocol
+  aliases:
+  - ISIS
   match:
   - '\bIS-IS\b|\bISIS\b|intermediate system to intermediate'
   - flexible algorithm
@@ -2262,6 +2477,8 @@ tags:
   parent: routing
   kind: technology
   desc: Routing Information Protocol (RIP, RIPv2, RIPng)
+  aliases:
+  - RIPv1
   match:
   - '\bRIPv?n?[2g]?\b|routing information protocol'
   groups:
@@ -2289,6 +2506,8 @@ tags:
   parent: routing
   kind: technology
   desc: EIGRP (Enhanced Interior Gateway Routing Protocol)
+  aliases:
+  - IGRP
   match:
   - '\bEIGRP\b'
   stats:
@@ -2322,6 +2541,9 @@ tags:
   parent: routing
   kind: technology
   desc: RPSL (Routing Policy Specification Language) and Internet routing registries
+  aliases:
+  - RPSLng
+  - IRR
   match:
   - '\bRPSL\b|routing policy specification'
   stats:
@@ -2346,6 +2568,8 @@ tags:
   parent: routing
   kind: technology
   desc: 'BGP-SPF (BGP Shortest Path First): link-state routing using BGP-LS'
+  aliases:
+  - BGP-LS-SPF
   match:
   - BGP-SPF|BGP.{0,30}shortest path first
   groups:
@@ -2359,6 +2583,10 @@ tags:
   parent: routing
   kind: technology
   desc: IP and LDP fast reroute, loop-free alternates
+  aliases:
+  - IPFRR
+  - LFA
+  - FRR
   match:
   - fast.?reroute|loop-free alternate
   stats:
@@ -2370,6 +2598,11 @@ tags:
   parent: routing
   kind: topic
   desc: IP multicast routing, group membership and deployment
+  aliases:
+  - MBONE
+  - mboned
+  - ASM
+  - multicasting
   match:
   - '\bmulticast\b'
   groups:
@@ -2390,6 +2623,8 @@ tags:
   parent: multicast
   kind: technology
   desc: MADCAP (Multicast Address Dynamic Client Allocation Protocol) and the MALLOC address-allocation architecture
+  aliases:
+  - MASC
   match:
   - 'MADCAP|multicast address allocation|\bMASC\b'
   groups:
@@ -2403,6 +2638,10 @@ tags:
   parent: multicast
   kind: technology
   desc: PIM (Protocol Independent Multicast)
+  aliases:
+  - BIDIR-PIM
+  - PIM-BIDIR
+  - PIM-DM
   match:
   - '\bPIM\b|protocol independent multicast'
   groups:
@@ -2429,6 +2668,10 @@ tags:
   parent: multicast
   kind: technology
   desc: IGMP (Internet Group Management Protocol)
+  aliases:
+  - IGMPv3
+  - IGMPv2
+  - IGMPv1
   match:
   - '\bIGMP\b'
   groups:
@@ -2444,6 +2687,9 @@ tags:
   parent: multicast
   kind: technology
   desc: MLD (Multicast Listener Discovery)
+  aliases:
+  - MLDv2
+  - MLDv1
   match:
   - '\bMLD\b|multicast listener'
   groups:
@@ -2532,6 +2778,9 @@ tags:
   parent: multicast
   kind: topic
   desc: Group key management and multicast security
+  aliases:
+  - MSEC
+  - GKM
   groups:
   - msec
   decomposes_to:
@@ -2579,6 +2828,8 @@ tags:
   parent: multicast
   kind: topic
   desc: Reliable multicast transport
+  aliases:
+  - RMT
   match:
   - reliable multicast
   - file distribution protocol
@@ -2668,6 +2919,8 @@ tags:
   parent: MPLS
   kind: technology
   desc: LDP (Label Distribution Protocol)
+  aliases:
+  - mLDP
   match:
   - '\bLDP\b|label distribution protocol'
   stats:
@@ -2690,6 +2943,8 @@ tags:
   parent: MPLS
   kind: technology
   desc: MPLS-TP (MPLS Transport Profile)
+  aliases:
+  - T-MPLS
   match:
   - MPLS-TP|MPLS transport profile
   stats:
@@ -2701,6 +2956,9 @@ tags:
   parent: MPLS
   kind: technology
   desc: Pseudowire emulation edge-to-edge
+  aliases:
+  - PWE3
+  - PW
   match:
   - 'pseudo-?wires?\b|\bPWE3\b'
   groups:
@@ -2731,6 +2989,9 @@ tags:
   parent: routing
   kind: technology
   desc: Segment routing architecture
+  aliases:
+  - SPRING
+  - SR
   match:
   - segment routing
   groups:
@@ -2766,6 +3027,8 @@ tags:
   parent: routing
   kind: topic
   desc: Traffic engineering of packet and transport networks
+  aliases:
+  - TE
   match:
   - traffic engineering
   groups:
@@ -2794,6 +3057,8 @@ tags:
   parent: traffic-engineering
   kind: technology
   desc: PCE (Path Computation Element) architecture and PCEP
+  aliases:
+  - PCEPS
   match:
   - '\bPCEP?\b|path computation element'
   groups:
@@ -2825,6 +3090,8 @@ tags:
   parent: routing
   kind: technology
   desc: Provider-provisioned VPNs (Virtual Private Networks)
+  aliases:
+  - PPVPN
   match_title_only:
   - 'virtual private network|\bVPNs?\b'
   groups:
@@ -2838,6 +3105,11 @@ tags:
   parent: VPN
   kind: technology
   desc: L3VPN (Layer 3 Virtual Private Network) over BGP/MPLS
+  aliases:
+  - VPRN
+  - 2547bis
+  - L3SM
+  - '2547'
   match:
   - L3VPN|layer 3 (virtual private|VPN)|BGP/MPLS.*VPN|2547
   groups:
@@ -2852,6 +3124,8 @@ tags:
   parent: VPN
   kind: technology
   desc: L2VPN (Layer 2 VPN) services
+  aliases:
+  - VPWS
   match:
   - L2VPN|layer 2 (virtual private|VPN)
   groups:
@@ -2912,6 +3186,8 @@ tags:
   parent: routing
   kind: technology
   desc: Data-plane network virtualization overlays
+  aliases:
+  - NVO3
   groups:
   - nvo3
   stats:
@@ -2960,6 +3236,8 @@ tags:
   parent: routing
   kind: technology
   desc: Service function chaining (SFC) and the network service header
+  aliases:
+  - NSH
   match:
   - 'service function chain|\bNSH\b'
   groups:
@@ -2973,6 +3251,10 @@ tags:
   parent: routing
   kind: technology
   desc: 'Data Center Networking: routing and address resolution at data-centre scale'
+  aliases:
+  - datacenter
+  - datacentre
+  - ARMD
   groups:
   - armd
   stats:
@@ -2984,6 +3266,9 @@ tags:
   parent: routing
   kind: technology
   desc: 'TRILL: transparent interconnection of lots of links'
+  aliases:
+  - RBridge
+  - RBridges
   match:
   - '\bTRILL\b|rbridge'
   groups:
@@ -2997,6 +3282,8 @@ tags:
   parent: routing
   kind: technology
   desc: MANET (Mobile Ad Hoc Network) routing
+  aliases:
+  - SMF
   match:
   - 'ad hoc network|\bMANET\b'
   groups:
@@ -3013,6 +3300,8 @@ tags:
   parent: MANET
   kind: technology
   desc: OLSR (Optimized Link State Routing)
+  aliases:
+  - OLSRv2
   match:
   - '\bOLSR\b'
   stats:
@@ -3024,6 +3313,9 @@ tags:
   parent: MANET
   kind: technology
   desc: AODV (Ad hoc On-Demand Distance Vector routing)
+  aliases:
+  - AODVv2
+  - DYMO
   match:
   - '\bAODV\b'
   stats:
@@ -3094,6 +3386,8 @@ tags:
   parent: routing
   kind: technology
   desc: BFD (Bidirectional Forwarding Detection)
+  aliases:
+  - S-BFD
   match:
   - '\bBFD\b|bidirectional forwarding'
   groups:
@@ -3109,6 +3403,9 @@ tags:
   parent: routing
   kind: technology
   desc: VRRP (Virtual Router Redundancy Protocol)
+  aliases:
+  - VRRPv3
+  - VRRPv2
   match:
   - '\bVRRP\b|virtual router redundancy'
   groups:
@@ -3135,6 +3432,8 @@ tags:
   parent: routing
   kind: technology
   desc: GSMP (General Switch Management Protocol)
+  aliases:
+  - GSMPv3
   match:
   - '\bGSMP\b'
   groups:
@@ -3205,6 +3504,9 @@ tags:
   parent: transport
   kind: technology
   desc: The Internet checksum and packet integrity checks
+  aliases:
+  - CRC32C
+  - Fletcher
   match:
   - checksum
   yields_to:
@@ -3322,6 +3624,8 @@ tags:
   parent: TCP
   kind: technology
   desc: Opportunistic TCP-level encryption (tcpcrypt)
+  aliases:
+  - tcpinc
   match:
   - tcpcrypt
   groups:
@@ -3348,6 +3652,8 @@ tags:
   parent: UDP
   kind: technology
   desc: UDP-Lite (Lightweight User Datagram Protocol)
+  aliases:
+  - UDPLite
   match:
   - 'UDP-?Lite\b'
   stats:
@@ -3410,6 +3716,10 @@ tags:
   parent: transport
   kind: topic
   desc: Congestion control and avoidance across transports
+  aliases:
+  - Reno
+  - BBR
+  - Vegas
   match:
   - 'congestion (control|avoidance|exposure|notification|management|window)|slow start|retransmission timer|loss recovery|fast retransmit|highspeed TCP|\bRTO\b'
   - source quench|SQuID
@@ -3427,6 +3737,8 @@ tags:
   parent: congestion-control
   kind: technology
   desc: Congestion control for interactive real-time media over RTP (NADA, SCReAM, GCC)
+  aliases:
+  - RMCAT
   match:
   - '\bNADA\b|SCReAM|(real-time|interactive) media congestion|congestion control.{0,30}(real-time|interactive) media'
   groups:
@@ -3453,6 +3765,8 @@ tags:
   parent: congestion-control
   kind: technology
   desc: Active queue management (AQM)
+  aliases:
+  - RED
   match:
   - 'active queue management|\bAQM\b'
   - packet switches with infinite storage
@@ -3495,6 +3809,8 @@ tags:
   parent: congestion-control
   kind: technology
   desc: LEDBAT (Low Extra Delay Background Transport)
+  aliases:
+  - LEDBAT++
   match:
   - '\bLEDBAT\b'
   groups:
@@ -3636,6 +3952,8 @@ tags:
   parent: QoS
   kind: technology
   desc: Intserv (Integrated Services)
+  aliases:
+  - ISSLL
   match:
   - '\bintserv\b|integrated services(?! digital)|guaranteed.*quality of service'
   groups:
@@ -3667,6 +3985,8 @@ tags:
   parent: QoS
   kind: technology
   desc: COPS (Common Open Policy Service) and policy provisioning
+  aliases:
+  - COPS-PR
   match:
   - '\bCOPS\b|common open policy'
   groups:
@@ -3682,6 +4002,8 @@ tags:
   parent: transport
   kind: topic
   desc: 'Header Compression: compressing protocol headers on constrained links'
+  aliases:
+  - ECRTP
   match:
   - header compression|compress(ing|ed|ion of)? .{0,20}headers?
   stats:
@@ -3694,6 +4016,8 @@ tags:
   parent: header-compression
   kind: technology
   desc: ROHC (RObust Header Compression)
+  aliases:
+  - ROHCv2
   match:
   - '\bROHC\b|robust header compression'
   groups:
@@ -3734,6 +4058,8 @@ tags:
   parent: transport
   kind: technology
   desc: Forward error correction (FEC), ARQ and network coding for loss recovery schemes for packet transport
+  aliases:
+  - RaptorQ
   match:
   - 'forward error correction|\bFEC\b'
   - 'network coding|\bBATS\b|tetrys|\braptorq?\b'
@@ -3822,6 +4148,9 @@ tags:
   parent: transport
   kind: technology
   desc: 'Delay-Tolerant Networking (DTN): Delay/disruption-tolerant networking and the Bundle Protocol'
+  aliases:
+  - BPv7
+  - BPv6
   match:
   - 'delay.tolerant|\bDTN\b|bundle protocol'
   groups:
@@ -3835,6 +4164,9 @@ tags:
   parent: transport
   kind: technology
   desc: The ST-II (Internet Stream Protocol version 2) internet stream protocol
+  aliases:
+  - ST-II
+  - ST2+
   match:
   - '\bST-II\b|stream protocol'
   groups:
@@ -3859,6 +4191,11 @@ tags:
   parent: internet-layer
   kind: technology
   desc: Information-Centric Networking (ICN) and named-data networking
+  aliases:
+  - NDN
+  - CCN
+  - CCNx
+  - ICNRG
   match:
   - 'information.centric|content.centric|named data networking|\bICN\b|\bCCNx?\b'
   stats:
@@ -3870,6 +4207,9 @@ tags:
   parent: internet-layer
   kind: technology
   desc: ILNP (Identifier-Locator Network Protocol)
+  aliases:
+  - ILNPv6
+  - ILNPv4
   match:
   - '\bILNP\b|identifier.locator network'
   implies:
@@ -3883,6 +4223,8 @@ tags:
   parent: internet-layer
   kind: technology
   desc: 'IPv6 (Internet Protocol version 6): specification, addressing, deployment'
+  aliases:
+  - v6
   match:
   - '\bIPv6\b|IP version 6|IPng\b'
   groups:
@@ -3901,6 +4243,10 @@ tags:
   parent: IPv6
   kind: technology
   desc: IPv6 neighbor discovery
+  aliases:
+  - NDP
+  - ND
+  - neighbour
   match:
   - neighbor discovery
   stats:
@@ -3943,6 +4289,9 @@ tags:
   parent: IPv6
   kind: topic
   desc: IPv6/IPv4 coexistence and transition mechanisms
+  aliases:
+  - ngtrans
+  - 6over4
   match:
   - transition mechanism|IPv6.{0,20}(transition|coexist)|IPng.{0,30}transition|IPv4.{0,10}IPv6 translat
   groups:
@@ -3957,6 +4306,9 @@ tags:
   parent: IPv6-transition
   kind: technology
   desc: 'Softwires: IPv4/IPv6 tunnelling across a network of the other family (mesh and hub-and-spoke)'
+  aliases:
+  - lw4o6
+  - 4rd
   match:
   - '\bsoftwires?\b'
   groups:
@@ -4022,6 +4374,9 @@ tags:
   parent: IPv6-transition
   kind: technology
   desc: 'MAP (Mapping of Address and Port): MAP-E and MAP-T'
+  aliases:
+  - MAP-E
+  - MAP-T
   match:
   - '\bMAP-[ET]\b|mapping of address and port'
   implies:
@@ -4133,6 +4488,9 @@ tags:
   parent: addressing
   kind: technology
   desc: CIDR (Classless Inter-Domain Routing) and aggregation
+  aliases:
+  - supernetting
+  - supernet
   match:
   - '\bCIDR\b|classless inter-domain|supernetting|route aggregation'
   groups:
@@ -4146,6 +4504,9 @@ tags:
   parent: addressing
   kind: topic
   desc: Multihoming architectures
+  aliases:
+  - multi6
+  - mif
   match:
   - multihom
   groups:
@@ -4161,6 +4522,8 @@ tags:
   parent: multihoming
   kind: technology
   desc: The Shim6 (Site Multihoming by IPv6 Intermediation) host multihoming shim
+  aliases:
+  - multi6
   match:
   - '\bshim6\b'
   groups:
@@ -4188,6 +4551,8 @@ tags:
   parent: addressing
   kind: topic
   desc: Site renumbering procedures
+  aliases:
+  - 6renum
   match:
   - renumbering
   groups:
@@ -4203,6 +4568,10 @@ tags:
   parent: internet-layer
   kind: technology
   desc: 'NAT (Network Address Translation): behaviour, requirements, deployment'
+  aliases:
+  - NAPT
+  - PAT
+  - NAT44
   match:
   - '\bNATs?\b|network address translat'
   groups:
@@ -4247,6 +4616,8 @@ tags:
   parent: NAT
   kind: technology
   desc: Carrier-Grade NAT (CGN)
+  aliases:
+  - LSN
   match:
   - 'carrier-grade NAT|\bCGN\b|\bLSN\b'
   stats:
@@ -4258,6 +4629,9 @@ tags:
   parent: internet-layer
   kind: technology
   desc: DHCP (Dynamic Host Configuration Protocol)
+  aliases:
+  - BOOTP
+  - DHCPv4
   match:
   - '\bDHCP\b|dynamic host configuration|\bBOOTP\b'
   - host configuration
@@ -4283,6 +4657,9 @@ tags:
   parent: internet-layer
   kind: technology
   desc: ICMP (Internet Control Message Protocol) for IPv4 and IPv6
+  aliases:
+  - ICMPv6
+  - ICMPv4
   match:
   - '\bICMPv?6?\b|internet control message'
   groups:
@@ -4308,6 +4685,9 @@ tags:
   parent: internet-layer
   kind: technology
   desc: Path MTU Discovery (PMTUD)
+  aliases:
+  - PLPMTUD
+  - DPLPMTUD
   match:
   - path MTU
   groups:
@@ -4369,6 +4749,8 @@ tags:
   parent: tunneling
   kind: technology
   desc: IP-in-IP encapsulation
+  aliases:
+  - IPIP
   match:
   - IP-in-IP|IP in IP|IP encapsulation within IP
   implies:
@@ -4382,6 +4764,9 @@ tags:
   parent: internet-layer
   kind: topic
   desc: IP-layer host and network mobility (Mobile IP and its successors)
+  aliases:
+  - MIP
+  - DMM
   match:
   - 'mobile[- ]IPv?4?\b|IP mobility'
   match_title_only:
@@ -4402,6 +4787,9 @@ tags:
   parent: ip-mobility
   kind: technology
   desc: Mobile IPv4
+  aliases:
+  - MIPv4
+  - MIP4
   groups:
   - mip4
   implies:
@@ -4415,6 +4803,9 @@ tags:
   parent: ip-mobility
   kind: technology
   desc: Mobile IPv6
+  aliases:
+  - MIPv6
+  - MIP6
   match:
   - 'mobile IPv6|\bMIPv6\b'
   groups:
@@ -4432,6 +4823,8 @@ tags:
   parent: ip-mobility
   kind: technology
   desc: Proxy Mobile IPv6 (PMIPv6) and network-based mobility
+  aliases:
+  - NETLMM
   match:
   - proxy mobile
   groups:
@@ -4463,6 +4856,8 @@ tags:
   parent: internet-layer
   kind: technology
   desc: HIP (Host Identity Protocol)
+  aliases:
+  - HIPv2
   match:
   - 'host identity protocol|\bHIP\b'
   groups:
@@ -4480,6 +4875,8 @@ tags:
   parent: internet-layer
   kind: technology
   desc: SAVI (Source Address Validation Improvement)
+  aliases:
+  - SAVA
   match:
   - 'source address validation|\bSAVI\b'
   groups:
@@ -4495,6 +4892,8 @@ tags:
   parent: internet-layer
   kind: technology
   desc: 'Home networking: IPv6 home network architecture, prefix assignment, naming and routing'
+  aliases:
+  - homenet
   match:
   - '\bhomenet\b|home network'
   groups:
@@ -4509,6 +4908,8 @@ tags:
   parent: internet-layer
   kind: technology
   desc: Captive portal detection and interaction
+  aliases:
+  - capport
   match:
   - captive portal
   groups:
@@ -4522,6 +4923,13 @@ tags:
   parent: internet-layer
   kind: technology
   desc: 'Vehicular Networking: IP in vehicular (V2X) environments'
+  aliases:
+  - IPWAVE
+  - WAVE
+  - V2V
+  - V2I
+  - ITS
+  - VANET
   groups:
   - ipwave
   stats:
@@ -4533,6 +4941,8 @@ tags:
   parent: internet-layer
   kind: technology
   desc: DRIP (Drone Remote Identification Protocol)
+  aliases:
+  - UAV
   match:
   - '\bUAVs?\b|unmanned aircraft|drone'
   groups:
@@ -4546,6 +4956,9 @@ tags:
   parent: internet-layer
   kind: technology
   desc: OSI (Open Systems Interconnection) network-layer protocols and coexistence with IP
+  aliases:
+  - ISO
+  - GOSIP
   match:
   - '\bOSI\b|\bISO\b.*(protocol|transport|network)'
   groups:
@@ -4561,6 +4974,10 @@ tags:
   parent: OSI
   kind: technology
   desc: CLNP (Connectionless Network Protocol)
+  aliases:
+  - CLNS
+  - '8473'
+  - TUBA
   match:
   - '\bCLNP\b|connectionless.mode network'
   groups:
@@ -4574,6 +4991,9 @@ tags:
   parent: internet-layer
   kind: technology
   desc: 'IPng (IP Next Generation): the historic candidate protocols TUBA, PIP, SIPP and TP/IX'
+  aliases:
+  - CATNIP
+  - EIP
   match:
   - '\bTUBA\b|\bTP/IX\b|\bPip\b.*(protocol|header)|\bSIPP\b'
   - address extension
@@ -4619,6 +5039,8 @@ tags:
   parent: internet-layer
   kind: technology
   desc: Novell IPX (Internetwork Packet Exchange) interworking
+  aliases:
+  - NetWare
   match:
   - '\bIPX\b|novell'
   stats:
@@ -4629,6 +5051,9 @@ tags:
 - id: link-layer
   kind: topic
   desc: Link and data-link layers in general, not specific to one medium
+  aliases:
+  - L2
+  - datalink
   match_title_only:
   - link.layer|data link
   stats:
@@ -4668,6 +5093,9 @@ tags:
   parent: link-layer
   kind: technology
   desc: L2TP (Layer Two Tunneling Protocol)
+  aliases:
+  - L2TPv3
+  - L2TPv2
   match:
   - '\bL2TP\b|layer two tunneling'
   groups:
@@ -4683,6 +5111,8 @@ tags:
   parent: link-layer
   kind: technology
   desc: IP over Ethernet, Ethernet interworking and OAM
+  aliases:
+  - '802.3'
   match:
   - '\bethernet\b|IEEE 802\.3|802\.1'
   - MAC (layer|protocol|address)
@@ -4719,6 +5149,8 @@ tags:
   parent: link-layer
   kind: technology
   desc: 'Wi-Fi: IP over IEEE 802.11 wireless LANs'
+  aliases:
+  - WLAN
   match:
   - '802\.11|\bWi-?Fi\b|wireless LAN'
   groups:
@@ -4732,6 +5164,8 @@ tags:
   parent: link-layer
   kind: technology
   desc: CAPWAP (Control and Provisioning of Wireless Access Points)
+  aliases:
+  - LWAPP
   match:
   - '\bCAPWAP\b'
   groups:
@@ -4745,6 +5179,9 @@ tags:
   parent: link-layer
   kind: technology
   desc: IP over IEEE 802.16 (WiMAX) networks
+  aliases:
+  - 16ng
+  - 802.16e
   match:
   - '802\.16|WiMAX'
   groups:
@@ -4787,6 +5224,9 @@ tags:
   parent: ATM
   kind: technology
   desc: NHRP (Next Hop Resolution Protocol) for NBMA networks
+  aliases:
+  - ROLC
+  - NARP
   match:
   - '\bNHRP\b|next hop resolution'
   groups:
@@ -4842,6 +5282,12 @@ tags:
   parent: link-layer
   kind: technology
   desc: DSL (Digital Subscriber Line) access networks
+  aliases:
+  - ADSL
+  - VDSL
+  - xDSL
+  - SHDSL
+  - HDSL
   match:
   - '\bA?DSL\b|digital subscriber'
   groups:
@@ -4868,6 +5314,9 @@ tags:
   parent: link-layer
   kind: technology
   desc: DOCSIS (Data Over Cable Service Interface Specification) cable access networks
+  aliases:
+  - EuroDOCSIS
+  - MCNS
   match:
   - '\bDOCSIS\b|cable modem'
   groups:
@@ -4881,6 +5330,13 @@ tags:
   parent: link-layer
   kind: technology
   desc: 'Cellular networks: IP over 3GPP systems, GPRS/LTE/5G interworking'
+  aliases:
+  - LTE
+  - 5G
+  - UMTS
+  - 3GPP2
+  - 3G
+  - 4G
   match:
   - '\b3GPP2?\b|\bcellular\b|\bLTE\b|\b5G\b|\bGPRS\b|\bUMTS\b'
   stats:
@@ -4914,6 +5370,9 @@ tags:
   parent: link-layer
   kind: technology
   desc: SLIP (Serial Line Internet Protocol)
+  aliases:
+  - CSLIP
+  - Thinwire
   match:
   - '\bSLIP\b|serial line'
   - thinwire
@@ -4941,6 +5400,8 @@ tags:
   parent: link-layer
   kind: technology
   desc: IP over token ring
+  aliases:
+  - '802.5'
   match:
   - 'token ring|802\.5'
   stats:
@@ -4952,6 +5413,8 @@ tags:
   parent: link-layer
   kind: technology
   desc: IP over IEEE 1394 (FireWire)
+  aliases:
+  - IEEE1394
   match:
   - IEEE 1394|firewire
   groups:
@@ -4965,6 +5428,8 @@ tags:
   parent: link-layer
   kind: technology
   desc: IP over InfiniBand
+  aliases:
+  - IPoIB
   match:
   - infiniband
   groups:
@@ -4978,6 +5443,16 @@ tags:
   parent: link-layer
   kind: technology
   desc: IP over MPEG-2/DVB (Digital Video Broadcasting) broadcast links
+  aliases:
+  - MPEG-2
+  - DVB-S
+  - DVB-S2
+  - DVB-T
+  - DVB-H
+  - DVB-RCS
+  - VBI
+  - MPEG2
+  - ipdvb
   match:
   - '\bDVB\b|MPEG-2'
   groups:
@@ -4992,6 +5467,8 @@ tags:
   parent: link-layer
   kind: technology
   desc: Networking over satellite links
+  aliases:
+  - SATCOM
   match:
   - satellite
   - host access protocol
@@ -5019,6 +5496,8 @@ tags:
   parent: link-layer
   kind: technology
   desc: IP and multi-access protocols over SONET/SDH (Synchronous Optical Networking / Synchronous Digital Hierarchy)
+  aliases:
+  - SDH
   match:
   - 'MAPOS|SONET|\bSDH\b'
   stats:
@@ -5041,6 +5520,8 @@ tags:
   parent: link-layer
   kind: technology
   desc: Amateur packet radio (AX.25) and IP
+  aliases:
+  - AX25
   match:
   - 'AX\.25|amateur.{0,10}radio'
   stats:
@@ -5052,6 +5533,8 @@ tags:
   parent: link-layer
   kind: technology
   desc: IBM SNA (Systems Network Architecture) interworking
+  aliases:
+  - HPR
   match:
   - '\bSNA\b|systems network architecture|\bDLSw\b|\bAPPN\b|\bHPR\b'
   groups:
@@ -5067,6 +5550,8 @@ tags:
   parent: SNA
   kind: technology
   desc: TN3270 (Telnet 3270) terminal emulation
+  aliases:
+  - TN3270E
   match:
   - '\bTN3270\b'
   groups:
@@ -5230,6 +5715,9 @@ tags:
   parent: security
   kind: technology
   desc: 'TLS (Transport Layer Security): protocol, extensions, deployment guidance'
+  aliases:
+  - SSL
+  - SSLv3
   match:
   - '\bTLS\b|transport layer security|\bSSL\b'
   groups:
@@ -5278,6 +5766,11 @@ tags:
   parent: IPsec
   kind: technology
   desc: IKE (Internet Key Exchange)
+  aliases:
+  - IKEv2
+  - IKEv1
+  - ISAKMP
+  - Oakley
   match:
   - '\bIKEv?2?\b|internet key exchange|\bISAKMP\b|oakley|photuris'
   stats:
@@ -5335,6 +5828,11 @@ tags:
   parent: security
   kind: technology
   desc: SSH (Secure Shell) protocol
+  aliases:
+  - sftp
+  - secsh
+  - SSHv2
+  - OpenSSH
   match:
   - '\bSSH\b|secure shell'
   groups:
@@ -5352,6 +5850,8 @@ tags:
   parent: security
   kind: technology
   desc: PKI (Public Key Infrastructure) for the Internet
+  aliases:
+  - PKIX
   match:
   - '\bPKI\b|public key infrastructure'
   groups:
@@ -5368,6 +5868,9 @@ tags:
   parent: PKI
   kind: technology
   desc: X.509 (ITU-T X.509 public key certificates) certificates and profiles
+  aliases:
+  - PKIX
+  - X.509v3
   match:
   - '\bX\.509\b|PKIX|public.key certificate'
   - key identifier|certificate polic
@@ -5430,6 +5933,8 @@ tags:
   parent: PKI
   kind: technology
   desc: EST (Enrollment over Secure Transport)
+  aliases:
+  - EST-coaps
   match:
   - enrollment over secure transport
   stats:
@@ -5441,6 +5946,8 @@ tags:
   parent: PKI
   kind: technology
   desc: SPKI (Simple Public Key Infrastructure), historic
+  aliases:
+  - SDSI
   groups:
   - spki
   stats:
@@ -5452,6 +5959,9 @@ tags:
   parent: security
   kind: technology
   desc: CMS (Cryptographic Message Syntax)
+  aliases:
+  - PKCS#7
+  - PKCS7
   match:
   - '\bCMS\b|cryptographic message syntax|PKCS ?#?7'
   groups:
@@ -5466,6 +5976,8 @@ tags:
   parent: CMS
   kind: technology
   desc: S/MIME (Secure/Multipurpose Internet Mail Extensions) secure email
+  aliases:
+  - SMIME
   match:
   - '\bS/MIME\b'
   groups:
@@ -5492,6 +6004,9 @@ tags:
   parent: security
   kind: technology
   desc: OpenPGP (Open Pretty Good Privacy) message format and usage
+  aliases:
+  - PGP
+  - GnuPG
   match:
   - '\bOpenPGP\b|\bPGP\b|pretty good privacy'
   groups:
@@ -5518,6 +6033,8 @@ tags:
   parent: security
   kind: technology
   desc: The Kerberos authentication system
+  aliases:
+  - krb5
   match:
   - '\bkerberos\b'
   groups:
@@ -5535,6 +6052,10 @@ tags:
   parent: security
   kind: technology
   desc: GSS-API (Generic Security Service Application Program Interface) and its mechanisms
+  aliases:
+  - SPKM
+  - LIPKEY
+  - GSS-API
   match:
   - '\bGSS-?API\b|generic security service'
   - common authentication technology
@@ -5637,6 +6158,8 @@ tags:
   parent: security
   kind: technology
   desc: NEA (Network Endpoint Assessment) and posture
+  aliases:
+  - TNC
   groups:
   - nea
   stats:
@@ -5665,6 +6188,8 @@ tags:
   parent: AAA
   kind: technology
   desc: The RADIUS (Remote Authentication Dial-In User Service) protocol
+  aliases:
+  - RadSec
   match:
   - '\bRADIUS\b'
   groups:
@@ -5698,6 +6223,8 @@ tags:
   parent: AAA
   kind: technology
   desc: TACACS and TACACS+ (Terminal Access Controller Access-Control System Plus)
+  aliases:
+  - XTACACS
   match:
   - '\bTACACS\+?\b'
   implies:
@@ -5711,6 +6238,8 @@ tags:
   parent: security
   kind: technology
   desc: OAuth (Open Authorization) authorization framework
+  aliases:
+  - OAuth2
   match:
   - '\bOAuth\b'
   groups:
@@ -5753,6 +6282,8 @@ tags:
   parent: security
   kind: technology
   desc: 'JOSE (JavaScript Object Signing and Encryption): JWS, JWE, JWK'
+  aliases:
+  - JWA
   match:
   - 'JSON web (signature|encryption|key|algorithm)|\bJOSE\b'
   groups:
@@ -5794,6 +6325,11 @@ tags:
   parent: security
   kind: technology
   desc: Cross-domain federated authentication frameworks
+  aliases:
+  - ABFAB
+  - SAML
+  - SSO
+  - VoT
   match:
   - '\bSAML\b|vectors of trust'
   groups:
@@ -5823,6 +6359,10 @@ tags:
   parent: security
   kind: technology
   desc: XML digital signatures and encryption
+  aliases:
+  - XMLDSIG
+  - xmlenc
+  - DSig
   match:
   - XML.*(signature|encryption)
   groups:
@@ -5836,6 +6376,9 @@ tags:
   parent: security
   kind: topic
   desc: Privacy threat models and protocol privacy considerations
+  aliases:
+  - GEOPRIV
+  - wiretap
   match:
   - '\bprivacy\b'
   - pervasive (monitoring|surveillance)|wiretap|lawful intercept
@@ -5855,6 +6398,8 @@ tags:
   parent: security
   kind: technology
   desc: Privacy Pass anonymous tokens
+  aliases:
+  - privacypass
   groups:
   - privacypass
   implies:
@@ -5868,6 +6413,8 @@ tags:
   parent: security
   kind: topic
   desc: 'Security incident response: exchange and coordination'
+  aliases:
+  - CSIRT
   match:
   - incident (handling|response|report)
   - vulnerability disclosure
@@ -5948,6 +6495,8 @@ tags:
   parent: security
   kind: topic
   desc: DDoS (Distributed Denial of Service) attack mitigation and signalling
+  aliases:
+  - DoS
   match:
   - '\bDDoS\b|denial.of.service'
   yields_to:
@@ -5975,6 +6524,8 @@ tags:
   parent: security
   kind: topic
   desc: Authentication of users, hosts and messages across protocols
+  aliases:
+  - authn
   match_title_only:
   - '\bauthenticat(?!ed encryption|ion codes?\b|ion-results)'
   yields_to:
@@ -6011,6 +6562,9 @@ tags:
   parent: authentication
   kind: technology
   desc: Web Authentication (WebAuthn)
+  aliases:
+  - FIDO2
+  - FIDO
   match:
   - WebAuthn|web authentication
   stats:
@@ -6022,6 +6576,8 @@ tags:
   parent: security
   kind: topic
   desc: 'Authorization and access control: who may do what'
+  aliases:
+  - authz
   match_title_only:
   - '\bauthoriz(?!ed)|(?<!media )\baccess control\b'
   yields_to:
@@ -6071,6 +6627,8 @@ tags:
   parent: security
   kind: technology
   desc: Trust management systems (KeyNote and successors)
+  aliases:
+  - PolicyMaker
   match:
   - keynote|trust.management
   stats:
@@ -6082,6 +6640,8 @@ tags:
   parent: security
   kind: technology
   desc: Security labels for networked data (CIPSO, CALIPSO and frameworks)
+  aliases:
+  - IPSO
   match:
   - security label|CALIPSO|CIPSO
   stats:
@@ -6093,6 +6653,8 @@ tags:
   parent: security
   kind: technology
   desc: Firewalls and middlebox security traversal
+  aliases:
+  - MIDCOM
   match:
   - '\bfirewalls?\b|middlebox|IP prox(y|ies)|transparent prox'
   - source directed access
@@ -6121,6 +6683,9 @@ tags:
   parent: firewall
   kind: technology
   desc: The SOCKS proxy protocol
+  aliases:
+  - SOCKS5
+  - SOCKSv5
   match:
   - '\bSOCKS\b'
   groups:
@@ -6134,6 +6699,8 @@ tags:
   parent: security
   kind: technology
   desc: Remote attestation of device state
+  aliases:
+  - RATS
   match:
   - 'remote attestation|\bRATS\b'
   groups:
@@ -6147,6 +6714,9 @@ tags:
   parent: security
   kind: technology
   desc: TEEP (Trusted Execution Environment Provisioning)
+  aliases:
+  - OTrP
+  - TEE
   groups:
   - teep
   implies:
@@ -6161,6 +6731,8 @@ tags:
   parent: security
   kind: technology
   desc: Supply chain integrity and transparency for digital artefacts
+  aliases:
+  - SCITT
   match:
   - supply chain
   groups:
@@ -6186,6 +6758,8 @@ tags:
 - id: cryptography
   kind: topic
   desc: 'Cryptography: algorithms, modes, parameters and their use in Internet protocols'
+  aliases:
+  - CFRG
   match:
   - '\bencrypt|\bcipher|cryptograph'
   - 'PKCS ?#?\d'
@@ -6244,6 +6818,8 @@ tags:
   parent: cryptography
   kind: technology
   desc: The AES (Advanced Encryption Standard) block cipher and its modes
+  aliases:
+  - Rijndael
   match:
   - '\bAES\b|advanced encryption standard|rijndael'
   stats:
@@ -6255,6 +6831,9 @@ tags:
   parent: cryptography
   kind: technology
   desc: DES (Data Encryption Standard) and Triple-DES (historic ciphers)
+  aliases:
+  - 3DES
+  - TDEA
   match:
   - '\b3?DES\b|data encryption standard|triple-des'
   stats:
@@ -6266,6 +6845,8 @@ tags:
   parent: cryptography
   kind: technology
   desc: ChaCha20 and Poly1305
+  aliases:
+  - Salsa20
   match:
   - chacha20|poly1305|salsa20
   stats:
@@ -6288,6 +6869,10 @@ tags:
   parent: cryptography
   kind: technology
   desc: 'Elliptic-Curve Cryptography: elliptic curve cryptography'
+  aliases:
+  - ECC
+  - ECDH
+  - ECDHE
   match:
   - 'elliptic curve|\bECDH\b'
   stats:
@@ -6299,6 +6884,10 @@ tags:
   parent: elliptic-curve
   kind: technology
   desc: Curve25519 and Curve448
+  aliases:
+  - X25519
+  - X448
+  - Goldilocks
   match:
   - curve25519|curve448|x25519
   stats:
@@ -6310,6 +6899,9 @@ tags:
   parent: elliptic-curve
   kind: technology
   desc: EdDSA (Edwards-curve Digital Signature Algorithm)
+  aliases:
+  - Ed25519
+  - Ed448
   match:
   - '\bEdDSA\b|ed25519|ed448'
   stats:
@@ -6332,6 +6924,17 @@ tags:
   parent: cryptography
   kind: technology
   desc: The SHA (Secure Hash Algorithm) family of hash functions
+  aliases:
+  - SHS
+  - SHA-1
+  - SHA-2
+  - SHA-3
+  - SHA-256
+  - Keccak
+  - SHAKE
+  - SHA-512
+  - SHA1
+  - SHA256
   match:
   - '\bSHA-?[123]?\d*\b|secure hash'
   stats:
@@ -6343,6 +6946,8 @@ tags:
   parent: cryptography
   kind: technology
   desc: MD5 (Message Digest 5) and the MD2/MD4 message digests
+  aliases:
+  - MD4
   match:
   - '\bMD[245]\b|message digest'
   stats:
@@ -6365,6 +6970,13 @@ tags:
   parent: cryptography
   kind: technology
   desc: Post-Quantum Cryptography and migration
+  aliases:
+  - PQC
+  - quantum-resistant
+  - quantum-safe
+  - Kyber
+  - Dilithium
+  - SPHINCS+
   match:
   - 'post-quantum|\bML-KEM\b|\bML-DSA\b|\bSLH-DSA\b|hash-based signature'
   - quantum internet|quantum network
@@ -6434,6 +7046,10 @@ tags:
   parent: cryptography
   kind: topic
   desc: 'Key Management: key establishment, provisioning and storage'
+  aliases:
+  - KEYPROV
+  - DSKPP
+  - PSKC
   match:
   - key (management|distribution|agreement|derivation|wrap|provisioning)
   - '\bMIKEY\b'
@@ -6461,6 +7077,12 @@ tags:
   parent: cryptography
   kind: technology
   desc: Randomness requirements and generation
+  aliases:
+  - RNG
+  - PRNG
+  - CSPRNG
+  - entropy
+  - DRBG
   match:
   - randomness|random number
   - password generator
@@ -6473,6 +7095,10 @@ tags:
   parent: cryptography
   kind: technology
   desc: One-Time Passwords (One-Time Password) systems
+  aliases:
+  - S/KEY
+  - HOTP
+  - TOTP
   match:
   - 'one-time password|\bOTP\b|\bHOTP\b|\bTOTP\b|s/key'
   groups:
@@ -6488,6 +7114,9 @@ tags:
   parent: cryptography
   kind: technology
   desc: PAKE (Password-Authenticated Key Exchange)
+  aliases:
+  - AugPAKE
+  - EKE
   match:
   - '\bPAKE\b|password.authenticated key|\bSPAKE2\b'
   implies:
@@ -6556,6 +7185,9 @@ tags:
   parent: cryptography
   kind: technology
   desc: Password hashing and memory-hard functions
+  aliases:
+  - Argon2
+  - bcrypt
   match:
   - argon2|password hashing|memory-hard
   stats:
@@ -6643,6 +7275,9 @@ tags:
 - id: network-management
   kind: topic
   desc: 'Network operations and management: manageability, operational considerations, Network management architectures and operational practice'
+  aliases:
+  - FCAPS
+  - CMOT
   match:
   - intent.based|intent classification|service (assurance|negotiation)
   - host monitoring
@@ -6667,6 +7302,11 @@ tags:
   parent: network-management
   kind: technology
   desc: SNMP (Simple Network Management Protocol) framework and security
+  aliases:
+  - SNMPv1
+  - SNMPv2
+  - SNMPv2c
+  - SNMPv3
   match:
   - '\bSNMPv?[123]?\b|simple network management'
   groups:
@@ -6690,6 +7330,10 @@ tags:
   parent: SNMP
   kind: technology
   desc: MIB (Management Information Base) modules and SMI
+  aliases:
+  - SMIv2
+  - SMIv1
+  - SMIng
   match:
   - '\bMIBs?\b|management information base|\bSMIv?2?\b|managed objects|ifStack'
   groups:
@@ -6732,6 +7376,8 @@ tags:
   parent: SNMP
   kind: technology
   desc: RMON (Remote Network Monitoring)
+  aliases:
+  - RMON2
   match:
   - '\bRMON\b|remote.*monitoring'
   groups:
@@ -6788,6 +7434,8 @@ tags:
   parent: network-management
   kind: technology
   desc: YANG (Yet Another Next Generation data modeling language) data modelling language and models
+  aliases:
+  - YIN
   match:
   - YANG
   groups:
@@ -6821,6 +7469,8 @@ tags:
   parent: network-management
   kind: topic
   desc: Policy-based network management information models
+  aliases:
+  - PCIM
   groups:
   - policy
   - snmpconf
@@ -6834,6 +7484,9 @@ tags:
   parent: network-management
   kind: topic
   desc: 'Performance Measurement: active and passive network performance metrics and methods'
+  aliases:
+  - IPPM
+  - AltMark
   match:
   - '\bIPPM\b|performance metric|loss metric|delay metric'
   - network tracing
@@ -6909,6 +7562,9 @@ tags:
   parent: network-management
   kind: technology
   desc: IPFIX (IP Flow Information Export) and packet sampling
+  aliases:
+  - NetFlow
+  - CRANE
   match:
   - '\bIPFIX\b|flow information export|netflow|packet sampling'
   - '\bCRANE\b'
@@ -6939,6 +7595,8 @@ tags:
   parent: network-management
   kind: topic
   desc: Benchmarking methodology for network devices and functions
+  aliases:
+  - BMWG
   match:
   - benchmarking
   groups:
@@ -6953,6 +7611,9 @@ tags:
   parent: network-management
   kind: topic
   desc: OAM (Operations, Administration, and Maintenance) mechanisms
+  aliases:
+  - OAM&P
+  - LIME
   match:
   - '\bOAM\b|LSP ping'
   groups:
@@ -6979,6 +7640,8 @@ tags:
   parent: network-management
   kind: topic
   desc: 'SDN (Software-Defined Networking): separated, programmable control planes'
+  aliases:
+  - OpenFlow
   match_title_only:
   - 'software.defined network|\bSDN\b'
   stats:
@@ -6991,6 +7654,8 @@ tags:
   parent: network-management
   kind: technology
   desc: Traceroute and path discovery tools
+  aliases:
+  - tracert
   match:
   - traceroute
   stats:
@@ -7002,6 +7667,8 @@ tags:
   parent: network-management
   kind: technology
   desc: 'HEMS (High-Level Entity Management System): historic management protocol'
+  aliases:
+  - HEMP
   match:
   - '\bHEMS\b|high-level entity management'
   stats:
@@ -7013,6 +7680,9 @@ tags:
   parent: network-management
   kind: topic
   desc: 'Autonomic Networking: autonomic and self-managing network infrastructure'
+  aliases:
+  - ANIMA
+  - ANI
   match:
   - autonomic
   groups:
@@ -7053,6 +7723,9 @@ tags:
   parent: network-management
   kind: topic
   desc: 'Time Synchronization: clock synchronization over networks'
+  aliases:
+  - TICTOC
+  - Roughtime
   match:
   - clock (service|standard|synchroni)|time standard|network time
   - time protocol
@@ -7072,6 +7745,10 @@ tags:
   parent: time-synchronization
   kind: technology
   desc: NTP (Network Time Protocol)
+  aliases:
+  - SNTP
+  - NTPv4
+  - NTPv3
   match:
   - '\bNTPv?[34]?\b|network time protocol|time synchronization'
   groups:
@@ -7089,6 +7766,10 @@ tags:
   parent: time-synchronization
   kind: technology
   desc: PTP (Precision Time Protocol) over IP networks
+  aliases:
+  - '1588'
+  - PTPv2
+  - IEEE1588
   match:
   - '\bPTP\b|precision time'
   groups:
@@ -7104,6 +7785,8 @@ tags:
   parent: network-management
   kind: topic
   desc: Energy monitoring and management of networked devices
+  aliases:
+  - EMAN
   match:
   - energy management|power monitoring
   groups:
@@ -7118,6 +7801,8 @@ tags:
   parent: network-management
   kind: topic
   desc: Operational security practices for network infrastructure
+  aliases:
+  - OPSEC
   match:
   - trade show
   - operational security
@@ -7136,6 +7821,8 @@ tags:
   parent: network-management
   kind: topic
   desc: Y2K (Year 2000) readiness
+  aliases:
+  - millennium
   match:
   - Y2K|year 2000|millennium
   groups:
@@ -7150,6 +7837,8 @@ tags:
   parent: network-management
   kind: topic
   desc: 'Sustainability: energy efficiency and environmental impact of Internet infrastructure'
+  aliases:
+  - sustainable
   match:
   - environmental impact|sustainab|carbon.aware|energy.aware|green network
   stats:
@@ -7175,6 +7864,12 @@ tags:
   parent: network-management
   kind: technology
   desc: Packet capture and trace file formats
+  aliases:
+  - pcap
+  - pcapng
+  - libpcap
+  - snoop
+  - tcpdump
   match:
   - '\bsnoop\b|packet capture|\bpcap\b'
   implies:
@@ -7210,6 +7905,8 @@ tags:
   parent: applications
   kind: technology
   desc: FTP (File Transfer Protocol)
+  aliases:
+  - FTPS
   match:
   - '\bFTP\b|file transfer protocol'
   groups:
@@ -7294,6 +7991,8 @@ tags:
   parent: applications
   kind: technology
   desc: The X Window System protocol
+  aliases:
+  - X11
   match:
   - X window
   stats:
@@ -7305,6 +8004,8 @@ tags:
   parent: applications
   kind: technology
   desc: 'The TCP/UDP small services: Echo, Discard, Chargen, QOTD, Daytime, Active Users'
+  aliases:
+  - systat
   match:
   - echo protocol|discard protocol|character generator|quote of the day|daytime protocol|active users
   stats:
@@ -7316,6 +8017,8 @@ tags:
   parent: applications
   kind: topic
   desc: E-commerce and payment protocols
+  aliases:
+  - ecommerce
   match:
   - 'cybercash|e-?commerce|\bECML\b|internet open trading|payment|airline'
   groups:
@@ -7366,6 +8069,8 @@ tags:
   parent: applications
   kind: technology
   desc: Peer-to-Peer overlay networks and applications
+  aliases:
+  - peer-to-peer
   match:
   - '(?<!advanced )peer-to-peer(?! adaptation)|(?<!point-to-point \()\bP2P\b'
   yields_to:
@@ -7383,6 +8088,8 @@ tags:
   parent: applications
   kind: technology
   desc: LPD (Line Printer Daemon protocol)
+  aliases:
+  - LPR
   match:
   - 'line printer|\bLPD\b'
   stats:
@@ -7407,6 +8114,8 @@ tags:
   parent: applications
   kind: technology
   desc: IPP (Internet Printing Protocol)
+  aliases:
+  - ipps
   match:
   - 'internet printing|\bIPP\b'
   groups:
@@ -7441,6 +8150,10 @@ tags:
   parent: directory-services
   kind: technology
   desc: LDAP (Lightweight Directory Access Protocol)
+  aliases:
+  - LDAPv3
+  - LDAPv2
+  - LDAPS
   match:
   - '\bLDAPv?[23]?\b|lightweight directory'
   groups:
@@ -7474,6 +8187,9 @@ tags:
   parent: applications
   kind: topic
   desc: Storage access and block/file protocols over IP
+  aliases:
+  - SMB
+  - CIFS
   match:
   - BagIt|memory space
   - digital library
@@ -7489,6 +8205,11 @@ tags:
   parent: storage
   kind: technology
   desc: NFS (Network File System)
+  aliases:
+  - NFSv4
+  - NFSv3
+  - NFSv2
+  - WebNFS
   match:
   - '\bNFSv?[234]?\b|network file system'
   - 'file access protocol|\bNFILE\b|WebNFS'
@@ -7505,6 +8226,8 @@ tags:
   parent: storage
   kind: technology
   desc: iSCSI (Internet Small Computer System Interface)
+  aliases:
+  - SCSI
   match:
   - '\biSCSI\b'
   - '\bSCSI\b'
@@ -7522,6 +8245,9 @@ tags:
   parent: storage
   kind: technology
   desc: Fibre Channel over IP transports
+  aliases:
+  - FC
+  - FCIP
   match:
   - 'fibre channel|\bFC(IP)?\b'
   groups:
@@ -7547,6 +8273,11 @@ tags:
   parent: storage
   kind: technology
   desc: RDMA (Remote Direct Memory Access) protocols
+  aliases:
+  - iWARP
+  - RDMAP
+  - DDP
+  - RDDP
   match:
   - '\bRDMA\b|direct data placement'
   groups:
@@ -7562,6 +8293,8 @@ tags:
   parent: storage
   kind: technology
   desc: ONC RPC (Open Network Computing Remote Procedure Call) and XDR
+  aliases:
+  - SunRPC
   match:
   - '\bXDR\b|\bRPC\b(?!.*(SOAP|XML))|remote procedure call'
   groups:
@@ -7602,6 +8335,10 @@ tags:
   parent: calendaring
   kind: technology
   desc: iCalendar calendar data format
+  aliases:
+  - vCalendar
+  - xCal
+  - jCal
   match:
   - '\biCalendar\b|\bvCalendar\b'
   groups:
@@ -7632,6 +8369,10 @@ tags:
   parent: calendaring
   kind: technology
   desc: Time zone data distribution and timestamps
+  aliases:
+  - timezone
+  - tzdist
+  - tzdb
   match:
   - 'time zone|timezone|\btzdata\b'
   groups:
@@ -7659,6 +8400,10 @@ tags:
   parent: applications
   kind: technology
   desc: vCard contact data
+  aliases:
+  - jCard
+  - xCard
+  - vcf
   match:
   - '\bvCard\b'
   groups:
@@ -7700,6 +8445,8 @@ tags:
   parent: applications
   kind: topic
   desc: 'Geolocation: formats, privacy and conveyance of location information'
+  aliases:
+  - GEOPRIV
   match:
   - 'geolocation|location information|civic (address|location)|\bGML\b|geodetic'
   - 'location-to-service|\bLoST[-:]'
@@ -7739,6 +8486,8 @@ tags:
   parent: applications
   kind: technology
   desc: BEEP (Blocks Extensible Exchange Protocol)
+  aliases:
+  - BXXP
   match:
   - '\bBEEP\b|blocks extensible'
   groups:
@@ -7787,6 +8536,8 @@ tags:
   parent: applications
   kind: technology
   desc: NetBIOS (Network Basic Input/Output System) services over TCP/IP
+  aliases:
+  - NBT
   match:
   - '\bNetBIOS\b'
   stats:
@@ -7809,6 +8560,8 @@ tags:
   parent: applications
   kind: technology
   desc: eBPF (extended Berkeley Packet Filter) instruction set and conventions
+  aliases:
+  - BPF
   match:
   - '\beBPF\b|\bBPF\b'
   groups:
@@ -7833,6 +8586,9 @@ tags:
   parent: data-formats
   kind: technology
   desc: ABNF (Augmented Backus-Naur Form) and other formal syntax notations
+  aliases:
+  - BNF
+  - EBNF
   match:
   - '\bA?BNF\b|augmented BNF|backus-naur'
   stats:
@@ -7855,6 +8611,9 @@ tags:
   parent: data-formats
   kind: technology
   desc: Base64, Base32, Base16 and Base45 textual data encodings
+  aliases:
+  - Radix-64
+  - base64url
   match:
   - '\bbase(16|32|45|64)\b'
   - structured data exchange
@@ -7867,6 +8626,10 @@ tags:
   parent: data-formats
   kind: technology
   desc: 'Date and time representation: Internet timestamps (RFC 3339) and extensions'
+  aliases:
+  - ISO8601
+  - IXDTF
+  - datetime
   match:
   - 'date and time|\bIXDTF\b|timestamps? (format|on the internet)'
   stats:
@@ -7889,6 +8652,8 @@ tags:
   parent: data-formats
   kind: technology
   desc: JSON (JavaScript Object Notation) and JSON-based formats
+  aliases:
+  - I-JSON
   match:
   - '\bJSON\b|javascript object notation'
   groups:
@@ -7954,6 +8719,13 @@ tags:
   parent: data-formats
   kind: technology
   desc: ASN.1 (Abstract Syntax Notation One) modules and encoding rules
+  aliases:
+  - X.680
+  - X.208
+  - BER
+  - DER
+  - PER
+  - CER
   match:
   - '\bASN\.1\b|abstract syntax notation|\b[BDP]ER\b encoding'
   stats:
@@ -7978,6 +8750,9 @@ tags:
   parent: data-formats
   kind: technology
   desc: Markdown text formats
+  aliases:
+  - CommonMark
+  - GFM
   match:
   - '\bmarkdown\b'
   stats:
@@ -7989,6 +8764,11 @@ tags:
   parent: data-formats
   kind: topic
   desc: Internationalization of text in protocols
+  aliases:
+  - i18n
+  - localization
+  - l10n
+  - internationalisation
   match:
   - 'internationaliz|\bi18n\b'
   - collation
@@ -8004,6 +8784,9 @@ tags:
   parent: internationalization
   kind: technology
   desc: The UTF-8 (Unicode Transformation Format, 8-bit) encoding
+  aliases:
+  - UTF8
+  - FSS-UTF
   match:
   - '\bUTF-8\b'
   implies:
@@ -8017,6 +8800,10 @@ tags:
   parent: internationalization
   kind: technology
   desc: Unicode usage in Internet protocols
+  aliases:
+  - UCS
+  - '10646'
+  - ISO-10646
   match:
   - '\bunicode\b|\bUCS\b'
   implies:
@@ -8030,6 +8817,8 @@ tags:
   parent: internationalization
   kind: technology
   desc: Character set registration and use
+  aliases:
+  - charset
   match:
   - 'chara?cter sets?\b|charset|code page'
   - '\bASCII\b'
@@ -8066,6 +8855,9 @@ tags:
   parent: internationalization
   kind: technology
   desc: Language tags and matching
+  aliases:
+  - BCP47
+  - langtag
   match:
   - language tag|language range|matching of language
   groups:
@@ -8096,6 +8888,11 @@ tags:
   parent: data-formats
   kind: topic
   desc: Lossless data compression formats
+  aliases:
+  - LZW
+  - bzip2
+  - zip
+  - LZ77
   match:
   - compression
   yields_to:
@@ -8129,6 +8926,8 @@ tags:
   parent: compression
   kind: technology
   desc: The gzip file format
+  aliases:
+  - x-gzip
   match:
   - '\bgzip\b'
   implies:
@@ -8168,6 +8967,8 @@ tags:
   parent: compression
   kind: technology
   desc: IPComp (IP Payload Compression Protocol)
+  aliases:
+  - IPPCP
   match:
   - IP payload compression|IPComp
   groups:
@@ -8205,6 +9006,8 @@ tags:
   parent: data-formats
   kind: technology
   desc: Media feature and content negotiation
+  aliases:
+  - conneg
   match:
   - content negotiation|media feature
   groups:
@@ -8239,6 +9042,8 @@ tags:
 - id: IoT
   kind: topic
   desc: 'IoT (Internet of Things): architectures, terminology, guidance for constrained devices'
+  aliases:
+  - M2M
   match_title_only:
   - 'internet of things|\bIoT\b|smart object|constrained.*(device|node|network|environment)'
   groups:
@@ -8254,6 +9059,8 @@ tags:
   parent: IoT
   kind: technology
   desc: CoAP (Constrained Application Protocol)
+  aliases:
+  - coaps
   match:
   - '\bCoAP\b|constrained application protocol'
   groups:
@@ -8283,6 +9090,8 @@ tags:
   parent: IoT
   kind: technology
   desc: SenML (Sensor Measurement Lists) data format
+  aliases:
+  - SenSML
   match:
   - '\bSenML\b'
   implies:
@@ -8296,6 +9105,8 @@ tags:
   parent: IoT
   kind: technology
   desc: SDF (Semantic Definition Format) for IoT data models
+  aliases:
+  - asdf
   groups:
   - asdf
   implies:
@@ -8309,6 +9120,9 @@ tags:
   parent: IoT
   kind: technology
   desc: 6LoWPAN (IPv6 over Low-Power Wireless Personal Area Networks) and other constrained link layers
+  aliases:
+  - LoWPAN
+  - 802.15.4
   match:
   - '\b6LoWPAN\b|IPv6 over.*(802\.15\.4|low-power|bluetooth|NFC|MS/TP|PLC|DECT)'
   groups:
@@ -8356,6 +9170,10 @@ tags:
   parent: IoT
   kind: technology
   desc: LPWAN (Low-Power Wide-Area Network) technologies over IP
+  aliases:
+  - LoRa
+  - NB-IoT
+  - Wi-SUN
   match:
   - '\bLPWAN\b|LoRaWAN|sigfox|NB-IoT'
   groups:
@@ -8538,6 +9356,9 @@ tags:
   parent: internet-governance
   kind: topic
   desc: IPR (Intellectual Property Rights), copyright and trust legal provisions
+  aliases:
+  - TLP
+  - patent
   match:
   - '\blicens'
   - antitrust
@@ -8570,6 +9391,8 @@ tags:
   parent: internet-governance
   kind: topic
   desc: 'The RFC Series (Request for Comments): format, style, editor and publication'
+  aliases:
+  - RFCs
   match:
   - requests? for comments summary|documentation convention|RFCs?.{0,20}(DOI|digital object)
   - '^summary of \d|not all RFCs|reference guide|bibliography of request'
@@ -8630,6 +9453,9 @@ tags:
   parent: internet-governance
   kind: topic
   desc: 'Terminology: glossaries, definitions and requirements language'
+  aliases:
+  - glossary
+  - vocabulary
   match:
   - terminolog|glossar|vocabular|requirement levels|key ?words
   groups:
@@ -8728,6 +9554,8 @@ tags:
   parent: ARPANET
   kind: technology
   desc: Remote job entry on the early network
+  aliases:
+  - NETRJS
   match:
   - 'remote job entry|\bRJE\b|\bNETRJS\b'
   stats:
@@ -8739,6 +9567,8 @@ tags:
   parent: ARPANET
   kind: technology
   desc: Early network graphics protocols and formats
+  aliases:
+  - NGP
   match:
   - '\bgraphics?\b|\bgraphical\b'
   yields_to:
