@@ -40,8 +40,8 @@ publish; the page carries its own build date so the two can be told apart.
 | File | Contents |
 |---|---|
 | `rfcs.json` | Corpus metadata, one record per RFC — the engine's input, produced by either corpus script. Fetched fresh at build time; the snapshot each build used is published alongside the other artifacts, so a published build can be reproduced exactly |
-| `rfc-tags.json` | Per RFC: title, year, leaf `tags`, full `paths` (R4), and `technology` / `topic` coordinates for the served view |
-| `rfc-tags.csv` | The same table for spreadsheet use; list fields are `;`-separated, paths `|`-separated |
+| `rfc-tags.json` | Per RFC: title, year, leaf `tags`, full `paths` (R4) as arrays of ids, and `technology` / `topic` coordinates for the served view |
+| `rfc-tags.csv` | The same table for spreadsheet use; list fields are `;`-separated, paths `|`-separated with ids joined by ` / ` |
 | `tag-candidates.json` | Output of `tag_candidates.py`: candidate names by tag, most-seen first, with example RFCs |
 | `rfc-tags.html` | Self-contained review page. **Vocabulary**: the tree with corpus count and notifications-per-year (since 2021) per tag, search, technology/topic filter, multi-select with AND/OR and the matching RFCs. **Co-occurrence**: tag pairs sharing RFCs. **Lifespan**: each tag's first-to-last year, live or dormant. **Overlap**: Jaccard and one-way overlap flags for redundant or nested pairs. **All RFCs**: look-up with tags and served technology/topic coordinates |
 
@@ -194,12 +194,12 @@ Nothing is decided by hand at this stage; editing `taxonomy.yaml` and re-running
 <!-- generated:composites -->
 | Composite tag | Becomes |
 |---|---|
-| `dns-privacy` | `privacy` |
-| `web-security` | `security` |
-| `email-authentication` | `security` + `authentication` |
-| `routing-security` | `security` |
-| `multicast-security` | `multicast` + `security` |
-| `operational-security` | `security` + `network-management` |
+| `DNS privacy` | `privacy` |
+| `web security` | `security` |
+| `email authentication` | `security` + `authentication` |
+| `routing security` | `security` |
+| `multicast security` | `multicast` + `security` |
+| `operational security` | `security` + `network management` |
 <!-- /generated -->
 
 ### Implication, by topic
@@ -207,38 +207,38 @@ Nothing is decided by hand at this stage; editing `taxonomy.yaml` and re-running
 <!-- generated:implies -->
 | Topic | Implied by |
 |---|---|
-| `security` | DNSSEC, DANE, cookies, HSTS, token-binding, STIR, SRTP, SFrame, RPKI, BGPsec, tcpcrypt, SEND, SAVI, TEEP, supply-chain-integrity, cryptography, OSCORE, EDHOC, firmware-update, MUD |
-| `authentication` | http-authentication, STIR, Kerberos, GSSAPI, SASL, EAP, PANA, AAA, RADIUS, Diameter, TACACS, SCIM, federated-authentication, Ident, OTP, PAKE |
-| `IoT` | TEEP, CoAP, OSCORE, SenML, SDF, 6LoWPAN, RPL, 6TiSCH, LPWAN, SCHC, EDHOC, firmware-update, MUD |
+| `security` | DNSSEC, DANE, cookies, HSTS, token binding, STIR, SRTP, SFrame, RPKI, BGPsec, tcpcrypt, SEND, SAVI, TEEP, supply chain integrity, cryptography, OSCORE, EDHOC, firmware update, MUD |
+| `authentication` | HTTP authentication, STIR, Kerberos, GSS-API, SASL, EAP, PANA, AAA, RADIUS, Diameter, TACACS+, SCIM, federated authentication, Ident, OTP, PAKE |
+| `IoT` | TEEP, CoAP, OSCORE, SenML, SDF, 6LoWPAN, RPL, 6TiSCH, LPWAN, SCHC, EDHOC, firmware update, MUD |
 | `multicast` | PIM, IGMP, MLD, MSDP, MOSPF, SSM, AMT, BIER, FLUTE, NORM, MVPN |
-| `network-management` | BMP, SNMP, MIB, AgentX, NETCONF, RESTCONF, YANG, syslog, I2RS, OVSDB |
-| `IPv6-transition` | DNS64, NAT64, 6to4, Teredo, DS-Lite, MAP, 6rd, 464XLAT, happy-eyeballs |
+| `network management` | BMP, SNMP, MIB, AgentX, NETCONF, RESTCONF, YANG, syslog, I2RS, OVSDB |
+| `IPv6 transition` | DNS64, NAT64, 6to4, Teredo, DS-Lite, MAP, 6rd, 464XLAT, happy eyeballs |
 | `tunneling` | MASQUE, pseudowire, VXLAN, Geneve, GRE, IP-in-IP, L2TP |
-| `congestion-control` | ECN, AQM, CoDel, PIE, LEDBAT, PCN, ConEx |
-| `performance-measurement` | RMON, OWAMP, TWAMP, STAMP, LMAP, IPFIX, packet-capture |
-| `privacy` | DoH, DoT, oblivious-dns, MASQUE, oblivious-http, privacy-pass |
-| `internationalization` | IDN, EAI, UTF-8, Unicode, language-tags, PRECIS |
+| `congestion control` | ECN, AQM, CoDel, PIE, LEDBAT, PCN, ConEx |
+| `performance measurement` | RMON, OWAMP, TWAMP, STAMP, LMAP, IPFIX, packet capture |
+| `privacy` | DoH, DoT, oblivious DNS, MASQUE, oblivious HTTP, privacy pass |
+| `internationalization` | IDN, EAI, UTF-8, Unicode, language tags, PRECIS |
 | `QoS` | DetNet, RSVP, Diffserv, Intserv, NSIS, COPS |
-| `ip-mobility` | MANET, Mobile-IPv4, Mobile-IPv6, PMIPv6, NEMO, HIP |
+| `IP mobility` | MANET, Mobile IPv4, Mobile IPv6, PMIPv6, NEMO, HIP |
 | `compression` | ROHC, DEFLATE, gzip, Brotli, zstd, IPComp |
 | `authorization` | OAuth, GNAP, XACML, ACE |
-| `transport-mapping` | DoH, DoT, HTTP3 |
-| `nat-traversal` | ICE, STUN, TURN |
-| `time-synchronization` | NTP, PTP, time-zones |
+| `transport mapping` | DoH, DoT, HTTP/3 |
+| `NAT traversal` | ICE, STUN, TURN |
+| `time synchronization` | NTP, PTP, time zones |
 | `storage` | NFS, iSCSI, RDMA |
-| `service-discovery` | DNS-SD, SLP |
-| `reliable-multicast` | FLUTE, NORM |
-| `traffic-engineering` | RSVP-TE, PCE |
-| `routing-architecture` | LISP, ILNP |
+| `service discovery` | DNS-SD, SLP |
+| `reliable multicast` | FLUTE, NORM |
+| `traffic engineering` | RSVP-TE, PCE |
+| `routing architecture` | LISP, ILNP |
 | `multihoming` | Shim6, HIP |
 | `calendaring` | iCalendar, CalDAV |
 | `OAM` | BFD |
-| `header-compression` | ROHC |
+| `header compression` | ROHC |
 | `addressing` | SLAAC |
 | `routing` | RPL |
 <!-- /generated -->
 
-The `implies` field is consulted over the ancestor closure, so `DKIM` inherits `security` through `email-authentication`. Two things the tables do not show because closure supplies them: every tag under the `security` root reaches `security` without an `implies` entry, and a composite's technology context (`DNS` for `dns-privacy`) arrives as its ancestor.
+The `implies` field is consulted over the ancestor closure, so `DKIM` inherits `security` through `email authentication`. Two things the tables do not show because closure supplies them: every tag under the `security` root reaches `security` without an `implies` entry, and a composite's technology context (`DNS` for `DNS privacy`) arrives as its ancestor.
 
 ## Regeneration
 

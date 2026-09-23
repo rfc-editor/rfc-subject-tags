@@ -691,7 +691,7 @@ function partnersFor(id){
   return out.sort(function(a,b){return b[1]-a[1];}).slice(0,10);
 }
 function crumb(t){
-  return t.path.split('/').map(function(p){
+  return t.path.split(' / ').map(function(p){
     var x=byId[p];
     return p===t.id?name(x,'here'):chip(x,'data-add="'+p+'"');
   }).join('<i>/</i>');
@@ -738,7 +738,7 @@ function drawDetail(){
   if(mb)mb.addEventListener('click',function(){shown+=LIMIT;drawDetail();});
   el.querySelectorAll('[data-add]').forEach(function(b){b.addEventListener('click',function(){toggle(b.dataset.add);});});
 }
-function isKin(a,b){return a.path.indexOf(b.path+'/')===0||b.path.indexOf(a.path+'/')===0;}
+function isKin(a,b){return a.path.indexOf(b.path+' / ')===0||b.path.indexOf(a.path+' / ')===0;}
 function jumpTo(ids,andMode){
   sel=ids;mode=andMode?'and':'or';shown=LIMIT;filter='';
   document.getElementById('tagSearch').value='';

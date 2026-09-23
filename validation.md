@@ -49,21 +49,21 @@ A fixed list of well-known RFCs with expected results:
 
 | RFC | Expected |
 |---|---|
-| 791 | ipv4 |
-| 793 | tcp |
-| 822 | message-format |
-| 1034 | dns |
-| 2616 | http |
-| 8446 | tls |
-| 9000 | quic, udp — topic `transport` only |
-| 7748 | elliptic-curve — topics `cryptography` and `security` |
-| 9001 | quic + security |
-| 9002 | quic + congestion-control |
-| 9312 | quic + network-management |
-| 3261 | sip |
-| 2119 | terminology |
-| 1149 | humor |
-| 6762 | mdns, dns |
+| 791 | `IPv4` |
+| 793 | `TCP` |
+| 822 | `message format` |
+| 1034 | `DNS` |
+| 2616 | `HTTP` |
+| 8446 | `TLS` |
+| 9000 | `QUIC`, `UDP` — topic `transport` only |
+| 7748 | `elliptic curve` — topics `cryptography` and `security` |
+| 9001 | `QUIC` + `security` |
+| 9002 | `QUIC` + `congestion control` |
+| 9312 | `QUIC` + `network management` |
+| 3261 | `SIP` |
+| 2119 | `terminology` |
+| 1149 | `humor` |
+| 6762 | `mDNS`, `DNS` |
 | 5317 | no `JWT` |
 
 ### Search grounding (R9)
@@ -97,6 +97,12 @@ List served-view documents whose only topics are roots but whose titles contain 
 
 For each topic-implying technology, list assignments with no title evidence and confirm they are working-group-derived rather than incidental keywords.
 
+### Id form (R21)
+
+- No two ids differ only by case (the loader fails otherwise).
+- Ids read exactly as the documents write the term (`IPv6`, `HTTP/2`, `.onion`, `X.509`, `TACACS+`); phrases are written with spaces and their own casing (`congestion control`, `IP mobility`).
+- Paths are written as ids joined by ` / `.
+
 ### Independence (R14, R15)
 
 By inspection of the tree: no tag names an IETF area, a status, a stream or a date.
@@ -119,7 +125,7 @@ When the engine or the YAML schema changes, re-run against the previous `rfc-tag
 - **Distribution:** 1:679 · 2:2,570 · 3:2,132 · 4:1,588 · 5:1,330 · 6:719 · 7:418 · 8:216 · 9:102 · 10:39 · 11:24 · 12:10 · 13:4 · 14:3 · 15:1.
 - **Over ten tags:** 42 documents (0.4%), all multi-technology cross-area specifications.
 - **Unused tags:** 0.
-- **Single-document tags:** 44 — AFS, ARC, BATS, BLAKE2, CRC, CyberCash, DCTCP, Dragonfly, EIGRP, FFV1, GSAKMP, HOBA, IDXP, IRTP, JPAKE, JSCalendar, LPWAN, MOSPF, NAT-PMP, OPAQUE, OVSDB, PGM, RATP, RBNF, SDF, SFrame, Speex, TBRPF, TEEP, TMux, TVR, Tetrys, Vorbis, WHIP, XACML, Y2K, YAML, amateur-radio, data-center-networking, eBPF, http-caching, oblivious-dns, password-hashing, scrypt.
+- **Single-document tags:** 44 — AFS, ARC, BATS, BLAKE2, CRC, CyberCash, DCTCP, Dragonfly, EIGRP, FFV1, GSAKMP, HOBA, HTTP caching, IDXP, IRTP, J-PAKE, JSCalendar, LPWAN, MOSPF, NAT-PMP, OPAQUE, OVSDB, PGM, RATP, RBNF, SDF, SFrame, Speex, TBRPF, TEEP, TMux, TVR, Tetrys, Vorbis, WHIP, XACML, Y2K, YAML, amateur radio, data center networking, eBPF, oblivious DNS, password hashing, scrypt.
 - **Humor:** 74 documents, 0 exclusivity violations.
 - **Stability replay:** 9,214 RFCs debut no tag, 609 debut one, 10 debut two, 2 debut three. The 12 multi-debut cases are parent-and-child pairs founding a branch, plus RFC 2430 preceding the MPLS architecture into print.
 
@@ -131,4 +137,4 @@ When the engine or the YAML schema changes, re-run against the previous `rfc-tag
 - **Per RFC:** technology mean 1.74, topic mean 2.06, combined mean 3.80.
 - **Over ten combined:** 48 documents (0.5%); maximum 15.
 - **Documents whose only topics are roots:** 5,335.
-- **Topic replay:** 5 documents debut two topics, all in the founding years. Debuts since 2003: emergency-services (2003), nat-traversal (2003), IoT (2006), energy-management (2013), SDN (2014), telemetry (2019), sustainability (2024).
+- **Topic replay:** 5 documents debut two topics, all in the founding years. Debuts since 2003: emergency services (2003), NAT traversal (2003), IoT (2006), energy management (2013), SDN (2014), telemetry (2019), sustainability (2024).

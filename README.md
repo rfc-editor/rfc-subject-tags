@@ -13,7 +13,7 @@ The taxonomy itself is `taxonomy.yaml`; the generated review page — published 
 
 The tags exist for two things people do with RFCs:
 
-1. **Search** — find RFCs by technology (`QUIC`, `DKIM`) or by topic (`privacy`, `congestion-control`), including intersections such as "BGP and security".
+1. **Search** — find RFCs by technology (`QUIC`, `DKIM`) or by topic (`privacy`, `congestion control`), including intersections such as "BGP and security".
 2. **Subscribe** — be told when a new RFC is published that matches a tag or a combination of tags.
 
 Tags complement full-text search rather than duplicating it. Where a document uses a term, the text index already finds it. The tag system earns its place by supplying what text cannot:
@@ -32,14 +32,14 @@ There are two coordinated representations of the same tags.
 **The curated tree** is what people edit. It is a single hierarchy, at most four levels deep, in which every level is an assignable tag:
 
 - The 19 roots are the top-level subjects — routing, transport, security, cryptography, naming, and so on.
-- A document about a subject in general carries the root alone: `/link-layer`.
-- A specific document carries the deepest applicable tag together with its ancestors: `/link-layer/PPP/PPPoE`.
+- A document about a subject in general carries the root alone: `link layer`.
+- A specific document carries the deepest applicable tag together with its ancestors: `link layer / PPP / PPPoE`.
 - Every tag is declared in `taxonomy.yaml` as either a **technology** (a named protocol, system or format) or a **topic** (a subject or cross-cutting aspect). Roots are always topics.
 
 **The served view** is derived from the tree mechanically and is what search and subscriptions run on. It separates the tags into two axes:
 
 - **technology** — 553 tags, keeping the hierarchy;
-- **topic** — 76 tags, flat: the root subjects plus cross-cutting aspects such as `privacy`, `multicast` and `ip-mobility`.
+- **topic** — 76 tags, flat: the root subjects plus cross-cutting aspects such as `privacy`, `multicast` and `IP mobility`.
 
 A document's topics are the roots of its paths plus any aspect tags it carries, plus the topics its tags *imply*: TLS implies security, PIM implies multicast, QUIC implies transport, and the `cryptography` root implies security. This is what lets "quic AND security" find RFC 9001 without anyone having coined a tag for the intersection.
 
@@ -77,7 +77,7 @@ Each requirement has an identifier, R1–R21. The validation procedure in valida
 ### Independence
 
 - **R14** Tags do not follow IETF areas, which change.
-- **R15** Tags do not replicate or resemble fixed RFC metadata — status, stream, standards level or publication date. Being old is a status, not a subject: a document takes `internet-history` only if history is what it is about. Genre words (requirements, framework, applicability, use cases) describe document form and are excluded for the same reason.
+- **R15** Tags do not replicate or resemble fixed RFC metadata — status, stream, standards level or publication date. Being old is a status, not a subject: a document takes `internet history` only if history is what it is about. Genre words (requirements, framework, applicability, use cases) describe document form and are excluded for the same reason.
 
 ### Humor
 
@@ -90,7 +90,7 @@ Each requirement has an identifier, R1–R21. The validation procedure in valida
 
 ### Accessibility
 
-- **R21** A tag's id is written the way the documents write the term — `DKIM`, `IPv6`, `DoH`, `Kerberos`, `WebDAV` — and a phrase with no conventional form is lowercase (`congestion-control`). A screen reader spells an all-capital token letter by letter and pronounces a lower-case one, so a lower-case `dkim` would be read as a word; the documents' own casing is the form readers recognise. Ids are unique without regard to case.
+- **R21** A tag's id is written exactly as the documents write the term — `DKIM`, `IPv6`, `DoH`, `HTTP/2`, `.onion`, `X.509`, `S/MIME`, `TACACS+`, `Kerberos` — and a phrase is written as a phrase, with spaces and its own casing: `congestion control`, `IP mobility`, `real-time communications`, `IETF process`. A screen reader spells an all-capital token letter by letter and pronounces a lower-case one, so a lower-case `dkim` would be read as a word; the documents' own form is what readers recognise. Ids are unique without regard to case. Because an id may contain `/`, a path is written as its ids joined by ` / `: `web / HTTP / HTTP/2`.
 
 ### Topic axis
 
@@ -144,7 +144,7 @@ Broad topics are legitimate subscription targets even though they are busy, beca
 
 - `security` averaged about 64 RFCs a year,
 - `routing` about 56,
-- `network-management` about 33.
+- `network management` about 33.
 
 Dormant tags are equally legitimate: 274 of the 635 tags have had no RFC since 2021. A subscription to one is a standing request to be told if the technology revives.
 
@@ -165,20 +165,20 @@ The taxonomy is `taxonomy.yaml` — one entry per tag with its place in the tree
 | `naming` | DNS and its extensions, registration protocols, identifiers, service discovery |
 | `web` | HTTP and its versions, URIs, web security, WebSocket, WebDAV |
 | `messaging` | email and its authentication, instant messaging, Netnews, MIME |
-| `real-time-communications` | SIP and its extensions, RTP, codecs, conferencing, emergency services, PSTN interworking |
+| `real-time communications` | SIP and its extensions, RTP, codecs, conferencing, emergency services, PSTN interworking |
 | `routing` | BGP, OSPF, IS-IS, MPLS, multicast, VPNs, segment routing, traffic engineering |
 | `transport` | TCP, UDP, QUIC, SCTP, congestion control, QoS, header compression |
-| `internet-layer` | IPv4, IPv6, addressing, transition mechanisms, mobility, NAT, tunnelling |
-| `link-layer` | PPP, Ethernet, cellular, DSL, ATM and other media |
+| `internet layer` | IPv4, IPv6, addressing, transition mechanisms, mobility, NAT, tunnelling |
+| `link layer` | PPP, Ethernet, cellular, DSL, ATM and other media |
 | `security` | TLS, IPsec, PKI, authentication, authorization, privacy |
 | `cryptography` | ciphers, hashes, signatures, key exchange, post-quantum, key management, PAKE |
-| `network-management` | SNMP/MIB, NETCONF/YANG, measurement, OAM, telemetry, time synchronization |
+| `network management` | SNMP/MIB, NETCONF/YANG, measurement, OAM, telemetry, time synchronization |
 | `applications` | FTP, Telnet, LDAP, storage, calendaring, e-commerce |
-| `data-formats` | JSON, CBOR, XML, ASN.1, character sets, compression formats |
+| `data formats` | JSON, CBOR, XML, ASN.1, character sets, compression formats |
 | `IoT` | CoAP, 6LoWPAN, RPL and other constrained-network technologies |
-| `internet-governance` | IETF process, IANA, IPR, the RFC series, terminology, user guides |
-| `internet-architecture` | architectural principles (stands alone) |
-| `internet-history` | documents about the history of the Internet (stands alone) |
+| `internet governance` | IETF process, IANA, IPR, the RFC series, terminology, user guides |
+| `internet architecture` | architectural principles (stands alone) |
+| `internet history` | documents about the history of the Internet (stands alone) |
 | `ARPANET` | the ARPANET's own protocols and working notes |
 | `humor` | the April 1st series and other whimsical RFCs (stands alone) |
 
@@ -186,8 +186,8 @@ The taxonomy is `taxonomy.yaml` — one entry per tag with its place in the tree
 
 - A protocol family with several named members becomes a parent: `email` → `SMTP`, `IMAP`, `POP3`, …
 - A single-tag technology sits directly under its root.
-- Cross-cutting aspect topics live under the root where they most often occur: `privacy` under `security`, `multicast` under `routing`, `transport-mapping` under `transport`.
-- The fourth level is used once: `congestion-control` → `AQM` → `CoDel`, `PIE`.
+- Cross-cutting aspect topics live under the root where they most often occur: `privacy` under `security`, `multicast` under `routing`, `transport mapping` under `transport`.
+- The fourth level is used once: `congestion control` → `AQM` → `CoDel`, `PIE`.
 
 ### Descriptions
 
@@ -210,8 +210,8 @@ The served topics are the tree's topic tags minus the six composites that decomp
 Roots aside, whether a tag is a technology or a topic is a judgement, and a few sit on the line:
 
 - typed as **technologies**: `NAT`, `FEC`, `checksum`, `PMTUD`;
-- typed as **topics**: `multicast`, `addressing`, `nat-traversal`;
-- `MIB` and `YANG` are technologies that imply the `network-management` topic.
+- typed as **topics**: `multicast`, `addressing`, `NAT traversal`;
+- `MIB` and `YANG` are technologies that imply the `network management` topic.
 
 Flipping a tag between axes after subscriptions exist is a breaking change, so these should be settled before launch.
 
@@ -220,8 +220,8 @@ Flipping a tag between axes after subscriptions exist is a breaking change, so t
 Three topics name document forms but are kept because each is a subject readers search for by exactly that word, and none encodes a status or date:
 
 - `terminology` — glossaries and requirements language;
-- `user-guides` — the FYI series and other introductory material;
-- `workshop-reports` — IAB and IRTF workshops.
+- `user guides` — the FYI series and other introductory material;
+- `workshop reports` — IAB and IRTF workshops.
 
 `deployment` and `performance` are *not* topics: both are searched, but both describe document form more than subject. Either can be added as a topic entry in `taxonomy.yaml` if that judgement changes.
 
@@ -231,12 +231,12 @@ Because roots count as tags, 0.4% of documents exceed ten tags. All are multi-te
 
 ### Depth
 
-Four levels is the limit (R3). Level-4 tags exist under `addressing`, `congestion-control`, `DNS`, `domain-registration`, `email`, `HTTP`, `internationalization`, `IPsec`, `IPv6`, `MPLS`, `multicast`, `NAT` and `storage`; those branches cannot be split again without restructuring above them. `cryptography` is a root for this reason: algorithm families are level 2 and their members level 3, leaving room beneath.
+Four levels is the limit (R3). Level-4 tags exist under `addressing`, `congestion control`, `DNS`, `domain registration`, `email`, `HTTP`, `internationalization`, `IPsec`, `IPv6`, `MPLS`, `multicast`, `NAT` and `storage`; those branches cannot be split again without restructuring above them. `cryptography` is a root for this reason: algorithm families are level 2 and their members level 3, leaving room beneath.
 
 ### Placements most open to revision
 
-- `terminology` and `user-guides` under `internet-governance`;
-- `internationalization` under `data-formats`.
+- `terminology` and `user guides` under `internet governance`;
+- `internationalization` under `data formats`.
 
 ### Aliases
 
