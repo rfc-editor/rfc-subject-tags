@@ -9,7 +9,8 @@ tax=engine.Taxonomy('taxonomy.yaml')
 rfcs=json.load(open('rfcs.json')); RT=json.load(open('rfc-tags.json'))
 res={k:v['tags'] for k,v in RT.items()}; two={k:{'technology':v['technology'],'topic':v['topic']} for k,v in RT.items()}
 used=collections.Counter(t for v in res.values() for t in v)
-def paths(tags): return sorted('/'.join(p) for p in {tax.path[t][:i] for t in tags for i in range(1,len(tax.path[t])+1)})
+SEP=' / '   # ids may contain '/' and spaces; ' / ' occurs in no id
+def paths(tags): return sorted(SEP.join(p) for p in {tax.path[t][:i] for t in tags for i in range(1,len(tax.path[t])+1)})
 counts=[len(paths(res[r['id']])) for r in rfcs]
 depth=collections.Counter(len(p) for p in tax.path.values()); kinds=collections.Counter(tax.kind.values())
 oc=[len(v['topic']) for v in two.values()]; tc=[len(v['technology']) for v in two.values()]
@@ -57,7 +58,7 @@ tag_index={t:i for i,t in enumerate(tax.order)}
 tags_data=[]
 for e in doc['tags']:
     t=e['id']; st=e['stats']; n21=sum(1 for k in docs[t] if (byid[k]['year'] or 0)>=W0)
-    tags_data.append({'id':t,'root':tax.root[t],'d':len(tax.path[t])-1,'parent':e.get('parent'),'path':'/'.join(tax.path[t]),'desc':e['desc'],'kind':e['kind'],
+    tags_data.append({'id':t,'root':tax.root[t],'d':len(tax.path[t])-1,'parent':e.get('parent'),'path':SEP.join(tax.path[t]),'desc':e['desc'],'kind':e['kind'],
         'direct':st['direct'],'total':st['total'],'rate':round(n21/window_years,1),'first':st['first_year'],'last':st['last_year'],'n21':n21,'maxYear':e.get('max_year')})
 rows=[]
 for k in sorted(RT, key=lambda x:int(x[3:])):
@@ -79,7 +80,7 @@ open('rfc-tags.html','w').write(html)
 with open('rfc-tags.csv','w',newline='') as f:
     w=csv.writer(f); w.writerow(['rfc','title','year','tags','paths','technology','topic'])
     for k in sorted(RT, key=lambda x:int(x[3:])):
-        v=RT[k]; w.writerow([k, v['title'], v['year'], ';'.join(v['tags']), ' | '.join(v['paths']), ';'.join(v['technology']), ';'.join(v['topic'])])
+        v=RT[k]; w.writerow([k, v['title'], v['year'], ';'.join(v['tags']), ' | '.join(SEP.join(p) for p in v['paths']), ';'.join(v['technology']), ';'.join(v['topic'])])
 # ---- figures in validation.md
 tech_n=len(set(t for v in two.values() for t in v['technology'])); ocnt=collections.Counter(t for v in two.values() for t in v['topic'])
 fig=f"""## Figures (current build)

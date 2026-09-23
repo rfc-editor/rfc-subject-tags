@@ -135,7 +135,7 @@ if __name__ == '__main__':
         leaf = tax.assign(r)
         tech, topic = tax.two_axis(leaf)
         out[r['id']] = {'title': r.get('title'), 'year': r.get('year'), 'tags': leaf,
-                        'paths': sorted('/'.join(p) for p in {tax.path[t][:i] for t in leaf for i in range(1, len(tax.path[t]) + 1)}),
+                        'paths': [list(p) for p in sorted({tax.path[t][:i] for t in leaf for i in range(1, len(tax.path[t]) + 1)})],
                         'technology': tech, 'topic': topic}
     json.dump(out, open('rfc-tags.json', 'w'), indent=1)
     used = collections.Counter(t for v in out.values() for t in v['tags'])
