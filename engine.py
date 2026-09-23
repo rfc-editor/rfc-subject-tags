@@ -42,6 +42,22 @@ class Taxonomy:
         ids = [t['id'] for t in self.tags]
         dup = [i for i, c in collections.Counter(i.lower() for i in ids).items() if c > 1]
         assert not dup, f'duplicate tag ids (ids are unique case-insensitively): {dup}'
+        # aliases are searched, never displayed in place of the tag name. One
+        # equal to a tag id would shadow that tag, so it is fatal. A term claimed
+        # by two tags is legitimate (pkix belongs to both PKI and X509) and only
+        # warns. Comparison is case-insensitive: ids carry the casing the
+        # documents use (R21), and a reader types whatever case they like.
+        claims = collections.defaultdict(list)
+        lower = {i.lower() for i in ids}
+        for e in self.tags:
+            for a in e.get('aliases') or []:
+                key = str(a).strip().lower()
+                assert key.replace(' ', '-') not in lower - {e['id'].lower()}, \
+                    f'{e["id"]}: alias {a!r} shadows an existing tag id'
+                claims[key].append(e['id'])
+        for term, owners in sorted(claims.items()):
+            if len(owners) > 1:
+                print(f'note: {term!r} is claimed by {", ".join(sorted(owners))}', file=sys.stderr)
         for e in self.tags:
             assert e['kind'] in ('technology', 'topic'), e['id']
             assert not any(b in e['id'].lower() for b in ('misc', 'other', 'general')), f'catch-all name: {e["id"]}'

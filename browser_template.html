@@ -273,6 +273,15 @@ tr:hover td{background:var(--surface-2)}
 .tagchip.k-topic{font-size:10.5px;border-color:var(--topic-soft);background:var(--topic-soft)}
 .tagchip:hover{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
 .tagchip.anc{opacity:.6}
+.alias{font-family:var(--ff-mono);font-size:11px;line-height:1.5;padding:1px 7px;border-radius:99px;border:1px dashed var(--rule);color:var(--ink-2);white-space:nowrap}
+.alias.flagged{border-style:solid;border-color:var(--accent);color:var(--accent-ink)}
+.arow{display:grid;grid-template-columns:minmax(120px,1fr) minmax(0,2.4fr);gap:10px;padding:7px 0;border-bottom:1px solid var(--rule-2);align-items:baseline}
+.arow .an{font-family:var(--ff-mono);font-size:12px}
+.arow .ad{font-size:11.5px;color:var(--ink-3);margin-top:2px}
+.abar{display:flex;align-items:flex-end;gap:2px;height:52px;margin:6px 0 2px}
+.abar i{flex:1;background:var(--accent);border-radius:3px 3px 0 0;min-height:2px;display:block}
+.abar i:hover{filter:brightness(1.15)}
+.axr{display:flex;gap:2px}.axr span{flex:1;text-align:center;color:var(--ink-3);font-size:10px}
 .hitrow td{background:var(--accent-soft)!important}
 .rfccard{margin:0;padding:16px;border-bottom:1px solid var(--rule-2);background:var(--surface-2)}
 .rfccard .num{font-size:12px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase}
@@ -351,6 +360,7 @@ footer code{font-size:12px}
   <button class="tab" role="tab" aria-selected="false" data-panel="cooc">Co&#8209;occurrence<small>merge candidates</small></button>
   <button class="tab" role="tab" aria-selected="false" data-panel="life">Lifespan<small>alive or finished</small></button>
   <button class="tab" role="tab" aria-selected="false" data-panel="overlap">Overlap<small>merge or nest?</small></button>
+  <button class="tab" role="tab" aria-selected="false" data-panel="alias">Aliases<small>what a tag answers to</small></button>
   <button class="tab" role="tab" aria-selected="false" data-panel="corpus">All RFCs<small>look one up</small></button>
 </div></nav>
 
@@ -498,6 +508,37 @@ footer code{font-size:12px}
       </div>
     </section>
 
+    <section class="panel" id="panel-alias" hidden>
+      <div class="card">
+        <div class="card-head"><h2>What a tag answers to</h2><span class="count" id="alCount"></span></div>
+        <p class="card-note">An <b>alias</b> is another name for the same thing &mdash; SSL for TLS, SNTP for NTP,
+          GUID for UUID. Aliases are searched and shown here, but a tag is always displayed under its own id.
+          A term that names a <i>different</i> technology is not an alias: if it has RFCs of its own it belongs
+          in the tree as a tag, which is where most of the candidates went.</p>
+        <p class="card-note" style="border-top:1px solid var(--rule-2)">Three things are worth looking for.
+          A <b>name variant</b> is the same string differently spelled or cased and is low risk. A
+          <b>very short</b> alias of one or two characters matches loosely and is the likeliest to send a
+          reader somewhere wrong. A term <b>claimed by two tags</b> is allowed &mdash; the page shows both
+          hits &mdash; but should be deliberate. Flagged aliases are outlined rather than dashed.</p>
+        <div class="abar" id="alBar"></div><div class="axr" id="alAxr"></div>
+        <p class="card-note" style="padding-top:0">Aliases per tag.</p>
+        <div class="controls">
+          <input type="search" id="alQ" placeholder="Filter by alias, tag or description&hellip;" aria-label="Filter aliases">
+          <div class="seg" role="group" aria-label="Sort">
+            <button data-alsort="tag" aria-pressed="true">By tag</button>
+            <button data-alsort="alias" aria-pressed="false">A&ndash;Z</button>
+            <button data-alsort="count" aria-pressed="false">Most aliases</button>
+          </div>
+          <div class="seg" role="group" aria-label="Filter">
+            <button data-alflag="" aria-pressed="true">All</button>
+            <button data-alflag="short" aria-pressed="false">Very short</button>
+            <button data-alflag="variant" aria-pressed="false">Name variant</button>
+            <button data-alflag="dup" aria-pressed="false">Two tags</button>
+          </div>
+        </div>
+        <div id="alList"></div>
+      </div>
+    </section>
     <section class="panel" id="panel-corpus" hidden>
       <div class="card">
         <div class="card-head"><h2>Every published RFC and its tags</h2></div>
@@ -572,11 +613,12 @@ document.getElementById('stats').innerHTML=[
 var tabs=[].slice.call(document.querySelectorAll('.tab'));
 tabs.forEach(function(b){b.addEventListener('click',function(){
   tabs.forEach(function(o){o.setAttribute('aria-selected',String(o===b));});
-  ['vocab','cooc','life','corpus','overlap'].forEach(function(p){document.getElementById('panel-'+p).hidden=(p!==b.dataset.panel);});
+  ['vocab','cooc','life','corpus','overlap','alias'].forEach(function(p){document.getElementById('panel-'+p).hidden=(p!==b.dataset.panel);});
   if(b.dataset.panel==='life')drawLife();
   if(b.dataset.panel==='corpus')drawCorpus();
   if(b.dataset.panel==='overlap')drawOverlap();
   if(b.dataset.panel==='cooc')drawPairs();
+  if(b.dataset.panel==='alias')drawAliases();
 });});
 
 /* tag list */
@@ -594,7 +636,8 @@ var descCount={};TAGS.forEach(function(t){if(t.d>0)descCount[t.root]=(descCount[
 var listEl=document.getElementById('tagList');
 function words(s){return String(s||'').toLowerCase().split(/[^a-z0-9.+#/]+/).filter(Boolean);}
 function subs(s){return String(s||'').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);}
-function searchIndex(t){return {id:t.id.toLowerCase(),idSubs:subs(t.id),descWords:words(t.desc)};}
+function searchIndex(t){return {id:t.id.toLowerCase(),idSubs:subs(t.id),descWords:words(t.desc),
+  aliases:(t.aliases||[]).map(function(a){return String(a).toLowerCase();})};}
 function scoreTag(ix,q){
   var best=0,why=null,k;
   if(ix.id===q)return {score:100,why:null};
@@ -603,11 +646,15 @@ function scoreTag(ix,q){
     if(ix.idSubs[k]===q)best=Math.max(best,80);
     else if(ix.idSubs[k].indexOf(q)===0)best=Math.max(best,45);
   }
+  for(k=0;k<ix.aliases.length;k++){
+    if(ix.aliases[k]===q){if(best<70){best=70;why=ix.aliases[k];}break;}
+    if(ix.aliases[k].indexOf(q)===0&&best<40){best=40;why=ix.aliases[k];}
+  }
   for(k=0;k<ix.descWords.length;k++){
     if(ix.descWords[k]===q){if(best<30){best=30;why=ix.descWords[k];}break;}
     if(ix.descWords[k].indexOf(q)===0&&best<20){best=20;why=ix.descWords[k];}
   }
-  return {score:best,why:best<45?why:null};
+  return {score:best,why:(best<45||best===70)?why:null};
 }
 function searchTags(tags,query){
   var q=String(query||'').trim().toLowerCase();
@@ -706,6 +753,8 @@ function drawDetail(){
     var kids=TAGS.filter(function(k){return k.parent===id;});
     return '<div class="dsel"><h3 class="'+kcls(t)+'">'+t.id+'</h3><div class="crumb">'+crumb(t)+'</div>'+
       '<p>'+esc(t.desc)+'</p>'+
+      (t.aliases&&t.aliases.length?'<div class="subhead" style="padding:12px 0 6px">also answers to</div><span class="tagchips">'+
+        t.aliases.map(function(a){return '<span class="alias">'+esc(a)+'</span>';}).join('')+'</span>':'')+
       '<div class="pills">'+
       '<span class="pill '+(t.kind==='topic'?'on-topic':'on-tech')+'">'+(t.d===0?'root · topic':t.kind)+'</span>'+
       '<span class="pill">'+t.total.toLocaleString()+' RFCs'+(t.direct!==t.total?' &middot; '+t.direct+' direct':'')+'</span>'+
@@ -798,6 +847,66 @@ function ovRow(r,verdict){
     '<span class="strip-key"><span>'+r.A.id+' only '+(r.A.direct-r.shared)+'</span><span>both '+r.shared+'</span><span>'+(r.B.direct-r.shared)+' only '+r.B.id+'</span></span>'+
     '</button></li>';
 }
+/* aliases: the whole alias vocabulary at once, for reading rather than deciding */
+var ALSORT='tag', ALFLAG='';
+var ALCLAIM=null;
+function aliasFlags(t,a){
+  if(!ALCLAIM){ALCLAIM={};TAGS.forEach(function(x){(x.aliases||[]).forEach(function(y){
+    var k=String(y).toLowerCase();(ALCLAIM[k]=ALCLAIM[k]||[]).push(x.id);});});}
+  var f=[],n=function(z){return String(z).toLowerCase().replace(/[^a-z0-9]/g,'');};
+  if(String(a).length<=2)f.push('short');
+  if(n(a)&&(n(a).indexOf(n(t.id))>=0||n(t.id).indexOf(n(a))>=0))f.push('variant');
+  if((ALCLAIM[String(a).toLowerCase()]||[]).length>1)f.push('dup');
+  return f;
+}
+function drawAliases(){
+  var q=(document.getElementById('alQ').value||'').toLowerCase();
+  var have=TAGS.filter(function(t){return t.aliases&&t.aliases.length;});
+  // distribution of aliases per tag
+  var mx=0;have.forEach(function(t){if(t.aliases.length>mx)mx=t.aliases.length;});
+  var bins=[];for(var i=1;i<=mx;i++)bins.push(0);
+  have.forEach(function(t){bins[t.aliases.length-1]++;});
+  var top=Math.max.apply(null,bins);
+  document.getElementById('alBar').innerHTML=bins.map(function(n,i){
+    return '<i style="height:'+Math.max(2,n/top*52)+'px" title="'+n+' tag'+(n===1?'':'s')+' with '+(i+1)+' alias'+(i===0?'':'es')+'"></i>';}).join('');
+  document.getElementById('alAxr').innerHTML=bins.map(function(n,i){
+    return '<span>'+((i===0||(i+1)%5===0||i===bins.length-1)?(i+1):'')+'</span>';}).join('');
+  // rows
+  var rows=[];
+  have.forEach(function(t){
+    var keep=t.aliases.filter(function(a){
+      if(ALFLAG&&aliasFlags(t,a).indexOf(ALFLAG)<0)return false;
+      if(q&&(String(a)+' '+t.id+' '+t.desc).toLowerCase().indexOf(q)<0)return false;
+      return true;});
+    if(keep.length)rows.push({t:t,al:keep});});
+  if(ALSORT==='count')rows.sort(function(a,b){return b.al.length-a.al.length||a.t.id.toLowerCase().localeCompare(b.t.id.toLowerCase());});
+  else rows.sort(function(a,b){return a.t.id.toLowerCase().localeCompare(b.t.id.toLowerCase());});
+  var nA=rows.reduce(function(a,r){return a+r.al.length;},0);
+  document.getElementById('alCount').textContent=nA+' alias'+(nA===1?'':'es')+' on '+rows.length+' tag'+(rows.length===1?'':'s');
+  var html;
+  if(ALSORT==='alias'){
+    var flat=[];rows.forEach(function(r){r.al.forEach(function(a){flat.push({a:a,t:r.t});});});
+    flat.sort(function(x,y){return String(x.a).toLowerCase().localeCompare(String(y.a).toLowerCase());});
+    html=flat.map(function(f){
+      return '<div class="arow"><div><span class="alias'+(aliasFlags(f.t,f.a).length?' flagged':'')+'">'+esc(f.a)+'</span></div>'+
+        '<div><span class="an">'+esc(f.t.id)+'</span><div class="ad">'+esc(f.t.desc)+'</div></div></div>';}).join('');
+  }else{
+    html=rows.map(function(r){
+      return '<div class="arow"><div><span class="an">'+esc(r.t.id)+'</span><div class="ad">'+esc(r.t.desc)+'</div></div>'+
+        '<div><span class="tagchips">'+r.al.map(function(a){
+          return '<span class="alias'+(aliasFlags(r.t,a).length?' flagged':'')+'">'+esc(a)+'</span>';}).join('')+'</span></div></div>';}).join('');
+  }
+  document.getElementById('alList').innerHTML=html||'<p class="empty-note">No alias matches that filter.</p>';
+}
+document.getElementById('alQ').addEventListener('input',drawAliases);
+[].slice.call(document.querySelectorAll('[data-alsort]')).forEach(function(b){b.addEventListener('click',function(){
+  ALSORT=b.dataset.alsort;
+  [].slice.call(document.querySelectorAll('[data-alsort]')).forEach(function(o){o.setAttribute('aria-pressed',String(o===b));});
+  drawAliases();});});
+[].slice.call(document.querySelectorAll('[data-alflag]')).forEach(function(b){b.addEventListener('click',function(){
+  ALFLAG=b.dataset.alflag;
+  [].slice.call(document.querySelectorAll('[data-alflag]')).forEach(function(o){o.setAttribute('aria-pressed',String(o===b));});
+  drawAliases();});});
 function drawOverlap(){
   if(!OV)OV=overlapStats();
   var J=parseFloat(document.getElementById('ovJ').value),C=parseFloat(document.getElementById('ovC').value),M=parseInt(document.getElementById('ovMin').value,10);

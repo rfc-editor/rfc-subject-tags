@@ -91,6 +91,7 @@ Each requirement has an identifier, R1–R21. The validation procedure in valida
 ### Accessibility
 
 - **R21** A tag's id is written the way the documents write the term — `DKIM`, `IPv6`, `DoH`, `Kerberos`, `WebDAV` — and a phrase with no conventional form is lowercase (`congestion-control`). A screen reader spells an all-capital token letter by letter and pronounces a lower-case one, so a lower-case `dkim` would be read as a word; the documents' own casing is the form readers recognise. Ids are unique without regard to case.
+- **R22** A tag may carry `aliases` — other names for the same thing, searched and listed on the tag, but never displayed in place of its id. An alias denotes what the tag denotes: a superseded name (SSL for `TLS`), a version or variant form (SNTP for `NTP`, IKEv2 for `IKE`), a common abbreviation (i18n for `internationalization`), or an informal name (Bonjour for `service-discovery`). A term naming a *different* technology is not an alias however close, because a wrong alias returns a confidently wrong result where full-text search would have served the reader correctly. If that term has RFCs of its own it belongs in the tree as a tag, by R10 and R11. Every alias must be used as that name in RFC text, and comparison is case-insensitive in both directions.
 
 ### Topic axis
 
@@ -232,6 +233,14 @@ Because roots count as tags, 0.4% of documents exceed ten tags. All are multi-te
 ### Depth
 
 Four levels is the limit (R3). Level-4 tags exist under `addressing`, `congestion-control`, `DNS`, `domain-registration`, `email`, `HTTP`, `internationalization`, `IPsec`, `IPv6`, `MPLS`, `multicast`, `NAT` and `storage`; those branches cannot be split again without restructuring above them. `cryptography` is a root for this reason: algorithm families are level 2 and their members level 3, leaving room beneath.
+
+### Depth
+
+The tree allows four levels (R3) and 61 tags now sit at level 4, up from 25
+before the absorbed technologies were promoted. `PAKE`, `post-quantum`, `SHA`
+and `elliptic-curve` each have children at that limit, so none of them can be
+split further without restructuring the level above. Nothing is blocked today;
+it is recorded because the next promotion in those areas has nowhere to go.
 
 ### Placements most open to revision
 

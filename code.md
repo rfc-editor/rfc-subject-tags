@@ -8,7 +8,7 @@ How the tag system is built: the input corpus, the taxonomy file, the engine tha
 
 | File | Contains |
 |---|---|
-| `taxonomy.yaml` | Every tag with its parent, kind, description, match rules, working groups, suppression, decomposition and implied topics; plus engine parameters. Each entry also carries a generated `stats` block (see below) that `regen.py` rewrites and curators do not edit |
+| `taxonomy.yaml` | Every tag with its parent, kind, description, optional `aliases` (searched, never shown in place of the id), match rules, working groups, suppression, decomposition and implied topics; plus engine parameters. Each entry also carries a generated `stats` block (see below) that `regen.py` rewrites and curators do not edit |
 
 ### Code
 
@@ -245,3 +245,31 @@ The `implies` field is consulted over the ancestor closure, so `DKIM` inherits `
 `regen.py` computes each tag's `stats` block and writes it back into `taxonomy.yaml`; renders `rfc-tags.csv`; builds `rfc-tags.html` by embedding into `browser_template.html` the tags (with `stats`, notification rate and lifetime), every RFC's row (leaf tags and served coordinates), and tag co-occurrence pairs; and refreshes the figures in validation.md and README.md. Run it after `engine.py`, after any change to the YAML.
 
 Everything is read and written in the working directory. Three tracked files are rewritten **in place** — `taxonomy.yaml` (its `stats` blocks), `README.md` and `validation.md` (their figures) — so run it on a clean working tree and review the resulting diff as part of the change. The figures move whenever the corpus does: a run against an index one RFC newer than the last shifted two lines of validation.md and 24 lines of `stats`.
+
+## Aliases
+
+An optional list on a tag: other names for the same thing — SSL for `TLS`, SNTP
+for `NTP`, GUID for `UUID`. Searched and shown on the tag, never displayed in
+place of its id. A term that names a *different* technology is not an alias; if
+it has RFCs of its own it belongs in the tree as a tag, which is where most of
+the candidates went. See R22 in README.md.
+
+Three pieces must agree or the field does nothing: `taxonomy.yaml` carries the
+terms, `regen.py` passes them into the page's tag data, and
+`browser_template.html` indexes them — an exact alias hit scores 70, above a
+description word and below the tag's own id. `engine.Taxonomy` rejects an alias
+equal to a tag id and reports one claimed by two tags without failing, since
+`pkix` legitimately belongs to both `PKI` and `X509`. All of these comparisons
+are case-insensitive: ids carry the casing the documents use (R21) and a reader
+types whatever case they like.
+
+The **Aliases** view in `rfc-tags.html` shows the whole alias vocabulary at once
+rather than one tag at a time, grouped by tag or flat A–Z, with the distribution
+of aliases per tag. It flags three things worth a second look: a *very short*
+alias of one or two characters, which matches loosely; a *name variant*, the
+same string differently spelled, which is low risk; and a term *claimed by two
+tags*, which is allowed but should be deliberate.
+
+`tag_candidates.py` treats a recorded alias as reachable, so a term already
+decided as another name for a tag stops being proposed as a missing tag. On the
+current corpus that suppresses 70 of its candidates.

@@ -101,6 +101,13 @@ For each topic-implying technology, list assignments with no title evidence and 
 
 By inspection of the tree: no tag names an IETF area, a status, a stream or a date.
 
+### Aliases (R22)
+
+- **Structural.** `engine.Taxonomy` fails if any `aliases` entry equals a tag id, comparing case-insensitively; a term claimed by more than one tag is reported, not failed — `pkix` legitimately belongs to both `PKI` and `X509`.
+- **Grounding.** Every alias is used as that name in RFC text. The curation pass measures this against the full-text corpus: `raw` documents containing the term, `ctx` of those the tag's own `match` rules also fire on, and the precision `ctx/raw`.
+- **Precision is a noise filter, not a semantic check.** It measures topical co-occurrence, so it catches `disruption` under `DTN` (2%) but not `sftp` under `FTP` (100%) — documents about SFTP genuinely discuss FTP. Whether a term names *this* technology or a neighbouring one stays a reading judgement, and is what the Aliases view exists to support.
+- **Alias against tag.** An alias names the same thing the tag names. A term naming a *distinct* technology with an RFC of its own belongs in the tree as a tag instead, by R10 and R11 — `tag_candidates.py` is what surfaces those, and it treats a recorded alias as reachable so a decided term stops resurfacing.
+
 ### Engine round-trip
 
 When the engine or the YAML schema changes, re-run against the previous `rfc-tags.json` and list every RFC whose `tags` differ. Differences must be explainable — at the YAML-to-engine migration nine RFCs differed, all in which tags survive the seven-tag cap or the three-tag abstract fallback, and none in tags matched.
