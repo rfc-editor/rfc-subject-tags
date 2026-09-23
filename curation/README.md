@@ -71,6 +71,22 @@ Protocol. That judgement is a reading, not a measurement, and `sftp` is recorded
 on `SSH` as a manual override. Rule-1 errors generally survive the filter, so
 the rejection list in `review.md` is a review queue, not a discard pile.
 
+## The rule that is easiest to get wrong
+
+An alias on a **topic** must name the topic: the working group that produced it
+(DPRIVE, ECRIT, IPPM), an umbrella term (Zeroconf for service discovery), an
+abbreviation or a synonym (i18n, authn, authz, VoIP). A technology that
+*implements* the topic is not another name for it — Bonjour implements service
+discovery, OpenFlow implements SDN, HLS implements streaming — and the first
+pass got this wrong often enough that it is now rule 6 in the prompt, checked
+against the tag's `kind`.
+
+The same error appears on a technology tag once its children exist: a variant
+name left on the parent after the thing it names became a child. RaptorQ belongs
+on `Raptor`, Kyber on `ML-KEM`. Where such a term has RFCs of its own it is a
+tag candidate; where it does not, it belongs nowhere and full-text search serves
+the reader.
+
 ## Outputs
 
 | File | What it is |

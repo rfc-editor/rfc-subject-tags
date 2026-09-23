@@ -101,6 +101,10 @@ CAPWAP:
   aliases:
   - "LWAPP"
 
+cdma2000:
+  aliases:
+  - "3GPP2"   # raw 76 ctx 76 100% -- The sibling standards body's cellular family (cdma2000 lineage); the desc word `3gpp` does not start with `3gpp2`, so it is unreachable today and has no tag of its own.
+
 CDN:
   aliases:
   - "CDNI"   # raw 26 ctx 26 100% -- Standard acronym for CDN Interconnection and the WG name readers use for this technology; the desc word `cdn` does not start with `cdni`, so typing CDNI finds nothing today.
@@ -111,7 +115,6 @@ cellular:
   - "LTE"   # raw 99 ctx 99 100% -- 3GPP 4G radio/core generation named throughout RFC text; no `lte` tag exists, and the desc word is indexed as `gprs/lte/5g` so typing LTE finds nothing today. Instance of the category, not another name for it.
   - "5G"   # raw 91 ctx 91 100% -- Current 3GPP generation, common in RFC text; no `5g` tag, and it is unreachable in the desc because `gprs/lte/5g` does not start with `5g`.
   - "UMTS"   # raw 58 ctx 58 100% -- 3GPP 3G system, in `match` but not searchable there and absent from the desc; instance of the cellular category with no tag of its own.
-  - "3GPP2"   # raw 76 ctx 76 100% -- The sibling standards body's cellular family (cdma2000 lineage); the desc word `3gpp` does not start with `3gpp2`, so it is unreachable today and has no tag of its own.
   - "3G"   # raw 126 ctx 104 82% -- Generation label used in RFC prose for the same body of technology; no tag of its own and not reachable via the desc.
   - "4G"   # raw 58 ctx 42 72% -- Generation label used in RFC prose alongside LTE; no tag of its own and not reachable via the desc.
 
@@ -156,15 +159,7 @@ codecs:
   aliases:
   - "NETVC"   # raw 2 ctx 2 100% -- Working group name (Internet Video Codec WG, the tag's listed group); readers who followed that effort type NETVC for this subject area, and it is not reachable from the desc.
   - "AAC"   # raw 14 ctx 10 71% -- MPEG advanced audio coding, carried in RFC 3640 and RFC 6416 payload formats; no aac tag exists.
-  - "H.265"   # raw 14 ctx 14 100% -- Other name a reader would type for HEVC; single token because the dot stays inside the word, and no h265 tag exists.
   - "Theora"   # raw 3 ctx 3 100% -- Xiph video codec, named in RFC 5334 and related Ogg documents; no tag of its own.
-
-compression:
-  aliases:
-  - "LZW"   # raw 13 ctx 13 100% -- Lempel-Ziv-Welch, the algorithm/format behind BSD Compress (RFC 1977) and referenced in several RFCs; a lossless compression format with no tag of its own, so a reader typing it has nowhere more specific to land.
-  - "bzip2"   # raw 6 ctx 6 100% -- Named lossless compression format appearing in RFC text (e.g. compressed-file media type registrations); no tag of its own, and it is a sibling format to gzip/zstd rather than another name for them.
-  - "zip"   # raw 142 ctx 46 32% -- The ZIP lossless archive/compression format (application/zip registration, RFC 6713 and others); no tag of its own, and prefix search on 'zip' does not reach the gzip tag.
-  - "LZ77"
 
 conferencing:
   aliases:
@@ -173,9 +168,7 @@ conferencing:
 
 congestion-control:
   aliases:
-  - "Reno"   # raw 84 ctx 78 92% -- The classic TCP congestion control algorithm; a reader typing Reno wants this topic and there is no `reno` tag. An instance of the category, not another name for it.
   - "BBR"   # raw 14 ctx 11 78% -- Widely referenced congestion control algorithm (BBR/BBRv2) with no tag of its own; a reader typing BBR has nowhere better to land.
-  - "Vegas"   # raw 25 ctx 11 44% -- Delay-based congestion control algorithm named in several RFCs; no tag of its own.
 
 content-negotiation:
   aliases:
@@ -184,6 +177,10 @@ content-negotiation:
 COPS:
   aliases:
   - "COPS-PR"   # raw 34 ctx 34 100% -- Variant form of the same protocol (COPS usage for policy provisioning, RFC 3084), squarely within the tag's stated scope; the hyphen splits the desc into the word `cops`, which does not start with `cops-pr`, so typing COPS-PR lands nowhere today.
+
+CRTP:
+  aliases:
+  - "ECRTP"
 
 cryptography:
   aliases:
@@ -211,6 +208,10 @@ DDoS:
   aliases:
   - "DoS"   # raw 851 ctx 595 69% -- Non-distributed denial of service is the same subject as covered here (the match field itself is \bDDoS\b|denial.of.service), and a reader typing DoS is looking for this tag. Not reachable today: the desc words are ddos/denial/of/service/..., and none of them starts with 'dos'.
 
+DEFLATE:
+  aliases:
+  - "LZ77"
+
 DES:
   aliases:
   - "3DES"   # raw 158 ctx 119 75% -- Standard written form of Triple-DES, extremely common in RFC cipher suite and algorithm text (e.g. 3des-cbc in SSH, TLS ciphersuites). The desc contains only 'triple-des', which splits into 'triple' and 'des', so no desc word starts with '3des' and a reader typing 3DES finds nothing today.
@@ -228,6 +229,7 @@ dns-privacy:
 DNS-SD:
   aliases:
   - "dnssd"   # raw 10 ctx 7 70% -- Unhyphenated form of the name and the IETF working group name (dnssd/dnssdext), which readers use for the technology itself; hyphen-split indexing means the desc words `dns` and `sd` do not make `dnssd` findable today.
+  - "Bonjour"   # raw 15 ctx 11 73% -- Apple's vendor name for the same zeroconf service-discovery technology (mDNS + DNS-SD); appears in RFC text and a reader typing it has nowhere else to land. Could also be claimed by `dns-sd`/`mdns`.
 
 dns-update:
   aliases:
@@ -279,10 +281,6 @@ EAI:
 eBPF:
   aliases:
   - "BPF"   # raw 5 ctx 5 100% -- The predecessor and still-common name for the same instruction set (classic BPF); the desc word `ebpf` does not start with `bpf`, so typing BPF finds nothing today, and `match` is never searched.
-
-ECMP:
-  aliases:
-  - "LAG"   # raw 151 ctx 55 36% -- Link Aggregation Group is a distinct load-balancing mechanism the tag explicitly stands in for (it is in `match`, which is never searched), and no link-aggregation tag exists; not a synonym for ECMP itself, so it belongs in covers rather than aliases. The desc word 'load-balanced' does not make 'LAG' findable.
 
 EdDSA:
   aliases:
@@ -351,10 +349,6 @@ fax:
   - "T.37"   # raw 1 ctx 1 100% -- ITU-T name for store-and-forward fax over Internet mail — the other standard name for exactly this tag's subject; not present in the desc.
   - "ifax"   # raw 13 ctx 11 84% -- Common contraction of 'Internet fax' used throughout the fax/netfax RFCs; the desc word 'facsimile' does not start with 'ifax', so it is not reachable today.
 
-FEC:
-  aliases:
-  - "RaptorQ"   # raw 6 ctx 6 100% -- Specific fountain/FEC code scheme (RFC 6330) with no tag of its own; readers typing the scheme name have nowhere more specific to land, and it is an instance of the category this tag stands in for.
-
 federated-authentication:
   aliases:
   - "ABFAB"   # raw 10 ctx 5 50% -- Working group name (Application Bridging for Federated Authentication Beyond the Web) listed in this tag's groups; readers routinely use the WG acronym for the technology itself, and it is not reachable from the desc.
@@ -381,7 +375,7 @@ FTP:
 
 geolocation:
   aliases:
-  - "GEOPRIV"   # raw 65 ctx 58 89% -- Working group name that readers routinely use for the location-information/location-privacy technology itself; not reachable from the desc, whose words are geolocation, formats, privacy, conveyance, location, information.
+  - "GEOPRIV"   # raw 65 ctx 51 78% -- Working group name readers type for the location-privacy work that this tag's groups list assigns here; not a tag id and not findable from the desc. It may legitimately belong to `geolocation` as well — list it on both rather than forcing one owner.
 
 GSMP:
   aliases:
@@ -397,13 +391,13 @@ gzip:
   aliases:
   - "x-gzip"   # raw 10 ctx 10 100% -- Legacy content-coding token for the same format, used alongside 'gzip' in HTTP (RFC 1945/2616) and still seen in RFC text; the desc word 'gzip' does not start with 'x-gzip', so it is not findable today.
 
-header-compression:
-  aliases:
-  - "ECRTP"
-
 HEMS:
   aliases:
   - "HEMP"
+
+HEVC:
+  aliases:
+  - "H.265"   # raw 14 ctx 14 100% -- Other name a reader would type for HEVC; single token because the dot stays inside the word, and no h265 tag exists.
 
 HIP:
   aliases:
@@ -557,7 +551,10 @@ IPP:
 IPR:
   aliases:
   - "TLP"   # raw 20 ctx 20 100% -- Standard abbreviation of "Trust Legal Provisions", named in the desc as part of this tag's scope; the desc words are indexed separately as `trust`, `legal`, `provisions`, so typing TLP lands nowhere today. Caveat in notes: TLP is also used for "Traffic Light Protocol" in incident-response documents, so this alias is not uniquely this tag's, but no `traffic-light-protocol` tag exists.
-  - "patent"
+
+IPsec:
+  aliases:
+  - "NAT-T"
 
 IPv6:
   aliases:
@@ -595,8 +592,6 @@ Kerberos:
 key-management:
   aliases:
   - "KEYPROV"   # raw 2 ctx 2 100% -- IETF working group name (RFC 6030, RFC 6063) that readers use as the name for symmetric key provisioning itself; the desc word 'provisioning' does not make 'keyprov' findable, and no other tag owns it
-  - "DSKPP"   # raw 2 ctx 2 100% -- Dynamic Symmetric Key Provisioning Protocol (RFC 6063), a concrete key provisioning protocol with no tag of its own
-  - "PSKC"   # raw 9 ctx 8 88% -- Portable Symmetric Key Container (RFC 6030), a concrete key provisioning/storage format with no tag of its own
 
 L2TP:
   aliases:
@@ -701,6 +696,14 @@ MIB:
   - "SMIv1"   # raw 116 ctx 116 100% -- Version form of SMI (RFC 1155 era), used in real RFC text to distinguish from SMIv2; not reachable from the desc word `smi` under prefix matching.
   - "SMIng"   # raw 11 ctx 11 100% -- Variant/next-generation name for the Structure of Management Information language (RFC 3780, WG sming); same subject as the tag's SMI half, and not reachable from `smi` since matching is directional.
 
+ML-DSA:
+  aliases:
+  - "Dilithium"   # raw 4 ctx 4 100% -- Pre-standardization name (CRYSTALS-Dilithium) for ML-DSA, present in RFC text; no tag of its own.
+
+ML-KEM:
+  aliases:
+  - "Kyber"   # raw 8 ctx 8 100% -- Pre-standardization name (CRYSTALS-Kyber) for ML-KEM, appearing in RFC text; no tag of its own.
+
 MLD:
   aliases:
   - "MLDv2"   # raw 107 ctx 104 97% -- Version form of the tag's own name, used far more often in RFC text than bare MLD; the desc word `mld` does not make `mldv2` findable because matching is prefix-directional.
@@ -744,7 +747,7 @@ multicast-security:
 
 multihoming:
   aliases:
-  - "multi6"   # raw 12 ctx 12 100% -- Name of the IETF multi6 working group, used in RFC text (e.g. "the multi6 WG", RFC 4218/4219) as the name for IPv6 site multihoming work; a reader typing it means this tag. The desc contains no such word, so it is not reachable today.
+  - "multi6"   # raw 12 ctx 7 58% -- Name of the predecessor IETF working group (Site Multihoming in IPv6) whose analysis work led directly to Shim6; readers who remember the effort by that name and type it would otherwise miss this tag, and 'multi6' is not reachable from the desc words 'Shim6', 'multihoming' or 'IPv6'.
   - "mif"   # raw 14 ctx 8 57% -- Name of the mif (Multiple Interfaces) working group listed for this tag; readers who know the host-multihoming work by its WG acronym would type MIF and have nowhere else to land. Not present in the desc.
 
 NAT:
@@ -756,7 +759,6 @@ NAT:
 nat-traversal:
   aliases:
   - "UNSAF"   # raw 43 ctx 29 67% -- IAB term (RFC 3424, "UNilateral Self-Address Fixing") for exactly this class of NAT-traversal mechanisms; it is another name for the tag's subject, appears verbatim in many RFCs, and no desc word starts with "unsaf".
-  - "NAT-T"
 
 NEA:
   aliases:
@@ -784,6 +786,10 @@ network-management:
   aliases:
   - "FCAPS"   # raw 24 ctx 20 83% -- ITU-T acronym for the five network management functional areas (fault, configuration, accounting, performance, security); used in RFC text (e.g. RFC 6632) as a label for the network management discipline itself, and not findable from the desc since no desc word starts with 'fcaps'.
   - "CMOT"   # raw 53 ctx 50 94% -- The RFC-specific name for CMIP over TCP/IP (RFC 1189); same situation as CMIP — a named management protocol with no tag of its own that this category tag stands in for.
+
+NewReno:
+  aliases:
+  - "Reno"   # raw 84 ctx 78 92% -- The classic TCP congestion control algorithm; a reader typing Reno wants this topic and there is no `reno` tag. An instance of the category, not another name for it.
 
 NFS:
   aliases:
@@ -900,7 +906,7 @@ PIM:
 
 PKI:
   aliases:
-  - "PKIX"   # raw 449 ctx 381 84% -- The IETF's name for Internet Public Key Infrastructure (the PKIX WG and its 'Internet X.509 PKI' profile series); readers routinely type PKIX to mean exactly this subject. Not reachable via the desc: the indexed word 'pki' does not start with the query 'pkix', so matching is directional and PKIX finds nothing today. Appears abundantly in RFC text (RFC 3280/5280 family and many others).
+  - "PKIX"   # raw 449 ctx 449 100% -- The IETF working group name (Public-Key Infrastructure using X.509) that readers routinely use as the name for the X.509 Internet certificate profile itself; it appears in `match` and in `groups`, but `match` is never searched and the desc contains no word starting with 'pkix', so typing PKIX lands nowhere today.
 
 PMIPv6:
   aliases:
@@ -925,9 +931,6 @@ post-quantum:
   - "PQC"   # raw 24 ctx 23 95% -- Standard abbreviation of Post-Quantum Cryptography, used throughout RFC text and by the PQUIP WG; the desc splits on the hyphen into 'post' and 'quantum', so 'PQC' finds nothing today.
   - "quantum-resistant"   # raw 20 ctx 17 85% -- Established synonym for post-quantum used in RFC terminology (e.g. quantum-resistant algorithms/traditional-vs-quantum-resistant); the query is matched whole and 'quantum' does not start with 'quantum-resistant', so it is not reachable via the desc.
   - "quantum-safe"   # raw 8 ctx 6 75% -- Industry synonym for post-quantum appearing in RFC text alongside quantum-resistant; not reachable by typing it whole against the desc words 'post' and 'quantum'.
-  - "Kyber"   # raw 8 ctx 8 100% -- Pre-standardization name (CRYSTALS-Kyber) for ML-KEM, appearing in RFC text; no tag of its own.
-  - "Dilithium"   # raw 4 ctx 4 100% -- Pre-standardization name (CRYSTALS-Dilithium) for ML-DSA, present in RFC text; no tag of its own.
-  - "SPHINCS+"   # raw 3 ctx 3 100% -- Pre-standardization name for SLH-DSA, used in RFC text; no tag of its own. Note '+' stays inside a word, so it indexes as one token.
 
 PPSP:
   aliases:
@@ -965,6 +968,10 @@ randomness:
   - "CSPRNG"   # raw 14 ctx 14 100% -- Cryptographically secure PRNG, the term used in randomness-requirements RFCs (e.g. RFC 8937 on randomness improvements); another name for what this tag is about, unreachable from the desc.
   - "entropy"   # raw 391 ctx 165 42% -- The term RFC 4086-style texts use for the quantity of randomness a system needs; readers searching 'entropy' mean this tag, and no desc word starts with 'entropy'. Technical name for the subject rather than generic area vocabulary like 'requirements'.
   - "DRBG"
+
+Raptor:
+  aliases:
+  - "RaptorQ"   # raw 6 ctx 6 100% -- Specific fountain/FEC code scheme (RFC 6330) with no tag of its own; readers typing the scheme name have nowhere more specific to land, and it is an instance of the category this tag stands in for.
 
 RDAP:
   aliases:
@@ -1058,10 +1065,6 @@ SDF:
   aliases:
   - "asdf"   # raw 8 ctx 8 100% -- Name of the IETF working group (A Semantic Definition Format for Data and Interactions of Things); readers commonly use the WG name for the format itself, and it appears in RFC text. Not findable via the desc, which does not contain the string.
 
-SDN:
-  aliases:
-  - "OpenFlow"   # raw 20 ctx 14 70% -- The canonical SDN southbound protocol; a distinct thing from SDN itself, not another name for it, but no `openflow` tag exists, so a reader typing it has nowhere better to land than the SDN topic. Not reachable from the desc.
-
 security-labels:
   aliases:
   - "IPSO"   # raw 51 ctx 11 21% -- IP Security Option (RFC 1108), the predecessor/companion labeling mechanism to CIPSO; readers use it as a name for IP security labelling itself. Not reachable today: the desc words are `cipso` and `calipso`, and matching is prefix-directional, so neither makes `ipso` findable.
@@ -1078,7 +1081,6 @@ SenML:
 service-discovery:
   aliases:
   - "Zeroconf"   # raw 14 ctx 4 28% -- Zero-configuration networking is the common informal name for the automatic service-and-resource discovery this tag covers; not reachable from the desc, and `zeroconf` is not a tag id. It arguably also fits `mdns`/`dns-sd`, so it may legitimately belong to more than one tag.
-  - "Bonjour"   # raw 15 ctx 11 73% -- Apple's vendor name for the same zeroconf service-discovery technology (mDNS + DNS-SD); appears in RFC text and a reader typing it has nowhere else to land. Could also be claimed by `dns-sd`/`mdns`.
 
 SFC:
   aliases:
@@ -1109,6 +1111,10 @@ SIGTRAN:
 SIP:
   aliases:
   - "SIPS"   # raw 159 ctx 157 98% -- Secure-variant form of the same protocol name (the sips: URI scheme, i.e. SIP over TLS), analogous to HTTPS->http; the desc word `sip` does not start with `sips`, so a reader typing SIPS lands nowhere today.
+
+SLH-DSA:
+  aliases:
+  - "SPHINCS+"   # raw 3 ctx 3 100% -- Pre-standardization name for SLH-DSA, used in RFC text; no tag of its own. Note '+' stays inside a word, so it indexes as one token.
 
 SLIP:
   aliases:
@@ -1195,16 +1201,9 @@ STIR:
   aliases:
   - "SHAKEN"   # raw 7 ctx 7 100% -- Signature-based Handling of Asserted information using toKENs — the ATIS deployment profile of STIR, universally written as "STIR/SHAKEN"; readers (especially from the telephony/regulatory side) type SHAKEN meaning exactly this caller-ID authentication work, and the word does not appear in the desc, so it is not reachable today (it is in `match`, which is never searched).
 
-storage:
-  aliases:
-  - "SMB"   # raw 62 ctx 1 1% -- Windows file-sharing protocol run over IP; a network file protocol in this tag's scope with no tag of its own (netbios is a different layer), so a reader typing SMB has nowhere better to land. Appears in RFC text (NetBIOS-over-TCP work, NFSv4 comparisons).
-  - "CIFS"   # raw 11 ctx 0 0% -- The other common name for the same Windows file-sharing protocol; used explicitly in NFSv4 and related RFC text, and there is no cifs/smb tag.
-
 streaming:
   aliases:
   - "MOPS"   # raw 6 ctx 6 100% -- Working-group name (Media OPerationS) that readers use for the media streaming delivery/operations topic itself; it appears in RFC text (e.g. the streaming media operational-considerations RFCs) and is not findable from the desc, since 'operations' does not start with 'mops'.
-  - "HLS"   # raw 46 ctx 46 100% -- HTTP Live Streaming is a specific media streaming delivery scheme with no tag of its own; 'streaming' is a category topic, so a reader typing HLS has nowhere better to land. Not reachable from the desc.
-  - "DASH"   # raw 134 ctx 134 100% -- Dynamic Adaptive Streaming over HTTP, referenced throughout IETF media streaming work but with no tag of its own; an instance of this category rather than another name for it.
 
 supply-chain-integrity:
   aliases:
@@ -1225,7 +1224,6 @@ tcpcrypt:
 TEEP:
   aliases:
   - "OTrP"   # raw 1 ctx 1 100% -- Open Trust Protocol, the predecessor protocol/name that TEEP was derived from and superseded (RFC 8863-era drafts); readers who know the earlier name would type OTrP.
-  - "TEE"
 
 terminology:
   aliases:
@@ -1235,7 +1233,6 @@ terminology:
 time-synchronization:
   aliases:
   - "TICTOC"   # raw 8 ctx 7 87% -- IETF working group name (Timing over IP Connection and Transfer of Control) that readers use as shorthand for networked time/clock synchronization work; appears in RFC text (e.g. the security-requirements and PTP MIB documents produced by that WG) and is not findable from the desc words.
-  - "Roughtime"   # raw 1 ctx 0 0% -- A distinct network time-synchronization protocol with no tag of its own; this tag is the category parent (children ntp, ptp), so a reader typing Roughtime has nowhere more specific to land. It is a different thing than NTP/PTP, so it belongs in covers rather than aliases.
 
 time-zones:
   aliases:

@@ -125,28 +125,25 @@ already allowed. It can never promote one.
    shadow a real tag. If the right home for a term is a different existing tag,
    say so in `notes` rather than claiming it here.
 
-## A second list: `covers`
+## One more disqualifier, and the one most often missed
 
-6. INSTANCES OF A CATEGORY TAG GO IN `covers`, NOT `aliases`, when the tag names
-   a category rather than one technology AND the instance has no tag of its own.
-   The tag `cellular` is "IP over 3GPP systems, GPRS/LTE/5G interworking" and
-   there is no `lte` tag, so a reader typing LTE has nowhere better to land: put
-   LTE, 5G, GSM and UMTS in `covers`.
+6. A TECHNOLOGY NAME ON A TOPIC TAG. The tag's `kind` is given below. When it is
+   `topic`, an alias must name THE TOPIC -- the working group that produced it
+   (DPRIVE, ECRIT, IPPM, BMWG, ANIMA), an umbrella term (Zeroconf for service
+   discovery), an abbreviation or a plain synonym (i18n, authn, authz, VoIP).
 
-   The distinction is the whole point of having two lists. `aliases` holds other
-   names for THE SAME THING -- someone typing SNTP and someone typing NTP want
-   the same tag because they mean the same protocol. `covers` holds DIFFERENT
-   things the tag stands in for, because nothing more specific exists yet. Both
-   are searched; only `covers` is honest to display as the tag's scope.
+   A technology that *implements* the topic is not another name for it. Bonjour
+   implements service discovery; OpenFlow implements SDN; HLS and DASH implement
+   streaming; LZW and bzip2 are compression schemes, not compression. Each named
+   an implementation and was wrongly aliased to the topic in an earlier pass.
 
-   BOTH conditions must hold. Check the vocabulary list below: if the instance
-   has its own tag, rule 1 governs and it belongs in neither list -- SHA-1 stays
-   out of `aes` because `sha` exists. If the tag names a single technology
-   rather than a category, it has no `covers` at all; most tags will not.
+   Where such a term has RFCs of its own it belongs in the tree as a tag, so put
+   it in `missing_tag_candidates`. Where it does not, it belongs nowhere: the
+   reader is served by full-text search, which finds it in the documents.
 
-   Anything you put in `covers` that looks substantial enough to deserve its own
-   tag should ALSO go in `missing_tag_candidates`. That is what makes `covers`
-   the standing queue for the next vocabulary review.
+   The same error appears on a technology tag once its children exist: a variant
+   name left on the parent when the thing it names became a child. RaptorQ
+   belongs on Raptor, not on FEC; Kyber on ML-KEM, not on post-quantum.
 
 ## Constraints
 
@@ -201,15 +198,6 @@ SCHEMA = {
                 "additionalProperties": False,
             },
         },
-        "covers": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {"term": {"type": "string"}, "reason": {"type": "string"}},
-                "required": ["term", "reason"],
-                "additionalProperties": False,
-            },
-        },
         "multiword": {
             "type": "array",
             "items": {
@@ -230,7 +218,7 @@ SCHEMA = {
         },
         "notes": {"type": "string"},
     },
-    "required": ["id", "aliases", "covers", "multiword", "missing_tag_candidates", "notes"],
+    "required": ["id", "aliases", "multiword", "missing_tag_candidates", "notes"],
     "additionalProperties": False,
 }
 
@@ -360,7 +348,7 @@ CLI_FLAGS = [
 JSON_ONLY = (
     "\n\n## Output\n\nEmit ONE JSON object and nothing else -- no prose, no code "
     "fence, no explanation before or after. It must have exactly these keys:\n"
-    '  id (string), aliases (array), covers (array), multiword (array),\n'
+    '  id (string), aliases (array), multiword (array),\n'
     '  missing_tag_candidates (array), notes (string)\n'
     "Each array holds objects with exactly the keys `term` and `reason`, both strings. "
     "Empty arrays are expected and correct for most tags."
@@ -446,23 +434,8 @@ def write_outputs(results, corpus, by_id, out_dir, min_hits, min_precision=20, p
         for a in r.get("aliases", []):
             claimed[a["term"].lower()].append(r["id"])
 
-    kept, covers, rejected, missing, collisions = defaultdict(list), defaultdict(list), [], [], []
+    kept, rejected, missing, collisions = defaultdict(list), [], [], []
     for tid in sorted(results):
-        for c in results[tid].get("covers", []):
-            term, why = c["term"], c["reason"]
-            if term.lower().replace(" ", "-") in ids:
-                collisions.append((tid, term, "is an existing tag id (covers)")); continue
-            if corpus:
-                raw, ctx, prec = corpus.score(term, by_id[tid])
-            else:
-                raw = ctx = min_hits; prec = 100
-            # `covers` names a different technology by design, so the tag's own
-            # match rules fire on fewer of its documents. Grounding still has to
-            # show the term is real, but precision is not the right bar for it.
-            if ctx < min_hits and raw < min_hits:
-                rejected.append((tid, term, raw, ctx, prec, why, "no corpus use (covers)"))
-                continue
-            covers[tid].append((term, raw, ctx, prec, why))
         for a in results[tid].get("aliases", []):
             term, why = a["term"], a["reason"]
             if term.lower().replace(" ", "-") in ids:
@@ -489,23 +462,16 @@ def write_outputs(results, corpus, by_id, out_dir, min_hits, min_precision=20, p
         f.write("#   ctx  of those, the ones this tag's own match rules also fire on\n")
         f.write("#   %    precision: ctx/raw. A short string that matches for unrelated\n")
         f.write("#        reasons scores low here even when raw is large.\n\n")
-        for tid in sorted(set(kept) | set(covers)):
-            f.write(f"{tid}:\n")
-            if kept[tid]:
-                f.write("  aliases:\n")
-                for term, raw, ctx, prec, why in kept[tid]:
-                    f.write(f"  - {json.dumps(term)}   # raw {raw} ctx {ctx} {prec}% -- {why}\n")
-            if covers[tid]:
-                f.write("  covers:\n")
-                for term, raw, ctx, prec, why in covers[tid]:
-                    f.write(f"  - {json.dumps(term)}   # raw {raw} ctx {ctx} {prec}% -- {why}\n")
+        for tid in sorted(kept):
+            f.write(f"{tid}:\n  aliases:\n")
+            for term, raw, ctx, prec, why in kept[tid]:
+                f.write(f"  - {json.dumps(term)}   # raw {raw} ctx {ctx} {prec}% -- {why}\n")
             f.write("\n")
 
     with open(out_dir / "review.md", "w") as f:
         f.write("# Alias pass -- items needing a human\n\n")
         f.write(f"Tags processed: {len(results)}  |  aliases kept: "
-                f"{sum(len(v) for v in kept.values())} across {len(kept)} tags  |  "
-                f"covers: {sum(len(v) for v in covers.values())} across {len(covers)} tags\n\n")
+                f"{sum(len(v) for v in kept.values())} across {len(kept)} tags\n\n")
 
         f.write(f"## Rejected -- {len(rejected)}\n\n")
         f.write("Two reasons. *no in-context use*: the term never appears in a document\n")
@@ -540,12 +506,11 @@ def write_outputs(results, corpus, by_id, out_dir, min_hits, min_precision=20, p
         # --previous; git has every committed one.
         if previous:
             now = {(t, a) for t, v in list(kept.items()) for a, *_ in v}
-            now |= {(t, a) for t, v in list(covers.items()) for a, *_ in v}
             prev = yaml.safe_load(open(previous)) or {}
             gone = {
                 (t, a)
                 for t, v in prev.items()
-                for a in ((v.get("aliases") or []) + (v.get("covers") or []))
+                for a in (v.get("aliases") or [])
                 if (t, a) not in now
             }
             # The queue is sticky. Without this it is one-generation memory: a
@@ -570,7 +535,7 @@ def write_outputs(results, corpus, by_id, out_dir, min_hits, min_precision=20, p
             f.write("subset rather than reproducing the last one. These were proposed before\n")
             f.write("and are absent now. They are not rejections -- nothing judged them -- so\n")
             f.write("read them as candidates, deciding for each whether it is an alias, a\n")
-            f.write("covers entry, or neither.\n\n")
+            f.write("tag candidate, or neither.\n\n")
             for t, a in gone:
                 f.write(f"- `{t}` **{a}**\n")
 
@@ -579,7 +544,7 @@ def write_outputs(results, corpus, by_id, out_dir, min_hits, min_precision=20, p
         for tid, note in notes:
             f.write(f"- `{tid}` -- {note}\n")
 
-    return kept, covers, rejected, missing, collisions
+    return kept, rejected, missing, collisions
 
 # ---------------------------------------------------------------- main
 
@@ -636,9 +601,9 @@ def main():
                 done[r["id"]] = r
 
     if args.report:
-        kept, cov, rej, miss, coll = write_outputs(done, corpus, by_id, out_dir, args.min_hits, args.min_precision, args.previous)
+        kept, rej, miss, coll = write_outputs(done, corpus, by_id, out_dir, args.min_hits, args.min_precision, args.previous)
         print(f"rebuilt from {len(done)} results: {sum(len(v) for v in kept.values())} aliases, "
-              f"{sum(len(v) for v in cov.values())} covers, {len(rej)} rejected, "
+              f"{len(rej)} rejected, "
               f"{len(miss)} missing-tag candidates, {len(coll)} collisions")
         return
 
@@ -730,11 +695,10 @@ def main():
         for t in failures:
             print(f"  {t['id']}", file=sys.stderr)
 
-    kept, cov, rej, miss, coll = write_outputs(done, corpus, by_id, out_dir, args.min_hits, args.min_precision, args.previous)
+    kept, rej, miss, coll = write_outputs(done, corpus, by_id, out_dir, args.min_hits, args.min_precision, args.previous)
     print(f"\ntokens: {totals['in']} in ({totals['cache_read']} cached), {totals['out']} out"
           + (f" | ~${totals['cost_milli']/1000:.2f} equivalent" if totals.get("cost_milli") else ""))
     print(f"aliases {sum(len(v) for v in kept.values())} across {len(kept)} tags | "
-          f"covers {sum(len(v) for v in cov.values())} across {len(cov)} tags | "
           f"rejected {len(rej)} | missing-tag {len(miss)} | collisions {len(coll)}")
     print(f"-> {out_dir/'aliases.yaml'}\n-> {out_dir/'review.md'}")
 
