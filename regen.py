@@ -5,7 +5,7 @@ working directory; the three tracked files are rewritten in place.
 """
 import json, collections, statistics, csv, re
 import engine
-tax=engine.Taxonomy('taxonomy.yaml')
+tax=engine.Taxonomy('taxonomy.yaml', require_ids=False)   # tags may still lack uuid/slug; assigned below
 rfcs=json.load(open('rfcs.json')); RT=json.load(open('rfc-tags.json'))
 res={k:v['tags'] for k,v in RT.items()}; two={k:{'technology':v['technology'],'topic':v['topic']} for k,v in RT.items()}
 used=collections.Counter(t for v in res.values() for t in v)
@@ -44,6 +44,14 @@ for k,v in res.items():
         if y: per_year[a][y]+=1; years_of[a].append(y)
 served=collections.Counter(t for v in two.values() for t in v['topic'])
 doc=yaml.safe_load(open('taxonomy.yaml'))
+# uuid: assigned once, to tags that lack one; never regenerated, so a renamed tag keeps its uuid.
+# slug: Django slugify of the id, deduplicated in file order; regenerated every run.
+import uuid as _uuid
+slugs=engine.slugs_for([e['id'] for e in doc['tags']])
+for e in doc['tags']:
+    if not e.get('uuid'): e['uuid']=str(_uuid.uuid4())
+    e['slug']=slugs[e['id']]
+    e2={k:e[k] for k in ['id','uuid','slug'] if k in e}; e2.update({k:v for k,v in e.items() if k not in e2}); e.clear(); e.update(e2)
 for e in doc['tags']:
     t=e['id']; ys=years_of[t]
     e['stats']={'direct':used[t],'total':total[t],'first_year':min(ys) if ys else None,'last_year':max(ys) if ys else None}
@@ -51,6 +59,7 @@ for e in doc['tags']:
 class Dm(yaml.SafeDumper): pass
 Dm.add_representer(str, lambda dd,x: dd.represent_scalar('tag:yaml.org,2002:str', x, style="'" if ('\\' in x or ':' in x) and '\n' not in x else None))
 yaml.dump(doc, open('taxonomy.yaml','w'), Dumper=Dm, sort_keys=False, allow_unicode=True, width=200)
+engine.Taxonomy('taxonomy.yaml')   # strict re-load: every tag now has a uuid and the generated slug
 # ---- browser page: the review page (data model: tags / rows / pairs / window)
 years_all=[byid[k]['year'] for k in byid if byid[k]['year']]
 W0=2021; today=datetime.date.today(); window_years=round((today-datetime.date(W0,1,1)).days/365.25,2)

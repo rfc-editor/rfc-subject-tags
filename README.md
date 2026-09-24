@@ -90,7 +90,7 @@ Each requirement has an identifier, R1–R21. The validation procedure in valida
 
 ### Accessibility
 
-- **R21** A tag's id is written exactly as the documents write the term — `DKIM`, `IPv6`, `DoH`, `HTTP/2`, `.onion`, `X.509`, `S/MIME`, `TACACS+`, `Kerberos` — and a phrase is written as a phrase, with spaces and its own casing: `congestion control`, `IP mobility`, `real-time communications`, `IETF process`. A screen reader spells an all-capital token letter by letter and pronounces a lower-case one, so a lower-case `dkim` would be read as a word; the documents' own form is what readers recognise. Ids use letters, digits, spaces and `. _ / + -` only, and no two may be confused with each other after case-folding and whitespace collapsing; matching user input to an id uses that same folding (`Taxonomy.lookup`). Because an id may contain `/`, a path is written as its ids joined by ` / `: `web / HTTP / HTTP/2`.
+- **R21** A tag's id is written exactly as the documents write the term — `DKIM`, `IPv6`, `DoH`, `HTTP/2`, `.onion`, `X.509`, `S/MIME`, `TACACS+`, `Kerberos` — and a phrase is written as a phrase, with spaces and its own casing: `congestion control`, `IP mobility`, `real-time communications`, `IETF process`. A screen reader spells an all-capital token letter by letter and pronounces a lower-case one, so a lower-case `dkim` would be read as a word; the documents' own form is what readers recognise. Ids are unique without regard to case. Each tag also carries a permanent `uuid`, which survives renames and is the tag's identity for anything that stores references to tags, and a `slug` derived from the id for URLs. Because an id may contain `/`, a path is written as its ids joined by ` / `: `web / HTTP / HTTP/2`.
 
 ### Topic axis
 
