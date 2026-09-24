@@ -165,14 +165,21 @@ h1{font-size:clamp(18px,2vw,24px);font-weight:700;letter-spacing:-.018em;line-he
 .tab[aria-selected="true"]{color:var(--accent-ink);border-bottom-color:var(--accent);font-weight:600}
 .tab small{display:inline;margin-left:6px;font-family:var(--ff-mono);font-size:10px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3)}
 
-main{padding:24px 0 72px}
+main{padding:12px 0 12px}
 .panel[hidden]{display:none}
 .split{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;align-items:stretch}
 /* Vocabulary: each column is a flex column the height of the window below the header. Everything above the
    list (heading, controls, legend) is a fixed header; only the list body scrolls. Same on both sides. */
-#panel-vocab .split>.card{height:calc(100vh - var(--chrome-h,110px) - 40px);display:flex;flex-direction:column;overflow:hidden}
-#panel-vocab .split>.card>.card-head,#panel-vocab .split>.card>.controls,#panel-vocab .split>.card>.legend{flex:none}
-#panel-vocab .split>.card>#tagList,#panel-vocab .split>.card>#detailBody{flex:1 1 auto;min-height:0;overflow-y:auto}
+/* Every card is a flex column the height of the window below the site header. Everything above the
+   body (.card-head, notes, controls, legend, axis) is a fixed header; only the .cbody scrolls. */
+.panel>.card,#panel-vocab .split>.card{height:calc(100vh - var(--chrome-h,110px) - var(--footer-h,40px) - 24px);display:flex;flex-direction:column;overflow:hidden}
+.card>*{flex:none}
+.card>.cbody{flex:1 1 auto;min-height:0;overflow-y:auto}
+/* 4: the header controls fold away behind the icon in the card head */
+.card.collapsed>*:not(.card-head):not(.cbody){display:none}
+.card-head .fold{margin-left:auto;width:26px;height:26px;border:1px solid var(--rule);border-radius:6px;background:var(--surface);cursor:pointer;color:var(--ink-2);font-size:13px;line-height:1;display:inline-flex;align-items:center;justify-content:center}
+.card-head .fold:hover{background:var(--surface-2,#f4f4f4)}
+
 @media (max-width:980px){.split{grid-template-columns:1fr}}
 .card{background:var(--surface);border:1px solid var(--rule);border-radius:8px;box-shadow:var(--shadow);overflow:hidden}
 .card-head{padding:14px 16px;border-bottom:1px solid var(--rule-2);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
@@ -336,8 +343,8 @@ tr:hover td{background:var(--surface-2)}
 .life em{font-family:var(--ff-mono);font-style:normal;font-size:11.5px;font-variant-numeric:tabular-nums;color:var(--ink-3);text-align:right;white-space:nowrap}
 .axis{display:grid;grid-template-columns:250px minmax(0,1fr) 72px;gap:12px;padding:6px 16px 8px;font-family:var(--ff-mono);font-size:10.5px;color:var(--ink-3);min-width:620px}
 .axis .ticks{display:flex;justify-content:space-between}
-footer{border-top:1px solid var(--rule);background:var(--surface);margin-top:8px}
-footer .wrap{padding:20px 24px 30px;font-size:13.5px;color:var(--ink-3);font-family:var(--ff-serif);max-width:78ch;margin-left:auto;margin-right:auto}
+footer{border-top:1px solid var(--rule);background:var(--surface);margin-top:0}
+footer .wrap{padding:8px 24px 12px;font-size:13px;color:var(--ink-3);font-family:var(--ff-serif);max-width:78ch;margin-left:auto;margin-right:auto}
 footer code{font-size:12px}
 </style>
 </head>
@@ -407,7 +414,7 @@ footer code{font-size:12px}
             <span><i class="sw-count"></i>corpus count</span>
             <span><i class="sw-rate"></i>notifications per year</span>
           </div>
-          <ol class="taglist" id="tagList"></ol>
+          <ol class="taglist cbody" id="tagList"></ol>
         </div>
 
         <div class="card" id="detail">
@@ -417,7 +424,7 @@ footer code{font-size:12px}
               <button data-mode="and" aria-pressed="false">All (AND)</button>
             </div>
           </div>
-          <div id="detailBody"><p class="detail-empty">Pick a tag on the left. You will get its
+          <div id="detailBody" class="cbody"><p class="detail-empty">Pick a tag on the left. You will get its
             place in the tree, its kind and definition, the tags it travels with, and the RFCs
             themselves by number and title.</p></div>
         </div>
@@ -438,7 +445,7 @@ footer code{font-size:12px}
           <label class="chk"><input type="checkbox" id="coHideKin"> hide kin pairs</label>
           <span class="count" id="coCount"></span>
         </div>
-        <ol class="pairlist" id="pairList"></ol>
+        <ol class="pairlist cbody" id="pairList"></ol>
       </div>
     </section>
 
@@ -465,7 +472,7 @@ footer code{font-size:12px}
           <span class="count" id="lifeCount"></span>
         </div>
         <div class="axis"><span></span><span class="ticks" id="lifeTicks"></span><span></span></div>
-        <div class="lifewrap"><ol class="life" id="lifeList"></ol></div>
+        <div class="lifewrap cbody"><ol class="life" id="lifeList"></ol></div>
       </div>
     </section>
 
@@ -499,10 +506,12 @@ footer code{font-size:12px}
             <button data-ovsort="smaller" aria-pressed="false">Smaller tag</button>
           </div>
         </div>
+        <div class="cbody">
         <div class="subhead" id="ovRedHead"></div>
         <ol class="ovlist" id="ovRed"></ol>
         <div class="subhead" id="ovNarHead"></div>
         <ol class="ovlist" id="ovNar"></ol>
+        </div>
       </div>
     </section>
 
@@ -522,11 +531,13 @@ footer code{font-size:12px}
           </div>
           <span class="count" id="rfcCount"></span>
         </div>
+        <div class="cbody">
         <div id="rfcCard"></div>
         <div class="rfcs tall"><table><thead><tr>
           <th>RFC</th><th>Year</th><th>Title</th><th>Tags</th>
         </tr></thead><tbody id="rfcBody"></tbody></table></div>
         <button class="more" id="rfcMore" hidden></button>
+        </div>
       </div>
     </section>
 
@@ -896,7 +907,9 @@ document.querySelectorAll('[data-lifekind]').forEach(function(b){b.addEventListe
 
 document.getElementById('maxRfc').textContent=ROWS[ROWS.length-1][0];
 drawTags();drawDetail();drawPairs();drawCorpus();drawOverlap();
-(function(){var c=document.querySelector && document.querySelector('.chrome');if(!c)return;function m(){document.documentElement.style.setProperty('--chrome-h',c.offsetHeight+'px');}m();if(window.ResizeObserver)new ResizeObserver(m).observe(c);else window.addEventListener('resize',m);})();
+document.querySelectorAll('.card>.card-head').forEach(function(hd){var card=hd.parentNode;var b=document.createElement('button');b.className='fold';b.type='button';b.title='Hide the controls above the list';b.setAttribute('aria-expanded','true');b.textContent='\u25B4';
+  b.addEventListener('click',function(){var c=card.classList.toggle('collapsed');b.textContent=c?'\u25BE':'\u25B4';b.title=c?'Show the controls above the list':'Hide the controls above the list';b.setAttribute('aria-expanded',String(!c));});hd.appendChild(b);});
+(function(){var c=document.querySelector && document.querySelector('.chrome');if(!c)return;var f=document.querySelector('footer');function m(){document.documentElement.style.setProperty('--chrome-h',c.offsetHeight+'px');if(f)document.documentElement.style.setProperty('--footer-h',f.offsetHeight+'px');}m();if(window.ResizeObserver){var ro=new ResizeObserver(m);ro.observe(c);if(f)ro.observe(f);}else window.addEventListener('resize',m);})();
 })();
 </script>
 
