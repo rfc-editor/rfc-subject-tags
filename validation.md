@@ -103,6 +103,12 @@ For each topic-implying technology, list assignments with no title evidence and 
 - Ids read exactly as the documents write the term (`IPv6`, `HTTP/2`, `.onion`, `X.509`, `TACACS+`); phrases are written with spaces and their own casing (`congestion control`, `IP mobility`).
 - Paths are written as ids joined by ` / `.
 
+### Identity (uuid and slug)
+
+- Every tag has a version-4 `uuid`, no two the same (the loader fails otherwise).
+- Every `slug` equals Django `slugify` of its id, deduplicated in file order (the loader fails otherwise).
+- Renames preserve uuids: after any rename, diff the set of uuids against the previous build — it must be unchanged.
+
 ### Independence (R14, R15)
 
 By inspection of the tree: no tag names an IETF area, a status, a stream or a date.

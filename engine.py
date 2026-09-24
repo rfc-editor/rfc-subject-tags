@@ -5,7 +5,7 @@ Usage:  python3 engine.py [taxonomy.yaml] [rfcs.json]
 Writes  rfc-tags.json: for every RFC its leaf tags, full paths, and technology/topic coordinates.
 All per-tag knowledge lives in the YAML; this file is the algorithm only.
 """
-import json, re, sys, collections, unicodedata
+import json, re, sys, collections, unicodedata, uuid
 import yaml
 
 # What an id may look like. Ids are written as the documents write the term, so they may
@@ -23,10 +23,39 @@ def id_key(s):
     deciding that two spellings would be the *same* id."""
     return ' '.join(unicodedata.normalize('NFC', s).casefold().split())
 
+UUID4_RE = re.compile(r'[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}')
+
+def slugify(value, allow_unicode=False):
+    """Django's slugify, copied verbatim (django.utils.text.slugify).
+
+    Convert to ASCII if 'allow_unicode' is False. Convert spaces or repeated dashes to
+    single dashes. Remove characters that aren't alphanumerics, underscores, or hyphens.
+    Convert to lowercase. Also strip leading and trailing whitespace, dashes, and
+    underscores."""
+    value = str(value)
+    if allow_unicode:
+        value = unicodedata.normalize("NFKC", value)
+    else:
+        value = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
+    value = re.sub(r"[^\w\s-]", "", value.lower())
+    return re.sub(r"[-\s]+", "-", value).strip("-_")
+
+def slugs_for(ids):
+    """Slug for every id, in order. A slug that would repeat an earlier one gets -2, -3, ...
+    (the Django algorithm alone maps both WHOIS and WHOIS++ to 'whois')."""
+    seen = collections.Counter(); out = {}
+    for i in ids:
+        base = slugify(i) or 'tag'
+        seen[base] += 1
+        out[i] = base if seen[base] == 1 else f'{base}-{seen[base]}'
+    return out
+
 MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
 
 class Taxonomy:
-    def __init__(self, path='taxonomy.yaml'):
+    def __init__(self, path='taxonomy.yaml', require_ids=True):
+        """require_ids=False lets regen.py load a file whose tags lack uuid/slug in order to assign them."""
+        self.require_ids = require_ids
         doc = yaml.safe_load(open(path))
         self.engine = doc['engine']
         self.tags = doc['tags']                      # list, in file order
@@ -37,6 +66,10 @@ class Taxonomy:
         self.root = {t: p[0] for t, p in self.path.items()}
         self.kind = {t: self.by_id[t]['kind'] for t in self.by_id}
         self.desc = {t: self.by_id[t]['desc'] for t in self.by_id}
+        self.uuid = {t: self.by_id[t].get('uuid') for t in self.by_id}
+        self.slug = {t: self.by_id[t].get('slug') for t in self.by_id}
+        self.by_uuid = {u: t for t, u in self.uuid.items()}
+        self.by_slug = {sl: t for t, sl in self.slug.items()}
         flags = re.I
         self.match = {t: [re.compile(p, flags) for p in e.get('match', [])] for t, e in self.by_id.items()}
         self.match_title = {t: [re.compile(p, flags) for p in e.get('match_title_only', [])] for t, e in self.by_id.items()}
@@ -77,6 +110,20 @@ class Taxonomy:
                 for x in e.get(f, []): assert x in self.by_id, f'{e["id"]}.{f}: unknown tag {x}'
         for t in self.by_id:
             assert len(self._path(t)) <= 4, f'too deep: {t}'
+        if not self.require_ids:
+            return
+        # uuid: assigned once by regen.py and never changed -- an id may be renamed, its uuid may not
+        us = [e.get('uuid') for e in self.tags]
+        for e, u in zip(self.tags, us):
+            assert u, f"{e['id']}: no uuid (run regen.py, which assigns one to any tag lacking it)"
+            assert UUID4_RE.fullmatch(str(u)), f"{e['id']}: uuid {u!r} is not a version-4 UUID"
+        dupu = [u for u, c in collections.Counter(us).items() if c > 1]
+        assert not dupu, f'uuid shared by more than one tag: {dupu}'
+        # slug: Django slugify of the id, deduplicated in file order; regen.py regenerates it every run
+        expected = slugs_for(ids)
+        for e in self.tags:
+            assert e.get('slug') == expected[e['id']], (f"{e['id']}: slug {e.get('slug')!r} should be {expected[e['id']]!r} "
+                                                        "(slugs are generated from the id; run regen.py)")
 
     # ---- assignment -------------------------------------------------------
     def assign(self, rfc):

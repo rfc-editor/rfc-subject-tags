@@ -18,6 +18,8 @@ engine:
     "
 tags:
 - id: naming
+  uuid: 0961a797-6fbb-479f-97fa-8ba4fec059d4
+  slug: naming
   kind: topic
   desc: Naming and name resolution in general, not specific to one system
   match_title_only:
@@ -30,6 +32,8 @@ tags:
     last_year: 2026
     served: 650
 - id: DNS
+  uuid: 1b6d347a-cc55-4d78-ace9-45ba51f04f3b
+  slug: dns
   parent: naming
   kind: technology
   desc: 'DNS (Domain Name System): protocol, resource records, resolver and server behaviour, operations'
@@ -49,6 +53,8 @@ tags:
     first_year: 1979
     last_year: 2026
 - id: DNSSEC
+  uuid: 26c27111-d0e8-46a0-bad1-ff30fed8276b
+  slug: dnssec
   parent: DNS
   kind: technology
   desc: 'DNSSEC (DNS Security Extensions): signing, validation, trust anchors, NSEC/NSEC3'
@@ -64,6 +70,8 @@ tags:
     first_year: 1997
     last_year: 2026
 - id: DNS privacy
+  uuid: f390b0b4-c60d-4813-ac2c-ebd425a94ffc
+  slug: dns-privacy
   parent: DNS
   kind: topic
   desc: Encrypted and privacy-preserving DNS transport
@@ -78,6 +86,8 @@ tags:
     first_year: 2015
     last_year: 2025
 - id: DoH
+  uuid: e019ec53-6026-4d42-bdaf-592a8dd52841
+  slug: doh
   parent: DNS privacy
   kind: technology
   desc: DNS over HTTPS (DoH)
@@ -94,6 +104,8 @@ tags:
     first_year: 2018
     last_year: 2023
 - id: DoT
+  uuid: 258edb37-658c-441d-a2dc-2a2d4af839c0
+  slug: dot
   parent: DNS privacy
   kind: technology
   desc: DNS over TLS (DoT)
@@ -108,6 +120,8 @@ tags:
     first_year: 2018
     last_year: 2024
 - id: oblivious DNS
+  uuid: 1dfd7fba-53df-457f-b7ff-17ad139371ca
+  slug: oblivious-dns
   parent: DNS privacy
   kind: technology
   desc: Oblivious DNS over HTTPS
@@ -121,6 +135,8 @@ tags:
     first_year: 2022
     last_year: 2022
 - id: DoQ
+  uuid: 54272d79-d2af-46a8-9d9e-905782a0a395
+  slug: doq
   parent: DNS privacy
   kind: technology
   desc: DoQ (DNS over QUIC), DNS resolution carried over dedicated QUIC connections
@@ -132,6 +148,8 @@ tags:
     first_year: 2022
     last_year: 2024
 - id: DANE
+  uuid: 37535579-f3d2-48da-bcf3-8b5cbb362311
+  slug: dane
   parent: DNS
   kind: technology
   desc: 'DANE (DNS-Based Authentication of Named Entities): TLSA and certificate association via DNSSEC'
@@ -147,6 +165,8 @@ tags:
     first_year: 2011
     last_year: 2018
 - id: EDNS
+  uuid: 6b79a6fa-b9fb-4912-b0ee-f52fc80bd3df
+  slug: edns
   parent: DNS
   kind: technology
   desc: Extension Mechanisms for DNS (EDNS(0)) and EDNS options
@@ -158,6 +178,8 @@ tags:
     first_year: 2013
     last_year: 2025
 - id: DNS update
+  uuid: 3274da00-09df-4914-9ce7-acdb4deffb21
+  slug: dns-update
   parent: DNS
   kind: technology
   desc: Dynamic DNS updates
@@ -169,6 +191,8 @@ tags:
     first_year: 1997
     last_year: 2025
 - id: DNS64
+  uuid: 15badb25-fbf5-47b9-ace4-de8717a2e8e7
+  slug: dns64
   parent: DNS
   kind: technology
   desc: DNS64 (DNS extensions for NAT64) address synthesis for IPv6/IPv4 translation
@@ -182,6 +206,8 @@ tags:
     first_year: 2011
     last_year: 2025
 - id: mDNS
+  uuid: a6e6a0dd-668e-4a0d-a88e-bee71f7e5cf9
+  slug: mdns
   parent: DNS
   kind: technology
   desc: mDNS (Multicast DNS)
@@ -195,6 +221,8 @@ tags:
     first_year: 2012
     last_year: 2026
 - id: DNS-SD
+  uuid: 83525153-62bb-43e8-8e17-d33c331bd44f
+  slug: dns-sd
   parent: DNS
   kind: technology
   desc: DNS-SD (DNS-Based Service Discovery)
@@ -211,6 +239,8 @@ tags:
     first_year: 2013
     last_year: 2026
 - id: special-use domain names
+  uuid: 793d2ddb-3cac-4cfe-8f0c-1660830e4879
+  slug: special-use-domain-names
   parent: DNS
   kind: technology
   desc: Special-use and reserved domain names
@@ -222,6 +252,8 @@ tags:
     first_year: 2013
     last_year: 2025
 - id: .onion
+  uuid: 002778ea-8392-4a79-b926-7483de2ace18
+  slug: onion
   parent: special-use domain names
   kind: technology
   desc: .onion, the reserved top-level domain for Tor hidden services and the self-authenticating addresses beneath it
@@ -233,6 +265,8 @@ tags:
     first_year: 2015
     last_year: 2025
 - id: domain registration
+  uuid: 13496f81-35bb-41b0-bacd-b70e6fa411f2
+  slug: domain-registration
   parent: naming
   kind: topic
   desc: 'Domain Registration: domain registry and registrar operations and protocols'
@@ -247,6 +281,8 @@ tags:
     last_year: 2026
     served: 116
 - id: EPP
+  uuid: 370fba0a-b6cd-4d35-9db0-15c26d26d7ff
+  slug: epp
   parent: domain registration
   kind: technology
   desc: EPP (Extensible Provisioning Protocol) for registry objects
@@ -263,6 +299,8 @@ tags:
     first_year: 2000
     last_year: 2026
 - id: RDAP
+  uuid: 74ea1471-fa24-4195-8058-df50f6cff276
+  slug: rdap
   parent: domain registration
   kind: technology
   desc: RDAP (Registration Data Access Protocol)
@@ -277,6 +315,8 @@ tags:
     first_year: 2015
     last_year: 2026
 - id: WHOIS
+  uuid: 39f1e942-5c10-4fe5-a596-c5378ea6dc02
+  slug: whois
   parent: domain registration
   kind: technology
   desc: WHOIS and legacy registration data directory services
@@ -294,6 +334,8 @@ tags:
     first_year: 1982
     last_year: 2022
 - id: RWhois
+  uuid: 2129663d-c435-4846-b2d1-da63559ad0ee
+  slug: rwhois
   parent: WHOIS
   kind: technology
   desc: RWhois (Referral Whois), the referral-following protocol for distributed, hierarchical registration data lookup
@@ -305,6 +347,8 @@ tags:
     first_year: 1994
     last_year: 1997
 - id: WHOIS++
+  uuid: df1a9a67-87b9-498f-ac52-a181ce819646
+  slug: whois-2
   parent: WHOIS
   kind: technology
   desc: WHOIS++, the distributed white pages directory architecture with its centroid-based index and mesh servers
@@ -316,6 +360,8 @@ tags:
     first_year: 1995
     last_year: 1996
 - id: IDN
+  uuid: 3589b9a6-df91-4427-8780-2783eaab5bda
+  slug: idn
   parent: naming
   kind: technology
   desc: 'IDN (Internationalized Domain Names): IDNA, punycode, label validity'
@@ -333,6 +379,8 @@ tags:
     first_year: 2003
     last_year: 2022
 - id: tel URI
+  uuid: b9c32732-5650-4c06-8c61-22fe5abad18b
+  slug: tel-uri
   parent: naming
   kind: technology
   desc: The tel URI scheme for telephone numbers and its parameters (number portability, trunk groups)
@@ -346,6 +394,8 @@ tags:
     first_year: 2002
     last_year: 2018
 - id: ENUM
+  uuid: dbc88fdf-83e5-43f3-a253-c3c64c74163b
+  slug: enum
   parent: naming
   kind: technology
   desc: 'ENUM (E.164 Number Mapping): telephone numbers in the DNS'
@@ -359,6 +409,8 @@ tags:
     first_year: 2000
     last_year: 2011
 - id: service discovery
+  uuid: 03626be8-a778-45df-a822-ed0ab9054615
+  slug: service-discovery
   parent: naming
   kind: topic
   desc: 'Service Discovery: discovering services and resources on a network'
@@ -374,6 +426,8 @@ tags:
     last_year: 2024
     served: 35
 - id: SLP
+  uuid: 3bcc2815-5c60-468c-9dea-3fc1f44560b4
+  slug: slp
   parent: naming
   kind: technology
   desc: SLP (Service Location Protocol)
@@ -389,6 +443,8 @@ tags:
     first_year: 1997
     last_year: 2005
 - id: UUID
+  uuid: eb393d2f-9e5e-43b0-a778-d8427d4933a4
+  slug: uuid
   parent: naming
   kind: technology
   desc: UUID (Universally Unique Identifier)
@@ -402,6 +458,8 @@ tags:
     first_year: 2005
     last_year: 2024
 - id: hostnames
+  uuid: 824cc2a9-bcca-4b1a-b071-29384c715c39
+  slug: hostnames
   parent: naming
   kind: technology
   desc: 'Hostnames: host naming conventions and host tables'
@@ -417,6 +475,8 @@ tags:
     first_year: 1971
     last_year: 2017
 - id: handle system
+  uuid: bfa04578-12d2-47bc-aa19-fa2c252797ad
+  slug: handle-system
   parent: naming
   kind: technology
   desc: The Handle System persistent identifier infrastructure
@@ -428,6 +488,8 @@ tags:
     first_year: 2003
     last_year: 2003
 - id: web
+  uuid: b49528e3-a0bb-4da8-94b2-72e2d6fb89f6
+  slug: web
   kind: topic
   desc: 'The web in general: architecture and cross-protocol web matters'
   match_title_only:
@@ -439,6 +501,8 @@ tags:
     last_year: 2026
     served: 541
 - id: robots.txt
+  uuid: d5c7e269-6eb0-49d2-bcbb-b4fc61dd75f8
+  slug: robotstxt
   parent: web
   kind: technology
   desc: The Robots Exclusion Protocol (robots.txt)
@@ -450,6 +514,8 @@ tags:
     first_year: 2022
     last_year: 2026
 - id: WebFinger
+  uuid: 3c8329ba-e771-42d1-8105-23f11d6572b8
+  slug: webfinger
   parent: web
   kind: technology
   desc: WebFinger resource discovery
@@ -461,6 +527,8 @@ tags:
     first_year: 2013
     last_year: 2023
 - id: HTTP
+  uuid: 33cc7ed3-9592-4a34-99e4-6dac7bd4d7ee
+  slug: http
   parent: web
   kind: technology
   desc: 'HTTP (Hypertext Transfer Protocol): semantics, syntax, extensions'
@@ -475,6 +543,8 @@ tags:
     first_year: 1987
     last_year: 2026
 - id: HTTP/2
+  uuid: c5beeadf-35a6-4d84-930a-ae63fd6ce28f
+  slug: http2
   parent: HTTP
   kind: technology
   desc: HTTP/2 (Hypertext Transfer Protocol version 2)
@@ -488,6 +558,8 @@ tags:
     first_year: 2015
     last_year: 2022
 - id: HTTP/3
+  uuid: ae858d0c-55b5-49fe-91a1-b7bc05800bf1
+  slug: http3
   parent: HTTP
   kind: technology
   desc: HTTP/3 (Hypertext Transfer Protocol version 3)
@@ -501,6 +573,8 @@ tags:
     first_year: 2022
     last_year: 2023
 - id: HTTP caching
+  uuid: b7f52023-8947-4058-aa65-4be9ad77ea80
+  slug: http-caching
   parent: HTTP
   kind: technology
   desc: HTTP and web caching
@@ -512,6 +586,8 @@ tags:
     first_year: 2001
     last_year: 2001
 - id: HTTP authentication
+  uuid: e04b3689-0174-4ebd-96ff-becd35742daf
+  slug: http-authentication
   parent: HTTP
   kind: technology
   desc: HTTP Authentication schemes (Basic, Digest, and others)
@@ -525,6 +601,8 @@ tags:
     first_year: 2015
     last_year: 2017
 - id: HOBA
+  uuid: 0b05afda-9812-4c4e-8937-1672331c4b9b
+  slug: hoba
   parent: HTTP authentication
   kind: technology
   desc: HOBA (HTTP Origin-Bound Authentication), the digital-signature scheme binding a client key pair to an origin in place of a password
@@ -536,6 +614,8 @@ tags:
     first_year: 2015
     last_year: 2015
 - id: HTTP APIs
+  uuid: 04d361ae-563f-4718-952d-4d9e096ef1b7
+  slug: http-apis
   parent: HTTP
   kind: technology
   desc: Conventions for building APIs on HTTP (problem details, rate limits, etc.)
@@ -547,6 +627,8 @@ tags:
     first_year: 2022
     last_year: 2025
 - id: cookies
+  uuid: adc28c95-6967-46b2-ad4d-67904785814d
+  slug: cookies
   parent: HTTP
   kind: technology
   desc: 'HTTP state management: cookies'
@@ -562,6 +644,8 @@ tags:
     first_year: 1987
     last_year: 2021
 - id: WebDAV
+  uuid: ad0c0493-76dd-4a02-a382-69d5c50e80e8
+  slug: webdav
   parent: HTTP
   kind: technology
   desc: WebDAV (Web Distributed Authoring and Versioning)
@@ -576,6 +660,8 @@ tags:
     first_year: 1998
     last_year: 2019
 - id: web linking
+  uuid: c61bf0b8-b551-4a4b-89b4-85903ef3c617
+  slug: web-linking
   parent: HTTP
   kind: technology
   desc: 'Web Linking: typed web links and link relations'
@@ -587,6 +673,8 @@ tags:
     first_year: 2010
     last_year: 2025
 - id: MASQUE
+  uuid: 2ef6bdce-abec-4181-9f86-000ccce8af47
+  slug: masque
   parent: HTTP
   kind: technology
   desc: 'MASQUE (Multiplexed Application Substrate over QUIC Encryption): proxying IP/UDP over HTTP'
@@ -603,6 +691,8 @@ tags:
     first_year: 2022
     last_year: 2025
 - id: oblivious HTTP
+  uuid: a2fd294f-f416-4ffa-8eaa-bdaa00a6cd50
+  slug: oblivious-http
   parent: HTTP
   kind: technology
   desc: Oblivious HTTP relay-based request privacy
@@ -618,6 +708,8 @@ tags:
     first_year: 2024
     last_year: 2024
 - id: URI
+  uuid: d62a3e51-677c-4805-9541-3ac491e2598a
+  slug: uri
   parent: web
   kind: technology
   desc: 'URIs (Uniform Resource Identifiers): syntax, schemes, resolution, templates'
@@ -636,6 +728,8 @@ tags:
     first_year: 1994
     last_year: 2025
 - id: URN
+  uuid: 4d43fb04-f213-4d3b-92e1-744f6467cc22
+  slug: urn
   parent: URI
   kind: technology
   desc: Uniform Resource Names and URN namespaces
@@ -650,6 +744,8 @@ tags:
     first_year: 1994
     last_year: 2025
 - id: IRI
+  uuid: 4f3ddb31-7602-472f-b2d5-881607127878
+  slug: iri
   parent: URI
   kind: technology
   desc: IRIs (Internationalized Resource Identifiers)
@@ -665,6 +761,8 @@ tags:
     first_year: 2005
     last_year: 2015
 - id: HTML
+  uuid: 0d33dc15-f505-4c79-8eb6-48c39d68fa42
+  slug: html
   parent: web
   kind: technology
   desc: HTML (HyperText Markup Language) and hypertext document formats
@@ -679,6 +777,8 @@ tags:
     first_year: 1995
     last_year: 2017
 - id: MHTML
+  uuid: 0c6b58ad-b3dc-4f40-b1a8-a773d119259a
+  slug: mhtml
   parent: HTML
   kind: technology
   desc: MHTML (MIME Encapsulation of Aggregate Documents, such as HTML) for bundling a hypertext document and its inline resources into one MIME message
@@ -690,6 +790,8 @@ tags:
     first_year: 1997
     last_year: 1999
 - id: WebSocket
+  uuid: bd8dd26d-e84f-4fe9-b8cc-2299b1377b88
+  slug: websocket
   parent: web
   kind: technology
   desc: The WebSocket protocol
@@ -703,6 +805,8 @@ tags:
     first_year: 2011
     last_year: 2021
 - id: web push
+  uuid: 192fc87c-1e1a-4ba2-a2ac-48df72b766e7
+  slug: web-push
   parent: web
   kind: technology
   desc: Web push notification delivery
@@ -714,6 +818,8 @@ tags:
     first_year: 2016
     last_year: 2017
 - id: CDN
+  uuid: 5ced47ae-79fe-4a4c-b1cf-b8f7421a0f67
+  slug: cdn
   parent: web
   kind: technology
   desc: Content delivery networks and CDN interconnection
@@ -726,6 +832,8 @@ tags:
     first_year: 2003
     last_year: 2025
 - id: Atom
+  uuid: 6710add9-7fb4-4540-9000-cb1bc8f209d5
+  slug: atom
   parent: web
   kind: technology
   desc: Atom syndication format and publishing protocol
@@ -740,6 +848,8 @@ tags:
     first_year: 2005
     last_year: 2018
 - id: OPES
+  uuid: 0e29b49a-fb33-402d-9e05-9137c71b1ddc
+  slug: opes
   parent: web
   kind: technology
   desc: 'OPES (Open Pluggable Edge Services): intermediary content adaptation'
@@ -753,6 +863,8 @@ tags:
     first_year: 2002
     last_year: 2007
 - id: web security
+  uuid: ce4addf3-a717-4d13-ae9a-7db41fe1c8c5
+  slug: web-security
   parent: web
   kind: topic
   desc: Web platform security mechanisms
@@ -766,6 +878,8 @@ tags:
     first_year: 1997
     last_year: 2023
 - id: HSTS
+  uuid: a129c6c4-c443-4b1d-93e7-961d12f8da4b
+  slug: hsts
   parent: web security
   kind: technology
   desc: HSTS (HTTP Strict Transport Security)
@@ -779,6 +893,8 @@ tags:
     first_year: 2012
     last_year: 2023
 - id: token binding
+  uuid: 08e3b468-7b33-471d-81e7-d62daf61f3b3
+  slug: token-binding
   parent: web security
   kind: technology
   desc: TLS token binding
@@ -794,6 +910,8 @@ tags:
     first_year: 2018
     last_year: 2018
 - id: S-HTTP
+  uuid: 3578507a-b53e-43f4-b905-e5922ee25dfb
+  slug: s-http
   parent: web security
   kind: technology
   desc: Secure HTTP (S-HTTP, historic)
@@ -805,6 +923,8 @@ tags:
     first_year: 1997
     last_year: 1999
 - id: messaging
+  uuid: 6066d270-fe18-4d1a-9aa2-fa02a8514b2e
+  slug: messaging
   kind: topic
   desc: 'Messaging in general: store-and-forward and interpersonal message systems'
   match_title_only:
@@ -816,6 +936,8 @@ tags:
     last_year: 2026
     served: 910
 - id: email
+  uuid: 1623c220-7371-45c5-9cd3-2cb2a56f4770
+  slug: email
   parent: messaging
   kind: technology
   desc: 'Electronic mail (email): architecture, transport, access and formats'
@@ -843,6 +965,8 @@ tags:
     first_year: 1971
     last_year: 2026
 - id: SMTP
+  uuid: b33cbe64-1f5f-4b87-9719-2001053903d6
+  slug: smtp
   parent: email
   kind: technology
   desc: SMTP (Simple Mail Transfer Protocol) and mail relaying/submission
@@ -866,6 +990,8 @@ tags:
     first_year: 1981
     last_year: 2026
 - id: message format
+  uuid: 1022bae0-011a-430c-b603-8f830406912d
+  slug: message-format
   parent: email
   kind: technology
   desc: 'Internet message format: headers, addressing, disposition'
@@ -884,6 +1010,8 @@ tags:
     first_year: 1973
     last_year: 2023
 - id: IMAP
+  uuid: f01c0471-1fd3-43f3-a226-22c07ffe779b
+  slug: imap
   parent: email
   kind: technology
   desc: IMAP (Internet Message Access Protocol)
@@ -906,6 +1034,8 @@ tags:
     first_year: 1988
     last_year: 2026
 - id: POP3
+  uuid: 11c96b8d-959d-419b-9126-e09ecb1441e0
+  slug: pop3
   parent: email
   kind: technology
   desc: POP3 (Post Office Protocol version 3)
@@ -919,6 +1049,8 @@ tags:
     first_year: 1984
     last_year: 2018
 - id: email authentication
+  uuid: 22277aec-ed9c-4309-8e66-2acf56b928a3
+  slug: email-authentication
   parent: email
   kind: topic
   desc: Email domain authentication and anti-spoofing
@@ -935,6 +1067,8 @@ tags:
     first_year: 1988
     last_year: 2026
 - id: SPF
+  uuid: b870693f-0749-4a04-ae6a-4856a371511b
+  slug: spf
   parent: email authentication
   kind: technology
   desc: SPF (Sender Policy Framework)
@@ -954,6 +1088,8 @@ tags:
     first_year: 1988
     last_year: 2026
 - id: DKIM
+  uuid: 33d254a6-ee21-421e-a8c8-34a9444de917
+  slug: dkim
   parent: email authentication
   kind: technology
   desc: DKIM (DomainKeys Identified Mail)
@@ -968,6 +1104,8 @@ tags:
     first_year: 2006
     last_year: 2026
 - id: DMARC
+  uuid: d63bdb29-0951-42ae-a472-49231249908c
+  slug: dmarc
   parent: email authentication
   kind: technology
   desc: DMARC (Domain-based Message Authentication, Reporting, and Conformance)
@@ -981,6 +1119,8 @@ tags:
     first_year: 2015
     last_year: 2026
 - id: ARC
+  uuid: 8ce4509d-27cd-402b-971d-f03ac4675957
+  slug: arc
   parent: email authentication
   kind: technology
   desc: ARC (Authenticated Received Chain)
@@ -992,6 +1132,8 @@ tags:
     first_year: 2019
     last_year: 2019
 - id: ARF
+  uuid: 8402754e-19a9-4225-ac46-538caed22bd5
+  slug: arf
   parent: email authentication
   kind: technology
   desc: ARF (Abuse Reporting Format) for email feedback and authentication failure reports
@@ -1003,6 +1145,8 @@ tags:
     first_year: 2010
     last_year: 2012
 - id: spam
+  uuid: 74f3c95d-941f-438d-9220-e0060692ff49
+  slug: spam
   parent: email
   kind: topic
   desc: 'Spam: unsolicited bulk email: filtering, reporting, reputation'
@@ -1020,6 +1164,8 @@ tags:
     last_year: 2020
     served: 29
 - id: DNSBL
+  uuid: f9c61cd4-1210-42a5-944c-ad207d5fc261
+  slug: dnsbl
   parent: spam
   kind: technology
   desc: 'DNSBL (DNS-based blocklist): DNS query and response conventions for publishing and consulting lists of sending hosts and domains, including whitelists'
@@ -1031,6 +1177,8 @@ tags:
     first_year: 2010
     last_year: 2020
 - id: Sieve
+  uuid: ff8fb8d5-9f34-4b4c-8063-99bb87239c54
+  slug: sieve
   parent: email
   kind: technology
   desc: Sieve email filtering language
@@ -1045,6 +1193,8 @@ tags:
     first_year: 2001
     last_year: 2025
 - id: JMAP
+  uuid: 8148f377-23c0-4dcc-86ab-5454d3e7a6bd
+  slug: jmap
   parent: email
   kind: technology
   desc: JMAP (JSON Meta Application Protocol) for mail and related data
@@ -1058,6 +1208,8 @@ tags:
     first_year: 2019
     last_year: 2026
 - id: EAI
+  uuid: 79240043-ecf4-43b6-b7d0-be9fb0d7cfab
+  slug: eai
   parent: email
   kind: technology
   desc: Email address internationalization (EAI)
@@ -1073,6 +1225,8 @@ tags:
     first_year: 2007
     last_year: 2024
 - id: mailing lists
+  uuid: a1c86f26-ada0-4287-90d6-a687567324fe
+  slug: mailing-lists
   parent: email
   kind: technology
   desc: Mailing list protocols, headers and management
@@ -1087,6 +1241,8 @@ tags:
     first_year: 1971
     last_year: 2026
 - id: VPIM
+  uuid: 62470415-5af5-45a0-a0d5-aa3d98ed6ed1
+  slug: vpim
   parent: email
   kind: technology
   desc: 'VPIM (Voice Profile for Internet Mail): voice messaging'
@@ -1101,6 +1257,8 @@ tags:
     first_year: 1998
     last_year: 2005
 - id: MIME
+  uuid: 76ace15a-466d-41ce-acec-7a37f80b78fb
+  slug: mime
   parent: messaging
   kind: technology
   desc: 'MIME (Multipurpose Internet Mail Extensions): body structure and encodings'
@@ -1120,6 +1278,8 @@ tags:
     first_year: 1980
     last_year: 2026
 - id: media types
+  uuid: 178ba263-9b15-4669-a9f5-21a984f99544
+  slug: media-types
   parent: MIME
   kind: technology
   desc: Media (MIME) type registrations and registry rules
@@ -1135,6 +1295,8 @@ tags:
     first_year: 1994
     last_year: 2026
 - id: instant messaging
+  uuid: d21f9bf4-7c39-4c24-aedd-de514fb181ec
+  slug: instant-messaging
   parent: messaging
   kind: technology
   desc: Instant messaging and presence
@@ -1153,6 +1315,8 @@ tags:
     first_year: 1990
     last_year: 2025
 - id: PIDF
+  uuid: dfd90ca4-df90-497b-83e6-4402575f6f7a
+  slug: pidf
   parent: instant messaging
   kind: technology
   desc: PIDF (Presence Information Data Format)
@@ -1164,6 +1328,8 @@ tags:
     first_year: 2004
     last_year: 2015
 - id: XMPP
+  uuid: ccc2ca4d-1729-466f-9342-55d0c8dcbea8
+  slug: xmpp
   parent: instant messaging
   kind: technology
   desc: XMPP (Extensible Messaging and Presence Protocol)
@@ -1179,6 +1345,8 @@ tags:
     first_year: 2004
     last_year: 2019
 - id: MSRP
+  uuid: c8a1137c-5f85-4afe-af08-9f6aacbd5877
+  slug: msrp
   parent: instant messaging
   kind: technology
   desc: MSRP (Message Session Relay Protocol)
@@ -1190,6 +1358,8 @@ tags:
     first_year: 2007
     last_year: 2021
 - id: X.400
+  uuid: e7476d8f-8cd4-4673-b8e3-00efe3e75428
+  slug: x400
   parent: messaging
   kind: technology
   desc: X.400 (ITU-T message handling systems) and interworking
@@ -1207,6 +1377,8 @@ tags:
     first_year: 1986
     last_year: 2022
 - id: fax
+  uuid: ce61a3f9-1276-4ef3-b5c8-86d079f4db8c
+  slug: fax
   parent: messaging
   kind: technology
   desc: 'Fax: facsimile over Internet mail and IP'
@@ -1221,6 +1393,8 @@ tags:
     first_year: 1980
     last_year: 2014
 - id: paging
+  uuid: 39f4e3aa-53ba-4625-9a1c-5dc4af93a164
+  slug: paging
   parent: messaging
   kind: technology
   desc: Radio and network paging protocols
@@ -1232,6 +1406,8 @@ tags:
     first_year: 1993
     last_year: 1995
 - id: Netnews
+  uuid: fe4e27f2-cdbb-4564-a15b-efa623e98f34
+  slug: netnews
   parent: messaging
   kind: technology
   desc: Netnews article format and distribution
@@ -1245,6 +1421,8 @@ tags:
     first_year: 1983
     last_year: 2018
 - id: NNTP
+  uuid: eb4c487e-9e85-400d-b5b5-c1e50faae727
+  slug: nntp
   parent: Netnews
   kind: technology
   desc: NNTP (Network News Transfer Protocol)
@@ -1258,6 +1436,8 @@ tags:
     first_year: 1986
     last_year: 2017
 - id: EDI
+  uuid: 4530c569-0439-425c-b2ae-5bb0b224cf9c
+  slug: edi
   parent: messaging
   kind: technology
   desc: EDI (Electronic Data Interchange) over Internet transports
@@ -1273,6 +1453,8 @@ tags:
     first_year: 1995
     last_year: 2011
 - id: UUCP
+  uuid: 7424a479-5f03-4f4e-b5a9-b7f62408f0d2
+  slug: uucp
   parent: messaging
   kind: technology
   desc: UUCP (Unix-to-Unix Copy) mail interchange
@@ -1284,6 +1466,8 @@ tags:
     first_year: 1984
     last_year: 1986
 - id: SMS
+  uuid: 825a0c8a-6575-4a31-b918-6f811dcbf1f1
+  slug: sms
   parent: messaging
   kind: technology
   desc: 'SMS (Short Message Service): mobile short text messages, their URI schemes, and gateways to Internet mail'
@@ -1295,6 +1479,8 @@ tags:
   match:
   - '\bSMS\b|\bshort message service\b'
 - id: real-time communications
+  uuid: 353b3e0b-0c02-4036-8e7e-904758bc1f19
+  slug: real-time-communications
   kind: topic
   desc: Real-time voice, video and media communication in general
   match_title_only:
@@ -1306,6 +1492,8 @@ tags:
     last_year: 2026
     served: 924
 - id: SIP
+  uuid: f2c0f1c4-9b78-4b7e-bb73-03ca0d642061
+  slug: sip
   parent: real-time communications
   kind: technology
   desc: 'SIP (Session Initiation Protocol): call signalling, extensions, deployment'
@@ -1337,6 +1525,8 @@ tags:
     first_year: 1992
     last_year: 2026
 - id: TRIP
+  uuid: 8aa2622d-15bf-4c1e-b1dc-ad97bca70faa
+  slug: trip
   parent: SIP
   kind: technology
   desc: TRIP (Telephony Routing over IP) and the TGREP gateway registration protocol
@@ -1348,6 +1538,8 @@ tags:
     first_year: 2000
     last_year: 2019
 - id: CPL
+  uuid: 87a7f35d-f3c8-43dc-ae3a-e6c2c75d5d3b
+  slug: cpl
   parent: SIP
   kind: technology
   desc: CPL (Call Processing Language) for user control of call handling
@@ -1359,6 +1551,8 @@ tags:
     first_year: 2000
     last_year: 2004
 - id: SIMPLE
+  uuid: 5a031416-48d5-4ff8-9c63-bcffe33bafc0
+  slug: simple
   parent: SIP
   kind: technology
   desc: 'SIMPLE (SIP for Instant Messaging and Presence Leveraging Extensions): event packages, PIDF extensions, XCAP'
@@ -1372,6 +1566,8 @@ tags:
     first_year: 2004
     last_year: 2015
 - id: SPEERMINT
+  uuid: 4ee6f357-0135-40aa-808f-81d48c83ac91
+  slug: speermint
   parent: SIP
   kind: technology
   desc: SPEERMINT (Session PEERing for Multimedia INTerconnect) between SIP service providers, and peering provisioning
@@ -1386,6 +1582,8 @@ tags:
     first_year: 2008
     last_year: 2016
 - id: SigComp
+  uuid: cc82f15a-1388-49de-ade5-12e56d079b91
+  slug: sigcomp
   parent: SIP
   kind: technology
   desc: SigComp (Signaling Compression) for SIP and other text-based signaling
@@ -1397,6 +1595,8 @@ tags:
     first_year: 2003
     last_year: 2008
 - id: STIR
+  uuid: ae4b1988-e4f4-4176-aef8-654cdb17d4a5
+  slug: stir
   parent: SIP
   kind: technology
   desc: 'STIR (Secure Telephone Identity Revisited): caller-ID authentication'
@@ -1413,6 +1613,8 @@ tags:
     first_year: 2014
     last_year: 2026
 - id: SIPREC
+  uuid: 76b6a5b8-e076-4d02-9c69-dde70e9c0919
+  slug: siprec
   parent: SIP
   kind: technology
   desc: 'SIPREC (SIP Recording): SIP-based session recording'
@@ -1424,6 +1626,8 @@ tags:
     first_year: 2011
     last_year: 2017
 - id: P2PSIP
+  uuid: 110faf2c-4bad-42ce-b25b-499ad54800ea
+  slug: p2psip
   parent: SIP
   kind: technology
   desc: P2PSIP (Peer-to-Peer SIP) and RELOAD
@@ -1435,6 +1639,8 @@ tags:
     first_year: 2014
     last_year: 2017
 - id: SDP
+  uuid: 04e7975e-3923-42a6-9ad9-401a9f3018c2
+  slug: sdp
   parent: real-time communications
   kind: technology
   desc: SDP (Session Description Protocol) and offer/answer
@@ -1448,6 +1654,8 @@ tags:
     first_year: 1998
     last_year: 2024
 - id: RTP
+  uuid: 1f34d425-6d4f-49c3-8e3e-c71367a071cf
+  slug: rtp
   parent: real-time communications
   kind: technology
   desc: RTP (Real-time Transport Protocol)
@@ -1464,6 +1672,8 @@ tags:
     first_year: 1996
     last_year: 2026
 - id: RTCP
+  uuid: 9c380010-c83f-466f-b3dc-d5f9b0196094
+  slug: rtcp
   parent: RTP
   kind: technology
   desc: 'RTCP (RTP Control Protocol): feedback, reports, extended reports'
@@ -1477,6 +1687,8 @@ tags:
     first_year: 1996
     last_year: 2025
 - id: RTP payload format
+  uuid: 3dc45dd8-2181-46a2-b53f-dca110f5bf63
+  slug: rtp-payload-format
   parent: RTP
   kind: technology
   desc: RTP Payload Formats for specific codecs and media
@@ -1490,6 +1702,8 @@ tags:
     first_year: 1996
     last_year: 2026
 - id: SRTP
+  uuid: 97cc01b2-9f2c-4361-a3b9-969a26af32a9
+  slug: srtp
   parent: RTP
   kind: technology
   desc: 'SRTP (Secure Real-time Transport Protocol): secure RTP'
@@ -1507,6 +1721,8 @@ tags:
     first_year: 2004
     last_year: 2023
 - id: WebRTC
+  uuid: 8bac410e-241f-4580-b863-6903bd1bc7d4
+  slug: webrtc
   parent: real-time communications
   kind: technology
   desc: 'WebRTC (Web Real-Time Communication): browser real-time media architecture and transports'
@@ -1520,6 +1736,8 @@ tags:
     first_year: 2014
     last_year: 2025
 - id: SFrame
+  uuid: ce938221-adf9-4b2f-b791-62ea08670990
+  slug: sframe
   parent: WebRTC
   kind: technology
   desc: SFrame (Secure Frame) end-to-end media encryption
@@ -1533,6 +1751,8 @@ tags:
     first_year: 2024
     last_year: 2024
 - id: WHIP
+  uuid: e8fc8335-aa83-4178-bb35-b39bd82dcc21
+  slug: whip
   parent: WebRTC
   kind: technology
   desc: WebRTC-HTTP ingestion (WHIP (WebRTC-HTTP Ingestion Protocol))
@@ -1544,6 +1764,8 @@ tags:
     first_year: 2025
     last_year: 2025
 - id: H.323
+  uuid: 9136da20-9faf-40e8-b36b-a458d3a7fdb9
+  slug: h323
   parent: real-time communications
   kind: technology
   desc: ITU-T H.323 multimedia conferencing and its interworking with IP
@@ -1555,6 +1777,8 @@ tags:
     first_year: 2003
     last_year: 2005
 - id: NAT traversal
+  uuid: 90bfc5d6-ea18-4c78-9498-ef68d77ba986
+  slug: nat-traversal
   parent: real-time communications
   kind: topic
   desc: Interactive traversal of NATs for real-time media
@@ -1567,6 +1791,8 @@ tags:
     last_year: 2023
     served: 47
 - id: ICE
+  uuid: d3f707a7-f19a-40c3-b880-184db2b0b202
+  slug: ice
   parent: NAT traversal
   kind: technology
   desc: ICE (Interactive Connectivity Establishment)
@@ -1582,6 +1808,8 @@ tags:
     first_year: 2010
     last_year: 2021
 - id: STUN
+  uuid: ce0ea2aa-9057-4fc3-905b-b708e1a41ed3
+  slug: stun
   parent: NAT traversal
   kind: technology
   desc: STUN (Session Traversal Utilities for NAT)
@@ -1597,6 +1825,8 @@ tags:
     first_year: 2003
     last_year: 2023
 - id: TURN
+  uuid: dd293087-1311-461b-9e37-4df4a1b3ba7e
+  slug: turn
   parent: NAT traversal
   kind: technology
   desc: TURN (Traversal Using Relays around NAT)
@@ -1612,6 +1842,8 @@ tags:
     first_year: 2010
     last_year: 2020
 - id: codecs
+  uuid: f18510c1-1b6e-44c0-b701-e3407b2ebc0d
+  slug: codecs
   parent: real-time communications
   kind: technology
   desc: Audio and video codec definitions and containers
@@ -1626,6 +1858,8 @@ tags:
     first_year: 1986
     last_year: 2026
 - id: Opus
+  uuid: ebccb91f-833a-45ac-9435-2a1ec80ce71c
+  slug: opus
   parent: codecs
   kind: technology
   desc: The Opus audio codec
@@ -1639,6 +1873,8 @@ tags:
     first_year: 2011
     last_year: 2018
 - id: VP8
+  uuid: b4142013-39bd-4bab-9fb7-da95a3a65334
+  slug: vp8
   parent: codecs
   kind: technology
   desc: The VP8 video codec
@@ -1650,6 +1886,8 @@ tags:
     first_year: 2011
     last_year: 2024
 - id: VP9
+  uuid: 34d03492-a824-4b22-bf2c-245ab493e2b0
+  slug: vp9
   parent: codecs
   kind: technology
   desc: VP9 video codec
@@ -1661,6 +1899,8 @@ tags:
     first_year: 2025
     last_year: 2025
 - id: H.264
+  uuid: 55bdcd0f-8452-45aa-a400-5fe37e9a415f
+  slug: h264
   parent: codecs
   kind: technology
   desc: H.264 (ITU-T H.264 / MPEG-4 AVC)/AVC video codec
@@ -1672,6 +1912,8 @@ tags:
     first_year: 2005
     last_year: 2025
 - id: AMR
+  uuid: 23b3121c-41d4-46d0-95b8-b9360fc28d21
+  slug: amr
   parent: codecs
   kind: technology
   desc: AMR (Adaptive Multi-Rate) and AMR-WB speech codecs
@@ -1683,6 +1925,8 @@ tags:
     first_year: 2002
     last_year: 2016
 - id: FFV1
+  uuid: fbfcfb66-1dd6-4bb0-b0fd-5e58e9a29742
+  slug: ffv1
   parent: codecs
   kind: technology
   desc: FFV1 (FF Video codec 1) lossless video coding
@@ -1694,6 +1938,8 @@ tags:
     first_year: 2021
     last_year: 2021
 - id: Matroska
+  uuid: a8242117-d61a-44bf-82bc-6988d514801a
+  slug: matroska
   parent: codecs
   kind: technology
   desc: Matroska media container
@@ -1705,6 +1951,8 @@ tags:
     first_year: 2020
     last_year: 2024
 - id: G.711
+  uuid: 912946f6-24e1-4b2a-a0ac-c104df98204a
+  slug: g711
   parent: codecs
   kind: technology
   desc: G.711 ITU-T narrowband PCM speech coding, its lossless and wideband extensions, and their payload formats
@@ -1716,6 +1964,8 @@ tags:
     first_year: 2008
     last_year: 2015
 - id: G.729
+  uuid: 2c6033f6-2fec-46f0-b4bc-9fe69bed2747
+  slug: g729
   parent: codecs
   kind: technology
   desc: G.729 ITU-T low-rate speech coding, its wideband extensions, and their payload formats
@@ -1727,6 +1977,8 @@ tags:
     first_year: 2006
     last_year: 2009
 - id: G.722
+  uuid: a5707bbc-ec7c-4a28-90ec-2be54d98c9d9
+  slug: g722
   parent: codecs
   kind: technology
   desc: G.722 ITU-T wideband speech coding, its G.722.1 and G.722.2 variants, and their payload formats
@@ -1738,6 +1990,8 @@ tags:
     first_year: 2001
     last_year: 2016
 - id: MP3
+  uuid: 429782cf-4e70-4cde-82ac-21901f73be10
+  slug: mp3
   parent: codecs
   kind: technology
   desc: MP3 (MPEG-1/2 Audio Layer III) audio coding and its loss-tolerant RTP payload formats
@@ -1749,6 +2003,8 @@ tags:
     first_year: 2001
     last_year: 2008
 - id: HEVC
+  uuid: 09eff899-f6cf-4d27-9349-129e6209fbd9
+  slug: hevc
   parent: codecs
   kind: technology
   desc: HEVC (High Efficiency Video Coding), also published as ITU-T H.265, and its RTP payload format
@@ -1760,6 +2016,8 @@ tags:
     first_year: 2016
     last_year: 2025
 - id: Vorbis
+  uuid: 7f764f89-1f40-4c1b-8c3f-67bd91dca21f
+  slug: vorbis
   parent: codecs
   kind: technology
   desc: Vorbis open audio coding and its RTP payload format
@@ -1771,6 +2029,8 @@ tags:
     first_year: 2008
     last_year: 2008
 - id: Speex
+  uuid: 8bbeabec-ebf0-4db0-8f73-8eb5bcfbd9c4
+  slug: speex
   parent: codecs
   kind: technology
   desc: Speex open speech coding for voice over IP and its RTP payload format
@@ -1782,6 +2042,8 @@ tags:
     first_year: 2009
     last_year: 2009
 - id: iLBC
+  uuid: f23f1933-2ba6-4253-b4ba-546314cdab5e
+  slug: ilbc
   parent: codecs
   kind: technology
   desc: iLBC (internet Low Bit Rate Codec) narrowband speech coding for lossy links and its payload format
@@ -1793,6 +2055,8 @@ tags:
     first_year: 2004
     last_year: 2004
 - id: Ogg
+  uuid: 9fa3b6fe-9291-4061-845f-3effa9bb2406
+  slug: ogg
   parent: codecs
   kind: technology
   desc: Ogg encapsulation format, its media types, and its mappings for carrying coded audio
@@ -1804,6 +2068,8 @@ tags:
     first_year: 2003
     last_year: 2018
 - id: streaming
+  uuid: cc907b0e-8410-4bc2-aaf2-d13550b18fc7
+  slug: streaming
   parent: real-time communications
   kind: topic
   desc: Media streaming delivery and operations
@@ -1817,6 +2083,8 @@ tags:
     last_year: 2025
     served: 22
 - id: RTSP
+  uuid: fc048a7c-5db9-4189-a26c-2038d9fc3e05
+  slug: rtsp
   parent: streaming
   kind: technology
   desc: RTSP (Real Time Streaming Protocol)
@@ -1828,6 +2096,8 @@ tags:
     first_year: 1998
     last_year: 2021
 - id: PPSP
+  uuid: c881011b-e3b2-4150-afe2-e122ca2e2f1d
+  slug: ppsp
   parent: streaming
   kind: technology
   desc: PPSP (Peer-to-Peer Streaming Protocol)
@@ -1839,6 +2109,8 @@ tags:
     first_year: 2013
     last_year: 2016
 - id: IPTV
+  uuid: bb9f14c8-a686-4d90-a641-90fa7f8613dd
+  slug: iptv
   parent: streaming
   kind: technology
   desc: IPTV (Internet Protocol television) service delivery, channel distribution and operational requirements
@@ -1850,6 +2122,8 @@ tags:
     first_year: 2008
     last_year: 2016
 - id: conferencing
+  uuid: b156ed01-f3ed-4a05-9cd1-41b48325e642
+  slug: conferencing
   parent: real-time communications
   kind: topic
   desc: Multiparty conferencing frameworks and control
@@ -1866,6 +2140,8 @@ tags:
     last_year: 2023
     served: 53
 - id: XCON
+  uuid: ca7d92d7-ef9c-49d9-81c9-2f1ec2d3655c
+  slug: xcon
   parent: conferencing
   kind: technology
   desc: XCON centralized conferencing framework and data model
@@ -1879,6 +2155,8 @@ tags:
     first_year: 2006
     last_year: 2017
 - id: telepresence
+  uuid: 6a14ca8a-bd31-4db4-8ca7-998959b4cc39
+  slug: telepresence
   parent: conferencing
   kind: technology
   desc: Telepresence (CLUE) multi-stream conferencing
@@ -1892,6 +2170,8 @@ tags:
     first_year: 2006
     last_year: 2021
 - id: BFCP
+  uuid: d6365b0b-9684-45c2-8e55-88224b101894
+  slug: bfcp
   parent: conferencing
   kind: technology
   desc: BFCP (Binary Floor Control Protocol)
@@ -1905,6 +2185,8 @@ tags:
     first_year: 2006
     last_year: 2021
 - id: MRCP
+  uuid: 2dd506f1-cbf5-43b9-969b-2bc27550eb3e
+  slug: mrcp
   parent: real-time communications
   kind: technology
   desc: 'MRCP (Media Resource Control Protocol): speech services'
@@ -1918,6 +2200,8 @@ tags:
     first_year: 2005
     last_year: 2012
 - id: PSTN interop
+  uuid: a887d47f-ba8b-492c-a34e-5e969bd69ad9
+  slug: pstn-interop
   parent: real-time communications
   kind: topic
   desc: 'Interworking between the Internet and the PSTN (Public Switched Telephone Network): signalling transport, gateway control, ISUP interworking, IP access to telephone services'
@@ -1933,6 +2217,8 @@ tags:
     last_year: 2019
     served: 65
 - id: SIGTRAN
+  uuid: 55acf66c-1e9b-4c68-9bcb-582ecac880aa
+  slug: sigtran
   parent: PSTN interop
   kind: technology
   desc: 'SIGTRAN (Signaling Transport): SS7 and ISDN signalling transport over IP (M2PA, M2UA, M3UA, SUA, IUA, V5UA)'
@@ -1945,6 +2231,8 @@ tags:
     first_year: 1999
     last_year: 2013
 - id: Megaco
+  uuid: d581b76f-4376-42cd-b5f4-c161d4c38cd1
+  slug: megaco
   parent: PSTN interop
   kind: technology
   desc: Megaco (Media Gateway Control), the IETF/ITU-T H.248 gateway control protocol
@@ -1960,6 +2248,8 @@ tags:
     first_year: 2000
     last_year: 2009
 - id: MGCP
+  uuid: 8a529abe-ddfe-44c3-a5e8-cfdbb2bf0e3b
+  slug: mgcp
   parent: PSTN interop
   kind: technology
   desc: MGCP (Media Gateway Control Protocol)
@@ -1971,6 +2261,8 @@ tags:
     first_year: 1999
     last_year: 2012
 - id: SIP-T
+  uuid: ebf8a634-0288-4290-9670-9b276d33fa34
+  slug: sip-t
   parent: PSTN interop
   kind: technology
   desc: 'SIP-T (SIP for Telephones) and SIP-I: ISUP encapsulation and interworking with SIP'
@@ -1982,6 +2274,8 @@ tags:
     first_year: 2002
     last_year: 2019
 - id: PINT
+  uuid: 9cd88b50-78fb-4139-9812-b7d51c356570
+  slug: pint
   parent: PSTN interop
   kind: technology
   desc: 'PINT (PSTN/Internet Interworking): SIP and SDP extensions by which Internet applications request telephone call services such as click-to-dial, fax delivery and voice access, with the service protocol
@@ -1994,6 +2288,8 @@ tags:
     first_year: 1998
     last_year: 2001
 - id: SPIRITS
+  uuid: 08d604f6-d668-4122-b7b8-1f0270514061
+  slug: spirits
   parent: PSTN interop
   kind: technology
   desc: 'SPIRITS (Services in the PSTN/IN Requesting Internet Services): architecture, requirements and protocol by which intelligent network service nodes invoke services hosted on the Internet, the direction
@@ -2006,6 +2302,8 @@ tags:
     first_year: 2000
     last_year: 2004
 - id: emergency services
+  uuid: 4638e7fe-5015-4415-bc12-c136a5abe365
+  slug: emergency-services
   parent: real-time communications
   kind: topic
   desc: 'Emergency Services: emergency calling and preparedness communications'
@@ -2021,6 +2319,8 @@ tags:
     last_year: 2021
     served: 35
 - id: LoST
+  uuid: 13bd2651-37a0-4d02-b495-143b1d5313d1
+  slug: lost
   parent: emergency services
   kind: technology
   desc: LoST, the Location-to-Service Translation protocol
@@ -2032,6 +2332,8 @@ tags:
     first_year: 2008
     last_year: 2021
 - id: eCall
+  uuid: fac89070-18e2-49b3-a807-9b610aa9a50f
+  slug: ecall
   parent: emergency services
   kind: technology
   desc: 'eCall: pan-European in-vehicle emergency calling, including automatic crash notification and its IP-based next generation'
@@ -2043,6 +2345,8 @@ tags:
     first_year: 2017
     last_year: 2017
 - id: routing
+  uuid: 42ee6a05-7b01-4cf0-bd51-70274dec5500
+  slug: routing
   kind: topic
   desc: 'Routing in general: routers, routing systems and cross-protocol routing matters'
   match_title_only:
@@ -2060,6 +2364,8 @@ tags:
     last_year: 2026
     served: 1874
 - id: routing architecture
+  uuid: a9e50979-c226-4794-a605-8c6de13c2ec5
+  slug: routing-architecture
   parent: routing
   kind: topic
   desc: Routing architecture, scalability and design principles
@@ -2078,6 +2384,8 @@ tags:
     last_year: 2025
     served: 84
 - id: ECMP
+  uuid: 327098e3-5a35-4443-86c1-041ae8f3c477
+  slug: ecmp
   parent: routing architecture
   kind: technology
   desc: ECMP (Equal-Cost Multipath) and load-balanced forwarding
@@ -2089,6 +2397,8 @@ tags:
     first_year: 1999
     last_year: 2022
 - id: TVR
+  uuid: 5e241219-f735-4103-9ad0-b2de5abd2200
+  slug: tvr
   parent: routing
   kind: technology
   desc: Time-Variant Routing over scheduled connectivity
@@ -2102,6 +2412,8 @@ tags:
     first_year: 2024
     last_year: 2024
 - id: BGP
+  uuid: 43d1c9d8-fda0-462a-9edb-b525ae421dc1
+  slug: bgp
   parent: routing
   kind: technology
   desc: 'BGP (Border Gateway Protocol): protocol, policy, operations'
@@ -2121,6 +2433,8 @@ tags:
     first_year: 1989
     last_year: 2026
 - id: BGP communities
+  uuid: aa3d62da-b392-4000-8822-90807f2f9534
+  slug: bgp-communities
   parent: BGP
   kind: technology
   desc: 'BGP Communities: standard, extended and large'
@@ -2132,6 +2446,8 @@ tags:
     first_year: 1996
     last_year: 2022
 - id: BGP flowspec
+  uuid: cc214e63-94b2-4668-b0fa-d2640a9c31b0
+  slug: bgp-flowspec
   parent: BGP
   kind: technology
   desc: BGP Flow Specification for traffic filtering
@@ -2143,6 +2459,8 @@ tags:
     first_year: 1992
     last_year: 2022
 - id: route reflection
+  uuid: e0f1b077-f114-4d23-a7ba-b85d76226763
+  slug: route-reflection
   parent: BGP
   kind: technology
   desc: BGP route reflection and confederations
@@ -2154,6 +2472,8 @@ tags:
     first_year: 1996
     last_year: 2021
 - id: BMP
+  uuid: 8c92097e-dc0c-4ae2-9dac-9d4872a823a5
+  slug: bmp
   parent: BGP
   kind: technology
   desc: BMP (BGP Monitoring Protocol)
@@ -2167,6 +2487,8 @@ tags:
     first_year: 2016
     last_year: 2026
 - id: route server
+  uuid: 7ac25be9-9065-4e6a-9ff3-7d307c283c72
+  slug: route-server
   parent: BGP
   kind: technology
   desc: Internet exchange route servers
@@ -2178,6 +2500,8 @@ tags:
     first_year: 1995
     last_year: 2016
 - id: routing security
+  uuid: 5cc05007-c392-4218-b3f6-cff1dd18eb96
+  slug: routing-security
   parent: routing
   kind: topic
   desc: 'Routing Security: securing routing protocols and infrastructure'
@@ -2192,6 +2516,8 @@ tags:
     first_year: 2006
     last_year: 2026
 - id: RPKI
+  uuid: 2524b1ba-ba4f-46c2-892b-f729c2f2debe
+  slug: rpki
   parent: routing security
   kind: technology
   desc: RPKI (Resource Public Key Infrastructure) and route origin validation
@@ -2208,6 +2534,8 @@ tags:
     first_year: 2011
     last_year: 2026
 - id: BGPsec
+  uuid: 79df83c4-e7a7-444c-ab3b-f97bb88d4fbe
+  slug: bgpsec
   parent: routing security
   kind: technology
   desc: BGPsec (BGP Security extension) path validation
@@ -2221,6 +2549,8 @@ tags:
     first_year: 2014
     last_year: 2019
 - id: OSPF
+  uuid: dbbca219-1875-402a-a4de-ceece67b1389
+  slug: ospf
   parent: routing
   kind: technology
   desc: OSPF (Open Shortest Path First)
@@ -2235,6 +2565,8 @@ tags:
     first_year: 1989
     last_year: 2026
 - id: OSPFv3
+  uuid: 06785fe3-7115-4f0d-8c25-2ac2d0fa63d3
+  slug: ospfv3
   parent: OSPF
   kind: technology
   desc: OSPF for IPv6 (OSPFv3 (Open Shortest Path First version 3))
@@ -2246,6 +2578,8 @@ tags:
     first_year: 2006
     last_year: 2026
 - id: IS-IS
+  uuid: 9aa99d5f-f606-4438-bfab-77c9557e2882
+  slug: is-is
   parent: routing
   kind: technology
   desc: The IS-IS (Intermediate System to Intermediate System) link-state routing protocol
@@ -2260,6 +2594,8 @@ tags:
     first_year: 1990
     last_year: 2026
 - id: RIP
+  uuid: 309b2efc-496e-4600-b43a-5f585dc51567
+  slug: rip
   parent: routing
   kind: technology
   desc: Routing Information Protocol (RIP, RIPv2, RIPng)
@@ -2274,6 +2610,8 @@ tags:
     first_year: 1988
     last_year: 2020
 - id: Babel
+  uuid: 42e73abc-7a64-45fb-9ab2-ce58b7bdefc3
+  slug: babel
   parent: routing
   kind: technology
   desc: The Babel routing protocol
@@ -2287,6 +2625,8 @@ tags:
     first_year: 2011
     last_year: 2024
 - id: EIGRP
+  uuid: 8da4af85-9765-4ecb-abe0-a152c6e5567f
+  slug: eigrp
   parent: routing
   kind: technology
   desc: EIGRP (Enhanced Interior Gateway Routing Protocol)
@@ -2298,6 +2638,8 @@ tags:
     first_year: 2016
     last_year: 2016
 - id: EGP
+  uuid: 3f934d33-4cea-4d49-9697-d62f84600b75
+  slug: egp
   parent: routing
   kind: technology
   desc: 'EGP (Exterior Gateway Protocol): historic inter-domain routing'
@@ -2309,6 +2651,8 @@ tags:
     first_year: 1982
     last_year: 2001
 - id: HSRP
+  uuid: be9fcda0-cb39-49cd-ae00-0b9c9bb9deb2
+  slug: hsrp
   parent: routing
   kind: technology
   desc: HSRP (Hot Standby Router Protocol)
@@ -2320,6 +2664,8 @@ tags:
     first_year: 1998
     last_year: 2025
 - id: RPSL
+  uuid: 0eca7aab-9066-413e-855b-774bcbdae6e8
+  slug: rpsl
   parent: routing
   kind: technology
   desc: RPSL (Routing Policy Specification Language) and Internet routing registries
@@ -2331,6 +2677,8 @@ tags:
     first_year: 1998
     last_year: 2026
 - id: RIFT
+  uuid: 8a5389a5-1c87-4599-a8a8-b36a46739d97
+  slug: rift
   parent: routing
   kind: technology
   desc: RIFT (Routing in Fat Trees)
@@ -2344,6 +2692,8 @@ tags:
     first_year: 2025
     last_year: 2026
 - id: BGP-SPF
+  uuid: 5721930d-78a7-4b9b-8ba2-262e94d274d5
+  slug: bgp-spf
   parent: routing
   kind: technology
   desc: 'BGP-SPF (BGP Shortest Path First): link-state routing using BGP-LS'
@@ -2357,6 +2707,8 @@ tags:
     first_year: 2025
     last_year: 2025
 - id: IP fast reroute
+  uuid: d9c51420-8577-4c47-b987-3bd413ac70b7
+  slug: ip-fast-reroute
   parent: routing
   kind: technology
   desc: IP and LDP fast reroute, loop-free alternates
@@ -2368,6 +2720,8 @@ tags:
     first_year: 2005
     last_year: 2025
 - id: multicast
+  uuid: 42e1a5d9-1abe-4f4c-a1cb-9b06434b344f
+  slug: multicast
   parent: routing
   kind: topic
   desc: IP multicast routing, group membership and deployment
@@ -2388,6 +2742,8 @@ tags:
     last_year: 2026
     served: 324
 - id: MADCAP
+  uuid: fd703edf-1eb9-46d0-81ce-d54d5307825d
+  slug: madcap
   parent: multicast
   kind: technology
   desc: MADCAP (Multicast Address Dynamic Client Allocation Protocol) and the MALLOC address-allocation architecture
@@ -2401,6 +2757,8 @@ tags:
     first_year: 1999
     last_year: 2026
 - id: PIM
+  uuid: f7c85fa3-ec5d-4be9-b250-472df752bbcb
+  slug: pim
   parent: multicast
   kind: technology
   desc: PIM (Protocol Independent Multicast)
@@ -2416,6 +2774,8 @@ tags:
     first_year: 1997
     last_year: 2026
 - id: PIM-SM
+  uuid: 0f20d47a-c73f-49c9-9eb4-f5ddea551254
+  slug: pim-sm
   parent: PIM
   kind: technology
   desc: PIM-SM (Protocol Independent Multicast - Sparse Mode), the shared-tree and source-tree sparse mode specification and its extensions
@@ -2427,6 +2787,8 @@ tags:
     first_year: 1997
     last_year: 2022
 - id: IGMP
+  uuid: e397af3d-07ab-4d49-8cd4-a369b022a040
+  slug: igmp
   parent: multicast
   kind: technology
   desc: IGMP (Internet Group Management Protocol)
@@ -2442,6 +2804,8 @@ tags:
     first_year: 1989
     last_year: 2023
 - id: MLD
+  uuid: ef7ffa66-8b71-4158-a987-36d2f491245a
+  slug: mld
   parent: multicast
   kind: technology
   desc: MLD (Multicast Listener Discovery)
@@ -2457,6 +2821,8 @@ tags:
     first_year: 1999
     last_year: 2025
 - id: MSDP
+  uuid: 007277a4-d4cd-42fa-90b5-ca5030cf7c6b
+  slug: msdp
   parent: multicast
   kind: technology
   desc: MSDP (Multicast Source Discovery Protocol)
@@ -2472,6 +2838,8 @@ tags:
     first_year: 2003
     last_year: 2021
 - id: MOSPF
+  uuid: a629b4bf-b09c-4812-9e4e-9b10b5b63a51
+  slug: mospf
   parent: multicast
   kind: technology
   desc: MOSPF (Multicast Extensions to OSPF)
@@ -2487,6 +2855,8 @@ tags:
     first_year: 1994
     last_year: 1994
 - id: SSM
+  uuid: eb52ed25-c30b-41bf-ba17-f534efd22ef5
+  slug: ssm
   parent: multicast
   kind: technology
   desc: Source-Specific Multicast (SSM)
@@ -2502,6 +2872,8 @@ tags:
     first_year: 2003
     last_year: 2025
 - id: AMT
+  uuid: 619e21ad-8464-4eb1-a209-9841fb8101df
+  slug: amt
   parent: multicast
   kind: technology
   desc: AMT (Automatic Multicast Tunneling)
@@ -2515,6 +2887,8 @@ tags:
     first_year: 2015
     last_year: 2025
 - id: BIER
+  uuid: e3d517a5-f3d4-4ba7-8f29-e19ba3559504
+  slug: bier
   parent: multicast
   kind: technology
   desc: BIER (Bit Index Explicit Replication)
@@ -2530,6 +2904,8 @@ tags:
     first_year: 2017
     last_year: 2026
 - id: multicast security
+  uuid: a5306bbe-904e-48a6-9854-f3c322c0357d
+  slug: multicast-security
   parent: multicast
   kind: topic
   desc: Group key management and multicast security
@@ -2544,6 +2920,8 @@ tags:
     first_year: 2003
     last_year: 2017
 - id: GDOI
+  uuid: fd44030e-7db5-4a9f-a04e-b219fc5811ac
+  slug: gdoi
   parent: multicast security
   kind: technology
   desc: GDOI (Group Domain of Interpretation), the ISAKMP group key management protocol distributing keys and policy to IPsec group members
@@ -2555,6 +2933,8 @@ tags:
     first_year: 2003
     last_year: 2017
 - id: GSAKMP
+  uuid: d95d2f91-8688-4fc3-8b73-8768321a785f
+  slug: gsakmp
   parent: multicast security
   kind: technology
   desc: GSAKMP (Group Secure Association Key Management Protocol), group key creation and distribution with delegated group-owner policy
@@ -2566,6 +2946,8 @@ tags:
     first_year: 2006
     last_year: 2006
 - id: TESLA
+  uuid: 8b41dcef-1ef2-4862-8a05-210a77134009
+  slug: tesla
   parent: multicast security
   kind: technology
   desc: TESLA (Timed Efficient Stream Loss-tolerant Authentication), delayed-key-disclosure source authentication for multicast and broadcast streams
@@ -2577,6 +2959,8 @@ tags:
     first_year: 2005
     last_year: 2012
 - id: reliable multicast
+  uuid: 2cced4ac-a0a9-4913-b5ac-1c038cfa2048
+  slug: reliable-multicast
   parent: multicast
   kind: topic
   desc: Reliable multicast transport
@@ -2592,6 +2976,8 @@ tags:
     last_year: 2022
     served: 33
 - id: FLUTE
+  uuid: 1282655e-981a-4855-8dea-99e70fedc607
+  slug: flute
   parent: reliable multicast
   kind: technology
   desc: FLUTE file delivery over unidirectional transport
@@ -2606,6 +2992,8 @@ tags:
     first_year: 2004
     last_year: 2022
 - id: NORM
+  uuid: e9935205-a43d-44dc-b6d6-65ad8f658f23
+  slug: norm
   parent: reliable multicast
   kind: technology
   desc: NORM (NACK-Oriented Reliable Multicast)
@@ -2620,6 +3008,8 @@ tags:
     first_year: 2004
     last_year: 2017
 - id: PGM
+  uuid: 11ca56c9-194f-48d6-8435-2260d6620f1f
+  slug: pgm
   parent: reliable multicast
   kind: technology
   desc: PGM (Pragmatic General Multicast) reliable multicast transport with NAK-based loss recovery and router assistance
@@ -2631,6 +3021,8 @@ tags:
     first_year: 2001
     last_year: 2001
 - id: ALC
+  uuid: 2e2c876d-3ba0-4da7-9bed-1f88c79c7cf4
+  slug: alc
   parent: reliable multicast
   kind: technology
   desc: ALC (Asynchronous Layered Coding) protocol instantiation for massively scalable one-to-many reliable content delivery
@@ -2642,6 +3034,8 @@ tags:
     first_year: 2002
     last_year: 2017
 - id: LCT
+  uuid: 553026b1-6d1d-4e65-85e4-43e35c8a745a
+  slug: lct
   parent: reliable multicast
   kind: technology
   desc: LCT (Layered Coding Transport) building block for congestion-controlled layered multicast content delivery
@@ -2653,6 +3047,8 @@ tags:
     first_year: 2002
     last_year: 2010
 - id: MPLS
+  uuid: bdc9ca0b-803a-47d7-9907-56de439343e1
+  slug: mpls
   parent: routing
   kind: technology
   desc: 'MPLS (Multiprotocol Label Switching): architecture, encapsulation, operations'
@@ -2666,6 +3062,8 @@ tags:
     first_year: 1984
     last_year: 2026
 - id: LDP
+  uuid: 5d993a30-7467-4a59-83bb-b749bc744382
+  slug: ldp
   parent: MPLS
   kind: technology
   desc: LDP (Label Distribution Protocol)
@@ -2677,6 +3075,8 @@ tags:
     first_year: 1984
     last_year: 2024
 - id: CR-LDP
+  uuid: dce14b4f-38f5-4439-a9b5-751b5d652a0d
+  slug: cr-ldp
   parent: LDP
   kind: technology
   desc: CR-LDP (Constraint-Based Routing Label Distribution Protocol), signalling of explicitly routed and traffic-engineered LSPs, including LSP modification and its managed objects
@@ -2688,6 +3088,8 @@ tags:
     first_year: 2002
     last_year: 2003
 - id: MPLS-TP
+  uuid: 9ba815ae-7001-460a-b5ab-40289050a345
+  slug: mpls-tp
   parent: MPLS
   kind: technology
   desc: MPLS-TP (MPLS Transport Profile)
@@ -2699,6 +3101,8 @@ tags:
     first_year: 2009
     last_year: 2017
 - id: pseudowire
+  uuid: 82fcb641-bc8f-4006-bbe6-40c8698f9b4b
+  slug: pseudowire
   parent: MPLS
   kind: technology
   desc: Pseudowire emulation edge-to-edge
@@ -2715,6 +3119,8 @@ tags:
     first_year: 2004
     last_year: 2025
 - id: GMPLS
+  uuid: 539ef3f2-cd5f-4a9a-be89-007e2e6da62d
+  slug: gmpls
   parent: MPLS
   kind: technology
   desc: 'GMPLS (Generalized Multiprotocol Label Switching): generalized MPLS and optical/transport network control'
@@ -2729,6 +3135,8 @@ tags:
     first_year: 1994
     last_year: 2025
 - id: segment routing
+  uuid: df8e3161-65a6-4730-9a1a-0767814a0b42
+  slug: segment-routing
   parent: routing
   kind: technology
   desc: Segment routing architecture
@@ -2742,6 +3150,8 @@ tags:
     first_year: 2016
     last_year: 2026
 - id: SR-MPLS
+  uuid: 5e456fa5-dc33-47fe-933d-6c0bf7618e0b
+  slug: sr-mpls
   parent: segment routing
   kind: technology
   desc: SR-MPLS (Segment Routing over MPLS)
@@ -2753,6 +3163,8 @@ tags:
     first_year: 2019
     last_year: 2025
 - id: SRv6
+  uuid: bac3eae7-c5eb-4b13-a320-115c8e4ae584
+  slug: srv6
   parent: segment routing
   kind: technology
   desc: SRv6 (Segment Routing over IPv6)
@@ -2764,6 +3176,8 @@ tags:
     first_year: 2020
     last_year: 2026
 - id: traffic engineering
+  uuid: 5eef3b05-d153-461d-bcf8-2364103199b5
+  slug: traffic-engineering
   parent: routing
   kind: topic
   desc: Traffic engineering of packet and transport networks
@@ -2779,6 +3193,8 @@ tags:
     last_year: 2026
     served: 233
 - id: RSVP-TE
+  uuid: 019c6eb0-51df-4d2b-89b5-55ee99934c44
+  slug: rsvp-te
   parent: traffic engineering
   kind: technology
   desc: RSVP-TE (RSVP Traffic Engineering) signalling for traffic-engineered LSPs
@@ -2792,6 +3208,8 @@ tags:
     first_year: 2001
     last_year: 2021
 - id: PCE
+  uuid: c8392037-b7f1-4c99-a26e-b5cc5bdde04f
+  slug: pce
   parent: traffic engineering
   kind: technology
   desc: PCE (Path Computation Element) architecture and PCEP
@@ -2807,6 +3225,8 @@ tags:
     first_year: 2006
     last_year: 2026
 - id: DetNet
+  uuid: ec916aa8-986c-442a-b908-7e75e94dfacd
+  slug: detnet
   parent: routing
   kind: technology
   desc: 'DetNet (Deterministic Networking): bounded latency and loss'
@@ -2823,6 +3243,8 @@ tags:
     first_year: 2019
     last_year: 2026
 - id: VPN
+  uuid: b62d1b20-cff7-461c-8c02-6ea81905fc60
+  slug: vpn
   parent: routing
   kind: technology
   desc: Provider-provisioned VPNs (Virtual Private Networks)
@@ -2836,6 +3258,8 @@ tags:
     first_year: 1999
     last_year: 2026
 - id: L3VPN
+  uuid: 78aad5c8-3261-4f19-8576-9467b13a40e3
+  slug: l3vpn
   parent: VPN
   kind: technology
   desc: L3VPN (Layer 3 Virtual Private Network) over BGP/MPLS
@@ -2850,6 +3274,8 @@ tags:
     first_year: 1999
     last_year: 2025
 - id: L2VPN
+  uuid: f2772653-f7e2-4a84-a189-1f551e2bdc53
+  slug: l2vpn
   parent: VPN
   kind: technology
   desc: L2VPN (Layer 2 VPN) services
@@ -2864,6 +3290,8 @@ tags:
     first_year: 2005
     last_year: 2025
 - id: VPLS
+  uuid: 05be5377-bd3e-4014-ac8e-b74d5ec72664
+  slug: vpls
   parent: VPN
   kind: technology
   desc: VPLS (Virtual Private LAN Service)
@@ -2875,6 +3303,8 @@ tags:
     first_year: 2006
     last_year: 2019
 - id: EVPN
+  uuid: cf402f93-7f81-43b3-9c19-1d220fa739df
+  slug: evpn
   parent: VPN
   kind: technology
   desc: EVPN (Ethernet VPN)
@@ -2886,6 +3316,8 @@ tags:
     first_year: 2014
     last_year: 2026
 - id: MVPN
+  uuid: a7185066-b6ee-43b9-ba35-cbdf993344f8
+  slug: mvpn
   parent: VPN
   kind: technology
   desc: 'Multicast VPN: multicast in BGP/MPLS VPNs'
@@ -2899,6 +3331,8 @@ tags:
     first_year: 2007
     last_year: 2026
 - id: L1VPN
+  uuid: 537ada3a-c371-4719-8e17-dc90455f92b3
+  slug: l1vpn
   parent: VPN
   kind: technology
   desc: L1VPN (Layer 1 Virtual Private Network)
@@ -2910,6 +3344,8 @@ tags:
     first_year: 2007
     last_year: 2009
 - id: overlay networks
+  uuid: e4d5289d-77c8-44d8-8777-124e628054e2
+  slug: overlay-networks
   parent: routing
   kind: technology
   desc: Data-plane network virtualization overlays
@@ -2921,6 +3357,8 @@ tags:
     first_year: 2014
     last_year: 2025
 - id: VXLAN
+  uuid: b294c74c-c8bd-45d4-95ef-26c11720dd07
+  slug: vxlan
   parent: overlay networks
   kind: technology
   desc: VXLAN (Virtual eXtensible Local Area Network) encapsulation
@@ -2934,6 +3372,8 @@ tags:
     first_year: 2014
     last_year: 2024
 - id: Geneve
+  uuid: df56ca59-219f-4b68-a8e8-e85f018a319f
+  slug: geneve
   parent: overlay networks
   kind: technology
   desc: Geneve (Generic Network Virtualization Encapsulation)
@@ -2947,6 +3387,8 @@ tags:
     first_year: 2018
     last_year: 2025
 - id: NVGRE
+  uuid: a3c16323-6f04-4b13-86d3-4af41ac05196
+  slug: nvgre
   parent: overlay networks
   kind: technology
   desc: NVGRE (Network Virtualization using Generic Routing Encapsulation)
@@ -2958,6 +3400,8 @@ tags:
     first_year: 2015
     last_year: 2018
 - id: SFC
+  uuid: 3ca6c770-10b0-461b-a3c3-6d789673dc3e
+  slug: sfc
   parent: routing
   kind: technology
   desc: Service function chaining (SFC) and the network service header
@@ -2971,6 +3415,8 @@ tags:
     first_year: 2015
     last_year: 2023
 - id: data center networking
+  uuid: 158c53d8-f3c4-43b9-90eb-de3e7923a064
+  slug: data-center-networking
   parent: routing
   kind: technology
   desc: 'Data Center Networking: routing and address resolution at data-centre scale'
@@ -2982,6 +3428,8 @@ tags:
     first_year: 2013
     last_year: 2013
 - id: TRILL
+  uuid: 06ecd5fd-9e66-4a24-b2b2-35308d276c45
+  slug: trill
   parent: routing
   kind: technology
   desc: 'TRILL: transparent interconnection of lots of links'
@@ -2995,6 +3443,8 @@ tags:
     first_year: 2009
     last_year: 2024
 - id: MANET
+  uuid: bfac0ff2-8494-48db-94af-38b502618a1b
+  slug: manet
   parent: routing
   kind: technology
   desc: MANET (Mobile Ad Hoc Network) routing
@@ -3011,6 +3461,8 @@ tags:
     first_year: 1989
     last_year: 2026
 - id: OLSR
+  uuid: d3f8085a-4e78-4bfd-8231-3a3f6220a109
+  slug: olsr
   parent: MANET
   kind: technology
   desc: OLSR (Optimized Link State Routing)
@@ -3022,6 +3474,8 @@ tags:
     first_year: 2003
     last_year: 2016
 - id: AODV
+  uuid: 4fe5e025-b0a5-4b14-a9a8-ce69eef3c3ba
+  slug: aodv
   parent: MANET
   kind: technology
   desc: AODV (Ad hoc On-Demand Distance Vector routing)
@@ -3033,6 +3487,8 @@ tags:
     first_year: 2003
     last_year: 2025
 - id: DSR
+  uuid: cdc1b42b-76cd-431c-a8a4-bc98f477e35b
+  slug: dsr
   parent: MANET
   kind: technology
   desc: DSR (Dynamic Source Routing)
@@ -3044,6 +3500,8 @@ tags:
     first_year: 2003
     last_year: 2007
 - id: DLEP
+  uuid: e9ab593f-4e8d-40ac-9ae4-883185ed0ffe
+  slug: dlep
   parent: MANET
   kind: technology
   desc: DLEP (Dynamic Link Exchange Protocol) for exchanging link quality and status between a radio modem and its attached router
@@ -3055,6 +3513,8 @@ tags:
     first_year: 2017
     last_year: 2026
 - id: NHDP
+  uuid: 64f8c232-fb6a-4a9b-9203-eeadd744fd48
+  slug: nhdp
   parent: MANET
   kind: technology
   desc: NHDP (Neighborhood Discovery Protocol) for one-hop and symmetric two-hop neighbour discovery in mobile ad hoc networks
@@ -3066,6 +3526,8 @@ tags:
     first_year: 2011
     last_year: 2016
 - id: TBRPF
+  uuid: d29c9d88-4b5d-4d9c-a66d-10b29366f239
+  slug: tbrpf
   parent: MANET
   kind: technology
   desc: TBRPF (Topology Dissemination Based on Reverse-Path Forwarding) proactive link-state routing for mobile ad hoc networks
@@ -3077,6 +3539,8 @@ tags:
     first_year: 2004
     last_year: 2004
 - id: LISP
+  uuid: 1d2dc51f-6e2f-45f4-948c-6097ccabe73b
+  slug: lisp
   parent: routing
   kind: technology
   desc: LISP (Locator/ID Separation Protocol)
@@ -3092,6 +3556,8 @@ tags:
     first_year: 2013
     last_year: 2026
 - id: BFD
+  uuid: f01fc71b-252e-4a22-af6e-43265aa19d2f
+  slug: bfd
   parent: routing
   kind: technology
   desc: BFD (Bidirectional Forwarding Detection)
@@ -3107,6 +3573,8 @@ tags:
     first_year: 2010
     last_year: 2026
 - id: VRRP
+  uuid: c4693bfe-e00e-4c2e-a711-fab0208f231b
+  slug: vrrp
   parent: routing
   kind: technology
   desc: VRRP (Virtual Router Redundancy Protocol)
@@ -3120,6 +3588,8 @@ tags:
     first_year: 1998
     last_year: 2024
 - id: ForCES
+  uuid: de8273a8-6fe1-4c19-8006-b8229d7e8c02
+  slug: forces
   parent: routing
   kind: technology
   desc: ForCES (Forwarding and Control Element Separation)
@@ -3133,6 +3603,8 @@ tags:
     first_year: 2003
     last_year: 2017
 - id: GSMP
+  uuid: b2fdd5a4-521b-4873-ac9f-dbc1dd12d35b
+  slug: gsmp
   parent: routing
   kind: technology
   desc: GSMP (General Switch Management Protocol)
@@ -3146,6 +3618,8 @@ tags:
     first_year: 1996
     last_year: 2003
 - id: Nimrod
+  uuid: 6d1a0fa8-39f3-4a5c-af21-bcb5e0515e2c
+  slug: nimrod
   parent: routing
   kind: technology
   desc: The Nimrod routing architecture
@@ -3159,6 +3633,8 @@ tags:
     first_year: 1994
     last_year: 1997
 - id: IDPR
+  uuid: 7b9c2dc4-10ec-4dc0-a027-759a8552ccd5
+  slug: idpr
   parent: routing
   kind: technology
   desc: IDPR (Inter-Domain Policy Routing)
@@ -3170,6 +3646,8 @@ tags:
     first_year: 1993
     last_year: 1993
 - id: transport
+  uuid: af87444b-d075-4c07-abcc-99ddcf97cdd2
+  slug: transport
   kind: topic
   desc: Transport protocols and transport-layer services in general
   match_title_only:
@@ -3188,6 +3666,8 @@ tags:
   - SSH
   - TLS
 - id: transport mapping
+  uuid: 20079122-7a76-480b-93a6-615e4b6178f0
+  slug: transport-mapping
   parent: transport
   kind: topic
   desc: 'Transport Mappings: carrying one protocol over another transport: X-over-TLS/TCP/UDP/QUIC bindings and transport models'
@@ -3203,6 +3683,8 @@ tags:
     last_year: 2026
     served: 66
 - id: checksum
+  uuid: 3c066625-28b6-46d1-bdd5-c9fb4bf68686
+  slug: checksum
   parent: transport
   kind: technology
   desc: The Internet checksum and packet integrity checks
@@ -3217,6 +3699,8 @@ tags:
     first_year: 1973
     last_year: 2024
 - id: CRC
+  uuid: ed08e4c8-2cf2-4a47-a68d-cd1cfc9c9fdf
+  slug: crc
   parent: checksum
   kind: technology
   desc: CRC (cyclic redundancy check) polynomial error detection over frames and payloads, and the choice of generator polynomials
@@ -3228,6 +3712,8 @@ tags:
     first_year: 2002
     last_year: 2002
 - id: RDP
+  uuid: aeb99362-649a-4c1d-98ce-f4ea26fd3060
+  slug: rdp
   parent: transport
   kind: technology
   desc: 'RDP (Reliable Data Protocol): historic transport'
@@ -3243,6 +3729,8 @@ tags:
     first_year: 1984
     last_year: 1990
 - id: NETBLT
+  uuid: c1424c13-6ff1-406c-9e22-404474ac109c
+  slug: netblt
   parent: transport
   kind: technology
   desc: NETBLT (NETwork BLock Transfer) bulk data transfer protocol
@@ -3254,6 +3742,8 @@ tags:
     first_year: 1985
     last_year: 1996
 - id: RATP
+  uuid: b4e695d3-12f1-4ca2-bb2c-04dc81977297
+  slug: ratp
   parent: transport
   kind: technology
   desc: RATP (Reliable Asynchronous Transfer Protocol)
@@ -3265,6 +3755,8 @@ tags:
     first_year: 1984
     last_year: 1984
 - id: IRTP
+  uuid: ef2afbe7-7893-4d0b-ade9-c5cbb05c5ef4
+  slug: irtp
   parent: transport
   kind: technology
   desc: IRTP (Internet Reliable Transaction Protocol)
@@ -3276,6 +3768,8 @@ tags:
     first_year: 1985
     last_year: 1985
 - id: TMux
+  uuid: d2542b5c-03f8-4789-927e-a70649f41d66
+  slug: tmux
   parent: transport
   kind: technology
   desc: TMux (Transport Multiplexing Protocol)
@@ -3287,6 +3781,8 @@ tags:
     first_year: 1994
     last_year: 1994
 - id: TCP
+  uuid: 97d7221c-c3f5-4411-bb4a-f39eff151f5b
+  slug: tcp
   parent: transport
   kind: technology
   desc: 'TCP (Transmission Control Protocol): protocol, extensions, implementation'
@@ -3307,6 +3803,8 @@ tags:
     first_year: 1974
     last_year: 2026
 - id: MPTCP
+  uuid: 30906124-fbc0-4c17-9592-706f2f13f98f
+  slug: mptcp
   parent: TCP
   kind: technology
   desc: Multipath TCP (MPTCP)
@@ -3320,6 +3818,8 @@ tags:
     first_year: 2011
     last_year: 2020
 - id: tcpcrypt
+  uuid: 091cabde-d476-467e-a59d-2ef2e65fd416
+  slug: tcpcrypt
   parent: TCP
   kind: technology
   desc: Opportunistic TCP-level encryption (tcpcrypt)
@@ -3335,6 +3835,8 @@ tags:
     first_year: 2019
     last_year: 2019
 - id: UDP
+  uuid: 03e9ead3-36d5-49ac-a414-623b60d51732
+  slug: udp
   parent: transport
   kind: technology
   desc: UDP (User Datagram Protocol) and its usage guidelines
@@ -3346,6 +3848,8 @@ tags:
     first_year: 1980
     last_year: 2026
 - id: UDP-Lite
+  uuid: d05ed98b-bbe5-4c01-8a0e-486942888e35
+  slug: udp-lite
   parent: UDP
   kind: technology
   desc: UDP-Lite (Lightweight User Datagram Protocol)
@@ -3357,6 +3861,8 @@ tags:
     first_year: 2004
     last_year: 2018
 - id: QUIC
+  uuid: 7cb67e32-cab0-45bb-b290-63ff3b93efc7
+  slug: quic
   parent: transport
   kind: technology
   desc: 'QUIC: general-purpose encrypted transport over UDP'
@@ -3371,6 +3877,8 @@ tags:
     first_year: 2019
     last_year: 2026
 - id: SCTP
+  uuid: a6e9d814-34c9-4997-b9a8-fd711e070957
+  slug: sctp
   parent: transport
   kind: technology
   desc: SCTP (Stream Control Transmission Protocol)
@@ -3384,6 +3892,8 @@ tags:
     first_year: 2000
     last_year: 2024
 - id: DCCP
+  uuid: 687e73bc-a004-48a4-ac92-0477e2c246ba
+  slug: dccp
   parent: transport
   kind: technology
   desc: DCCP (Datagram Congestion Control Protocol)
@@ -3397,6 +3907,8 @@ tags:
     first_year: 2006
     last_year: 2026
 - id: RSerPool
+  uuid: 23f7bac1-5866-4b25-bfe9-119f248df188
+  slug: rserpool
   parent: transport
   kind: technology
   desc: RSerPool (Reliable Server Pooling)
@@ -3408,6 +3920,8 @@ tags:
     first_year: 2002
     last_year: 2009
 - id: congestion control
+  uuid: aec7710c-7c66-4eab-82be-33aa370b0b6f
+  slug: congestion-control
   parent: transport
   kind: topic
   desc: Congestion control and avoidance across transports
@@ -3425,6 +3939,8 @@ tags:
     last_year: 2026
     served: 135
 - id: RTP congestion control
+  uuid: ad085cd4-8a37-4f1f-8aa5-f9d1e0977ed1
+  slug: rtp-congestion-control
   parent: congestion control
   kind: technology
   desc: Congestion control for interactive real-time media over RTP (NADA, SCReAM, GCC)
@@ -3438,6 +3954,8 @@ tags:
     first_year: 2020
     last_year: 2021
 - id: ECN
+  uuid: 665293e8-f16e-455c-912c-4dc96a04620f
+  slug: ecn
   parent: congestion control
   kind: technology
   desc: ECN (Explicit Congestion Notification)
@@ -3451,6 +3969,8 @@ tags:
     first_year: 1999
     last_year: 2026
 - id: AQM
+  uuid: cb274e11-a078-4cc7-9a4e-c03b70c2db30
+  slug: aqm
   parent: congestion control
   kind: technology
   desc: Active queue management (AQM)
@@ -3467,6 +3987,8 @@ tags:
     first_year: 1985
     last_year: 2023
 - id: CoDel
+  uuid: 00e93243-01ab-450f-ae6c-02d0dd8f6382
+  slug: codel
   parent: AQM
   kind: technology
   desc: The CoDel (Controlled Delay) queue management algorithm
@@ -3480,6 +4002,8 @@ tags:
     first_year: 2018
     last_year: 2018
 - id: PIE
+  uuid: 9b9c4804-4d1f-4b1b-b95a-bad543291394
+  slug: pie
   parent: AQM
   kind: technology
   desc: The PIE (Proportional Integral controller Enhanced) queue management algorithm
@@ -3493,6 +4017,8 @@ tags:
     first_year: 2017
     last_year: 2017
 - id: LEDBAT
+  uuid: 7b1ba07f-98ad-4a3b-abe6-3b2cc2e7bbb6
+  slug: ledbat
   parent: congestion control
   kind: technology
   desc: LEDBAT (Low Extra Delay Background Transport)
@@ -3508,6 +4034,8 @@ tags:
     first_year: 2011
     last_year: 2012
 - id: CUBIC
+  uuid: 1b0b6d48-4726-46a9-903d-6233da5ea398
+  slug: cubic
   parent: congestion control
   kind: technology
   desc: CUBIC congestion control
@@ -3519,6 +4047,8 @@ tags:
     first_year: 2018
     last_year: 2023
 - id: PCN
+  uuid: a51b8ada-7c1f-4895-bee5-7a8fbc726985
+  slug: pcn
   parent: congestion control
   kind: technology
   desc: PCN (Pre-Congestion Notification)
@@ -3534,6 +4064,8 @@ tags:
     first_year: 2009
     last_year: 2014
 - id: ConEx
+  uuid: 661e8663-88d0-4fb2-ac85-6ef0bef1f46c
+  slug: conex
   parent: congestion control
   kind: technology
   desc: ConEx (Congestion Exposure)
@@ -3547,6 +4079,8 @@ tags:
     first_year: 2012
     last_year: 2016
 - id: NewReno
+  uuid: 4d8284db-181a-48ac-bc72-3509411ce78e
+  slug: newreno
   parent: congestion control
   kind: technology
   desc: NewReno, the fast recovery and fast retransmit modification to TCP congestion control
@@ -3558,6 +4092,8 @@ tags:
     first_year: 1999
     last_year: 2012
 - id: DCTCP
+  uuid: 40d3c795-4e82-403b-9b5c-c9fd65701fda
+  slug: dctcp
   parent: congestion control
   kind: technology
   desc: DCTCP (Data Center TCP), the ECN-based congestion control for data center networks
@@ -3569,6 +4105,8 @@ tags:
     first_year: 2017
     last_year: 2017
 - id: TFRC
+  uuid: e3b9a4f7-1b8d-43f7-8a2e-5fdf316444ad
+  slug: tfrc
   parent: congestion control
   kind: technology
   desc: TFRC (TCP-Friendly Rate Control), equation-based rate control for streaming and DCCP, including its small-packet variant
@@ -3580,6 +4118,8 @@ tags:
     first_year: 2003
     last_year: 2011
 - id: QoS
+  uuid: 1e55fcf5-b0a6-4233-919d-93a87da0d618
+  slug: qos
   parent: transport
   kind: topic
   desc: QoS (Quality of Service) architectures and signalling
@@ -3602,6 +4142,8 @@ tags:
     last_year: 2026
     served: 288
 - id: RSVP
+  uuid: 8ab541d1-5742-483a-8662-b246ca28c429
+  slug: rsvp
   parent: QoS
   kind: technology
   desc: RSVP (Resource Reservation Protocol)
@@ -3617,6 +4159,8 @@ tags:
     first_year: 1997
     last_year: 2025
 - id: Diffserv
+  uuid: e46786d6-8640-4dba-9b33-90b47cb84d6a
+  slug: diffserv
   parent: QoS
   kind: technology
   desc: Diffserv (Differentiated Services)
@@ -3634,6 +4178,8 @@ tags:
     first_year: 1998
     last_year: 2026
 - id: Intserv
+  uuid: ae1f0565-77b6-4664-9896-d1a99636bc4e
+  slug: intserv
   parent: QoS
   kind: technology
   desc: Intserv (Integrated Services)
@@ -3650,6 +4196,8 @@ tags:
     first_year: 1994
     last_year: 2012
 - id: NSIS
+  uuid: 0ac84d1c-2095-4ba0-a842-11de1a16c2f2
+  slug: nsis
   parent: QoS
   kind: technology
   desc: NSIS (Next Steps in Signaling)
@@ -3665,6 +4213,8 @@ tags:
     first_year: 2003
     last_year: 2011
 - id: COPS
+  uuid: 44a1fca2-bada-43be-9142-d21581860a61
+  slug: cops
   parent: QoS
   kind: technology
   desc: COPS (Common Open Policy Service) and policy provisioning
@@ -3680,6 +4230,8 @@ tags:
     first_year: 2000
     last_year: 2005
 - id: header compression
+  uuid: 3866ce9a-73ac-4eda-8796-625d29ff8a1e
+  slug: header-compression
   parent: transport
   kind: topic
   desc: 'Header Compression: compressing protocol headers on constrained links'
@@ -3692,6 +4244,8 @@ tags:
     last_year: 2023
     served: 50
 - id: ROHC
+  uuid: fb9b8d8f-bd45-4e35-bf9a-a148964a8528
+  slug: rohc
   parent: header compression
   kind: technology
   desc: ROHC (RObust Header Compression)
@@ -3710,6 +4264,8 @@ tags:
     first_year: 2001
     last_year: 2013
 - id: CRTP
+  uuid: 7a65a682-e8f9-4ceb-92d3-1c5b49c8bba6
+  slug: crtp
   parent: header compression
   kind: technology
   desc: 'CRTP (Compressed RTP): compressing IP/UDP/RTP headers over low-speed serial links, including the enhanced variant for lossy, high-delay links'
@@ -3721,6 +4277,8 @@ tags:
     first_year: 1999
     last_year: 2003
 - id: IPHC
+  uuid: aa0462c8-aaec-4487-9217-efaa079ed8de
+  slug: iphc
   parent: header compression
   kind: technology
   desc: IPHC (IP Header Compression, RFC 2507) and its use over PPP
@@ -3732,6 +4290,8 @@ tags:
     first_year: 1999
     last_year: 2003
 - id: FEC
+  uuid: e583e389-8525-4118-b63f-8219c866f86f
+  slug: fec
   parent: transport
   kind: technology
   desc: Forward error correction (FEC), ARQ and network coding for loss recovery schemes for packet transport
@@ -3752,6 +4312,8 @@ tags:
     first_year: 1999
     last_year: 2023
 - id: FECFRAME
+  uuid: f2e670f3-e828-4327-909b-4fda54788169
+  slug: fecframe
   parent: FEC
   kind: technology
   desc: FECFRAME (FEC Framework) for real-time and streaming media
@@ -3765,6 +4327,8 @@ tags:
     first_year: 2010
     last_year: 2020
 - id: Raptor
+  uuid: ef5fae76-711c-4012-86dd-9c91685a0143
+  slug: raptor
   parent: FEC
   kind: technology
   desc: Raptor fountain codes, including RaptorQ, for object delivery and FEC framework schemes
@@ -3776,6 +4340,8 @@ tags:
     first_year: 2007
     last_year: 2012
 - id: LDPC
+  uuid: 9510396f-1a0d-4a1e-b382-4c11213fb339
+  slug: ldpc
   parent: FEC
   kind: technology
   desc: LDPC (low-density parity-check) staircase and triangle codes for packet erasure correction
@@ -3787,6 +4353,8 @@ tags:
     first_year: 2008
     last_year: 2012
 - id: Tetrys
+  uuid: 9d5f1e41-24da-448b-8f9a-a510443a9584
+  slug: tetrys
   parent: FEC
   kind: technology
   desc: Tetrys on-the-fly network coding with feedback for elastic in-order loss recovery
@@ -3798,6 +4366,8 @@ tags:
     first_year: 2023
     last_year: 2023
 - id: BATS
+  uuid: 35003b8d-1905-4ee1-a7f3-3ba05bfd0764
+  slug: bats
   parent: FEC
   kind: technology
   desc: BATS (batched sparse) coding scheme for multi-hop transport with recoding at intermediate nodes
@@ -3809,6 +4379,8 @@ tags:
     first_year: 2023
     last_year: 2023
 - id: TAPS
+  uuid: 1e98d214-9ac8-43d2-9911-8840fbb93995
+  slug: taps
   parent: transport
   kind: technology
   desc: TAPS (Transport Services) architecture and APIs
@@ -3820,6 +4392,8 @@ tags:
     first_year: 2017
     last_year: 2025
 - id: DTN
+  uuid: ffdd9a0f-95ef-4dd7-9414-ccfd3765488c
+  slug: dtn
   parent: transport
   kind: technology
   desc: 'Delay-Tolerant Networking (DTN): Delay/disruption-tolerant networking and the Bundle Protocol'
@@ -3833,6 +4407,8 @@ tags:
     first_year: 2007
     last_year: 2025
 - id: ST-II
+  uuid: 523d37ae-a9e6-4202-bbc0-3e89df67afdc
+  slug: st-ii
   parent: transport
   kind: technology
   desc: The ST-II (Internet Stream Protocol version 2) internet stream protocol
@@ -3846,6 +4422,8 @@ tags:
     first_year: 1990
     last_year: 1995
 - id: internet layer
+  uuid: 74a1fa49-b2dc-4c48-84c9-09db3f9c8d39
+  slug: internet-layer
   kind: topic
   desc: 'The IP layer in general: datagram delivery, the protocol suite, network-layer matters'
   match_title_only:
@@ -3857,6 +4435,8 @@ tags:
     last_year: 2026
     served: 1443
 - id: ICN
+  uuid: 0f2f9335-2b3d-4ee7-9d33-272ebef5b804
+  slug: icn
   parent: internet layer
   kind: technology
   desc: Information-Centric Networking (ICN) and named-data networking
@@ -3868,6 +4448,8 @@ tags:
     first_year: 1971
     last_year: 2024
 - id: ILNP
+  uuid: b4aecc07-ed6c-4407-8622-6603134f394d
+  slug: ilnp
   parent: internet layer
   kind: technology
   desc: ILNP (Identifier-Locator Network Protocol)
@@ -3881,6 +4463,8 @@ tags:
     first_year: 2012
     last_year: 2012
 - id: IPv6
+  uuid: 89223f19-362b-4513-8114-90dbbe2b3a5f
+  slug: ipv6
   parent: internet layer
   kind: technology
   desc: 'IPv6 (Internet Protocol version 6): specification, addressing, deployment'
@@ -3899,6 +4483,8 @@ tags:
     first_year: 1993
     last_year: 2026
 - id: neighbor discovery
+  uuid: 34d6f67c-0202-4100-8fb7-c0942f2b7411
+  slug: neighbor-discovery
   parent: IPv6
   kind: technology
   desc: IPv6 neighbor discovery
@@ -3910,6 +4496,8 @@ tags:
     first_year: 1996
     last_year: 2026
 - id: SEND
+  uuid: b94a2d4a-8441-4e03-8e3b-ad70a974db54
+  slug: send
   parent: neighbor discovery
   kind: technology
   desc: SEND (SEcure Neighbor Discovery)
@@ -3926,6 +4514,8 @@ tags:
     first_year: 2004
     last_year: 2014
 - id: SLAAC
+  uuid: b6cdfd65-8bd5-4585-8533-7e7b650750c9
+  slug: slaac
   parent: IPv6
   kind: technology
   desc: IPv6 SLAAC (Stateless Address Autoconfiguration)
@@ -3941,6 +4531,8 @@ tags:
     first_year: 1996
     last_year: 2025
 - id: IPv6 transition
+  uuid: 5aac09a4-1670-4771-855f-1c9cb00415ac
+  slug: ipv6-transition
   parent: IPv6
   kind: topic
   desc: IPv6/IPv4 coexistence and transition mechanisms
@@ -3955,6 +4547,8 @@ tags:
     last_year: 2025
     served: 128
 - id: softwire
+  uuid: b689c32b-f49d-4552-a7b8-b3870256ea5e
+  slug: softwire
   parent: IPv6 transition
   kind: technology
   desc: 'Softwires: IPv4/IPv6 tunnelling across a network of the other family (mesh and hub-and-spoke)'
@@ -3968,6 +4562,8 @@ tags:
     first_year: 2007
     last_year: 2019
 - id: NAT64
+  uuid: 9813c2ad-4cbb-44dd-93fa-d70547400c4d
+  slug: nat64
   parent: IPv6 transition
   kind: technology
   desc: 'NAT64 (Network Address Translation IPv6-to-IPv4): stateful translation'
@@ -3981,6 +4577,8 @@ tags:
     first_year: 2010
     last_year: 2025
 - id: 6to4
+  uuid: e7587b46-97ef-473e-a8d2-e2877ef6132e
+  slug: 6to4
   parent: IPv6 transition
   kind: technology
   desc: 6to4 automatic IPv6-over-IPv4 tunnelling
@@ -3994,6 +4592,8 @@ tags:
     first_year: 2001
     last_year: 2015
 - id: Teredo
+  uuid: a4de3400-ca5d-4e5e-b501-a09db160323e
+  slug: teredo
   parent: IPv6 transition
   kind: technology
   desc: 'Teredo: IPv6 through NATs via UDP'
@@ -4007,6 +4607,8 @@ tags:
     first_year: 2006
     last_year: 2011
 - id: DS-Lite
+  uuid: 8ce35a2e-c120-478e-a8e3-ffe552ca6071
+  slug: ds-lite
   parent: IPv6 transition
   kind: technology
   desc: DS-Lite (Dual-Stack Lite)
@@ -4020,6 +4622,8 @@ tags:
     first_year: 2011
     last_year: 2019
 - id: MAP
+  uuid: 2050f451-5c02-42f4-8c8a-876dd4e801cf
+  slug: map
   parent: IPv6 transition
   kind: technology
   desc: 'MAP (Mapping of Address and Port): MAP-E and MAP-T'
@@ -4033,6 +4637,8 @@ tags:
     first_year: 2015
     last_year: 2022
 - id: 6rd
+  uuid: fc6b1155-39b8-4da4-8fda-65812365bbce
+  slug: 6rd
   parent: IPv6 transition
   kind: technology
   desc: 6rd (IPv6 Rapid Deployment)
@@ -4046,6 +4652,8 @@ tags:
     first_year: 2010
     last_year: 2013
 - id: 464XLAT
+  uuid: 1119bedb-4fc7-4beb-ba90-25adcf9b8f40
+  slug: 464xlat
   parent: IPv6 transition
   kind: technology
   desc: '464XLAT: combined stateful and stateless IPv4/IPv6 translation'
@@ -4059,6 +4667,8 @@ tags:
     first_year: 2013
     last_year: 2022
 - id: happy eyeballs
+  uuid: a3a72b66-5d3f-4958-8d73-e95d053ab635
+  slug: happy-eyeballs
   parent: IPv6 transition
   kind: technology
   desc: Happy Eyeballs connection racing
@@ -4072,6 +4682,8 @@ tags:
     first_year: 2012
     last_year: 2025
 - id: ISATAP
+  uuid: d45b1f83-1743-4a14-b5e8-f8612158b053
+  slug: isatap
   parent: IPv6 transition
   kind: technology
   desc: ISATAP (Intra-Site Automatic Tunnel Addressing Protocol), automatic host-to-router and host-to-host IPv6 tunnelling across an IPv4 intranet
@@ -4083,6 +4695,8 @@ tags:
     first_year: 2005
     last_year: 2013
 - id: SIIT
+  uuid: 61c42724-5960-46dd-b1d5-92a67c898dac
+  slug: siit
   parent: IPv6 transition
   kind: technology
   desc: SIIT (Stateless IP/ICMP Translation), the stateless algorithm for translating packet headers between IPv6 and IPv4
@@ -4094,6 +4708,8 @@ tags:
     first_year: 2000
     last_year: 2019
 - id: IPv4
+  uuid: 0762a3fd-c1fe-4e38-8e8a-c89b0de92544
+  slug: ipv4
   parent: internet layer
   kind: technology
   desc: IPv4 (Internet Protocol version 4) and its address lifecycle
@@ -4106,6 +4722,8 @@ tags:
     first_year: 1980
     last_year: 2026
 - id: addressing
+  uuid: 1b11b931-02e1-4b46-b0d6-3516a145e832
+  slug: addressing
   parent: internet layer
   kind: topic
   desc: 'Addressing: IP address architecture, allocation and use'
@@ -4131,6 +4749,8 @@ tags:
     last_year: 2026
     served: 214
 - id: CIDR
+  uuid: 5d74a1f4-8b9c-46da-b425-54a8b2dc3a56
+  slug: cidr
   parent: addressing
   kind: technology
   desc: CIDR (Classless Inter-Domain Routing) and aggregation
@@ -4144,6 +4764,8 @@ tags:
     first_year: 1992
     last_year: 2015
 - id: multihoming
+  uuid: b71c3f8e-148c-4962-9539-9f3f2874d93a
+  slug: multihoming
   parent: addressing
   kind: topic
   desc: Multihoming architectures
@@ -4159,6 +4781,8 @@ tags:
     last_year: 2026
     served: 66
 - id: Shim6
+  uuid: 987f99e8-d9e3-49f3-bb95-a57500168044
+  slug: shim6
   parent: multihoming
   kind: technology
   desc: The Shim6 (Site Multihoming by IPv6 Intermediation) host multihoming shim
@@ -4174,6 +4798,8 @@ tags:
     first_year: 2009
     last_year: 2012
 - id: anycast
+  uuid: 2fd841d1-1c12-41e1-9ab9-10dd1c74e8f5
+  slug: anycast
   parent: addressing
   kind: topic
   desc: Anycast addressing and operation
@@ -4186,6 +4812,8 @@ tags:
     last_year: 2026
     served: 21
 - id: renumbering
+  uuid: 77d0d9d3-b477-4e8a-891e-db342f71f3cc
+  slug: renumbering
   parent: addressing
   kind: topic
   desc: Site renumbering procedures
@@ -4201,6 +4829,8 @@ tags:
     last_year: 2021
     served: 15
 - id: NAT
+  uuid: a529d2e7-871e-4897-a865-6f64a926010c
+  slug: nat
   parent: internet layer
   kind: technology
   desc: 'NAT (Network Address Translation): behaviour, requirements, deployment'
@@ -4221,6 +4851,8 @@ tags:
     first_year: 1994
     last_year: 2022
 - id: PCP
+  uuid: 5b5c3755-aa6e-4c26-8775-9628ea0099c9
+  slug: pcp
   parent: NAT
   kind: technology
   desc: PCP (Port Control Protocol)
@@ -4234,6 +4866,8 @@ tags:
     first_year: 2013
     last_year: 2016
 - id: NAT-PMP
+  uuid: 5a745a2c-b2ed-46e0-9ad7-6cd041c38f38
+  slug: nat-pmp
   parent: PCP
   kind: technology
   desc: NAT-PMP (NAT Port Mapping Protocol), the predecessor port mapping protocol that PCP succeeds and interworks with
@@ -4245,6 +4879,8 @@ tags:
     first_year: 2013
     last_year: 2013
 - id: CGN
+  uuid: 4a5510f5-babe-4414-a99f-4e72c8373470
+  slug: cgn
   parent: NAT
   kind: technology
   desc: Carrier-Grade NAT (CGN)
@@ -4256,6 +4892,8 @@ tags:
     first_year: 2011
     last_year: 2017
 - id: DHCP
+  uuid: 80d55055-c2fd-4bfc-aa44-bb4afb351e0f
+  slug: dhcp
   parent: internet layer
   kind: technology
   desc: DHCP (Dynamic Host Configuration Protocol)
@@ -4270,6 +4908,8 @@ tags:
     first_year: 1985
     last_year: 2026
 - id: DHCPv6
+  uuid: 0975effd-8d2d-4504-b191-9e3502dcfae3
+  slug: dhcpv6
   parent: DHCP
   kind: technology
   desc: 'DHCPv6 (Dynamic Host Configuration Protocol for IPv6): DHCP for IPv6'
@@ -4281,6 +4921,8 @@ tags:
     first_year: 2003
     last_year: 2026
 - id: ICMP
+  uuid: 773eca00-8791-45ca-8e35-619b05adce6c
+  slug: icmp
   parent: internet layer
   kind: technology
   desc: ICMP (Internet Control Message Protocol) for IPv4 and IPv6
@@ -4295,6 +4937,8 @@ tags:
     first_year: 1981
     last_year: 2020
 - id: router alert
+  uuid: 0009b3da-9eeb-449b-9289-9d01683e1ac6
+  slug: router-alert
   parent: internet layer
   kind: technology
   desc: 'The IP Router Alert option for IPv4 and IPv6: signalling that a router should examine a packet'
@@ -4306,6 +4950,8 @@ tags:
     first_year: 1997
     last_year: 2025
 - id: PMTUD
+  uuid: d055b8a2-c636-4366-a9e3-39b5e5a3bb31
+  slug: pmtud
   parent: internet layer
   kind: technology
   desc: Path MTU Discovery (PMTUD)
@@ -4320,6 +4966,8 @@ tags:
     first_year: 1990
     last_year: 2025
 - id: tunneling
+  uuid: 3df93197-3be4-4a78-bd43-67d376ebcfa9
+  slug: tunneling
   parent: internet layer
   kind: topic
   desc: 'Tunneling: IP-in-IP encapsulation and generic tunnelling'
@@ -4352,6 +5000,8 @@ tags:
     last_year: 2024
     served: 234
 - id: GRE
+  uuid: 8095a122-a189-4dee-88f0-eef323d483dc
+  slug: gre
   parent: tunneling
   kind: technology
   desc: GRE (Generic Routing Encapsulation)
@@ -4367,6 +5017,8 @@ tags:
     first_year: 1994
     last_year: 2018
 - id: IP-in-IP
+  uuid: 0314f360-90d2-48d9-92c4-75c0899d23ec
+  slug: ip-in-ip
   parent: tunneling
   kind: technology
   desc: IP-in-IP encapsulation
@@ -4380,6 +5032,8 @@ tags:
     first_year: 1995
     last_year: 1996
 - id: IP mobility
+  uuid: 0587715a-0ba3-4d5d-8932-933f9323887c
+  slug: ip-mobility
   parent: internet layer
   kind: topic
   desc: IP-layer host and network mobility (Mobile IP and its successors)
@@ -4400,6 +5054,8 @@ tags:
     last_year: 2025
     served: 261
 - id: Mobile IPv4
+  uuid: 8b173693-6bc1-400d-ba68-898a42c6d3f0
+  slug: mobile-ipv4
   parent: IP mobility
   kind: technology
   desc: Mobile IPv4
@@ -4413,6 +5069,8 @@ tags:
     first_year: 2004
     last_year: 2015
 - id: Mobile IPv6
+  uuid: 6aa877e3-7710-450a-bfe8-6360c17b00ec
+  slug: mobile-ipv6
   parent: IP mobility
   kind: technology
   desc: Mobile IPv6
@@ -4430,6 +5088,8 @@ tags:
     first_year: 2004
     last_year: 2020
 - id: PMIPv6
+  uuid: 75e61f26-029f-4258-8837-edbbdbb5a06e
+  slug: pmipv6
   parent: IP mobility
   kind: technology
   desc: Proxy Mobile IPv6 (PMIPv6) and network-based mobility
@@ -4446,6 +5106,8 @@ tags:
     first_year: 2007
     last_year: 2020
 - id: NEMO
+  uuid: 7170a73f-16a1-4046-9393-67bb40e98a2d
+  slug: nemo
   parent: IP mobility
   kind: technology
   desc: NEMO (Network Mobility)
@@ -4461,6 +5123,8 @@ tags:
     first_year: 2005
     last_year: 2015
 - id: HIP
+  uuid: c6e5f339-b724-4e76-9048-0fe599a4f519
+  slug: hip
   parent: internet layer
   kind: technology
   desc: HIP (Host Identity Protocol)
@@ -4478,6 +5142,8 @@ tags:
     first_year: 2006
     last_year: 2021
 - id: SAVI
+  uuid: b79a1c3d-6c37-4b59-b3c2-e87a67cf6310
+  slug: savi
   parent: internet layer
   kind: technology
   desc: SAVI (Source Address Validation Improvement)
@@ -4493,6 +5159,8 @@ tags:
     first_year: 2008
     last_year: 2020
 - id: home networking
+  uuid: 252a1e86-1de1-4654-a0b2-c9927cf502ff
+  slug: home-networking
   parent: internet layer
   kind: technology
   desc: 'Home networking: IPv6 home network architecture, prefix assignment, naming and routing'
@@ -4507,6 +5175,8 @@ tags:
     first_year: 2006
     last_year: 2024
 - id: captive portal
+  uuid: e71b04af-b614-4f25-9c54-e6d6d86fabac
+  slug: captive-portal
   parent: internet layer
   kind: technology
   desc: Captive portal detection and interaction
@@ -4520,6 +5190,8 @@ tags:
     first_year: 2020
     last_year: 2020
 - id: vehicular networking
+  uuid: 45d5d651-aa72-4950-b648-d7c6b0fdf6b8
+  slug: vehicular-networking
   parent: internet layer
   kind: technology
   desc: 'Vehicular Networking: IP in vehicular (V2X) environments'
@@ -4531,6 +5203,8 @@ tags:
     first_year: 2019
     last_year: 2023
 - id: DRIP
+  uuid: 38f6fbf7-eb17-41f6-ac10-33ca0bc0d0b2
+  slug: drip
   parent: internet layer
   kind: technology
   desc: DRIP (Drone Remote Identification Protocol)
@@ -4544,6 +5218,8 @@ tags:
     first_year: 2022
     last_year: 2025
 - id: OSI
+  uuid: 58835e19-56f4-46c6-b677-edd6066cea13
+  slug: osi
   parent: internet layer
   kind: technology
   desc: OSI (Open Systems Interconnection) network-layer protocols and coexistence with IP
@@ -4559,6 +5235,8 @@ tags:
     first_year: 1983
     last_year: 2021
 - id: CLNP
+  uuid: 9a19938c-9fad-45ae-bbd1-56d7aa0f7f8c
+  slug: clnp
   parent: OSI
   kind: technology
   desc: CLNP (Connectionless Network Protocol)
@@ -4572,6 +5250,8 @@ tags:
     first_year: 1984
     last_year: 1995
 - id: IPng
+  uuid: 5e3c13b8-eba7-4155-aecb-d6276ececf96
+  slug: ipng
   parent: internet layer
   kind: technology
   desc: 'IPng (IP Next Generation): the historic candidate protocols TUBA, PIP, SIPP and TP/IX'
@@ -4591,6 +5271,8 @@ tags:
     first_year: 1992
     last_year: 2025
 - id: DECnet
+  uuid: 1dbda082-8819-41c9-9767-6a40e1e11ed9
+  slug: decnet
   parent: internet layer
   kind: technology
   desc: DECnet (Digital Equipment Corporation network protocols) over IP infrastructure
@@ -4604,6 +5286,8 @@ tags:
     first_year: 1991
     last_year: 1995
 - id: AppleTalk
+  uuid: edfce71e-e773-470c-a724-7a505cc7e205
+  slug: appletalk
   parent: internet layer
   kind: technology
   desc: AppleTalk protocols and tunnelling
@@ -4617,6 +5301,8 @@ tags:
     first_year: 1991
     last_year: 2013
 - id: IPX
+  uuid: c642f38b-ec42-45bc-a7f6-79226878e890
+  slug: ipx
   parent: internet layer
   kind: technology
   desc: Novell IPX (Internetwork Packet Exchange) interworking
@@ -4628,6 +5314,8 @@ tags:
     first_year: 1989
     last_year: 1997
 - id: link layer
+  uuid: aa454502-2811-4656-a627-b04a2939588e
+  slug: link-layer
   kind: topic
   desc: Link and data-link layers in general, not specific to one medium
   match_title_only:
@@ -4639,6 +5327,8 @@ tags:
     last_year: 2026
     served: 714
 - id: PPP
+  uuid: bd0e0eb9-9243-4f2d-81eb-8b58607a9f2f
+  slug: ppp
   parent: link layer
   kind: technology
   desc: PPP (Point-to-Point Protocol) and its control protocols
@@ -4655,6 +5345,8 @@ tags:
     first_year: 1989
     last_year: 2021
 - id: PPPoE
+  uuid: 4537270a-2134-4dad-85a5-72157a153815
+  slug: pppoe
   parent: PPP
   kind: technology
   desc: PPPoE (PPP over Ethernet)
@@ -4666,6 +5358,8 @@ tags:
     first_year: 1999
     last_year: 2021
 - id: L2TP
+  uuid: 9c8b5ff9-77b9-4dbd-afa6-028bafca52b2
+  slug: l2tp
   parent: link layer
   kind: technology
   desc: L2TP (Layer Two Tunneling Protocol)
@@ -4681,6 +5375,8 @@ tags:
     first_year: 1999
     last_year: 2017
 - id: Ethernet
+  uuid: 4ffcfcde-1c37-436f-8187-f73d09e0ac6b
+  slug: ethernet
   parent: link layer
   kind: technology
   desc: IP over Ethernet, Ethernet interworking and OAM
@@ -4704,6 +5400,8 @@ tags:
     first_year: 1982
     last_year: 2026
 - id: ARP
+  uuid: 32a4652e-4b96-4bb6-8de2-9cd9778e5d9c
+  slug: arp
   parent: link layer
   kind: technology
   desc: ARP (Address Resolution Protocol)
@@ -4717,6 +5415,8 @@ tags:
     first_year: 1982
     last_year: 2022
 - id: WiFi
+  uuid: 61610196-58e4-4d81-bc99-98944dd80494
+  slug: wifi
   parent: link layer
   kind: technology
   desc: 'Wi-Fi: IP over IEEE 802.11 wireless LANs'
@@ -4730,6 +5430,8 @@ tags:
     first_year: 2005
     last_year: 2025
 - id: CAPWAP
+  uuid: c4d3eeee-45ff-40b6-840d-5fbd3a769bc8
+  slug: capwap
   parent: link layer
   kind: technology
   desc: CAPWAP (Control and Provisioning of Wireless Access Points)
@@ -4743,6 +5445,8 @@ tags:
     first_year: 2005
     last_year: 2018
 - id: WiMAX
+  uuid: 6e7863ca-4578-487c-ac5e-7e49e0691d67
+  slug: wimax
   parent: link layer
   kind: technology
   desc: IP over IEEE 802.16 (WiMAX) networks
@@ -4756,6 +5460,8 @@ tags:
     first_year: 2007
     last_year: 2010
 - id: PAWS
+  uuid: a3319e94-4bb7-4bc5-b576-cb2ec5181d0e
+  slug: paws
   parent: link layer
   kind: technology
   desc: PAWS (Protocol to Access White-Space databases)
@@ -4769,6 +5475,8 @@ tags:
     first_year: 2013
     last_year: 2015
 - id: ATM
+  uuid: 8ecf7045-c97c-46ce-b6a4-7486843a9da6
+  slug: atm
   parent: link layer
   kind: technology
   desc: Asynchronous Transfer Mode and IP over ATM
@@ -4785,6 +5493,8 @@ tags:
     first_year: 1993
     last_year: 2013
 - id: NHRP
+  uuid: 12a3984e-9267-4c7d-a51e-c4e5ec81007c
+  slug: nhrp
   parent: ATM
   kind: technology
   desc: NHRP (Next Hop Resolution Protocol) for NBMA networks
@@ -4798,6 +5508,8 @@ tags:
     first_year: 1994
     last_year: 1999
 - id: frame relay
+  uuid: 7cfacb67-c87a-4f2b-afae-6fb9b3399f10
+  slug: frame-relay
   parent: link layer
   kind: technology
   desc: Frame relay and IP interworking
@@ -4812,6 +5524,8 @@ tags:
     first_year: 1992
     last_year: 2006
 - id: X.25
+  uuid: 764af01a-534b-4e86-94f0-5f4e5848ad4e
+  slug: x25
   parent: link layer
   kind: technology
   desc: X.25 (ITU-T X.25 packet switching) and IP over public data networks
@@ -4827,6 +5541,8 @@ tags:
     first_year: 1982
     last_year: 1994
 - id: ISDN
+  uuid: f5d35dda-903f-4b30-a11f-b4461a9cf21c
+  slug: isdn
   parent: link layer
   kind: technology
   desc: ISDN (Integrated Services Digital Network) access and IP
@@ -4840,6 +5556,8 @@ tags:
     first_year: 1992
     last_year: 2019
 - id: DSL
+  uuid: dd7770aa-0211-4de1-b4be-aa6fdf7d7c06
+  slug: dsl
   parent: link layer
   kind: technology
   desc: DSL (Digital Subscriber Line) access networks
@@ -4853,6 +5571,8 @@ tags:
     first_year: 1974
     last_year: 2014
 - id: ANCP
+  uuid: dc4680df-7053-4700-9fb5-5a95ffb8edb1
+  slug: ancp
   parent: DSL
   kind: technology
   desc: ANCP (Access Node Control Protocol)
@@ -4866,6 +5586,8 @@ tags:
     first_year: 2010
     last_year: 2014
 - id: DOCSIS
+  uuid: fc493c75-58b4-487d-ab22-4689ff21eaa5
+  slug: docsis
   parent: link layer
   kind: technology
   desc: DOCSIS (Data Over Cable Service Interface Specification) cable access networks
@@ -4879,6 +5601,8 @@ tags:
     first_year: 1999
     last_year: 2026
 - id: cellular
+  uuid: d16ef675-4f3f-4806-b598-bf0e13faa0ce
+  slug: cellular
   parent: link layer
   kind: technology
   desc: 'Cellular networks: IP over 3GPP systems, GPRS/LTE/5G interworking'
@@ -4890,6 +5614,8 @@ tags:
     first_year: 1994
     last_year: 2025
 - id: GSM
+  uuid: b74ee117-0194-48fe-a1e1-93a67442598f
+  slug: gsm
   parent: cellular
   kind: technology
   desc: 'GSM (Global System for Mobile Communications): SIM-based authentication, SMS transport and second-generation interworking'
@@ -4901,6 +5627,8 @@ tags:
     first_year: 2005
     last_year: 2014
 - id: cdma2000
+  uuid: ba214cd2-7d66-4bdd-a80d-c085a95e8bbe
+  slug: cdma2000
   parent: cellular
   kind: technology
   desc: 'cdma2000 (Code Division Multiple Access 2000): 3GPP2 packet-data networks, wireless IP, AAA and Mobile IP support'
@@ -4912,6 +5640,8 @@ tags:
     first_year: 2001
     last_year: 2007
 - id: SLIP
+  uuid: 4c95518a-a8e6-4689-870f-7f79a7f063f4
+  slug: slip
   parent: link layer
   kind: technology
   desc: SLIP (Serial Line Internet Protocol)
@@ -4925,6 +5655,8 @@ tags:
     first_year: 1984
     last_year: 1992
 - id: FDDI
+  uuid: 7cf2090c-da4b-4e12-a0fc-352a9767af8e
+  slug: fddi
   parent: link layer
   kind: technology
   desc: IP over FDDI (Fiber Distributed Data Interface)
@@ -4939,6 +5671,8 @@ tags:
     first_year: 1989
     last_year: 1998
 - id: token ring
+  uuid: 0fce5544-df9a-47f9-bb8e-5079f6d8c5c8
+  slug: token-ring
   parent: link layer
   kind: technology
   desc: IP over token ring
@@ -4950,6 +5684,8 @@ tags:
     first_year: 1991
     last_year: 1998
 - id: FireWire
+  uuid: ba274f20-14a6-4ae5-87d2-ff9a15a7879e
+  slug: firewire
   parent: link layer
   kind: technology
   desc: IP over IEEE 1394 (FireWire)
@@ -4963,6 +5699,8 @@ tags:
     first_year: 1999
     last_year: 2001
 - id: InfiniBand
+  uuid: fc49fb3e-f4f2-4a5f-aee9-02d2d62f8a8c
+  slug: infiniband
   parent: link layer
   kind: technology
   desc: IP over InfiniBand
@@ -4976,6 +5714,8 @@ tags:
     first_year: 2006
     last_year: 2010
 - id: DVB
+  uuid: 9dfc256c-c98d-41dc-bd23-2048ae19ecf4
+  slug: dvb
   parent: link layer
   kind: technology
   desc: IP over MPEG-2/DVB (Digital Video Broadcasting) broadcast links
@@ -4990,6 +5730,8 @@ tags:
     first_year: 1999
     last_year: 2014
 - id: satellite
+  uuid: ed4d7eeb-3797-46ee-b42f-e0ed957f12e1
+  slug: satellite
   parent: link layer
   kind: technology
   desc: Networking over satellite links
@@ -5004,6 +5746,8 @@ tags:
     first_year: 1972
     last_year: 2025
 - id: SMDS
+  uuid: 622269a7-512b-418a-874e-4bb9adfdf526
+  slug: smds
   parent: link layer
   kind: technology
   desc: SMDS (Switched Multimegabit Data Service)
@@ -5017,6 +5761,8 @@ tags:
     first_year: 1991
     last_year: 1994
 - id: SONET
+  uuid: 0fad777f-f73b-4e85-87e0-5d80cb498fd8
+  slug: sonet
   parent: link layer
   kind: technology
   desc: IP and multi-access protocols over SONET/SDH (Synchronous Optical Networking / Synchronous Digital Hierarchy)
@@ -5028,6 +5774,8 @@ tags:
     first_year: 1994
     last_year: 2011
 - id: MAPOS
+  uuid: 854c4c05-1841-46ce-921f-4036354e454b
+  slug: mapos
   parent: SONET
   kind: technology
   desc: MAPOS (Multiple Access Protocol over SONET/SDH), covering the protocol itself and its version, 16-bit address, multicast, node switching and address resolution extensions
@@ -5039,6 +5787,8 @@ tags:
     first_year: 1997
     last_year: 2003
 - id: amateur radio
+  uuid: 21e8fc4e-f25e-4e0d-a6da-f786961ded98
+  slug: amateur-radio
   parent: link layer
   kind: technology
   desc: Amateur packet radio (AX.25) and IP
@@ -5050,6 +5800,8 @@ tags:
     first_year: 1991
     last_year: 1991
 - id: SNA
+  uuid: 8ad4543c-35b6-4c8c-b60e-4bc79643bef9
+  slug: sna
   parent: link layer
   kind: technology
   desc: IBM SNA (Systems Network Architecture) interworking
@@ -5065,6 +5817,8 @@ tags:
     first_year: 1993
     last_year: 2011
 - id: TN3270
+  uuid: f805d3de-e13d-406d-aba2-62f50b1ecfeb
+  slug: tn3270
   parent: SNA
   kind: technology
   desc: TN3270 (Telnet 3270) terminal emulation
@@ -5078,6 +5832,8 @@ tags:
     first_year: 1994
     last_year: 2011
 - id: APPN
+  uuid: 6c2866ba-ace0-4cbb-aa11-436efdcf9a30
+  slug: appn
   parent: SNA
   kind: technology
   desc: APPN (Advanced Peer-to-Peer Networking) peer-based SNA node networking, routing and its management objects
@@ -5089,6 +5845,8 @@ tags:
     first_year: 1994
     last_year: 1999
 - id: DLSw
+  uuid: 23f7575f-8488-4414-b03d-242dd4c44406
+  slug: dlsw
   parent: SNA
   kind: technology
   desc: DLSw (Data Link Switching) encapsulation of SNA and NetBIOS traffic over TCP/IP, and its switch-to-switch protocol
@@ -5100,6 +5858,8 @@ tags:
     first_year: 1993
     last_year: 1997
 - id: link aggregation
+  uuid: 1da60a00-0526-4474-8a34-ec22aa2f6039
+  slug: link-aggregation
   parent: link layer
   kind: technology
   desc: 'Link aggregation (LAG, IEEE 802.1AX): bundling parallel links, and protocol behaviour over the bundle'
@@ -5111,6 +5871,8 @@ tags:
     first_year: 2011
     last_year: 2024
 - id: security
+  uuid: 43179391-5d85-490f-b3bd-c34ac0d46608
+  slug: security
   kind: topic
   desc: 'Security in general: threat models, guidance and handbooks not specific to one mechanism'
   match_title_only:
@@ -5228,6 +5990,8 @@ tags:
     last_year: 2026
     served: 2156
 - id: TLS
+  uuid: 4aabde5b-c39a-442c-baf6-6695b1d7bcb9
+  slug: tls
   parent: security
   kind: technology
   desc: 'TLS (Transport Layer Security): protocol, extensions, deployment guidance'
@@ -5242,6 +6006,8 @@ tags:
     first_year: 1999
     last_year: 2026
 - id: DTLS
+  uuid: 36c9ae55-5fec-4d21-9df8-baf47c6162a4
+  slug: dtls
   parent: TLS
   kind: technology
   desc: 'DTLS (Datagram Transport Layer Security): datagram TLS'
@@ -5255,6 +6021,8 @@ tags:
     first_year: 2006
     last_year: 2026
 - id: IPsec
+  uuid: bfad6e2f-cebc-4968-9ba3-848bea73d294
+  slug: ipsec
   parent: security
   kind: technology
   desc: 'IPsec (Internet Protocol Security) architecture: ESP, AH, policy'
@@ -5276,6 +6044,8 @@ tags:
     first_year: 1988
     last_year: 2025
 - id: IKE
+  uuid: fd46fcd2-167b-4cc3-a58b-a7e109105cb1
+  slug: ike
   parent: IPsec
   kind: technology
   desc: IKE (Internet Key Exchange)
@@ -5287,6 +6057,8 @@ tags:
     first_year: 1995
     last_year: 2025
 - id: MOBIKE
+  uuid: e05c4cb8-53c2-45be-8de2-6d1488428905
+  slug: mobike
   parent: IKE
   kind: technology
   desc: 'MOBIKE: IKEv2 mobility and multihoming'
@@ -5300,6 +6072,8 @@ tags:
     first_year: 2006
     last_year: 2016
 - id: Photuris
+  uuid: 2e37c603-75f9-44a6-9670-c10b6d25318c
+  slug: photuris
   parent: IKE
   kind: technology
   desc: Photuris, session-key management protocol for IPsec, with its extended schemes and attributes
@@ -5311,6 +6085,8 @@ tags:
     first_year: 1995
     last_year: 1999
 - id: KINK
+  uuid: da55ab8a-68e8-411a-aaa3-c63c658baa64
+  slug: kink
   parent: IKE
   kind: technology
   desc: 'KINK (Kerberized Internet Negotiation of Keys): IPsec key management using Kerberos'
@@ -5322,6 +6098,8 @@ tags:
     first_year: 2001
     last_year: 2006
 - id: ESP
+  uuid: 8fc7b320-08db-455e-89ae-1e1fe8eb0f57
+  slug: esp
   parent: IPsec
   kind: technology
   desc: ESP (Encapsulating Security Payload)
@@ -5333,6 +6111,8 @@ tags:
     first_year: 1995
     last_year: 2025
 - id: SSH
+  uuid: 39db56bb-802e-4e27-ac83-fb6025df2090
+  slug: ssh
   parent: security
   kind: technology
   desc: SSH (Secure Shell) protocol
@@ -5350,6 +6130,8 @@ tags:
     first_year: 2006
     last_year: 2026
 - id: PKI
+  uuid: 6d778448-859f-4eff-b996-91589e67f073
+  slug: pki
   parent: security
   kind: technology
   desc: PKI (Public Key Infrastructure) for the Internet
@@ -5366,6 +6148,8 @@ tags:
     first_year: 1999
     last_year: 2026
 - id: X.509
+  uuid: d2d3241e-f31e-40bc-aaf6-8c08d023ab06
+  slug: x509
   parent: PKI
   kind: technology
   desc: X.509 (ITU-T X.509 public key certificates) certificates and profiles
@@ -5380,6 +6164,8 @@ tags:
     first_year: 1999
     last_year: 2026
 - id: OCSP
+  uuid: 8026abdc-b5a2-42a5-9a77-f483cdcb3f76
+  slug: ocsp
   parent: PKI
   kind: technology
   desc: OCSP (Online Certificate Status Protocol)
@@ -5391,6 +6177,8 @@ tags:
     first_year: 1999
     last_year: 2026
 - id: ACME
+  uuid: e9579f53-dbb2-4a8e-a987-6817cfaa7447
+  slug: acme
   parent: PKI
   kind: technology
   desc: ACME (Automatic Certificate Management Environment)
@@ -5404,6 +6192,8 @@ tags:
     first_year: 2019
     last_year: 2025
 - id: certificate transparency
+  uuid: 6388e58f-aa30-41f1-8030-61416b4c8180
+  slug: certificate-transparency
   parent: PKI
   kind: technology
   desc: Certificate transparency logs
@@ -5417,6 +6207,8 @@ tags:
     first_year: 2013
     last_year: 2022
 - id: CMP
+  uuid: badedc8c-a337-451b-8e99-84ee53a2ed5b
+  slug: cmp
   parent: PKI
   kind: technology
   desc: CMP (Certificate Management Protocol)
@@ -5428,6 +6220,8 @@ tags:
     first_year: 1999
     last_year: 2025
 - id: EST
+  uuid: a7502865-82bd-4b19-b786-8e8ba4650d09
+  slug: est
   parent: PKI
   kind: technology
   desc: EST (Enrollment over Secure Transport)
@@ -5439,6 +6233,8 @@ tags:
     first_year: 2013
     last_year: 2022
 - id: SPKI
+  uuid: 2cca4eb9-8114-4165-ad7c-d1f86fe59129
+  slug: spki
   parent: PKI
   kind: technology
   desc: SPKI (Simple Public Key Infrastructure), historic
@@ -5450,6 +6246,8 @@ tags:
     first_year: 1999
     last_year: 1999
 - id: CMS
+  uuid: 15ddec76-3def-4b31-a596-30d16a67a01c
+  slug: cms
   parent: security
   kind: technology
   desc: CMS (Cryptographic Message Syntax)
@@ -5464,6 +6262,8 @@ tags:
     first_year: 1998
     last_year: 2026
 - id: S/MIME
+  uuid: ffbc87f8-eb24-40b7-b619-2f14ce65327a
+  slug: smime
   parent: CMS
   kind: technology
   desc: S/MIME (Secure/Multipurpose Internet Mail Extensions) secure email
@@ -5477,6 +6277,8 @@ tags:
     first_year: 1998
     last_year: 2025
 - id: PEM
+  uuid: d10ae26c-1a53-42e1-9501-fb5a48a1af37
+  slug: pem
   parent: security
   kind: technology
   desc: 'PEM (Privacy Enhanced Mail): historic secure email'
@@ -5490,6 +6292,8 @@ tags:
     first_year: 1992
     last_year: 2026
 - id: OpenPGP
+  uuid: 7a523f9b-65fc-4806-8cc0-309d02237ae0
+  slug: openpgp
   parent: security
   kind: technology
   desc: OpenPGP (Open Pretty Good Privacy) message format and usage
@@ -5503,6 +6307,8 @@ tags:
     first_year: 1996
     last_year: 2026
 - id: MLS
+  uuid: 597fdc08-5a53-4599-a841-ea24a2514c24
+  slug: mls
   parent: security
   kind: technology
   desc: MLS (Messaging Layer Security) for end-to-end group messaging
@@ -5516,6 +6322,8 @@ tags:
     first_year: 2009
     last_year: 2025
 - id: Kerberos
+  uuid: 8414511e-cecb-4785-8d55-955b511ad836
+  slug: kerberos
   parent: security
   kind: technology
   desc: The Kerberos authentication system
@@ -5533,6 +6341,8 @@ tags:
     first_year: 1993
     last_year: 2024
 - id: GSS-API
+  uuid: dfab7ae5-4a37-4b2b-9fc6-94b848f131f0
+  slug: gss-api
   parent: security
   kind: technology
   desc: GSS-API (Generic Security Service Application Program Interface) and its mechanisms
@@ -5552,6 +6362,8 @@ tags:
     first_year: 1993
     last_year: 2024
 - id: SPNEGO
+  uuid: 9617ffde-06e1-4e6d-9ecd-17d0412640c7
+  slug: spnego
   parent: GSS-API
   kind: technology
   desc: SPNEGO (Simple and Protected GSS-API Negotiation Mechanism), negotiation of a common security mechanism between peers and its use in HTTP authentication
@@ -5563,6 +6375,8 @@ tags:
     first_year: 1998
     last_year: 2006
 - id: SASL
+  uuid: 09421a12-c86a-4375-9489-2b4f9c5d3f56
+  slug: sasl
   parent: security
   kind: technology
   desc: SASL (Simple Authentication and Security Layer)
@@ -5578,6 +6392,8 @@ tags:
     first_year: 1997
     last_year: 2018
 - id: EAP
+  uuid: 03e26c66-fe9a-4ac2-ba0a-bc9a9ffa9638
+  slug: eap
   parent: security
   kind: technology
   desc: EAP (Extensible Authentication Protocol) and methods
@@ -5594,6 +6410,8 @@ tags:
     first_year: 1998
     last_year: 2026
 - id: HOKEY
+  uuid: 1b85e74c-d6ef-43d7-b687-c67be758317d
+  slug: hokey
   parent: EAP
   kind: technology
   desc: HOKEY (Handover Keying) and the EAP Re-authentication Protocol (ERP)
@@ -5607,6 +6425,8 @@ tags:
     first_year: 2008
     last_year: 2020
 - id: PANA
+  uuid: d7293d0f-ee1e-4c9d-bbdb-5c33160d5e69
+  slug: pana
   parent: security
   kind: technology
   desc: PANA (Protocol for carrying Authentication for Network Access)
@@ -5622,6 +6442,8 @@ tags:
     first_year: 2005
     last_year: 2012
 - id: SACM
+  uuid: daee183b-05ca-4c5e-b14d-6c50a5e26d69
+  slug: sacm
   parent: security
   kind: technology
   desc: 'SACM: security automation and continuous monitoring'
@@ -5635,6 +6457,8 @@ tags:
     first_year: 2015
     last_year: 2023
 - id: NEA
+  uuid: bbda387c-5e8a-4ba3-9d04-31c16002e94d
+  slug: nea
   parent: security
   kind: technology
   desc: NEA (Network Endpoint Assessment) and posture
@@ -5646,6 +6470,8 @@ tags:
     first_year: 2008
     last_year: 2014
 - id: AAA
+  uuid: cb6465c3-f3a2-4dc5-ba06-f72a0dc533fc
+  slug: aaa
   parent: security
   kind: technology
   desc: AAA (Authentication, Authorization, and Accounting) frameworks
@@ -5663,6 +6489,8 @@ tags:
     first_year: 1984
     last_year: 2026
 - id: RADIUS
+  uuid: d988a6d1-47f4-4c16-9538-3515e35864f4
+  slug: radius
   parent: AAA
   kind: technology
   desc: The RADIUS (Remote Authentication Dial-In User Service) protocol
@@ -5681,6 +6509,8 @@ tags:
     first_year: 1997
     last_year: 2025
 - id: Diameter
+  uuid: 685104f6-e7fa-4f2f-a0bc-5eb503184a12
+  slug: diameter
   parent: AAA
   kind: technology
   desc: The Diameter protocol
@@ -5696,6 +6526,8 @@ tags:
     first_year: 2003
     last_year: 2023
 - id: TACACS+
+  uuid: e9c5e49a-8c3d-4329-aee7-a3e0b3086894
+  slug: tacacs
   parent: AAA
   kind: technology
   desc: TACACS and TACACS+ (Terminal Access Controller Access-Control System Plus)
@@ -5709,6 +6541,8 @@ tags:
     first_year: 1984
     last_year: 2026
 - id: OAuth
+  uuid: 39af6f27-c827-4ea6-b493-3364c83f202a
+  slug: oauth
   parent: security
   kind: technology
   desc: OAuth (Open Authorization) authorization framework
@@ -5724,6 +6558,8 @@ tags:
     first_year: 2010
     last_year: 2026
 - id: JWT
+  uuid: 5c158c4c-ed0d-4ea3-9b65-cf541e11a019
+  slug: jwt
   parent: OAuth
   kind: technology
   desc: JWT (JSON Web Token)
@@ -5738,6 +6574,8 @@ tags:
     first_year: 2014
     last_year: 2025
 - id: GNAP
+  uuid: e247925d-f007-467b-9200-c79f69da7a5f
+  slug: gnap
   parent: OAuth
   kind: technology
   desc: GNAP (Grant Negotiation and Authorization Protocol)
@@ -5751,6 +6589,8 @@ tags:
     first_year: 2024
     last_year: 2025
 - id: JOSE
+  uuid: f8101658-16a8-4d51-bb7f-6c258e5f0dae
+  slug: jose
   parent: security
   kind: technology
   desc: 'JOSE (JavaScript Object Signing and Encryption): JWS, JWE, JWK'
@@ -5764,6 +6604,8 @@ tags:
     first_year: 2014
     last_year: 2026
 - id: COSE
+  uuid: f25d3c63-5375-449d-82d7-acbd8280aa0f
+  slug: cose
   parent: security
   kind: technology
   desc: COSE (CBOR Object Signing and Encryption)
@@ -5777,6 +6619,8 @@ tags:
     first_year: 2017
     last_year: 2026
 - id: SCIM
+  uuid: 17ef9564-15f8-438b-8af1-c8741072dd03
+  slug: scim
   parent: security
   kind: technology
   desc: SCIM (System for Cross-domain Identity Management)
@@ -5792,6 +6636,8 @@ tags:
     first_year: 2015
     last_year: 2026
 - id: federated authentication
+  uuid: 10445334-358c-4924-bf73-9dc74c17cba7
+  slug: federated-authentication
   parent: security
   kind: technology
   desc: Cross-domain federated authentication frameworks
@@ -5807,6 +6653,8 @@ tags:
     first_year: 2012
     last_year: 2018
 - id: secevent
+  uuid: 798b438f-180c-4e1c-9cc6-af5b051d8372
+  slug: secevent
   parent: security
   kind: technology
   desc: Security event tokens and event delivery
@@ -5821,6 +6669,8 @@ tags:
     first_year: 1998
     last_year: 2026
 - id: XML signatures
+  uuid: 077a89aa-88de-4ea9-9825-abb937b2cda9
+  slug: xml-signatures
   parent: security
   kind: technology
   desc: XML digital signatures and encryption
@@ -5834,6 +6684,8 @@ tags:
     first_year: 2000
     last_year: 2022
 - id: privacy
+  uuid: cb0a411a-3f4c-42b8-a43d-c1ea9f123fab
+  slug: privacy
   parent: security
   kind: topic
   desc: Privacy threat models and protocol privacy considerations
@@ -5853,6 +6705,8 @@ tags:
     last_year: 2025
     served: 135
 - id: privacy pass
+  uuid: 95787efd-e320-4aa3-969c-9a026aa102c3
+  slug: privacy-pass
   parent: security
   kind: technology
   desc: Privacy Pass anonymous tokens
@@ -5866,6 +6720,8 @@ tags:
     first_year: 2024
     last_year: 2024
 - id: incident response
+  uuid: 4f12bef1-432d-4bf5-80ba-574251d79716
+  slug: incident-response
   parent: security
   kind: topic
   desc: 'Security incident response: exchange and coordination'
@@ -5884,6 +6740,8 @@ tags:
     last_year: 2024
     served: 24
 - id: IODEF
+  uuid: a53f547a-5d65-4828-8068-807bf2e342b0
+  slug: iodef
   parent: incident response
   kind: technology
   desc: IODEF (Incident Object Description Exchange Format)
@@ -5898,6 +6756,8 @@ tags:
     first_year: 2001
     last_year: 2020
 - id: RID
+  uuid: 87eb02a2-ea8e-4eff-b30b-35db9fea3682
+  slug: rid
   parent: incident response
   kind: technology
   desc: 'RID (Real-time Inter-network Defense): policy-governed exchange of IODEF incident reports and trace requests between network operators, and its transport bindings'
@@ -5909,6 +6769,8 @@ tags:
     first_year: 2010
     last_year: 2024
 - id: intrusion detection
+  uuid: cf6a445a-e936-4ce2-aea8-b790b176b0b5
+  slug: intrusion-detection
   parent: security
   kind: topic
   desc: Intrusion detection message exchange
@@ -5924,6 +6786,8 @@ tags:
     last_year: 2007
     served: 6
 - id: IDMEF
+  uuid: 43b82b38-94e3-47b3-a544-965b8e8f4129
+  slug: idmef
   parent: intrusion detection
   kind: technology
   desc: IDMEF (Intrusion Detection Message Exchange Format)
@@ -5935,6 +6799,8 @@ tags:
     first_year: 2007
     last_year: 2007
 - id: IDXP
+  uuid: b9121c4e-ce95-4ba9-aa60-ebe21ad45cb6
+  slug: idxp
   parent: intrusion detection
   kind: technology
   desc: IDXP (Intrusion Detection Exchange Protocol) over BEEP
@@ -5946,6 +6812,8 @@ tags:
     first_year: 2007
     last_year: 2007
 - id: DDoS
+  uuid: 8e72452d-a1c5-416b-b579-4a2201e02b1f
+  slug: ddos
   parent: security
   kind: topic
   desc: DDoS (Distributed Denial of Service) attack mitigation and signalling
@@ -5960,6 +6828,8 @@ tags:
     last_year: 2023
     served: 40
 - id: DOTS
+  uuid: f29cf9f9-a455-4f73-81d3-3d6e6d74f125
+  slug: dots
   parent: DDoS
   kind: technology
   desc: DOTS (DDoS Open Threat Signaling)
@@ -5973,6 +6843,8 @@ tags:
     first_year: 2019
     last_year: 2023
 - id: authentication
+  uuid: 77cf3b20-23e5-4e39-b7c1-2f49a81b2c44
+  slug: authentication
   parent: security
   kind: topic
   desc: Authentication of users, hosts and messages across protocols
@@ -6009,6 +6881,8 @@ tags:
     last_year: 2026
     served: 595
 - id: WebAuthn
+  uuid: 2a7b9951-c3d2-4350-a757-04963afcec07
+  slug: webauthn
   parent: authentication
   kind: technology
   desc: Web Authentication (WebAuthn)
@@ -6020,6 +6894,8 @@ tags:
     first_year: 2020
     last_year: 2020
 - id: authorization
+  uuid: f213bec4-46fe-4361-835f-7bd0c8bf07c4
+  slug: authorization
   parent: security
   kind: topic
   desc: 'Authorization and access control: who may do what'
@@ -6041,6 +6917,8 @@ tags:
     last_year: 2025
     served: 117
 - id: XACML
+  uuid: d8199417-fb33-4c78-88bb-1ddd46063f5c
+  slug: xacml
   parent: authorization
   kind: technology
   desc: XACML (eXtensible Access Control Markup Language)
@@ -6054,6 +6932,8 @@ tags:
     first_year: 2013
     last_year: 2013
 - id: Ident
+  uuid: b74df7cf-7750-438c-9e84-2b4d00e1cec4
+  slug: ident
   parent: security
   kind: technology
   desc: Ident (Identification Protocol)
@@ -6069,6 +6949,8 @@ tags:
     first_year: 1985
     last_year: 2023
 - id: trust management
+  uuid: 43dfcab0-da0d-4cf5-b15a-b68125db1ffe
+  slug: trust-management
   parent: security
   kind: technology
   desc: Trust management systems (KeyNote and successors)
@@ -6080,6 +6962,8 @@ tags:
     first_year: 1999
     last_year: 2010
 - id: security labels
+  uuid: 8bc6c624-aef5-4a2e-9688-adbf88f67c38
+  slug: security-labels
   parent: security
   kind: technology
   desc: Security labels for networked data (CIPSO, CALIPSO and frameworks)
@@ -6091,6 +6975,8 @@ tags:
     first_year: 1993
     last_year: 2015
 - id: firewall
+  uuid: 1dea2e5a-4a04-494d-b1f5-54a5cd5a1a20
+  slug: firewall
   parent: security
   kind: technology
   desc: Firewalls and middlebox security traversal
@@ -6106,6 +6992,8 @@ tags:
     first_year: 1994
     last_year: 2021
 - id: I2NSF
+  uuid: aff3b5ac-9597-41db-9472-084a743784ec
+  slug: i2nsf
   parent: firewall
   kind: technology
   desc: I2NSF (Interface to Network Security Functions)
@@ -6119,6 +7007,8 @@ tags:
     first_year: 2017
     last_year: 2021
 - id: SOCKS
+  uuid: 131fc8f5-7ceb-4502-9a4b-b712d9c4b26a
+  slug: socks
   parent: firewall
   kind: technology
   desc: The SOCKS proxy protocol
@@ -6132,6 +7022,8 @@ tags:
     first_year: 1996
     last_year: 2001
 - id: remote attestation
+  uuid: 74210209-2ba9-4d2a-b968-b9558d7bf7a1
+  slug: remote-attestation
   parent: security
   kind: technology
   desc: Remote attestation of device state
@@ -6145,6 +7037,8 @@ tags:
     first_year: 2023
     last_year: 2026
 - id: TEEP
+  uuid: 4d65eda7-9cf4-404f-ba2e-7e4bc8089308
+  slug: teep
   parent: security
   kind: technology
   desc: TEEP (Trusted Execution Environment Provisioning)
@@ -6159,6 +7053,8 @@ tags:
     first_year: 2023
     last_year: 2023
 - id: supply chain integrity
+  uuid: d83b10bf-ba1f-49ec-8357-a4c9e0a0026d
+  slug: supply-chain-integrity
   parent: security
   kind: technology
   desc: Supply chain integrity and transparency for digital artefacts
@@ -6174,6 +7070,8 @@ tags:
     first_year: 2008
     last_year: 2026
 - id: LTANS
+  uuid: 3c362b47-9698-4007-9acd-6db5054dec80
+  slug: ltans
   parent: security
   kind: technology
   desc: LTANS (Long-Term Archive and Notary Services) for signed data
@@ -6185,6 +7083,8 @@ tags:
     first_year: 2007
     last_year: 2011
 - id: cryptography
+  uuid: 69296a61-d9da-4cd6-82d5-45fc7022aed0
+  slug: cryptography
   kind: topic
   desc: 'Cryptography: algorithms, modes, parameters and their use in Internet protocols'
   match:
@@ -6242,6 +7142,8 @@ tags:
   implies:
   - security
 - id: AES
+  uuid: e554d132-6d27-4836-a85d-6be5c8dfa4c0
+  slug: aes
   parent: cryptography
   kind: technology
   desc: The AES (Advanced Encryption Standard) block cipher and its modes
@@ -6253,6 +7155,8 @@ tags:
     first_year: 2002
     last_year: 2023
 - id: DES
+  uuid: 1e336247-4eaf-4a80-a7e5-926d0839bb5f
+  slug: des
   parent: cryptography
   kind: technology
   desc: DES (Data Encryption Standard) and Triple-DES (historic ciphers)
@@ -6264,6 +7168,8 @@ tags:
     first_year: 1995
     last_year: 2022
 - id: ChaCha20
+  uuid: 3914fc59-ac9e-41ab-a97d-9fc024c3360b
+  slug: chacha20
   parent: cryptography
   kind: technology
   desc: ChaCha20 and Poly1305
@@ -6275,6 +7181,8 @@ tags:
     first_year: 2015
     last_year: 2020
 - id: RSA
+  uuid: ad70465b-308a-49d6-848e-cc165a2973db
+  slug: rsa
   parent: cryptography
   kind: technology
   desc: RSA (Rivest-Shamir-Adleman) encryption and signatures
@@ -6286,6 +7194,8 @@ tags:
     first_year: 1998
     last_year: 2026
 - id: elliptic curve
+  uuid: 8b60a9ec-69d1-4c0d-b4bc-37237c6bd92c
+  slug: elliptic-curve
   parent: cryptography
   kind: technology
   desc: 'Elliptic-Curve Cryptography: elliptic curve cryptography'
@@ -6297,6 +7207,8 @@ tags:
     first_year: 2002
     last_year: 2026
 - id: Curve25519
+  uuid: 5c3ae766-5ee6-4838-9a72-2b3247e00900
+  slug: curve25519
   parent: elliptic curve
   kind: technology
   desc: Curve25519 and Curve448
@@ -6308,6 +7220,8 @@ tags:
     first_year: 2016
     last_year: 2026
 - id: EdDSA
+  uuid: 5c5244a5-c4b7-401b-abb5-6f0e313014fa
+  slug: eddsa
   parent: elliptic curve
   kind: technology
   desc: EdDSA (Edwards-curve Digital Signature Algorithm)
@@ -6319,6 +7233,8 @@ tags:
     first_year: 2015
     last_year: 2024
 - id: ECDSA
+  uuid: efc243bf-2d9a-42ee-9ba4-42adf49439d3
+  slug: ecdsa
   parent: elliptic curve
   kind: technology
   desc: ECDSA (Elliptic Curve Digital Signature Algorithm) and its curves and encodings
@@ -6330,6 +7246,8 @@ tags:
     first_year: 2005
     last_year: 2022
 - id: SHA
+  uuid: 31a85e90-ec1f-4963-8603-cf53d75b8980
+  slug: sha
   parent: cryptography
   kind: technology
   desc: The SHA (Secure Hash Algorithm) family of hash functions
@@ -6341,6 +7259,8 @@ tags:
     first_year: 1995
     last_year: 2026
 - id: MD5
+  uuid: fd4150f6-3476-48c7-a599-b28910d74e8d
+  slug: md5
   parent: cryptography
   kind: technology
   desc: MD5 (Message Digest 5) and the MD2/MD4 message digests
@@ -6352,6 +7272,8 @@ tags:
     first_year: 1990
     last_year: 2025
 - id: HMAC
+  uuid: 4f2f08ca-f9a6-42aa-a25a-84e54051aba7
+  slug: hmac
   parent: cryptography
   kind: technology
   desc: HMAC (Hash-based Message Authentication Code)
@@ -6363,6 +7285,8 @@ tags:
     first_year: 1997
     last_year: 2022
 - id: post-quantum
+  uuid: 0f0fe05d-d87b-4240-b03e-9c33afe7fed3
+  slug: post-quantum
   parent: cryptography
   kind: technology
   desc: Post-Quantum Cryptography and migration
@@ -6377,6 +7301,8 @@ tags:
     first_year: 2018
     last_year: 2026
 - id: ML-KEM
+  uuid: bfde249c-2070-4932-93d7-c1eaca54b752
+  slug: ml-kem
   parent: post-quantum
   kind: technology
   desc: ML-KEM (Module-Lattice-Based Key-Encapsulation Mechanism) key establishment and its use in IETF protocols
@@ -6388,6 +7314,8 @@ tags:
     first_year: 2026
     last_year: 2026
 - id: ML-DSA
+  uuid: 601e77fa-d839-45e5-a38d-f6e07dd4070e
+  slug: ml-dsa
   parent: post-quantum
   kind: technology
   desc: ML-DSA (Module-Lattice-Based Digital Signature Algorithm) signatures and their use in IETF protocols
@@ -6399,6 +7327,8 @@ tags:
     first_year: 2025
     last_year: 2026
 - id: SLH-DSA
+  uuid: 25a3c403-4ffd-4dce-8c2e-9a5641103f0e
+  slug: slh-dsa
   parent: post-quantum
   kind: technology
   desc: SLH-DSA (Stateless Hash-Based Digital Signature Algorithm) signatures and their use in IETF protocols
@@ -6410,6 +7340,8 @@ tags:
     first_year: 2025
     last_year: 2025
 - id: XMSS
+  uuid: 459eb052-1383-4865-baa1-4a54528cc320
+  slug: xmss
   parent: post-quantum
   kind: technology
   desc: XMSS (eXtended Merkle Signature Scheme) stateful hash-based signatures and their parameters
@@ -6421,6 +7353,8 @@ tags:
     first_year: 2018
     last_year: 2025
 - id: LMS
+  uuid: f4f740f7-ad2b-4744-91e1-b806f6354cfe
+  slug: lms
   parent: post-quantum
   kind: technology
   desc: LMS (Leighton-Micali Signature) stateful hash-based signatures, including HSS and LM-OTS
@@ -6432,6 +7366,8 @@ tags:
     first_year: 2019
     last_year: 2025
 - id: key management
+  uuid: 436cc902-23f0-4c87-b979-68849904ca9c
+  slug: key-management
   parent: cryptography
   kind: topic
   desc: 'Key Management: key establishment, provisioning and storage'
@@ -6448,6 +7384,8 @@ tags:
     last_year: 2026
     served: 91
 - id: MIKEY
+  uuid: ad15542b-3f59-40db-9b89-237f5fd0d6fc
+  slug: mikey
   parent: key management
   kind: technology
   desc: 'MIKEY (Multimedia Internet KEYing): key establishment for real-time multimedia sessions, including its modes, extensions and algorithm profiles'
@@ -6459,6 +7397,8 @@ tags:
     first_year: 2004
     last_year: 2017
 - id: randomness
+  uuid: 3217a0d0-f077-4200-8e28-65d958e297e0
+  slug: randomness
   parent: cryptography
   kind: technology
   desc: Randomness requirements and generation
@@ -6471,6 +7411,8 @@ tags:
     first_year: 1986
     last_year: 2026
 - id: OTP
+  uuid: a1e06089-1240-434b-bf9c-e804de940664
+  slug: otp
   parent: cryptography
   kind: technology
   desc: One-Time Passwords (One-Time Password) systems
@@ -6486,6 +7428,8 @@ tags:
     first_year: 1995
     last_year: 2012
 - id: PAKE
+  uuid: 7b26e060-5b85-4531-8336-5104393d90e7
+  slug: pake
   parent: cryptography
   kind: technology
   desc: PAKE (Password-Authenticated Key Exchange)
@@ -6499,6 +7443,8 @@ tags:
     first_year: 2000
     last_year: 2025
 - id: SPAKE2
+  uuid: 57aa5c1b-18b9-4ae2-9172-8b7f65af8663
+  slug: spake2
   parent: PAKE
   kind: technology
   desc: SPAKE2 (Simple Password-Based Encrypted Key Exchange), the CFRG balanced password-authenticated key exchange and its augmented variant
@@ -6510,6 +7456,8 @@ tags:
     first_year: 2023
     last_year: 2023
 - id: SRP
+  uuid: 79069af7-3123-48b6-9ac7-df0eb166db04
+  slug: srp
   parent: PAKE
   kind: technology
   desc: SRP (Secure Remote Password), the verifier-based password authentication and key exchange protocol and its use in TLS and EAP
@@ -6521,6 +7469,8 @@ tags:
     first_year: 2000
     last_year: 2007
 - id: Dragonfly
+  uuid: 003ada5c-3381-4e97-a9cf-b06270c672c3
+  slug: dragonfly
   parent: PAKE
   kind: technology
   desc: Dragonfly, the balanced key exchange from a shared password that resists offline dictionary attack, and its use in IKE and 802.11 SAE
@@ -6532,6 +7482,8 @@ tags:
     first_year: 2015
     last_year: 2015
 - id: OPAQUE
+  uuid: 74670ad0-b8aa-453f-a15d-79c97fc61180
+  slug: opaque
   parent: PAKE
   kind: technology
   desc: OPAQUE, the asymmetric (augmented) password-authenticated key exchange built on an oblivious pseudorandom function, and its TLS and EAP bindings
@@ -6543,6 +7495,8 @@ tags:
     first_year: 2025
     last_year: 2025
 - id: J-PAKE
+  uuid: 60b23e1b-9107-463b-ae21-6b3d4e49b9bb
+  slug: j-pake
   parent: PAKE
   kind: technology
   desc: J-PAKE (Password-Authenticated Key Exchange by Juggling), the balanced protocol built from zero-knowledge proofs of discrete logarithm, and its TLS and Thread use
@@ -6554,6 +7508,8 @@ tags:
     first_year: 2017
     last_year: 2017
 - id: password hashing
+  uuid: c889cfb7-eb34-45a6-b46d-d5ddff222004
+  slug: password-hashing
   parent: cryptography
   kind: technology
   desc: Password hashing and memory-hard functions
@@ -6565,6 +7521,8 @@ tags:
     first_year: 2011
     last_year: 2025
 - id: scrypt
+  uuid: 56747382-bfa0-421a-8ed0-ffd593e44afa
+  slug: scrypt
   parent: password hashing
   kind: technology
   desc: Memory-hard password-based key derivation and key stretching function, and its parameters and test vectors
@@ -6576,6 +7534,8 @@ tags:
     first_year: 2016
     last_year: 2016
 - id: PBKDF2
+  uuid: 13aeb888-1f58-4c3b-9bd2-1453d04df8fc
+  slug: pbkdf2
   parent: password hashing
   kind: technology
   desc: 'PBKDF2 (Password-Based Key Derivation Function 2), the PKCS #5 iterated key stretching function and its test vectors'
@@ -6587,6 +7547,8 @@ tags:
     first_year: 2011
     last_year: 2025
 - id: RC4
+  uuid: a6f7dc6a-fe81-4767-8673-f35d89e7c10c
+  slug: rc4
   parent: cryptography
   kind: technology
   desc: 'RC4 (Rivest Cipher 4): stream cipher, its cipher suites in TLS and SSH, and its deprecation'
@@ -6598,6 +7560,8 @@ tags:
     first_year: 2006
     last_year: 2020
 - id: Camellia
+  uuid: ecc111df-d065-4b3a-a9e1-4fe5a30d437b
+  slug: camellia
   parent: cryptography
   kind: technology
   desc: 'Camellia: 128-bit block cipher, its modes and its cipher suites in TLS, IPsec, CMS and S/MIME'
@@ -6609,6 +7573,8 @@ tags:
     first_year: 2004
     last_year: 2012
 - id: ARIA
+  uuid: c2d1dc19-a723-4f84-80f3-74d6826a8d9b
+  slug: aria
   parent: cryptography
   kind: technology
   desc: 'ARIA: Korean block cipher, its GCM and CCM modes and its use in TLS and CMS'
@@ -6620,6 +7586,8 @@ tags:
     first_year: 2010
     last_year: 2017
 - id: GOST
+  uuid: 3560e465-3e23-429a-b1de-1d96ff35af22
+  slug: gost
   parent: cryptography
   kind: technology
   desc: 'GOST: Russian national cryptographic algorithms -- block ciphers, hash functions and signature schemes -- and their use in IETF protocols'
@@ -6631,6 +7599,8 @@ tags:
     first_year: 2006
     last_year: 2025
 - id: BLAKE2
+  uuid: 3b38368e-02d7-478c-bcfb-a73c1d1472a9
+  slug: blake2
   parent: cryptography
   kind: technology
   desc: 'BLAKE2: cryptographic hash function and its keyed MAC mode'
@@ -6642,6 +7612,8 @@ tags:
     first_year: 2015
     last_year: 2015
 - id: network management
+  uuid: cec84758-c66d-4687-a5e1-329430a27f6a
+  slug: network-management
   kind: topic
   desc: 'Network operations and management: manageability, operational considerations, Network management architectures and operational practice'
   match:
@@ -6665,6 +7637,8 @@ tags:
     last_year: 2026
     served: 1191
 - id: SNMP
+  uuid: bdb1bbde-ffe4-4994-a7ca-8f5d9c36e6e4
+  slug: snmp
   parent: network management
   kind: technology
   desc: SNMP (Simple Network Management Protocol) framework and security
@@ -6688,6 +7662,8 @@ tags:
     first_year: 1987
     last_year: 2023
 - id: MIB
+  uuid: 93481fc5-c881-4a28-b431-99a55803cc74
+  slug: mib
   parent: SNMP
   kind: technology
   desc: MIB (Management Information Base) modules and SMI
@@ -6730,6 +7706,8 @@ tags:
     first_year: 1988
     last_year: 2023
 - id: RMON
+  uuid: 957faf93-e821-4cca-8562-509de7f0eda9
+  slug: rmon
   parent: SNMP
   kind: technology
   desc: RMON (Remote Network Monitoring)
@@ -6745,6 +7723,8 @@ tags:
     first_year: 1987
     last_year: 2006
 - id: AgentX
+  uuid: 9f743406-3bd8-4d62-8b4d-9da49f5e4125
+  slug: agentx
   parent: SNMP
   kind: technology
   desc: AgentX (SNMP Agent Extensibility Protocol) subagent protocol
@@ -6758,6 +7738,8 @@ tags:
     first_year: 1998
     last_year: 2000
 - id: NETCONF
+  uuid: c9bff806-2657-4c5b-ab81-4dfbb1adfb83
+  slug: netconf
   parent: network management
   kind: technology
   desc: The NETCONF (Network Configuration Protocol) configuration protocol
@@ -6773,6 +7755,8 @@ tags:
     first_year: 2006
     last_year: 2026
 - id: RESTCONF
+  uuid: 4af0e365-2966-4fad-a4be-5bee923d43f2
+  slug: restconf
   parent: NETCONF
   kind: technology
   desc: 'RESTCONF (RESTful Network Configuration Protocol): NETCONF semantics over HTTP'
@@ -6786,6 +7770,8 @@ tags:
     first_year: 2017
     last_year: 2019
 - id: YANG
+  uuid: 2ec84ab3-9830-4ec7-a322-7199b2647fc3
+  slug: yang
   parent: network management
   kind: technology
   desc: YANG (Yet Another Next Generation data modeling language) data modelling language and models
@@ -6804,6 +7790,8 @@ tags:
     first_year: 2009
     last_year: 2026
 - id: syslog
+  uuid: 333b6a31-7752-439c-b110-1f74be6f2b01
+  slug: syslog
   parent: network management
   kind: technology
   desc: The syslog logging protocol
@@ -6819,6 +7807,8 @@ tags:
     first_year: 2001
     last_year: 2025
 - id: policy management
+  uuid: b0e39660-7959-4791-ba4f-87ad1d8a67fd
+  slug: policy-management
   parent: network management
   kind: topic
   desc: Policy-based network management information models
@@ -6832,6 +7822,8 @@ tags:
     last_year: 2005
     served: 9
 - id: performance measurement
+  uuid: aa5b9689-e632-457b-8b00-228153f1650a
+  slug: performance-measurement
   parent: network management
   kind: topic
   desc: 'Performance Measurement: active and passive network performance metrics and methods'
@@ -6855,6 +7847,8 @@ tags:
     last_year: 2026
     served: 210
 - id: OWAMP
+  uuid: 1bc33814-48bd-4d0a-a0dc-41c7a0cfbaef
+  slug: owamp
   parent: performance measurement
   kind: technology
   desc: OWAMP (One-Way Active Measurement Protocol)
@@ -6868,6 +7862,8 @@ tags:
     first_year: 2004
     last_year: 2024
 - id: TWAMP
+  uuid: 80b41bd1-bf8f-4461-a111-adee4d7e9793
+  slug: twamp
   parent: performance measurement
   kind: technology
   desc: TWAMP (Two-Way Active Measurement Protocol)
@@ -6881,6 +7877,8 @@ tags:
     first_year: 2008
     last_year: 2024
 - id: STAMP
+  uuid: 315c9fb8-cf2b-4520-b4d3-ff0290eeeb53
+  slug: stamp
   parent: performance measurement
   kind: technology
   desc: STAMP (Simple Two-Way Active Measurement Protocol)
@@ -6894,6 +7892,8 @@ tags:
     first_year: 2020
     last_year: 2024
 - id: LMAP
+  uuid: 5681759e-e58a-4aff-938f-40f3d31f5223
+  slug: lmap
   parent: performance measurement
   kind: technology
   desc: LMAP (Large-Scale Measurement of Broadband Performance) platforms
@@ -6907,6 +7907,8 @@ tags:
     first_year: 2015
     last_year: 2017
 - id: IPFIX
+  uuid: e99cc42b-e702-4d5d-975b-8c50d54b9b2b
+  slug: ipfix
   parent: network management
   kind: technology
   desc: IPFIX (IP Flow Information Export) and packet sampling
@@ -6924,6 +7926,8 @@ tags:
     first_year: 1997
     last_year: 2026
 - id: PSAMP
+  uuid: e7d72c9e-6968-40b6-925c-e6d78a917e71
+  slug: psamp
   parent: IPFIX
   kind: technology
   desc: PSAMP packet sampling and reporting
@@ -6937,6 +7941,8 @@ tags:
     first_year: 2009
     last_year: 2014
 - id: benchmarking
+  uuid: cb90ea1a-1056-407f-8bf2-5dad76703098
+  slug: benchmarking
   parent: network management
   kind: topic
   desc: Benchmarking methodology for network devices and functions
@@ -6951,6 +7957,8 @@ tags:
     last_year: 2026
     served: 49
 - id: OAM
+  uuid: a436b717-7918-4194-92c6-e63c2140ea42
+  slug: oam
   parent: network management
   kind: topic
   desc: OAM (Operations, Administration, and Maintenance) mechanisms
@@ -6965,6 +7973,8 @@ tags:
     last_year: 2026
     served: 112
 - id: telemetry
+  uuid: d03e8b94-8f94-4578-a6b3-50371fa15e4b
+  slug: telemetry
   parent: network management
   kind: topic
   desc: 'Network telemetry: streaming operational data from network elements'
@@ -6977,6 +7987,8 @@ tags:
     last_year: 2025
     served: 16
 - id: SDN
+  uuid: 85aa11c2-2455-4d45-ad55-4b7104096b1f
+  slug: sdn
   parent: network management
   kind: topic
   desc: 'SDN (Software-Defined Networking): separated, programmable control planes'
@@ -6989,6 +8001,8 @@ tags:
     last_year: 2021
     served: 6
 - id: traceroute
+  uuid: 2719021f-95db-4529-81c7-78b1daf70a90
+  slug: traceroute
   parent: network management
   kind: technology
   desc: Traceroute and path discovery tools
@@ -7000,6 +8014,8 @@ tags:
     first_year: 1993
     last_year: 2026
 - id: HEMS
+  uuid: 5060c2b8-4300-4bae-b527-41a6350cdb75
+  slug: hems
   parent: network management
   kind: technology
   desc: 'HEMS (High-Level Entity Management System): historic management protocol'
@@ -7011,6 +8027,8 @@ tags:
     first_year: 1987
     last_year: 1988
 - id: autonomic networking
+  uuid: 0079abbf-70d0-406c-97e3-266139f624d8
+  slug: autonomic-networking
   parent: network management
   kind: topic
   desc: 'Autonomic Networking: autonomic and self-managing network infrastructure'
@@ -7025,6 +8043,8 @@ tags:
     last_year: 2025
     served: 17
 - id: BRSKI
+  uuid: 1918ecf9-784c-4071-a58d-c18133596829
+  slug: brski
   parent: autonomic networking
   kind: technology
   desc: BRSKI (Bootstrapping Remote Secure Key Infrastructure)
@@ -7036,6 +8056,8 @@ tags:
     first_year: 2020
     last_year: 2025
 - id: I2RS
+  uuid: 8e769c1f-95a1-4d4a-902a-688d3569ddb2
+  slug: i2rs
   parent: network management
   kind: technology
   desc: I2RS (Interface to the Routing System)
@@ -7051,6 +8073,8 @@ tags:
     first_year: 2016
     last_year: 2020
 - id: time synchronization
+  uuid: 09c5e60c-a28f-446a-a8b9-bac67fc6ab00
+  slug: time-synchronization
   parent: network management
   kind: topic
   desc: 'Time Synchronization: clock synchronization over networks'
@@ -7070,6 +8094,8 @@ tags:
     last_year: 2026
     served: 63
 - id: NTP
+  uuid: 515a096c-993d-49f0-8ec8-e69231202d11
+  slug: ntp
   parent: time synchronization
   kind: technology
   desc: NTP (Network Time Protocol)
@@ -7087,6 +8113,8 @@ tags:
     first_year: 1985
     last_year: 2026
 - id: PTP
+  uuid: bb555239-4586-44db-80a6-e3805bfe1524
+  slug: ptp
   parent: time synchronization
   kind: technology
   desc: PTP (Precision Time Protocol) over IP networks
@@ -7102,6 +8130,8 @@ tags:
     first_year: 1994
     last_year: 2026
 - id: energy management
+  uuid: 9a4996b0-e789-4a71-b997-1f3612ae2f0d
+  slug: energy-management
   parent: network management
   kind: topic
   desc: Energy monitoring and management of networked devices
@@ -7116,6 +8146,8 @@ tags:
     last_year: 2015
     served: 7
 - id: operational security
+  uuid: 656d41d1-f843-4c65-a34f-11810700aa94
+  slug: operational-security
   parent: network management
   kind: topic
   desc: Operational security practices for network infrastructure
@@ -7134,6 +8166,8 @@ tags:
     first_year: 1997
     last_year: 2023
 - id: Y2K
+  uuid: 67ce14de-4233-42b6-8266-25ba0361858b
+  slug: y2k
   parent: network management
   kind: topic
   desc: Y2K (Year 2000) readiness
@@ -7148,6 +8182,8 @@ tags:
     last_year: 1999
     served: 1
 - id: sustainability
+  uuid: 51cb07c4-648e-4e1c-b401-4617b6df0b1e
+  slug: sustainability
   parent: network management
   kind: topic
   desc: 'Sustainability: energy efficiency and environmental impact of Internet infrastructure'
@@ -7160,6 +8196,8 @@ tags:
     last_year: 2025
     served: 2
 - id: OVSDB
+  uuid: ad996d32-a5b9-48a1-8901-487c68254f39
+  slug: ovsdb
   parent: network management
   kind: technology
   desc: OVSDB (Open vSwitch Database) management protocol
@@ -7173,6 +8211,8 @@ tags:
     first_year: 2013
     last_year: 2013
 - id: packet capture
+  uuid: 41ffb5bd-9992-430b-9aa0-182c0a53801f
+  slug: packet-capture
   parent: network management
   kind: technology
   desc: Packet capture and trace file formats
@@ -7186,6 +8226,8 @@ tags:
     first_year: 1995
     last_year: 2019
 - id: CMIP
+  uuid: 376a01e0-fc1a-451b-972f-404c7d58163b
+  slug: cmip
   parent: network management
   kind: technology
   desc: 'CMIP (Common Management Information Protocol): OSI-derived network management protocol and services, including its operation over TCP/IP'
@@ -7197,6 +8239,8 @@ tags:
     first_year: 1989
     last_year: 1990
 - id: applications
+  uuid: 8f0cee61-b341-4cb5-b06e-2a039a6d055d
+  slug: applications
   kind: topic
   desc: Application protocols in general
   match_title_only:
@@ -7208,6 +8252,8 @@ tags:
     last_year: 2026
     served: 800
 - id: FTP
+  uuid: 3c59af05-8eb7-475f-bee2-2b5e1dbd8114
+  slug: ftp
   parent: applications
   kind: technology
   desc: FTP (File Transfer Protocol)
@@ -7221,6 +8267,8 @@ tags:
     first_year: 1971
     last_year: 2021
 - id: TFTP
+  uuid: c6e09877-02a2-419e-8722-77ba80135583
+  slug: tftp
   parent: applications
   kind: technology
   desc: TFTP (Trivial File Transfer Protocol)
@@ -7234,6 +8282,8 @@ tags:
     first_year: 1981
     last_year: 2020
 - id: Telnet
+  uuid: 6be3a334-d657-4560-acc7-dbd63b858082
+  slug: telnet
   parent: applications
   kind: technology
   desc: The Telnet protocol and its options
@@ -7248,6 +8298,8 @@ tags:
     first_year: 1971
     last_year: 2011
 - id: Gopher
+  uuid: e3536bdd-c4e7-42dc-9201-7ae3c18d60fb
+  slug: gopher
   parent: applications
   kind: technology
   desc: The Gopher document retrieval protocol
@@ -7259,6 +8311,8 @@ tags:
     first_year: 1993
     last_year: 2005
 - id: WAIS
+  uuid: 36899d27-c2ad-454b-974b-ab82104aa2d4
+  slug: wais
   parent: applications
   kind: technology
   desc: WAIS (Wide Area Information Servers)
@@ -7270,6 +8324,8 @@ tags:
     first_year: 1994
     last_year: 2005
 - id: Finger
+  uuid: e06103f0-56ef-43d2-a87b-333b00af3942
+  slug: finger
   parent: applications
   kind: technology
   desc: The Finger user information protocol
@@ -7281,6 +8337,8 @@ tags:
     first_year: 1977
     last_year: 2005
 - id: rlogin
+  uuid: 4e0ef955-1d82-4fc3-b2e6-7915188b518a
+  slug: rlogin
   parent: applications
   kind: technology
   desc: The BSD rlogin remote login protocol
@@ -7292,6 +8350,8 @@ tags:
     first_year: 1991
     last_year: 1991
 - id: X Window System
+  uuid: 698c40be-733e-4435-9610-0161ec515b1b
+  slug: x-window-system
   parent: applications
   kind: technology
   desc: The X Window System protocol
@@ -7303,6 +8363,8 @@ tags:
     first_year: 1987
     last_year: 1991
 - id: small services
+  uuid: 0ebeda90-36a8-4c6f-8cd1-679c6ae65d4c
+  slug: small-services
   parent: applications
   kind: technology
   desc: 'The TCP/UDP small services: Echo, Discard, Chargen, QOTD, Daytime, Active Users'
@@ -7314,6 +8376,8 @@ tags:
     first_year: 1972
     last_year: 1983
 - id: e-commerce
+  uuid: fb323bd3-54bc-4c21-96ee-836d16e1eb53
+  slug: e-commerce
   parent: applications
   kind: topic
   desc: E-commerce and payment protocols
@@ -7331,6 +8395,8 @@ tags:
     last_year: 2020
     served: 15
 - id: IOTP
+  uuid: 1495d3d8-9490-4cbf-97a8-f038fa4a469c
+  slug: iotp
   parent: e-commerce
   kind: technology
   desc: IOTP (Internet Open Trading Protocol)
@@ -7342,6 +8408,8 @@ tags:
     first_year: 2000
     last_year: 2004
 - id: ECML
+  uuid: 9752b069-23a4-4874-ad42-71a931e77c7c
+  slug: ecml
   parent: e-commerce
   kind: technology
   desc: ECML (Electronic Commerce Modeling Language), field names and formats for passing payment, billing and shipping data to merchant checkout forms
@@ -7353,6 +8421,8 @@ tags:
     first_year: 1999
     last_year: 2005
 - id: CyberCash
+  uuid: ae825add-8be2-48ec-90ce-a6cab1587e74
+  slug: cybercash
   parent: e-commerce
   kind: technology
   desc: CyberCash credit card payment protocol (historic)
@@ -7364,6 +8434,8 @@ tags:
     first_year: 1996
     last_year: 1996
 - id: P2P
+  uuid: 0e73f477-8415-4d6e-bcb1-3c670ab3ce19
+  slug: p2p
   parent: applications
   kind: technology
   desc: Peer-to-Peer overlay networks and applications
@@ -7381,6 +8453,8 @@ tags:
     first_year: 2002
     last_year: 2018
 - id: LPD
+  uuid: e555364e-ef1d-4e0a-b65d-e6bd32751355
+  slug: lpd
   parent: applications
   kind: technology
   desc: LPD (Line Printer Daemon protocol)
@@ -7392,6 +8466,8 @@ tags:
     first_year: 1990
     last_year: 1999
 - id: IRC
+  uuid: d53843cc-ac82-4dfa-88f9-952aff710363
+  slug: irc
   parent: applications
   kind: technology
   desc: IRC (Internet Relay Chat)
@@ -7405,6 +8481,8 @@ tags:
     first_year: 1993
     last_year: 2014
 - id: IPP
+  uuid: 0d39e90f-03d6-48fe-a908-5c618dcf5287
+  slug: ipp
   parent: applications
   kind: technology
   desc: IPP (Internet Printing Protocol)
@@ -7419,6 +8497,8 @@ tags:
     first_year: 1995
     last_year: 2017
 - id: directory services
+  uuid: 0fdb9ab7-61ca-46fb-9b52-f71efd1c4a74
+  slug: directory-services
   parent: applications
   kind: topic
   desc: 'Directory services: access and synchronization'
@@ -7439,6 +8519,8 @@ tags:
     last_year: 2022
     served: 175
 - id: LDAP
+  uuid: b0ed919b-2c76-4cb6-bf95-4ced00b4f745
+  slug: ldap
   parent: directory services
   kind: technology
   desc: LDAP (Lightweight Directory Access Protocol)
@@ -7457,6 +8539,8 @@ tags:
     first_year: 1993
     last_year: 2017
 - id: X.500
+  uuid: e10a3e58-d02f-4e67-933c-12505f79dd40
+  slug: x500
   parent: directory services
   kind: technology
   desc: The X.500 directory service
@@ -7472,6 +8556,8 @@ tags:
     first_year: 1991
     last_year: 2007
 - id: storage
+  uuid: 7655f49e-25a0-485b-887e-c77853ac4e57
+  slug: storage
   parent: applications
   kind: topic
   desc: Storage access and block/file protocols over IP
@@ -7487,6 +8573,8 @@ tags:
     last_year: 2026
     served: 147
 - id: NFS
+  uuid: 2ee77b48-7a7e-4ddf-96b7-4456fbab50ea
+  slug: nfs
   parent: storage
   kind: technology
   desc: NFS (Network File System)
@@ -7503,6 +8591,8 @@ tags:
     first_year: 1973
     last_year: 2025
 - id: iSCSI
+  uuid: 94a9c537-5975-4bdd-a4d3-2f7c5cbcb5ed
+  slug: iscsi
   parent: storage
   kind: technology
   desc: iSCSI (Internet Small Computer System Interface)
@@ -7520,6 +8610,8 @@ tags:
     first_year: 1997
     last_year: 2024
 - id: fibre channel
+  uuid: 828d531c-d075-4ff4-ab17-6160f58b11ca
+  slug: fibre-channel
   parent: storage
   kind: technology
   desc: Fibre Channel over IP transports
@@ -7534,6 +8626,8 @@ tags:
     first_year: 1999
     last_year: 2013
 - id: iFCP
+  uuid: 8e81322b-6e04-4ac4-83c8-c52a95d46234
+  slug: ifcp
   parent: fibre channel
   kind: technology
   desc: iFCP (Internet Fibre Channel Protocol), gateway-to-gateway storage networking that carries Fibre Channel traffic over TCP/IP
@@ -7545,6 +8639,8 @@ tags:
     first_year: 2005
     last_year: 2011
 - id: RDMA
+  uuid: c82c72fc-e9c8-4cb6-9c4e-8bda4c2dd463
+  slug: rdma
   parent: storage
   kind: technology
   desc: RDMA (Remote Direct Memory Access) protocols
@@ -7560,6 +8656,8 @@ tags:
     first_year: 2005
     last_year: 2020
 - id: ONC RPC
+  uuid: 7570b13d-c8eb-4bec-9012-ab8aefc76e09
+  slug: onc-rpc
   parent: storage
   kind: technology
   desc: ONC RPC (Open Network Computing Remote Procedure Call) and XDR
@@ -7573,6 +8671,8 @@ tags:
     first_year: 1987
     last_year: 2026
 - id: AFS
+  uuid: 90cb897c-9f78-4201-b8a7-7427d52a9640
+  slug: afs
   parent: storage
   kind: technology
   desc: AFS (Andrew File System), its cells, volume location and DNS-based service discovery
@@ -7584,6 +8684,8 @@ tags:
     first_year: 2010
     last_year: 2010
 - id: calendaring
+  uuid: 550ea534-9540-4015-b977-264de3d4bad4
+  slug: calendaring
   parent: applications
   kind: topic
   desc: Calendaring and scheduling
@@ -7600,6 +8702,8 @@ tags:
     last_year: 2026
     served: 37
 - id: iCalendar
+  uuid: bf37d089-0dec-471c-9ac4-c8f315ae98b5
+  slug: icalendar
   parent: calendaring
   kind: technology
   desc: iCalendar calendar data format
@@ -7617,6 +8721,8 @@ tags:
     first_year: 1998
     last_year: 2022
 - id: CalDAV
+  uuid: 37e6f9e8-eb99-45ce-9274-63e69b98c9b9
+  slug: caldav
   parent: calendaring
   kind: technology
   desc: CalDAV (Calendaring Extensions to WebDAV) calendar access
@@ -7630,6 +8736,8 @@ tags:
     first_year: 2007
     last_year: 2019
 - id: time zones
+  uuid: 2bb914cd-2a5c-4f4f-87db-4b13388e53c6
+  slug: time-zones
   parent: calendaring
   kind: technology
   desc: Time zone data distribution and timestamps
@@ -7646,6 +8754,8 @@ tags:
     first_year: 2007
     last_year: 2024
 - id: JSCalendar
+  uuid: 97369a38-3c9f-4faa-afed-6ce1de0de30a
+  slug: jscalendar
   parent: calendaring
   kind: technology
   desc: JSCalendar, the JSON data model for calendar events, tasks and groups, and its conversions to and from iCalendar
@@ -7657,6 +8767,8 @@ tags:
     first_year: 2021
     last_year: 2021
 - id: vCard
+  uuid: a516f470-4c53-481b-a3ef-984b6f3bb25e
+  slug: vcard
   parent: applications
   kind: technology
   desc: vCard contact data
@@ -7671,6 +8783,8 @@ tags:
     first_year: 1998
     last_year: 2024
 - id: CardDAV
+  uuid: d4419840-52b9-4f91-b3b1-23f6f70f686f
+  slug: carddav
   parent: vCard
   kind: technology
   desc: CardDAV (vCard Extensions to WebDAV) address book access
@@ -7684,6 +8798,8 @@ tags:
     first_year: 2009
     last_year: 2014
 - id: accessibility
+  uuid: 254f414d-5e67-4140-add3-aa953aa266e0
+  slug: accessibility
   parent: applications
   kind: topic
   desc: Accessibility of Internet communications
@@ -7698,6 +8814,8 @@ tags:
     last_year: 2022
     served: 6
 - id: geolocation
+  uuid: c5c00e79-d085-4243-bc86-4d79dbb72e8d
+  slug: geolocation
   parent: applications
   kind: topic
   desc: 'Geolocation: formats, privacy and conveyance of location information'
@@ -7713,6 +8831,8 @@ tags:
     last_year: 2024
     served: 47
 - id: HELD
+  uuid: c67d7f1d-7533-401b-8707-7553580fd716
+  slug: held
   parent: geolocation
   kind: technology
   desc: 'HELD (HTTP-Enabled Location Delivery): acquiring location from a location information server over HTTP, with its identity, dereference and routing extensions'
@@ -7724,6 +8844,8 @@ tags:
     first_year: 2010
     last_year: 2016
 - id: ALTO
+  uuid: 97a07223-2870-4266-b119-6a6f5b5ec484
+  slug: alto
   parent: applications
   kind: technology
   desc: ALTO (Application-Layer Traffic Optimization)
@@ -7737,6 +8859,8 @@ tags:
     first_year: 2009
     last_year: 2024
 - id: BEEP
+  uuid: 63211323-5107-41e5-9fa3-071fad2b96ac
+  slug: beep
   parent: applications
   kind: technology
   desc: BEEP (Blocks Extensible Exchange Protocol)
@@ -7750,6 +8874,8 @@ tags:
     first_year: 2001
     last_year: 2009
 - id: ACAP
+  uuid: 61778ee4-459e-4087-afe7-9e9b8dd6750c
+  slug: acap
   parent: applications
   kind: technology
   desc: ACAP (Application Configuration Access Protocol)
@@ -7763,6 +8889,8 @@ tags:
     first_year: 1997
     last_year: 2010
 - id: APEX
+  uuid: 69ba5d4c-62ea-4289-820c-919ae4dc3d05
+  slug: apex
   parent: applications
   kind: technology
   desc: Application Exchange (APEX) messaging
@@ -7774,6 +8902,8 @@ tags:
     first_year: 2002
     last_year: 2003
 - id: TIP
+  uuid: b72ab9fe-7b24-423a-8cee-b626be75d041
+  slug: tip
   parent: applications
   kind: technology
   desc: TIP (Transaction Internet Protocol)
@@ -7785,6 +8915,8 @@ tags:
     first_year: 1998
     last_year: 1998
 - id: NetBIOS
+  uuid: ed8cfdc9-f7e9-4eeb-bef9-620161f03af6
+  slug: netbios
   parent: applications
   kind: technology
   desc: NetBIOS (Network Basic Input/Output System) services over TCP/IP
@@ -7796,6 +8928,8 @@ tags:
     first_year: 1987
     last_year: 1997
 - id: sockets API
+  uuid: ca5b5f80-66f9-45f3-8fa3-4f9441e9bfaf
+  slug: sockets-api
   parent: applications
   kind: technology
   desc: Sockets API extensions
@@ -7807,6 +8941,8 @@ tags:
     first_year: 1997
     last_year: 2011
 - id: eBPF
+  uuid: 455a0d96-50dc-4975-a03b-2dfab5f9861b
+  slug: ebpf
   parent: applications
   kind: technology
   desc: eBPF (extended Berkeley Packet Filter) instruction set and conventions
@@ -7820,6 +8956,8 @@ tags:
     first_year: 2024
     last_year: 2024
 - id: data formats
+  uuid: 9b6b1eac-bc76-4ecd-b519-3a2a61e297ad
+  slug: data-formats
   kind: topic
   desc: Data formats, encodings and representations in general
   match_title_only:
@@ -7831,6 +8969,8 @@ tags:
     last_year: 2026
     served: 479
 - id: ABNF
+  uuid: 8a7343b6-81f9-4665-ae41-304798f6d221
+  slug: abnf
   parent: data formats
   kind: technology
   desc: ABNF (Augmented Backus-Naur Form) and other formal syntax notations
@@ -7842,6 +8982,8 @@ tags:
     first_year: 1997
     last_year: 2021
 - id: RBNF
+  uuid: 6ba7d758-0c02-4b45-9c2e-107c21161ad0
+  slug: rbnf
   parent: ABNF
   kind: technology
   desc: RBNF (Routing Backus-Naur Form), the notation used to form encoding rules in routing protocol specifications
@@ -7853,6 +8995,8 @@ tags:
     first_year: 2009
     last_year: 2009
 - id: Base64
+  uuid: bbb817a1-f2e7-45e9-8d5a-cba5cc5b49c7
+  slug: base64
   parent: data formats
   kind: technology
   desc: Base64, Base32, Base16 and Base45 textual data encodings
@@ -7865,6 +9009,8 @@ tags:
     first_year: 2001
     last_year: 2022
 - id: date-time formats
+  uuid: fb4db12b-8379-4d0d-8136-d508ff87a66c
+  slug: date-time-formats
   parent: data formats
   kind: technology
   desc: 'Date and time representation: Internet timestamps (RFC 3339) and extensions'
@@ -7876,6 +9022,8 @@ tags:
     first_year: 2002
     last_year: 2024
 - id: XML
+  uuid: 6b2afb2b-35bd-4e7b-b6bc-388c2258f7d9
+  slug: xml
   parent: data formats
   kind: technology
   desc: XML (Extensible Markup Language) usage in protocols and XML-based formats
@@ -7887,6 +9035,8 @@ tags:
     first_year: 1998
     last_year: 2023
 - id: JSON
+  uuid: cc5872e3-df37-4db6-b851-f21020d459a7
+  slug: json
   parent: data formats
   kind: technology
   desc: JSON (JavaScript Object Notation) and JSON-based formats
@@ -7902,6 +9052,8 @@ tags:
     first_year: 2006
     last_year: 2026
 - id: JSONPath
+  uuid: 6aa74b49-7222-4946-8f9e-dd543d1e0a94
+  slug: jsonpath
   parent: JSON
   kind: technology
   desc: JSONPath query expressions
@@ -7915,6 +9067,8 @@ tags:
     first_year: 2023
     last_year: 2024
 - id: GeoJSON
+  uuid: 10307088-f459-416f-bbb6-fa7cdda8ce30
+  slug: geojson
   parent: JSON
   kind: technology
   desc: GeoJSON geographic data
@@ -7928,6 +9082,8 @@ tags:
     first_year: 2016
     last_year: 2017
 - id: CBOR
+  uuid: b9e85832-1c27-4af9-afad-11d30ac35752
+  slug: cbor
   parent: data formats
   kind: technology
   desc: CBOR (Concise Binary Object Representation)
@@ -7941,6 +9097,8 @@ tags:
     first_year: 2013
     last_year: 2026
 - id: CDDL
+  uuid: d1861c24-46b6-4eba-9ca7-27079704e736
+  slug: cddl
   parent: CBOR
   kind: technology
   desc: CDDL (Concise Data Definition Language)
@@ -7952,6 +9110,8 @@ tags:
     first_year: 2019
     last_year: 2025
 - id: ASN.1
+  uuid: e370c22f-54c1-4e4d-8079-5a95b85a7e29
+  slug: asn1
   parent: data formats
   kind: technology
   desc: ASN.1 (Abstract Syntax Notation One) modules and encoding rules
@@ -7963,6 +9123,8 @@ tags:
     first_year: 1991
     last_year: 2021
 - id: SGML
+  uuid: d85cef32-639c-4899-b3a6-a9c893fe55cd
+  slug: sgml
   parent: data formats
   kind: technology
   desc: SGML (Standard Generalized Markup Language)-based document interchange
@@ -7976,6 +9138,8 @@ tags:
     first_year: 1995
     last_year: 1996
 - id: Markdown
+  uuid: 682c6636-13b2-4c54-ae77-59e15cfcb72a
+  slug: markdown
   parent: data formats
   kind: technology
   desc: Markdown text formats
@@ -7987,6 +9151,8 @@ tags:
     first_year: 2016
     last_year: 2016
 - id: internationalization
+  uuid: 85673472-ed3a-415e-9e84-54d291649993
+  slug: internationalization
   parent: data formats
   kind: topic
   desc: Internationalization of text in protocols
@@ -8002,6 +9168,8 @@ tags:
     last_year: 2025
     served: 142
 - id: UTF-8
+  uuid: 1c07ddbf-e65b-4d25-89ae-b1af6ce79ad9
+  slug: utf-8
   parent: internationalization
   kind: technology
   desc: The UTF-8 (Unicode Transformation Format, 8-bit) encoding
@@ -8015,6 +9183,8 @@ tags:
     first_year: 1996
     last_year: 2025
 - id: Unicode
+  uuid: 5f37c3d9-0e68-430a-bfc0-81a590dfce36
+  slug: unicode
   parent: internationalization
   kind: technology
   desc: Unicode usage in Internet protocols
@@ -8028,6 +9198,8 @@ tags:
     first_year: 1994
     last_year: 2025
 - id: character sets
+  uuid: 39704bc7-ed57-434d-860e-d34873e7cf10
+  slug: character-sets
   parent: internationalization
   kind: technology
   desc: Character set registration and use
@@ -8042,6 +9214,8 @@ tags:
     first_year: 1969
     last_year: 2016
 - id: ASCII
+  uuid: 3cdb9a79-f8ac-4395-b90e-a852129d8f9d
+  slug: ascii
   parent: character sets
   kind: technology
   desc: ASCII (American Standard Code for Information Interchange), the seven-bit coded character set and its use in text interchange
@@ -8053,6 +9227,8 @@ tags:
   match:
   - '\b(?:US-)?ASCII\b|\bANSI X3\.4\b'
 - id: EBCDIC
+  uuid: b89d953a-c748-4042-84fc-58d69d748001
+  slug: ebcdic
   parent: character sets
   kind: technology
   desc: EBCDIC (Extended Binary Coded Decimal Interchange Code), the IBM mainframe character encoding and its translation to and from other character sets
@@ -8064,6 +9240,8 @@ tags:
     first_year: 1971
     last_year: 1972
 - id: language tags
+  uuid: 516020dc-0fbc-40c8-bad2-c64e7e7a70ec
+  slug: language-tags
   parent: internationalization
   kind: technology
   desc: Language tags and matching
@@ -8079,6 +9257,8 @@ tags:
     first_year: 1999
     last_year: 2022
 - id: PRECIS
+  uuid: 853bec16-7818-4911-9190-49a03fe7885c
+  slug: precis
   parent: internationalization
   kind: technology
   desc: PRECIS (Preparation, Enforcement, and Comparison of Internationalized Strings) internationalized string handling
@@ -8094,6 +9274,8 @@ tags:
     first_year: 2013
     last_year: 2017
 - id: compression
+  uuid: e7d50640-a113-4d9f-a4ab-a81215983e2a
+  slug: compression
   parent: data formats
   kind: topic
   desc: Lossless data compression formats
@@ -8114,6 +9296,8 @@ tags:
     last_year: 2026
     served: 88
 - id: DEFLATE
+  uuid: b8f90375-ba22-4e4c-a097-fa061150c393
+  slug: deflate
   parent: compression
   kind: technology
   desc: DEFLATE and zlib
@@ -8127,6 +9311,8 @@ tags:
     first_year: 1996
     last_year: 2020
 - id: gzip
+  uuid: 8ce57b3f-bf43-432d-9238-80fa3ac1cfdb
+  slug: gzip
   parent: compression
   kind: technology
   desc: The gzip file format
@@ -8140,6 +9326,8 @@ tags:
     first_year: 1996
     last_year: 2012
 - id: Brotli
+  uuid: 3b142aba-e6ac-48e0-b29a-1aba1add5917
+  slug: brotli
   parent: compression
   kind: technology
   desc: Brotli compression
@@ -8153,6 +9341,8 @@ tags:
     first_year: 2016
     last_year: 2025
 - id: zstd
+  uuid: 1cecc865-f97b-419a-a1b1-d96391570392
+  slug: zstd
   parent: compression
   kind: technology
   desc: Zstandard compression
@@ -8166,6 +9356,8 @@ tags:
     first_year: 2018
     last_year: 2025
 - id: IPComp
+  uuid: 5b968c5b-4bac-4678-8d98-c6499455e992
+  slug: ipcomp
   parent: compression
   kind: technology
   desc: IPComp (IP Payload Compression Protocol)
@@ -8181,6 +9373,8 @@ tags:
     first_year: 1998
     last_year: 2001
 - id: LZS
+  uuid: 1f825e17-d693-4157-b918-cb12c17db940
+  slug: lzs
   parent: compression
   kind: technology
   desc: LZS (Lempel-Ziv-Stac) compression and its use in PPP, IP payload and TLS
@@ -8192,6 +9386,8 @@ tags:
     first_year: 1996
     last_year: 2004
 - id: zlib
+  uuid: dead6987-4b5b-4067-b431-805c9843456a
+  slug: zlib
   parent: compression
   kind: technology
   desc: zlib compressed data format wrapping DEFLATE streams
@@ -8203,6 +9399,8 @@ tags:
     first_year: 1996
     last_year: 2020
 - id: content negotiation
+  uuid: 4d4e3bd6-eec2-423c-a1d1-99943729bd7a
+  slug: content-negotiation
   parent: data formats
   kind: technology
   desc: Media feature and content negotiation
@@ -8216,6 +9414,8 @@ tags:
     first_year: 1998
     last_year: 2021
 - id: CSV
+  uuid: fdf9e6b5-2be1-45ca-a00e-a79dd7af651f
+  slug: csv
   parent: data formats
   kind: technology
   desc: CSV (comma-separated values), the text/csv media type, its records and fields, and fragment identifiers into it
@@ -8227,6 +9427,8 @@ tags:
     first_year: 2005
     last_year: 2021
 - id: YAML
+  uuid: d7c02054-20ea-401c-bf9c-7ea8fabdca48
+  slug: yaml
   parent: data formats
   kind: technology
   desc: YAML (YAML Ain't Markup Language), the application/yaml media type and its use as a serialisation and configuration format
@@ -8238,6 +9440,8 @@ tags:
     first_year: 2024
     last_year: 2024
 - id: IoT
+  uuid: 6b8f95ba-cb84-4249-9805-96afa1157f76
+  slug: iot
   kind: topic
   desc: 'IoT (Internet of Things): architectures, terminology, guidance for constrained devices'
   match_title_only:
@@ -8252,6 +9456,8 @@ tags:
     last_year: 2026
     served: 153
 - id: CoAP
+  uuid: f56a7785-255a-45d1-8476-dd7cdd7f3f5d
+  slug: coap
   parent: IoT
   kind: technology
   desc: CoAP (Constrained Application Protocol)
@@ -8267,6 +9473,8 @@ tags:
     first_year: 2012
     last_year: 2026
 - id: OSCORE
+  uuid: 38ea290a-08b8-4c92-aa09-548b895c301e
+  slug: oscore
   parent: CoAP
   kind: technology
   desc: OSCORE (Object Security for Constrained RESTful Environments)
@@ -8281,6 +9489,8 @@ tags:
     first_year: 2019
     last_year: 2024
 - id: SenML
+  uuid: bfae83fb-2d72-4dba-b558-2535796ec4ac
+  slug: senml
   parent: IoT
   kind: technology
   desc: SenML (Sensor Measurement Lists) data format
@@ -8294,6 +9504,8 @@ tags:
     first_year: 2018
     last_year: 2022
 - id: SDF
+  uuid: 85474a48-780f-4f4a-be3d-09cb6caaad6e
+  slug: sdf
   parent: IoT
   kind: technology
   desc: SDF (Semantic Definition Format) for IoT data models
@@ -8307,6 +9519,8 @@ tags:
     first_year: 2026
     last_year: 2026
 - id: 6LoWPAN
+  uuid: a624625a-6971-43d1-abd1-c8b175e876c2
+  slug: 6lowpan
   parent: IoT
   kind: technology
   desc: 6LoWPAN (IPv6 over Low-Power Wireless Personal Area Networks) and other constrained link layers
@@ -8323,6 +9537,8 @@ tags:
     first_year: 2007
     last_year: 2026
 - id: RPL
+  uuid: 3a3ea84d-d9f9-4e6d-bd6c-6c5af970c4bc
+  slug: rpl
   parent: IoT
   kind: technology
   desc: RPL (IPv6 Routing Protocol for Low-Power and Lossy Networks)
@@ -8339,6 +9555,8 @@ tags:
     first_year: 2009
     last_year: 2026
 - id: 6TiSCH
+  uuid: f500feb2-d957-491d-8670-5be9daae993f
+  slug: 6tisch
   parent: IoT
   kind: technology
   desc: 6TiSCH (IPv6 over the TSCH mode of IEEE 802.15.4e)
@@ -8354,6 +9572,8 @@ tags:
     first_year: 2015
     last_year: 2021
 - id: LPWAN
+  uuid: 270a4679-559d-49b8-9e8c-bd2f855a7a9d
+  slug: lpwan
   parent: IoT
   kind: technology
   desc: LPWAN (Low-Power Wide-Area Network) technologies over IP
@@ -8369,6 +9589,8 @@ tags:
     first_year: 2018
     last_year: 2023
 - id: SCHC
+  uuid: 99a6f784-1195-48bc-b308-86e39894793f
+  slug: schc
   parent: LPWAN
   kind: technology
   desc: SCHC (Static Context Header Compression)
@@ -8382,6 +9604,8 @@ tags:
     first_year: 2020
     last_year: 2023
 - id: LoRaWAN
+  uuid: 07a6d688-ee99-414b-b2f0-f1964c089631
+  slug: lorawan
   parent: LPWAN
   kind: technology
   desc: LoRaWAN (Long Range Wide Area Network) low-power radio networks and IP adaptation over them
@@ -8393,6 +9617,8 @@ tags:
     first_year: 2020
     last_year: 2023
 - id: Sigfox
+  uuid: d94f69ff-6526-41af-a3e3-b55fd2546d5f
+  slug: sigfox
   parent: LPWAN
   kind: technology
   desc: Sigfox ultra-narrowband LPWAN and IP adaptation over it
@@ -8404,6 +9630,8 @@ tags:
     first_year: 2020
     last_year: 2023
 - id: ACE
+  uuid: 540a59a7-5397-4572-b9cc-3f9768b935d5
+  slug: ace
   parent: IoT
   kind: technology
   desc: ACE (Authentication and Authorization for Constrained Environments)
@@ -8417,6 +9645,8 @@ tags:
     first_year: 2016
     last_year: 2025
 - id: EDHOC
+  uuid: 83e9fd72-f7b6-482f-ad31-5ce890803585
+  slug: edhoc
   parent: ACE
   kind: technology
   desc: EDHOC (Ephemeral Diffie-Hellman Over COSE) key exchange
@@ -8433,6 +9663,8 @@ tags:
     first_year: 2024
     last_year: 2024
 - id: firmware update
+  uuid: e4ec1228-ece0-4e6f-9f9e-2839a48bddaf
+  slug: firmware-update
   parent: IoT
   kind: technology
   desc: 'Firmware update for IoT devices: architecture and manifests'
@@ -8449,6 +9681,8 @@ tags:
     first_year: 2017
     last_year: 2022
 - id: MUD
+  uuid: dfd0d9a7-6f65-4355-a5b8-2deb45ad35a7
+  slug: mud
   parent: IoT
   kind: technology
   desc: MUD (Manufacturer Usage Description)
@@ -8463,6 +9697,8 @@ tags:
     first_year: 2019
     last_year: 2025
 - id: internet governance
+  uuid: 25a2229a-e320-4d03-9f16-118eb948dd4b
+  slug: internet-governance
   kind: topic
   desc: 'Internet Governance: how the Internet and its standards are governed, administered, developed and published'
   match:
@@ -8482,6 +9718,8 @@ tags:
     last_year: 2026
     served: 777
 - id: IETF process
+  uuid: 8714614e-dda6-4c68-ab03-81aec52f54ad
+  slug: ietf-process
   parent: internet governance
   kind: topic
   desc: 'IETF Process (Internet Engineering Task Force process): IETF standards process, procedures and administration'
@@ -8522,6 +9760,8 @@ tags:
     last_year: 2026
     served: 326
 - id: NomCom
+  uuid: 77c69b13-cbb1-4318-be87-9cf87a860ea1
+  slug: nomcom
   parent: IETF process
   kind: topic
   desc: IETF NomCom (Nominating Committee) procedures
@@ -8536,6 +9776,8 @@ tags:
     last_year: 2023
     served: 12
 - id: IPR
+  uuid: 567067fc-70d6-40dd-ae08-c92a38907330
+  slug: ipr
   parent: internet governance
   kind: topic
   desc: IPR (Intellectual Property Rights), copyright and trust legal provisions
@@ -8552,6 +9794,8 @@ tags:
     last_year: 2024
     served: 25
 - id: IANA
+  uuid: a629b666-28dc-4287-8496-51acc5269a93
+  slug: iana
   parent: internet governance
   kind: topic
   desc: IANA (Internet Assigned Numbers Authority) registries, considerations guidance and stewardship
@@ -8568,6 +9812,8 @@ tags:
     last_year: 2025
     served: 188
 - id: RFC series
+  uuid: e3098dec-bc74-47f2-a0f4-e58afaa383aa
+  slug: rfc-series
   parent: internet governance
   kind: topic
   desc: 'The RFC Series (Request for Comments): format, style, editor and publication'
@@ -8587,6 +9833,8 @@ tags:
     last_year: 2026
     served: 84
 - id: RFCXML
+  uuid: c0f6ab92-5057-42a4-a522-b9b2b54ed6ac
+  slug: rfcxml
   parent: RFC series
   kind: technology
   desc: RFCXML (RFC XML vocabulary), the XML vocabulary for RFCs and Internet-Drafts (processed by xml2rfc)
@@ -8598,6 +9846,8 @@ tags:
     first_year: 2016
     last_year: 2016
 - id: user guides
+  uuid: 20cbef36-d6be-4659-b411-e2196225a02d
+  slug: user-guides
   parent: internet governance
   kind: topic
   desc: 'User Guides (FYI series): introductory guides and FYI documents for Internet users'
@@ -8628,6 +9878,8 @@ tags:
     last_year: 2014
     served: 44
 - id: terminology
+  uuid: 2417f73a-e506-4c0c-a8a5-4cd556c83cd4
+  slug: terminology
   parent: internet governance
   kind: topic
   desc: 'Terminology: glossaries, definitions and requirements language'
@@ -8643,6 +9895,8 @@ tags:
     last_year: 2026
     served: 64
 - id: workshop reports
+  uuid: 80099648-45c2-41f6-99a6-332ac7014855
+  slug: workshop-reports
   parent: internet governance
   kind: topic
   desc: Reports from IAB, IRTF and community workshops
@@ -8657,6 +9911,8 @@ tags:
     last_year: 2026
     served: 50
 - id: internet architecture
+  uuid: 09a6f213-6bc2-4699-9083-e3bd8af60dbe
+  slug: internet-architecture
   kind: topic
   desc: 'Internet Architecture: architectural principles of the Internet'
   match:
@@ -8678,6 +9934,8 @@ tags:
     last_year: 2026
     served: 122
 - id: internet history
+  uuid: e1dbb83a-b3a7-462d-b500-38aaf6ca3693
+  slug: internet-history
   kind: topic
   desc: 'Internet History: histories and retrospectives of the Internet and its protocols'
   match:
@@ -8690,6 +9948,8 @@ tags:
     last_year: 2023
     served: 6
 - id: ARPANET
+  uuid: c5451d55-f95d-436a-a4b6-e499797c9625
+  slug: arpanet
   kind: topic
   desc: 'The ARPANET (Advanced Research Projects Agency Network): its host and network protocols, operations and working notes'
   match:
@@ -8703,6 +9963,8 @@ tags:
     last_year: 2026
     served: 573
 - id: NCP
+  uuid: 1909b158-0bf2-46a6-a622-2e59501c8c4a
+  slug: ncp
   parent: ARPANET
   kind: technology
   desc: 'NCP (Network Control Protocol): the historic ARPANET host-host protocol'
@@ -8715,6 +9977,8 @@ tags:
     first_year: 1969
     last_year: 1981
 - id: SUPDUP
+  uuid: c44f0153-89a3-45a8-8022-d403b2104f8e
+  slug: supdup
   parent: ARPANET
   kind: technology
   desc: 'SUPDUP (SUPer-DUPer): display protocol for the ARPANET'
@@ -8726,6 +9990,8 @@ tags:
     first_year: 1977
     last_year: 1978
 - id: RJE
+  uuid: 19c09f6c-fa12-461c-bf55-44e00ac4871e
+  slug: rje
   parent: ARPANET
   kind: technology
   desc: Remote job entry on the early network
@@ -8737,6 +10003,8 @@ tags:
     first_year: 1971
     last_year: 1977
 - id: network graphics
+  uuid: 62a3968d-965c-4875-aa3c-f6d9319f17a6
+  slug: network-graphics
   parent: ARPANET
   kind: technology
   desc: Early network graphics protocols and formats
@@ -8756,6 +10024,8 @@ tags:
     first_year: 1971
     last_year: 2026
 - id: humor
+  uuid: 27a71c5c-0b52-41d7-869a-64b5236f9d06
+  slug: humor
   kind: topic
   desc: 'Humorous RFCs: the April 1st series and other whimsical documents (poems, parodies)'
   documents:
