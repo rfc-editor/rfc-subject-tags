@@ -111,7 +111,7 @@ Optional fields:
 | Field | Meaning |
 |---|---|
 | `uuid` | **Generated, permanent.** A version-4 UUID assigned by `regen.py` to any tag that lacks one, and then never changed. It is the tag's identity across renames: rename the `id`, keep the `uuid`. Unique. |
-| `slug` | **Generated, derived.** Django's `slugify` applied to the id (`HTTP/2` → `http2`, `.onion` → `onion`, `congestion control` → `congestion-control`), deduplicated in file order (`WHOIS` → `whois`, `WHOIS++` → `whois-2`). Regenerated on every run, so it follows a rename. The loader rejects a slug that differs from what it would generate. |
+| `slug` | **Generated, derived.** Django's `slugify` applied to the id (`HTTP/2` → `http2`, `.onion` → `onion`, `congestion control` → `congestion-control`), with each `+` first written as `p` (`WHOIS++` → `whoispp`, `TACACS+` → `tacacsp`, as C++ is written cpp), and any remaining repeat deduplicated in file order with `-2`, `-3`. Regenerated on every run, so it follows a rename. The loader rejects a slug that differs from what it would generate. |
 | `match_title_only` | Regexes run against the title alone — for words too risky to match in keywords |
 | `yields_to` | Tags whose presence removes this one (a generic yielding to a specific) |
 | `implies` | Topics this technology entails by purpose (R20), added in the served view |
