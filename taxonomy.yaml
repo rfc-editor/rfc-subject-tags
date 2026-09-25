@@ -348,7 +348,7 @@ tags:
     last_year: 1997
 - id: WHOIS++
   uuid: df1a9a67-87b9-498f-ac52-a181ce819646
-  slug: whois-2
+  slug: whoispp
   parent: WHOIS
   kind: technology
   desc: WHOIS++, the distributed white pages directory architecture with its centroid-based index and mesh servers
@@ -6527,7 +6527,7 @@ tags:
     last_year: 2023
 - id: TACACS+
   uuid: e9c5e49a-8c3d-4329-aee7-a3e0b3086894
-  slug: tacacs
+  slug: tacacsp
   parent: AAA
   kind: technology
   desc: TACACS and TACACS+ (Terminal Access Controller Access-Control System Plus)

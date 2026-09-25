@@ -41,11 +41,13 @@ def slugify(value, allow_unicode=False):
     return re.sub(r"[-\s]+", "-", value).strip("-_")
 
 def slugs_for(ids):
-    """Slug for every id, in order. A slug that would repeat an earlier one gets -2, -3, ...
-    (the Django algorithm alone maps both WHOIS and WHOIS++ to 'whois')."""
+    """Slug for every id, in order. Before slugifying, each "+" becomes "p" (WHOIS++ -> whoispp,
+    TACACS+ -> tacacsp, as the language name C++ is conventionally written cpp), since Django's
+    algorithm would otherwise drop plus signs and lose the distinction the name carries. Any slug
+    that would still repeat an earlier one gets -2, -3, ..."""
     seen = collections.Counter(); out = {}
     for i in ids:
-        base = slugify(i) or 'tag'
+        base = slugify(i.replace('+', 'p')) or 'tag'
         seen[base] += 1
         out[i] = base if seen[base] == 1 else f'{base}-{seen[base]}'
     return out
