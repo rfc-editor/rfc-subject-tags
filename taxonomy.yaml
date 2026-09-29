@@ -39,7 +39,6 @@ tags:
   desc: 'DNS (Domain Name System): protocol, resource records, resolver and server behaviour, operations'
   match:
   - '\bDNS\b|domain names?\b|\bIN-ADDR\b|resource record|name server|nameserver|domain administrators|dynamic delegation discovery|\bDDDS\b|SRV RR'
-  - domain requirements
   groups:
   - add
   - dns
@@ -273,7 +272,6 @@ tags:
   match:
   - domain.{0,15}registr
   - (registration|NIC) service
-  - domain requirements
   stats:
     direct: 6
     total: 116
@@ -1269,7 +1267,6 @@ tags:
   match:
   - '\bMIME\b|multipurpose internet mail|content-type'
   - 'multi-?media (document|mail|information)|\bODA\b'
-  - equations representation
   groups:
   - 822ext
   - imm
@@ -2374,11 +2371,11 @@ tags:
   kind: topic
   desc: Routing architecture, scalability and design principles
   match:
-  - routing architecture|scalable routing|future routing
+  - routing architecture
   - policy.based routing|policy routing|inter.?administrative domain routing
   - requirements for (internet gateways|IP routers)|router requirements
   - multi-provider|source demand routing
-  - gateway.{0,10}meeting|special interest group
+  - gateway.{0,10}meeting
   groups:
   - sdr
   stats:
@@ -3980,7 +3977,6 @@ tags:
   desc: Active queue management (AQM)
   match:
   - 'active queue management|\bAQM\b'
-  - packet switches with infinite storage
   groups:
   - aqm
   implies:
@@ -4130,7 +4126,7 @@ tags:
   match:
   - 'quality.of.service|\bQoS\b'
   - 'type.of.service|\bTOS\b'
-  - real-time communication services|isochronous|jitter
+  - isochronous|jitter
   - flow (admission|attribute)
   groups:
   - qosr
@@ -4737,7 +4733,7 @@ tags:
   - '\bsubnets?\b|subnetting'
   - broadcast(ing)? (internet )?datagrams|directed broadcast
   - '\baddressing\b'
-  - broadcast(ing)? (internet )?datagrams|directed broadcast|broadcast address|multi-network broadcasting
+  - broadcast(ing)? (internet )?datagrams|directed broadcast|broadcast address
   yields_to:
   - DHCP
   - DHCPv6
@@ -5325,7 +5321,7 @@ tags:
   match_title_only:
   - link.layer|data link
   stats:
-    direct: 9
+    direct: 10
     total: 714
     first_year: 1972
     last_year: 2026
@@ -5652,10 +5648,9 @@ tags:
   match:
   - '\bSLIP\b|serial line'
   - thinwire
-  - reliable link layer
   stats:
-    direct: 6
-    total: 6
+    direct: 5
+    total: 5
     first_year: 1984
     last_year: 1992
 - id: FDDI
@@ -6732,7 +6727,7 @@ tags:
   match:
   - incident (handling|response|report)
   - vulnerability disclosure
-  - helminthiasis|internet worm
+  - internet worm
   groups:
   - grip
   - inch
@@ -6986,7 +6981,6 @@ tags:
   desc: Firewalls and middlebox security traversal
   match:
   - '\bfirewalls?\b|middlebox|IP prox(y|ies)|transparent prox'
-  - source directed access
   - fragment(ation)? attack|tiny fragment
   groups:
   - midcom
@@ -7624,11 +7618,10 @@ tags:
   - intent.based|intent classification|service (assurance|negotiation)
   - host monitoring
   - (service|configuration) management
-  - server/application state
   - uninterruptible power
   - 'manageability|operational (consideration|guideline|experience|issue|requirement|practice|aspect)|operations,? administration|\bmonitoring\b'
   - operations and management
-  - oral tradition of the internet|responsibilities of host and network managers
+  - oral tradition of the internet
   groups:
   - nmop
   - nmrg
@@ -7835,7 +7828,6 @@ tags:
   match:
   - '\bIPPM\b|performance metric|loss metric|delay metric'
   - network tracing
-  - improved packet reordering metric
   match_title_only:
   - '\bmeasurement\b|alternate.marking'
   groups:
@@ -8389,7 +8381,7 @@ tags:
   kind: topic
   desc: E-commerce and payment protocols
   match:
-  - 'cybercash|e-?commerce|\bECML\b|internet open trading|payment|airline'
+  - 'cybercash|e-?commerce|\bECML\b|internet open trading|payment'
   groups:
   - trade
   yields_to:
@@ -8569,7 +8561,7 @@ tags:
   kind: topic
   desc: Storage access and block/file protocols over IP
   match:
-  - BagIt|memory space
+  - BagIt
   - digital library
   groups:
   - decade
@@ -9718,13 +9710,12 @@ tags:
   kind: topic
   desc: 'Internet Governance: how the Internet and its standards are governed, administered, developed and published'
   match:
-  - 'national research and education|commercializ|\bGOSIP\b|\bRIPE\b|acceptable use'
-  - DoD statement|military standard|MIL domain
-  - research internet|scientific research|high bandwidth networking|mid-level networks|transatlantic research|resource allocation.{0,15}network|dilemma of the network|NSFNET|interagency
-  - ethics|internet is for everyone
-  - '\bIEPG\b|internet society|\bISOC\b|standardization collaboration|collaboration between'
+  - 'commercializ|\bGOSIP\b|\bRIPE\b|acceptable use'
+  - DoD statement|military standard
+  - resource allocation.{0,15}network|NSFNET
+  - ethics
+  - '\bIEPG\b|internet society|\bISOC\b|standardization collaboration'
   - resource allocation
-  - ARPA.Internet Protocol policy
   - '\bNREN\b'
   - internet governance|ICANN|domain name.*(policy|delegation|administration)|top-level domain
   stats:
@@ -9742,10 +9733,10 @@ tags:
   match:
   - official protocol standards|internet standards? process
   - conduct|diversity|harassment
-  - ^official.{0,20}protocols|protocol document order
+  - ^official.{0,20}protocols
   - (activities|architecture) board
-  - 'liaison statement|birds.of.a.feather|\bBOF\b|writing (RFC text on )?security considerations|rough consensus|tao of the|standards organizations|draft standard|area director|exploratory group|successful
-    protocol|technical publication'
+  - 'liaison statement|birds.of.a.feather|\bBOF\b|writing (RFC text on )?security considerations|rough consensus|tao of the|standards organizations|draft standard|area director|exploratory group|technical
+    publication'
   - internet engineering task force
   - is obsolete
   - 'IETF (standards )?process|standards (track|process|action)|working group (guideline|procedure|chair)|internet.draft|last call|IESG|IETF (structure|administrat|meeting|rights)|variance procedure|appeals?\b'
@@ -9836,11 +9827,11 @@ tags:
   desc: 'The RFC Series (Request for Comments): format, style, editor and publication'
   match:
   - requests? for comments summary|documentation convention|RFCs?.{0,20}(DOI|digital object)
-  - '^summary of \d|not all RFCs|reference guide|bibliography of request'
+  - '^summary of \d'
   - rights handling
   - (?<!in the )RFC (series|formats?|style|editor|streams?)|instructions to RFC authors|request for comments.*(editor|series)
   - '\b(HTML|PDF|SVG|CSS|plain.?text|non-ASCII)\b.{0,25}\bRFCs\b|\bboilerplates?\b.{0,20}\bRFC|RFC .{0,20}boilerplate'
-  - '\bSTD notes\b|publication of .{0,12}RFCs\b'
+  - '\bSTD notes\b'
   groups:
   - rfced
   - stdguide
@@ -9874,9 +9865,9 @@ tags:
   kind: topic
   desc: 'User Guides (FYI series): introductory guides and FYI documents for Internet users'
   match:
-  - '\bFYI\b|new internet user|choosing a name'
+  - '\bFYI\b|new internet user'
   - user group
-  - hitchhikers guide|what is the internet|recent internet books|searching for treasure|humanities and arts|gold in them
+  - what is the internet|searching for treasure|gold in them
   - '\bprimer\b|\bhandbook\b'
   groups:
   - fyi
@@ -9941,31 +9932,27 @@ tags:
   kind: topic
   desc: 'Internet Architecture: architectural principles of the Internet'
   match:
-  - end users|centraliz(?!ed conferencing)|decentraliz|internet transparency
+  - centraliz(?!ed conferencing)|decentraliz|internet transparency
   - path.aware|alternative network
-  - requirements for internet hosts|host requirements
-  - naming and binding
-  - prefix and similar
-  - limited domains|in-network comput
-  - network complexity
+  - requirements for internet hosts
+  - in-network comput
   - considered dangerous|considered harmful
   - architectural (principle|consideration|guideline)|internet architecture|design consideration|philosophy|protocol extension|extension mechanism
-  - protocol versus document
   groups:
   - iab
   stats:
-    direct: 122
-    total: 122
+    direct: 121
+    total: 121
     first_year: 1974
     last_year: 2026
-    served: 122
+    served: 121
 - id: internet history
   uuid: e1dbb83a-b3a7-462d-b500-38aaf6ca3693
   slug: internet-history
   kind: topic
   desc: 'Internet History: histories and retrospectives of the Internet and its protocols'
   match:
-  - 'remembrance|\btribute\b|working with jon'
+  - '\btribute\b'
   - '\bhistory of\b|retrospective|anniversar|timeline of'
   stats:
     direct: 6
@@ -9981,7 +9968,6 @@ tags:
   match:
   - '\bIMPs?\b|1822|host-imp|arpanet|arpa network'
   - host.front end|H-FP
-  - all victims together
   stats:
     direct: 484
     total: 572

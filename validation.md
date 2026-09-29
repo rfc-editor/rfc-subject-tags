@@ -85,9 +85,15 @@ For each topic, confirm the name is phrasing people search for, not a librarian'
 
 List non-ancestor tag pairs with Jaccard similarity above 0.35 over their document sets. Confirm each reflects a real relationship, not a map entry assigning both.
 
-### Fallback assignments
+### Review queue
 
-List the documents whose `source` in `rfc-tags.json` is `abstract`: their tags came from the abstract because nothing in the title, keywords, working group or stream matched. These are the least reliable assignments in the build — RFC 9896 (SVG in RFCs) acquired `ONC RPC` and `network graphics` this way — and they are the first place to look when a reader reports a wrong tag. Each one should either gain a rule that names its subject or be confirmed by hand.
+Count the documents with a non-empty `review` in `rfc-tags.json`, by reason (the page's Review tab shows the same). The queue should only shrink between builds: a reason disappears when a rule is improved or when the document gains an entry in `assignments.yaml`. The from-abstract group is the least reliable — RFC 9896 (SVG in RFCs) acquired `ONC RPC` and `network graphics` this way — and is where to look first when a reader reports a wrong tag.
+
+### Overrides (assignments.yaml)
+
+- The loader accepts the file: every RFC id well-formed, every tag named exists, every entry has a reason.
+- No tag is carried *only* by overrides: a tag with no rule of its own fails R11's test. Check that every tag added by an override also has documents by rule.
+- The stability replay includes overridden documents; an override that debuts a tag is a new tag entering by hand and should be as rare as any other debut.
 
 ### Root leaks (R12)
 
@@ -132,7 +138,7 @@ When the engine or the YAML schema changes, re-run against the previous `rfc-tag
 - **Tags:** 635 — 19 roots, 289 at level 2, 281 at level 3, 46 at level 4; 553 technology, 82 topic.
 - **Coverage:** 0 untagged.
 - **Tags per RFC (with ancestors):** mean 3.65, median 3, max 15.
-- **Distribution:** 1:682 · 2:2,583 · 3:2,126 · 4:1,586 · 5:1,325 · 6:721 · 7:415 · 8:214 · 9:102 · 10:39 · 11:24 · 12:10 · 13:4 · 14:3 · 15:1.
+- **Distribution:** 1:683 · 2:2,583 · 3:2,125 · 4:1,586 · 5:1,325 · 6:721 · 7:415 · 8:214 · 9:102 · 10:39 · 11:24 · 12:10 · 13:4 · 14:3 · 15:1.
 - **Over ten tags:** 42 documents (0.4%), all multi-technology cross-area specifications.
 - **Unused tags:** 0.
 - **Single-document tags:** 44 — AFS, ARC, BATS, BLAKE2, CRC, CyberCash, DCTCP, Dragonfly, EIGRP, FFV1, GSAKMP, HOBA, HTTP caching, IDXP, IRTP, J-PAKE, JSCalendar, LPWAN, MOSPF, NAT-PMP, OPAQUE, OVSDB, PGM, RATP, RBNF, SDF, SFrame, Speex, TBRPF, TEEP, TMux, TVR, Tetrys, Vorbis, WHIP, XACML, Y2K, YAML, amateur radio, data center networking, eBPF, oblivious DNS, password hashing, scrypt.
@@ -142,7 +148,7 @@ When the engine or the YAML schema changes, re-run against the previous `rfc-tag
 ### Served view
 
 - **Axes:** 553 technology tags, 76 topics.
-- **Zero-technology documents:** 1,493 — governance, process, humor, ARPANET-era notes, general-subject documents.
+- **Zero-technology documents:** 1,494 — governance, process, humor, ARPANET-era notes, general-subject documents.
 - **Zero-topic documents:** 0.
 - **Per RFC:** technology mean 1.74, topic mean 2.06, combined mean 3.80.
 - **Over ten combined:** 48 documents (0.5%); maximum 15.

@@ -1,0 +1,290 @@
+version: 1
+about: 'Hand assignments, applied after the rules. One entry per RFC a person has reviewed: tags to add or remove, a reason,
+  who and when. A rule is for a class of documents and should fire on more than one; an override is for a single document
+  whose subject no rule can name without being written for its title.'
+overrides:
+  RFC898:
+    add:
+    - routing architecture
+    reason: 'Title-specific: gateway special interest group meeting notes on routing'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC902:
+    add:
+    - internet governance
+    reason: 'Title-specific: ARPA Internet protocol policy'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC920:
+    add:
+    - DNS
+    - domain registration
+    reason: Title names no protocol; the document sets the requirements for the domain naming system
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC935:
+    add:
+    - link layer
+    reason: Title-specific essay on reliable link-layer protocols; not about SLIP
+    by: migration from title-specific rules
+    date: '2026-09-30'
+    remove:
+    - SLIP
+  RFC947:
+    add:
+    - addressing
+    reason: 'Title-specific: broadcast addressing across networks'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC967:
+    add:
+    - ARPANET
+    reason: Title-specific ARPANET-era note
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC970:
+    add:
+    - AQM
+    reason: Title-specific essay whose subject is queue management
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC980:
+    add:
+    - IETF process
+    reason: 'Title-specific: protocol document order information'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1000:
+    add:
+    - RFC series
+    reason: 'Title-specific: the request for comments reference guide'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1003:
+    add:
+    - MIME
+    reason: 'Title-specific: a proposal for representing equations in messages'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1012:
+    add:
+    - RFC series
+    reason: 'Title-specific: bibliography of RFCs'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1015:
+    add:
+    - internet governance
+    reason: 'Title-specific: a national research Internet'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1017:
+    add:
+    - internet governance
+    reason: 'Title-specific: network requirements for scientific research'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1077:
+    add:
+    - internet governance
+    reason: 'Title-specific: critical issues in high-bandwidth networking'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1118:
+    add:
+    - user guides
+    reason: Title-specific guide
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1127:
+    add:
+    - internet architecture
+    reason: Title-specific perspective on the host requirements RFCs
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1135:
+    add:
+    - incident response
+    reason: 'Title-specific: the Morris worm report'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1167:
+    add:
+    - internet governance
+    reason: Title-specific policy essay
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1173:
+    add:
+    - network management
+    reason: 'Title-specific: the oral tradition of running a network'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1178:
+    add:
+    - user guides
+    reason: Title-specific guide to choosing a computer name
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1193:
+    add:
+    - QoS
+    reason: 'Title-specific: client requirements for real-time service, a QoS document'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1210:
+    add:
+    - internet governance
+    reason: 'Title-specific: transatlantic research network'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1291:
+    add:
+    - internet governance
+    reason: 'Title-specific: mid-level networks'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1300:
+    add:
+    - internet history
+    reason: Title-specific memoir
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1432:
+    add:
+    - user guides
+    reason: Title-specific bibliography
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1498:
+    add:
+    - internet architecture
+    reason: Title-specific essay on naming and binding of destinations
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1527:
+    add:
+    - internet governance
+    reason: Title-specific essay
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1796:
+    add:
+    - RFC series
+    reason: 'Title-specific: not all RFCs are standards'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC1956:
+    add:
+    - internet governance
+    reason: 'Title-specific: registration in the MIL domain'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC2057:
+    add:
+    - firewall
+    reason: 'Title-specific: source-directed access control'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC2150:
+    add:
+    - user guides
+    reason: Title-specific guide for humanities and arts users
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC2351:
+    add:
+    - e-commerce
+    reason: 'Title-specific: mapping of airline reservation and ticketing traffic'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC2436:
+    add:
+    - internet governance
+    reason: 'Title-specific: collaboration between ISOC/IETF and ITU-T'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC2441:
+    add:
+    - internet history
+    reason: Title-specific tribute
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC2791:
+    add:
+    - routing architecture
+    reason: Title-specific essay on routing architecture
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC3018:
+    add:
+    - storage
+    reason: 'Title-specific: unified memory space protocol'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC3271:
+    add:
+    - internet governance
+    reason: Title-specific essay
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC3930:
+    add:
+    - internet architecture
+    reason: Title-specific essay on protocol design
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC4678:
+    add:
+    - network management
+    reason: 'Title-specific: server and application state protocol'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC4845:
+    add:
+    - RFC series
+    reason: 'Title-specific: process for publication of IAB RFCs'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC5218:
+    add:
+    - IETF process
+    reason: Title-specific essay on what makes a protocol successful
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC5236:
+    add:
+    - performance measurement
+    reason: 'Title-specific: a reordering metric'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC5772:
+    add:
+    - routing architecture
+    reason: Title-specific survey of routing architecture proposals
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC6648:
+    add:
+    - internet architecture
+    reason: 'Title-specific: deprecating the X- prefix'
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC7980:
+    add:
+    - internet architecture
+    reason: Title-specific IRTF essay
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC8799:
+    add:
+    - internet architecture
+    reason: Title-specific IAB essay
+    by: migration from title-specific rules
+    date: '2026-09-30'
+  RFC8890:
+    add:
+    - internet architecture
+    reason: Title-specific IAB statement
+    by: migration from title-specific rules
+    date: '2026-09-30'
