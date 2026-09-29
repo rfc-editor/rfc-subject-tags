@@ -40,7 +40,7 @@ publish; the page carries its own build date so the two can be told apart.
 | File | Contents |
 |---|---|
 | `rfcs.json` | Corpus metadata, one record per RFC — the engine's input, produced by either corpus script. Fetched fresh at build time; the snapshot each build used is published alongside the other artifacts, so a published build can be reproduced exactly |
-| `rfc-tags.json` | Per RFC: title, year, leaf `tags`, full `paths` (R4) as arrays of ids, and `technology` / `topic` coordinates for the served view |
+| `rfc-tags.json` | Per RFC: title, year, `source` (`rules`, `abstract` or `era` — how the tags were found), leaf `tags`, full `paths` (R4) as arrays of ids, and `technology` / `topic` coordinates for the served view |
 | `rfc-tags.csv` | The same table for spreadsheet use; list fields are `;`-separated, paths `|`-separated with ids joined by ` / ` |
 | `tag-candidates.json` | Output of `tag_candidates.py`: candidate names by tag, most-seen first, with example RFCs |
 | `rfc-tags.html` | Self-contained review page. **Vocabulary**: the tree with corpus count and notifications-per-year (since 2021) per tag, search, technology/topic filter, multi-select with AND/OR and the matching RFCs. **Co-occurrence**: tag pairs sharing RFCs. **Lifespan**: each tag's first-to-last year, live or dormant. **Overlap**: Jaccard and one-way overlap flags for redundant or nested pairs. **All RFCs**: look-up with tags and served technology/topic coordinates |
@@ -104,6 +104,7 @@ In the rfc-editor index only the April 1st series carries a day of month: 71 doc
   match:                         # regexes, case-insensitive, against title + author keywords
   - '\bDKIM\b|domainkeys'
   groups: [dcrup, dkim]          # working groups whose RFCs take this tag
+  # streams: [Editorial]          # publication streams whose RFCs take this tag (RFC series uses this)
 ```
 
 Optional fields:
@@ -166,7 +167,7 @@ The character rule exists because ids appear inside other formats: ` / ` joins t
 ### Tiers
 
 1. **Humor.** If `day` is present, or the RFC is in the humor tag's `documents`, the result is `['humor']` and processing stops.
-2. **Working group.** Every tag whose `groups` contains the record's `wg`. (At every tier, a tag with `max_year` is skipped for RFCs published after it.)
+2. **Working group and stream.** Every tag whose `groups` contains the record's `wg`, and every tag whose `streams` contains the record's `stream` (Editorial-stream RFCs are about the RFC series). (At every tier, a tag with `max_year` is skipped for RFCs published after it.)
 3. **Match rules.** Every tag with a `match` regex that hits the title or author keywords.
 4. **Title-only rules.** Every tag with a `match_title_only` regex that hits the title.
 5. **Abstract fallback.** If nothing has matched, `match` regexes run against the abstract; at most `abstract_fallback_max_tags` are kept.
@@ -187,6 +188,9 @@ Matching is case-insensitive over title and keywords, which makes several failur
 - **Disambiguate acronyms that collide across fields** by phrase or by `yields_to`: FEC (forward error correction vs forwarding equivalence class), JWT (the token vs the Joint Working Team), SPF (sender policy framework vs shortest path first).
 - **Exclude compound uses**: "TCP/IP" from TCP; "mail routing", "Generic Routing Encapsulation" and "Routing Protocol for Low-Power…" from `routing`; "JSON Web Signature/Token" from `web`; "Constrained Application Protocol" from `applications`; "Transport Layer Security", "Real-Time Transport Protocol" and SSH's "Transport Layer Protocol" from `transport`; "Integrated Services Digital Network" from `Intserv`; "Point-to-Point (P2P)" from `P2P`. Where a regex cannot exclude a name cleanly, `yields_to` does the job — `transport` yields to `TLS`, `DTLS`, `RTP`, `RTCP`, `SRTP` and `SSH`. The general root rules are the most exposed to this, because protocol names routinely contain the words routing, web, application and data format; the Overlap view of `rfc-tags.html` shows such leaks as a root nested inside an unrelated technology.
 - **Adjectives are not evidence.** Documents about security say "security"; "Secure Transport" in a title does not earn `security`.
+- **Acronyms collide across the IETF's own vocabulary too.** `RPC` is Remote Procedure Call and also the RFC Production Center; the `ONC RPC` rule requires remote-procedure context (RFC 9920, issue #23).
+- **A phrase that names the corpus is scope, not subject.** "Congestion Control in the RFC Series" is about congestion control; "HTML Format for RFCs" is about the RFC series' format, not about HTML. The `RFC series` rule excludes "in the RFC series", and the format technologies (`HTML`, `ASCII`, `UTF-8`) yield to `RFC series` (issue #23).
+- **Author keywords can describe the document's apparatus rather than its subject.** Authors list "IPR" for a document with an IPR section and "xml2rfcv3" for the tool that produced it. `IPR` is therefore title-only, and `RFCXML` matches the tool's name as a word, not the series keyword (issues #23, #24).
 - **A working group is not a tag.** When a group's output is a named technology with a following, the technology gets its own entry and the group goes in its `groups` (R10, R11).
 
 The mechanical checks that enforce these are in validation.md.
