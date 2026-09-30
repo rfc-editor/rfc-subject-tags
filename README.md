@@ -38,7 +38,7 @@ There are two coordinated representations of the same tags.
 
 **The served view** is derived from the tree mechanically and is what search and subscriptions run on. It separates the tags into two axes:
 
-- **technology** — 553 tags, keeping the hierarchy;
+- **technology** — 556 tags, keeping the hierarchy;
 - **topic** — 76 tags, flat: the root subjects plus cross-cutting aspects such as `privacy`, `multicast` and `IP mobility`.
 
 A document's topics are the roots of its paths plus any aspect tags it carries, plus the topics its tags *imply*: TLS implies security, PIM implies multicast, QUIC implies transport, and the `cryptography` root implies security. This is what lets "quic AND security" find RFC 9001 without anyone having coined a tag for the intersection.
@@ -148,7 +148,7 @@ Broad topics are legitimate subscription targets even though they are busy, beca
 - `routing` about 56,
 - `network management` about 33.
 
-Dormant tags are equally legitimate: 275 of the 635 tags have had no RFC since 2021. A subscription to one is a standing request to be told if the technology revives.
+Dormant tags are equally legitimate: 275 of the 638 tags have had no RFC since 2021. A subscription to one is a standing request to be told if the technology revives.
 
 ## What the taxonomy looks like
 
@@ -156,8 +156,8 @@ The taxonomy is `taxonomy.yaml` — one entry per tag with its place in the tree
 
 ### Size and shape
 
-- 635 tags: 19 roots, 289 at level 2, 281 at level 3, 46 at level 4.
-- 553 technologies and 82 topics in the tree (76 topics reach the served view; six composite topics decompose into their parts).
+- 638 tags: 19 roots, 290 at level 2, 280 at level 3, 49 at level 4.
+- 556 technologies and 82 topics in the tree (76 topics reach the served view; six composite topics decompose into their parts).
 - Mean 3.65 tags per RFC including ancestors; no RFC untagged; no tag unused.
 
 ### The roots

@@ -12,6 +12,13 @@ instance, is sometimes under "source"). Adjust the FIELD_MAP below to match —
 each entry maps a field name used here to a list of candidate keys tried in order.
 
 Usage:  python3 make_corpus_from_local.py ~/Data/RFCs rfcs.json
+
+Local metadata files may lack fields the engine relies on: the publication stream
+(the era fallback and the Editorial-stream rule need it), the day of month for the
+April 1st series, and the working-group acronym (some layouts hold the group's name
+instead). When rfc-index.xml is present alongside, or can be downloaded, those fields
+are filled from it for every RFC it knows. "Not Issued" placeholder records are
+dropped.
 """
 import json, pathlib, re, sys
 
@@ -49,7 +56,24 @@ def parse_date(s):
         day = int(m.group(1)) if m else None
     return year, month, day
 
+def index_fields(path='rfc-index.xml'):
+    """{id: {stream, day, wg}} from the RFC Editor index, downloading it if absent."""
+    try:
+        import make_corpus_from_index as mci, xml.etree.ElementTree as ET, urllib.request, os
+        if not os.path.exists(path):
+            urllib.request.urlretrieve('https://www.rfc-editor.org/rfc-index.xml', path)
+        root = ET.parse(path).getroot(); out = {}
+        for e in root.findall('r:rfc-entry', mci.NS):
+            date = e.find('r:date', mci.NS)
+            out[mci.text(e, 'doc-id')] = {'stream': mci.text(e, 'stream'),
+                                          'day': int(mci.text(date, 'day')) if date is not None and mci.text(date, 'day') else None,
+                                          'wg': (mci.text(e, 'wg_acronym') or '').lower() or None}
+        return out
+    except Exception as ex:  # no network, no index: proceed with what the local files have
+        print(f'index not available ({ex}); stream/day/wg not filled', file=sys.stderr); return {}
+
 def main(src_dir, out_path):
+    idx = index_fields()
     out = []
     for p in sorted(pathlib.Path(src_dir).glob('rfc*.json')):
         num = re.search(r'rfc(\d+)', p.name, re.I)
@@ -60,17 +84,26 @@ def main(src_dir, out_path):
         kw = pick(meta, FIELD_MAP['keywords'], [])
         if isinstance(kw, str):
             kw = [k.strip() for k in re.split(r'[;,]', kw) if k.strip()]
+        rid = f'RFC{int(num.group(1))}'
+        title = pick(meta, FIELD_MAP['title'], '')
+        if title.strip() == 'Not Issued' or not year:
+            continue                                   # placeholder for a number never published
         wg = pick(meta, FIELD_MAP['wg'])
         if wg and wg.upper() in ('NON WORKING GROUP', 'INDEPENDENT', 'LEGACY', 'IETF - NON WORKING GROUP'):
             wg = None
+        ix = idx.get(rid) or {}
+        if ix.get('wg') and (not wg or ' ' in wg):    # local files hold the group's name; the engine keys on the acronym
+            wg = ix['wg']
+        if day is None and ix.get('day'):
+            day = ix['day']
         out.append({
-            'id': f'RFC{int(num.group(1))}',
-            'title': pick(meta, FIELD_MAP['title'], ''),
+            'id': rid,
+            'title': title,
             'abstract': pick(meta, FIELD_MAP['abstract'], '') or '',
             'keywords': kw,
             'wg': wg.lower() if wg else None,
             'status': pick(meta, FIELD_MAP['status']),
-            'stream': pick(meta, FIELD_MAP['stream'], ''),
+            'stream': pick(meta, FIELD_MAP['stream'], '') or (idx.get(rid) or {}).get('stream', ''),
             'year': year, 'month': month, 'day': day,
         })
     json.dump(out, open(out_path, 'w'))
