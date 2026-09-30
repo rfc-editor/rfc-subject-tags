@@ -33,7 +33,7 @@ Both directions:
 
 ### Unused and single-document tags (R9, R13)
 
-- No tag is carried by zero documents — such a tag is either mis-ruled or should not exist.
+- No tag is carried by zero documents, counting documents beneath it — such a tag is either mis-ruled or should not exist. A family tag whose every document also names a member (`hash-based signatures`, whose documents all name HSS/LMS, XMSS or SLH-DSA) has no leaf carriers yet is reached by all of them through closure; that is used.
 - List tags carried by exactly one document for review against R13.
 
 ### Stability replay (R17, R18)
@@ -139,22 +139,22 @@ When the engine or the YAML schema changes, re-run against the previous `rfc-tag
 
 ### Curated tree
 
-- **Tags:** 635 — 19 roots, 289 at level 2, 281 at level 3, 46 at level 4; 553 technology, 82 topic.
+- **Tags:** 638 — 19 roots, 290 at level 2, 280 at level 3, 49 at level 4; 556 technology, 82 topic.
 - **Coverage:** 0 untagged.
 - **Tags per RFC (with ancestors):** mean 3.65, median 3, max 15.
-- **Distribution:** 1:683 · 2:2,583 · 3:2,125 · 4:1,586 · 5:1,325 · 6:721 · 7:415 · 8:214 · 9:102 · 10:39 · 11:24 · 12:9 · 13:4 · 14:4 · 15:1.
+- **Distribution:** 1:683 · 2:2,591 · 3:2,124 · 4:1,586 · 5:1,327 · 6:718 · 7:416 · 8:214 · 9:103 · 10:39 · 11:24 · 12:8 · 13:5 · 14:4 · 15:1.
 - **Over ten tags:** 42 documents (0.4%), all multi-technology cross-area specifications.
-- **Unused tags:** 0.
-- **Single-document tags:** 44 — AFS, ARC, BATS, BLAKE2, CRC, CyberCash, DCTCP, Dragonfly, EIGRP, FFV1, GSAKMP, HOBA, HTTP caching, IDXP, IRTP, J-PAKE, JSCalendar, LPWAN, MOSPF, NAT-PMP, OPAQUE, OVSDB, PGM, RATP, RBNF, SDF, SFrame, Speex, TBRPF, TEEP, TMux, TVR, Tetrys, Vorbis, WHIP, XACML, Y2K, YAML, amateur radio, data center networking, eBPF, oblivious DNS, password hashing, scrypt.
+- **Unused tags (no document directly or beneath):** 0.
+- **Single-document tags:** 45 — AEGIS, AFS, ARC, BATS, BLAKE2, CRC, CyberCash, DCTCP, Dragonfly, EIGRP, FFV1, GSAKMP, HOBA, HTTP caching, IDXP, IRTP, J-PAKE, JSCalendar, LPWAN, MOSPF, NAT-PMP, OPAQUE, OVSDB, PGM, RATP, RBNF, SDF, SFrame, Speex, TBRPF, TEEP, TMux, TVR, Tetrys, Vorbis, WHIP, XACML, Y2K, YAML, amateur radio, data center networking, eBPF, oblivious DNS, password hashing, scrypt.
 - **Humor:** 74 documents, 0 exclusivity violations.
-- **Stability replay:** 9,214 RFCs debut no tag, 609 debut one, 10 debut two, 2 debut three. The 12 multi-debut cases are parent-and-child pairs founding a branch, plus RFC 2430 preceding the MPLS architecture into print.
+- **Stability replay:** 9,220 RFCs debut no tag, 611 debut one, 10 debut two, 2 debut three. The 12 multi-debut cases are parent-and-child pairs founding a branch, plus RFC 2430 preceding the MPLS architecture into print.
 
 ### Served view
 
-- **Axes:** 553 technology tags, 76 topics.
+- **Axes:** 556 technology tags, 76 topics.
 - **Zero-technology documents:** 1,494 — governance, process, humor, ARPANET-era notes, general-subject documents.
 - **Zero-topic documents:** 0.
 - **Per RFC:** technology mean 1.74, topic mean 2.06, combined mean 3.80.
 - **Over ten combined:** 48 documents (0.5%); maximum 15.
-- **Documents whose only topics are roots:** 5,339.
+- **Documents whose only topics are roots:** 5,357.
 - **Topic replay:** 5 documents debut two topics, all in the founding years. Debuts since 2003: emergency services (2003), NAT traversal (2003), IoT (2006), energy management (2013), SDN (2014), telemetry (2019), sustainability (2024).

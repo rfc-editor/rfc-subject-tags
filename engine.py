@@ -297,6 +297,7 @@ if __name__ == '__main__':
                 if not out[o]['reviewed']: out[o]['review'].append(f'no tag in common with {r["id"]}, which it obsoletes')
     json.dump(out, open('rfc-tags.json', 'w'), indent=1)
     used = collections.Counter(t for v in out.values() for t in v['tags'])
+    carried = collections.Counter(t for v in out.values() for p in v['paths'] for t in p)   # directly or beneath
     print(f"{len(tax.by_id)} tags ({dict(collections.Counter(tax.kind.values()))}); untagged {sum(1 for v in out.values() if not v['tags'])}; "
-          f"unused {[t for t in tax.by_id if t not in used]}; zero-topic {sum(1 for v in out.values() if not v['topic'])}; "
+          f"unused {[t for t in tax.by_id if t not in carried]}; zero-topic {sum(1 for v in out.values() if not v['topic'])}; "
           f"needing review {sum(1 for v in out.values() if v['review'])}; overridden {sum(1 for v in out.values() if v['reviewed'])}")

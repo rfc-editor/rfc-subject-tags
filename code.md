@@ -82,7 +82,7 @@ One record per published RFC:
 
 ### Sources
 
-- The rfc-editor.org index (`rfc-index.xml`), parsed to `rfcs.json` by `make_corpus_from_index.py`. <!-- generated:coverage -->Coverage: 9,835 RFCs; 7,243 with a working group; 7,428 with keywords; 9,128 with abstracts.<!-- /generated -->
+- The rfc-editor.org index (`rfc-index.xml`), parsed to `rfcs.json` by `make_corpus_from_index.py`. <!-- generated:coverage -->Coverage: 9,843 RFCs; 7,250 with a working group; 7,435 with keywords; 9,136 with abstracts.<!-- /generated -->
 - A local directory of per-RFC `.json` files, via `make_corpus_from_local.py`. It expects one file per RFC, named `rfcNNNN.json`; the script defaults to `~/Data/RFCs` and takes the directory as its first argument. Field names vary between sources, so the script's `FIELD_MAP` is configurable — for example, the producing group may be under `source` rather than `wg`.
 
 ### The `day` assumption

@@ -104,7 +104,7 @@ fig=f"""## Figures (current build)
 - **Tags per RFC (with ancestors):** mean {statistics.mean(counts):.2f}, median {int(statistics.median(counts))}, max {max(counts)}.
 - **Distribution:** {" · ".join(f"{a}:{b:,}" for a,b in sorted(collections.Counter(counts).items()))}.
 - **Over ten tags:** {sum(1 for c in counts if c>10)} documents ({100*sum(1 for c in counts if c>10)/len(counts):.1f}%), all multi-technology cross-area specifications.
-- **Unused tags:** {len([t for t in tax.by_id if t not in used])}.
+- **Unused tags (no document directly or beneath):** {len([t for t in tax.by_id if total[t]==0])}.
 - **Single-document tags:** {len(single)} — {", ".join(single)}.
 - **Humor:** {used["humor"]} documents, 0 exclusivity violations.
 - **Stability replay:** {c16[0][1]:,} RFCs debut no tag, {c16[1][1]} debut one, {c16[2][1] if len(c16)>2 else 0} debut two, {c16[3][1] if len(c16)>3 else 0} debut three. The {multi} multi-debut cases are parent-and-child pairs founding a branch, plus RFC 2430 preceding the MPLS architecture into print.
@@ -155,4 +155,4 @@ imp.append('')
 p='code.md'; c=open(p).read()
 c=fill(c,'coverage',cov); c=fill(c,'composites','\n'.join(comp)); c=fill(c,'implies','\n'.join(imp))
 open(p,'w').write(c)
-print(f'regenerated: {len(tax.by_id)} tags, mean {statistics.mean(counts):.2f}, unused {len([t for t in tax.by_id if t not in used])}, zero-topic {sum(1 for x in oc if x==0)}')
+print(f'regenerated: {len(tax.by_id)} tags, mean {statistics.mean(counts):.2f}, unused {len([t for t in tax.by_id if total[t]==0])}, zero-topic {sum(1 for x in oc if x==0)}')

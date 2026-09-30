@@ -2360,10 +2360,10 @@ tags:
   - X.400
   stats:
     direct: 75
-    total: 1848
+    total: 1851
     first_year: 1982
     last_year: 2026
-    served: 1874
+    served: 1877
 - id: routing architecture
   uuid: a9e50979-c226-4794-a605-8c6de13c2ec5
   slug: routing-architecture
@@ -2383,7 +2383,7 @@ tags:
     total: 42
     first_year: 1984
     last_year: 2025
-    served: 84
+    served: 85
 - id: ECMP
   uuid: 327098e3-5a35-4443-86c1-041ae8f3c477
   slug: ecmp
@@ -2429,8 +2429,8 @@ tags:
   - idr
   - rps
   stats:
-    direct: 238
-    total: 270
+    direct: 239
+    total: 271
     first_year: 1989
     last_year: 2026
 - id: BGP communities
@@ -2561,8 +2561,8 @@ tags:
   groups:
   - ospf
   stats:
-    direct: 117
-    total: 144
+    direct: 118
+    total: 145
     first_year: 1989
     last_year: 2026
 - id: OSPFv3
@@ -3255,7 +3255,7 @@ tags:
   - bess
   stats:
     direct: 20
-    total: 149
+    total: 150
     first_year: 1999
     last_year: 2026
 - id: L3VPN
@@ -3266,14 +3266,15 @@ tags:
   desc: L3VPN (Layer 3 Virtual Private Network) over BGP/MPLS
   match:
   - L3VPN|layer 3 (virtual private|VPN)|BGP/MPLS.*VPN|2547
+  - '\bIP-?VPNs?\b'
   groups:
   - l3sm
   - l3vpn
   stats:
-    direct: 50
-    total: 50
+    direct: 51
+    total: 51
     first_year: 1999
-    last_year: 2025
+    last_year: 2026
 - id: L2VPN
   uuid: f2772653-f7e2-4a84-a189-1f551e2bdc53
   slug: l2vpn
@@ -3312,8 +3313,8 @@ tags:
   match:
   - '\bEVPN\b|ethernet vpn'
   stats:
-    direct: 32
-    total: 32
+    direct: 33
+    total: 33
     first_year: 2014
     last_year: 2026
 - id: MVPN
@@ -3552,8 +3553,8 @@ tags:
   implies:
   - routing architecture
   stats:
-    direct: 33
-    total: 33
+    direct: 34
+    total: 34
     first_year: 2013
     last_year: 2026
 - id: BFD
@@ -4430,10 +4431,10 @@ tags:
   - 'internet protocol suite|\bIP (layer|datagrams?)\b|network layer'
   stats:
     direct: 6
-    total: 1443
+    total: 1438
     first_year: 1971
     last_year: 2026
-    served: 1443
+    served: 1438
 - id: ICN
   uuid: 0f2f9335-2b3d-4ee7-9d33-272ebef5b804
   slug: icn
@@ -4730,7 +4731,6 @@ tags:
   match:
   - link-local address
   - address (architecture|allocation|assignment|behaviour|space)
-  - '\bsubnets?\b|subnetting'
   - broadcast(ing)? (internet )?datagrams|directed broadcast
   - '\baddressing\b'
   - broadcast(ing)? (internet )?datagrams|directed broadcast|broadcast address
@@ -4743,11 +4743,13 @@ tags:
   - ARPANET
   - multicast
   stats:
-    direct: 109
-    total: 199
+    direct: 100
+    total: 190
     first_year: 1977
     last_year: 2026
-    served: 214
+    served: 205
+  match_title_only:
+  - '\bsubnets?\b|subnetting'
 - id: CIDR
   uuid: 5d74a1f4-8b9c-46da-b425-54a8b2dc3a56
   slug: cidr
@@ -5987,7 +5989,7 @@ tags:
     total: 1689
     first_year: 1974
     last_year: 2026
-    served: 2157
+    served: 2159
 - id: TLS
   uuid: 4aabde5b-c39a-442c-baf6-6695b1d7bcb9
   slug: tls
@@ -7133,10 +7135,10 @@ tags:
   - TLS
   stats:
     direct: 152
-    total: 539
+    total: 541
     first_year: 1986
     last_year: 2026
-    served: 539
+    served: 541
   implies:
   - security
 - id: AES
@@ -7152,6 +7154,21 @@ tags:
     total: 38
     first_year: 2002
     last_year: 2023
+  yields_to:
+  - AEGIS
+- id: AEGIS
+  uuid: be035a02-9fb1-4ca7-acb8-ef8d5c608835
+  slug: aegis
+  parent: cryptography
+  kind: technology
+  desc: AEGIS authenticated encryption algorithms (AEGIS-128L, AEGIS-256 and their X variants), AES-round based
+  match:
+  - '\bAEGIS\b'
+  stats:
+    direct: 1
+    total: 1
+    first_year: 2026
+    last_year: 2026
 - id: DES
   uuid: 1e336247-4eaf-4a80-a7e5-926d0839bb5f
   slug: des
@@ -7295,7 +7312,7 @@ tags:
   - pquip
   stats:
     direct: 15
-    total: 31
+    total: 32
     first_year: 2018
     last_year: 2026
 - id: ML-KEM
@@ -7324,10 +7341,49 @@ tags:
     total: 3
     first_year: 2025
     last_year: 2026
+- id: hash-based signatures
+  uuid: 4c256c70-dd10-438b-a890-3e655bbf3bb8
+  slug: hash-based-signatures
+  parent: post-quantum
+  kind: technology
+  desc: 'Hash-based signature schemes: stateful HSS/LMS, XMSS and XMSS^MT built from Merkle trees and one-time signatures, and stateless SLH-DSA (SPHINCS+)'
+  match:
+  - 'hash-?based signatures?|\bHSS/LMS\b|\bHSS\b(?=.{0,60}signature)|stateful hash'
+  stats:
+    direct: 0
+    total: 11
+    first_year: 2018
+    last_year: 2026
+- id: XMSS
+  uuid: 459eb052-1383-4865-baa1-4a54528cc320
+  slug: xmss
+  parent: hash-based signatures
+  kind: technology
+  desc: XMSS (eXtended Merkle Signature Scheme) stateful hash-based signatures and their parameters
+  match:
+  - '\bXMSS\b|extended merkle signature'
+  stats:
+    direct: 3
+    total: 3
+    first_year: 2018
+    last_year: 2026
+- id: LMS
+  uuid: f4f740f7-ad2b-4744-91e1-b806f6354cfe
+  slug: lms
+  parent: hash-based signatures
+  kind: technology
+  desc: LMS (Leighton-Micali Signature) stateful hash-based signatures, including HSS and LM-OTS
+  match:
+  - 'Leighton-Micali|\bLMS\b|\bLM-OTS\b'
+  stats:
+    direct: 8
+    total: 8
+    first_year: 2019
+    last_year: 2026
 - id: SLH-DSA
   uuid: 25a3c403-4ffd-4dce-8c2e-9a5641103f0e
   slug: slh-dsa
-  parent: post-quantum
+  parent: hash-based signatures
   kind: technology
   desc: SLH-DSA (Stateless Hash-Based Digital Signature Algorithm) signatures and their use in IETF protocols
   match:
@@ -7336,32 +7392,6 @@ tags:
     direct: 2
     total: 2
     first_year: 2025
-    last_year: 2025
-- id: XMSS
-  uuid: 459eb052-1383-4865-baa1-4a54528cc320
-  slug: xmss
-  parent: post-quantum
-  kind: technology
-  desc: XMSS (eXtended Merkle Signature Scheme) stateful hash-based signatures and their parameters
-  match:
-  - '\bXMSS\b|extended merkle signature'
-  stats:
-    direct: 2
-    total: 2
-    first_year: 2018
-    last_year: 2025
-- id: LMS
-  uuid: f4f740f7-ad2b-4744-91e1-b806f6354cfe
-  slug: lms
-  parent: post-quantum
-  kind: technology
-  desc: LMS (Leighton-Micali Signature) stateful hash-based signatures, including HSS and LM-OTS
-  match:
-  - 'Leighton-Micali|\bLMS\b|\bLM-OTS\b'
-  stats:
-    direct: 7
-    total: 7
-    first_year: 2019
     last_year: 2025
 - id: key management
   uuid: 436cc902-23f0-4c87-b979-68849904ca9c
@@ -7630,10 +7660,10 @@ tags:
   - opstat
   stats:
     direct: 67
-    total: 1186
+    total: 1188
     first_year: 1969
     last_year: 2026
-    served: 1192
+    served: 1194
 - id: SNMP
   uuid: bdb1bbde-ffe4-4994-a7ca-8f5d9c36e6e4
   slug: snmp
@@ -7783,8 +7813,8 @@ tags:
   implies:
   - network management
   stats:
-    direct: 152
-    total: 152
+    direct: 153
+    total: 153
     first_year: 2009
     last_year: 2026
 - id: syslog
@@ -7839,10 +7869,10 @@ tags:
   - benchmarking
   stats:
     direct: 103
-    total: 126
+    total: 127
     first_year: 1972
     last_year: 2026
-    served: 210
+    served: 211
 - id: OWAMP
   uuid: 1bc33814-48bd-4d0a-a0dc-41c7a0cfbaef
   slug: owamp
@@ -7869,10 +7899,10 @@ tags:
   implies:
   - performance measurement
   stats:
-    direct: 16
-    total: 16
+    direct: 17
+    total: 17
     first_year: 2008
-    last_year: 2024
+    last_year: 2026
 - id: STAMP
   uuid: 315c9fb8-cf2b-4520-b4d3-ff0290eeeb53
   slug: stamp
@@ -7884,10 +7914,10 @@ tags:
   implies:
   - performance measurement
   stats:
-    direct: 4
-    total: 4
+    direct: 5
+    total: 5
     first_year: 2020
-    last_year: 2024
+    last_year: 2026
 - id: LMAP
   uuid: 5681759e-e58a-4aff-938f-40f3d31f5223
   slug: lmap
@@ -8244,10 +8274,10 @@ tags:
   - (?<!meta )(?<!constrained )application (protocol|layer)s?
   stats:
     direct: 6
-    total: 796
+    total: 797
     first_year: 1971
     last_year: 2026
-    served: 796
+    served: 797
   match:
   - 'efficient short remote operations|\bESRO\b'
 - id: FTP
@@ -8695,11 +8725,13 @@ tags:
   - calsch
   - calsify
   stats:
-    direct: 6
-    total: 37
+    direct: 2
+    total: 33
     first_year: 1998
     last_year: 2026
-    served: 37
+    served: 33
+  yields_to:
+  - JSContact
 - id: iCalendar
   uuid: bf37d089-0dec-471c-9ac4-c8f315ae98b5
   slug: icalendar
@@ -8777,10 +8809,10 @@ tags:
   - jcardcal
   - vcarddav
   stats:
-    direct: 12
-    total: 21
+    direct: 9
+    total: 23
     first_year: 1998
-    last_year: 2024
+    last_year: 2026
 - id: CardDAV
   uuid: d4419840-52b9-4f91-b3b1-23f6f70f686f
   slug: carddav
@@ -8796,6 +8828,19 @@ tags:
     total: 9
     first_year: 2009
     last_year: 2014
+- id: JSContact
+  uuid: 957b0c39-1571-45d6-bc4e-1574f35094f2
+  slug: jscontact
+  parent: vCard
+  kind: technology
+  desc: 'JSContact: JSON representation of contact card data, and its conversion from and to vCard'
+  match:
+  - '\bJSContact\b'
+  stats:
+    direct: 5
+    total: 5
+    first_year: 2024
+    last_year: 2026
 - id: accessibility
   uuid: 254f414d-5e67-4140-add3-aa953aa266e0
   slug: accessibility
