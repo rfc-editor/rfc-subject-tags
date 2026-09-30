@@ -287,6 +287,14 @@ if __name__ == '__main__':
         k = r['id']; new = [t for t in out[k]['tags'] if t not in seen]; seen.update(new)
         if new and not out[k]['reviewed'] and (r.get('year') or 0) >= 2000:
             out[k]['review'].append('first document to carry ' + ', '.join(new))
+    # a document and the one that obsoletes it are almost always about the same thing: no tag in
+    # common, counting ancestors, means one of the two assignments is probably wrong
+    closed = {k: {t for p in v['paths'] for t in p} for k, v in out.items()}
+    for r in rfcs:
+        for o in r.get('obsoleted_by') or []:
+            if o in out and closed[r['id']] and closed[o] and not (closed[r['id']] & closed[o]):
+                if not out[r['id']]['reviewed']: out[r['id']]['review'].append(f'no tag in common with {o}, which obsoletes it')
+                if not out[o]['reviewed']: out[o]['review'].append(f'no tag in common with {r["id"]}, which it obsoletes')
     json.dump(out, open('rfc-tags.json', 'w'), indent=1)
     used = collections.Counter(t for v in out.values() for t in v['tags'])
     print(f"{len(tax.by_id)} tags ({dict(collections.Counter(tax.kind.values()))}); untagged {sum(1 for v in out.values() if not v['tags'])}; "

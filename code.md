@@ -179,7 +179,7 @@ The character rule exists because ids appear inside other formats: ` / ` joins t
 9. **Cap.** If more than `max_leaf_tags` remain, keep working-group tags first, then deeper (more specific) tags, then earlier tags in file order.
 10. **Overrides.** The RFC's entry in `assignments.yaml`, if any: `remove` tags are taken out, `add` tags put in, not subject to the cap. A document with an `add` never falls to the abstract or era fallback.
 
-Every tag records its evidence — which of these tiers produced it — and every document without an override gets a list of review reasons: it matched nothing and its tags came from the abstract (or the era fallback); a technology rests on author keywords alone; a title-derived root sits beside a technology from another subtree; tags were dropped by the cap; it is the first document to carry a tag (from 2000 on). These are the pipeline's known failure modes, not a judgement that the assignment is wrong.
+Every tag records its evidence — which of these tiers produced it — and every document without an override gets a list of review reasons: it matched nothing and its tags came from the abstract (or the era fallback); a technology rests on author keywords alone; a title-derived root sits beside a technology from another subtree; tags were dropped by the cap; it is the first document to carry a tag (from 2000 on); it shares no tag, counting ancestors, with the RFC that obsoletes it or that it obsoletes. These are the pipeline's known failure modes, not a judgement that the assignment is wrong.
 
 `closure(tags)` expands leaf tags to their root-anchored paths, which appear as `paths` in `rfc-tags.json` (R4).
 

@@ -932,10 +932,10 @@ tags:
   - '\bmessaging\b'
   stats:
     direct: 8
-    total: 910
+    total: 909
     first_year: 1971
     last_year: 2026
-    served: 910
+    served: 909
 - id: email
   uuid: 1623c220-7371-45c5-9cd3-2cb2a56f4770
   slug: email
@@ -962,7 +962,7 @@ tags:
   - VPIM
   stats:
     direct: 71
-    total: 473
+    total: 472
     first_year: 1971
     last_year: 2026
 - id: SMTP
@@ -986,8 +986,8 @@ tags:
   - smtpext
   - yam
   stats:
-    direct: 130
-    total: 130
+    direct: 129
+    total: 129
     first_year: 1981
     last_year: 2026
 - id: message format
@@ -8963,10 +8963,10 @@ tags:
   - (?<!information )data (format|encoding|representation)s?|interchange format
   stats:
     direct: 14
-    total: 477
+    total: 478
     first_year: 1969
     last_year: 2026
-    served: 477
+    served: 478
 - id: ABNF
   uuid: 8a7343b6-81f9-4665-ae41-304798f6d221
   slug: abnf
@@ -9162,10 +9162,10 @@ tags:
   - slim
   stats:
     direct: 17
-    total: 114
+    total: 115
     first_year: 1969
     last_year: 2025
-    served: 140
+    served: 141
 - id: UTF-8
   uuid: 1c07ddbf-e65b-4d25-89ae-b1af6ce79ad9
   slug: utf-8
@@ -9255,14 +9255,15 @@ tags:
   desc: Language tags and matching
   match:
   - language tag|language range|matching of language
+  - 'identification of languages|\blang-?tags?\b'
   groups:
   - ltru
   implies:
   - internationalization
   stats:
-    direct: 12
-    total: 12
-    first_year: 1999
+    direct: 13
+    total: 13
+    first_year: 1995
     last_year: 2022
 - id: PRECIS
   uuid: 853bec16-7818-4911-9190-49a03fe7885c
@@ -9720,10 +9721,10 @@ tags:
   - internet governance|ICANN|domain name.*(policy|delegation|administration)|top-level domain
   stats:
     direct: 48
-    total: 773
+    total: 774
     first_year: 1969
     last_year: 2026
-    served: 773
+    served: 774
 - id: IETF process
   uuid: 8714614e-dda6-4c68-ab03-81aec52f54ad
   slug: ietf-process
@@ -9885,11 +9886,11 @@ tags:
   yields_to:
   - MIB
   stats:
-    direct: 44
-    total: 44
+    direct: 45
+    total: 45
     first_year: 1980
     last_year: 2014
-    served: 44
+    served: 45
 - id: terminology
   uuid: 2417f73a-e506-4c0c-a8a5-4cd556c83cd4
   slug: terminology

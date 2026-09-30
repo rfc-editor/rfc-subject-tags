@@ -168,6 +168,20 @@ overrides:
     reason: Title-specific essay
     by: migration from title-specific rules
     date: '2026-09-30'
+  RFC1739:
+    add:
+    - user guides
+    reason: A primer; the tool tags it also carries pushed user guides past the cap. Found by the obsoleted-by check (RFC
+      2151 succeeds it)
+    by: jd
+    date: '2026-09-30'
+  RFC1766:
+    remove:
+    - SMTP
+    reason: Published by the mailext group but about language tags, not SMTP; found by the obsoleted-by check (RFC 3066 succeeds
+      it)
+    by: jd
+    date: '2026-09-30'
   RFC1796:
     add:
     - RFC series
