@@ -111,6 +111,7 @@ Consequences:
 
 - Subscribing to `DNS` covers DNSSEC, DoH and every other descendant.
 - Subscribing to `security` covers every document whose technologies imply security.
+- What readers are shown is the closed set, or at least the tag with its ancestors. A document tagged `RFCXML` is also tagged `RFC series` (R4); a display that lists leaf tags alone hides that.
 - Combinations work across axes: `quic AND security` delivers RFC 9001 and the QUIC documents that carry a security technology, but not the QUIC base specification (R19, R20). `bgp AND yang` delivers the BGP YANG modules.
 
 A subscription is any boolean expression over tags: a single tag, an OR, or an AND.
@@ -146,7 +147,7 @@ Broad topics are legitimate subscription targets even though they are busy, beca
 - `routing` about 56,
 - `network management` about 33.
 
-Dormant tags are equally legitimate: 274 of the 635 tags have had no RFC since 2021. A subscription to one is a standing request to be told if the technology revives.
+Dormant tags are equally legitimate: 275 of the 635 tags have had no RFC since 2021. A subscription to one is a standing request to be told if the technology revives.
 
 ## What the taxonomy looks like
 
@@ -156,7 +157,7 @@ The taxonomy is `taxonomy.yaml` — one entry per tag with its place in the tree
 
 - 635 tags: 19 roots, 289 at level 2, 281 at level 3, 46 at level 4.
 - 553 technologies and 82 topics in the tree (76 topics reach the served view; six composite topics decompose into their parts).
-- Mean 3.66 tags per RFC including ancestors; no RFC untagged; no tag unused.
+- Mean 3.65 tags per RFC including ancestors; no RFC untagged; no tag unused.
 
 ### The roots
 

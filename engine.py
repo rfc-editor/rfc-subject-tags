@@ -75,6 +75,9 @@ class Taxonomy:
         flags = re.I
         self.match = {t: [re.compile(p, flags) for p in e.get('match', [])] for t, e in self.by_id.items()}
         self.match_title = {t: [re.compile(p, flags) for p in e.get('match_title_only', [])] for t, e in self.by_id.items()}
+        self.streams = collections.defaultdict(list)
+        for t, e in self.by_id.items():
+            for st in e.get('streams', []): self.streams[st].append(t)
         self.groups = collections.defaultdict(list)
         for t, e in self.by_id.items():
             for g in e.get('groups', []): self.groups[g].append(t)
@@ -141,19 +144,22 @@ class Taxonomy:
         wg = rfc.get('wg')
         wg_tags = set(self.groups.get(wg, [])) if wg else set()
         add(wg_tags)
+        add(self.streams.get(rfc.get('stream'), []))       # a publication stream can be evidence too: Editorial -> RFC series
         title = rfc.get('title') or ''
         tk = title + ' ; ' + ' ; '.join(rfc.get('keywords') or [])
         for t in self.order:
             if any(rx.search(tk) for rx in self.match[t]): add([t])
         for t in self.order:
             if any(rx.search(title) for rx in self.match_title[t]): add([t])
+        self.last_source = 'rules'
         if not tags:
+            self.last_source = 'abstract'
             abstract = rfc.get('abstract') or ''
             hits = [t for t in self.order if any(rx.search(abstract) for rx in self.match[t])]
             add(self._prioritise(hits, wg_tags)[:E['abstract_fallback_max_tags']])
         era = E['era_fallback']
         if not tags and rfc.get('year') and rfc['year'] <= era['max_year'] and rfc.get('stream') == era['stream']:
-            tags = [era['tag']]
+            tags = [era['tag']]; self.last_source = 'era'
         tags = self._suppress(tags)
         tags = [t for t in tags if not any(o != t and t in self.path[o] for o in tags)]   # ancestor rule
         implied = {x for o in tags for x in self.implies.get(o, [])}
@@ -209,7 +215,7 @@ if __name__ == '__main__':
     for r in rfcs:
         leaf = tax.assign(r)
         tech, topic = tax.two_axis(leaf)
-        out[r['id']] = {'title': r.get('title'), 'year': r.get('year'), 'tags': leaf,
+        out[r['id']] = {'title': r.get('title'), 'year': r.get('year'), 'tags': leaf, 'source': tax.last_source,
                         'paths': [list(p) for p in sorted({tax.path[t][:i] for t in leaf for i in range(1, len(tax.path[t]) + 1)})],
                         'technology': tech, 'topic': topic}
     json.dump(out, open('rfc-tags.json', 'w'), indent=1)

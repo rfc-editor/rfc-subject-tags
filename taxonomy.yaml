@@ -496,10 +496,10 @@ tags:
   - '(?<!json )\bweb\b(?! (signature|encryption|key|token|algorithm)s?\b)|world wide web'
   stats:
     direct: 12
-    total: 541
+    total: 539
     first_year: 1987
     last_year: 2026
-    served: 541
+    served: 539
 - id: robots.txt
   uuid: d5c7e269-6eb0-49d2-bcbb-b4fc61dd75f8
   slug: robotstxt
@@ -772,10 +772,13 @@ tags:
   - html
   - mhtml
   stats:
-    direct: 16
-    total: 18
+    direct: 14
+    total: 16
     first_year: 1995
     last_year: 2017
+  yields_to:
+  - RFC series
+  - RFCXML
 - id: MHTML
   uuid: 0c6b58ad-b3dc-4f40-b1a8-a773d119259a
   slug: mhtml
@@ -1005,10 +1008,10 @@ tags:
   - notary
   - receipt
   stats:
-    direct: 43
-    total: 43
+    direct: 42
+    total: 42
     first_year: 1973
-    last_year: 2023
+    last_year: 2022
 - id: IMAP
   uuid: f01c0471-1fd3-43f3-a226-22c07ffe779b
   slug: imap
@@ -1063,7 +1066,7 @@ tags:
   - authentication
   stats:
     direct: 4
-    total: 52
+    total: 53
     first_year: 1988
     last_year: 2026
 - id: SPF
@@ -1139,11 +1142,12 @@ tags:
   desc: ARF (Abuse Reporting Format) for email feedback and authentication failure reports
   match:
   - 'Abuse Reporting Format|\bARF\b|Email Feedback Report'
+  - complaint feedback loop
   stats:
-    direct: 8
-    total: 8
+    direct: 9
+    total: 9
     first_year: 2010
-    last_year: 2012
+    last_year: 2023
 - id: spam
   uuid: 74f3c95d-941f-438d-9220-e0060692ff49
   slug: spam
@@ -5988,7 +5992,7 @@ tags:
     total: 1689
     first_year: 1974
     last_year: 2026
-    served: 2156
+    served: 2157
 - id: TLS
   uuid: 4aabde5b-c39a-442c-baf6-6695b1d7bcb9
   slug: tls
@@ -6879,7 +6883,7 @@ tags:
     total: 149
     first_year: 1974
     last_year: 2026
-    served: 595
+    served: 596
 - id: WebAuthn
   uuid: 2a7b9951-c3d2-4350-a757-04963afcec07
   slug: webauthn
@@ -7624,6 +7628,7 @@ tags:
   - uninterruptible power
   - 'manageability|operational (consideration|guideline|experience|issue|requirement|practice|aspect)|operations,? administration|\bmonitoring\b'
   - operations and management
+  - oral tradition of the internet|responsibilities of host and network managers
   groups:
   - nmop
   - nmrg
@@ -7631,11 +7636,11 @@ tags:
   - noctools
   - opstat
   stats:
-    direct: 66
-    total: 1185
+    direct: 67
+    total: 1186
     first_year: 1969
     last_year: 2026
-    served: 1191
+    served: 1192
 - id: SNMP
   uuid: bdb1bbde-ffe4-4994-a7ca-8f5d9c36e6e4
   slug: snmp
@@ -8246,11 +8251,13 @@ tags:
   match_title_only:
   - (?<!meta )(?<!constrained )application (protocol|layer)s?
   stats:
-    direct: 5
-    total: 800
+    direct: 6
+    total: 796
     first_year: 1971
     last_year: 2026
-    served: 800
+    served: 796
+  match:
+  - 'efficient short remote operations|\bESRO\b'
 - id: FTP
   uuid: 3c59af05-8eb7-475f-bee2-2b5e1dbd8114
   slug: ftp
@@ -8568,10 +8575,10 @@ tags:
   - decade
   stats:
     direct: 6
-    total: 147
+    total: 142
     first_year: 1973
-    last_year: 2026
-    served: 147
+    last_year: 2025
+    served: 142
 - id: NFS
   uuid: 2ee77b48-7a7e-4ddf-96b7-4456fbab50ea
   slug: nfs
@@ -8662,14 +8669,14 @@ tags:
   kind: technology
   desc: ONC RPC (Open Network Computing Remote Procedure Call) and XDR
   match:
-  - '\bXDR\b|\bRPC\b(?!.*(SOAP|XML))|remote procedure call'
+  - '\bXDR\b|\bONC\b.{0,3}RPC|\bSun ?RPC\b|remote procedure call|\bRPC\b(?=.{0,40}\b(program|protocol|bind|port ?mapper|version 2|over.RDMA|security))|\brpcbind\b|\bportmap'
   groups:
   - oncrpc
   stats:
-    direct: 36
-    total: 36
+    direct: 31
+    total: 31
     first_year: 1987
-    last_year: 2026
+    last_year: 2022
 - id: AFS
   uuid: 90cb897c-9f78-4201-b8a7-7427d52a9640
   slug: afs
@@ -8964,10 +8971,10 @@ tags:
   - (?<!information )data (format|encoding|representation)s?|interchange format
   stats:
     direct: 14
-    total: 479
+    total: 477
     first_year: 1969
     last_year: 2026
-    served: 479
+    served: 477
 - id: ABNF
   uuid: 8a7343b6-81f9-4665-ae41-304798f6d221
   slug: abnf
@@ -9163,10 +9170,10 @@ tags:
   - slim
   stats:
     direct: 17
-    total: 116
+    total: 114
     first_year: 1969
     last_year: 2025
-    served: 142
+    served: 140
 - id: UTF-8
   uuid: 1c07ddbf-e65b-4d25-89ae-b1af6ce79ad9
   slug: utf-8
@@ -9178,10 +9185,13 @@ tags:
   implies:
   - internationalization
   stats:
-    direct: 17
-    total: 17
+    direct: 16
+    total: 16
     first_year: 1996
     last_year: 2025
+  yields_to:
+  - RFC series
+  - RFCXML
 - id: Unicode
   uuid: 5f37c3d9-0e68-430a-bfc0-81a590dfce36
   slug: unicode
@@ -9210,9 +9220,12 @@ tags:
   - charset
   stats:
     direct: 27
-    total: 53
+    total: 51
     first_year: 1969
-    last_year: 2016
+    last_year: 2012
+  yields_to:
+  - RFC series
+  - RFCXML
 - id: ASCII
   uuid: 3cdb9a79-f8ac-4395-b90e-a852129d8f9d
   slug: ascii
@@ -9220,12 +9233,15 @@ tags:
   kind: technology
   desc: ASCII (American Standard Code for Information Interchange), the seven-bit coded character set and its use in text interchange
   stats:
-    direct: 26
-    total: 26
+    direct: 24
+    total: 24
     first_year: 1969
-    last_year: 2016
+    last_year: 2012
   match:
   - '\b(?:US-)?ASCII\b|\bANSI X3\.4\b'
+  yields_to:
+  - RFC series
+  - RFCXML
 - id: EBCDIC
   uuid: b89d953a-c748-4042-84fc-58d69d748001
   slug: ebcdic
@@ -9713,10 +9729,10 @@ tags:
   - internet governance|ICANN|domain name.*(policy|delegation|administration)|top-level domain
   stats:
     direct: 48
-    total: 777
+    total: 773
     first_year: 1969
     last_year: 2026
-    served: 777
+    served: 773
 - id: IETF process
   uuid: 8714614e-dda6-4c68-ab03-81aec52f54ad
   slug: ietf-process
@@ -9754,11 +9770,11 @@ tags:
   yields_to:
   - humor
   stats:
-    direct: 314
-    total: 326
+    direct: 312
+    total: 324
     first_year: 1983
     last_year: 2026
-    served: 326
+    served: 324
 - id: NomCom
   uuid: 77c69b13-cbb1-4318-be87-9cf87a860ea1
   slug: nomcom
@@ -9781,18 +9797,19 @@ tags:
   parent: internet governance
   kind: topic
   desc: IPR (Intellectual Property Rights), copyright and trust legal provisions
-  match:
-  - '\blicens'
-  - antitrust
-  - 'intellectual property|\bIPR\b|copyright|patent|trust legal'
   groups:
   - ipr
   stats:
-    direct: 25
-    total: 25
+    direct: 21
+    total: 21
     first_year: 1991
     last_year: 2024
-    served: 25
+    served: 21
+  match_title_only:
+  - '\blicens'
+  - antitrust
+  - 'intellectual property|\bIPR\b|copyright|patent|trust legal'
+  - rights handling|incoming rights|outgoing rights
 - id: IANA
   uuid: a629b666-28dc-4287-8496-51acc5269a93
   slug: iana
@@ -9820,18 +9837,23 @@ tags:
   match:
   - requests? for comments summary|documentation convention|RFCs?.{0,20}(DOI|digital object)
   - '^summary of \d|not all RFCs|reference guide|bibliography of request'
-  - rights handling|independent submission
-  - protocol versus document
-  - RFC (series|format|style|editor)|instructions to RFC authors|request for comments.*(editor|series)
+  - rights handling
+  - (?<!in the )RFC (series|formats?|style|editor|streams?)|instructions to RFC authors|request for comments.*(editor|series)
+  - '\b(HTML|PDF|SVG|CSS|plain.?text|non-ASCII)\b.{0,25}\bRFCs\b|\bboilerplates?\b.{0,20}\bRFC|RFC .{0,20}boilerplate'
+  - '\bSTD notes\b|publication of .{0,12}RFCs\b'
   groups:
   - rfced
   - stdguide
   stats:
-    direct: 74
-    total: 84
+    direct: 80
+    total: 83
     first_year: 1969
     last_year: 2026
-    served: 84
+    served: 83
+  streams:
+  - Editorial
+  match_title_only:
+  - independent (submission|stream)
 - id: RFCXML
   uuid: c0f6ab92-5057-42a4-a522-b9b2b54ed6ac
   slug: rfcxml
@@ -9839,10 +9861,10 @@ tags:
   kind: technology
   desc: RFCXML (RFC XML vocabulary), the XML vocabulary for RFCs and Internet-Drafts (processed by xml2rfc)
   match:
-  - 'rfcxml|xml2rfc|\bRFC\b.*(XML|v3) (format|vocabulary)'
+  - '\brfcxml\b|\bxml2rfc\b|"xml2rfc"|\bRFC\b.{0,10}XML (format|vocabulary)|XML.{0,20}vocabulary for RFCs'
   stats:
-    direct: 10
-    total: 10
+    direct: 3
+    total: 3
     first_year: 2016
     last_year: 2016
 - id: user guides
@@ -9889,11 +9911,14 @@ tags:
   - userglos
   - usergloss
   stats:
-    direct: 64
-    total: 64
+    direct: 62
+    total: 62
     first_year: 1991
     last_year: 2026
-    served: 64
+    served: 62
+  yields_to:
+  - RFC series
+  - RFCXML
 - id: workshop reports
   uuid: 80099648-45c2-41f6-99a6-332ac7014855
   slug: workshop-reports
@@ -9925,6 +9950,7 @@ tags:
   - network complexity
   - considered dangerous|considered harmful
   - architectural (principle|consideration|guideline)|internet architecture|design consideration|philosophy|protocol extension|extension mechanism
+  - protocol versus document
   groups:
   - iab
   stats:
@@ -9958,10 +9984,10 @@ tags:
   - all victims together
   stats:
     direct: 484
-    total: 573
+    total: 572
     first_year: 1968
-    last_year: 2026
-    served: 573
+    last_year: 2012
+    served: 572
 - id: NCP
   uuid: 1909b158-0bf2-46a6-a622-2e59501c8c4a
   slug: ncp
@@ -10011,18 +10037,20 @@ tags:
   match:
   - '\bgraphics?\b|\bgraphical\b'
   yields_to:
-  - codecs
   - HTTP
   - MIB
+  - RFC series
+  - RFCXML
   - RTP
   - SDP
-  - YANG
   - X Window System
+  - YANG
+  - codecs
   stats:
-    direct: 37
-    total: 37
+    direct: 36
+    total: 36
     first_year: 1971
-    last_year: 2026
+    last_year: 2011
 - id: humor
   uuid: 27a71c5c-0b52-41d7-869a-64b5236f9d06
   slug: humor
