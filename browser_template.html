@@ -177,6 +177,10 @@ main{padding:12px 0 12px}
 .card>.cbody{flex:1 1 auto;min-height:0;overflow-y:auto}
 /* 4: the header controls fold away behind the icon in the card head */
 .card.collapsed>*:not(.card-head):not(.cbody){display:none}
+.rev{display:inline-block;font-family:var(--ff-mono);font-size:10.5px;letter-spacing:.04em;padding:1px 6px;border-radius:9px;background:#f3e9d8;color:#7a5200;margin-left:6px;vertical-align:middle;white-space:nowrap}
+.rev.ok{background:#e4efe6;color:#1f5f34}
+.why{font-size:12px;color:var(--ink-2);font-family:var(--ff-serif)}.why li{margin:2px 0}.why ul{margin:0;padding-left:16px}
+.ev{font-family:var(--ff-mono);font-size:10px;color:var(--ink-3);margin-left:3px}
 .card-head .fold{margin-left:auto;width:26px;height:26px;border:1px solid var(--rule);border-radius:6px;background:var(--surface);cursor:pointer;color:var(--ink-2);font-size:13px;line-height:1;display:inline-flex;align-items:center;justify-content:center}
 .card-head .fold:hover{background:var(--surface-2,#f4f4f4)}
 
@@ -366,6 +370,7 @@ footer code{font-size:12px}
   <button class="tab" role="tab" aria-selected="false" data-panel="life">Lifespan<small>alive or finished</small></button>
   <button class="tab" role="tab" aria-selected="false" data-panel="overlap">Overlap<small>merge or nest?</small></button>
   <button class="tab" role="tab" aria-selected="false" data-panel="corpus">All RFCs<small>look one up</small></button>
+  <button class="tab" role="tab" aria-selected="false" data-panel="review">Review<small>assignments to look at</small></button>
 </div></nav>
 </div>
 
@@ -515,6 +520,30 @@ footer code{font-size:12px}
       </div>
     </section>
 
+
+    <section class="panel" id="panel-review" hidden>
+      <div class="card">
+        <div class="card-head"><h2>Assignments to look at</h2></div>
+        <p class="note">The engine records why an assignment might be wrong: the tags came from the abstract because nothing else matched; a technology rests on author keywords alone; a root sits beside a technology from another subtree; tags were dropped by the seven-tag cap; this is the first document to carry a tag; or the document shares no tag with the RFC that obsoletes it. A document with none of these is not thereby right, only unremarkable. A document with an entry in <code>assignments.yaml</code> has been reviewed by a person and is not listed. This page shows the queue; the review itself is recorded in that file.</p>
+        <div class="controls">
+          <div class="seg" role="group" aria-label="Reason" id="revSeg">
+            <button data-rev="all" aria-pressed="true">All</button>
+            <button data-rev="abstract" aria-pressed="false">From abstract</button>
+            <button data-rev="keyword" aria-pressed="false">Keyword-only technology</button>
+            <button data-rev="root" aria-pressed="false">Root beside foreign technology</button>
+            <button data-rev="debut" aria-pressed="false">First carrier</button>
+            <button data-rev="cap" aria-pressed="false">Cap</button>
+            <button data-rev="era" aria-pressed="false">Era fallback</button>
+            <button data-rev="obsolete" aria-pressed="false">Disagrees with successor</button>
+          </div>
+          <span class="count" id="revCount"></span>
+        </div>
+        <div class="cbody">
+        <div class="rfcs"><table><thead><tr><th>RFC</th><th>Year</th><th>Title</th><th>Tags</th><th>Why</th></tr></thead><tbody id="revBody"></tbody></table></div>
+        <button class="more" id="revMore" hidden></button>
+        </div>
+      </div>
+    </section>
     <section class="panel" id="panel-corpus" hidden>
       <div class="card">
         <div class="card-head"><h2>Every published RFC and its tags</h2></div>
@@ -591,7 +620,7 @@ document.getElementById('stats').innerHTML=[
 var tabs=[].slice.call(document.querySelectorAll('.tab'));
 tabs.forEach(function(b){b.addEventListener('click',function(){
   tabs.forEach(function(o){o.setAttribute('aria-selected',String(o===b));});
-  ['vocab','cooc','life','corpus','overlap'].forEach(function(p){document.getElementById('panel-'+p).hidden=(p!==b.dataset.panel);});
+  ['vocab','cooc','life','corpus','overlap','review'].forEach(function(p){document.getElementById('panel-'+p).hidden=(p!==b.dataset.panel);});
   if(b.dataset.panel==='life')drawLife();
   if(b.dataset.panel==='corpus')drawCorpus();
   if(b.dataset.panel==='overlap')drawOverlap();
@@ -749,7 +778,7 @@ function drawDetail(){
     '<div class="rfcs"><table><thead><tr><th>RFC</th><th>Year</th><th>Title</th><th>Other tags</th></tr></thead><tbody>'+
     rows.slice(0,cap).map(function(r){
       var others=r[3].filter(function(i){return sel.indexOf(TAGS[i].id)<0;});
-      return '<tr><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+'</td>'+
+      return '<tr><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+revMark(r)+'</td>'+
         '<td><span class="tagchips">'+others.map(function(i){return chip(TAGS[i],'data-add="'+TAGS[i].id+'"');}).join('')+'</span></td></tr>';}).join('')+
     '</tbody></table></div>'+
     (cap<rows.length?'<button class="more" id="moreBtn">Show '+Math.min(LIMIT,rows.length-cap)+' more of '+rows.length.toLocaleString()+'</button>':'');
@@ -854,6 +883,25 @@ function corpusRows(){
   }
   return out.slice().sort(function(a,b){return rfcSort==='asc'?a[0]-b[0]:b[0]-a[0];});
 }
+var EVNAME={o:'hand assignment',w:'working group',s:'stream',t:'title',k:'author keyword',a:'abstract',e:'era'};
+function evText(code){return (code||'').split('').map(function(c){return EVNAME[c]||c;}).join(', ');}
+function revMark(r){if(r[8])return '<span class="rev ok" title="'+esc(D.reviewNote)+'">reviewed</span>';return r[6]&&r[6].length?'<span class="rev" title="'+esc(r[6].join(' / '))+'">look at</span>':'';}
+function chipsEv(list,r){return '<span class="tagchips">'+list.map(function(i){var c=r[7]&&r[7][String(i)];return chip(TAGS[i],'data-goto="'+esc(TAGS[i].id)+'" title="'+esc(TAGS[i].desc)+(c?' — from '+evText(c):'')+'"')+(c?'<span class="ev" title="'+esc(evText(c))+'">'+c+'</span>':'');}).join('')+'</span>';}
+function revKind(s){return /from the abstract/.test(s)?'abstract':/author keywords/.test(s)?'keyword':/as leaf beside/.test(s)?'root':/first document/.test(s)?'debut':/by the cap/.test(s)?'cap':/era fallback/.test(s)?'era':/no tag in common/.test(s)?'obsolete':'other';}
+var revMode='all',revShown=200;
+function drawReview(){
+  var rows=ROWS.filter(function(r){return r[6]&&r[6].length&&(revMode==='all'||r[6].some(function(s){return revKind(s)===revMode;}));}).slice().sort(function(a,b){return b[0]-a[0];});
+  var counts={};ROWS.forEach(function(r){(r[6]||[]).forEach(function(s){var k=revKind(s);counts[k]=(counts[k]||0)+1;});});
+  document.querySelectorAll('#revSeg button').forEach(function(b){var k=b.dataset.rev;if(k!=='all'&&counts[k]!=null)b.textContent=b.textContent.replace(/\s*\(\d[\d,]*\)$/,'')+' ('+counts[k].toLocaleString()+')';});
+  document.getElementById('revCount').textContent=rows.length.toLocaleString()+' documents · '+ROWS.filter(function(r){return r[8];}).length+' reviewed';
+  var cap=Math.min(revShown,rows.length);
+  document.getElementById('revBody').innerHTML=rows.slice(0,cap).map(function(r){
+    return '<tr><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+'</td><td>'+chipsEv(r[3],r)+'</td><td class="why"><ul>'+r[6].map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ul></td></tr>';}).join('');
+  var mb=document.getElementById('revMore');mb.hidden=cap>=rows.length;if(!mb.hidden)mb.textContent='Show more of '+rows.length.toLocaleString();
+}
+document.querySelectorAll('#revSeg button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#revSeg button').forEach(function(o){o.setAttribute('aria-pressed',String(o===b));});revMode=b.dataset.rev;revShown=200;drawReview();});});
+document.getElementById('revMore').addEventListener('click',function(){revShown+=200;drawReview();});
+document.getElementById('panel-review').addEventListener('click',function(e){var b=e.target.closest('[data-goto]');if(!b)return;jumpTo([b.dataset.goto],false);});
 function chips(list,direct){
   return '<span class="tagchips">'+list.map(function(i){return chip(TAGS[i],'data-goto="'+TAGS[i].id+'"',direct&&direct.indexOf(i)<0?'anc':'');}).join('')+'</span>';
 }
@@ -863,15 +911,15 @@ function drawCorpus(){
   if(n!==null){
     var r=byNum[n];
     card.innerHTML=r?('<div class="rfccard"><div class="num">RFC '+r[0]+' &middot; '+r[1]+'</div><h3>'+esc(r[2])+'</h3>'+
-      '<div class="axes"><span class="lab">tags</span>'+chips(r[3])+
+      '<div class="axes"><span class="lab">tags</span>'+chipsEv(r[3],r)+revMark(r)+
       '<span class="lab">technology</span>'+(r[4].length?chips(r[4],r[3]):'<span style="font-size:12px;color:var(--ink-3)">none &mdash; a subject or process document</span>')+
-      '<span class="lab">topics</span>'+chips(r[5],r[3])+'</div></div>')
+      '<span class="lab">topics</span>'+chips(r[5],r[3])+'</div>'+(r[6]&&r[6].length?'<div class="why"><b>Why a person should look at this:</b><ul>'+r[6].map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ul></div>':'')+(r[8]?'<div class="why">'+esc(D.reviewNote)+'</div>':'')+'</div>')
       :('<div class="rfccard"><p class="miss">No RFC '+n+' in the corpus. Published RFCs run from 1 to '+ROWS[ROWS.length-1][0]+', with gaps for numbers never issued.</p></div>');
   }else card.innerHTML='';
   document.getElementById('rfcCount').textContent=rows.length.toLocaleString()+' of '+ROWS.length.toLocaleString();
   var cap=Math.min(rfcShown,rows.length);
   document.getElementById('rfcBody').innerHTML=rows.slice(0,cap).map(function(r){
-    return '<tr class="'+(n!==null?'hitrow':'')+'"><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+'</td><td>'+chips(r[3])+'</td></tr>';}).join('');
+    return '<tr class="'+(n!==null?'hitrow':'')+'"><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+revMark(r)+'</td><td>'+chips(r[3])+'</td></tr>';}).join('');
   var mb=document.getElementById('rfcMore');
   mb.hidden=cap>=rows.length;
   if(!mb.hidden)mb.textContent='Show '+Math.min(RSTEP,rows.length-cap)+' more of '+rows.length.toLocaleString();
@@ -906,7 +954,7 @@ document.querySelectorAll('[data-lifekind]').forEach(function(b){b.addEventListe
   lifeKind=b.dataset.lifekind;drawLife();});});
 
 document.getElementById('maxRfc').textContent=ROWS[ROWS.length-1][0];
-drawTags();drawDetail();drawPairs();drawCorpus();drawOverlap();
+drawTags();drawDetail();drawPairs();drawCorpus();drawOverlap();drawReview();
 document.querySelectorAll('.card>.card-head').forEach(function(hd){var card=hd.parentNode;var b=document.createElement('button');b.className='fold';b.type='button';b.title='Hide the controls above the list';b.setAttribute('aria-expanded','true');b.textContent='\u25B4';
   b.addEventListener('click',function(){var c=card.classList.toggle('collapsed');b.textContent=c?'\u25BE':'\u25B4';b.title=c?'Show the controls above the list':'Hide the controls above the list';b.setAttribute('aria-expanded',String(!c));});hd.appendChild(b);});
 (function(){var c=document.querySelector && document.querySelector('.chrome');if(!c)return;var f=document.querySelector('footer');function m(){document.documentElement.style.setProperty('--chrome-h',c.offsetHeight+'px');if(f)document.documentElement.style.setProperty('--footer-h',f.offsetHeight+'px');}m();if(window.ResizeObserver){var ro=new ResizeObserver(m);ro.observe(c);if(f)ro.observe(f);}else window.addEventListener('resize',m);})();

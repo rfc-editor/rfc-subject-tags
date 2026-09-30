@@ -8,6 +8,7 @@ How the tag system is built: the input corpus, the taxonomy file, the engine tha
 
 | File | Contains |
 |---|---|
+| `assignments.yaml` | Hand assignments: one entry per RFC a person has reviewed — tags to add or remove, a reason, who and when. Applied after the rules; a document with an entry is reviewed. A rule is for a class of documents; an override is for one document whose subject no rule can name without being written for its title |
 | `taxonomy.yaml` | Every tag with its parent, kind, description, match rules, working groups, suppression, decomposition and implied topics; plus engine parameters. Each entry also carries a generated `stats` block (see below) that `regen.py` rewrites and curators do not edit |
 
 ### Code
@@ -40,7 +41,7 @@ publish; the page carries its own build date so the two can be told apart.
 | File | Contents |
 |---|---|
 | `rfcs.json` | Corpus metadata, one record per RFC — the engine's input, produced by either corpus script. Fetched fresh at build time; the snapshot each build used is published alongside the other artifacts, so a published build can be reproduced exactly |
-| `rfc-tags.json` | Per RFC: title, year, `source` (`rules`, `abstract` or `era` — how the tags were found), leaf `tags`, full `paths` (R4) as arrays of ids, and `technology` / `topic` coordinates for the served view |
+| `rfc-tags.json` | Per RFC: title, year, `source` (`rules`, `abstract` or `era`), leaf `tags`, `evidence` (per tag, which sources produced it: `wg`, `stream`, `title`, `keyword`, `abstract`, `era`, `override`), `review` (reasons a person should look at the assignment; empty if none), `reviewed` (true when `assignments.yaml` has an entry), full `paths` (R4) as arrays of ids, and `technology` / `topic` coordinates for the served view |
 | `rfc-tags.csv` | The same table for spreadsheet use; list fields are `;`-separated, paths `|`-separated with ids joined by ` / ` |
 | `tag-candidates.json` | Output of `tag_candidates.py`: candidate names by tag, most-seen first, with example RFCs |
 | `rfc-tags.html` | Self-contained review page. **Vocabulary**: the tree with corpus count and notifications-per-year (since 2021) per tag, search, technology/topic filter, multi-select with AND/OR and the matching RFCs. **Co-occurrence**: tag pairs sharing RFCs. **Lifespan**: each tag's first-to-last year, live or dormant. **Overlap**: Jaccard and one-way overlap flags for redundant or nested pairs. **All RFCs**: look-up with tags and served technology/topic coordinates |
@@ -176,6 +177,9 @@ The character rule exists because ids appear inside other formats: ` / ` joins t
 8. **Ancestor rule.** A tag never sits in the leaf set beside its own descendant, so a root is a leaf only for documents about the subject in general.
    A topic that a present technology implies is likewise dropped from the leaf set; the served view adds it back, so it appears once, by implication.
 9. **Cap.** If more than `max_leaf_tags` remain, keep working-group tags first, then deeper (more specific) tags, then earlier tags in file order.
+10. **Overrides.** The RFC's entry in `assignments.yaml`, if any: `remove` tags are taken out, `add` tags put in, not subject to the cap. A document with an `add` never falls to the abstract or era fallback.
+
+Every tag records its evidence — which of these tiers produced it — and every document without an override gets a list of review reasons: it matched nothing and its tags came from the abstract (or the era fallback); a technology rests on author keywords alone; a title-derived root sits beside a technology from another subtree; tags were dropped by the cap; it is the first document to carry a tag (from 2000 on); it shares no tag, counting ancestors, with the RFC that obsoletes it or that it obsoletes. These are the pipeline's known failure modes, not a judgement that the assignment is wrong.
 
 `closure(tags)` expands leaf tags to their root-anchored paths, which appear as `paths` in `rfc-tags.json` (R4).
 
@@ -194,6 +198,23 @@ Matching is case-insensitive over title and keywords, which makes several failur
 - **A working group is not a tag.** When a group's output is a named technology with a following, the technology gets its own entry and the group goes in its `groups` (R10, R11).
 
 The mechanical checks that enforce these are in validation.md.
+
+## Recording a review
+
+The engine proposes; a person confirms (README, Search and subscription semantics). The confirmation is recorded in `assignments.yaml`:
+
+```yaml
+overrides:
+  RFC3930:
+    add: [internet architecture]
+    reason: Title-specific essay on protocol design
+    by: jd
+    date: 2026-09-30
+```
+
+An entry may confirm the rules' result with no `add` or `remove` at all; what matters is that the document has been looked at. The loader rejects an entry naming a tag that does not exist or lacking a reason. When a wrong assignment turns out to be a *class* of documents, fix the rule instead and leave the override out — the rule generalises, the override does not.
+
+The page's Review tab lists the documents with review reasons, filterable by reason, and the RFC card shows each tag's evidence; the page reports, it does not edit `assignments.yaml`.
 
 ## Served view
 

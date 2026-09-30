@@ -112,6 +112,7 @@ Consequences:
 - Subscribing to `DNS` covers DNSSEC, DoH and every other descendant.
 - Subscribing to `security` covers every document whose technologies imply security.
 - What readers are shown is the closed set, or at least the tag with its ancestors. A document tagged `RFCXML` is also tagged `RFC series` (R4); a display that lists leaf tags alone hides that.
+- Each document carries the evidence for each tag and, unless a person has reviewed it, the reasons its assignment might be wrong (the page's Review tab lists them). Consumers can show or filter on these; a subscription service may choose to hold unreviewed assignments back.
 - Combinations work across axes: `quic AND security` delivers RFC 9001 and the QUIC documents that carry a security technology, but not the QUIC base specification (R19, R20). `bgp AND yang` delivers the BGP YANG modules.
 
 A subscription is any boolean expression over tags: a single tag, an OR, or an AND.
@@ -126,7 +127,7 @@ This puts the weight of correctness on the assignment made at publication. It is
 ### Assignment at publication
 
 1. The engine proposes tags from the working group, title and keywords (see code.md).
-2. A person confirms them before publication, adding anything the rules missed.
+2. A person confirms them before publication, adding anything the rules missed. The confirmation, and any correction, is recorded in `assignments.yaml`; from then on the document is marked reviewed.
 3. If the document introduces a technology or topic the vocabulary lacks, the same person decides whether a new tag is warranted under R10, R11 and R18.
 4. New working groups are added to the working-group map when their first RFC is published.
 

@@ -71,7 +71,10 @@ for e in doc['tags']:
         'direct':st['direct'],'total':st['total'],'rate':round(n21/window_years,1),'first':st['first_year'],'last':st['last_year'],'n21':n21,'maxYear':e.get('max_year')})
 rows=[]
 for k in sorted(RT, key=lambda x:int(x[3:])):
-    v=RT[k]; rows.append([int(k[3:]), v['year'], v['title'], [tag_index[t] for t in v['tags']], [tag_index[t] for t in v['technology']], [tag_index[t] for t in v['topic']]])
+    v=RT[k]
+    EV={'override':'o','wg':'w','stream':'s','title':'t','keyword':'k','abstract':'a','era':'e'}
+    rows.append([int(k[3:]), v['year'], v['title'], [tag_index[t] for t in v['tags']], [tag_index[t] for t in v['technology']], [tag_index[t] for t in v['topic']],
+                 v.get('review',[]), {str(tag_index[t]):''.join(EV[s] for s in srcs) for t,srcs in v.get('evidence',{}).items()}, 1 if v.get('reviewed') else 0])
 pair_c=collections.Counter()
 for v in RT.values():
     ids=sorted(tag_index[t] for t in v['tags'])
@@ -79,7 +82,7 @@ for v in RT.values():
         for j in range(i+1,len(ids)): pair_c[(ids[i],ids[j])]+=1
 pairs=[[a,b,c] for (a,b),c in pair_c.items() if c>=2]; pairs.sort(key=lambda p:-p[2])
 data={'version':f'taxonomy.yaml, {len(tax.by_id)} tags in {len(ROOTS)} roots, build of {today:%-d %B %Y}','tags':tags_data,'rows':rows,'pairs':pairs,
-      'window':[W0, today.year],'windowYears':window_years,'yearMin':min(years_all),'yearMax':max(years_all)}
+      'window':[W0, today.year],'reviewNote':'A document with an entry in assignments.yaml has been reviewed by a person.','windowYears':window_years,'yearMin':min(years_all),'yearMax':max(years_all)}
 html=open('browser_template.html').read()
 html=html.replace('__DATA__', json.dumps(data, separators=(',',':')).replace('</','<\\/'))
 html=html.replace('__EYEBROW__', f'taxonomy.yaml &middot; {len(tax.by_id)} tags in {len(ROOTS)} roots &middot; corpus {len(rfcs):,} RFCs &middot; {today:%B %Y}')
