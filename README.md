@@ -158,7 +158,7 @@ The taxonomy is `taxonomy.yaml` — one entry per tag with its place in the tree
 
 - 638 tags: 19 roots, 290 at level 2, 280 at level 3, 49 at level 4.
 - 556 technologies and 82 topics in the tree (76 topics reach the served view; six composite topics decompose into their parts).
-- Mean 3.65 tags per RFC including ancestors; no RFC untagged; no tag unused.
+- Mean 3.66 tags per RFC including ancestors; no RFC untagged; no tag unused.
 
 ### The roots
 
@@ -229,7 +229,7 @@ Three topics name document forms but are kept because each is a subject readers 
 
 ### Tag counts
 
-Because roots count as tags, 0.4% of documents exceed ten tags. All are multi-technology cross-area specifications. A hard cap can be added if the average-based budget (R6) is judged insufficient.
+Because roots count as tags, a small share of documents exceed ten tags; all are multi-technology cross-area specifications and surveys, and their long lists are correct — RFC 8095's survey of transport protocols is about fourteen of them. The engine does not cap a document's tags: R6 constrains the mean, which such documents barely move, and a long list is surfaced as a review reason instead.
 
 ### Depth
 

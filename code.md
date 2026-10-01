@@ -146,7 +146,7 @@ The character rule exists because ids appear inside other formats: ` / ` joins t
 
 | Key | Value | Effect |
 |---|---|---|
-| `max_leaf_tags` | 7 | Cap on leaf tags per RFC before closure |
+| `many_tags` | 8 | A leaf list this long or longer gets a review reason; nothing is truncated |
 | `abstract_fallback_max_tags` | 3 | Cap when only the abstract matched |
 | `era_fallback` | `ARPANET`, ≤ 1982, Legacy stream | Tag for otherwise-unmatched early working notes |
 | `humor.tag` | `humor` | Sole tag for day-dated or listed documents |
@@ -176,10 +176,10 @@ The character rule exists because ids appear inside other formats: ` / ` joins t
 7. **Suppression.** A tag is removed when a tag in its `yields_to` is present and *settled* — that is, not itself about to be removed. This makes the result independent of file order while still letting a keyword-noise tag be removed before it can suppress something else.
 8. **Ancestor rule.** A tag never sits in the leaf set beside its own descendant, so a root is a leaf only for documents about the subject in general.
    A topic that a present technology implies is likewise dropped from the leaf set; the served view adds it back, so it appears once, by implication.
-9. **Cap.** If more than `max_leaf_tags` remain, keep working-group tags first, then deeper (more specific) tags, then earlier tags in file order.
-10. **Overrides.** The RFC's entry in `assignments.yaml`, if any: `remove` tags are taken out, `add` tags put in, not subject to the cap. A document with an `add` never falls to the abstract or era fallback.
+9. **Order.** Working-group tags first, then deeper (more specific) tags, then earlier tags in file order. Nothing is truncated: a document is about as many things as its evidence says, and a long list is a review reason rather than something the engine trims.
+10. **Overrides.** The RFC's entry in `assignments.yaml`, if any: `remove` tags are taken out, `add` tags put in. A document with an `add` never falls to the abstract or era fallback.
 
-Every tag records its evidence — which of these tiers produced it — and every document without an override gets a list of review reasons: it matched nothing and its tags came from the abstract (or the era fallback); a technology rests on author keywords alone; a title-derived root sits beside a technology from another subtree; tags were dropped by the cap; it is the first document to carry a tag (from 2000 on); it shares no tag, counting ancestors, with the RFC that obsoletes it or that it obsoletes. These are the pipeline's known failure modes, not a judgement that the assignment is wrong.
+Every tag records its evidence — which of these tiers produced it — and every document without an override gets a list of review reasons: it matched nothing and its tags came from the abstract (or the era fallback); a technology rests on author keywords alone; a title-derived root sits beside a technology from another subtree; it carries `many_tags` or more leaf tags; it is the first document to carry a tag (from 2000 on); it shares no tag, counting ancestors, with the RFC that obsoletes it or that it obsoletes. These are the pipeline's known failure modes, not a judgement that the assignment is wrong.
 
 `closure(tags)` expands leaf tags to their root-anchored paths, which appear as `paths` in `rfc-tags.json` (R4).
 

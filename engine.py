@@ -192,9 +192,8 @@ class Taxonomy:
         tags = [t for t in tags if not any(o != t and t in self.path[o] for o in tags)]   # ancestor rule
         implied = {x for o in tags for x in self.implies.get(o, [])}
         tags = [t for t in tags if t not in implied]                                      # implied topics are not leaves
-        before_cap = len(tags)
-        tags = self._prioritise(tags, wg_tags)[:E['max_leaf_tags']]
-        # overrides: applied last, not subject to the cap
+        tags = self._prioritise(tags, wg_tags)
+        # overrides: applied last
         for t in ov.get('remove', []) or []:
             if t in tags: tags.remove(t)
         for t in ov.get('add', []) or []:
@@ -202,10 +201,10 @@ class Taxonomy:
             ev[t] = ['override'] + [x for x in ev.get(t, []) if x != 'override']
         tags = [t for t in tags if not any(o != t and t in self.path[o] for o in tags)]
         self.last_evidence = {t: sorted(ev.get(t, []), key=self.EVIDENCE_ORDER.index) for t in tags}
-        self.last_review = [] if ov else self._review(rfc, tags, before_cap)
+        self.last_review = [] if ov else self._review(rfc, tags)
         return tags
 
-    def _review(self, rfc, tags, before_cap):
+    def _review(self, rfc, tags):
         """Why a person should look at this assignment. Each reason is one of the failure modes the
         pipeline is known to have; a document with none is not thereby right, only unremarkable."""
         r = []
@@ -215,8 +214,8 @@ class Taxonomy:
             src = self.last_evidence.get(t, [])
             if self.kind[t] == 'technology' and src and set(src) <= {'keyword'}:
                 r.append(f'{t}: technology on author keywords alone')
-        if before_cap > self.engine['max_leaf_tags']:
-            r.append(f'{before_cap} tags matched; {before_cap - self.engine["max_leaf_tags"]} dropped by the cap')
+        if len(tags) >= self.engine.get('many_tags', 8):
+            r.append(f'{len(tags)} leaf tags: a long list is worth a look')
         # a root as leaf beside a technology from another subtree, when the root came from a title word
         # rather than a working group or stream: the pattern behind the transport/routing leaks
         for rt in [t for t in tags if len(self.path[t]) == 1]:
@@ -242,7 +241,7 @@ class Taxonomy:
         return present
 
     def _prioritise(self, tags, wg_tags=()):
-        """Order used when limits truncate: working-group tags first, then deeper (more specific) tags, then file order."""
+        """Order of the leaf list, and of the abstract fallback's choice: working-group tags first, then deeper (more specific) tags, then file order. No longer truncates the leaf list."""
         pos = {t: i for i, t in enumerate(self.order)}
         return sorted(tags, key=lambda t: (t not in wg_tags, -len(self.path[t]), pos[t]))
 

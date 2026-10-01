@@ -22,7 +22,7 @@ The checks a rebuild must pass, and the figures from the current build. Each che
 
 - Every assignment is emitted as full paths.
 - Mean tags per RFC, counting ancestors, is between 1 and 10.
-- Report the distribution and the maximum.
+- Report the distribution and the maximum. There is no cap on leaf tags: a long list is a review reason, not something the engine trims.
 
 ### Humor (R16)
 
@@ -129,7 +129,7 @@ By inspection of the tree: no tag names an IETF area, a status, a stream or a da
 
 ### Engine round-trip
 
-When the engine or the YAML schema changes, re-run against the previous `rfc-tags.json` and list every RFC whose `tags` differ. Differences must be explainable — at the YAML-to-engine migration nine RFCs differed, all in which tags survive the seven-tag cap or the three-tag abstract fallback, and none in tags matched.
+When the engine or the YAML schema changes, re-run against the previous `rfc-tags.json` and list every RFC whose `tags` differ. Differences must be explainable — at the YAML-to-engine migration nine RFCs differed, all in the three-tag abstract fallback's choice or the leaf cap that then existed, and none in tags matched.
 
 ## Records
 
@@ -141,9 +141,9 @@ When the engine or the YAML schema changes, re-run against the previous `rfc-tag
 
 - **Tags:** 638 — 19 roots, 290 at level 2, 280 at level 3, 49 at level 4; 556 technology, 82 topic.
 - **Coverage:** 0 untagged.
-- **Tags per RFC (with ancestors):** mean 3.65, median 3, max 15.
-- **Distribution:** 1:683 · 2:2,591 · 3:2,124 · 4:1,586 · 5:1,327 · 6:718 · 7:416 · 8:214 · 9:103 · 10:39 · 11:24 · 12:8 · 13:5 · 14:4 · 15:1.
-- **Over ten tags:** 42 documents (0.4%), all multi-technology cross-area specifications.
+- **Tags per RFC (with ancestors):** mean 3.66, median 3, max 26.
+- **Distribution:** 1:683 · 2:2,591 · 3:2,124 · 4:1,586 · 5:1,327 · 6:718 · 7:416 · 8:214 · 9:103 · 10:38 · 11:24 · 12:7 · 13:5 · 14:3 · 15:2 · 16:1 · 26:1.
+- **Over ten tags:** 43 documents (0.4%), all multi-technology cross-area specifications.
 - **Unused tags (no document directly or beneath):** 0.
 - **Single-document tags:** 45 — AEGIS, AFS, ARC, BATS, BLAKE2, CRC, CyberCash, DCTCP, Dragonfly, EIGRP, FFV1, GSAKMP, HOBA, HTTP caching, IDXP, IRTP, J-PAKE, JSCalendar, LPWAN, MOSPF, NAT-PMP, OPAQUE, OVSDB, PGM, RATP, RBNF, SDF, SFrame, Speex, TBRPF, TEEP, TMux, TVR, Tetrys, Vorbis, WHIP, XACML, Y2K, YAML, amateur radio, data center networking, eBPF, oblivious DNS, password hashing, scrypt.
 - **Humor:** 74 documents, 0 exclusivity violations.
@@ -155,6 +155,6 @@ When the engine or the YAML schema changes, re-run against the previous `rfc-tag
 - **Zero-technology documents:** 1,494 — governance, process, humor, ARPANET-era notes, general-subject documents.
 - **Zero-topic documents:** 0.
 - **Per RFC:** technology mean 1.74, topic mean 2.06, combined mean 3.80.
-- **Over ten combined:** 48 documents (0.5%); maximum 15.
+- **Over ten combined:** 48 documents (0.5%); maximum 26.
 - **Documents whose only topics are roots:** 5,357.
 - **Topic replay:** 5 documents debut two topics, all in the founding years. Debuts since 2003: emergency services (2003), NAT traversal (2003), IoT (2006), energy management (2013), SDN (2014), telemetry (2019), sustainability (2024).
