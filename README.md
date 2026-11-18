@@ -148,7 +148,7 @@ Broad topics are legitimate subscription targets even though they are busy, beca
 - `routing` about 56,
 - `network management` about 33.
 
-Dormant tags are equally legitimate: 275 of the 638 tags have had no RFC since 2021. A subscription to one is a standing request to be told if the technology revives.
+Dormant tags are equally legitimate: 273 of the 638 tags have had no RFC since 2021. A subscription to one is a standing request to be told if the technology revives.
 
 ## What the taxonomy looks like
 

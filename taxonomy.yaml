@@ -28,10 +28,10 @@ tags:
   - '\bnaming\b|name resolution'
   stats:
     direct: 29
-    total: 650
+    total: 652
     first_year: 1971
     last_year: 2026
-    served: 650
+    served: 652
 - id: DNS
   uuid: 1b6d347a-cc55-4d78-ace9-45ba51f04f3b
   slug: dns
@@ -275,10 +275,10 @@ tags:
   - (registration|NIC) service
   stats:
     direct: 6
-    total: 116
+    total: 118
     first_year: 1982
     last_year: 2026
-    served: 116
+    served: 118
 - id: EPP
   uuid: 370fba0a-b6cd-4d35-9db0-15c26d26d7ff
   slug: epp
@@ -293,8 +293,8 @@ tags:
   - provreg
   - regext
   stats:
-    direct: 56
-    total: 56
+    direct: 58
+    total: 58
     first_year: 2000
     last_year: 2026
 - id: RDAP
@@ -309,8 +309,8 @@ tags:
   - regext
   - weirds
   stats:
-    direct: 36
-    total: 36
+    direct: 38
+    total: 38
     first_year: 2015
     last_year: 2026
 - id: WHOIS
@@ -933,10 +933,10 @@ tags:
   - '\bmessaging\b'
   stats:
     direct: 8
-    total: 909
+    total: 910
     first_year: 1971
     last_year: 2026
-    served: 909
+    served: 910
 - id: email
   uuid: 1623c220-7371-45c5-9cd3-2cb2a56f4770
   slug: email
@@ -963,7 +963,7 @@ tags:
   - VPIM
   stats:
     direct: 71
-    total: 472
+    total: 473
     first_year: 1971
     last_year: 2026
 - id: SMTP
@@ -987,8 +987,8 @@ tags:
   - smtpext
   - yam
   stats:
-    direct: 129
-    total: 129
+    direct: 130
+    total: 130
     first_year: 1981
     last_year: 2026
 - id: message format
@@ -1007,10 +1007,10 @@ tags:
   - notary
   - receipt
   stats:
-    direct: 42
-    total: 42
+    direct: 43
+    total: 43
     first_year: 1973
-    last_year: 2022
+    last_year: 2026
 - id: IMAP
   uuid: f01c0471-1fd3-43f3-a226-22c07ffe779b
   slug: imap
@@ -1031,8 +1031,8 @@ tags:
   - morg
   - qresync
   stats:
-    direct: 114
-    total: 114
+    direct: 115
+    total: 115
     first_year: 1988
     last_year: 2026
 - id: POP3
@@ -1489,10 +1489,10 @@ tags:
   - 'real-?time (communication|media|application)s?|\bvoip\b|voice over IP'
   stats:
     direct: 8
-    total: 925
+    total: 924
     first_year: 1986
     last_year: 2026
-    served: 925
+    served: 924
 - id: SIP
   uuid: f2c0f1c4-9b78-4b7e-bb73-03ca0d642061
   slug: sip
@@ -2076,14 +2076,13 @@ tags:
   kind: topic
   desc: Media streaming delivery and operations
   groups:
-  - elegy
   - mops
   stats:
-    direct: 4
-    total: 22
+    direct: 3
+    total: 21
     first_year: 1998
     last_year: 2025
-    served: 22
+    served: 21
 - id: RTSP
   uuid: fc048a7c-5db9-4189-a26c-2038d9fc3e05
   slug: rtsp
@@ -2361,10 +2360,10 @@ tags:
   - X.400
   stats:
     direct: 75
-    total: 1851
+    total: 1857
     first_year: 1982
     last_year: 2026
-    served: 1877
+    served: 1883
 - id: routing architecture
   uuid: a9e50979-c226-4794-a605-8c6de13c2ec5
   slug: routing-architecture
@@ -2381,10 +2380,10 @@ tags:
   - sdr
   stats:
     direct: 24
-    total: 42
+    total: 43
     first_year: 1984
-    last_year: 2025
-    served: 85
+    last_year: 2026
+    served: 86
 - id: ECMP
   uuid: 327098e3-5a35-4443-86c1-041ae8f3c477
   slug: ecmp
@@ -2394,10 +2393,10 @@ tags:
   match:
   - '\bECMP\b|equal-cost multi'
   stats:
-    direct: 18
-    total: 18
+    direct: 19
+    total: 19
     first_year: 1999
-    last_year: 2022
+    last_year: 2026
 - id: TVR
   uuid: 5e241219-f735-4103-9ad0-b2de5abd2200
   slug: tvr
@@ -2430,8 +2429,8 @@ tags:
   - idr
   - rps
   stats:
-    direct: 239
-    total: 271
+    direct: 241
+    total: 273
     first_year: 1989
     last_year: 2026
 - id: BGP communities
@@ -2514,7 +2513,7 @@ tags:
   - security
   stats:
     direct: 7
-    total: 74
+    total: 75
     first_year: 2006
     last_year: 2026
 - id: RPKI
@@ -2531,8 +2530,8 @@ tags:
   implies:
   - security
   stats:
-    direct: 65
-    total: 65
+    direct: 66
+    total: 66
     first_year: 2011
     last_year: 2026
 - id: BGPsec
@@ -2674,8 +2673,8 @@ tags:
   match:
   - '\bRPSL\b|routing policy specification'
   stats:
-    direct: 12
-    total: 12
+    direct: 13
+    total: 13
     first_year: 1998
     last_year: 2026
 - id: RIFT
@@ -3059,8 +3058,8 @@ tags:
   groups:
   - mpls
   stats:
-    direct: 226
-    total: 569
+    direct: 227
+    total: 570
     first_year: 1984
     last_year: 2026
 - id: LDP
@@ -3147,8 +3146,8 @@ tags:
   groups:
   - spring
   stats:
-    direct: 43
-    total: 68
+    direct: 45
+    total: 71
     first_year: 2016
     last_year: 2026
 - id: SR-MPLS
@@ -3173,8 +3172,8 @@ tags:
   match:
   - '\bSRv6\b'
   stats:
-    direct: 21
-    total: 21
+    direct: 22
+    total: 22
     first_year: 2020
     last_year: 2026
 - id: traffic engineering
@@ -3189,11 +3188,11 @@ tags:
   - teas
   - tewg
   stats:
-    direct: 91
-    total: 233
+    direct: 92
+    total: 236
     first_year: 1998
     last_year: 2026
-    served: 233
+    served: 236
 - id: RSVP-TE
   uuid: 019c6eb0-51df-4d2b-89b5-55ee99934c44
   slug: rsvp-te
@@ -3222,8 +3221,8 @@ tags:
   implies:
   - traffic engineering
   stats:
-    direct: 90
-    total: 90
+    direct: 92
+    total: 92
     first_year: 2006
     last_year: 2026
 - id: DetNet
@@ -3657,10 +3656,10 @@ tags:
   - '(?<!real-time )(?<!realtime )(?<!real time )\btransport (protocol|layer|service)s?\b(?! security)'
   stats:
     direct: 17
-    total: 852
+    total: 854
     first_year: 1973
     last_year: 2026
-    served: 852
+    served: 854
   yields_to:
   - DTLS
   - RTCP
@@ -3680,11 +3679,11 @@ tags:
   - GMPLS
   - MPLS-TP
   stats:
-    direct: 52
-    total: 52
+    direct: 53
+    total: 53
     first_year: 1989
     last_year: 2026
-    served: 66
+    served: 67
 - id: checksum
   uuid: 3c066625-28b6-46d1-bdd5-c9fb4bf68686
   slug: checksum
@@ -3846,8 +3845,8 @@ tags:
   match:
   - '\bUDP\b|user datagram'
   stats:
-    direct: 70
-    total: 76
+    direct: 71
+    total: 77
     first_year: 1980
     last_year: 2026
 - id: UDP-Lite
@@ -3872,11 +3871,10 @@ tags:
   match:
   - '\bQUIC\b'
   groups:
-  - elegy
   - quic
   stats:
-    direct: 22
-    total: 22
+    direct: 23
+    total: 23
     first_year: 2019
     last_year: 2026
 - id: SCTP
@@ -3937,10 +3935,10 @@ tags:
   - iccrg
   stats:
     direct: 73
-    total: 136
+    total: 137
     first_year: 1984
     last_year: 2026
-    served: 136
+    served: 137
 - id: RTP congestion control
   uuid: ad085cd4-8a37-4f1f-8aa5-f9d1e0977ed1
   slug: rtp-congestion-control
@@ -3967,8 +3965,8 @@ tags:
   implies:
   - congestion control
   stats:
-    direct: 23
-    total: 23
+    direct: 24
+    total: 24
     first_year: 1999
     last_year: 2026
 - id: AQM
@@ -4432,10 +4430,10 @@ tags:
   - 'internet protocol suite|\bIP (layer|datagrams?)\b|network layer'
   stats:
     direct: 6
-    total: 1439
+    total: 1442
     first_year: 1971
     last_year: 2026
-    served: 1439
+    served: 1442
 - id: ICN
   uuid: 0f2f9335-2b3d-4ee7-9d33-272ebef5b804
   slug: icn
@@ -4480,8 +4478,8 @@ tags:
   - multi6
   - v6ops
   stats:
-    direct: 544
-    total: 727
+    direct: 545
+    total: 729
     first_year: 1993
     last_year: 2026
 - id: neighbor discovery
@@ -4493,8 +4491,8 @@ tags:
   match:
   - neighbor discovery
   stats:
-    direct: 31
-    total: 43
+    direct: 32
+    total: 44
     first_year: 1996
     last_year: 2026
 - id: SEND
@@ -4935,10 +4933,10 @@ tags:
   - icmp
   - rdisc
   stats:
-    direct: 37
-    total: 37
+    direct: 38
+    total: 38
     first_year: 1981
-    last_year: 2020
+    last_year: 2026
 - id: router alert
   uuid: 0009b3da-9eeb-449b-9289-9d01683e1ac6
   slug: router-alert
@@ -5157,10 +5155,10 @@ tags:
   implies:
   - security
   stats:
-    direct: 9
-    total: 9
+    direct: 10
+    total: 10
     first_year: 2008
-    last_year: 2020
+    last_year: 2026
 - id: home networking
   uuid: 252a1e86-1de1-4654-a0b2-c9927cf502ff
   slug: home-networking
@@ -5987,10 +5985,10 @@ tags:
   - XML signatures
   stats:
     direct: 118
-    total: 1689
+    total: 1694
     first_year: 1974
     last_year: 2026
-    served: 2159
+    served: 2166
 - id: TLS
   uuid: 4aabde5b-c39a-442c-baf6-6695b1d7bcb9
   slug: tls
@@ -6145,8 +6143,8 @@ tags:
   - pkix
   - wpkops
   stats:
-    direct: 76
-    total: 254
+    direct: 77
+    total: 257
     first_year: 1999
     last_year: 2026
 - id: X.509
@@ -6161,8 +6159,8 @@ tags:
   groups:
   - pkix
   stats:
-    direct: 144
-    total: 144
+    direct: 146
+    total: 146
     first_year: 1999
     last_year: 2026
 - id: OCSP
@@ -6259,8 +6257,8 @@ tags:
   - lamps
   - smime
   stats:
-    direct: 98
-    total: 174
+    direct: 100
+    total: 176
     first_year: 1998
     last_year: 2026
 - id: S/MIME
@@ -6487,7 +6485,7 @@ tags:
   - authentication
   stats:
     direct: 28
-    total: 159
+    total: 160
     first_year: 1984
     last_year: 2026
 - id: RADIUS
@@ -6506,10 +6504,10 @@ tags:
   implies:
   - authentication
   stats:
-    direct: 83
-    total: 83
+    direct: 84
+    total: 84
     first_year: 1997
-    last_year: 2025
+    last_year: 2026
 - id: Diameter
   uuid: 685104f6-e7fa-4f2f-a0bc-5eb503184a12
   slug: diameter
@@ -6556,7 +6554,7 @@ tags:
   - authorization
   stats:
     direct: 34
-    total: 57
+    total: 58
     first_year: 2010
     last_year: 2026
 - id: JWT
@@ -6571,10 +6569,10 @@ tags:
   - GMPLS
   - MPLS-TP
   stats:
-    direct: 21
-    total: 21
+    direct: 22
+    total: 22
     first_year: 2014
-    last_year: 2025
+    last_year: 2026
 - id: GNAP
   uuid: e247925d-f007-467b-9200-c79f69da7a5f
   slug: gnap
@@ -6881,7 +6879,7 @@ tags:
     total: 149
     first_year: 1974
     last_year: 2026
-    served: 596
+    served: 597
 - id: WebAuthn
   uuid: 2a7b9951-c3d2-4350-a757-04963afcec07
   slug: webauthn
@@ -6917,7 +6915,7 @@ tags:
     total: 50
     first_year: 1996
     last_year: 2025
-    served: 117
+    served: 118
 - id: XACML
   uuid: d8199417-fb33-4c78-88bb-1ddd46063f5c
   slug: xacml
@@ -7135,11 +7133,11 @@ tags:
   - tcpcrypt
   - TLS
   stats:
-    direct: 152
-    total: 541
+    direct: 153
+    total: 544
     first_year: 1986
     last_year: 2026
-    served: 541
+    served: 544
   implies:
   - security
 - id: AES
@@ -7313,7 +7311,7 @@ tags:
   - pquip
   stats:
     direct: 15
-    total: 32
+    total: 34
     first_year: 2018
     last_year: 2026
 - id: ML-KEM
@@ -7338,8 +7336,8 @@ tags:
   match:
   - '\bML-DSA\b|\bDilithium\b'
   stats:
-    direct: 3
-    total: 3
+    direct: 5
+    total: 5
     first_year: 2025
     last_year: 2026
 - id: hash-based signatures
@@ -7661,10 +7659,10 @@ tags:
   - opstat
   stats:
     direct: 67
-    total: 1188
+    total: 1191
     first_year: 1969
     last_year: 2026
-    served: 1194
+    served: 1197
 - id: SNMP
   uuid: bdb1bbde-ffe4-4994-a7ca-8f5d9c36e6e4
   slug: snmp
@@ -7814,8 +7812,8 @@ tags:
   implies:
   - network management
   stats:
-    direct: 153
-    total: 153
+    direct: 155
+    total: 155
     first_year: 2009
     last_year: 2026
 - id: syslog
@@ -8117,10 +8115,10 @@ tags:
   - time zones
   stats:
     direct: 16
-    total: 56
+    total: 57
     first_year: 1969
     last_year: 2026
-    served: 63
+    served: 64
 - id: NTP
   uuid: 515a096c-993d-49f0-8ec8-e69231202d11
   slug: ntp
@@ -8136,8 +8134,8 @@ tags:
   implies:
   - time synchronization
   stats:
-    direct: 40
-    total: 40
+    direct: 41
+    total: 41
     first_year: 1985
     last_year: 2026
 - id: PTP
@@ -8275,10 +8273,10 @@ tags:
   - (?<!meta )(?<!constrained )application (protocol|layer)s?
   stats:
     direct: 6
-    total: 797
+    total: 798
     first_year: 1971
     last_year: 2026
-    served: 797
+    served: 798
   match:
   - 'efficient short remote operations|\bESRO\b'
 - id: FTP
@@ -8727,10 +8725,10 @@ tags:
   - calsify
   stats:
     direct: 2
-    total: 33
+    total: 34
     first_year: 1998
     last_year: 2026
-    served: 33
+    served: 34
   yields_to:
   - JSContact
 - id: iCalendar
@@ -8748,10 +8746,10 @@ tags:
   implies:
   - calendaring
   stats:
-    direct: 24
-    total: 24
+    direct: 25
+    total: 25
     first_year: 1998
-    last_year: 2022
+    last_year: 2026
 - id: CalDAV
   uuid: 37e6f9e8-eb99-45ce-9274-63e69b98c9b9
   slug: caldav
@@ -9009,10 +9007,10 @@ tags:
   - (?<!information )data (format|encoding|representation)s?|interchange format
   stats:
     direct: 14
-    total: 479
+    total: 480
     first_year: 1969
     last_year: 2026
-    served: 479
+    served: 480
 - id: ABNF
   uuid: 8a7343b6-81f9-4665-ae41-304798f6d221
   slug: abnf
@@ -9092,8 +9090,8 @@ tags:
   - json
   - jsonbis
   stats:
-    direct: 79
-    total: 84
+    direct: 80
+    total: 85
     first_year: 2006
     last_year: 2026
 - id: JSONPath
