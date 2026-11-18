@@ -187,7 +187,8 @@ main{padding:12px 0 12px}
 @media (max-width:980px){.split{grid-template-columns:1fr}}
 .card{background:var(--surface);border:1px solid var(--rule);border-radius:8px;box-shadow:var(--shadow);overflow:hidden}
 .card-head{padding:14px 16px;border-bottom:1px solid var(--rule-2);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.card-head h2{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+/* A head holding only the fold button is a thin strip, not a blank row. */
+.card-head:has(> .fold:only-child){padding:5px 10px}
 .card-note{font-family:var(--ff-serif);font-size:15px;color:var(--ink-2);padding:12px 16px;border-bottom:1px solid var(--rule-2);background:var(--surface-2);margin:0}
 .card-note code{font-size:13px;color:var(--ink)}
 .card-note .k-tech,.card-note .k-topic{font-size:13.5px}
@@ -202,7 +203,8 @@ main{padding:12px 0 12px}
 .popover .k-tech,.popover .k-topic{font-size:13.5px}
 
 /* controls */
-.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--rule-2)}
+.controls{position:relative;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--rule-2)}
+.sortinfo{display:inline-flex;align-items:center;gap:8px}
 input[type="search"]{flex:1 1 190px;min-width:0;padding:7px 10px;border:1px solid var(--rule);border-radius:5px;
   background:var(--ground);color:var(--ink);font-size:13.5px;font-family:inherit}
 input[type="search"]::placeholder{color:var(--ink-3)}
@@ -379,22 +381,8 @@ footer code{font-size:12px}
 
     <section class="panel" id="panel-vocab">
       <div class="split">
-        <div class="card">
-          <div class="card-head"><h2>The hierarchy</h2>
-            <button class="info" id="hierInfoBtn" aria-expanded="false" aria-controls="hierInfo" aria-label="About the hierarchy"><span>i</span></button>
-            <div class="popover" id="hierInfo" hidden>
-          <p><b>Roots are tags too.</b> The top-level subjects head
-            the tree for browsing, and a document about a subject in general carries the root
-            alone. A tag applied to an RFC implies its whole path, so a parent's count includes
-            its children; the root row's bar is the whole subject.</p>
-          <p><span class="k-topic">Topics</span> are subjects and cross-cutting
-            aspects, set in violet in the text face; <span class="k-tech">technologies</span>
-            are named protocols, systems and formats, set in the RFC series' own typewriter face.
-            Roots are always topics. Search matches tag names and descriptions on whole words.
-            Two measures, kept apart: <b>Corpus</b> is how many RFCs carry a tag; <b>mail/yr</b>
-            is how many notifications a subscriber would have received per year since January
-            2021. When they disagree, the disagreement is the finding.</p>
-            </div>
+        <div class="card" role="region" aria-label="The hierarchy">
+          <div class="card-head">
           </div>
           <div class="controls">
             <input type="search" id="tagSearch" placeholder="Search a tag name or description &mdash; dns, congestion, yang&hellip;" aria-label="Search tags and descriptions">
@@ -407,10 +395,27 @@ footer code{font-size:12px}
               <button data-foldall="collapse">Collapse all</button>
               <button data-foldall="expand">Expand all</button>
             </div>
-            <div class="seg" role="group" aria-label="Sort order">
-              <button data-sort="tree" aria-pressed="true">Tree</button>
-              <button data-sort="corpus" aria-pressed="false">Corpus</button>
-              <button data-sort="rate" aria-pressed="false">Mail/yr</button>
+            <div class="sortinfo">
+              <div class="seg" role="group" aria-label="Sort order">
+                <button data-sort="tree" aria-pressed="true">Tree</button>
+                <button data-sort="corpus" aria-pressed="false">Corpus</button>
+                <button data-sort="rate" aria-pressed="false">Mail/yr</button>
+                <button data-sort="flat" aria-pressed="false">Flat</button>
+              </div>
+              <button class="info" id="hierInfoBtn" aria-expanded="false" aria-controls="hierInfo" aria-label="About the hierarchy"><span>i</span></button>
+              <div class="popover" id="hierInfo" hidden>
+            <p><b>Roots are tags too.</b> The top-level subjects head
+              the tree for browsing, and a document about a subject in general carries the root
+              alone. A tag applied to an RFC implies its whole path, so a parent's count includes
+              its children; the root row's bar is the whole subject.</p>
+            <p><span class="k-topic">Topics</span> are subjects and cross-cutting
+              aspects, set in violet in the text face; <span class="k-tech">technologies</span>
+              are named protocols, systems and formats, set in the RFC series' own typewriter face.
+              Roots are always topics. Search matches tag names and descriptions on whole words.
+              Two measures, kept apart: <b>Corpus</b> is how many RFCs carry a tag; <b>mail/yr</b>
+              is how many notifications a subscriber would have received per year since January
+              2021. When they disagree, the disagreement is the finding.</p>
+              </div>
             </div>
           </div>
           <div class="legend">
@@ -422,8 +427,8 @@ footer code{font-size:12px}
           <ol class="taglist cbody" id="tagList"></ol>
         </div>
 
-        <div class="card" id="detail">
-          <div class="card-head"><h2>Selection</h2>
+        <div class="card" id="detail" role="region" aria-label="Selection">
+          <div class="card-head">
             <div class="seg" role="group" aria-label="Combine selected tags">
               <button data-mode="or" aria-pressed="true">Any (OR)</button>
               <button data-mode="and" aria-pressed="false">All (AND)</button>
@@ -437,8 +442,8 @@ footer code{font-size:12px}
     </section>
 
     <section class="panel" id="panel-cooc" hidden>
-      <div class="card">
-        <div class="card-head"><h2>Tags that travel together</h2></div>
+      <div class="card" role="region" aria-label="Tags that travel together">
+        <div class="card-head"></div>
         <p class="card-note">Every pair of tags directly assigned to the same RFC. A pair near
           the top that also sounds like one idea is a merge candidate; a tag that appears only
           inside pairs never stands on its own. Pairs where one tag is the other's ancestor are
@@ -455,8 +460,8 @@ footer code{font-size:12px}
     </section>
 
     <section class="panel" id="panel-life" hidden>
-      <div class="card">
-        <div class="card-head"><h2>When each tag was in use</h2></div>
+      <div class="card" role="region" aria-label="When each tag was in use">
+        <div class="card-head"></div>
         <p class="card-note">First to last RFC carrying the tag, across 1968&ndash;2026, newest
           last use first. <b style="color:var(--accent)">Blue</b> means the tag has been used
           since 2021 and would still notify someone; <b style="color:var(--warn)">rust</b> means
@@ -482,8 +487,8 @@ footer code{font-size:12px}
     </section>
 
     <section class="panel" id="panel-overlap" hidden>
-      <div class="card">
-        <div class="card-head"><h2>Tags assigned to the same RFCs</h2></div>
+      <div class="card" role="region" aria-label="Tags assigned to the same RFCs">
+        <div class="card-head"></div>
         <p class="card-note">Two different measures, because they mean different things.
           <b>Two-way overlap</b> (Jaccard, shared &divide; combined) high in both directions
           says two tags are doing one job &mdash; a <b>redundancy</b> candidate.
@@ -522,8 +527,8 @@ footer code{font-size:12px}
 
 
     <section class="panel" id="panel-review" hidden>
-      <div class="card">
-        <div class="card-head"><h2>Assignments to look at</h2></div>
+      <div class="card" role="region" aria-label="Assignments to look at">
+        <div class="card-head"></div>
         <p class="note">The engine records why an assignment might be wrong: the tags came from the abstract because nothing else matched; a technology rests on author keywords alone; a root sits beside a technology from another subtree; the document carries eight or more leaf tags; this is the first document to carry a tag; or the document shares no tag with the RFC that obsoletes it. A document with none of these is not thereby right, only unremarkable. A document with an entry in <code>assignments.yaml</code> has been reviewed by a person and is not listed. This page shows the queue; the review itself is recorded in that file.</p>
         <div class="controls">
           <div class="seg" role="group" aria-label="Reason" id="revSeg">
@@ -545,8 +550,8 @@ footer code{font-size:12px}
       </div>
     </section>
     <section class="panel" id="panel-corpus" hidden>
-      <div class="card">
-        <div class="card-head"><h2>Every published RFC and its tags</h2></div>
+      <div class="card" role="region" aria-label="Every published RFC and its tags">
+        <div class="card-head"></div>
         <p class="card-note">All 9,835, newest first. Type a number to jump straight to one
           &mdash; <b>8446</b>, <b>rfc 1149</b> &mdash; or type words to search titles. Tags are
           clickable: any of them takes you to that tag in the hierarchy. A single RFC also shows
@@ -678,8 +683,10 @@ function drawTags(){
   if(filter){
     var res=searchTags(list,filter)||[];
     list=res.map(function(r){WHY[r.tag.id]=r.why;return r.tag;});
-  }else if(sortBy==='corpus')list.sort(function(a,b){return b.total-a.total;});
-  else if(sortBy==='rate')list.sort(function(a,b){return (b.rate-a.rate)||(b.total-a.total);});
+  }
+  if(sortBy==='flat')list.sort(function(a,b){var x=a.id.toLowerCase(),y=b.id.toLowerCase();return x<y?-1:x>y?1:0;});
+  else if(!filter&&sortBy==='corpus')list.sort(function(a,b){return b.total-a.total;});
+  else if(!filter&&sortBy==='rate')list.sort(function(a,b){return (b.rate-a.rate)||(b.total-a.total);});
   if(kindF!=='all')list=list.filter(function(t){return t.kind===kindF||(tree&&t.d===0);});
   if(tree)list=list.filter(function(t){return t.d===0||!folded[t.root];});
   listEl.innerHTML=list.map(function(t){
