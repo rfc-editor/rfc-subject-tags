@@ -140,21 +140,21 @@ When the engine or the YAML schema changes, re-run against the previous `rfc-tag
 ### Curated tree
 
 - **Tags:** 638 — 19 roots, 290 at level 2, 280 at level 3, 49 at level 4; 556 technology, 82 topic.
-- **Coverage:** 0 untagged.
+- **Coverage:** 2 untagged.
 - **Tags per RFC (with ancestors):** mean 3.66, median 3, max 26.
-- **Distribution:** 1:683 · 2:2,591 · 3:2,124 · 4:1,586 · 5:1,327 · 6:718 · 7:416 · 8:214 · 9:103 · 10:38 · 11:24 · 12:7 · 13:5 · 14:3 · 15:2 · 16:1 · 26:1.
+- **Distribution:** 0:2 · 1:684 · 2:2,593 · 3:2,128 · 4:1,590 · 5:1,332 · 6:720 · 7:418 · 8:214 · 9:103 · 10:38 · 11:24 · 12:7 · 13:5 · 14:3 · 15:2 · 16:1 · 26:1.
 - **Over ten tags:** 43 documents (0.4%), all multi-technology cross-area specifications.
 - **Unused tags (no document directly or beneath):** 0.
 - **Single-document tags:** 45 — AEGIS, AFS, ARC, BATS, BLAKE2, CRC, CyberCash, DCTCP, Dragonfly, EIGRP, FFV1, GSAKMP, HOBA, HTTP caching, IDXP, IRTP, J-PAKE, JSCalendar, LPWAN, MOSPF, NAT-PMP, OPAQUE, OVSDB, PGM, RATP, RBNF, SDF, SFrame, Speex, TBRPF, TEEP, TMux, TVR, Tetrys, Vorbis, WHIP, XACML, Y2K, YAML, amateur radio, data center networking, eBPF, oblivious DNS, password hashing, scrypt.
 - **Humor:** 74 documents, 0 exclusivity violations.
-- **Stability replay:** 9,220 RFCs debut no tag, 611 debut one, 10 debut two, 2 debut three. The 12 multi-debut cases are parent-and-child pairs founding a branch, plus RFC 2430 preceding the MPLS architecture into print.
+- **Stability replay:** 9,242 RFCs debut no tag, 611 debut one, 10 debut two, 2 debut three. The 12 multi-debut cases are parent-and-child pairs founding a branch, plus RFC 2430 preceding the MPLS architecture into print.
 
 ### Served view
 
 - **Axes:** 556 technology tags, 76 topics.
-- **Zero-technology documents:** 1,494 — governance, process, humor, ARPANET-era notes, general-subject documents.
-- **Zero-topic documents:** 0.
+- **Zero-technology documents:** 1,498 — governance, process, humor, ARPANET-era notes, general-subject documents.
+- **Zero-topic documents:** 2.
 - **Per RFC:** technology mean 1.74, topic mean 2.06, combined mean 3.80.
 - **Over ten combined:** 48 documents (0.5%); maximum 26.
-- **Documents whose only topics are roots:** 5,357.
+- **Documents whose only topics are roots:** 5,367.
 - **Topic replay:** 5 documents debut two topics, all in the founding years. Debuts since 2003: emergency services (2003), NAT traversal (2003), IoT (2006), energy management (2013), SDN (2014), telemetry (2019), sustainability (2024).
