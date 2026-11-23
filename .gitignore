@@ -22,3 +22,9 @@ __pycache__/
 
 # Local virtual environment, as CONTRIBUTING.md suggests creating.
 .venv/
+
+# session handover notes (local only)
+/handover/
+
+# Claude Code session memory (local only; contributors use their own setups)
+/CLAUDE.md
