@@ -212,7 +212,7 @@ tags:
   kind: technology
   desc: mDNS (Multicast DNS)
   match:
-  - '\bmulticast DNS\b|\bmDNS\b'
+  - '\bmulticast DNS\b|(?-i:\bmDNS\b)'
   groups:
   - dnssd
   stats:
