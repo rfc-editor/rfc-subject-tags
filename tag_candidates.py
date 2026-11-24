@@ -22,7 +22,7 @@ Derived from the alias harvester on the alias-candidates branch by R. Sparks;
 reframed here for the tag vocabulary.
 
 Reads, all of which the build already has on disk at this point:
-    taxonomy.yaml   for ids, descriptions and match rules
+    taxonomy.yaml   for ids and descriptions
     rfcs.json       for titles
     rfc-tags.json   for the tags each RFC was assigned
 """
@@ -44,8 +44,6 @@ subwords = lambda s: [x for x in SUBWORD.split(str(s or '').lower()) if x]
 def load(taxonomy_path):
     tags = yaml.safe_load(open(taxonomy_path))["tags"]
     by_id = {t["id"]: t for t in tags}
-    match = {t: [re.compile(p, re.I) for p in e.get("match", []) + e.get("match_title_only", [])]
-             for t, e in by_id.items()}
 
     def depth(tid):
         d, seen = 0, set()
@@ -53,7 +51,7 @@ def load(taxonomy_path):
             seen.add(tid); d += 1; tid = by_id[tid].get("parent")
         return d
 
-    return by_id, match, {t: depth(t) for t in by_id}
+    return by_id, {t: depth(t) for t in by_id}
 
 
 def reachable(entry, term):
@@ -71,7 +69,7 @@ def reachable(entry, term):
     return False
 
 
-def harvest(recs, assigned, by_id, match, depth, since=None):
+def harvest(recs, assigned, by_id, depth, since=None):
     found = defaultdict(lambda: defaultdict(list))
     for r in recs:
         year = r.get("year")
@@ -85,14 +83,13 @@ def harvest(recs, assigned, by_id, match, depth, since=None):
             expansion, acronym = m.group(1), m.group(2)
             if sum(c.isupper() for c in acronym) < 2:
                 continue
-            # Attribute to the most specific tag whose own rules fire on the
-            # expansion; if the acronym is already reachable there, the tag
-            # exists and nothing is proposed.
-            hits = [t for t in tags if any(rx.search(expansion) for rx in match[t])]
-            if not hits:
+            # If the acronym is already reachable from one of the RFC's tags, the
+            # tag exists and nothing is proposed. Otherwise attribute the name to
+            # the most specific tag the RFC carries.
+            if any(reachable(by_id[t], acronym) for t in tags if t in by_id):
                 continue
-            best = max(hits, key=lambda t: depth[t])
-            if reachable(by_id[best], acronym):
+            best = max((t for t in tags if t in by_id), key=lambda t: depth[t], default=None)
+            if best is None:
                 continue
             found[best][acronym].append(r["id"])
     return found
@@ -108,10 +105,10 @@ def main():
     p.add_argument("--min-rfcs", type=int, default=1, help="drop candidates seen in fewer RFCs")
     args = p.parse_args()
 
-    by_id, match, depth = load(args.taxonomy)
+    by_id, depth = load(args.taxonomy)
     recs = json.load(open(args.corpus))
     assigned = json.load(open(args.assignments))
-    found = harvest(recs, assigned, by_id, match, depth, args.since)
+    found = harvest(recs, assigned, by_id, depth, args.since)
 
     out = {
         "generated_from": {"rfcs": len(recs), "tags": len(by_id), "since": args.since},

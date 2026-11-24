@@ -59,7 +59,6 @@ class Taxonomy:
         """require_ids=False lets regen.py load a file whose tags lack uuid/slug in order to assign them."""
         self.require_ids = require_ids
         doc = yaml.safe_load(open(path))
-        self.engine = doc['engine']
         self.tags = doc['tags']                      # list, in file order
         self.by_id = {t['id']: t for t in self.tags}
         self.order = [t['id'] for t in self.tags]
@@ -78,7 +77,7 @@ class Taxonomy:
     def lookup(self, text):
         """Resolve user input to an id, ignoring case and spacing; None if there is no such tag.
         This is the one place case-insensitive matching happens: stored references (parent,
-        implies, yields_to, decomposes_to, rfc-tags.json) are exact."""
+        implies, decomposes_to, rfc-tags.json) are exact."""
         return self.by_key.get(id_key(text))
 
     def _path(self, t):
@@ -100,7 +99,7 @@ class Taxonomy:
             assert not any(b in e['id'].lower() for b in ('misc', 'other', 'general')), f'catch-all name: {e["id"]}'
             if 'parent' in e: assert e['parent'] in self.by_id, f'{e["id"]}: unknown parent {e["parent"]}'
             else: assert e['kind'] == 'topic', f'root {e["id"]} must be a topic'
-            for f in ('yields_to', 'implies', 'decomposes_to'):
+            for f in ('implies', 'decomposes_to'):
                 for x in e.get(f, []): assert x in self.by_id, f'{e["id"]}.{f}: unknown tag {x}'
         for t in self.by_id:
             assert len(self._path(t)) <= 4, f'too deep: {t}'

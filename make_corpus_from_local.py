@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build rfcs.json from a local corpus directory, one .json metadata file per RFC.
 
-The engine (engine.py) consumes a list of records with these fields:
+The tagger (tagger.py) and regen.py consume a list of records with these fields:
   id (e.g. "RFC9000"), title, year (int), month (name), day (int or None),
   keywords (list), abstract (str), wg (working group acronym or None),
   stream, status  -- stream/status are informational only.
@@ -14,9 +14,9 @@ each entry maps a field name used here to a list of candidate keys tried in orde
 
 Usage:  python3 make_corpus_from_local.py ~/Data/RFCs rfcs.json
 
-Local metadata files may lack fields the engine relies on: the publication stream
-(the era fallback and the Editorial-stream rule need it), the day of month for the
-April 1st series, and the working-group acronym (some layouts hold the group's name
+Local metadata files may lack fields the model is given alongside the text: the
+publication stream, the day of month for the April 1st series, and the
+working-group acronym (some layouts hold the group's name
 instead). When rfc-index.xml is present alongside, or can be downloaded, those fields
 are filled from it for every RFC it knows. "Not Issued" placeholder records are
 dropped.
@@ -93,7 +93,7 @@ def main(src_dir, out_path):
         if wg and wg.upper() in ('NON WORKING GROUP', 'INDEPENDENT', 'LEGACY', 'IETF - NON WORKING GROUP'):
             wg = None
         ix = idx.get(rid) or {}
-        if ix.get('wg') and (not wg or ' ' in wg):    # local files hold the group's name; the engine keys on the acronym
+        if ix.get('wg') and (not wg or ' ' in wg):    # local files hold the group's name; the index has the acronym
             wg = ix['wg']
         if day is None and ix.get('day'):
             day = ix['day']
@@ -110,13 +110,13 @@ def main(src_dir, out_path):
             'obsoletes': meta.get('obsoletes') or [], 'obsoleted_by': meta.get('obsoleted_by') or [],
             'updates': meta.get('updates') or [], 'updated_by': meta.get('updated_by') or [],
         })
-    # fields the engine depends on: say so if they could not be filled
+    # fields the tagger gives the model alongside the text: say so if they could not be filled
     no_stream = sum(1 for r in out if not r['stream'])
     if no_stream:
-        print(f'warning: {no_stream} records have no stream; the era fallback and stream rules will not fire for them', file=sys.stderr)
+        print(f'warning: {no_stream} records have no stream; the model will not be told it', file=sys.stderr)
     named = sum(1 for r in out if r['wg'] and ' ' in r['wg'])
     if named:
-        print(f'warning: {named} records carry a working-group name rather than an acronym; the working-group map will not match them', file=sys.stderr)
+        print(f'warning: {named} records carry a working-group name rather than an acronym', file=sys.stderr)
     json.dump(out, open(out_path, 'w'))
     print(f'wrote {len(out)} records to {out_path}')
 

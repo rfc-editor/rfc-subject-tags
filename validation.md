@@ -8,7 +8,7 @@ The checks a rebuild must pass, and the figures from the current build. Each che
 
 `python3 engine.py` loads both normative files without error. It asserts:
 
-- every id unique, and every `parent`, `yields_to`, `implies` and `decomposes_to` reference resolves;
+- every id unique, and every `parent`, `implies` and `decomposes_to` reference resolves;
 - depth at most four levels;
 - every root is a topic;
 - no catch-all names.
@@ -28,12 +28,12 @@ The checks a rebuild must pass, and the figures from the current build. Each che
 
 Both directions:
 
-- every `humor` document carries nothing else;
-- every day-dated document, and every RFC listed in the `humor` tag's `documents` field, carries `humor`.
+- every `humor` document carries nothing else (the tagger gives a review reason to any that does; nothing corrects it);
+- every day-dated document carries `humor`. This is the model's judgement now, so list the day-dated documents that lack it and read them.
 
 ### Unused and single-document tags (R9, R13)
 
-- No tag is carried by zero documents, counting documents beneath it — such a tag is either mis-ruled or should not exist. A family tag whose every document also names a member (`hash-based signatures`, whose documents all name HSS/LMS, XMSS or SLH-DSA) has no leaf carriers yet is reached by all of them through closure; that is used.
+- No tag is carried by zero documents, counting documents beneath it — such a tag either has a description the model does not recognise documents by, or should not exist. A family tag whose every document also names a member (`hash-based signatures`, whose documents all name HSS/LMS, XMSS or SLH-DSA) has no leaf carriers yet is reached by all of them through closure; that is used.
 - List tags carried by exactly one document for review against R13.
 
 ### Stability replay (R17, R18)
@@ -70,16 +70,9 @@ A fixed list of well-known RFCs with expected results:
 
 For each topic, confirm the name is phrasing people search for, not a librarian's abstraction. Record the phrasing considered when a topic is added.
 
-### Rule audits (R9)
-
-These two audits applied to the match rules of the former rule engine. Tags are now assigned by a model reading the document (code.md, Assignment), so they have nothing to check; they are kept until the match rules are removed from `taxonomy.yaml`.
-
-- **Embedded words.** For every rule alternative that is a plain word or phrase without `\b`, find corpus matches inside longer words and confirm each is an intended stem.
-- **Acronym case.** For every alternative written as an uppercase acronym, list matches whose actual text is not uppercase and confirm each is a lowercase author keyword rather than an English word.
-
 ### Working groups (R10, R11)
 
-- **Absorption by working group.** For each working group mapped only to topics or to a parent technology, count its documents and the title mentions of the group's own name. Ten or more documents with no tag of their own is a missing technology.
+- **Absorption by working group.** For each working group whose documents mostly carry only topics or a parent technology, count its documents and the title mentions of the group's own name. Ten or more documents with no tag of their own is a missing technology.
 - **Absorption by title.** Run `tag_candidates.py` and read `tag-candidates.json` from the top. Each entry is a name an RFC title introduces beside its expansion — "Kerberized Internet Negotiation of Keys (KINK)" — that a reader cannot reach by searching the tag the RFC was filed under. This is R11's evidence test run over the whole corpus, and it finds what the working-group count cannot: technologies that never had a group of their own. About half the entries are components, versions or names for the tag itself; the rest are candidates for promotion, checked against R10 (a following), R13 (a single document may suffice) and R14–R15 (not an organisation).
 - **Names.** For every tag whose slug matches a working-group acronym, count RFCs whose title, keywords or abstract use the term other than as a reference to the group. Zero such uses means the tag is named for the group, not the technology, and must be renamed or removed.
 
@@ -89,7 +82,7 @@ List non-ancestor tag pairs with Jaccard similarity above 0.35 over their docume
 
 ### Review queue
 
-Count the documents with a non-empty `review` in `rfc-tags.json`, by reason (the page's Review tab shows the same). The queue should only shrink between builds: a reason disappears when a rule is improved or when the document gains an entry in `assignments.yaml`. The from-abstract group is the least reliable — RFC 9896 (SVG in RFCs) acquired `ONC RPC` and `network graphics` this way — and is where to look first when a reader reports a wrong tag.
+Count the documents with a non-empty `review` in `rfc-tags.json`, by reason (the page's Review tab shows the same). A reason disappears when the document is tagged again and the cause is gone, or when the document gains an entry in `assignments.yaml`.
 
 ### Obsoleted-by agreement
 
@@ -100,18 +93,19 @@ A document and the RFC that obsoletes it are almost always about the same thing.
 - The loader accepts the file: every RFC id well-formed, every tag named exists, every entry has a reason.
 - No tag is carried *only* by overrides. Check that every tag added by an override is also chosen by the model for some document.
 - The stability replay includes overridden documents; an override that debuts a tag is a new tag entering by hand and should be as rare as any other debut.
+- The file is currently empty: the 48 entries that corrected the former rule engine were removed with it.
 
 ### Root leaks (R12)
 
-For each root, count the RFCs carrying it as a leaf tag beside a technology from another root, and read the titles. Correct co-occurrence looks like RFC 1812 (`IPv4`, `routing`) or RFC 5095 (`IPv6`, `routing`): the title is about the root's subject. A leak looks like RFC 3268 (`TLS`, `transport`): the root's rule matched a word inside a protocol name — Transport Layer Security, Real-Time Transport Protocol, Generic Routing Encapsulation, JSON Web Token. In the Overlap view of `rfc-tags.html` leaks show as a root nested inside an unrelated technology. The check has a second half: after tightening a root rule, list documents that carried the root before and no longer do, and read those titles too — RFC 3222 (FIB-based router performance) and RFC 6192 (the router control plane) are routing documents that a tightened `routing` rule once dropped. A document that loses its only tag falls to the abstract fallback and may pick up unrelated tags there. Leaks matter more than search noise: every one fires a notification to every subscriber of the root.
+For each root, count the RFCs carrying it directly beside a technology from another root, and read the model's reason for the root. Correct co-occurrence looks like RFC 1812 (`IPv4`, `routing`): the document is about the root's subject. A leak is a root chosen because its word appears inside a protocol name — Transport Layer Security, Generic Routing Encapsulation, JSON Web Token. The instructions tell the model not to do this; the check is that it has not.
 
 ### Topic gaps (R8, R10)
 
-List served-view documents whose only topics are roots but whose titles contain aspect words — manageability, operational, congestion, mobility, compression, discovery, authentication — and inspect for missing rules.
+List served-view documents whose only topics are roots but whose titles contain aspect words — manageability, operational, congestion, mobility, compression, discovery, authentication — and inspect for a missing topic. The `gaps` each entry of `rfc-tags.json` records are the model's own list of subjects it found no tag for; read them by frequency.
 
-### Keyword noise (R20)
+### Substrate noise (R20)
 
-For each topic-implying technology, list assignments with no title evidence and confirm they are working-group-derived rather than incidental keywords.
+For each topic-implying technology, sample assignments where the model gave it the `secondary` role and confirm the document is about the technology and does not merely run over it.
 
 ### Id form (R21)
 

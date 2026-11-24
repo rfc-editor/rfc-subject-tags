@@ -26,6 +26,7 @@ MODEL = 'claude-sonnet-5-5'     # the model the instructions were validated with
 EFFORT = 'medium'
 MAX_CHARS = 300_000             # longer texts are cut here and the entry says so
 CACHE = pathlib.Path('.tagger-cache')   # results not yet merged into rfc-tags.json; lets an interrupted run resume
+HUMOR = 'humor'                 # R16: a humorous RFC carries this tag and nothing else
 MODEL_FIELDS = ('role', 'why', 'quote', 'section')
 UNTAGGED = 'not tagged by the model: awaiting a tagger run, or no text in the corpus'
 
@@ -43,7 +44,7 @@ SCHEMA = {'type': 'object', 'additionalProperties': False, 'required': ['summary
 # ---- what the model is given ------------------------------------------------
 def system_prompt(tax, instructions='tagging_instructions.md'):
     """The instructions followed by the taxonomy as an indented tree: id, kind and description only.
-    Match rules, uuids and statistics are left out: the model reads documents, not rules."""
+    Uuids, slugs and statistics are left out."""
     kids = collections.defaultdict(list)
     for t in tax.tags: kids[t.get('parent')].append(t)
     lines = []
@@ -146,8 +147,7 @@ def build(tax, rfcs, store):
             if t in tags: reasons[t]['hand'] = hand                      # the model chose it too: keep both accounts
             else: tags.append(t); reasons[t] = dict(role='hand', **hand)
         tech, topic = tax.two_axis(tags)
-        hum = tax.engine['humor']['tag']
-        if hum in tags and len(tags) > 1: review.append(f'{hum} beside other tags (R16)')
+        if HUMOR in tags and len(tags) > 1: review.append(f'{HUMOR} beside other tags (R16)')
         if rec and not tags: review.append('no tags (R7)')
         if tags and not topic: review.append('no topic (R8)')
         e = {'title': r.get('title'), 'year': r.get('year'), 'summary': rec['summary'] if rec else None, 'tags': tags, 'reasons': reasons,

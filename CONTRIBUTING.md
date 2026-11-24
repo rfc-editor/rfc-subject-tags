@@ -4,8 +4,7 @@ Three documents describe the system itself, and this one describes working on it
 
 - **[README.md](README.md)** — what the tags are for, the requirements R1–R20, and how search and
   subscription behave. Read this before proposing a vocabulary change.
-- **[code.md](code.md)** — the corpus, the `taxonomy.yaml` schema, the assignment algorithm, and
-  the discipline for writing match rules.
+- **[code.md](code.md)** — the corpus, the `taxonomy.yaml` schema, and how tags are assigned.
 - **[validation.md](validation.md)** — the checks a rebuild must pass, and the current figures.
 
 ## Suggesting a tag without running anything
@@ -63,10 +62,10 @@ published at <https://rfc-editor.github.io/rfc-subject-tags/>.
 
 ## Changing the taxonomy
 
-`taxonomy.yaml` is the only file to edit; everything else is derived from it. The table under
-*Editing the file* in code.md says what to change for each kind of edit, and the *Rule-writing
-discipline* section lists the failure modes each rule convention exists to prevent — read it
-before adding a `match` regex.
+`taxonomy.yaml` holds the vocabulary. The table under *Editing the file* in code.md says what to
+change for each kind of edit. A tag's `desc` is what the model reads to decide whether the tag
+applies, so write it to say what the tag covers. A changed or added tag reaches existing RFCs
+only when they are tagged again (`tagger.py --retag`).
 
 **`regen.py` rewrites three tracked files in place:** the `stats` blocks in `taxonomy.yaml`, and
 the figures in `README.md` and `validation.md`. So:
@@ -82,9 +81,8 @@ the committed figures; it carries its own build date so the two can be told apar
 
 ## Before you open a pull request
 
-Work through the checks in validation.md. The ones that most often catch a rule change are
-**Root leaks**, **Overlap** and **Engine round-trip** — a change to a general rule can move
-hundreds of RFCs, and the point is that every difference is explainable.
+Work through the checks in validation.md. The diff of `rfc-tags.json` is the
+record of what a change does to assignments: every RFC whose entry moves should be explainable.
 
 Mechanical checks, at minimum:
 
@@ -103,7 +101,7 @@ at the bottom of the summary. Unzip it and open `index.html` in a browser — it
 and needs no server. The artifact is kept for the repository's artifact retention period, so
 re-run the workflow if it has expired.
 
-The **Overlap** view is usually the fastest way to see whether a rule change has caused a leak.
+The **Overlap** view is usually the fastest way to see whether a tag is being assigned too freely.
 
 ## Licensing
 

@@ -492,9 +492,10 @@ footer code{font-size:12px}
           does not yet record. Pairs already related as ancestor and descendant are excluded.</p>
         <p class="card-note" style="border-top:1px solid var(--rule-2)">A third possibility is
           worth naming, because it looks like the second. High containment can mean the tags are
-          genuinely nested, or it can mean a <b>match rule in taxonomy.yaml is over-firing</b>. Read
-          the shared RFCs before concluding the vocabulary is at fault &mdash; the fix may belong
-          in the rule table instead.</p>
+          genuinely nested, or it can mean <b>one of the two tags is being assigned too freely</b>. Read
+          the shared RFCs, and the reasoning recorded for them in rfc-tags.json, before concluding the
+          vocabulary is at fault &mdash; the fix may belong in the tag&rsquo;s description or the tagging
+          instructions instead.</p>
         <div class="controls">
           <label class="slider">redundant at Jaccard &ge;
             <input type="range" id="ovJ" min="0.1" max="0.8" step="0.05" value="0.5">
@@ -758,7 +759,7 @@ function drawDetail(){
       '<span class="pill '+(t.kind==='topic'?'on-topic':'on-tech')+'">'+(t.d===0?'root · topic':t.kind)+'</span>'+
       '<span class="pill">'+t.total.toLocaleString()+' RFCs'+(t.direct!==t.total?' &middot; '+t.direct+' direct':'')+'</span>'+
       '<span class="pill on-accent">'+t.rate.toFixed(1)+' mail/yr</span>'+
-      '<span class="pill">'+(t.first||'&mdash;')+'&ndash;'+(t.last||'&mdash;')+'</span>'+(t.maxYear?'<span class="pill">cutoff '+t.maxYear+'</span>':'')+
+      '<span class="pill">'+(t.first||'&mdash;')+'&ndash;'+(t.last||'&mdash;')+'</span>'+
       '</div>'+
       (kids.length?'<div class="subhead" style="padding:12px 0 6px">children</div><span class="tagchips">'+
         kids.map(function(k){return chip(k,'data-add="'+k.id+'"');}).join('')+'</span>':'')+

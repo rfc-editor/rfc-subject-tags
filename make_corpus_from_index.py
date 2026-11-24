@@ -6,7 +6,7 @@ If rfc-index.xml is not present it is downloaded from https://www.rfc-editor.org
 
 Output: one record per published RFC — id, title, year, month, day, keywords, abstract, draft,
 status, stream, area, wg, obsoletes/obsoleted_by/updates/updated_by. `day` is present only when the
-index records one, which it does only for the April 1st series; the engine relies on that.
+index records one, which it does only for the April 1st series.
 """
 import json, sys, urllib.request, xml.etree.ElementTree as ET
 

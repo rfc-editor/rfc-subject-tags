@@ -129,7 +129,6 @@ This puts the weight of correctness on the assignment made at publication. It is
 1. A model reads the document with the taxonomy and proposes tags, giving its reasoning for each (see code.md).
 2. A person confirms them before publication, adding anything the model missed. The confirmation, and any correction, is recorded in `assignments.yaml`; from then on the document is marked reviewed.
 3. If the document introduces a technology or topic the vocabulary lacks, the same person decides whether a new tag is warranted under R10, R11 and R18.
-4. New working groups are added to the working-group map when their first RFC is published.
 
 ### Changing tags without breaking subscribers
 
@@ -152,7 +151,7 @@ Dormant tags are equally legitimate: 275 of the 638 tags have had no RFC since 2
 
 ## What the taxonomy looks like
 
-The taxonomy is `taxonomy.yaml` — one entry per tag with its place in the tree, kind, description, matching rules, working groups and served-view relations — browsable at <https://rfc-editor.github.io/rfc-subject-tags/> (generated as `rfc-tags.html`), a review page with the tree (corpus count and notifications per year per tag), co-occurrence, each tag's lifespan, overlap analysis for merge-or-nest decisions, and RFC look-up showing served technology and topic coordinates. This section describes the taxonomy's shape; the files hold the content.
+The taxonomy is `taxonomy.yaml` — one entry per tag with its place in the tree, kind, description and served-view relations — browsable at <https://rfc-editor.github.io/rfc-subject-tags/> (generated as `rfc-tags.html`), a review page with the tree (corpus count and notifications per year per tag), co-occurrence, each tag's lifespan, overlap analysis for merge-or-nest decisions, and RFC look-up showing served technology and topic coordinates. This section describes the taxonomy's shape; the files hold the content.
 
 ### Size and shape
 
@@ -246,4 +245,4 @@ Tags have no alias list. On the full-text-search test above, aliases are worth h
 
 ### Residual noise
 
-Keyword-derived assignments remain the main source of false positives. The title-only rule tier and the suppression table contain it; the scans in validation.md are how new cases are found.
+Tags are assigned by a model reading the full text, which removed the keyword-derived false positives of the former rule engine. What remains is judgement at the margin: whether a survey is about each subject it covers, and whether a secondary subject is substantial enough for a tag. The reasoning recorded with every assignment, and the scans in validation.md, are how such cases are found.
