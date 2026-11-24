@@ -7,18 +7,20 @@ tmp/
 #
 #   rfc-index.xml   downloaded by make_corpus_from_index.py
 #   rfcs.json       make_corpus_from_index.py or make_corpus_from_local.py
-#   rfc-tags.json   engine.py
 #   rfc-tags.csv    regen.py
 #   rfc-tags.html   regen.py
 #   tag-candidates.json   tag_candidates.py
-#   __pycache__     regen.py does `import engine`
+#   __pycache__     regen.py and tagger.py do `import engine`
 /rfc-index.xml
 /rfcs.json
-/rfc-tags.json
 /rfc-tags.csv
 /rfc-tags.html
 /tag-candidates.json
 __pycache__/
+
+# Model results that tagger.py has not yet merged into rfc-tags.json; lets an interrupted
+# run resume. rfc-tags.json itself is tracked: it is the record of every assignment.
+/.tagger-cache/
 
 # Local virtual environment, as CONTRIBUTING.md suggests creating.
 .venv/

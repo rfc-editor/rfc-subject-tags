@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""RFC subject tag engine: reads taxonomy.yaml, assigns tags to RFC records, derives the two-axis view.
+"""RFC subject tag taxonomy: loads and validates taxonomy.yaml and assignments.yaml, and derives the
+paths and the two-axis (technology / topic) view from a list of tags.
 
-Usage:  python3 engine.py [taxonomy.yaml] [rfcs.json]
-Writes  rfc-tags.json: for every RFC its leaf tags, full paths, and technology/topic coordinates.
-All per-tag knowledge lives in the YAML; this file is the algorithm only.
+Usage:  python3 engine.py [taxonomy.yaml] [assignments.yaml]     validate both files and report
+Tags are assigned by tagger.py, which uses this module; this file knows nothing about how a tag is chosen.
 """
 import json, re, sys, collections, unicodedata, uuid
 import yaml
@@ -72,19 +72,8 @@ class Taxonomy:
         self.slug = {t: self.by_id[t].get('slug') for t in self.by_id}
         self.by_uuid = {u: t for t, u in self.uuid.items()}
         self.by_slug = {sl: t for t, sl in self.slug.items()}
-        flags = re.I
-        self.match = {t: [re.compile(p, flags) for p in e.get('match', [])] for t, e in self.by_id.items()}
-        self.match_title = {t: [re.compile(p, flags) for p in e.get('match_title_only', [])] for t, e in self.by_id.items()}
-        self.streams = collections.defaultdict(list)
-        for t, e in self.by_id.items():
-            for st in e.get('streams', []): self.streams[st].append(t)
-        self.groups = collections.defaultdict(list)
-        for t, e in self.by_id.items():
-            for g in e.get('groups', []): self.groups[g].append(t)
-        self.yields = {t: set(e.get('yields_to', [])) for t, e in self.by_id.items() if e.get('yields_to')}
         self.implies = {t: list(e.get('implies', [])) for t, e in self.by_id.items() if e.get('implies')}
         self.decomp = {t: list(e.get('decomposes_to', [])) for t, e in self.by_id.items() if e.get('decomposes_to')}
-        self.max_year = {t: e['max_year'] for t, e in self.by_id.items() if 'max_year' in e}
 
     def lookup(self, text):
         """Resolve user input to an id, ignoring case and spacing; None if there is no such tag.
@@ -130,10 +119,9 @@ class Taxonomy:
             assert e.get('slug') == expected[e['id']], (f"{e['id']}: slug {e.get('slug')!r} should be {expected[e['id']]!r} "
                                                         "(slugs are generated from the id; run regen.py)")
 
-    # ---- assignment -------------------------------------------------------
     # ---- overrides ----------------------------------------------------------
     def load_overrides(self, path='assignments.yaml'):
-        """Hand assignments, applied after the rules. Each entry names an RFC and the tags to add or
+        """Hand assignments, applied after the model's. Each entry names an RFC and the tags to add or
         remove, with a reason. A document with an entry has been reviewed by a person."""
         try:
             doc = yaml.safe_load(open(path)) or {}
@@ -149,101 +137,6 @@ class Taxonomy:
             assert o.get('reason'), f'assignments.yaml: {rid} needs a reason'
             self.overrides[rid] = o
         return self.overrides
-
-    # ---- assignment -------------------------------------------------------
-    EVIDENCE_ORDER = ['override', 'wg', 'stream', 'title', 'keyword', 'abstract', 'era']
-
-    def assign(self, rfc):
-        """Leaf tags for one RFC. Also sets self.last_evidence ({tag: [sources]}), self.last_source
-        and self.last_review (reasons a person should look at the assignment; empty if none)."""
-        E = self.engine; hum = E['humor']['tag']
-        ov = getattr(self, 'overrides', {}).get(rfc['id'], {})
-        if rfc.get('day') or rfc['id'] in self.by_id[hum].get('documents', []):
-            self.last_evidence = {hum: ['title']}; self.last_source = 'rules'; self.last_review = []
-            return [hum]
-        tags = []; ev = collections.defaultdict(list)
-        year = rfc.get('year') or 0
-        def add(ts, src):
-            for t in ts:
-                if t in self.max_year and year > self.max_year[t]: continue
-                if t not in tags: tags.append(t)
-                if src not in ev[t]: ev[t].append(src)
-        wg = rfc.get('wg')
-        wg_tags = set(self.groups.get(wg, [])) if wg else set()
-        add(wg_tags, 'wg')
-        add(self.streams.get(rfc.get('stream'), []), 'stream')   # a publication stream is evidence too: Editorial -> RFC series
-        title = rfc.get('title') or ''
-        kws = ' ; '.join(rfc.get('keywords') or '')
-        for t in self.order:
-            if any(rx.search(title) for rx in self.match[t]): add([t], 'title')
-            elif kws and any(rx.search(title + ' ; ' + kws) for rx in self.match[t]): add([t], 'keyword')
-        for t in self.order:
-            if any(rx.search(title) for rx in self.match_title[t]): add([t], 'title')
-        self.last_source = 'rules'
-        if not tags and not ov.get('add'):
-            self.last_source = 'abstract'
-            abstract = rfc.get('abstract') or ''
-            hits = [t for t in self.order if any(rx.search(abstract) for rx in self.match[t])]
-            add(self._prioritise(hits, wg_tags)[:E['abstract_fallback_max_tags']], 'abstract')
-        era = E['era_fallback']
-        if not tags and not ov.get('add') and rfc.get('year') and rfc['year'] <= era['max_year'] and rfc.get('stream') == era['stream']:
-            add([era['tag']], 'era'); self.last_source = 'era'
-        tags = self._suppress(tags)
-        tags = [t for t in tags if not any(o != t and t in self.path[o] for o in tags)]   # ancestor rule
-        implied = {x for o in tags for x in self.implies.get(o, [])}
-        tags = [t for t in tags if t not in implied]                                      # implied topics are not leaves
-        tags = self._prioritise(tags, wg_tags)
-        # overrides: applied last
-        for t in ov.get('remove', []) or []:
-            if t in tags: tags.remove(t)
-        for t in ov.get('add', []) or []:
-            if t not in tags: tags.append(t)
-            ev[t] = ['override'] + [x for x in ev.get(t, []) if x != 'override']
-        tags = [t for t in tags if not any(o != t and t in self.path[o] for o in tags)]
-        self.last_evidence = {t: sorted(ev.get(t, []), key=self.EVIDENCE_ORDER.index) for t in tags}
-        self.last_review = [] if ov else self._review(rfc, tags)
-        return tags
-
-    def _review(self, rfc, tags):
-        """Why a person should look at this assignment. Each reason is one of the failure modes the
-        pipeline is known to have; a document with none is not thereby right, only unremarkable."""
-        r = []
-        if self.last_source == 'abstract': r.append('no match: tags come from the abstract')
-        if self.last_source == 'era': r.append('no match: era fallback')
-        for t in tags:
-            src = self.last_evidence.get(t, [])
-            if self.kind[t] == 'technology' and src and set(src) <= {'keyword'}:
-                r.append(f'{t}: technology on author keywords alone')
-        if len(tags) >= self.engine.get('many_tags', 8):
-            r.append(f'{len(tags)} leaf tags: a long list is worth a look')
-        # a root as leaf beside a technology from another subtree, when the root came from a title word
-        # rather than a working group or stream: the pattern behind the transport/routing leaks
-        for rt in [t for t in tags if len(self.path[t]) == 1]:
-            if set(self.last_evidence.get(rt, [])) & {'wg', 'stream'}: continue
-            foreign = [t for t in tags if self.kind[t] == 'technology' and self.root[t] != rt]
-            if foreign: r.append(f'{rt} as leaf beside {", ".join(foreign)}')
-        return r
-
-    def _suppress(self, tags):
-        """Remove generic tags that yield to a present specific. A specific counts only once it is
-        settled - it has no yields_to of its own, or none of its own specifics are present - so that a
-        keyword-noise tag removed by suppression cannot itself suppress something else."""
-        present = list(tags)
-        def settled(s): return s not in self.yields or not (self.yields[s] & set(present))
-        changed = True
-        while changed:
-            changed = False
-            for t in list(present):
-                if t in self.yields and any(s in present and settled(s) for s in self.yields[t]):
-                    present.remove(t); changed = True
-        for t in list(present):                                  # any cycle left over: plain rule
-            if t in self.yields and self.yields[t] & set(present): present.remove(t)
-        return present
-
-    def _prioritise(self, tags, wg_tags=()):
-        """Order of the leaf list, and of the abstract fallback's choice: working-group tags first, then deeper (more specific) tags, then file order. No longer truncates the leaf list."""
-        pos = {t: i for i, t in enumerate(self.order)}
-        return sorted(tags, key=lambda t: (t not in wg_tags, -len(self.path[t]), pos[t]))
 
     def closure(self, tags):
         out = set()
@@ -268,35 +161,5 @@ def load_rfcs(path='rfcs.json'):
 
 if __name__ == '__main__':
     tax = Taxonomy(sys.argv[1] if len(sys.argv) > 1 else 'taxonomy.yaml')
-    tax.load_overrides(sys.argv[3] if len(sys.argv) > 3 else 'assignments.yaml')
-    rfcs = load_rfcs(sys.argv[2] if len(sys.argv) > 2 else 'rfcs.json')
-    out = {}
-    for r in rfcs:
-        leaf = tax.assign(r)
-        tech, topic = tax.two_axis(leaf)
-        out[r['id']] = {'title': r.get('title'), 'year': r.get('year'), 'tags': leaf, 'source': tax.last_source,
-                        'evidence': tax.last_evidence, 'review': tax.last_review, 'reviewed': r['id'] in tax.overrides,
-                        'paths': [list(p) for p in sorted({tax.path[t][:i] for t in leaf for i in range(1, len(tax.path[t]) + 1)})],
-                        'technology': tech, 'topic': topic}
-    # a tag's first document, in publication order, is worth a look: it is where a new tag or a
-    # misfiring rule shows up first (R18)
-    MON = {m: i for i, m in enumerate(MONTHS, 1)}
-    seen = set()
-    for r in sorted(rfcs, key=lambda r: (r.get('year') or 0, MON.get(r.get('month'), 6), int(r['id'][3:]))):
-        k = r['id']; new = [t for t in out[k]['tags'] if t not in seen]; seen.update(new)
-        if new and not out[k]['reviewed'] and (r.get('year') or 0) >= 2000:
-            out[k]['review'].append('first document to carry ' + ', '.join(new))
-    # a document and the one that obsoletes it are almost always about the same thing: no tag in
-    # common, counting ancestors, means one of the two assignments is probably wrong
-    closed = {k: {t for p in v['paths'] for t in p} for k, v in out.items()}
-    for r in rfcs:
-        for o in r.get('obsoleted_by') or []:
-            if o in out and closed[r['id']] and closed[o] and not (closed[r['id']] & closed[o]):
-                if not out[r['id']]['reviewed']: out[r['id']]['review'].append(f'no tag in common with {o}, which obsoletes it')
-                if not out[o]['reviewed']: out[o]['review'].append(f'no tag in common with {r["id"]}, which it obsoletes')
-    json.dump(out, open('rfc-tags.json', 'w'), indent=1)
-    used = collections.Counter(t for v in out.values() for t in v['tags'])
-    carried = collections.Counter(t for v in out.values() for p in v['paths'] for t in p)   # directly or beneath
-    print(f"{len(tax.by_id)} tags ({dict(collections.Counter(tax.kind.values()))}); untagged {sum(1 for v in out.values() if not v['tags'])}; "
-          f"unused {[t for t in tax.by_id if t not in carried]}; zero-topic {sum(1 for v in out.values() if not v['topic'])}; "
-          f"needing review {sum(1 for v in out.values() if v['review'])}; overridden {sum(1 for v in out.values() if v['reviewed'])}")
+    ov = tax.load_overrides(sys.argv[2] if len(sys.argv) > 2 else 'assignments.yaml')
+    print(f"{len(tax.by_id)} tags ({dict(collections.Counter(tax.kind.values()))}); {len(ov)} hand assignments; both files are valid")

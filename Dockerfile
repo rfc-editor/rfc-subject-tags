@@ -11,7 +11,7 @@
 #
 #              docker build --target runtime -t rfc-subject-tags-runtime .
 #              docker run --rm -v "$PWD:/work" rfc-subject-tags-runtime \
-#                sh -c 'python3 make_corpus_from_index.py && python3 engine.py && python3 regen.py'
+#                sh -c 'python3 make_corpus_from_index.py && python3 tagger.py --no-model && python3 regen.py'
 #
 # CI uses neither today — the workflow installs Python with actions/setup-python. The
 # runtime target is here for scripted runs, and if CI is ever containerised it is the

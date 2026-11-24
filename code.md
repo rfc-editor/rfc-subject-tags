@@ -1,6 +1,6 @@
 # RFC Subject Tags — Code and Outputs
 
-How the tag system is built: the input corpus, the taxonomy file, the engine that assigns tags and derives the served view, and every file the pipeline produces. Aims, requirements and semantics are in README.md; acceptance checks and figures are in validation.md.
+How the tag system is built: the input corpus, the taxonomy file, the tagger that assigns tags, the derivation of the served view, and every file the pipeline produces. Aims, requirements and semantics are in README.md; acceptance checks and figures are in validation.md.
 
 ## Files at a glance
 
@@ -8,14 +8,16 @@ How the tag system is built: the input corpus, the taxonomy file, the engine tha
 
 | File | Contains |
 |---|---|
-| `assignments.yaml` | Hand assignments: one entry per RFC a person has reviewed — tags to add or remove, a reason, who and when. Applied after the rules; a document with an entry is reviewed. A rule is for a class of documents; an override is for one document whose subject no rule can name without being written for its title |
-| `taxonomy.yaml` | Every tag with its parent, kind, description, match rules, working groups, suppression, decomposition and implied topics; plus engine parameters. Each entry also carries a generated `stats` block (see below) that `regen.py` rewrites and curators do not edit |
+| `assignments.yaml` | Hand assignments: one entry per RFC a person has reviewed — tags to add or remove, a reason, who and when. Applied after the model's assignment; a document with an entry is reviewed |
+| `tagging_instructions.md` | What the model is told: what a tag means, how to choose, and what to return. The taxonomy is appended to it at run time. Changing it changes what the next tagger run assigns |
+| `taxonomy.yaml` | Every tag with its parent, kind, description, decomposition and implied topics. (The match rules, working groups and suppression fields that the former rule engine used are still in the file but nothing reads them.) Each entry also carries a generated `stats` block (see below) that `regen.py` rewrites and curators do not edit |
 
 ### Code
 
 | File | Purpose |
 |---|---|
-| `engine.py` | Reads `taxonomy.yaml`, validates it, assigns tags to RFC records, derives the two-axis view |
+| `tagger.py` | Has a model read each RFC with the taxonomy and choose its tags with reasons; applies the hand assignments; writes `rfc-tags.json`. Needs the `claude` command-line program and the RFC texts (see Assignment) |
+| `engine.py` | Reads and validates `taxonomy.yaml` and `assignments.yaml`; derives paths and the two-axis view. Used by `tagger.py` and `regen.py` |
 | `make_corpus_from_index.py` | Builds `rfcs.json` from the RFC Editor's `rfc-index.xml`, downloading it if absent |
 | `make_corpus_from_local.py` | Builds `rfcs.json` from a directory of per-RFC metadata files instead |
 | `regen.py` | Regenerates the generated files, assigns missing `uuid`s and regenerates `slug`s, writes those and the `stats` blocks into `taxonomy.yaml`, and refreshes the figures in validation.md and README.md and the generated blocks in this file |
@@ -24,8 +26,10 @@ How the tag system is built: the input corpus, the taxonomy file, the engine tha
 
 ### Generated (never edit by hand)
 
-None of these is in the repository — they are gitignored build products. A local run produces
-them in the working directory, and CI publishes the current build to GitHub Pages:
+`rfc-tags.json` is tracked in the repository: it is the record of every assignment and the
+reasoning for it, and a change to it is reviewed like any other. The rest are gitignored build
+products. A local run produces them in the working directory, and CI publishes the current
+build to GitHub Pages:
 
 | Artifact | Published at |
 |---|---|
@@ -40,8 +44,8 @@ publish; the page carries its own build date so the two can be told apart.
 
 | File | Contents |
 |---|---|
-| `rfcs.json` | Corpus metadata, one record per RFC — the engine's input, produced by either corpus script. Fetched fresh at build time; the snapshot each build used is published alongside the other artifacts, so a published build can be reproduced exactly |
-| `rfc-tags.json` | Per RFC: title, year, `source` (`rules`, `abstract` or `era`), leaf `tags`, `evidence` (per tag, which sources produced it: `wg`, `stream`, `title`, `keyword`, `abstract`, `era`, `override`), `review` (reasons a person should look at the assignment; empty if none), `reviewed` (true when `assignments.yaml` has an entry), full `paths` (R4) as arrays of ids, and `technology` / `topic` coordinates for the served view |
+| `rfcs.json` | Corpus metadata, one record per RFC — the list of RFCs to tag, produced by either corpus script. Fetched fresh at build time; the snapshot each build used is published alongside the other artifacts, so a published build can be reproduced exactly |
+| `rfc-tags.json` | Per RFC, keyed `RFCn` in number order: `title`, `year`; `summary` (the model's one sentence on what the document is); `tags` (ids); `reasons` (per tag: `role` `primary` or `secondary`, `why`, a `quote` from the document and its `section`; for a hand assignment `role` is `hand` with `why`, `by` and `date`, and a tag both chose carries the model's fields plus a `hand` object); `rejected` (tags the model considered and decided against, each with `why`); `gaps` (subjects the model found no tag for); `review` (what a person should check; empty if nothing); `reviewed` (true when `assignments.yaml` has an entry); full `paths` (R4) as arrays of ids; `technology` / `topic` coordinates for the served view; and `tagged` (the `model`, `date` and `prompt` hash of the run, its `notes`, the `tags` the model chose before hand assignments, and its reasoning for any that were `removed`), or null if the model has not tagged the RFC |
 | `rfc-tags.csv` | The same table for spreadsheet use; list fields are `;`-separated, paths `|`-separated with ids joined by ` / ` |
 | `tag-candidates.json` | Output of `tag_candidates.py`: candidate names by tag, most-seen first, with example RFCs |
 | `rfc-tags.html` | Self-contained review page. **Vocabulary**: the tree with corpus count and notifications-per-year (since 2021) per tag, search, technology/topic filter, multi-select with AND/OR and the matching RFCs. **Co-occurrence**: tag pairs sharing RFCs. **Lifespan**: each tag's first-to-last year, live or dormant. **Overlap**: Jaccard and one-way overlap flags for redundant or nested pairs. **All RFCs**: look-up with tags and served technology/topic coordinates |
@@ -52,14 +56,15 @@ publish; the page carries its own build date so the two can be told apart.
 pip install -r requirements.txt                          # PyYAML, the only dependency
 python3 make_corpus_from_index.py                        # rfcs.json from rfc-index.xml (downloads it)
 #   or: python3 make_corpus_from_local.py ~/Data/RFCs rfcs.json
-python3 engine.py taxonomy.yaml rfcs.json                # validates, assigns, derives; writes rfc-tags.json
+python3 tagger.py                                        # tags RFCs that rfc-tags.json has no result for; needs model access
+#   or: python3 tagger.py --no-model                     # no model: bring rfc-tags.json up to date with the other files
 python3 regen.py                                         # rendered files and document figures
 python3 tag_candidates.py                                # tag-candidates.json for the next vocabulary review
 ```
 
 Every step reads and writes in the working directory. A full run leaves `rfc-index.xml`,
-`rfcs.json`, `rfc-tags.json`, `rfc-tags.csv` and `rfc-tags.html` beside the sources; all are
-gitignored build products.
+`rfcs.json`, `rfc-tags.csv` and `rfc-tags.html` beside the sources as gitignored build products,
+and updates the tracked `rfc-tags.json`.
 
 Then run the checks in validation.md.
 
@@ -144,12 +149,7 @@ The character rule exists because ids appear inside other formats: ` / ` joins t
 
 ### Engine parameters
 
-| Key | Value | Effect |
-|---|---|---|
-| `many_tags` | 8 | A leaf list this long or longer gets a review reason; nothing is truncated |
-| `abstract_fallback_max_tags` | 3 | Cap when only the abstract matched |
-| `era_fallback` | `ARPANET`, ≤ 1982, Legacy stream | Tag for otherwise-unmatched early working notes |
-| `humor.tag` | `humor` | Sole tag for day-dated or listed documents |
+Only `humor.tag` is still read (it names the tag the R16 check looks for). The other keys configured the former rule engine and nothing reads them.
 
 ### Editing the file
 
@@ -163,45 +163,38 @@ The character rule exists because ids appear inside other formats: ` / ` joins t
 
 ## Assignment
 
-`engine.Taxonomy.assign(record)` returns the leaf tags for one RFC.
+`tagger.py` assigns tags. For each RFC it sends a model the instructions in `tagging_instructions.md`, the taxonomy (each tag's id, kind and description, as an indented tree) and the full text of the RFC, and gets back the tags the document is about, with the reasoning for each.
 
-### Tiers
+### What it needs
 
-1. **Humor.** If `day` is present, or the RFC is in the humor tag's `documents`, the result is `['humor']` and processing stops.
-2. **Working group and stream.** Every tag whose `groups` contains the record's `wg`, and every tag whose `streams` contains the record's `stream` (Editorial-stream RFCs are about the RFC series). (At every tier, a tag with `max_year` is skipped for RFCs published after it.)
-3. **Match rules.** Every tag with a `match` regex that hits the title or author keywords.
-4. **Title-only rules.** Every tag with a `match_title_only` regex that hits the title.
-5. **Abstract fallback.** If nothing has matched, `match` regexes run against the abstract; at most `abstract_fallback_max_tags` are kept.
-6. **Era fallback.** If still nothing, a Legacy-stream document from 1982 or earlier takes `ARPANET`.
-7. **Suppression.** A tag is removed when a tag in its `yields_to` is present and *settled* — that is, not itself about to be removed. This makes the result independent of file order while still letting a keyword-noise tag be removed before it can suppress something else.
-8. **Ancestor rule.** A tag never sits in the leaf set beside its own descendant, so a root is a leaf only for documents about the subject in general.
-   A topic that a present technology implies is likewise dropped from the leaf set; the served view adds it back, so it appears once, by implication.
-9. **Order.** Working-group tags first, then deeper (more specific) tags, then earlier tags in file order. Nothing is truncated: a document is about as many things as its evidence says, and a long list is a review reason rather than something the engine trims.
-10. **Overrides.** The RFC's entry in `assignments.yaml`, if any: `remove` tags are taken out, `add` tags put in. A document with an `add` never falls to the abstract or era fallback.
+- **The model.** `tagger.py` runs the `claude` command-line program (Claude Code) once per RFC. Each person running the tagger installs it and signs in with their own account, or sets `ANTHROPIC_API_KEY`; the repository holds no credentials and CI calls no model. The model is `claude-sonnet-5-5` at medium effort, the combination the instructions were tested with; `--model` overrides it.
+- **The RFC texts.** `rfcNNNN.txt` files in a local copy of the corpus, by default `~/Data/RFCs` (`--corpus` or `$RFC_CORPUS`). Keep the copy current with `rsync -av rsync.rfc-editor.org::rfcs ~/Data/RFCs`; do not fetch RFCs one by one over HTTP. An RFC with no text file is left untagged and listed at the end of the run.
 
-Every tag records its evidence — which of these tiers produced it — and every document without an override gets a list of review reasons: it matched nothing and its tags came from the abstract (or the era fallback); a technology rests on author keywords alone; a title-derived root sits beside a technology from another subtree; it carries `many_tags` or more leaf tags; it is the first document to carry a tag (from 2000 on); it shares no tag, counting ancestors, with the RFC that obsoletes it or that it obsoletes. These are the pipeline's known failure modes, not a judgement that the assignment is wrong.
+### What a run does
 
-`closure(tags)` expands leaf tags to their root-anchored paths, which appear as `paths` in `rfc-tags.json` (R4).
+1. **Chooses the RFCs.** By default, every RFC in `rfcs.json` for which `rfc-tags.json` holds no model result: after an index refresh, the newly published ones. `--retag RFC9000 RFC9001` tags the named RFCs again; `--all` tags the whole corpus again; `--limit N` stops after N.
+2. **Asks the model**, one RFC per fresh context, `--jobs` at a time (default 6). Text beyond 300,000 characters is cut off.
+3. **Checks the answer.** A tag id the taxonomy does not have is dropped. Each quote is looked for in the text. Both leave a note in `review`.
+4. **Applies hand assignments.** The RFC's entry in `assignments.yaml`, if any: `remove` tags are taken out, `add` tags put in.
+5. **Derives** `paths`, `technology` and `topic` (below) and writes `rfc-tags.json`.
 
-### Rule-writing discipline
+Steps 4 and 5 run for every RFC on every run, from what `rfc-tags.json` already holds; `--no-model` runs only those. A model result is therefore kept until someone asks for that RFC to be tagged again. Changing `tagging_instructions.md`, or a tag's description, does not by itself change any assignment: each entry records the hash of the prompt it was produced with (`tagged.prompt`), and re-tagging is a decision.
 
-Matching is case-insensitive over title and keywords, which makes several failure modes routine. Each rule below exists because it has bitten.
+Results are saved in `.tagger-cache/` as they arrive, so an interrupted run resumes where it stopped. The run stops by itself after five consecutive failures (signed out, usage limit reached).
 
-- **Anchor short words** with `\b` and handle plurals explicitly (`\bMIBs?\b`). Unanchored stems match inside longer words: "tribute" in *Attribute*, "graphic" in *cryptographic*, "port control protocol" inside *Transport Control Protocol*.
-- **Never match a bare acronym that is also an English word** — SEND, TURN, STAMP, TRIP, LOST, OPAQUE, SIMPLE. Require the parenthesised form `(TURN)` or the expansion.
-- **Disambiguate acronyms that collide across fields** by phrase or by `yields_to`: FEC (forward error correction vs forwarding equivalence class), JWT (the token vs the Joint Working Team), SPF (sender policy framework vs shortest path first).
-- **Exclude compound uses**: "TCP/IP" from TCP; "mail routing", "Generic Routing Encapsulation" and "Routing Protocol for Low-Power…" from `routing`; "JSON Web Signature/Token" from `web`; "Constrained Application Protocol" from `applications`; "Transport Layer Security", "Real-Time Transport Protocol" and SSH's "Transport Layer Protocol" from `transport`; "Integrated Services Digital Network" from `Intserv`; "Point-to-Point (P2P)" from `P2P`. Where a regex cannot exclude a name cleanly, `yields_to` does the job — `transport` yields to `TLS`, `DTLS`, `RTP`, `RTCP`, `SRTP` and `SSH`. The general root rules are the most exposed to this, because protocol names routinely contain the words routing, web, application and data format; the Overlap view of `rfc-tags.html` shows such leaks as a root nested inside an unrelated technology.
-- **Adjectives are not evidence.** Documents about security say "security"; "Secure Transport" in a title does not earn `security`.
-- **Acronyms collide across the IETF's own vocabulary too.** `RPC` is Remote Procedure Call and also the RFC Production Center; the `ONC RPC` rule requires remote-procedure context (RFC 9920, issue #23).
-- **A phrase that names the corpus is scope, not subject.** "Congestion Control in the RFC Series" is about congestion control; "HTML Format for RFCs" is about the RFC series' format, not about HTML. The `RFC series` rule excludes "in the RFC series", and the format technologies (`HTML`, `ASCII`, `UTF-8`) yield to `RFC series` (issue #23).
-- **Author keywords can describe the document's apparatus rather than its subject.** Authors list "IPR" for a document with an IPR section and "xml2rfcv3" for the tool that produced it. `IPR` is therefore title-only, and `RFCXML` matches the tool's name as a word, not the series keyword (issues #23, #24).
-- **A working group is not a tag.** When a group's output is a named technology with a following, the technology gets its own entry and the group goes in its `groups` (R10, R11).
+A run over the whole corpus sends every RFC's text to the model: budget for it. A pilot of 24 RFCs reported about $0.11 per RFC.
 
-The mechanical checks that enforce these are in validation.md.
+### What the tagger does not decide
+
+The model's list is kept as given, in its order, apart from the checks above. In particular a tag may sit beside its own ancestor when the model judged the document to be about both. Nothing enforces R16: a document tagged `humor` beside other tags gets a review reason, not a correction.
+
+Every RFC's `review` list says what a person should check: the model has not tagged it; a quote was not found in the text; the text was cut; the model chose a tag that does not exist, or one since removed from the taxonomy; the result has no tags (R7), no topic (R8) or `humor` beside other tags (R16); or it shares no tag, counting ancestors, with the RFC that obsoletes it or that it obsoletes. An empty list does not mean the assignment is right.
+
+`closure(tags)` expands tags to their root-anchored paths, which appear as `paths` in `rfc-tags.json` (R4).
 
 ## Recording a review
 
-The engine proposes; a person confirms (README, Search and subscription semantics). The confirmation is recorded in `assignments.yaml`:
+The model proposes; a person confirms (README, Search and subscription semantics). The reasoning in `rfc-tags.json` is there to be checked. A correction is recorded in `assignments.yaml`:
 
 ```yaml
 overrides:
@@ -212,9 +205,9 @@ overrides:
     date: 2026-09-30
 ```
 
-An entry may confirm the rules' result with no `add` or `remove` at all; what matters is that the document has been looked at. The loader rejects an entry naming a tag that does not exist or lacking a reason. When a wrong assignment turns out to be a *class* of documents, fix the rule instead and leave the override out — the rule generalises, the override does not.
+An entry may confirm the model's result with no `add` or `remove` at all; what matters is that the document has been looked at. The loader rejects an entry naming a tag that does not exist or lacking a reason. Run `tagger.py --no-model` to apply the change. When wrong assignments form a *class* of documents, the fix belongs in `tagging_instructions.md` or in the tag's description, followed by `--retag` of the documents affected.
 
-The page's Review tab lists the documents with review reasons, filterable by reason, and the RFC card shows each tag's evidence; the page reports, it does not edit `assignments.yaml`.
+The page's Review tab lists the documents with review reasons, filterable by reason, and the RFC card marks each tag as the model's primary or secondary subject or a hand assignment; the page reports, it does not edit `assignments.yaml`.
 
 ## Served view
 
@@ -280,6 +273,6 @@ The `implies` field is consulted over the ancestor closure, so `DKIM` inherits `
 
 ## Regeneration
 
-`regen.py` assigns a `uuid` to any tag without one, regenerates every `slug`, computes each tag's `stats` block, and writes all three back into `taxonomy.yaml`; renders `rfc-tags.csv`; builds `rfc-tags.html` by embedding into `browser_template.html` the tags (with `stats`, notification rate and lifetime), every RFC's row (leaf tags and served coordinates), and tag co-occurrence pairs; and refreshes the figures in validation.md and README.md. Run it after `engine.py`, after any change to the YAML.
+`regen.py` assigns a `uuid` to any tag without one, regenerates every `slug`, computes each tag's `stats` block, and writes all three back into `taxonomy.yaml`; renders `rfc-tags.csv`; builds `rfc-tags.html` by embedding into `browser_template.html` the tags (with `stats`, notification rate and lifetime), every RFC's row (leaf tags and served coordinates), and tag co-occurrence pairs; and refreshes the figures in validation.md and README.md. Run it after `tagger.py`, after any change to the YAML.
 
 Everything is read and written in the working directory. Three tracked files are rewritten **in place** — `taxonomy.yaml` (its `stats` blocks), `README.md` and `validation.md` (their figures) — so run it on a clean working tree and review the resulting diff as part of the change. The figures move whenever the corpus does: a run against an index one RFC newer than the last shifted two lines of validation.md and 24 lines of `stats`.

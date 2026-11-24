@@ -4,7 +4,7 @@ A subject tag system for the RFC series, validated across every published RFC. C
 
 This document covers what the system is for, the requirements it meets, how search and subscriptions behave, what the generated taxonomy looks like, and the open choices. Two companion documents cover the rest:
 
-- **code.md** — the Python engine, the assignment algorithm, the two-axis derivation, and every file the pipeline produces.
+- **code.md** — the tagger, how tags are assigned, the two-axis derivation, and every file the pipeline produces.
 - **validation.md** — the acceptance checks a rebuild must pass and the figures from the current build.
 
 The taxonomy itself is `taxonomy.yaml`; the generated review page — published at <https://rfc-editor.github.io/rfc-subject-tags/>, and produced locally as `rfc-tags.html` — is a self-contained page for browsing it. Both are described in [What the taxonomy looks like](#what-the-taxonomy-looks-like).
@@ -126,8 +126,8 @@ This puts the weight of correctness on the assignment made at publication. It is
 
 ### Assignment at publication
 
-1. The engine proposes tags from the working group, title and keywords (see code.md).
-2. A person confirms them before publication, adding anything the rules missed. The confirmation, and any correction, is recorded in `assignments.yaml`; from then on the document is marked reviewed.
+1. A model reads the document with the taxonomy and proposes tags, giving its reasoning for each (see code.md).
+2. A person confirms them before publication, adding anything the model missed. The confirmation, and any correction, is recorded in `assignments.yaml`; from then on the document is marked reviewed.
 3. If the document introduces a technology or topic the vocabulary lacks, the same person decides whether a new tag is warranted under R10, R11 and R18.
 4. New working groups are added to the working-group map when their first RFC is published.
 

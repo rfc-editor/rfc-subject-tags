@@ -1,5 +1,5 @@
-"""Regenerate all derived deliverables from taxonomy.yaml and the engine outputs, and refresh document figures.
-Run after: python3 engine.py. Writes rfc-tags.csv and rfc-tags.html, the stats block in taxonomy.yaml,
+"""Regenerate all derived deliverables from taxonomy.yaml and rfc-tags.json, and refresh document figures.
+Run after: python3 tagger.py (or tagger.py --no-model). Writes rfc-tags.csv and rfc-tags.html, the stats block in taxonomy.yaml,
 and refreshes the figures in README.md and validation.md and the generated blocks in code.md. Everything is read and written in the
 working directory; the three tracked files are rewritten in place.
 """
@@ -72,9 +72,9 @@ for e in doc['tags']:
 rows=[]
 for k in sorted(RT, key=lambda x:int(x[3:])):
     v=RT[k]
-    EV={'override':'o','wg':'w','stream':'s','title':'t','keyword':'k','abstract':'a','era':'e'}
+    EV={'primary':'p','secondary':'s','hand':'h'}   # per tag: the model's role for it, plus h when a person assigned it
     rows.append([int(k[3:]), v['year'], v['title'], [tag_index[t] for t in v['tags']], [tag_index[t] for t in v['technology']], [tag_index[t] for t in v['topic']],
-                 v.get('review',[]), {str(tag_index[t]):''.join(EV[s] for s in srcs) for t,srcs in v.get('evidence',{}).items()}, 1 if v.get('reviewed') else 0])
+                 v.get('review',[]), {str(tag_index[t]):EV[w['role']]+('h' if 'hand' in w else '') for t,w in v.get('reasons',{}).items()}, 1 if v.get('reviewed') else 0])
 pair_c=collections.Counter()
 for v in RT.values():
     ids=sorted(tag_index[t] for t in v['tags'])

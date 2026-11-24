@@ -6,7 +6,7 @@ The checks a rebuild must pass, and the figures from the current build. Each che
 
 ### Structural (R3, R5, R12)
 
-`engine.Taxonomy('taxonomy.yaml')` loads without error. It asserts:
+`python3 engine.py` loads both normative files without error. It asserts:
 
 - every id unique, and every `parent`, `yields_to`, `implies` and `decomposes_to` reference resolves;
 - depth at most four levels;
@@ -22,7 +22,7 @@ The checks a rebuild must pass, and the figures from the current build. Each che
 
 - Every assignment is emitted as full paths.
 - Mean tags per RFC, counting ancestors, is between 1 and 10.
-- Report the distribution and the maximum. There is no cap on leaf tags: a long list is a review reason, not something the engine trims.
+- Report the distribution and the maximum. There is no cap on tags: nothing trims the model's list.
 
 ### Humor (R16)
 
@@ -72,6 +72,8 @@ For each topic, confirm the name is phrasing people search for, not a librarian'
 
 ### Rule audits (R9)
 
+These two audits applied to the match rules of the former rule engine. Tags are now assigned by a model reading the document (code.md, Assignment), so they have nothing to check; they are kept until the match rules are removed from `taxonomy.yaml`.
+
 - **Embedded words.** For every rule alternative that is a plain word or phrase without `\b`, find corpus matches inside longer words and confirm each is an intended stem.
 - **Acronym case.** For every alternative written as an uppercase acronym, list matches whose actual text is not uppercase and confirm each is a lowercase author keyword rather than an English word.
 
@@ -91,12 +93,12 @@ Count the documents with a non-empty `review` in `rfc-tags.json`, by reason (the
 
 ### Obsoleted-by agreement
 
-A document and the RFC that obsoletes it are almost always about the same thing. List the pairs whose closed tag sets share nothing (the engine adds a review reason to both sides). Read each: a tag that changed name across the generations (`hostnames` → `DNS`, `email` → `SMTP`) is fine; the same subject under unrelated tags is an error on one side. RFC 1766 (`SMTP`, from its working group) against RFC 3066 (`language tags`) was found this way.
+A document and the RFC that obsoletes it are almost always about the same thing. List the pairs whose closed tag sets share nothing (the tagger adds a review reason to both sides). Read each: a tag that changed name across the generations (`hostnames` → `DNS`, `email` → `SMTP`) is fine; the same subject under unrelated tags is an error on one side. RFC 1766 (`SMTP`, from its working group) against RFC 3066 (`language tags`) was found this way.
 
 ### Overrides (assignments.yaml)
 
 - The loader accepts the file: every RFC id well-formed, every tag named exists, every entry has a reason.
-- No tag is carried *only* by overrides: a tag with no rule of its own fails R11's test. Check that every tag added by an override also has documents by rule.
+- No tag is carried *only* by overrides. Check that every tag added by an override is also chosen by the model for some document.
 - The stability replay includes overridden documents; an override that debuts a tag is a new tag entering by hand and should be as rare as any other debut.
 
 ### Root leaks (R12)
@@ -127,9 +129,9 @@ For each topic-implying technology, list assignments with no title evidence and 
 
 By inspection of the tree: no tag names an IETF area, a status, a stream or a date.
 
-### Engine round-trip
+### Round-trip
 
-When the engine or the YAML schema changes, re-run against the previous `rfc-tags.json` and list every RFC whose `tags` differ. Differences must be explainable — at the YAML-to-engine migration nine RFCs differed, all in the three-tag abstract fallback's choice or the leaf cap that then existed, and none in tags matched.
+`rfc-tags.json` is tracked, so `git diff` shows every RFC whose assignment a change moves. After a change to `engine.py`, `tagger.py` or the YAML schema, run `tagger.py --no-model` and read the diff: differences must be explainable. After a `--retag`, the diff is the review. (History: at the YAML-to-engine migration nine RFCs differed, all in the three-tag abstract fallback's choice or the leaf cap that then existed, and none in tags matched.)
 
 ## Records
 

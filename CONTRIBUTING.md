@@ -49,13 +49,16 @@ pip install -r requirements.txt
 
 ```
 python3 make_corpus_from_index.py    # fetches rfc-index.xml, writes rfcs.json
-python3 engine.py                    # validates the taxonomy, assigns tags, writes rfc-tags.json
+python3 tagger.py --no-model         # validates the taxonomy, brings rfc-tags.json up to date; calls no model
 python3 regen.py                     # writes rfc-tags.csv and rfc-tags.html, refreshes figures
 ```
 
 Every step reads and writes in the working directory. The corpus fetch needs network access to
-`www.rfc-editor.org`. Nothing the build produces is committed — `rfc-index.xml`, `rfcs.json`,
-`rfc-tags.json`, `rfc-tags.csv` and `rfc-tags.html` are all gitignored. The current build is
+`www.rfc-editor.org`. `rfc-tags.json` is tracked: it records every assignment and its reasoning.
+The other products — `rfc-index.xml`, `rfcs.json`, `rfc-tags.csv` and `rfc-tags.html` — are
+gitignored. Assigning tags to RFCs that have none, or assigning them again, is
+`python3 tagger.py`, which needs your own model access and a local copy of the RFC texts; see
+code.md, Assignment. The current build is
 published at <https://rfc-editor.github.io/rfc-subject-tags/>.
 
 ## Changing the taxonomy
@@ -86,7 +89,7 @@ hundreds of RFCs, and the point is that every difference is explainable.
 Mechanical checks, at minimum:
 
 ```
-python3 engine.py    # must report 0 untagged, 0 unused, 0 zero-topic
+python3 tagger.py --no-model    # reports untagged, unused and zero-topic counts; explain any that are not 0
 ```
 
 ## Reviewing a pull request

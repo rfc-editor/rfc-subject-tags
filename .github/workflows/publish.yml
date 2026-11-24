@@ -1,8 +1,8 @@
 # Builds the taxonomy artifacts and publishes them to GitHub Pages.
 #
 # The build fetches the RFC index fresh each run, so the published page tracks the
-# current corpus. regen.py also rewrites taxonomy.yaml, README.md and validation.md;
-# those edits are discarded here. Keeping them current is a curator step, run locally
+# current corpus. tagger.py --no-model rewrites rfc-tags.json, and regen.py rewrites
+# taxonomy.yaml, README.md and validation.md; those edits are discarded here. Keeping them current is a curator step, run locally
 # and committed by a person — this workflow commits nothing.
 #
 # Requires: repository Settings > Pages > Source set to "GitHub Actions".
@@ -47,8 +47,12 @@ jobs:
       - name: Build corpus
         run: python3 make_corpus_from_index.py
 
-      - name: Assign tags
-        run: python3 engine.py
+      # Tags are assigned by tagger.py, which a curator runs locally (it needs model access)
+      # and commits as rfc-tags.json. The build calls no model: it brings that file up to date
+      # with the index, taxonomy.yaml and assignments.yaml. An RFC published since the last
+      # tagger run appears with no tags until a curator runs the tagger and the result is merged.
+      - name: Rebuild assignments
+        run: python3 tagger.py --no-model
 
       - name: Regenerate artifacts
         run: python3 regen.py
