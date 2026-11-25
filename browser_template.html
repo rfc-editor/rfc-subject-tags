@@ -88,7 +88,8 @@
   --ink:#16191b; --ink-2:#4a5257; --ink-3:#7b848a;
   --rule:#d4d9d7; --rule-2:#e5e9e7;
   --accent:#1f4fb4; --accent-soft:#dde5f8; --accent-ink:#173c8a;
-  --topic:#6b3fa0; --topic-soft:#ece4f8; --topic-ink:#4d2a78;
+  --topic:#6b3fa0; --topic-soft:#ece4f8; --topic-ink:#4d2a78; --topic-line:#cdb9ea;
+  --tech:#0b6b66; --tech-soft:#dcefec; --tech-ink:#08504c; --tech-line:#a9d3ce;
   --warn:#a8471d; --warn-soft:#f4dfd4;
   --bar:#a7aeb1; --bar-soft:#dfe3e2;
   --shadow:0 1px 2px rgba(22,25,27,.06),0 8px 24px -16px rgba(22,25,27,.28);
@@ -103,7 +104,8 @@
     --ink:#e5e9ea; --ink-2:#a3acb0; --ink-3:#7c868b;
     --rule:#2a3135; --rule-2:#222829;
     --accent:#86a9ff; --accent-soft:#1a2a4d; --accent-ink:#b0c6ff;
-    --topic:#b99bf0; --topic-soft:#2c2149; --topic-ink:#d3bffa;
+    --topic:#b99bf0; --topic-soft:#2c2149; --topic-ink:#d3bffa; --topic-line:#4a3878;
+    --tech:#5cc6bd; --tech-soft:#11302d; --tech-ink:#a2e4dc; --tech-line:#245a55;
     --warn:#e08a5e; --warn-soft:#3b2416;
     --bar:#4e5659; --bar-soft:#262c2f;
     --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 28px -18px rgba(0,0,0,.9);
@@ -115,7 +117,8 @@
   --ink:#e5e9ea; --ink-2:#a3acb0; --ink-3:#7c868b;
   --rule:#2a3135; --rule-2:#222829;
   --accent:#86a9ff; --accent-soft:#1a2a4d; --accent-ink:#b0c6ff;
-  --topic:#b99bf0; --topic-soft:#2c2149; --topic-ink:#d3bffa;
+  --topic:#b99bf0; --topic-soft:#2c2149; --topic-ink:#d3bffa; --topic-line:#4a3878;
+  --tech:#5cc6bd; --tech-soft:#11302d; --tech-ink:#a2e4dc; --tech-line:#245a55;
   --warn:#e08a5e; --warn-soft:#3b2416;
   --bar:#4e5659; --bar-soft:#262c2f;
   --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 28px -18px rgba(0,0,0,.9);
@@ -133,11 +136,59 @@ code{font-family:var(--ff-mono);font-size:.95em}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
 /* the two kinds of tag: one typographic voice each, used everywhere a tag name appears */
-.k-tech{font-family:var(--ff-mono);font-weight:700;color:var(--ink)}
+.k-tech{font-family:var(--ff-mono);font-weight:700;color:var(--tech-ink)}
 .k-topic{font-family:var(--ff-ui);font-weight:600;color:var(--topic-ink);letter-spacing:.01em}
 .kind{font-family:var(--ff-ui);font-weight:500;font-size:10px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--ink-3);margin-left:8px;vertical-align:1px}
 .k-topic .kind{color:var(--topic)}
+/* every tag name is a pill: teal for technologies, violet for topics, the same everywhere */
+.tag{display:inline-block;vertical-align:middle;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font-size:11.5px;line-height:1.5;padding:1px 8px;border-radius:99px;border:1px solid;margin:0;text-align:left}
+.tag.k-tech{background:var(--tech-soft);border-color:var(--tech-line);color:var(--tech-ink);font-size:11.5px}
+.tag.k-topic{background:var(--topic-soft);border-color:var(--topic-line);color:var(--topic-ink);font-size:11px}
+button.tag{cursor:pointer}
+button.tag.k-tech:hover{border-color:var(--tech);box-shadow:0 0 0 1px var(--tech)}
+button.tag.k-topic:hover{border-color:var(--topic);box-shadow:0 0 0 1px var(--topic)}
+.tag.path{display:inline-flex;padding:0;border:0;background:none;overflow:visible}
+/* Full tag path: one segment per level, each in its own kind's colours, divided by a full-height rule */
+.tag.path .ps{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:1px 8px;
+  border:1px solid;border-left-width:0;border-right-width:0}
+.tag.path .ps:first-child{border-left-width:1px;border-radius:99px 0 0 99px}
+.tag.path .ps:last-child{border-right-width:1px;border-radius:0 99px 99px 0}
+.tag.path .ps+.ps{box-shadow:inset 1px 0 0 var(--ps-rule)}
+.tag.path .ps.k-tech{background:var(--tech-soft);border-color:var(--tech-line);color:var(--tech-ink);font-size:11.5px}
+.tag.path .ps.k-topic{background:var(--topic-soft);border-color:var(--topic-line);color:var(--topic-ink);font-size:11px}
+.tag.path .ps:not(:last-child){font-weight:500}
+.tag.path{--ps-rule:var(--ink-3)}
+button.tag.path.k-tech:hover,button.tag.path.k-topic:hover{box-shadow:none}
+button.tag.path:hover .ps{border-color:var(--ink-3)}
+.tag.anc{opacity:.6}
+/* an RFC's tags: primary filled, secondary outlined, implied dashed and unfilled after an 'implied' label */
+.tag.sec{background:var(--surface)}
+.tag.sec.k-tech,.tag.sec.k-topic{font-weight:500}
+.tag.sec.path .ps{background:var(--surface);font-weight:500}
+.tag.imp{background:transparent;border-style:dashed;font-weight:500}
+.tag.imp.path .ps{background:transparent;border-style:dashed;font-weight:500}
+.implab{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);align-self:center;margin:0 2px 0 6px}
+.tagchips .ev{align-self:center}
+.tag.big{font-size:13px;padding:2px 10px}
+/* hover card: the tag's place in the hierarchy, root first */
+.tagtip{position:fixed;z-index:100;max-width:380px;background:var(--surface);border:1px solid var(--rule);border-radius:8px;
+  box-shadow:var(--shadow),0 4px 16px rgba(0,0,0,.12);padding:10px 12px;pointer-events:none;font-size:12px}
+.tagtip .tt-row{display:flex;align-items:center;gap:4px;padding:2px 0;white-space:nowrap}
+.tagtip .tt-row .conn{margin-right:2px}
+.tagtip .tt-row .kind{margin-left:6px}
+.tagtip .tt-row.here .tag{box-shadow:0 0 0 2px var(--accent)}
+.tagtip .tt-desc{font-family:var(--ff-serif);font-size:13.5px;color:var(--ink-2);margin:8px 0 0;line-height:1.4;white-space:normal}
+.tagtip .tt-note{font-size:11.5px;color:var(--ink-3);margin:6px 0 0}
+/* masthead switch */
+.switch{order:4;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:500;color:var(--ink-2);cursor:pointer;user-select:none;white-space:nowrap}
+.switch input{position:absolute;opacity:0;width:1px;height:1px}
+.switch .sw-track{position:relative;width:30px;height:17px;border-radius:99px;background:var(--bar);transition:background .15s;flex:none}
+.switch .sw-track::after{content:"";position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:var(--surface);transition:transform .15s;box-shadow:0 1px 2px rgba(0,0,0,.3)}
+.switch input:checked+.sw-track{background:var(--accent)}
+.switch input:checked+.sw-track::after{transform:translateX(13px)}
+.switch input:focus-visible+.sw-track{outline:2px solid var(--accent);outline-offset:2px}
 
 /* masthead */
 .masthead{border-bottom:1px solid var(--rule);background:var(--surface)}
@@ -154,6 +205,7 @@ h1{font-size:clamp(18px,2vw,24px);font-weight:700;letter-spacing:-.018em;line-he
   letter-spacing:-.01em;font-variant-numeric:tabular-nums}
 .stats span{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
 .stats li.is-topic b{color:var(--topic)}
+.stats li.is-tech b{color:var(--tech)}
 
 /* tabs */
 .chrome{position:sticky;top:0;z-index:20}
@@ -179,6 +231,17 @@ main{padding:12px 0 12px}
 .card.collapsed>*:not(.card-head):not(.cbody){display:none}
 .rev{display:inline-block;font-family:var(--ff-mono);font-size:10.5px;letter-spacing:.04em;padding:1px 6px;border-radius:9px;background:#f3e9d8;color:#7a5200;margin-left:6px;vertical-align:middle;white-space:nowrap}
 .rev.ok{background:#e4efe6;color:#1f5f34}
+button.rev{border:0;cursor:pointer;line-height:inherit}
+.clearbtn{border:1px solid var(--rule);border-radius:5px;background:var(--ground);padding:6px 11px;font-size:12px;color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.clearbtn:hover{color:var(--ink);border-color:var(--ink-3)}
+.xbtn{flex:none;width:22px;height:22px;border-radius:50%;border:1px solid var(--rule);background:var(--surface);color:var(--ink-2);
+  cursor:pointer;font-size:14px;line-height:1;padding:0;display:inline-grid;place-items:center}
+.xbtn:hover{color:var(--ink);border-color:var(--ink-3);background:var(--surface-2)}
+.dsel h3{display:flex;align-items:center;gap:8px}
+.rfccard{position:relative}
+.rfccard>.xbtn{position:absolute;top:12px;right:12px}
+button.rev:hover{text-decoration:underline;text-underline-offset:2px;box-shadow:0 0 0 1px #c9a25e}
+tr.flash td{background:var(--accent-soft)!important;transition:background .6s}
 .why{font-size:12px;color:var(--ink-2);font-family:var(--ff-serif)}.why li{margin:2px 0}.why ul{margin:0;padding-left:16px}
 .ev{font-family:var(--ff-mono);font-size:10px;color:var(--ink-3);margin-left:3px}
 .card-head .fold{margin-left:auto;width:26px;height:26px;border:1px solid var(--rule);border-radius:6px;background:var(--surface);cursor:pointer;color:var(--ink-2);font-size:13px;line-height:1;display:inline-flex;align-items:center;justify-content:center}
@@ -211,23 +274,37 @@ input[type="search"]::placeholder{color:var(--ink-3)}
 .seg button:last-child{border-right:0}
 .seg button[aria-pressed="true"]{background:var(--accent);color:var(--surface);font-weight:600}
 .seg.kindseg button[aria-pressed="true"][data-kind="topic"],.seg.kindseg button[aria-pressed="true"][data-lifekind="topic"]{background:var(--topic)}
-.seg.kindseg button[aria-pressed="true"][data-kind="technology"],.seg.kindseg button[aria-pressed="true"][data-lifekind="technology"]{background:var(--ink-2)}
+.seg.kindseg button[aria-pressed="true"][data-kind="technology"],.seg.kindseg button[aria-pressed="true"][data-lifekind="technology"]{background:var(--tech)}
 .chk{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink-2);cursor:pointer}
 .chk input{accent-color:var(--accent)}
 .legend{display:flex;gap:16px;flex-wrap:wrap;align-items:center;padding:9px 16px;font-size:11.5px;color:var(--ink-3);border-bottom:1px solid var(--rule-2);background:var(--surface-2)}
 .legend i{display:inline-block;width:22px;height:7px;border-radius:2px;vertical-align:middle;margin-right:6px}
 .sw-count{background:var(--bar)} .sw-rate{background:var(--accent)}
-.legend .k-tech,.legend .k-topic{font-size:11.5px}
+.legend .tag.k-tech{font-size:11.5px}.legend .tag.k-topic{font-size:11px}
+.legend>span>.tag,.legend>span>.implab{margin-right:4px}.legend>span>.implab{margin-left:0}
 
 /* tag list */
 .taglist{list-style:none;margin:0;padding:0}
+/* List view: column headings that sort; they stay put while the list scrolls */
+.listhead{position:sticky;top:0;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) 88px 88px;gap:10px;padding:0 16px;
+  background:var(--surface-2);border-bottom:1px solid var(--rule)}
+.listhead button{background:none;border:0;padding:7px 0;text-align:left;cursor:pointer;font-size:10.5px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+.listhead button:hover{color:var(--ink)}
+.listhead button[aria-sort="ascending"],.listhead button[aria-sort="descending"]{color:var(--accent-ink)}
+.listhead button[aria-sort="ascending"]::after{content:" \2191"}
+.listhead button[aria-sort="descending"]::after{content:" \2193"}
 .taglist li{border-bottom:1px solid var(--rule-2)}
 .trow{display:grid;grid-template-columns:minmax(0,1fr) 88px 88px;gap:10px;width:100%;
   text-align:left;background:none;border:0;padding:8px 16px;cursor:pointer;align-items:center}
 .trow:hover{background:var(--surface-2)}
 .trow[aria-pressed="true"]{background:var(--accent-soft)}
-.trow[aria-pressed="true"] .tname{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
-.tname{font-size:13.5px;line-height:1.3;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trow[aria-pressed="true"] .tname .tag{box-shadow:0 0 0 2px var(--accent)}
+.tname{font-size:13.5px;line-height:1.3;display:flex;align-items:center;min-width:0;white-space:nowrap;overflow:hidden;padding:2px 3px}
+.tname .tag{flex:0 1 auto;min-width:0}
+.tname .kind{flex:none}
+.tname .tag.imp{margin-left:5px;flex:0 1 auto;min-width:0}
+.tname .kind+.tag.imp{margin-left:8px}
 .tdesc{font-size:12px;color:var(--ink-3);display:block;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tline{display:flex;align-items:baseline;min-width:0}
 .tline .tname{min-width:0}
@@ -237,7 +314,7 @@ input[type="search"]::placeholder{color:var(--ink-3)}
 .d3 .tline,.d3 .tdesc{padding-left:54px}
 li.root{background:var(--surface-2);border-top:1px solid var(--rule)}
 li.root .trow{padding:11px 16px 9px}
-li.root .tname{font-size:15px}
+li.root .tname .tag{font-size:13px;padding:2px 10px}
 .caret{flex:none;display:inline-block;width:16px;margin-right:2px;color:var(--ink-3);font-size:12px;line-height:1;cursor:pointer;
   transition:transform .15s;transform-origin:45% 55%;user-select:none}
 .caret:hover{color:var(--ink)}
@@ -256,21 +333,20 @@ li.root .tdesc{white-space:normal}
 .detail-empty{padding:30px 20px;font-family:var(--ff-serif);color:var(--ink-2);font-size:16px;margin:0}
 .dsel{padding:14px 16px;border-bottom:1px solid var(--rule-2)}
 .dsel h3{font-size:20px;letter-spacing:-.01em}
+.dsel h3 .tag{font-size:16px;padding:2px 12px}
 .crumb{font-size:12.5px;color:var(--ink-3);margin-top:6px;word-break:break-word;line-height:1.7}
 .crumb i{font-style:normal;margin:0 5px;font-family:var(--ff-mono)}
-.crumb .here{text-decoration:underline;text-underline-offset:3px}
-.crumb .tagchip{font-size:12px}
+.crumb .here{box-shadow:0 0 0 2px var(--accent)}
 .dsel p{font-family:var(--ff-serif);font-size:15.5px;color:var(--ink-2);margin:8px 0 0;max-width:60ch}
 .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
 .pill{font-family:var(--ff-mono);font-size:11.5px;padding:3px 8px;border-radius:99px;border:1px solid var(--rule);color:var(--ink-2);background:var(--ground)}
 .pill.on-accent{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
 .pill.on-topic{border-color:var(--topic);color:var(--topic-ink);background:var(--topic-soft);font-family:var(--ff-ui);font-weight:600}
-.pill.on-tech{border-color:var(--ink-2);color:var(--ink);background:var(--surface);font-weight:700}
+.pill.on-tech{border-color:var(--tech);color:var(--tech-ink);background:var(--tech-soft);font-weight:700}
 .subhead{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);padding:12px 16px 6px}
 .partners{list-style:none;margin:0;padding:0 16px 10px}
 .partners li{display:grid;grid-template-columns:minmax(0,1fr) 46px;gap:8px;align-items:center;padding:3px 0;font-size:12.5px}
-.partners button{background:none;border:0;padding:0;text-align:left;cursor:pointer;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.partners button:hover{text-decoration:underline}
+.partners li>span{min-width:0;overflow:hidden;padding:2px 3px}
 .partners em{font-family:var(--ff-mono);font-style:normal;font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink-3);text-align:right}
 
 /* tables */
@@ -285,17 +361,15 @@ tr:hover td{background:var(--surface-2)}
 
 .count{font-family:var(--ff-mono);font-size:12px;color:var(--ink-3);margin-left:auto;font-variant-numeric:tabular-nums}
 .tagchips{display:flex;flex-wrap:wrap;gap:4px}
-.tagchip{font-size:11px;line-height:1.5;padding:1px 7px;border-radius:99px;border:1px solid var(--rule);background:var(--ground);cursor:pointer}
-.tagchip.k-tech{font-size:11px}
-.tagchip.k-topic{font-size:10.5px;border-color:var(--topic-soft);background:var(--topic-soft)}
-.tagchip:hover{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
-.tagchip.anc{opacity:.6}
 .hitrow td{background:var(--accent-soft)!important}
 .rfccard{margin:0;padding:16px;border-bottom:1px solid var(--rule-2);background:var(--surface-2)}
 .rfccard .num{font-size:12px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase}
 .rfccard h3{font-size:19px;font-weight:600;letter-spacing:-.012em;margin:4px 0 0;line-height:1.25}
 .rfccard .miss{font-family:var(--ff-serif);color:var(--ink-2);margin:0}
 .axes{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center;margin-top:12px}
+.rfccard .why{margin-top:12px}
+.axes .axcell{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
+.axes .axcell .rev{margin-left:0}
 .axes .lab{font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
 .more{display:block;width:100%;background:var(--surface-2);border:0;border-top:1px solid var(--rule-2);padding:10px;cursor:pointer;font-size:12.5px;color:var(--accent-ink);font-weight:600}
 .more:hover{background:var(--accent-soft)}
@@ -306,8 +380,9 @@ tr:hover td{background:var(--surface-2)}
 .prow{display:grid;grid-template-columns:minmax(0,1fr) 150px 52px;gap:12px;align-items:center;width:100%;text-align:left;background:none;border:0;padding:9px 16px;cursor:pointer}
 .prow:hover{background:var(--surface-2)}
 .pnames{font-size:12.5px;min-width:0}
-.pnames b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pnames b+b{margin-top:2px}
+.pnames .pl{display:flex;align-items:center;min-width:0;white-space:nowrap;padding:1px 2px}
+.pnames .pl+.pl{margin-top:3px}
+.pnames .pl .tag{min-width:0}
 .pnames .kin{font-family:var(--ff-ui);font-weight:500;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-left:6px}
 .prow em{font-family:var(--ff-mono);font-style:normal;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;text-align:right;color:var(--accent-ink)}
 .slider{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--ink-2)}
@@ -340,7 +415,7 @@ tr:hover td{background:var(--surface-2)}
 .lifewrap{overflow-x:auto}
 .life{list-style:none;margin:0;padding:0;min-width:620px}
 .life li{display:grid;grid-template-columns:250px minmax(0,1fr) 72px;gap:12px;align-items:center;padding:4px 16px;border-bottom:1px solid var(--rule-2)}
-.life .tid{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.life .tid{font-size:12.5px;white-space:nowrap;overflow:hidden;padding:1px 2px}
 .track{position:relative;height:14px;background:var(--bar-soft);border-radius:3px}
 .span{position:absolute;top:0;height:100%;border-radius:3px;background:var(--bar);min-width:2px}
 .span.live{background:var(--accent)} .span.dormant{background:var(--warn);opacity:.8}
@@ -361,15 +436,16 @@ footer code{font-size:12px}
     <p class="eyebrow">__EYEBROW__</p>
     <h1>RFC Subject Tags</h1>
     <ul class="stats" id="stats"></ul>
+    <label class="switch" title="Show every tag with its ancestors, root first"><input type="checkbox" id="fullPath" role="switch"><span class="sw-track"></span>Full tag path</label>
   </div>
 </header>
 
 <nav class="tabbar"><div class="wrap" role="tablist">
   <button class="tab" role="tab" aria-selected="true" data-panel="vocab">Vocabulary<small>size vs reach</small></button>
+  <button class="tab" role="tab" aria-selected="false" data-panel="corpus">All RFCs<small>look one up</small></button>
   <button class="tab" role="tab" aria-selected="false" data-panel="cooc">Co&#8209;occurrence<small>merge candidates</small></button>
   <button class="tab" role="tab" aria-selected="false" data-panel="life">Lifespan<small>alive or finished</small></button>
   <button class="tab" role="tab" aria-selected="false" data-panel="overlap">Overlap<small>merge or nest?</small></button>
-  <button class="tab" role="tab" aria-selected="false" data-panel="corpus">All RFCs<small>look one up</small></button>
   <button class="tab" role="tab" aria-selected="false" data-panel="review">Review<small>assignments to look at</small></button>
 </div></nav>
 </div>
@@ -387,11 +463,15 @@ footer code{font-size:12px}
             the tree for browsing, and a document about a subject in general carries the root
             alone. A tag applied to an RFC implies its whole path, so a parent's count includes
             its children; the root row's bar is the whole subject.</p>
-          <p><span class="k-topic">Topics</span> are subjects and cross-cutting
-            aspects, set in violet in the text face; <span class="k-tech">technologies</span>
-            are named protocols, systems and formats, set in the RFC series' own typewriter face.
-            Roots are always topics. Search matches tag names and descriptions on whole words.
-            Two measures, kept apart: <b>Corpus</b> is how many RFCs carry a tag; <b>mail/yr</b>
+          <p><span class="tag k-topic">Topics</span> are subjects and cross-cutting
+            aspects, shown as violet pills in the text face; <span class="tag k-tech">technologies</span>
+            are named protocols, systems and formats, shown as teal pills in the RFC series' own
+            typewriter face. Roots are always topics. Hover any tag, anywhere on the page, to see its
+            place in the hierarchy; switch on <b>Full tag path</b> at the top to show every tag with
+            its ancestors. <b>Tree</b> shows the hierarchy; <b>List</b> shows every tag in one list, sorted by any
+            column &mdash; click a column heading, and click it again to reverse the order. Search
+            matches tag names and descriptions on whole words.
+            Two measures, kept apart: <b>Corpus</b> is how many RFCs carry a tag; <b>Per year</b>
             is how many notifications a subscriber would have received per year since January
             2021. When they disagree, the disagreement is the finding.</p>
             </div>
@@ -407,23 +487,30 @@ footer code{font-size:12px}
               <button data-foldall="collapse">Collapse all</button>
               <button data-foldall="expand">Expand all</button>
             </div>
-            <div class="seg" role="group" aria-label="Sort order">
-              <button data-sort="tree" aria-pressed="true">Tree</button>
-              <button data-sort="corpus" aria-pressed="false">Corpus</button>
-              <button data-sort="rate" aria-pressed="false">Mail/yr</button>
+            <div class="seg" role="group" aria-label="View">
+              <button data-view="tree" aria-pressed="true">Tree</button>
+              <button data-view="list" aria-pressed="false">List</button>
             </div>
           </div>
           <div class="legend">
-            <span class="k-tech">technology</span>
-            <span class="k-topic">topic</span>
+            <span class="tag k-tech">technology</span>
+            <span class="tag k-topic">topic</span>
             <span><i class="sw-count"></i>corpus count</span>
             <span><i class="sw-rate"></i>notifications per year</span>
           </div>
-          <ol class="taglist cbody" id="tagList"></ol>
+          <div class="cbody">
+            <div class="listhead" id="listHead" hidden>
+              <button data-col="name">Tag</button>
+              <button data-col="total">Corpus</button>
+              <button data-col="rate">Per year</button>
+            </div>
+            <ol class="taglist" id="tagList"></ol>
+          </div>
         </div>
 
         <div class="card" id="detail">
           <div class="card-head"><h2>Selection</h2>
+            <button type="button" class="clearbtn" id="selClear" hidden>Clear selection</button>
             <div class="seg" role="group" aria-label="Combine selected tags">
               <button data-mode="or" aria-pressed="true">Any (OR)</button>
               <button data-mode="and" aria-pressed="false">All (AND)</button>
@@ -525,7 +612,10 @@ footer code{font-size:12px}
     <section class="panel" id="panel-review" hidden>
       <div class="card">
         <div class="card-head"><h2>Assignments to look at</h2></div>
-        <p class="note">The tagger records what a person should check: the RFC has not been tagged by the model yet; a quote the model gave as evidence for a tag was not found in the text; the text was too long and was cut; the model chose a tag the taxonomy does not have; the result breaks a requirement (no tags, no topic, or <code>humor</code> beside other tags); or the document shares no tag with the RFC that obsoletes it. A document with none of these is not thereby right, only unremarkable. The reasoning for every tag is in <code>rfc-tags.json</code>. A document with an entry in <code>assignments.yaml</code> has been reviewed by a person and is not listed. This page shows the queue; the review itself is recorded in that file.</p>
+        <p class="card-note">RFCs whose tags a person should check, newest first. The <b>Why</b> column gives
+          the tagger&rsquo;s reason and the buttons filter by it; the reasoning for every tag is in
+          <code>rfc-tags.json</code>. A document that is not listed is not thereby right, only unremarkable.
+          Corrections go in <code>assignments.yaml</code>, which marks the RFC reviewed.</p>
         <div class="controls">
           <div class="seg" role="group" aria-label="Reason" id="revSeg">
             <button data-rev="all" aria-pressed="true">All</button>
@@ -537,6 +627,11 @@ footer code{font-size:12px}
             <button data-rev="obsolete" aria-pressed="false">Disagrees with successor</button>
           </div>
           <span class="count" id="revCount"></span>
+        </div>
+        <div class="legend">
+          <span><span class="tag k-tech">primary</span> the document exists to address it</span>
+          <span><span class="tag k-tech sec">secondary</span> a substantial part addresses it</span>
+          <span><span class="implab">implied</span><span class="tag k-topic imp">topic</span> follows from a tag (implies)</span>
         </div>
         <div class="cbody">
         <div class="rfcs"><table><thead><tr><th>RFC</th><th>Year</th><th>Title</th><th>Tags</th><th>Why</th></tr></thead><tbody id="revBody"></tbody></table></div>
@@ -550,15 +645,21 @@ footer code{font-size:12px}
         <p class="card-note">All 9,835, newest first. Type a number to jump straight to one
           &mdash; <b>8446</b>, <b>rfc 1149</b> &mdash; or type words to search titles. Tags are
           clickable: any of them takes you to that tag in the hierarchy. A single RFC also shows
-          its served coordinates: the <span class="k-tech">technology</span> tags it carries and
-          the <span class="k-topic">topics</span> they imply.</p>
+          its served coordinates: the <span class="tag k-tech">technology</span> tags it carries and
+          the <span class="tag k-topic">topics</span> they imply.</p>
         <div class="controls">
           <input type="search" id="rfcSearch" placeholder="RFC number, or words from a title&hellip;" aria-label="Look up an RFC by number, or search titles">
+          <button type="button" class="clearbtn" id="rfcClear" hidden>Clear</button>
           <div class="seg" role="group" aria-label="Order">
             <button data-rsort="desc" aria-pressed="true">Newest</button>
             <button data-rsort="asc" aria-pressed="false">Oldest</button>
           </div>
           <span class="count" id="rfcCount"></span>
+        </div>
+        <div class="legend">
+          <span><span class="tag k-tech">primary</span> the document exists to address it</span>
+          <span><span class="tag k-tech sec">secondary</span> a substantial part addresses it</span>
+          <span><span class="implab">implied</span><span class="tag k-topic imp">topic</span> follows from a tag (implies)</span>
         </div>
         <div class="cbody">
         <div id="rfcCard"></div>
@@ -587,8 +688,20 @@ var ROOTS=TAGS.filter(function(t){return t.d===0;});
 var maxCorpus=Math.max.apply(null,TAGS.map(function(t){return t.total;}));
 var maxRate=Math.max.apply(null,TAGS.map(function(t){return t.rate;}));
 function kcls(t){return t.kind==='topic'?'k-topic':'k-tech';}
-function name(t,extra){return '<span class="'+kcls(t)+(extra?' '+extra:'')+'">'+esc(t.id)+'</span>';}
-function chip(t,attr,extra){return '<button class="tagchip '+kcls(t)+(extra?' '+extra:'')+'" '+(attr||'')+' title="'+esc(t.desc)+'">'+esc(t.id)+'</button>';}
+/* One renderer for every tag on the page. A pill carries data-tag so the hover card can find it.
+   o.button: clickable; o.cls: extra classes; o.attr: extra attributes; o.short: never the full path;
+   o.note: extra line for the hover card (evidence codes). */
+var FULL=false;
+try{FULL=localStorage.getItem('rfctags.fullPath')==='1';}catch(e){}
+function pill(t,o){
+  o=o||{};var el=o.button?'button':'span';
+  var seg=FULL&&!o.short&&t.d>0;
+  var body=seg?t.path.split(' / ').map(function(p){return '<span class="ps '+kcls(byId[p])+'">'+esc(p)+'</span>';}).join(''):esc(t.id);
+  return '<'+el+(o.button?' type="button"':'')+' class="tag '+kcls(t)+(seg?' path':'')+(o.cls?' '+o.cls:'')+'" data-tag="'+esc(t.id)+'"'+
+    (o.note?' data-note="'+esc(o.note)+'"':'')+(o.attr?' '+o.attr:'')+'>'+body+'</'+el+'>';
+}
+function name(t,extra){return pill(t,{cls:extra});}
+function chip(t,attr,extra){return pill(t,{button:true,attr:attr,cls:extra});}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 /* rolled-up membership: an RFC belongs to its tags and to their ancestors */
@@ -610,7 +723,7 @@ document.getElementById('stats').innerHTML=[
   [String(TAGS.length),'tags'],
   [String(ROOTS.length),'roots'],
   [lvl.join(' / '),'tags at level 1 / 2 / 3 / 4'],
-  [String(TAGS.length-nTopic),'technology tags'],
+  [String(TAGS.length-nTopic),'technology tags','tech'],
   [String(nTopic),'topic tags','topic'],
   [(directCount/ROWS.length).toFixed(2)+' / '+(closureCount/ROWS.length).toFixed(2),'tags per RFC, direct / closed'],
   [ROWS.filter(function(r){return !r[3].length;}).length.toLocaleString(),'left untagged']
@@ -628,7 +741,7 @@ tabs.forEach(function(b){b.addEventListener('click',function(){
 });});
 
 /* tag list */
-var sel=[], sortBy='tree', kindF='all', filter='', mode='or', folded={};
+var sel=[], view='tree', sortCol='total', sortDir=-1, kindF='all', filter='', mode='or', folded={};
 ROOTS.forEach(function(r){folded[r.id]=true;});   // open with the top-level subjects collapsed
 /* info popover on the hierarchy card */
 (function(){
@@ -672,24 +785,30 @@ function searchTags(tags,query){
 }
 var WHY={};
 function pct(v,m){return m?Math.max(v>0?2:0,Math.round(v/m*100)):0;}
+var IMPLIED_BY={};TAGS.forEach(function(t){t.im.forEach(function(x){(IMPLIED_BY[x]=IMPLIED_BY[x]||[]).push(t.id);});});
+function impliesPills(t,short){
+  return t.im.map(function(x){return pill(byId[x],{short:short,cls:'imp',note:'Implied by '+t.id});}).join('');
+}
 function drawTags(){
   var list=TAGS.slice();WHY={};
-  var tree=(sortBy==='tree')&&!filter;
+  var tree=(view==='tree')&&!filter;
   if(filter){
     var res=searchTags(list,filter)||[];
     list=res.map(function(r){WHY[r.tag.id]=r.why;return r.tag;});
-  }else if(sortBy==='corpus')list.sort(function(a,b){return b.total-a.total;});
-  else if(sortBy==='rate')list.sort(function(a,b){return (b.rate-a.rate)||(b.total-a.total);});
+  }
+  /* List: ordered by the chosen column, with search narrowing it. Tree with a search: best match first. */
+  if(view==='list')list.sort(listCmp);
+  drawListHead();
   if(kindF!=='all')list=list.filter(function(t){return t.kind===kindF||(tree&&t.d===0);});
   if(tree)list=list.filter(function(t){return t.d===0||!folded[t.root];});
   listEl.innerHTML=list.map(function(t){
     var on=sel.indexOf(t.id)>=0, flat=!tree, root=tree&&t.d===0;
     var second=flat&&WHY[t.id]?esc(t.desc)+' <em class="hit">'+esc(WHY[t.id])+'</em>':esc(t.desc);
     if(root&&folded[t.id])second+=' <em class="hit">'+descCount[t.id]+' tags folded</em>';
-    var kind=(root||flat)?'<span class="kind">'+(root?'root · topic':t.kind)+'</span>':(t.kind==='topic'?'<span class="kind">topic</span>':'');
+    var kind=t.d===0?'<span class="kind">root</span>':'';   // the pill colour and the legend give the kind
     return '<li class="d'+(flat?0:t.d)+(root?' root':'')+(root&&folded[t.id]?' folded':'')+'">'+
       '<button class="trow" aria-pressed="'+on+'" data-id="'+esc(t.id)+'">'+
-        '<span><span class="tline">'+(tree&&t.d>0?'<i class="conn">└</i>':'')+(root?'<span class="caret" data-fold="'+esc(t.id)+'" title="'+(folded[t.id]?'Expand':'Collapse')+'">&#9662;</span>':'')+'<span class="tname '+kcls(t)+'">'+esc(t.id)+kind+'</span></span>'+
+        '<span><span class="tline">'+(tree&&t.d>0?'<i class="conn">└</i>':'')+(root?'<span class="caret" data-fold="'+esc(t.id)+'" title="'+(folded[t.id]?'Expand':'Collapse')+'">&#9662;</span>':'')+'<span class="tname">'+pill(t,{short:tree,cls:root?'big':''})+kind+impliesPills(t,tree)+'</span></span>'+
         '<span class="tdesc" title="'+esc(t.desc)+'">'+second+'</span></span>'+
         '<span class="metric"><b>'+t.total.toLocaleString()+'</b>'+
           '<span class="bar"><span class="fill-count" style="width:'+pct(t.total,maxCorpus)+'%"></span></span></span>'+
@@ -705,11 +824,40 @@ listEl.addEventListener('click',function(e){
 document.querySelectorAll('[data-foldall]').forEach(function(b){b.addEventListener('click',function(){
   folded={};if(b.dataset.foldall==='collapse')ROOTS.forEach(function(r){folded[r.id]=true;});
   drawTags();});});
-function toggle(id){var i=sel.indexOf(id);if(i>=0)sel.splice(i,1);else sel.push(id);shown=LIMIT;drawTags();drawDetail();}
+function toggle(id){var i=sel.indexOf(id);if(i>=0)sel.splice(i,1);else{sel.push(id);folded[byId[id].root]=false;}shown=LIMIT;drawTags();drawDetail();}
+function revealSelected(){
+  var row=listEl.querySelector('.trow[aria-pressed="true"]'),cb=listEl.parentNode;if(!row)return;
+  var off=row.getBoundingClientRect().top-cb.getBoundingClientRect().top;
+  if(off<0||off>cb.clientHeight-40)cb.scrollTop+=off-cb.clientHeight/3;
+}
+document.getElementById('selClear').addEventListener('click',function(){sel=[];shown=LIMIT;drawTags();drawDetail();});
 document.getElementById('tagSearch').addEventListener('input',function(e){filter=e.target.value;drawTags();});
-document.querySelectorAll('[data-sort]').forEach(function(b){b.addEventListener('click',function(){
-  document.querySelectorAll('[data-sort]').forEach(function(o){o.setAttribute('aria-pressed',String(o===b));});
-  sortBy=b.dataset.sort;drawTags();});});
+function byName(a,b){return a.id.localeCompare(b.id,'en',{sensitivity:'base',numeric:true})||(a.id<b.id?-1:a.id>b.id?1:0);}
+function listCmp(a,b){
+  if(sortCol==='name')return sortDir*byName(a,b);
+  var d=sortDir*(a[sortCol]-b[sortCol]);
+  if(d)return d;
+  if(sortCol==='rate'&&a.total!==b.total)return sortDir*(a.total-b.total);
+  return byName(a,b);
+}
+var headEl=document.getElementById('listHead');
+function drawListHead(){
+  headEl.hidden=(view!=='list');
+  headEl.querySelectorAll('[data-col]').forEach(function(b){
+    var on=b.dataset.col===sortCol;
+    if(on)b.setAttribute('aria-sort',sortDir>0?'ascending':'descending');else b.removeAttribute('aria-sort');
+    b.title='Sort by '+b.textContent+(on?' (click to reverse)':'');
+  });
+}
+headEl.addEventListener('click',function(e){
+  var b=e.target.closest('[data-col]');if(!b)return;
+  var c=b.dataset.col;
+  if(c===sortCol)sortDir=-sortDir;else{sortCol=c;sortDir=(c==='name'?1:-1);}
+  drawTags();
+});
+document.querySelectorAll('[data-view]').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('[data-view]').forEach(function(o){o.setAttribute('aria-pressed',String(o===b));});
+  view=b.dataset.view;drawTags();});});
 document.querySelectorAll('[data-kind]').forEach(function(b){b.addEventListener('click',function(){
   document.querySelectorAll('[data-kind]').forEach(function(o){o.setAttribute('aria-pressed',String(o===b));});
   kindF=b.dataset.kind;drawTags();});});
@@ -742,34 +890,39 @@ function partnersFor(id){
 function crumb(t){
   return t.path.split(' / ').map(function(p){
     var x=byId[p];
-    return p===t.id?name(x,'here'):chip(x,'data-add="'+esc(p)+'"');
+    return p===t.id?pill(x,{short:true,cls:'here'}):pill(x,{button:true,short:true,attr:'data-add="'+esc(p)+'"'});
   }).join('<i>/</i>');
 }
 function drawDetail(){
   var el=document.getElementById('detailBody');
+  document.getElementById('selClear').hidden=!sel.length;
   if(!sel.length){el.innerHTML='<p class="detail-empty">Pick a tag on the left. You will get its '+
     'place in the tree, its kind and definition, the tags it travels with, and the RFCs themselves by number and title.</p>';return;}
   var rows=selectedRows();
   var head=sel.map(function(id){
     var t=byId[id];
     var kids=TAGS.filter(function(k){return k.parent===id;});
-    return '<div class="dsel"><h3 class="'+kcls(t)+'">'+esc(t.id)+'</h3><div class="crumb">'+crumb(t)+'</div>'+
+    return '<div class="dsel"><h3>'+pill(t,{short:true})+'<button type="button" class="xbtn" data-remove="'+esc(id)+'" aria-label="Remove '+esc(id)+' from the selection" title="Remove from the selection">&times;</button></h3><div class="crumb">'+crumb(t)+'</div>'+
       '<p>'+esc(t.desc)+'</p>'+
       '<div class="pills">'+
-      '<span class="pill '+(t.kind==='topic'?'on-topic':'on-tech')+'">'+(t.d===0?'root · topic':t.kind)+'</span>'+
+      (t.d===0?'<span class="pill on-topic">root</span>':'')+
       '<span class="pill">'+t.total.toLocaleString()+' RFCs'+(t.direct!==t.total?' &middot; '+t.direct+' direct':'')+'</span>'+
-      '<span class="pill on-accent">'+t.rate.toFixed(1)+' mail/yr</span>'+
+      '<span class="pill on-accent">'+t.rate.toFixed(1)+' per year</span>'+
       '<span class="pill">'+(t.first||'&mdash;')+'&ndash;'+(t.last||'&mdash;')+'</span>'+
       '</div>'+
+      (t.im.length?'<div class="subhead" style="padding:12px 0 6px">implies</div><span class="tagchips">'+
+        t.im.map(function(x){return pill(byId[x],{button:true,cls:'imp',attr:'data-add="'+esc(x)+'"',note:'Implied by '+t.id});}).join('')+'</span>':'')+
+      ((IMPLIED_BY[id]||[]).length?'<div class="subhead" style="padding:12px 0 6px">implied by</div><span class="tagchips">'+
+        IMPLIED_BY[id].map(function(x){return chip(byId[x],'data-add="'+esc(x)+'"');}).join('')+'</span>':'')+
       (kids.length?'<div class="subhead" style="padding:12px 0 6px">children</div><span class="tagchips">'+
-        kids.map(function(k){return chip(k,'data-add="'+k.id+'"');}).join('')+'</span>':'')+
+        kids.map(function(k){return chip(k,'data-add="'+esc(k.id)+'"');}).join('')+'</span>':'')+
       '</div>';}).join('');
   var partners='';
   if(sel.length===1){
     var ps=partnersFor(sel[0]);
     if(ps.length){
       partners='<div class="subhead">Travels with</div><ul class="partners">'+
-        ps.map(function(p){var x=byId[p[0]];return '<li><button class="'+kcls(x)+'" data-add="'+p[0]+'" title="'+esc(x.desc)+'">'+p[0]+'</button><em>'+p[1]+'</em></li>';}).join('')+'</ul>';
+        ps.map(function(p){var x=byId[p[0]];return '<li><span>'+chip(x,'data-add="'+esc(p[0])+'"')+'</span><em>'+p[1]+'</em></li>';}).join('')+'</ul>';
     }
   }
   var cap=Math.min(shown,rows.length);
@@ -777,22 +930,23 @@ function drawDetail(){
     (sel.length>1?' &middot; '+(mode==='and'?'all selected tags':'any selected tag'):'')+'</div>'+
     '<div class="rfcs"><table><thead><tr><th>RFC</th><th>Year</th><th>Title</th><th>Other tags</th></tr></thead><tbody>'+
     rows.slice(0,cap).map(function(r){
-      var others=r[3].filter(function(i){return sel.indexOf(TAGS[i].id)<0;});
       return '<tr><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+revMark(r)+'</td>'+
-        '<td><span class="tagchips">'+others.map(function(i){return chip(TAGS[i],'data-add="'+TAGS[i].id+'"');}).join('')+'</span></td></tr>';}).join('')+
+        '<td>'+rfcTags(r,{click:'data-add',skip:sel})+'</td></tr>';}).join('')+
     '</tbody></table></div>'+
     (cap<rows.length?'<button class="more" id="moreBtn">Show '+Math.min(LIMIT,rows.length-cap)+' more of '+rows.length.toLocaleString()+'</button>':'');
   el.innerHTML=head+partners+table;
   var mb=document.getElementById('moreBtn');
   if(mb)mb.addEventListener('click',function(){shown+=LIMIT;drawDetail();});
   el.querySelectorAll('[data-add]').forEach(function(b){b.addEventListener('click',function(){toggle(b.dataset.add);});});
+  el.querySelectorAll('[data-remove]').forEach(function(b){b.addEventListener('click',function(){toggle(b.dataset.remove);});});
 }
 function isKin(a,b){return a.path.indexOf(b.path+' / ')===0||b.path.indexOf(a.path+' / ')===0;}
 function jumpTo(ids,andMode){
   sel=ids;mode=andMode?'and':'or';shown=LIMIT;filter='';
   document.getElementById('tagSearch').value='';
   document.querySelectorAll('[data-mode]').forEach(function(o){o.setAttribute('aria-pressed',String(o.dataset.mode===mode));});
-  tabs[0].click();drawTags();drawDetail();
+  ids.forEach(function(id){folded[byId[id].root]=false;});
+  tabs[0].click();drawTags();drawDetail();revealSelected();
   document.getElementById('detail').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
@@ -806,7 +960,7 @@ function drawPairs(){
   coEl.innerHTML=ps.length?ps.map(function(p){
     var a=TAGS[p[0]],b=TAGS[p[1]],kin=isKin(a,b);
     return '<li><button class="prow" data-a="'+a.id+'" data-b="'+b.id+'">'+
-      '<span class="pnames"><b class="'+kcls(a)+'">'+a.id+(kin?'<span class="kin">kin</span>':'')+'</b><b class="'+kcls(b)+'">'+b.id+'</b></span>'+
+      '<span class="pnames"><span class="pl">'+pill(a)+(kin?'<span class="kin">kin</span>':'')+'</span><span class="pl">'+pill(b)+'</span></span>'+
       '<span class="bar"><span class="fill-rate" style="width:'+Math.round(p[2]/mx*100)+'%"></span></span>'+
       '<em>'+p[2]+'</em></button></li>';}).join('')
     :'<li><p class="detail-empty">No pair shares that many RFCs. Lower the threshold.</p></li>';
@@ -859,7 +1013,7 @@ function drawOverlap(){
   document.getElementById('ovRedHead').innerHTML='Possibly redundant &middot; two-way overlap at or above '+J.toFixed(2)+' &middot; '+red.length+' pair'+(red.length===1?'':'s')+(red.length?ovSortNote('red'):'');
   var top=rows.length?rows.reduce(function(a,b){return b.j>a.j?b:a;}):null;
   document.getElementById('ovRed').innerHTML=red.length?red.map(function(r){return ovRow(r,'redundant');}).join('')
-    :'<li><p class="empty-note">No pair reaches this threshold'+(top?', so nothing is flagged as redundant. The highest two-way overlap anywhere in the vocabulary is '+top.j.toFixed(2)+', between <b>'+top.A.id+'</b> and <b>'+top.B.id+'</b>. Lower the threshold to see what sits below it.':'.')+'</p></li>';
+    :'<li><p class="empty-note">No pair reaches this threshold'+(top?', so nothing is flagged as redundant. The highest two-way overlap anywhere in the vocabulary is '+top.j.toFixed(2)+', between '+name(top.A)+' and '+name(top.B)+'. Lower the threshold to see what sits below it.':'.')+'</p></li>';
   document.getElementById('ovNarHead').innerHTML='Possibly broader/narrower &middot; one-way overlap at or above '+C.toFixed(2)+' &middot; '+nar.length+' pair'+(nar.length===1?'':'s')+(nar.length?ovSortNote('nar'):'');
   document.getElementById('ovNar').innerHTML=nar.length?nar.map(function(r){return ovRow(r,'nested');}).join('')
     :'<li><p class="empty-note">No pair reaches this threshold, so no broader/narrower relationship is flagged. Lower the threshold to see what sits below it.</p></li>';
@@ -885,8 +1039,36 @@ function corpusRows(){
 }
 var EVNAME={p:'primary subject',s:'secondary subject',h:'hand assignment'};
 function evText(code){return (code||'').split('').map(function(c){return EVNAME[c]||c;}).join(', ');}
-function revMark(r){if(r[8])return '<span class="rev ok" title="'+esc(D.reviewNote)+'">reviewed</span>';return r[6]&&r[6].length?'<span class="rev" title="'+esc(r[6].join(' / '))+'">look at</span>':'';}
-function chipsEv(list,r){return '<span class="tagchips">'+list.map(function(i){var c=r[7]&&r[7][String(i)];return chip(TAGS[i],'data-goto="'+esc(TAGS[i].id)+'" title="'+esc(TAGS[i].desc)+(c?' — '+evText(c):'')+'"')+(c?'<span class="ev" title="'+esc(evText(c))+'">'+c+'</span>':'');}).join('')+'</span>';}
+function revMark(r){if(r[8])return '<span class="rev ok" title="'+esc(D.reviewNote)+'">reviewed</span>';return r[6]&&r[6].length?'<button type="button" class="rev" data-review="'+r[0]+'" title="'+esc(r[6].join(' / '))+' — open on the Review tab">Review</button>':'';}
+/* An RFC's tags, everywhere they are listed: the assigned tags (primary first, then secondary; a hand
+   assignment is marked h), then the topics they imply that are not already on their paths. */
+function pathIds(t){return t.path.split(' / ');}
+function closureOf(list){var s={};list.forEach(function(i){pathIds(TAGS[i]).forEach(function(p){s[p]=1;});});return s;}
+function impliedOf(r){
+  var cl=closureOf(r[3]);
+  return r[5].filter(function(i){return !cl[TAGS[i].id];}).map(function(i){
+    var by=Object.keys(cl).filter(function(x){return byId[x].im.indexOf(TAGS[i].id)>=0;});
+    return {i:i,by:by};
+  });
+}
+function roleOf(r,i){var c=(r[7]&&r[7][String(i)])||'';return c.charAt(0)==='s'?'s':c.charAt(0)==='p'?'p':c?'h':'';}
+function rfcTags(r,o){
+  o=o||{};var at=o.click||'data-goto',skip=o.skip||[];
+  var rank={p:0,h:1,s:2,'':3};
+  var direct=r[3].filter(function(i){return skip.indexOf(TAGS[i].id)<0;})
+    .map(function(i,k){return {i:i,k:k,role:roleOf(r,i)};})
+    .sort(function(a,b){return (rank[a.role]-rank[b.role])||(a.k-b.k);});
+  var html=direct.map(function(d){
+    var c=(r[7]&&r[7][String(d.i)])||'';
+    return pill(TAGS[d.i],{button:true,attr:at+'="'+esc(TAGS[d.i].id)+'"',cls:d.role==='s'?'sec':'',note:c?evText(c):''})+
+      (c.indexOf('h')>=0?'<span class="ev" title="hand assignment">h</span>':'');
+  }).join('');
+  var imp=impliedOf(r).filter(function(x){return skip.indexOf(TAGS[x.i].id)<0;});
+  if(imp.length)html+=imp.map(function(x){
+    return pill(TAGS[x.i],{button:true,attr:at+'="'+esc(TAGS[x.i].id)+'"',cls:'imp',note:'Implied'+(x.by.length?' by '+x.by.join(', '):'')+'; not assigned directly'});
+  }).join('');
+  return '<span class="tagchips">'+html+'</span>';
+}
 function revKind(s){return /not tagged by the model/.test(s)?'untagged':/quote not found/.test(s)?'quote':/text truncated/.test(s)?'truncated':/not a tag|no longer in the taxonomy/.test(s)?'unknown':/no tag in common/.test(s)?'obsolete':/\(R\d+\)/.test(s)?'rule':'other';}
 var revMode='all',revShown=200;
 function drawReview(){
@@ -896,30 +1078,52 @@ function drawReview(){
   document.getElementById('revCount').textContent=rows.length.toLocaleString()+' documents · '+ROWS.filter(function(r){return r[8];}).length+' reviewed';
   var cap=Math.min(revShown,rows.length);
   document.getElementById('revBody').innerHTML=rows.slice(0,cap).map(function(r){
-    return '<tr><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+'</td><td>'+chipsEv(r[3],r)+'</td><td class="why"><ul>'+r[6].map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ul></td></tr>';}).join('');
+    return '<tr data-rfc="'+r[0]+'"><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+'</td><td>'+rfcTags(r)+'</td><td class="why"><ul>'+r[6].map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ul></td></tr>';}).join('');
   var mb=document.getElementById('revMore');mb.hidden=cap>=rows.length;if(!mb.hidden)mb.textContent='Show more of '+rows.length.toLocaleString();
 }
 document.querySelectorAll('#revSeg button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#revSeg button').forEach(function(o){o.setAttribute('aria-pressed',String(o===b));});revMode=b.dataset.rev;revShown=200;drawReview();});});
 document.getElementById('revMore').addEventListener('click',function(){revShown+=200;drawReview();});
+/* a Review badge anywhere opens the Review tab at that RFC's row */
+function openReview(num){
+  var b0=document.querySelector('#revSeg [data-rev="all"]');
+  document.querySelectorAll('#revSeg button').forEach(function(o){o.setAttribute('aria-pressed',String(o===b0));});
+  revMode='all';
+  var order=ROWS.filter(function(r){return r[6]&&r[6].length;}).map(function(r){return r[0];}).sort(function(a,b){return b-a;});
+  var at=order.indexOf(num);revShown=Math.max(200,Math.ceil((at+1)/200)*200);
+  drawReview();
+  document.querySelector('.tab[data-panel="review"]').click();
+  var tr=document.querySelector('#revBody tr[data-rfc="'+num+'"]');
+  if(tr){tr.scrollIntoView({block:'center'});tr.classList.add('flash');setTimeout(function(){tr.classList.remove('flash');},2500);}
+}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-review]');if(!b)return;e.stopPropagation();openReview(+b.dataset.review);},true);
 document.getElementById('panel-review').addEventListener('click',function(e){var b=e.target.closest('[data-goto]');if(!b)return;jumpTo([b.dataset.goto],false);});
+function topicChips(r){
+  var imp={};impliedOf(r).forEach(function(x){imp[x.i]=x.by;});
+  return '<span class="tagchips">'+r[5].map(function(i){
+    var by=imp[i];
+    return pill(TAGS[i],{button:true,attr:'data-goto="'+esc(TAGS[i].id)+'"',cls:by?'imp':(r[3].indexOf(i)<0?'anc':''),
+      note:by?'Implied'+(by.length?' by '+by.join(', '):''):''});
+  }).join('')+'</span>';
+}
 function chips(list,direct){
-  return '<span class="tagchips">'+list.map(function(i){return chip(TAGS[i],'data-goto="'+TAGS[i].id+'"',direct&&direct.indexOf(i)<0?'anc':'');}).join('')+'</span>';
+  return '<span class="tagchips">'+list.map(function(i){return chip(TAGS[i],'data-goto="'+esc(TAGS[i].id)+'"',direct&&direct.indexOf(i)<0?'anc':'');}).join('')+'</span>';
 }
 function drawCorpus(){
   var rows=corpusRows(),n=asRfcNumber(rfcQ);
   var card=document.getElementById('rfcCard');
+  document.getElementById('rfcClear').hidden=!rfcQ.trim();
   if(n!==null){
     var r=byNum[n];
-    card.innerHTML=r?('<div class="rfccard"><div class="num">RFC '+r[0]+' &middot; '+r[1]+'</div><h3>'+esc(r[2])+'</h3>'+
-      '<div class="axes"><span class="lab">tags</span>'+chipsEv(r[3],r)+revMark(r)+
+    card.innerHTML=r?('<div class="rfccard"><button type="button" class="xbtn" data-rfcclear aria-label="Close this RFC" title="Close">&times;</button><div class="num">RFC '+r[0]+' &middot; '+r[1]+'</div><h3>'+esc(r[2])+'</h3>'+
+      '<div class="axes"><span class="lab">tags</span><span class="axcell">'+rfcTags(r)+revMark(r)+'</span>'+
       '<span class="lab">technology</span>'+(r[4].length?chips(r[4],r[3]):'<span style="font-size:12px;color:var(--ink-3)">none &mdash; a subject or process document</span>')+
-      '<span class="lab">topics</span>'+chips(r[5],r[3])+'</div>'+(r[6]&&r[6].length?'<div class="why"><b>Why a person should look at this:</b><ul>'+r[6].map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ul></div>':'')+(r[8]?'<div class="why">'+esc(D.reviewNote)+'</div>':'')+'</div>')
+      '<span class="lab">topics</span>'+topicChips(r)+'</div>'+(r[6]&&r[6].length?'<div class="why"><b>Why a person should look at this:</b><ul>'+r[6].map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ul></div>':'')+(r[8]?'<div class="why">'+esc(D.reviewNote)+'</div>':'')+'</div>')
       :('<div class="rfccard"><p class="miss">No RFC '+n+' in the corpus. Published RFCs run from 1 to '+ROWS[ROWS.length-1][0]+', with gaps for numbers never issued.</p></div>');
   }else card.innerHTML='';
   document.getElementById('rfcCount').textContent=rows.length.toLocaleString()+' of '+ROWS.length.toLocaleString();
   var cap=Math.min(rfcShown,rows.length);
   document.getElementById('rfcBody').innerHTML=rows.slice(0,cap).map(function(r){
-    return '<tr class="'+(n!==null?'hitrow':'')+'"><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+revMark(r)+'</td><td>'+chips(r[3])+'</td></tr>';}).join('');
+    return '<tr class="'+(n!==null?'hitrow':'')+'"><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+revMark(r)+'</td><td>'+rfcTags(r)+'</td></tr>';}).join('');
   var mb=document.getElementById('rfcMore');
   mb.hidden=cap>=rows.length;
   if(!mb.hidden)mb.textContent='Show '+Math.min(RSTEP,rows.length-cap)+' more of '+rows.length.toLocaleString();
@@ -929,6 +1133,9 @@ document.querySelectorAll('[data-rsort]').forEach(function(b){b.addEventListener
   document.querySelectorAll('[data-rsort]').forEach(function(o){o.setAttribute('aria-pressed',String(o===b));});
   rfcSort=b.dataset.rsort;rfcShown=RSTEP;drawCorpus();});});
 document.getElementById('rfcMore').addEventListener('click',function(){rfcShown+=RSTEP;drawCorpus();});
+function clearRfc(){var i=document.getElementById('rfcSearch');i.value='';rfcQ='';rfcShown=RSTEP;drawCorpus();i.focus();}
+document.getElementById('rfcClear').addEventListener('click',clearRfc);
+document.getElementById('panel-corpus').addEventListener('click',function(e){if(e.target.closest('[data-rfcclear]'))clearRfc();});
 document.getElementById('panel-corpus').addEventListener('click',function(e){var b=e.target.closest('[data-goto]');if(!b)return;jumpTo([b.dataset.goto],false);});
 
 /* lifespan */
@@ -942,7 +1149,7 @@ function drawLife(){
   document.getElementById('lifeCount').textContent=list.length+' of '+TAGS.length+' tags';
   document.getElementById('lifeList').innerHTML=list.map(function(t){
     var l=(t.first-Y0)/(Y1-Y0)*100,w=Math.max(1.2,(t.last-t.first)/(Y1-Y0)*100);
-    return '<li><span class="tid '+kcls(t)+'" title="'+esc(t.desc)+'">'+esc(t.id)+'</span>'+
+    return '<li><span class="tid">'+pill(t)+'</span>'+
       '<span class="track"><span class="span '+lifeClass(t)+'" style="left:'+l+'%;width:'+w+'%"></span></span>'+
       '<em>'+t.first+'&ndash;'+t.last+'</em></li>';}).join('');
 }
@@ -952,6 +1159,41 @@ document.querySelectorAll('[data-life]').forEach(function(b){b.addEventListener(
 document.querySelectorAll('[data-lifekind]').forEach(function(b){b.addEventListener('click',function(){
   document.querySelectorAll('[data-lifekind]').forEach(function(o){o.setAttribute('aria-pressed',String(o===b));});
   lifeKind=b.dataset.lifekind;drawLife();});});
+
+/* hover card: the tag's whole path, root first, with each level's kind */
+var tip=document.createElement('div');tip.className='tagtip';tip.id='tagtip';tip.setAttribute('role','tooltip');tip.hidden=true;
+document.body.appendChild(tip);
+var tipFor=null;
+function kindLabel(t){return t.d===0?'root':'';}
+function showTip(el){
+  var t=byId[el.dataset.tag];if(!t){hideTip();return;}
+  var ps=t.path.split(' / ');
+  tip.innerHTML=ps.map(function(p,i){
+    var x=byId[p];
+    return '<div class="tt-row'+(p===t.id?' here':'')+'" style="padding-left:'+(i*16)+'px">'+(i?'<i class="conn">└</i>':'')+
+      '<span class="tag '+kcls(x)+'">'+esc(x.id)+'</span>'+(kindLabel(x)?'<span class="kind">'+kindLabel(x)+'</span>':'')+'</div>';
+  }).join('')+'<p class="tt-desc">'+esc(t.desc)+'</p>'+(el.dataset.note?'<p class="tt-note">'+esc(el.dataset.note)+'</p>':'');
+  tip.hidden=false;tipFor=el;el.setAttribute('aria-describedby','tagtip');
+  var r=el.getBoundingClientRect(),w=tip.offsetWidth,h=tip.offsetHeight,vw=window.innerWidth,vh=window.innerHeight;
+  var x=Math.max(8,Math.min(r.left,vw-w-8)),y=r.bottom+6;
+  if(y+h>vh-8&&r.top-h-6>8)y=r.top-h-6;
+  tip.style.left=x+'px';tip.style.top=y+'px';
+}
+function hideTip(){if(tipFor)tipFor.removeAttribute('aria-describedby');tip.hidden=true;tipFor=null;}
+function tagEl(n){return n&&n.closest?n.closest('[data-tag]'):null;}
+document.addEventListener('mouseover',function(e){var el=tagEl(e.target);if(el===tipFor)return;if(el)showTip(el);else hideTip();});
+document.addEventListener('focusin',function(e){var el=tagEl(e.target);if(el)showTip(el);else hideTip();});
+document.addEventListener('focusout',hideTip);
+document.addEventListener('scroll',hideTip,true);
+document.addEventListener('click',hideTip);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')hideTip();});
+
+/* Full tag path: every pill shows its ancestors (not the tree view, whose indentation already does) */
+var fp=document.getElementById('fullPath');fp.checked=FULL;
+fp.addEventListener('change',function(){
+  FULL=fp.checked;try{localStorage.setItem('rfctags.fullPath',FULL?'1':'0');}catch(e){}
+  hideTip();drawTags();drawDetail();drawPairs();drawCorpus();drawOverlap();drawReview();drawLife();
+});
 
 document.getElementById('maxRfc').textContent=ROWS[ROWS.length-1][0];
 drawTags();drawDetail();drawPairs();drawCorpus();drawOverlap();drawReview();
