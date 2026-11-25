@@ -7,10 +7,10 @@ tags:
   desc: Naming and name resolution in general, not specific to one system
   stats:
     direct: 16
-    total: 716
+    total: 718
     first_year: 1971
     last_year: 2026
-    served: 716
+    served: 718
 - id: DNS
   uuid: 1b6d347a-cc55-4d78-ace9-45ba51f04f3b
   slug: dns
@@ -202,10 +202,10 @@ tags:
   desc: 'Domain Registration: domain registry and registrar operations and protocols'
   stats:
     direct: 42
-    total: 130
+    total: 132
     first_year: 1982
     last_year: 2026
-    served: 130
+    served: 132
 - id: EPP
   uuid: 370fba0a-b6cd-4d35-9db0-15c26d26d7ff
   slug: epp
@@ -213,10 +213,10 @@ tags:
   kind: technology
   desc: EPP (Extensible Provisioning Protocol) for registry objects
   stats:
-    direct: 38
-    total: 38
+    direct: 40
+    total: 40
     first_year: 2004
-    last_year: 2025
+    last_year: 2026
 - id: RDAP
   uuid: 74ea1471-fa24-4195-8058-df50f6cff276
   slug: rdap
@@ -697,10 +697,10 @@ tags:
   desc: 'Messaging in general: store-and-forward and interpersonal message systems'
   stats:
     direct: 5
-    total: 947
+    total: 948
     first_year: 1971
     last_year: 2026
-    served: 947
+    served: 948
 - id: email
   uuid: 1623c220-7371-45c5-9cd3-2cb2a56f4770
   slug: email
@@ -709,7 +709,7 @@ tags:
   desc: 'Electronic mail (email): architecture, transport, access and formats'
   stats:
     direct: 110
-    total: 504
+    total: 505
     first_year: 1971
     last_year: 2026
 - id: SMTP
@@ -730,10 +730,10 @@ tags:
   kind: technology
   desc: 'Internet message format: headers, addressing, disposition'
   stats:
-    direct: 78
-    total: 78
+    direct: 79
+    total: 79
     first_year: 1973
-    last_year: 2025
+    last_year: 2026
 - id: IMAP
   uuid: f01c0471-1fd3-43f3-a226-22c07ffe779b
   slug: imap
@@ -1066,10 +1066,10 @@ tags:
   desc: Real-time voice, video and media communication in general
   stats:
     direct: 10
-    total: 864
+    total: 865
     first_year: 1977
     last_year: 2026
-    served: 864
+    served: 865
 - id: SIP
   uuid: f2c0f1c4-9b78-4b7e-bb73-03ca0d642061
   slug: sip
@@ -1237,9 +1237,9 @@ tags:
   desc: 'WebRTC (Web Real-Time Communication): browser real-time media architecture and transports'
   stats:
     direct: 26
-    total: 28
+    total: 29
     first_year: 2015
-    last_year: 2025
+    last_year: 2026
 - id: SFrame
   uuid: ce938221-adf9-4b2f-b791-62ea08670990
   slug: sframe
@@ -1249,10 +1249,10 @@ tags:
   implies:
   - security
   stats:
-    direct: 1
-    total: 1
+    direct: 2
+    total: 2
     first_year: 2024
-    last_year: 2024
+    last_year: 2026
 - id: WHIP
   uuid: e8fc8335-aa83-4178-bb35-b39bd82dcc21
   slug: whip
@@ -1735,10 +1735,10 @@ tags:
   desc: 'Routing in general: routers, routing systems and cross-protocol routing matters'
   stats:
     direct: 7
-    total: 1832
+    total: 1844
     first_year: 1981
     last_year: 2026
-    served: 1855
+    served: 1867
 - id: routing architecture
   uuid: a9e50979-c226-4794-a605-8c6de13c2ec5
   slug: routing-architecture
@@ -1746,11 +1746,11 @@ tags:
   kind: topic
   desc: Routing architecture, scalability and design principles
   stats:
-    direct: 74
-    total: 103
+    direct: 76
+    total: 105
     first_year: 1981
-    last_year: 2025
-    served: 148
+    last_year: 2026
+    served: 150
 - id: ECMP
   uuid: 327098e3-5a35-4443-86c1-041ae8f3c477
   slug: ecmp
@@ -1780,8 +1780,8 @@ tags:
   kind: technology
   desc: 'BGP (Border Gateway Protocol): protocol, policy, operations'
   stats:
-    direct: 189
-    total: 229
+    direct: 190
+    total: 230
     first_year: 1989
     last_year: 2026
 - id: BGP communities
@@ -1851,7 +1851,7 @@ tags:
   - security
   stats:
     direct: 39
-    total: 110
+    total: 111
     first_year: 1997
     last_year: 2026
 - id: RPKI
@@ -1863,8 +1863,8 @@ tags:
   implies:
   - security
   stats:
-    direct: 72
-    total: 72
+    direct: 73
+    total: 73
     first_year: 2004
     last_year: 2026
 - id: BGPsec
@@ -1975,8 +1975,8 @@ tags:
   kind: technology
   desc: RPSL (Routing Policy Specification Language) and Internet routing registries
   stats:
-    direct: 23
-    total: 23
+    direct: 24
+    total: 24
     first_year: 1993
     last_year: 2026
 - id: RIFT
@@ -2019,11 +2019,11 @@ tags:
   kind: topic
   desc: IP multicast routing, group membership and deployment
   stats:
-    direct: 113
-    total: 280
+    direct: 114
+    total: 282
     first_year: 1984
     last_year: 2026
-    served: 305
+    served: 307
 - id: MADCAP
   uuid: fd703edf-1eb9-46d0-81ce-d54d5307825d
   slug: madcap
@@ -2160,10 +2160,10 @@ tags:
   - multicast
   - security
   stats:
-    direct: 15
-    total: 27
+    direct: 16
+    total: 28
     first_year: 1996
-    last_year: 2025
+    last_year: 2026
 - id: GDOI
   uuid: fd44030e-7db5-4a9f-a04e-b219fc5811ac
   slug: gdoi
@@ -2277,8 +2277,8 @@ tags:
   kind: technology
   desc: 'MPLS (Multiprotocol Label Switching): architecture, encapsulation, operations'
   stats:
-    direct: 145
-    total: 461
+    direct: 146
+    total: 462
     first_year: 1997
     last_year: 2026
 - id: LDP
@@ -2345,8 +2345,8 @@ tags:
   kind: technology
   desc: Segment routing architecture
   stats:
-    direct: 47
-    total: 77
+    direct: 49
+    total: 80
     first_year: 2016
     last_year: 2026
 - id: SR-MPLS
@@ -2367,8 +2367,8 @@ tags:
   kind: technology
   desc: SRv6 (Segment Routing over IPv6)
   stats:
-    direct: 27
-    total: 27
+    direct: 28
+    total: 28
     first_year: 2018
     last_year: 2026
 - id: traffic engineering
@@ -2378,11 +2378,11 @@ tags:
   kind: topic
   desc: Traffic engineering of packet and transport networks
   stats:
-    direct: 83
-    total: 249
+    direct: 86
+    total: 254
     first_year: 1998
     last_year: 2026
-    served: 249
+    served: 254
 - id: RSVP-TE
   uuid: 019c6eb0-51df-4d2b-89b5-55ee99934c44
   slug: rsvp-te
@@ -2405,8 +2405,8 @@ tags:
   implies:
   - traffic engineering
   stats:
-    direct: 105
-    total: 105
+    direct: 107
+    total: 107
     first_year: 2006
     last_year: 2026
 - id: DetNet
@@ -2429,8 +2429,8 @@ tags:
   kind: technology
   desc: Provider-provisioned VPNs (Virtual Private Networks)
   stats:
-    direct: 26
-    total: 165
+    direct: 27
+    total: 166
     first_year: 1999
     last_year: 2026
 - id: L3VPN
@@ -2749,10 +2749,10 @@ tags:
   desc: Transport protocols and transport-layer services in general
   stats:
     direct: 16
-    total: 805
+    total: 808
     first_year: 1969
     last_year: 2026
-    served: 805
+    served: 808
 - id: transport mapping
   uuid: 20079122-7a76-480b-93a6-615e4b6178f0
   slug: transport-mapping
@@ -2760,11 +2760,11 @@ tags:
   kind: topic
   desc: 'Transport Mappings: carrying one protocol over another transport: X-over-TLS/TCP/UDP/QUIC bindings and transport models'
   stats:
-    direct: 40
-    total: 40
+    direct: 41
+    total: 41
     first_year: 1986
     last_year: 2026
-    served: 52
+    served: 53
 - id: checksum
   uuid: 3c066625-28b6-46d1-bdd5-c9fb4bf68686
   slug: checksum
@@ -2884,8 +2884,8 @@ tags:
   kind: technology
   desc: UDP (User Datagram Protocol) and its usage guidelines
   stats:
-    direct: 30
-    total: 34
+    direct: 31
+    total: 35
     first_year: 1980
     last_year: 2026
 - id: UDP-Lite
@@ -2906,10 +2906,10 @@ tags:
   kind: technology
   desc: 'QUIC: general-purpose encrypted transport over UDP'
   stats:
-    direct: 14
-    total: 14
+    direct: 15
+    total: 15
     first_year: 2020
-    last_year: 2023
+    last_year: 2026
 - id: SCTP
   uuid: a6e9d814-34c9-4997-b9a8-fd711e070957
   slug: sctp
@@ -2950,11 +2950,11 @@ tags:
   kind: topic
   desc: Congestion control and avoidance across transports
   stats:
-    direct: 93
-    total: 172
+    direct: 94
+    total: 174
     first_year: 1974
     last_year: 2026
-    served: 172
+    served: 174
 - id: RTP congestion control
   uuid: ad085cd4-8a37-4f1f-8aa5-f9d1e0977ed1
   slug: rtp-congestion-control
@@ -2975,8 +2975,8 @@ tags:
   implies:
   - congestion control
   stats:
-    direct: 43
-    total: 43
+    direct: 44
+    total: 44
     first_year: 1991
     last_year: 2026
 - id: AQM
@@ -3332,10 +3332,10 @@ tags:
   desc: 'The IP layer in general: datagram delivery, the protocol suite, network-layer matters'
   stats:
     direct: 7
-    total: 1361
+    total: 1362
     first_year: 1976
     last_year: 2026
-    served: 1361
+    served: 1362
 - id: ICN
   uuid: 0f2f9335-2b3d-4ee7-9d33-272ebef5b804
   slug: icn
@@ -3368,7 +3368,7 @@ tags:
   desc: 'IPv6 (Internet Protocol version 6): specification, addressing, deployment'
   stats:
     direct: 203
-    total: 462
+    total: 463
     first_year: 1993
     last_year: 2026
 - id: neighbor discovery
@@ -3378,8 +3378,8 @@ tags:
   kind: technology
   desc: IPv6 neighbor discovery
   stats:
-    direct: 90
-    total: 98
+    direct: 91
+    total: 99
     first_year: 1996
     last_year: 2026
 - id: SEND
@@ -4394,10 +4394,10 @@ tags:
   desc: 'Security in general: threat models, guidance and handbooks not specific to one mechanism'
   stats:
     direct: 27
-    total: 1485
+    total: 1490
     first_year: 1972
     last_year: 2026
-    served: 2084
+    served: 2093
 - id: TLS
   uuid: 4aabde5b-c39a-442c-baf6-6695b1d7bcb9
   slug: tls
@@ -4427,10 +4427,10 @@ tags:
   kind: technology
   desc: 'IPsec (Internet Protocol Security) architecture: ESP, AH, policy'
   stats:
-    direct: 93
-    total: 206
+    direct: 94
+    total: 207
     first_year: 1995
-    last_year: 2025
+    last_year: 2026
 - id: IKE
   uuid: fd46fcd2-167b-4cc3-a58b-a7e109105cb1
   slug: ike
@@ -4505,7 +4505,7 @@ tags:
   desc: PKI (Public Key Infrastructure) for the Internet
   stats:
     direct: 69
-    total: 232
+    total: 233
     first_year: 1989
     last_year: 2026
 - id: X.509
@@ -4515,8 +4515,8 @@ tags:
   kind: technology
   desc: X.509 (ITU-T X.509 public key certificates) certificates and profiles
   stats:
-    direct: 138
-    total: 138
+    direct: 139
+    total: 139
     first_year: 1989
     last_year: 2026
 - id: OCSP
@@ -4592,8 +4592,8 @@ tags:
   kind: technology
   desc: CMS (Cryptographic Message Syntax)
   stats:
-    direct: 111
-    total: 147
+    direct: 112
+    total: 148
     first_year: 1995
     last_year: 2026
 - id: S/MIME
@@ -4759,7 +4759,7 @@ tags:
   - authentication
   stats:
     direct: 37
-    total: 171
+    total: 172
     first_year: 1972
     last_year: 2026
 - id: RADIUS
@@ -4771,10 +4771,10 @@ tags:
   implies:
   - authentication
   stats:
-    direct: 92
-    total: 92
+    direct: 93
+    total: 93
     first_year: 1997
-    last_year: 2025
+    last_year: 2026
 - id: Diameter
   uuid: 685104f6-e7fa-4f2f-a0bc-5eb503184a12
   slug: diameter
@@ -4810,8 +4810,8 @@ tags:
   implies:
   - authorization
   stats:
-    direct: 37
-    total: 57
+    direct: 38
+    total: 58
     first_year: 2010
     last_year: 2026
 - id: JWT
@@ -4821,10 +4821,10 @@ tags:
   kind: technology
   desc: JWT (JSON Web Token)
   stats:
-    direct: 28
-    total: 28
+    direct: 29
+    total: 29
     first_year: 2014
-    last_year: 2025
+    last_year: 2026
 - id: GNAP
   uuid: e247925d-f007-467b-9200-c79f69da7a5f
   slug: gnap
@@ -5035,7 +5035,7 @@ tags:
     total: 39
     first_year: 1973
     last_year: 2026
-    served: 534
+    served: 535
 - id: WebAuthn
   uuid: 2a7b9951-c3d2-4350-a757-04963afcec07
   slug: webauthn
@@ -5058,7 +5058,7 @@ tags:
     total: 26
     first_year: 1976
     last_year: 2026
-    served: 95
+    served: 96
 - id: XACML
   uuid: d8199417-fb33-4c78-88bb-1ddd46063f5c
   slug: xacml
@@ -5196,10 +5196,10 @@ tags:
   desc: 'Cryptography: algorithms, modes, parameters and their use in Internet protocols'
   stats:
     direct: 44
-    total: 510
+    total: 513
     first_year: 1987
     last_year: 2026
-    served: 510
+    served: 513
   implies:
   - security
 - id: AES
@@ -5209,10 +5209,10 @@ tags:
   kind: technology
   desc: The AES (Advanced Encryption Standard) block cipher and its modes
   stats:
-    direct: 59
-    total: 59
+    direct: 60
+    total: 60
     first_year: 2002
-    last_year: 2023
+    last_year: 2026
 - id: AEGIS
   uuid: be035a02-9fb1-4ca7-acb8-ef8d5c608835
   slug: aegis
@@ -5330,10 +5330,10 @@ tags:
   kind: technology
   desc: HMAC (Hash-based Message Authentication Code)
   stats:
-    direct: 48
-    total: 48
+    direct: 49
+    total: 49
     first_year: 1997
-    last_year: 2025
+    last_year: 2026
 - id: post-quantum
   uuid: 0f0fe05d-d87b-4240-b03e-9c33afe7fed3
   slug: post-quantum
@@ -5341,8 +5341,8 @@ tags:
   kind: technology
   desc: Post-Quantum Cryptography and migration
   stats:
-    direct: 14
-    total: 33
+    direct: 15
+    total: 35
     first_year: 2018
     last_year: 2026
 - id: ML-KEM
@@ -5363,8 +5363,8 @@ tags:
   kind: technology
   desc: ML-DSA (Module-Lattice-Based Digital Signature Algorithm) signatures and their use in IETF protocols
   stats:
-    direct: 4
-    total: 4
+    direct: 6
+    total: 6
     first_year: 2025
     last_year: 2026
 - id: hash-based signatures
@@ -5621,10 +5621,10 @@ tags:
   desc: 'Network operations and management: manageability, operational considerations, Network management architectures and operational practice'
   stats:
     direct: 39
-    total: 1228
+    total: 1233
     first_year: 1970
     last_year: 2026
-    served: 1234
+    served: 1239
 - id: SNMP
   uuid: bdb1bbde-ffe4-4994-a7ca-8f5d9c36e6e4
   slug: snmp
@@ -5712,8 +5712,8 @@ tags:
   implies:
   - network management
   stats:
-    direct: 177
-    total: 177
+    direct: 180
+    total: 180
     first_year: 2010
     last_year: 2026
 - id: syslog
@@ -5872,11 +5872,11 @@ tags:
   kind: topic
   desc: 'SDN (Software-Defined Networking): separated, programmable control planes'
   stats:
-    direct: 16
-    total: 16
+    direct: 17
+    total: 17
     first_year: 2014
-    last_year: 2025
-    served: 16
+    last_year: 2026
+    served: 17
 - id: traceroute
   uuid: 2719021f-95db-4529-81c7-78b1daf70a90
   slug: traceroute
@@ -5942,11 +5942,11 @@ tags:
   kind: topic
   desc: 'Time Synchronization: clock synchronization over networks'
   stats:
-    direct: 17
-    total: 52
+    direct: 18
+    total: 53
     first_year: 1970
     last_year: 2026
-    served: 58
+    served: 59
 - id: NTP
   uuid: 515a096c-993d-49f0-8ec8-e69231202d11
   slug: ntp
@@ -6067,10 +6067,10 @@ tags:
   desc: Application protocols in general
   stats:
     direct: 5
-    total: 866
+    total: 868
     first_year: 1969
     last_year: 2026
-    served: 866
+    served: 868
 - id: FTP
   uuid: 3c59af05-8eb7-475f-bee2-2b5e1dbd8114
   slug: ftp
@@ -6396,10 +6396,10 @@ tags:
   desc: Calendaring and scheduling
   stats:
     direct: 3
-    total: 33
+    total: 34
     first_year: 1998
     last_year: 2026
-    served: 33
+    served: 34
 - id: iCalendar
   uuid: bf37d089-0dec-471c-9ac4-c8f315ae98b5
   slug: icalendar
@@ -6409,8 +6409,8 @@ tags:
   implies:
   - calendaring
   stats:
-    direct: 24
-    total: 24
+    direct: 25
+    total: 25
     first_year: 1998
     last_year: 2026
 - id: CalDAV
@@ -6422,10 +6422,10 @@ tags:
   implies:
   - calendaring
   stats:
-    direct: 9
-    total: 9
+    direct: 10
+    total: 10
     first_year: 2005
-    last_year: 2019
+    last_year: 2026
 - id: time zones
   uuid: 2bb914cd-2a5c-4f4f-87db-4b13388e53c6
   slug: time-zones
@@ -6591,10 +6591,10 @@ tags:
   kind: technology
   desc: Sockets API extensions
   stats:
-    direct: 21
-    total: 21
+    direct: 22
+    total: 22
     first_year: 1994
-    last_year: 2019
+    last_year: 2026
 - id: eBPF
   uuid: 455a0d96-50dc-4975-a03b-2dfab5f9861b
   slug: ebpf
@@ -6996,10 +6996,10 @@ tags:
   desc: 'IoT (Internet of Things): architectures, terminology, guidance for constrained devices'
   stats:
     direct: 29
-    total: 156
+    total: 158
     first_year: 2005
     last_year: 2026
-    served: 157
+    served: 159
 - id: CoAP
   uuid: f56a7785-255a-45d1-8476-dd7cdd7f3f5d
   slug: coap
@@ -7009,8 +7009,8 @@ tags:
   implies:
   - IoT
   stats:
-    direct: 38
-    total: 40
+    direct: 39
+    total: 42
     first_year: 2012
     last_year: 2026
 - id: OSCORE
@@ -7023,8 +7023,8 @@ tags:
   - security
   - IoT
   stats:
-    direct: 8
-    total: 8
+    direct: 10
+    total: 10
     first_year: 2019
     last_year: 2026
 - id: SenML
@@ -7203,10 +7203,10 @@ tags:
   desc: 'Internet Governance: how the Internet and its standards are governed, administered, developed and published'
   stats:
     direct: 19
-    total: 602
+    total: 603
     first_year: 1969
     last_year: 2026
-    served: 602
+    served: 603
 - id: IETF process
   uuid: 8714614e-dda6-4c68-ab03-81aec52f54ad
   slug: ietf-process
@@ -7250,11 +7250,11 @@ tags:
   kind: topic
   desc: IANA (Internet Assigned Numbers Authority) registries, considerations guidance and stewardship
   stats:
-    direct: 197
-    total: 197
+    direct: 198
+    total: 198
     first_year: 1971
     last_year: 2026
-    served: 197
+    served: 198
 - id: RFC series
   uuid: e3098dec-bc74-47f2-a0f4-e58afaa383aa
   slug: rfc-series

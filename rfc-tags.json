@@ -795932,36 +795932,203 @@
  "RFC10020": {
   "title": "Group Communication for the Constrained Application Protocol (CoAP)",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Standards Track specification of CoAP group communication over UDP/IP multicast, defining group types, request/response, caching, Observe and block-wise behaviour, proxy operation, congestion control, and secure operation with Group OSCORE; obsoletes RFC 7390 and updates RFC 7252 and RFC 7641.",
+  "tags": [
+   "CoAP",
+   "OSCORE",
+   "multicast"
   ],
+  "reasons": {
+   "CoAP": {
+    "role": "primary",
+    "why": "The document specifies and updates CoAP behaviour (response suppression, token reuse, caching, Observe, congestion control) for group communication.",
+    "quote": "This document specifies the use of CoAP for group communication, including the use of UDP/IP multicast as the default underlying data transport.",
+    "section": "Abstract"
+   },
+   "OSCORE": {
+    "role": "secondary",
+    "why": "A substantial part (Section 5, security considerations) defines Group OSCORE as the mandatory security solution, covering group management, proxy security and amplification mitigation.",
+    "quote": "Secure group communication is achieved by using Group Object Security for Constrained RESTful Environments (Group OSCORE)",
+    "section": "1. Introduction"
+   },
+   "multicast": {
+    "role": "secondary",
+    "why": "IP multicast is the default transport, with substantial text on scopes, MLD/IGMP, RPL and MPL interworking, and multicast-specific congestion and amplification risks.",
+    "quote": "One-to-many group communication can be achieved in CoAP, by a client using UDP/IP multicast data transport to send multicast CoAP request messages",
+    "section": "1. Introduction"
+   }
+  },
+  "rejected": [
+   {
+    "id": "6LoWPAN",
+    "why": "6LoWPAN is discussed as a deployment environment for multicast, but the document is not about 6LoWPAN itself."
+   },
+   {
+    "id": "RPL",
+    "why": "RPL and MPL are described only as interworking context for multicast delivery, not specified or extended."
+   },
+   {
+    "id": "DDoS",
+    "why": "Amplification attacks are covered as a security consideration, but the document is not about DDoS mitigation in its own right."
+   },
+   {
+    "id": "service discovery",
+    "why": "Group discovery is addressed via the RD and /.well-known/core, but it is a part of group configuration, not the document's main subject."
+   },
+   {
+    "id": "UDP",
+    "why": "UDP is the substrate transport; the document defines nothing new about UDP."
+   },
+   {
+    "id": "COSE",
+    "why": "COSE is used by OSCORE underneath and is not the document's subject."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "IoT"
+   ],
+   [
+    "IoT",
+    "CoAP"
+   ],
+   [
+    "IoT",
+    "CoAP",
+    "OSCORE"
+   ],
+   [
+    "routing"
+   ],
+   [
+    "routing",
+    "multicast"
+   ]
+  ],
+  "technology": [
+   "CoAP",
+   "OSCORE"
+  ],
+  "topic": [
+   "IoT",
+   "multicast",
+   "routing",
+   "security"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "CoAP",
+    "OSCORE",
+    "multicast"
+   ],
+   "removed": {}
+  }
  },
  "RFC10021": {
   "title": "Group Object Security for Constrained RESTful Environments (Group OSCORE)",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Defines Group OSCORE, which extends OSCORE to give end-to-end protection and source authentication for CoAP group (e.g. multicast) requests and responses. It has a group mode using countersignatures and a pairwise mode using derived keys, plus Group Manager and keying-material rules.",
+  "tags": [
+   "OSCORE",
+   "multicast security"
   ],
+  "reasons": {
+   "OSCORE": {
+    "role": "primary",
+    "why": "The document defines Group OSCORE, an extension of OSCORE (security context, COSE object, header compression, message processing). OSCORE is the specified protocol, and the taxonomy places it under CoAP.",
+    "quote": "Group OSCORE, providing end-to-end security of messages exchanged with the Constrained Application Protocol (CoAP) between members of a group, e.g., sent over IP multicast.",
+    "section": "Abstract"
+   },
+   "multicast security": {
+    "role": "secondary",
+    "why": "A substantial part covers group keying material, rekeying, Group Manager duties, and group-level source authentication for multicast groups. Group key management and multicast security is a fitting topic.",
+    "quote": "Every group is associated with a Group Manager that is responsible for distributing security parameters and keying material within the group",
+    "section": "12. The Group Manager"
+   }
+  },
+  "rejected": [
+   {
+    "id": "CoAP",
+    "why": "CoAP is the protocol being secured. Its child tag OSCORE already covers the document, so the parent is implied."
+   },
+   {
+    "id": "COSE",
+    "why": "COSE structures are used and a countersignature parameter is applied, but the document does not define COSE. It is the substrate."
+   },
+   {
+    "id": "ACE",
+    "why": "The ACE-based Group Manager is only referenced as an informative realization and is out of scope here."
+   },
+   {
+    "id": "elliptic curve",
+    "why": "ECDH and Ed25519-to-X25519 mapping appear, but they are details of pairwise key derivation and not the subject."
+   },
+   {
+    "id": "web linking",
+    "why": "The 'gosc' link attribute (Section 11) is only a minor addition, and the document is not about web linking in general."
+   },
+   {
+    "id": "DTLS",
+    "why": "DTLS is mentioned only as a combinable alternative. The document does not specify or extend it."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "IoT"
+   ],
+   [
+    "IoT",
+    "CoAP"
+   ],
+   [
+    "IoT",
+    "CoAP",
+    "OSCORE"
+   ],
+   [
+    "routing"
+   ],
+   [
+    "routing",
+    "multicast"
+   ],
+   [
+    "routing",
+    "multicast",
+    "multicast security"
+   ]
+  ],
+  "technology": [
+   "CoAP",
+   "OSCORE"
+  ],
+  "topic": [
+   "IoT",
+   "multicast",
+   "routing",
+   "security"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "OSCORE",
+    "multicast security"
+   ],
+   "removed": {}
+  }
  },
  "RFC10022": {
   "title": "IMAP UIDBATCHES Extension",
@@ -797635,19 +797802,71 @@
  "RFC10049": {
   "title": "Roughtime: A Protocol for Rough Time Synchronization",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Specifies Roughtime, an experimental protocol for authenticated rough time synchronization using signed Merkle-tree responses, with server list and malfeasance report formats for detecting misbehaving time servers.",
+  "tags": [
+   "time synchronization"
   ],
+  "reasons": {
+   "time synchronization": {
+    "role": "primary",
+    "why": "The whole document defines a new secure time synchronization protocol and its integration with NTP/NTS, so it belongs under time synchronization. NTP is not tagged separately because the document defines a different protocol.",
+    "quote": "secure, rough time synchronization (even for clients without any idea of what time it is)",
+    "section": "Abstract"
+   }
+  },
+  "rejected": [
+   {
+    "id": "NTP",
+    "why": "NTP and NTS are compared against and Section 6 describes how Roughtime can bound NTP errors. The document specifies a separate protocol, not NTP itself."
+   },
+   {
+    "id": "EdDSA",
+    "why": "Ed25519 is only the signature mechanism the protocol uses and is not what the document is about."
+   },
+   {
+    "id": "JSON",
+    "why": "JSON is only the encoding for server lists and malfeasance reports."
+   },
+   {
+    "id": "UDP",
+    "why": "UDP and TCP are only transports for Roughtime packets. The document defines nothing new about how UDP is used beyond the ordinary use of it as a substrate."
+   },
+   {
+    "id": "media types",
+    "why": "The two media type registrations are IANA boilerplate and are not the main subject of the document."
+   },
+   {
+    "id": "SHA",
+    "why": "SHA-512 is only used as the hash for the Merkle tree and is not the subject of the document."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
+  "paths": [
+   [
+    "network management"
+   ],
+   [
+    "network management",
+    "time synchronization"
+   ]
+  ],
   "technology": [],
-  "topic": [],
-  "tagged": null
+  "topic": [
+   "network management",
+   "time synchronization"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "time synchronization"
+   ],
+   "removed": {}
+  }
  },
  "RFC10050": {
   "title": "Protocol-Specific Profiles for JSContact",
@@ -797697,19 +797916,84 @@
  "RFC10051": {
   "title": "Task Extensions to iCalendar",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Updates iCalendar (RFC 5545) VTODO with task type, estimated duration, VSTATUS component, new STATUS/PARTSTAT values, SUBSTATE, REASON and TASK-MODE properties, and defines a CalDAV property advertising supported task modes.",
+  "tags": [
+   "iCalendar",
+   "CalDAV"
   ],
+  "reasons": {
+   "iCalendar": {
+    "role": "primary",
+    "why": "The document extends the iCalendar data format with new components, properties and registries for tasks.",
+    "quote": "This document updates RFC 5545 and defines extensions to \"VTODO\" to provide improved status tracking, scheduling, and specification of tasks",
+    "section": "Abstract"
+   },
+   "CalDAV": {
+    "role": "secondary",
+    "why": "A dedicated section defines a new CalDAV property so servers can advertise supported automated task-mode behaviors and error responses.",
+    "quote": "a CalDAV server advertises a CALDAV:supported-task-mode-set WebDAV property on calendar home or calendar collections",
+    "section": "13. CalDAV Support for Task Mode"
+   }
+  },
+  "rejected": [
+   {
+    "id": "WebDAV",
+    "why": "WebDAV is only the base of CalDAV; the document defines a CalDAV property, not WebDAV itself."
+   },
+   {
+    "id": "ABNF",
+    "why": "ABNF is only the notation used to define syntax."
+   },
+   {
+    "id": "calendaring",
+    "why": "A child tag (iCalendar) already fits, so the parent is implied."
+   },
+   {
+    "id": "XML",
+    "why": "XML only appears in the CalDAV property definition."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "applications"
+   ],
+   [
+    "applications",
+    "calendaring"
+   ],
+   [
+    "applications",
+    "calendaring",
+    "CalDAV"
+   ],
+   [
+    "applications",
+    "calendaring",
+    "iCalendar"
+   ]
+  ],
+  "technology": [
+   "CalDAV",
+   "iCalendar"
+  ],
+  "topic": [
+   "applications",
+   "calendaring"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "iCalendar",
+    "CalDAV"
+   ],
+   "removed": {}
+  }
  },
  "RFC10052": {
   "title": "Performance Measurement with Asymmetrical Traffic Using the Simple Two-Way Active Measurement Protocol (STAMP)",
@@ -797795,375 +798079,1896 @@
  "RFC10053": {
   "title": "A Framework for Computing-Aware Traffic Steering (CATS)",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Informational framework for Computing-Aware Traffic Steering (CATS) defining functional components (C-SMA, C-NMA, C-PS, C-TC, CATS-Forwarders), identifiers, workflows, and operational considerations for steering service traffic by combined compute and network metrics within a single provider.",
+  "tags": [
+   "traffic engineering",
+   "routing architecture"
   ],
+  "reasons": {
+   "traffic engineering": {
+    "role": "primary",
+    "why": "CATS is defined as a traffic engineering approach; the document specifies a framework for path selection and steering using compute and network metrics. No more specific tech tag fits.",
+    "quote": "A traffic engineering approach [RFC9522] that takes into account the dynamic nature of computing resources (e.g., compute and storage) and network state",
+    "section": "2. Terminology"
+   },
+   "routing architecture": {
+    "role": "secondary",
+    "why": "The document is an architectural framework for control/data plane, forwarders, path selectors and metric distribution, including distributed, centralized and hybrid models and scalability considerations.",
+    "quote": "The CATS framework is an overlay framework for the selection of the suitable service contact instances from a set of candidates.",
+    "section": "1. Introduction"
+   }
+  },
+  "rejected": [
+   {
+    "id": "PCE",
+    "why": "PCE is only mentioned as one possible realization of a centralized C-PS."
+   },
+   {
+    "id": "SRv6",
+    "why": "Only listed as an example of packets that may carry the CS-ID."
+   },
+   {
+    "id": "NETCONF",
+    "why": "Mentioned as one possible provisioning means; extensions are out of scope."
+   },
+   {
+    "id": "OSPF",
+    "why": "Referenced as existing metric-distribution technique, not specified here."
+   },
+   {
+    "id": "BGP",
+    "why": "BGP-LS is cited only as a possible C-NMA technique."
+   },
+   {
+    "id": "overlay networks",
+    "why": "Encapsulation between CATS-Forwarders is mentioned but no specific encapsulation is defined."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "Computing-Aware Traffic Steering (CATS)",
+    "why": "The document's central subject (compute-aware service-contact-instance selection and steering) has no dedicated tag in the taxonomy."
+   }
+  ],
+  "review": [],
   "reviewed": false,
-  "paths": [],
+  "paths": [
+   [
+    "routing"
+   ],
+   [
+    "routing",
+    "routing architecture"
+   ],
+   [
+    "routing",
+    "traffic engineering"
+   ]
+  ],
   "technology": [],
-  "topic": [],
-  "tagged": null
+  "topic": [
+   "routing",
+   "routing architecture",
+   "traffic engineering"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "traffic engineering",
+    "routing architecture"
+   ],
+   "removed": {}
+  }
  },
  "RFC10054": {
   "title": "Computing-Aware Traffic Steering (CATS) Problem Statement, Use Cases, and Requirements",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Informational problem statement, use cases (AR/VR, ITS, digital twin, SD-WAN, distributed AI, ISAC) and requirements for Computing-Aware Traffic Steering, which selects service instances and steers traffic using compute and network metrics within a single domain.",
+  "tags": [
+   "routing architecture",
+   "SDN"
   ],
+  "reasons": {
+   "routing architecture": {
+    "role": "primary",
+    "why": "CATS is a routing/traffic-steering architecture problem. The document states the problem and derives requirements for steering with compute-aware metrics, which fits routing architecture.",
+    "quote": "The process of selecting service instances and locations based on metrics that are oriented towards compute capabilities and resources, and of directing traffic to them",
+    "section": "1. Introduction"
+   },
+   "SDN": {
+    "role": "secondary",
+    "why": "One of five use cases is computing-aware SD-WAN with a centralized controller consuming compute metrics. This is a programmable control-plane scenario, but only a minor part of the document.",
+    "quote": "SD-WAN is an overlay connectivity service that optimizes the transport of IP packets over one or more underlay connectivity services",
+    "section": "4.5. Example 4: Computing-Aware SD-WAN"
+   }
+  },
+  "rejected": [
+   {
+    "id": "BGP",
+    "why": "BGP extensions are only mentioned as one possible baseline for conveying metrics. The document does not specify or analyse BGP."
+   },
+   {
+    "id": "ALTO",
+    "why": "ALTO is mentioned only as an existing application-layer steering approach that CATS is contrasted with."
+   },
+   {
+    "id": "anycast",
+    "why": "Anycast is mentioned as a network-layer steering mechanism that relies on communication metrics only. The document is not about anycast operation."
+   },
+   {
+    "id": "traffic engineering",
+    "why": "The document says existing traffic engineering falls short. It is about compute-aware steering, not traffic engineering of packet networks."
+   },
+   {
+    "id": "energy management",
+    "why": "Energy cost appears only as one possible steering metric in some use cases."
+   },
+   {
+    "id": "autonomic networking",
+    "why": "GRASP is cited only as a possible signalling baseline."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "Computing-Aware Traffic Steering (CATS)",
+    "why": "The whole document is about CATS, and the taxonomy has no tag for compute-aware or computing-aware networking. Readers browsing this subject would expect a dedicated tag."
+   }
+  ],
+  "review": [],
   "reviewed": false,
-  "paths": [],
+  "paths": [
+   [
+    "network management"
+   ],
+   [
+    "network management",
+    "SDN"
+   ],
+   [
+    "routing"
+   ],
+   [
+    "routing",
+    "routing architecture"
+   ]
+  ],
   "technology": [],
-  "topic": [],
-  "tagged": null
+  "topic": [
+   "SDN",
+   "network management",
+   "routing",
+   "routing architecture"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "routing architecture",
+    "SDN"
+   ],
+   "removed": {}
+  }
  },
  "RFC10055": {
   "title": "Configuring UDP Sockets for Explicit Congestion Notification (ECN) for Common Platforms",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Informational guide recording how to configure UDP sockets on Apple, Linux/Android, FreeBSD and Windows to receive and send ECN codepoints, based on enabling ECN for QUIC in Chromium.",
+  "tags": [
+   "ECN",
+   "sockets API",
+   "UDP"
   ],
+  "reasons": {
+   "ECN": {
+    "role": "primary",
+    "why": "The whole document explains how applications set, read and send ECN codepoints on UDP sockets, so ECN readers would want it.",
+    "quote": "documentation of UDP socket APIs for ECN on various platforms is sparse. This document records the results of experimenting with these APIs",
+    "section": "Abstract"
+   },
+   "sockets API": {
+    "role": "primary",
+    "why": "It documents platform-specific socket options, ancillary data (cmsg) and recvmsg/sendmsg usage for ECN, which is a sockets API subject.",
+    "quote": "applications set a socket option to \"true\" using a setsockopt() call.",
+    "section": "3.1.1"
+   },
+   "UDP": {
+    "role": "secondary",
+    "why": "The document is about using UDP sockets with ECN, including per-packet and per-socket marking of UDP datagrams. UDP is the subject the APIs apply to, not just a substrate.",
+    "quote": "This document focuses on the APIs for the C and C++ languages.",
+    "section": "1"
+   }
+  },
+  "rejected": [
+   {
+    "id": "QUIC",
+    "why": "QUIC is the motivating use case and Chromium's QUIC stack drove the work. The document covers UDP socket APIs, not QUIC itself."
+   },
+   {
+    "id": "congestion control",
+    "why": "ECN is placed under congestion control, but the more specific ECN tag already covers it."
+   },
+   {
+    "id": "IPv6",
+    "why": "The document gives IPv6 socket option names (IPV6_TCLASS, IPV6_RECVTCLASS), but only as part of the ECN sockets API. IPv6 is not the subject."
+   },
+   {
+    "id": "Diffserv",
+    "why": "DSCP is mentioned only because it shares the header byte with ECN. The document warns applications to preserve the DSCP, but does not address Diffserv."
+   },
+   {
+    "id": "SCTP",
+    "why": "SCTP is mentioned only in the introduction as a possible consumer of UDP ECN APIs."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "applications"
+   ],
+   [
+    "applications",
+    "sockets API"
+   ],
+   [
+    "transport"
+   ],
+   [
+    "transport",
+    "UDP"
+   ],
+   [
+    "transport",
+    "congestion control"
+   ],
+   [
+    "transport",
+    "congestion control",
+    "ECN"
+   ]
+  ],
+  "technology": [
+   "ECN",
+   "UDP",
+   "sockets API"
+  ],
+  "topic": [
+   "applications",
+   "congestion control",
+   "transport"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "ECN",
+    "sockets API",
+    "UDP"
+   ],
+   "removed": {}
+  }
  },
  "RFC10056": {
   "title": "Common YANG Data Types for Traffic Engineering",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Defines and updates (obsoleting RFC 8776) the ietf-te-types and ietf-te-packet-types YANG modules containing common Traffic Engineering identities, data types and groupings for reuse by TE models.",
+  "tags": [
+   "YANG",
+   "traffic engineering"
   ],
+  "reasons": {
+   "YANG": {
+    "role": "primary",
+    "why": "The document is a YANG types library: two YANG modules with typedefs, identities and groupings for import by other models.",
+    "quote": "This document defines a collection of commonly used Traffic Engineering (TE) specific data types, identities, and groupings in YANG data modeling language.",
+    "section": "Abstract"
+   },
+   "traffic engineering": {
+    "role": "primary",
+    "why": "The content is TE-specific: LSP protection, path computation constraints, metrics, bandwidth and explicit routes, so the TE subject page is appropriate.",
+    "quote": "intended to be imported by other modules that model configuration and state for TE constructs, such as TE topologies, TE tunnels, TE policies, TE paths",
+    "section": "Abstract"
+   }
+  },
+  "rejected": [
+   {
+    "id": "MPLS",
+    "why": "MPLS LSPs and GMPLS are the context for the TE identities, but the document defines generic TE types rather than MPLS itself."
+   },
+   {
+    "id": "RSVP-TE",
+    "why": "Many identities reference RSVP-TE flags, but the document specifies no signalling. It only models those flags in YANG."
+   },
+   {
+    "id": "PCE",
+    "why": "Path computation error and objective-function identities come from PCEP RFCs, but PCE or PCEP is not specified or extended here."
+   },
+   {
+    "id": "NETCONF",
+    "why": "NETCONF and RESTCONF are only the management protocols that would carry the models. The document does not define them."
+   },
+   {
+    "id": "GMPLS",
+    "why": "GMPLS encoding and switching-type identities are referenced. The document does not define or extend GMPLS, so this is only a supporting reference."
+   },
+   {
+    "id": "MIB",
+    "why": "This defines YANG modules, not SNMP MIB modules."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "network management"
+   ],
+   [
+    "network management",
+    "YANG"
+   ],
+   [
+    "routing"
+   ],
+   [
+    "routing",
+    "traffic engineering"
+   ]
+  ],
+  "technology": [
+   "YANG"
+  ],
+  "topic": [
+   "network management",
+   "routing",
+   "traffic engineering"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "YANG",
+    "traffic engineering"
+   ],
+   "removed": {}
+  }
  },
  "RFC10057": {
   "title": "A YANG Data Model for Traffic Engineering Tunnels, Label Switched Paths, and Interfaces",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Defines the ietf-te and ietf-te-device YANG modules for configuring and monitoring technology-independent point-to-point TE tunnels, LSPs, paths and TE interfaces, including RPCs for path computation and tunnel actions.",
+  "tags": [
+   "YANG",
+   "traffic engineering",
+   "MPLS"
   ],
+  "reasons": {
+   "YANG": {
+    "role": "primary",
+    "why": "The document's core content is two YANG modules (ietf-te, ietf-te-device) with tree diagrams, RPCs and examples.",
+    "quote": "This document defines a YANG data model for the provisioning and management of Traffic Engineering (TE) tunnels, Label Switched Paths (LSPs), and interfaces.",
+    "section": "Abstract"
+   },
+   "traffic engineering": {
+    "role": "primary",
+    "why": "The model covers TE tunnels, primary/secondary paths, constraints, protection, SRLGs, admin groups and IGP bandwidth flooding thresholds for TE interfaces.",
+    "quote": "The TE YANG module \"ietf-te\" supports the management and operation of a TE network.",
+    "section": "5. TE YANG Module"
+   },
+   "MPLS": {
+    "role": "secondary",
+    "why": "LSPs, label hierarchy and per-LSP upstream/downstream labels are modeled, though the model is deliberately encapsulation-independent.",
+    "quote": "An LSP is an actual, instantiated connection in the data plane that follows a computed TE path through the network.",
+    "section": "5.1. Relationship Between TE Tunnel, LSP, and Path"
+   }
+  },
+  "rejected": [
+   {
+    "id": "RSVP-TE",
+    "why": "Signaling data is explicitly out of scope; RSVP-TE only appears in references and examples and is expected to augment this model elsewhere."
+   },
+   {
+    "id": "NETCONF",
+    "why": "NETCONF and RESTCONF are only the access mechanisms and appear in the Security Considerations and examples."
+   },
+   {
+    "id": "PCE",
+    "why": "Path computation RPC is a generic stub to be augmented by a separate document; PCEP is referenced only for naming."
+   },
+   {
+    "id": "segment routing",
+    "why": "SR Policies are explicitly out of scope."
+   },
+   {
+    "id": "GMPLS",
+    "why": "GMPLS recovery terminology is referenced, but the model is technology-independent and not GMPLS-specific."
+   },
+   {
+    "id": "RESTCONF",
+    "why": "Used only for example requests and as an access protocol."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "network management"
+   ],
+   [
+    "network management",
+    "YANG"
+   ],
+   [
+    "routing"
+   ],
+   [
+    "routing",
+    "MPLS"
+   ],
+   [
+    "routing",
+    "traffic engineering"
+   ]
+  ],
+  "technology": [
+   "MPLS",
+   "YANG"
+  ],
+  "topic": [
+   "network management",
+   "routing",
+   "traffic engineering"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "YANG",
+    "traffic engineering",
+    "MPLS"
+   ],
+   "removed": {}
+  }
  },
  "RFC10063": {
   "title": "Near Real Time Mirroring (NRTM) Version 4",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Specifies NRTMv4, a one-way IRR database mirroring protocol that publishes signed Update Notification Files plus Snapshot and Delta Files (JSON text sequences) over HTTPS for RPSL objects.",
+  "tags": [
+   "RPSL"
   ],
+  "reasons": {
+   "RPSL": {
+    "role": "primary",
+    "why": "The protocol mirrors Internet Routing Registry databases of RPSL objects, which is the subject of the RPSL/IRR tag.",
+    "quote": "The protocol allows instances of IRR Database servers to mirror IRR records, specified in the Routing Policy Specification Language (RPSL), between each other.",
+    "section": "Abstract"
+   }
+  },
+  "rejected": [
+   {
+    "id": "HTTP",
+    "why": "HTTPS is only the distribution substrate; caching headers are used but HTTP itself is not specified or extended."
+   },
+   {
+    "id": "JSON",
+    "why": "JSON, JWS and JSON Text Sequences are encodings used by the protocol, not the subject."
+   },
+   {
+    "id": "JOSE",
+    "why": "JWS and JWK are used for signing the notification file, with no new JOSE definitions."
+   },
+   {
+    "id": "UUID",
+    "why": "UUIDv4 is just used for session_id."
+   },
+   {
+    "id": "TLS",
+    "why": "Only references BCP 195 for HTTPS configuration; not about TLS."
+   },
+   {
+    "id": "gzip",
+    "why": "Optional compression of files; only a mechanism used."
+   },
+   {
+    "id": "BGP",
+    "why": "IRR data is used for route filtering but the document does not address BGP."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "routing"
+   ],
+   [
+    "routing",
+    "RPSL"
+   ]
+  ],
+  "technology": [
+   "RPSL"
+  ],
+  "topic": [
+   "routing"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "RPSL"
+   ],
+   "removed": {}
+  }
  },
  "RFC10065": {
   "title": "A YANG Data Model and RADIUS Extension for Policy-Based Network Access Control",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
+  "summary": "Defines the ietf-ucl-acl YANG module extending RFC 8519 ACLs with endpoint-group matching and date/time schedules, plus a new RADIUS User-Access-Group-ID attribute carrying the user group identifier.",
+  "tags": [
+   "YANG",
+   "RADIUS"
+  ],
+  "reasons": {
+   "YANG": {
+    "role": "primary",
+    "why": "The core deliverable is the ietf-ucl-acl YANG module augmenting the ACL model with endpoint groups and schedules.",
+    "quote": "This document defines a YANG data model for policy-based network access control, which extends the IETF Access Control Lists (ACLs) module defined in [RFC8519].",
+    "section": "1. Introduction"
+   },
+   "RADIUS": {
+    "role": "primary",
+    "why": "The document defines a new RADIUS attribute (type 241.12), including its permitted packets and registration, which is a RADIUS extension.",
+    "quote": "This section defines the User-Access-Group-ID RADIUS attribute, which is designed for user-centric access control scenarios",
+    "section": "6. User-Access-Group-ID RADIUS Attribute"
+   }
+  },
+  "rejected": [
+   {
+    "id": "NETCONF",
+    "why": "Only mentioned as the YANG-based interface to PEPs and in security considerations; the document does not specify or extend it."
+   },
+   {
+    "id": "AAA",
+    "why": "RADIUS is the specific AAA protocol extended here; the general AAA framework is only context."
+   },
+   {
+    "id": "authorization",
+    "why": "Access control is the subject, but the RADIUS and YANG tags already cover it more specifically; the ACL concept has no dedicated tag."
+   },
+   {
+    "id": "SDN",
+    "why": "An SDN controller/PDP appears in the architecture, but the document does not address SDN as a subject."
+   },
+   {
+    "id": "firewall",
+    "why": "Firewalls appear only as example PEPs; the document is about ACL data models, not firewall traversal or security."
+   },
+   {
+    "id": "iCalendar",
+    "why": "Schedules reuse the ietf-schedule module (RFC 9922), which has icalendar-recurrence, but the document does not define or extend iCalendar."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "Access Control Lists (ACLs) / group-based policy",
+    "why": "The document's main subject is ACL-based, group-identity access control. The taxonomy has no ACL or group-based policy tag, only the general 'authorization' topic and the unrelated 'firewall' tag."
+   }
+  ],
   "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+   "YANG: quote not found in the text"
   ],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "network management"
+   ],
+   [
+    "network management",
+    "YANG"
+   ],
+   [
+    "security"
+   ],
+   [
+    "security",
+    "AAA"
+   ],
+   [
+    "security",
+    "AAA",
+    "RADIUS"
+   ]
+  ],
+  "technology": [
+   "AAA",
+   "RADIUS",
+   "YANG"
+  ],
+  "topic": [
+   "authentication",
+   "network management",
+   "security"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [
+    "YANG: quote not found in the text"
+   ],
+   "tags": [
+    "YANG",
+    "RADIUS"
+   ],
+   "removed": {}
+  }
  },
  "RFC10066": {
   "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Signaling Multipath Information",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Defines PCEP extensions (PATH-ATTRIB object, MULTIPATH-CAP, WEIGHT, OPPDIR-PATH, FORWARD-CLASS TLVs) to signal multiple paths per LSP, primarily for SR Policy candidate paths with multiple segment lists, weighted ECMP, composite candidate paths and opposite-direction path mapping.",
+  "tags": [
+   "PCE",
+   "segment routing"
   ],
+  "reasons": {
+   "PCE": {
+    "role": "primary",
+    "why": "The document extends PCEP with new objects, TLVs, capability negotiation and error codes, so it belongs under PCE/PCEP.",
+    "quote": "This document defines Path Computation Element Communication Protocol (PCEP) extensions to signal multipath information, associating multiple forwarding paths with a single PCEP Label Switched Path (LSP)",
+    "section": "Abstract"
+   },
+   "segment routing": {
+    "role": "secondary",
+    "why": "A substantial part addresses SR Policy candidate paths, segment lists and composite candidate paths.",
+    "quote": "Their primary application is Segment Routing Policy (SR Policy), where a Candidate Path can contain multiple segment lists",
+    "section": "Abstract"
+   }
+  },
+  "rejected": [
+   {
+    "id": "ECMP",
+    "why": "ECMP/W-ECMP weighted load balancing is signalled, but the document is about PCEP signalling, not ECMP forwarding itself."
+   },
+   {
+    "id": "TLS",
+    "why": "Only recommended as the secure transport for PCEP in Security Considerations."
+   },
+   {
+    "id": "SRv6",
+    "why": "Mentioned only as a path setup type; the document does not specify SRv6 behaviour."
+   },
+   {
+    "id": "MPLS",
+    "why": "LSP terminology is used and the MPLS TC is referenced, but the document is not about MPLS."
+   },
+   {
+    "id": "BFD",
+    "why": "Mentioned only as a use case for reverse path information."
+   },
+   {
+    "id": "YANG",
+    "why": "Only a mention of a future YANG model extension."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "PCEP (Path Computation Element Communication Protocol)",
+    "why": "The document is squarely about PCEP, but the taxonomy has no PCEP tag. PCE is listed only in the 'PCE' ID I used above, which does not exist in the taxonomy; the nearest fit is traffic engineering / PCE."
+   }
+  ],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "routing"
+   ],
+   [
+    "routing",
+    "segment routing"
+   ],
+   [
+    "routing",
+    "traffic engineering"
+   ],
+   [
+    "routing",
+    "traffic engineering",
+    "PCE"
+   ]
+  ],
+  "technology": [
+   "PCE",
+   "segment routing"
+  ],
+  "topic": [
+   "routing",
+   "traffic engineering"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "PCE",
+    "segment routing"
+   ],
+   "removed": {}
+  }
  },
  "RFC10067": {
   "title": "Path Computation Element Communication Protocol (PCEP) Extensions for Associated Bidirectional Segment Routing (SR) LSPs",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Defines a new PCEP Association Type, \"Bidirectional SR LSP Association\", that groups two unidirectional SR LSPs (SR-MPLS or SRv6) into an associated bidirectional SR LSP, reusing RFC 9059 and RFC 10066 mechanisms.",
+  "tags": [
+   "PCE",
+   "segment routing"
   ],
+  "reasons": {
+   "PCE": {
+    "role": "primary",
+    "why": "The document extends PCEP with a new Association Type, TLV usage, PATH-ATTRIB handling and error handling for stateful and stateless PCEs.",
+    "quote": "this document extends PCEP support to group two unidirectional SR LSPs into an associated bidirectional SR LSP",
+    "section": "Abstract"
+   },
+   "segment routing": {
+    "role": "secondary",
+    "why": "The associated LSPs are SR paths (SR-TE and SRv6 path setup types), so segment routing readers would want this. The document does not define SR itself, so this is secondary.",
+    "quote": "Segment Routing (SR) steers packets through a network using the IPv6 or MPLS data planes via source routing.",
+    "section": "Abstract"
+   }
+  },
+  "rejected": [
+   {
+    "id": "SR-MPLS",
+    "why": "The document covers both SR-MPLS and SRv6 generically via PCEP path setup types. It does not specify SR-MPLS data-plane behaviour."
+   },
+   {
+    "id": "SRv6",
+    "why": "SRv6 is only one of two supported path setup types and is not specifically addressed, so the generic segment routing tag fits better."
+   },
+   {
+    "id": "BFD",
+    "why": "Directed BFD is mentioned only as a feature motivating the reverse-path awareness."
+   },
+   {
+    "id": "TLS",
+    "why": "TLS is only a recommended security mechanism for the PCEP session, mentioned in Security Considerations."
+   },
+   {
+    "id": "traffic engineering",
+    "why": "The parent topic is implied by PCE, which is already tagged."
+   },
+   {
+    "id": "YANG",
+    "why": "The PCEP YANG module is mentioned only in Operational Considerations as something that could be extended."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "routing"
+   ],
+   [
+    "routing",
+    "segment routing"
+   ],
+   [
+    "routing",
+    "traffic engineering"
+   ],
+   [
+    "routing",
+    "traffic engineering",
+    "PCE"
+   ]
+  ],
+  "technology": [
+   "PCE",
+   "segment routing"
+  ],
+  "topic": [
+   "routing",
+   "traffic engineering"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "PCE",
+    "segment routing"
+   ],
+   "removed": {}
+  }
  },
  "RFC10069": {
   "title": "Managing Multiple Paths for a QUIC Connection",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Specifies a multipath extension to QUIC version 1 that introduces path IDs, per-path packet number spaces and connection IDs, a modified AEAD nonce, and new frames for creating, managing, and abandoning multiple simultaneous paths.",
+  "tags": [
+   "QUIC",
+   "congestion control"
   ],
+  "reasons": {
+   "QUIC": {
+    "role": "primary",
+    "why": "The whole document is a QUIC transport extension defining a new transport parameter, frames, path management and error codes.",
+    "quote": "This document specifies an extension to QUIC version 1 [QUIC-TRANSPORT] to enable the simultaneous usage of multiple paths for a single connection",
+    "section": "1. Introduction"
+   },
+   "congestion control": {
+    "role": "secondary",
+    "why": "A substantial implementation section covers per-path congestion control and coupled schemes, plus per-path RTT computation, for multipath QUIC.",
+    "quote": "separate congestion control state is maintained for each path.  This means a sender is not allowed to send more data on a given path than congestion control",
+    "section": "5.3. Congestion Control"
+   }
+  },
+  "rejected": [
+   {
+    "id": "TLS",
+    "why": "QUIC-TLS is relied on for packet protection, and only the AEAD nonce computation is modified. The handshake is unchanged, so this does not make the document about TLS."
+   },
+   {
+    "id": "MPTCP",
+    "why": "Multipath TCP is mentioned only as a comparison for the LIA congestion control scheme. The document does not specify or analyse it."
+   },
+   {
+    "id": "IP mobility",
+    "why": "Connection migration is discussed, but only as the QUIC-level mechanism that the multipath extension builds on. It is not IP-layer mobility."
+   },
+   {
+    "id": "UDP",
+    "why": "UDP is only the substrate under QUIC."
+   },
+   {
+    "id": "PMTUD",
+    "why": "Differing PMTU sizes across paths get one short implementation note. This does not make the document about PMTUD."
+   },
+   {
+    "id": "Diffserv",
+    "why": "Differentiated Services markings are mentioned once as an example for paths sharing a 4-tuple."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "transport"
+   ],
+   [
+    "transport",
+    "QUIC"
+   ],
+   [
+    "transport",
+    "congestion control"
+   ]
+  ],
+  "technology": [
+   "QUIC"
+  ],
+  "topic": [
+   "congestion control",
+   "transport"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "QUIC",
+    "congestion control"
+   ],
+   "removed": {}
+  }
  },
  "RFC10070": {
   "title": "Updates to OAuth 2.0 JSON Web Token (JWT) Client Authentication and Assertion-Based Authorization Grants",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Updates RFCs 7521, 7522, 7523 and 9126 to require the authorization server's issuer identifier as the sole audience of JWT client authentication assertions, adds an explicit \"client-authentication+jwt\" type, and registers the media type, to fix an audience injection vulnerability.",
+  "tags": [
+   "OAuth",
+   "JWT"
   ],
+  "reasons": {
+   "OAuth": {
+    "role": "primary",
+    "why": "The document amends OAuth 2.0 assertion framework, client authentication and PAR specifications, so it is about OAuth.",
+    "quote": "tighten its audience requirements",
+    "section": "4. Updates to RFC 7523"
+   },
+   "JWT": {
+    "role": "primary",
+    "why": "It specifies the JWT \"aud\" claim requirements and a new explicit JWT type for client authentication assertions.",
+    "quote": "Client authentication JWTs SHOULD be explicitly typed by using the \"typ\" header parameter value \"client-authentication+jwt\"",
+    "section": "4. Updates to RFC 7523"
+   }
+  },
+  "rejected": [
+   {
+    "id": "media types",
+    "why": "It registers application/client-authentication+jwt, but that is only IANA boilerplate, not the subject of the document."
+   },
+   {
+    "id": "JOSE",
+    "why": "JWS signing and headers are used in the examples, but the document is not about JOSE."
+   },
+   {
+    "id": "XML",
+    "why": "SAML assertion changes are a minor part, and XML is not the subject."
+   },
+   {
+    "id": "authentication",
+    "why": "Client authentication is covered, but the OAuth and JWT tags are more specific."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "security"
+   ],
+   [
+    "security",
+    "OAuth"
+   ],
+   [
+    "security",
+    "OAuth",
+    "JWT"
+   ]
+  ],
+  "technology": [
+   "JWT",
+   "OAuth"
+  ],
+  "topic": [
+   "authorization",
+   "security"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "OAuth",
+    "JWT"
+   ],
+   "removed": {}
+  }
  },
  "RFC10073": {
   "title": "Composite Module-Lattice-Based Digital Signature Algorithm (ML-DSA) for Use in X.509 Public Key Infrastructure",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
+  "summary": "Defines Composite ML-DSA, a PQ/T hybrid signature scheme combining ML-DSA with RSA, ECDSA, Ed25519 and Ed448, with serialization, OIDs and ASN.1 for use in X.509/PKIX.",
+  "tags": [
+   "post-quantum",
+   "ML-DSA",
+   "X.509"
+  ],
+  "reasons": {
+   "post-quantum": {
+    "role": "primary",
+    "why": "The document specifies a post-quantum/traditional hybrid signature scheme and its migration rationale. A child tag such as ML-DSA is the better fit, but the taxonomy's ML-DSA tag exists, so see the ML-DSA tag below.",
+    "quote": "This document defines a PQ/T hybrid scheme with concrete instantiations that combine the US NIST Module-Lattice-Based Digital Signature Algorithm (ML-DSA) with traditional algorithms",
+    "section": "Abstract"
+   },
+   "ML-DSA": {
+    "role": "primary",
+    "why": "ML-DSA is the PQ component of every composite algorithm defined, and its use in IETF protocols is the core subject.",
+    "quote": "This specification creates PQ/T hybrids with the Module-Lattice-Based Digital Signature Algorithm (ML-DSA), defined in [FIPS.204] as the Post-Quantum (PQ) component.",
+    "section": "1. Introduction"
+   },
+   "X.509": {
+    "role": "primary",
+    "why": "Defines key usage rules, SubjectPublicKeyInfo and OneAsymmetricKey encoding, OIDs and an ASN.1 module for certificates.",
+    "quote": "provides processing logic and the ASN.1 modules necessary to use Composite ML-DSA within X.509 and PKIX protocols",
+    "section": "5. Use Within X.509 and PKIX"
+   }
+  },
+  "rejected": [
+   {
+    "id": "RSA",
+    "why": "RSASSA-PSS and PKCS1-v1_5 are only component algorithms, specified elsewhere."
+   },
+   {
+    "id": "ECDSA",
+    "why": "ECDSA is a component algorithm used as defined elsewhere; not the subject."
+   },
+   {
+    "id": "EdDSA",
+    "why": "Ed25519/Ed448 are components only."
+   },
+   {
+    "id": "ASN.1",
+    "why": "The ASN.1 module is apparatus for X.509 use; the document is not about ASN.1 itself."
+   },
+   {
+    "id": "CMS",
+    "why": "CMS use is explicitly deferred to a separate specification."
+   },
+   {
+    "id": "SHA",
+    "why": "SHA-2/SHAKE are used as pre-hash functions, not the subject."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "PQ/T hybrid signatures",
+    "why": "Composite/hybrid signature schemes are a central subject but the taxonomy has no dedicated tag; post-quantum is the nearest parent."
+   }
+  ],
   "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+   "text truncated at 300000 characters"
   ],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "cryptography"
+   ],
+   [
+    "cryptography",
+    "post-quantum"
+   ],
+   [
+    "cryptography",
+    "post-quantum",
+    "ML-DSA"
+   ],
+   [
+    "security"
+   ],
+   [
+    "security",
+    "PKI"
+   ],
+   [
+    "security",
+    "PKI",
+    "X.509"
+   ]
+  ],
+  "technology": [
+   "ML-DSA",
+   "PKI",
+   "X.509",
+   "post-quantum"
+  ],
+  "topic": [
+   "cryptography",
+   "security"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [
+    "text truncated at 300000 characters"
+   ],
+   "tags": [
+    "post-quantum",
+    "ML-DSA",
+    "X.509"
+   ],
+   "removed": {}
+  }
  },
  "RFC10075": {
   "title": "The SNAC Router Flag in ICMPv6 Router Advertisement Messages",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Defines the SNAC Router flag (bit 6) in the IPv6 Router Advertisement Flags Extension Option so SNAC routers can be distinguished from transit routers.",
+  "tags": [
+   "neighbor discovery"
   ],
+  "reasons": {
+   "neighbor discovery": {
+    "role": "primary",
+    "why": "The document extends IPv6 Neighbor Discovery Router Advertisements with a new flag and specifies its semantics and receiver behaviour.",
+    "quote": "This document defines a new IPv6 Neighbor Discovery Router Advertisement (RA) flag, the SNAC Router flag, which SNAC routers use to identify RAs sent by other SNAC routers.",
+    "section": "1. Introduction"
+   }
+  },
+  "rejected": [
+   {
+    "id": "6LoWPAN",
+    "why": "Only mentioned as an example of a network a SNAC router might attach; the document is not about 6LoWPAN."
+   },
+   {
+    "id": "OSPF",
+    "why": "RFC 2328 is cited only for the transit/stub network definition."
+   },
+   {
+    "id": "IANA",
+    "why": "The IANA section is just a flag allocation, which is boilerplate and not the subject of the document."
+   },
+   {
+    "id": "ICMP",
+    "why": "ICMPv6 is the carrier of RAs. The document is about the ND flag, which is the more specific tag."
+   },
+   {
+    "id": "IPv6",
+    "why": "The more specific neighbor discovery tag covers the document, so the parent is implied."
+   },
+   {
+    "id": "home networking",
+    "why": "The home network is only an example context; the document defines only an RA flag."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "SNAC (Stub Network Auto-Configuring) routers",
+    "why": "The document's subject is SNAC routers, but the taxonomy has no tag for automatic stub network configuration."
+   }
+  ],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "internet layer"
+   ],
+   [
+    "internet layer",
+    "IPv6"
+   ],
+   [
+    "internet layer",
+    "IPv6",
+    "neighbor discovery"
+   ]
+  ],
+  "technology": [
+   "IPv6",
+   "neighbor discovery"
+  ],
+  "topic": [
+   "internet layer"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "neighbor discovery"
+   ],
+   "removed": {}
+  }
  },
  "RFC10078": {
   "title": "Problem Statement, Gap Analysis, and Requirements for Intra-Domain Source Address Validation",
   "year": 2026,
-  "summary": null,
+  "summary": "Informational problem statement and gap analysis of existing intra-domain source address validation (ACLs, strict and loose uRPF) in asymmetric routing and hidden prefix scenarios, with five requirements for new mechanisms.",
   "tags": [],
   "reasons": {},
   "rejected": [],
   "gaps": [],
   "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+   "model chose 'SAV', which is not a tag",
+   "no tags (R7)"
   ],
   "reviewed": false,
   "paths": [],
   "technology": [],
   "topic": [],
-  "tagged": null
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [
+    "model chose 'SAV', which is not a tag"
+   ],
+   "tags": [],
+   "removed": {}
+  }
  },
  "RFC10079": {
   "title": "Updates to the SFrame Cipher Suites Registry",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Updates the IANA SFrame Cipher Suites registry (RFC 9605) with additional columns and registers three AES-256-CTR with HMAC-SHA512 cipher suites, with test vectors.",
+  "tags": [
+   "SFrame",
+   "AES",
+   "HMAC"
   ],
+  "reasons": {
+   "SFrame": {
+    "role": "primary",
+    "why": "The document updates the SFrame registry and adds new SFrame cipher suites with test vectors, so it is about SFrame.",
+    "quote": "This document addresses two omissions in the Secure Frame (SFrame) protocol specification [RFC9605].",
+    "section": "1. Introduction"
+   },
+   "AES": {
+    "role": "secondary",
+    "why": "It extends the AES-CTR based AEAD construction to the 256-bit security level and specifies the key and tag length changes.",
+    "quote": "The construction works the same way when used with AES-256-CTR and HMAC-SHA512.",
+    "section": "2. AES-256-CTR with HMAC-SHA512"
+   },
+   "HMAC": {
+    "role": "secondary",
+    "why": "HMAC-SHA512 is a core part of the new compound AEAD cipher suites registered here.",
+    "quote": "The keys generated by SFrame key derivation (derive_key_salt) are longer to match the needs of AES-256-CTR and HMAC-SHA512",
+    "section": "2. AES-256-CTR with HMAC-SHA512"
+   }
+  },
+  "rejected": [
+   {
+    "id": "IANA",
+    "why": "The registry changes are the means of delivering the cipher suites. The document is about SFrame cipher suites, not IANA registry guidance in general."
+   },
+   {
+    "id": "SHA",
+    "why": "SHA-512 is used only as the hash inside HMAC and in key derivation. The document says nothing new about the SHA family."
+   },
+   {
+    "id": "SRTP",
+    "why": "SFrame is related to secure media but is not SRTP, and the document does not discuss SRTP."
+   },
+   {
+    "id": "key management",
+    "why": "Key derivation lengths are mentioned only as consequences of the larger cipher suites. Key management is not the subject."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "SFrame",
+    "why": "The taxonomy lists SFrame under WebRTC and I used that id. It is end-to-end media encryption that is not specific to WebRTC. The id I used does not appear as 'SFrame' in the taxonomy, so please check it."
+   }
+  ],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "cryptography"
+   ],
+   [
+    "cryptography",
+    "AES"
+   ],
+   [
+    "cryptography",
+    "HMAC"
+   ],
+   [
+    "real-time communications"
+   ],
+   [
+    "real-time communications",
+    "WebRTC"
+   ],
+   [
+    "real-time communications",
+    "WebRTC",
+    "SFrame"
+   ]
+  ],
+  "technology": [
+   "AES",
+   "HMAC",
+   "SFrame",
+   "WebRTC"
+  ],
+  "topic": [
+   "cryptography",
+   "real-time communications",
+   "security"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "SFrame",
+    "AES",
+    "HMAC"
+   ],
+   "removed": {}
+  }
  },
  "RFC10080": {
   "title": "Updated Use of the Expires Message Header Field",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Updates RFC 4021 to allow the \"Expires\" message header field to be used in Internet email generally, with advice for message creators and readers on handling expired messages.",
+  "tags": [
+   "message format"
   ],
+  "reasons": {
+   "message format": {
+    "role": "primary",
+    "why": "The document defines the use and syntax of an email message header field, and updates the header field registration; this is Internet message format subject matter.",
+    "quote": "This document extends the use of the \"Expires\" header field to Internet email in general, whether the message comes from an X.400 gateway or elsewhere.",
+    "section": "1. Introduction"
+   }
+  },
+  "rejected": [
+   {
+    "id": "email",
+    "why": "Covered by the more specific message format tag; the document concerns a header field, not mail architecture or transport."
+   },
+   {
+    "id": "X.400",
+    "why": "X.400 mapping is only the historical origin of the field; the document extends use beyond X.400 gateways."
+   },
+   {
+    "id": "Netnews",
+    "why": "Netnews Expires header is mentioned only for comparison."
+   },
+   {
+    "id": "ABNF",
+    "why": "ABNF is only used to state the syntax."
+   },
+   {
+    "id": "spam",
+    "why": "Spam is mentioned only in Security Considerations as an abuse scenario."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "messaging"
+   ],
+   [
+    "messaging",
+    "email"
+   ],
+   [
+    "messaging",
+    "email",
+    "message format"
+   ]
+  ],
+  "technology": [
+   "email",
+   "message format"
+  ],
+  "topic": [
+   "messaging"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "message format"
+   ],
+   "removed": {}
+  }
  },
  "RFC10082": {
   "title": "Composite Module-Lattice-Based Digital Signature Algorithm (ML-DSA) for Use in the Cryptographic Message Syntax (CMS)",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Specifies how to use Composite ML-DSA signature algorithms (ML-DSA combined with RSA, ECDSA, EdDSA) in CMS SignedData, including digest algorithm mapping, signature generation/verification, SignerInfo fields, and an ASN.1 module.",
+  "tags": [
+   "CMS",
+   "ML-DSA"
   ],
+  "reasons": {
+   "CMS": {
+    "role": "primary",
+    "why": "The document defines SignedData and SignerInfo conventions, digestAlgorithms handling, and an ASN.1 module for CMS.",
+    "quote": "This document specifies the conventions for using Composite ML-DSA algorithms within the Cryptographic Message Syntax (CMS).",
+    "section": "Abstract"
+   },
+   "ML-DSA": {
+    "role": "primary",
+    "why": "The document is about using Composite ML-DSA signatures, defining OIDs usage and pre-hash digest mappings.",
+    "quote": "The Composite Module-Lattice-Based Digital Signature Algorithm (ML- DSA) defines combinations of ML-DSA with RSA, ECDSA, and EdDSA.",
+    "section": "Abstract"
+   }
+  },
+  "rejected": [
+   {
+    "id": "X.509",
+    "why": "Composite ML-DSA for X.509 is in the companion RFC 10073. This document covers only CMS."
+   },
+   {
+    "id": "RSA",
+    "why": "RSA is only a component of the composite algorithms and is not specified here."
+   },
+   {
+    "id": "ECDSA",
+    "why": "ECDSA is a component algorithm only, specified elsewhere."
+   },
+   {
+    "id": "EdDSA",
+    "why": "EdDSA is a component algorithm only, specified elsewhere."
+   },
+   {
+    "id": "ASN.1",
+    "why": "The ASN.1 module is apparatus for the CMS conventions. The document is not about ASN.1 itself."
+   },
+   {
+    "id": "SHA",
+    "why": "SHA-256/512 and SHAKE256 appear only as pre-hash digests mapped in a table."
+   },
+   {
+    "id": "S/MIME",
+    "why": "The ASN.1 module extends S/MIME capabilities, but the document is not about S/MIME email."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "cryptography"
+   ],
+   [
+    "cryptography",
+    "post-quantum"
+   ],
+   [
+    "cryptography",
+    "post-quantum",
+    "ML-DSA"
+   ],
+   [
+    "security"
+   ],
+   [
+    "security",
+    "CMS"
+   ]
+  ],
+  "technology": [
+   "CMS",
+   "ML-DSA",
+   "post-quantum"
+  ],
+  "topic": [
+   "cryptography",
+   "security"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "CMS",
+    "ML-DSA"
+   ],
+   "removed": {}
+  }
  },
  "RFC10087": {
   "title": "Extensible Provisioning Protocol (EPP) Transport over QUIC",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Specifies how an EPP session is mapped onto QUIC streams (EoQ), including the connection start packet, data unit format, transport considerations, ALPN and UDP port 700 registration.",
+  "tags": [
+   "EPP",
+   "transport mapping"
   ],
+  "reasons": {
+   "EPP": {
+    "role": "primary",
+    "why": "The document defines a new transport mapping for EPP, including session management, message exchange and operational considerations for registry-registrar provisioning.",
+    "quote": "This document specifies how the Extensible Provisioning Protocol (EPP) [RFC5730] is mapped onto QUIC transport [RFC9000].",
+    "section": "1. Introduction"
+   },
+   "transport mapping": {
+    "role": "primary",
+    "why": "The document is a transport binding of one protocol over another (EPP over QUIC), and addresses each transport mapping consideration.",
+    "quote": "Section 2.1 of [RFC5730] describes considerations to be addressed by protocol transport mappings.",
+    "section": "7. Transport Considerations"
+   }
+  },
+  "rejected": [
+   {
+    "id": "QUIC",
+    "why": "QUIC is the substrate EPP is mapped onto. The document does not extend or specify QUIC itself."
+   },
+   {
+    "id": "TLS",
+    "why": "TLS is only the security mechanism provided by QUIC. The ALPN registration is a minor IANA item."
+   },
+   {
+    "id": "XML",
+    "why": "EPP messages are XML, but this is only the payload encoding and not what the document is about."
+   },
+   {
+    "id": "domain registration",
+    "why": "The parent topic is implied by the EPP tag."
+   },
+   {
+    "id": "UDP",
+    "why": "UDP port 700 is reused for EoQ, but the document does not address UDP as a protocol."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "naming"
+   ],
+   [
+    "naming",
+    "domain registration"
+   ],
+   [
+    "naming",
+    "domain registration",
+    "EPP"
+   ],
+   [
+    "transport"
+   ],
+   [
+    "transport",
+    "transport mapping"
+   ]
+  ],
+  "technology": [
+   "EPP"
+  ],
+  "topic": [
+   "domain registration",
+   "naming",
+   "transport",
+   "transport mapping"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "EPP",
+    "transport mapping"
+   ],
+   "removed": {}
+  }
  },
  "RFC10090": {
   "title": "BGP Usage for Software-Defined WAN (SD-WAN) Overlay Networks",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Informational document describing how BGP, via a route reflector in the SD-WAN controller, can distribute edge client routes, WAN port attributes and IPsec tunnel parameters in SD-WAN overlay deployments, with three scenarios and forwarding models.",
+  "tags": [
+   "BGP",
+   "IPsec",
+   "VPN"
   ],
+  "reasons": {
+   "BGP": {
+    "role": "primary",
+    "why": "The whole document is about using BGP (route reflector, Tunnel Encapsulation Attribute, UPDATE messages, Route Targets) as the SD-WAN control plane.",
+    "quote": "This document focuses on the use of BGP as the SD-WAN overlay control plane.",
+    "section": "1. Introduction"
+   },
+   "IPsec": {
+    "role": "secondary",
+    "why": "Homogeneous and differential encrypted SD-WAN scenarios and distribution of IPsec SA parameters via BGP are a substantial part of the document.",
+    "quote": "IPsec-related parameter provisioning in an SD-WAN network involves the negotiation and distribution of cryptographic parameters required to establish IPsec tunnels among the SD-WAN edges.",
+    "section": "4.3. IPsec-Related Parameters Provisioning"
+   },
+   "VPN": {
+    "role": "secondary",
+    "why": "SD-WAN segmentation as VPNs using Route Targets and VRFs, plus Private VPN PE-based SD-WAN extending BGP/MPLS and EVPN services.",
+    "quote": "This document assumes that SD-WAN VPN configuration on PE devices will, as with MPLS VPN, make use of Virtual Routing and Forwarding (VRF) instances",
+    "section": "3.1.1. Supporting SD-WAN Segmentation"
+   }
+  },
+  "rejected": [
+   {
+    "id": "route reflection",
+    "why": "The RR is the central controller element, but the document uses RFC 4456 as-is and does not specify or analyse route reflection itself."
+   },
+   {
+    "id": "MPLS",
+    "why": "MPLS-in-IP and MPLS VPN underlays appear in the scenarios, but MPLS is an underlay and not the subject."
+   },
+   {
+    "id": "EVPN",
+    "why": "EVPN is mentioned only as an existing VPN that scenario 3 can extend, and RFC 8388 requirements are referenced."
+   },
+   {
+    "id": "IKE",
+    "why": "The document aims to reduce or eliminate per-peer IKEv2 negotiation, but it does not specify IKE."
+   },
+   {
+    "id": "NAT",
+    "why": "NAT traversal gets only a brief mention in the PE-based forwarding section."
+   },
+   {
+    "id": "SDN",
+    "why": "The controller-driven overlay is SD-WAN, not general SDN control-plane separation."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "SD-WAN",
+    "why": "The document is about SD-WAN overlay networks, and the taxonomy has no SD-WAN tag. Readers of that subject would want it."
+   }
+  ],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "routing"
+   ],
+   [
+    "routing",
+    "BGP"
+   ],
+   [
+    "routing",
+    "VPN"
+   ],
+   [
+    "security"
+   ],
+   [
+    "security",
+    "IPsec"
+   ]
+  ],
+  "technology": [
+   "BGP",
+   "IPsec",
+   "VPN"
+  ],
+  "topic": [
+   "routing",
+   "security"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "BGP",
+    "IPsec",
+    "VPN"
+   ],
+   "removed": {}
+  }
  },
  "RFC10091": {
   "title": "Extension Registry for the Extensible Provisioning Protocol",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Defines the registration procedure and IANA registry format for extensions to the Extensible Provisioning Protocol (EPP), obsoleting RFC 7451.",
+  "tags": [
+   "EPP",
+   "IANA"
   ],
+  "reasons": {
+   "EPP": {
+    "role": "primary",
+    "why": "The document defines how EPP extensions are registered and managed, including designated expert review criteria. EPP readers would look for it.",
+    "quote": "it specifies a format for an IANA registry to record those extensions",
+    "section": "Abstract"
+   },
+   "IANA": {
+    "role": "secondary",
+    "why": "A substantial part of the body defines an IANA registry. It covers its policy, designated experts, registration forms and processing.",
+    "quote": "This registry uses the \"Specification Required\" policy described in [RFC8126].",
+    "section": "2.1"
+   }
+  },
+  "rejected": [
+   {
+    "id": "XML",
+    "why": "XML namespaces and schemas are mentioned only as URIs to register in the IETF XML Registry. The document is not about XML usage."
+   },
+   {
+    "id": "domain registration",
+    "why": "EPP is the more specific tag under it, and the document is about EPP extensions."
+   },
+   {
+    "id": "IETF process",
+    "why": "The designated expert and IESG approval procedures serve only the registry. The document does not address the IETF process in general."
+   },
+   {
+    "id": "IDN",
+    "why": "A-label format for IDN TLDs is mentioned only as a field requirement in the form."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "internet governance"
+   ],
+   [
+    "internet governance",
+    "IANA"
+   ],
+   [
+    "naming"
+   ],
+   [
+    "naming",
+    "domain registration"
+   ],
+   [
+    "naming",
+    "domain registration",
+    "EPP"
+   ]
+  ],
+  "technology": [
+   "EPP"
+  ],
+  "topic": [
+   "IANA",
+   "domain registration",
+   "internet governance",
+   "naming"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "EPP",
+    "IANA"
+   ],
+   "removed": {}
+  }
  },
  "RFC10094": {
   "title": "Clarifying Segment Routing over IPv6 (SRv6) Segment Identifier (SID) List Processing",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Updates RFC 8754 to clarify that SRv6 SRH Segment List entries are 128-bit entries mapped to the IPv6 Destination Address (not necessarily copied IPv6 addresses), amending the Segments Left, Segment List, HMAC and ICMP text.",
+  "tags": [
+   "SRv6"
   ],
+  "reasons": {
+   "SRv6": {
+    "role": "primary",
+    "why": "The document clarifies SID list processing in the SRH, the core of SRv6 data plane, and amends RFC 8754 text.",
+    "quote": "This document updates [RFC8754] by clarifying the processing of SID list entries.",
+    "section": "1. Introduction"
+   }
+  },
+  "rejected": [
+   {
+    "id": "IPv6",
+    "why": "SRH is an IPv6 extension header, but the document is about SRv6 SID list processing, not IPv6 itself."
+   },
+   {
+    "id": "segment routing",
+    "why": "Parent of SRv6, implied by the SRv6 tag."
+   },
+   {
+    "id": "HMAC",
+    "why": "HMAC verification text is amended only incidentally; the document isn't about the HMAC algorithm."
+   },
+   {
+    "id": "ICMP",
+    "why": "One small edit to ICMP error processing text; not a subject of the document."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "routing"
+   ],
+   [
+    "routing",
+    "segment routing"
+   ],
+   [
+    "routing",
+    "segment routing",
+    "SRv6"
+   ]
+  ],
+  "technology": [
+   "SRv6",
+   "segment routing"
+  ],
+  "topic": [
+   "routing"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "SRv6"
+   ],
+   "removed": {}
+  }
  },
  "RFC10097": {
   "title": "Tiebreaking Resource Public Key Infrastructure (RPKI) Trust Anchors",
   "year": 2026,
-  "summary": null,
-  "tags": [],
-  "reasons": {},
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "not tagged by the model: awaiting a tagger run, or no text in the corpus"
+  "summary": "Updates RFC 8630 to define a tiebreaking procedure (newest notBefore, then shortest validity, then most recently fetched) for RPKI relying parties choosing among multiple valid TA certificates for the same Trust Anchor Locator.",
+  "tags": [
+   "RPKI"
   ],
+  "reasons": {
+   "RPKI": {
+    "role": "primary",
+    "why": "The document specifies RPKI relying-party behaviour for selecting among Trust Anchor certificates and updates the RPKI TAL specification (RFC 8630).",
+    "quote": "This document specifies a tiebreaking scheme to be used by RPs to select one TA certificate for certification path validation.",
+    "section": "Abstract"
+   }
+  },
+  "rejected": [
+   {
+    "id": "X.509",
+    "why": "RPKI TA certificates are X.509 certificates, but the document only relies on that profile and defines selection logic, not anything about X.509 itself."
+   },
+   {
+    "id": "PKI",
+    "why": "Implied as the parent of RPKI via routing security; the more specific RPKI tag fits better, and RPKI sits under routing security rather than PKI."
+   },
+   {
+    "id": "routing security",
+    "why": "Parent of RPKI; implied and not chosen separately."
+   }
+  ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
-  "paths": [],
-  "technology": [],
-  "topic": [],
-  "tagged": null
+  "paths": [
+   [
+    "routing"
+   ],
+   [
+    "routing",
+    "routing security"
+   ],
+   [
+    "routing",
+    "routing security",
+    "RPKI"
+   ]
+  ],
+  "technology": [
+   "RPKI"
+  ],
+  "topic": [
+   "routing",
+   "security"
+  ],
+  "tagged": {
+   "model": "claude-sonnet-5-5",
+   "date": "2026-11-25",
+   "prompt": "5568eab4951d",
+   "notes": [],
+   "tags": [
+    "RPKI"
+   ],
+   "removed": {}
+  }
  }
 }

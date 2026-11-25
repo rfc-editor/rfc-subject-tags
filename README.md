@@ -147,7 +147,7 @@ Broad topics are legitimate subscription targets even though they are busy, beca
 - `routing` about 56,
 - `network management` about 33.
 
-Dormant tags are equally legitimate: 257 of the 638 tags have had no RFC since 2021. A subscription to one is a standing request to be told if the technology revives.
+Dormant tags are equally legitimate: 255 of the 638 tags have had no RFC since 2021. A subscription to one is a standing request to be told if the technology revives.
 
 ## What the taxonomy looks like
 
@@ -157,7 +157,7 @@ The taxonomy is `taxonomy.yaml` — one entry per tag with its place in the tree
 
 - 638 tags: 19 roots, 290 at level 2, 280 at level 3, 49 at level 4.
 - 556 technologies and 82 topics in the tree (76 topics reach the served view; six composite topics decompose into their parts).
-- Mean 3.67 tags per RFC including ancestors; 77 RFCs untagged (44 for which the model found no fitting tag, 33 it has not read for want of a text file); no tag unused.
+- Mean 3.68 tags per RFC including ancestors; 52 RFCs untagged (45 for which the model found no fitting tag, 7 that have no text version for it to read); no tag unused.
 
 ### The roots
 
