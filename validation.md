@@ -136,21 +136,21 @@ By inspection of the tree: no tag names an IETF area, a status, a stream or a da
 ### Curated tree
 
 - **Tags:** 638 — 19 roots, 290 at level 2, 280 at level 3, 49 at level 4; 556 technology, 82 topic.
-- **Coverage:** 0 untagged.
-- **Tags per RFC (with ancestors):** mean 3.66, median 3, max 26.
-- **Distribution:** 1:683 · 2:2,591 · 3:2,124 · 4:1,586 · 5:1,327 · 6:718 · 7:416 · 8:214 · 9:103 · 10:38 · 11:24 · 12:7 · 13:5 · 14:3 · 15:2 · 16:1 · 26:1.
-- **Over ten tags:** 43 documents (0.4%), all multi-technology cross-area specifications.
+- **Coverage:** 77 untagged, of which 33 the model has not read (no text in the corpus, or awaiting a tagger run).
+- **Tags per RFC (with ancestors):** mean 3.67, median 3, max 24.
+- **Distribution:** 0:77 · 1:371 · 2:2,209 · 3:2,780 · 4:1,693 · 5:1,400 · 6:699 · 7:342 · 8:155 · 9:73 · 10:21 · 11:22 · 12:5 · 13:7 · 14:4 · 15:1 · 16:4 · 17:3 · 18:1 · 21:1 · 24:1.
+- **Over ten tags:** 49 documents (0.5%).
 - **Unused tags (no document directly or beneath):** 0.
-- **Single-document tags:** 45 — AEGIS, AFS, ARC, BATS, BLAKE2, CRC, CyberCash, DCTCP, Dragonfly, EIGRP, FFV1, GSAKMP, HOBA, HTTP caching, IDXP, IRTP, J-PAKE, JSCalendar, LPWAN, MOSPF, NAT-PMP, OPAQUE, OVSDB, PGM, RATP, RBNF, SDF, SFrame, Speex, TBRPF, TEEP, TMux, TVR, Tetrys, Vorbis, WHIP, XACML, Y2K, YAML, amateur radio, data center networking, eBPF, oblivious DNS, password hashing, scrypt.
-- **Humor:** 74 documents, 0 exclusivity violations.
-- **Stability replay:** 9,220 RFCs debut no tag, 611 debut one, 10 debut two, 2 debut three. The 12 multi-debut cases are parent-and-child pairs founding a branch, plus RFC 2430 preceding the MPLS architecture into print.
+- **Single-document tags:** 40 — AEGIS, AODV, ARC, BATS, BLAKE2, CyberCash, DSR, EIGRP, FFV1, GSM, HEVC, HOBA, HSRP, HSTS, IRTP, J-PAKE, JSCalendar, JSONPath, LPWAN, LoRaWAN, OPAQUE, OVSDB, PGM, RBNF, SDF, SFrame, Sigfox, Speex, TBRPF, TEEP, TMux, Tetrys, VP9, Vorbis, WHIP, WebAuthn, XACML, YAML, eBPF, hash-based signatures.
+- **Humor:** 78 documents, 42 carrying other tags as well (R16).
+- **Stability replay:** 9,264 RFCs debut no tag, 577 debut one, 25 debut two, 2 debut three. 28 documents debut more than one tag.
 
 ### Served view
 
 - **Axes:** 556 technology tags, 76 topics.
-- **Zero-technology documents:** 1,494 — governance, process, humor, ARPANET-era notes, general-subject documents.
-- **Zero-topic documents:** 0.
-- **Per RFC:** technology mean 1.74, topic mean 2.06, combined mean 3.80.
-- **Over ten combined:** 48 documents (0.5%); maximum 26.
-- **Documents whose only topics are roots:** 5,357.
-- **Topic replay:** 5 documents debut two topics, all in the founding years. Debuts since 2003: emergency services (2003), NAT traversal (2003), IoT (2006), energy management (2013), SDN (2014), telemetry (2019), sustainability (2024).
+- **Zero-technology documents:** 1,204 — governance, process, humor, ARPANET-era notes, general-subject documents.
+- **Zero-topic documents:** 77.
+- **Per RFC:** technology mean 1.81, topic mean 2.02, combined mean 3.83.
+- **Over ten combined:** 56 documents (0.6%); maximum 25.
+- **Documents whose only topics are roots:** 5,259.
+- **Topic replay:** 7 documents debut two or more topics. Debuts since 2003: emergency services (2003), NAT traversal (2003), IoT (2005), intrusion detection (2007), energy management (2012), SDN (2014), autonomic networking (2015), telemetry (2016), sustainability (2022).

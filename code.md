@@ -87,7 +87,7 @@ One record per published RFC:
 
 ### Sources
 
-- The rfc-editor.org index (`rfc-index.xml`), parsed to `rfcs.json` by `make_corpus_from_index.py`. <!-- generated:coverage -->Coverage: 9,843 RFCs; 7,250 with a working group; 7,435 with keywords; 9,136 with abstracts.<!-- /generated -->
+- The rfc-editor.org index (`rfc-index.xml`), parsed to `rfcs.json` by `make_corpus_from_index.py`. <!-- generated:coverage -->Coverage: 9,869 RFCs; 7,276 with a working group; 7,458 with keywords; 9,162 with abstracts.<!-- /generated -->
 - A local directory of per-RFC `.json` files, via `make_corpus_from_local.py`. It expects one file per RFC, named `rfcNNNN.json`; the script defaults to `~/Data/RFCs` and takes the directory as its first argument. Field names vary between sources, so the script's `FIELD_MAP` is configurable — for example, the producing group may be under `source` rather than `wg`.
 
 ### The `day` assumption
@@ -162,7 +162,7 @@ The character rule exists because ids appear inside other formats: ` / ` joins t
 
 1. **Chooses the RFCs.** By default, every RFC in `rfcs.json` for which `rfc-tags.json` holds no model result: after an index refresh, the newly published ones. `--retag RFC9000 RFC9001` tags the named RFCs again; `--all` tags the whole corpus again; `--limit N` stops after N.
 2. **Asks the model**, one RFC per fresh context, `--jobs` at a time (default 6). Text beyond 300,000 characters is cut off.
-3. **Checks the answer.** A tag id the taxonomy does not have is dropped. Each quote is looked for in the text. Both leave a note in `review`.
+3. **Checks the answer.** A tag id the taxonomy does not have is dropped. Each quote is looked for in the text, ignoring page headers and footers, line breaks, spacing and punctuation. Both leave a note in `review`. `--no-model --recheck` repeats the quote check for every stored result, for use after the check itself changes.
 4. **Applies hand assignments.** The RFC's entry in `assignments.yaml`, if any: `remove` tags are taken out, `add` tags put in.
 5. **Derives** `paths`, `technology` and `topic` (below) and writes `rfc-tags.json`.
 
@@ -170,7 +170,7 @@ Steps 4 and 5 run for every RFC on every run, from what `rfc-tags.json` already 
 
 Results are saved in `.tagger-cache/` as they arrive, so an interrupted run resumes where it stopped. The run stops by itself after five consecutive failures (signed out, usage limit reached).
 
-A run over the whole corpus sends every RFC's text to the model: budget for it. A pilot of 24 RFCs reported about $0.11 per RFC.
+A run over the whole corpus sends every RFC's text to the model: budget for it. The first full run (9,836 RFCs, November 2026) reported $893, about $0.09 per RFC, and on a subscription took five 5-hour usage windows.
 
 ### What the tagger does not decide
 
