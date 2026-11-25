@@ -606,14 +606,14 @@ var closureCount=0;ROWS.forEach(function(r){var s={};r[3].forEach(function(i){s[
 var lvl=[0,0,0,0];TAGS.forEach(function(t){lvl[t.d]++;});
 var nTopic=TAGS.filter(function(t){return t.kind==='topic';}).length;
 document.getElementById('stats').innerHTML=[
-  [ROWS.length.toLocaleString(),'RFCs tagged'],
+  [ROWS.filter(function(r){return r[3].length;}).length.toLocaleString(),'RFCs tagged'],
   [String(TAGS.length),'tags'],
   [String(ROOTS.length),'roots'],
   [lvl.join(' / '),'tags at level 1 / 2 / 3 / 4'],
   [String(TAGS.length-nTopic),'technology tags'],
   [String(nTopic),'topic tags','topic'],
   [(directCount/ROWS.length).toFixed(2)+' / '+(closureCount/ROWS.length).toFixed(2),'tags per RFC, direct / closed'],
-  ['0','left untagged']
+  [ROWS.filter(function(r){return !r[3].length;}).length.toLocaleString(),'left untagged']
 ].map(function(s){return '<li class="'+(s[2]?'is-'+s[2]:'')+'"><b>'+s[0]+'</b><span>'+s[1]+'</span></li>';}).join('');
 
 /* tabs */

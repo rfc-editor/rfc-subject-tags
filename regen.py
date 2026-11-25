@@ -100,14 +100,14 @@ fig=f"""## Figures (current build)
 ### Curated tree
 
 - **Tags:** {len(tax.by_id)} — {depth[1]} roots, {depth[2]} at level 2, {depth[3]} at level 3, {depth[4]} at level 4; {kinds["technology"]} technology, {kinds["topic"]} topic.
-- **Coverage:** {sum(1 for c in counts if c==0)} untagged.
+- **Coverage:** {sum(1 for c in counts if c==0)} untagged, of which {sum(1 for v in RT.values() if not v.get("tagged"))} the model has not read (no text in the corpus, or awaiting a tagger run).
 - **Tags per RFC (with ancestors):** mean {statistics.mean(counts):.2f}, median {int(statistics.median(counts))}, max {max(counts)}.
 - **Distribution:** {" · ".join(f"{a}:{b:,}" for a,b in sorted(collections.Counter(counts).items()))}.
-- **Over ten tags:** {sum(1 for c in counts if c>10)} documents ({100*sum(1 for c in counts if c>10)/len(counts):.1f}%), all multi-technology cross-area specifications.
+- **Over ten tags:** {sum(1 for c in counts if c>10)} documents ({100*sum(1 for c in counts if c>10)/len(counts):.1f}%).
 - **Unused tags (no document directly or beneath):** {len([t for t in tax.by_id if total[t]==0])}.
 - **Single-document tags:** {len(single)} — {", ".join(single)}.
-- **Humor:** {used["humor"]} documents, 0 exclusivity violations.
-- **Stability replay:** {c16[0][1]:,} RFCs debut no tag, {c16[1][1]} debut one, {c16[2][1] if len(c16)>2 else 0} debut two, {c16[3][1] if len(c16)>3 else 0} debut three. The {multi} multi-debut cases are parent-and-child pairs founding a branch, plus RFC 2430 preceding the MPLS architecture into print.
+- **Humor:** {used["humor"]} documents, {sum(1 for v in res.values() if "humor" in v and len(v)>1)} carrying other tags as well (R16).
+- **Stability replay:** {c16[0][1]:,} RFCs debut no tag, {c16[1][1]} debut one, {c16[2][1] if len(c16)>2 else 0} debut two, {c16[3][1] if len(c16)>3 else 0} debut three. {multi} documents debut more than one tag.
 
 ### Served view
 
@@ -117,7 +117,7 @@ fig=f"""## Figures (current build)
 - **Per RFC:** technology mean {statistics.mean(tc):.2f}, topic mean {statistics.mean(oc):.2f}, combined mean {statistics.mean(a+b for a,b in zip(oc,tc)):.2f}.
 - **Over ten combined:** {sum(1 for a,b in zip(oc,tc) if a+b>10)} documents ({100*sum(1 for a,b in zip(oc,tc) if a+b>10)/len(oc):.1f}%); maximum {max(a+b for a,b in zip(oc,tc))}.
 - **Documents whose only topics are roots:** {sum(1 for v in two.values() if v['topic'] and set(v['topic'])<=set(ROOTS)):,}.
-- **Topic replay:** {m2} documents debut two topics, all in the founding years. Debuts since 2003: {", ".join(f"{nt[0]} ({y})" for i,y,nt in late)}.
+- **Topic replay:** {m2} documents debut two or more topics. Debuts since 2003: {", ".join(f"{nt[0]} ({y})" for i,y,nt in late)}.
 """
 p='validation.md'; n=open(p).read(); n=re.sub(r'## Figures \(current build\).*', lambda m: fig, n, flags=re.S); open(p,'w').write(n)
 p='README.md'; r=open(p).read()

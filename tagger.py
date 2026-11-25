@@ -5,6 +5,7 @@ Usage:  python3 tagger.py                 tag every RFC in rfcs.json that rfc-ta
         python3 tagger.py --retag RFC9000 RFC9001     tag these again
         python3 tagger.py --all           tag the whole corpus again
         python3 tagger.py --no-model      call no model: rebuild rfc-tags.json from what it already holds
+        python3 tagger.py --no-model --recheck   also look for every stored quote in the corpus text again
 
 Reads   taxonomy.yaml, assignments.yaml, tagging_instructions.md, rfcs.json, rfc-tags.json (if present)
         and the text of each RFC to be tagged from a local copy of the RFC corpus (--corpus).
@@ -87,7 +88,32 @@ def ask(prompt_file, msg, model, timeout=900):
     if d.get('is_error') or not isinstance(out, dict): raise ModelError(str(d.get('result'))[:300])
     return out, next(iter(d.get('modelUsage') or {}), model), d.get('total_cost_usd') or 0
 
-def norm(s): return re.sub(r'[\s"\'“”‘’`]+', ' ', s).strip().lower()
+def squash(s):
+    """Letters and digits only, lower case: a quote is looked for without regard to line breaks,
+    spacing, hyphenation or punctuation, which the model tidies when it copies a passage."""
+    return re.sub(r'[^a-z0-9]+', '', s.lower())
+
+def quotable(text):
+    """The text as a quote is looked for in it: without the running header and footer of each
+    page, which otherwise interrupt any passage that crosses a page break."""
+    keep = [l for l in text.split('\n') if not re.search(r'\[Page \d+\]\s*$', l) and not re.match(r'^RFC \d+ .{10,} \w+ \d{4}\s*$', l)]
+    return squash('\n'.join(keep))
+
+def quote_found(quote, body):
+    parts = [squash(x) for x in re.split(r'\.\.\.|…', quote or '') if squash(x)]   # an elided quote is checked piece by piece
+    return bool(parts) and all(x in body for x in parts)
+
+def recheck(store, corpus):
+    """Look again for every stored quote in the corpus text, replacing the quote notes. Calls no model."""
+    n = 0
+    for rid, rec in store.items():
+        text, _ = rfc_text(corpus, rid)
+        if text is None: continue
+        body = quotable(text)
+        notes = [x for x in rec['meta']['notes'] if 'quote not found' not in x]
+        notes += [f"{t['id']}: quote not found in the text" for t in rec['tags'] if not quote_found(t['quote'], body)]
+        n += notes != rec['meta']['notes']; rec['meta']['notes'] = notes
+    return n
 
 def tag_one(tax, rfc, corpus, prompt_file, prompt_hash, model, tries=3):
     """Ask the model about one RFC and check what comes back. Returns a store record, or None if the
@@ -103,13 +129,12 @@ def tag_one(tax, rfc, corpus, prompt_file, prompt_hash, model, tries=3):
     else:
         raise err
     notes = ['text truncated at %d characters' % MAX_CHARS] if truncated else []
-    body = norm(text); tags = []
+    body = quotable(text); tags = []
     for t in out['tags']:
         tid = t['id'] if t['id'] in tax.by_id else tax.lookup(t['id'])
         if not tid: notes.append(f"model chose {t['id']!r}, which is not a tag"); continue
         if any(x['id'] == tid for x in tags): continue
-        parts = [norm(x) for x in re.split(r'\.\.\.|…', t.get('quote', '')) if norm(x)]   # an elided quote is checked piece by piece
-        if not parts or not all(x in body for x in parts):
+        if not quote_found(t.get('quote'), body):
             notes.append(f'{tid}: quote not found in the text')
         tags.append({'id': tid, 'role': t['role'], 'why': t['why'], 'quote': t.get('quote', ''), 'section': t.get('section', '')})
     return {'summary': out['summary'], 'tags': tags, 'rejected': out.get('rejected', []), 'gaps': out.get('gaps', []),
@@ -177,6 +202,7 @@ def write(out, path='rfc-tags.json'):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--no-model', action='store_true', help='rebuild rfc-tags.json without calling the model')
+    ap.add_argument('--recheck', action='store_true', help='look for every stored quote in the corpus text again (after a change to the check); calls no model')
     ap.add_argument('--retag', nargs='+', metavar='RFCn', default=[], help='tag these RFCs again')
     ap.add_argument('--all', action='store_true', help='tag every RFC again')
     ap.add_argument('--limit', type=int, help='tag at most this many RFCs in this run (lowest numbers first)')
@@ -225,6 +251,7 @@ def main():
         print(f'tagger: tagged {done}, failed {failed}, reported cost ${cost:.2f}', flush=True)
         if notext: print(f'tagger: no text in {a.corpus} for {len(notext)}: {" ".join(notext)}', flush=True)
 
+    if a.recheck: print(f'tagger: quote notes changed for {recheck(store, a.corpus)} RFCs', flush=True)
     out = build(tax, rfcs, store); write(out)
     carried = collections.Counter(t for v in out.values() for p in v['paths'] for t in p)
     print(f"{len(tax.by_id)} tags; {len(out)} RFCs; not tagged by the model {sum(1 for v in out.values() if not v['tagged'])}; "
