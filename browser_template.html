@@ -486,7 +486,7 @@ footer code{font-size:12px}
             are named protocols, systems and formats, shown as teal pills in the RFC series' own
             typewriter face. Roots are always topics. Hover any tag, anywhere on the page, to see its
             place in the hierarchy; switch on <b>Full tag path</b> at the top to show every tag with
-            its ancestors. <b>Tree</b> shows the hierarchy; <b>List</b> shows every tag in one list, sorted by any
+            its ancestors. <b>Tree</b> shows the hierarchy, each tag&rsquo;s children in alphabetical order; <b>List</b> shows every tag in one list, sorted by any
             column &mdash; click a column heading, and click it again to reverse the order. Search
             matches tag names and descriptions on whole words.
             Two measures, kept apart: <b>Corpus</b> is how many RFCs carry a tag; <b>Per year</b>
@@ -816,9 +816,19 @@ var IMPLIED_BY={};TAGS.forEach(function(t){t.im.forEach(function(x){(IMPLIED_BY[
 function impliesPills(t,short){
   return t.im.map(function(x){return pill(byId[x],{short:short,cls:'imp',note:'Implied by '+t.id});}).join('');
 }
+/* the tree's order: roots as taxonomy.yaml has them, every tag's children A-Z beneath it, each tag followed by
+   all the tags under it (the fold filter and the indentation rely on that) */
+var TREE_ORDER=null;
+function childrenOf(id){return TAGS.filter(function(k){return k.parent===id;}).sort(byName);}
+function treeOrder(){
+  if(TREE_ORDER)return TREE_ORDER;
+  TREE_ORDER=[];
+  (function walk(list){list.forEach(function(t){TREE_ORDER.push(t);walk(childrenOf(t.id));});})(ROOTS);
+  return TREE_ORDER;
+}
 function drawTags(){
-  var list=TAGS.slice();WHY={};
   var tree=(view==='tree')&&!filter;
+  var list=(tree?treeOrder():TAGS).slice();WHY={};
   if(filter){
     var res=searchTags(list,filter)||[];
     list=res.map(function(r){WHY[r.tag.id]=r.why;return r.tag;});
@@ -929,7 +939,7 @@ function drawDetail(){
   var rows=selectedRows();
   var head=sel.map(function(id){
     var t=byId[id];
-    var kids=TAGS.filter(function(k){return k.parent===id;});
+    var kids=childrenOf(id);
     return '<div class="dsel"><h3>'+pill(t,{short:true})+'<button type="button" class="xbtn" data-remove="'+esc(id)+'" aria-label="Remove '+esc(id)+' from the selection" title="Remove from the selection">&times;</button></h3><div class="crumb">'+crumb(t)+'</div>'+
       '<p>'+esc(t.desc)+'</p>'+
       '<div class="pills">'+
