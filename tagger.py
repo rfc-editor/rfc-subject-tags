@@ -93,15 +93,36 @@ def squash(s):
     spacing, hyphenation or punctuation, which the model tidies when it copies a passage."""
     return re.sub(r'[^a-z0-9]+', '', s.lower())
 
+CITATION = re.compile(r'\[[A-Za-z0-9.\-]{1,20}\]')                  # [1], [RFC4741], [I-D.foo]
+BULLET = re.compile(r'(?m)^[ \t]*(?:o|\*|-|\d+\.|\([a-z0-9]\))[ \t]+')  # o, *, -, 1., (a) opening a line
+
+def unmark(s):
+    """Without citation markers and list bullets, which the model drops when it copies a passage."""
+    return BULLET.sub(' ', CITATION.sub(' ', s))
+
 def quotable(text):
     """The text as a quote is looked for in it: without the running header and footer of each
     page, which otherwise interrupt any passage that crosses a page break."""
     keep = [l for l in text.split('\n') if not re.search(r'\[Page \d+\]\s*$', l) and not re.match(r'^RFC \d+ .{10,} \w+ \d{4}\s*$', l)]
-    return squash('\n'.join(keep))
+    return squash(unmark('\n'.join(keep)))
+
+QUOTE_MATCH = 0.90   # share of a quote's letters and digits that must line up with the text where it fits best
+
+def near_match(part, body):
+    """The share of `part` that lines up with `body` at the place it fits best: the longest run the
+    two share, widened to the quote's length either side. Catches a word the model shortened or
+    left out (`the Extensible Markup Language (XML)` copied as `XML`)."""
+    import difflib
+    m = difflib.SequenceMatcher(None, part, body, autojunk=False).find_longest_match(0, len(part), 0, len(body))
+    if m.size < 12: return m.size / len(part)
+    start = max(0, m.b - m.a - 10)
+    window = body[start:start + len(part) + 30]
+    return sum(b.size for b in difflib.SequenceMatcher(None, part, window, autojunk=False).get_matching_blocks()) / len(part)
 
 def quote_found(quote, body):
-    parts = [squash(x) for x in re.split(r'\.\.\.|…', quote or '') if squash(x)]   # an elided quote is checked piece by piece
-    return bool(parts) and all(x in body for x in parts)
+    """True when every piece of the quote is in the text, exactly or as a near match (QUOTE_MATCH)."""
+    parts = [squash(unmark(x)) for x in re.split(r'\.\.\.|…', quote or '') if squash(unmark(x))]   # an elided quote is checked piece by piece
+    return bool(parts) and all(x in body or near_match(x, body) >= QUOTE_MATCH for x in parts)
 
 def recheck(store, corpus):
     """Look again for every stored quote in the corpus text, replacing the quote notes. Calls no model."""

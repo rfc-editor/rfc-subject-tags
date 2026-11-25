@@ -162,7 +162,7 @@ The character rule exists because ids appear inside other formats: ` / ` joins t
 
 1. **Chooses the RFCs.** By default, every RFC in `rfcs.json` for which `rfc-tags.json` holds no model result: after an index refresh, the newly published ones. `--retag RFC9000 RFC9001` tags the named RFCs again; `--all` tags the whole corpus again; `--limit N` stops after N.
 2. **Asks the model**, one RFC per fresh context, `--jobs` at a time (default 6). Text beyond 300,000 characters is cut off.
-3. **Checks the answer.** A tag id the taxonomy does not have is dropped. Each quote is looked for in the text, ignoring page headers and footers, line breaks, spacing and punctuation. Both leave a note in `review`. `--no-model --recheck` repeats the quote check for every stored result, for use after the check itself changes.
+3. **Checks the answer.** A tag id the taxonomy does not have is dropped. Each quote is looked for in the text, ignoring page headers and footers, line breaks, spacing, punctuation, citation markers (`[1]`, `[RFC4741]`) and list bullets. A quote not found exactly still passes if at least 90% of it lines up with the text where it fits best (`QUOTE_MATCH`), which allows for a word the model shortened or left out; a quote that is empty, invented or pieced together from separate places falls short. Both leave a note in `review`. `--no-model --recheck` repeats the quote check for every stored result, for use after the check itself changes.
 4. **Applies hand assignments.** The RFC's entry in `assignments.yaml`, if any: `remove` tags are taken out, `add` tags put in.
 5. **Derives** `paths`, `technology` and `topic` (below) and writes `rfc-tags.json`.
 

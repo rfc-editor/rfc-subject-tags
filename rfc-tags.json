@@ -1521,9 +1521,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "RFC series: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -1547,9 +1545,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "RFC series: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "RFC series",
     "ARPANET"
@@ -5669,9 +5665,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "ARPANET: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -5714,9 +5708,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "ARPANET: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "ARPANET",
     "NCP",
@@ -11859,9 +11851,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "ARPANET: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -11885,9 +11875,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "ARPANET: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "RFC series",
     "ARPANET"
@@ -30853,9 +30841,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "ARPANET: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -30880,9 +30866,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "ARPANET: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "ARPANET",
     "Telnet"
@@ -30923,9 +30907,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "ARPANET: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -30950,9 +30932,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "ARPANET: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "ARPANET",
     "Telnet"
@@ -39574,9 +39554,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "ARPANET: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -39607,9 +39585,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "ARPANET: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "message format",
     "ARPANET"
@@ -43467,9 +43443,7 @@
     "why": "The paper's main theme is how a hardware fault and a protocol design weakness cause network-wide failure, and the need for resource-use alarms. The taxonomy has no tag for network failure case studies or resilience."
    }
   ],
-  "review": [
-   "routing architecture: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -43493,9 +43467,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "routing architecture: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "ARPANET",
     "routing architecture"
@@ -49325,9 +49297,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "network management: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -49346,9 +49316,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "network management: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "ARPANET",
     "network management"
@@ -57581,9 +57549,7 @@
     "why": "The taxonomy has only a broad amateur radio tag and a general routing architecture tag. It has no tag for passive-monitoring or multipath routing on packet-radio channels."
    }
   ],
-  "review": [
-   "routing architecture: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -57613,9 +57579,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "routing architecture: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "amateur radio",
     "routing architecture"
@@ -58799,9 +58763,7 @@
     "why": "The taxonomy has no tag for OSI ES-IS routing. The document is about this protocol, and it is covered here only by the CLNP and OSI tags."
    }
   ],
-  "review": [
-   "CLNP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -58828,9 +58790,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "CLNP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "CLNP",
     "OSI"
@@ -59894,9 +59854,7 @@
     "why": "The document is the early router requirements specification, a precursor to RFC 1812. The taxonomy has no tag for router requirements, so routing architecture is the closest fit."
    }
   ],
-  "review": [
-   "IPv4: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -59941,9 +59899,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "IPv4: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "routing architecture",
     "EGP",
@@ -68304,9 +68260,7 @@
     "why": "The document is the canonical Host Requirements specification, covering whole-host protocol implementation conformance across layers. The taxonomy has no tag for it, so individual protocol tags are the closest fit."
    }
   ],
-  "review": [
-   "Ethernet: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -68386,9 +68340,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "Ethernet: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "TCP",
     "IPv4",
@@ -69950,8 +69902,7 @@
   ],
   "gaps": [],
   "review": [
-   "text truncated at 300000 characters",
-   "OSI: quote not found in the text"
+   "text truncated at 300000 characters"
   ],
   "reviewed": false,
   "paths": [
@@ -69983,8 +69934,7 @@
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
    "notes": [
-    "text truncated at 300000 characters",
-    "OSI: quote not found in the text"
+    "text truncated at 300000 characters"
    ],
    "tags": [
     "IS-IS",
@@ -77330,9 +77280,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "OSI: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -77362,9 +77310,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "OSI: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "OSI",
     "transport mapping"
@@ -81094,9 +81040,7 @@
     "why": "A large part of the document catalogues CWIS servers, Archie, freenets and resource guides. The taxonomy has no tag for information systems or resource directories. The nearest, service discovery, is about discovering network services."
    }
   ],
-  "review": [
-   "user guides: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -81132,9 +81076,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "user guides: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "user guides",
     "WHOIS"
@@ -84939,9 +84881,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "internet history: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -84965,9 +84905,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "internet history: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "IANA",
     "internet history"
@@ -85858,9 +85796,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "SNMP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -85887,9 +85823,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "SNMP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "SNMP",
     "MIB"
@@ -85939,9 +85873,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "SNMP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -85962,9 +85894,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "SNMP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "SNMP"
    ],
@@ -86800,9 +86730,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "BGP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -86828,9 +86756,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "BGP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "BGP",
     "OSPF"
@@ -89802,9 +89728,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "BGP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -89830,9 +89754,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "BGP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "BGP",
     "OSPF"
@@ -93505,9 +93427,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "MIB: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -93534,9 +93454,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "MIB: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "SNMP",
     "MIB"
@@ -99646,9 +99564,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "fax: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -99683,9 +99599,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "fax: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "fax",
     "ENUM",
@@ -103368,9 +103282,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "FTP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -103400,9 +103312,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "FTP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "FTP",
     "firewall"
@@ -108121,9 +108031,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "security: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -108158,9 +108066,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "security: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "security",
     "firewall",
@@ -109430,9 +109336,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "SMTP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -109459,9 +109363,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "SMTP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "SMTP"
    ],
@@ -142475,9 +142377,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "MIME: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -142514,9 +142414,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "MIME: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "message format",
     "MIME",
@@ -148351,10 +148249,7 @@
     "why": "These early information-discovery and user-lookup tools have no fitting tag, and the closest, service discovery, is a poor fit."
    }
   ],
-  "review": [
-   "Telnet: quote not found in the text",
-   "Gopher: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -148466,10 +148361,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "Telnet: quote not found in the text",
-    "Gopher: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "user guides",
     "traceroute",
@@ -165314,9 +165206,7 @@
     "why": "The taxonomy has no tag for kernel key-management APIs. The nearest fits are key management and IPsec."
    }
   ],
-  "review": [
-   "key management: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -165346,9 +165236,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "key management: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "key management",
     "IPsec"
@@ -172386,9 +172274,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "IPv6: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -172433,9 +172319,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "IPv6: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "MIB",
     "UDP",
@@ -173966,9 +173850,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "IPv6: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -173994,9 +173876,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "IPv6: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "tunneling",
     "IPv6"
@@ -183827,9 +183707,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "HTTP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -183865,9 +183743,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "HTTP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "MIB",
     "HTTP"
@@ -191241,9 +191117,7 @@
     "why": "The taxonomy has no tag for PPP Multilink fragmentation or for real-time framing over slow links. PPP is the closest fit."
    }
   ],
-  "review": [
-   "PPP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -191273,9 +191147,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "PPP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "PPP",
     "header compression"
@@ -201218,9 +201090,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "IOTP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -201256,9 +201126,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "IOTP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "XML signatures",
     "IOTP"
@@ -201751,9 +201619,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "Ethernet: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -201789,9 +201655,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "Ethernet: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "RSVP",
     "QoS",
@@ -202062,9 +201926,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "TLS: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -202094,9 +201956,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "TLS: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "HTTP",
     "TLS"
@@ -206159,9 +206019,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "tunneling: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -206198,9 +206056,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "tunneling: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "RADIUS",
     "tunneling"
@@ -238754,9 +238610,7 @@
     "why": "The taxonomy lacks a general traffic engineering topic tag; the nearest is the MPLS-child \"traffic engineering\" topic under routing, which fits the subject (the id is used above on that basis), but no more specific tag for TE principles exists."
    }
   ],
-  "review": [
-   "Diffserv: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -238802,9 +238656,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "Diffserv: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "traffic engineering",
     "MPLS",
@@ -248691,9 +248543,7 @@
     "why": "The document is about ISUP call control and its mapping, but the taxonomy has no ISUP or SS7 tag. SIP-T is the closest fit."
    }
   ],
-  "review": [
-   "SIP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -248734,9 +248584,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "SIP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "SIP-T",
     "SIP",
@@ -260844,9 +260692,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "URN: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -260873,9 +260719,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "URN: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "URN"
    ],
@@ -267943,9 +267787,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "Ethernet: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -267981,9 +267823,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "Ethernet: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "MIB",
     "Ethernet"
@@ -274336,8 +274176,7 @@
   ],
   "gaps": [],
   "review": [
-   "text truncated at 300000 characters",
-   "iSCSI: quote not found in the text"
+   "text truncated at 300000 characters"
   ],
   "reviewed": false,
   "paths": [
@@ -274366,8 +274205,7 @@
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
    "notes": [
-    "text truncated at 300000 characters",
-    "iSCSI: quote not found in the text"
+    "text truncated at 300000 characters"
    ],
    "tags": [
     "iSCSI"
@@ -279822,9 +279660,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "IPv4: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -279856,9 +279692,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "IPv4: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "IPv4",
     "IPv6 transition"
@@ -280122,9 +279956,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "RADIUS: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -280172,9 +280004,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "RADIUS: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "IPv6 transition",
     "RADIUS",
@@ -286964,9 +286794,7 @@
     "why": "The taxonomy has no tag for server-side gateway or script interfaces such as CGI. The nearest fit is the general web topic."
    }
   ],
-  "review": [
-   "web: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -286987,9 +286815,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "web: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "web",
     "HTTP"
@@ -291361,9 +291187,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "RSVP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -291399,9 +291223,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "RSVP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "RSVP",
     "IANA"
@@ -293540,9 +293362,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "CRC: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -293593,9 +293413,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "CRC: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "Kerberos",
     "DES",
@@ -300789,9 +300607,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "IETF process: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -300811,9 +300627,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "IETF process: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "IETF process"
    ],
@@ -305678,9 +305492,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "IPsec: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -305718,9 +305530,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "IPsec: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "VPN",
     "operational security",
@@ -311125,9 +310935,7 @@
     "why": "The core theme is separating endpoint identity from locator, which is not a distinct tag. Shim6 and HIP only partly cover it, and ILNP and LISP are specific solutions."
    }
   ],
-  "review": [
-   "Shim6: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -311161,9 +310969,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "Shim6: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "multihoming",
     "Shim6"
@@ -314360,9 +314166,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "FTP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -314392,9 +314196,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "FTP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "FTP",
     "TLS"
@@ -316262,9 +316064,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "DHCPv6: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -316322,9 +316122,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "DHCPv6: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "DHCPv6",
     "PPPoE",
@@ -330336,9 +330134,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "TCP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -330371,9 +330167,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "TCP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "ROHC",
     "TCP"
@@ -342337,9 +342131,7 @@
     "why": "The document is about MPLS RSVP-TE Fast Reroute merge point discovery. The taxonomy has only IP fast reroute, which covers IP and LDP fast reroute, so it fits imperfectly."
    }
   ],
-  "review": [
-   "IP fast reroute: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -342371,9 +342163,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "IP fast reroute: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "RSVP-TE",
     "IP fast reroute"
@@ -348010,9 +347800,7 @@
     "why": "The document concerns the ITU-T H.263 codec's RTP payload formats. The taxonomy has no H.263 tag, though it has H.264, VP8 and similar tags."
    }
   ],
-  "review": [
-   "RTP payload format: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -348039,9 +347827,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "RTP payload format: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "RTP payload format"
    ],
@@ -366458,9 +366244,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "RTP payload format: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -366507,9 +366291,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "RTP payload format: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "media types",
     "RTP payload format",
@@ -374036,9 +373818,7 @@
     "why": "The report's core subject is unwanted traffic and the underground economy behind it, which the taxonomy covers only partly through DDoS, spam and operational security."
    }
   ],
-  "review": [
-   "spam: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -374082,9 +373862,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "spam: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "DDoS",
     "spam",
@@ -391179,9 +390957,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "DNS: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -391224,9 +391000,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "DNS: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "6to4",
     "DNS"
@@ -399337,9 +399111,7 @@
     "why": "The taxonomy has no tag for XPath or XML diff/patch. The XML tag is the closest fit."
    }
   ],
-  "review": [
-   "XML: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -399360,9 +399132,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "XML: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "XML"
    ],
@@ -401616,9 +401386,7 @@
     "why": "The taxonomy has no tag for TDM circuit emulation over packet networks; the document's subject is setting up such PWs, only partly covered by pseudowire."
    }
   ],
-  "review": [
-   "pseudowire: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -401652,9 +401420,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "pseudowire: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "pseudowire",
     "LDP"
@@ -404920,9 +404686,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "EAI: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -404967,9 +404731,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "EAI: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "EAI",
     "message format",
@@ -406764,9 +406526,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "DDoS: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -406796,9 +406556,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "DDoS: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "DNS",
     "DDoS"
@@ -426516,9 +426274,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "DCCP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -426548,9 +426304,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "DCCP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "NAT",
     "DCCP"
@@ -427173,9 +426927,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "SIP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -427205,9 +426957,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "SIP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "geolocation",
     "SIP"
@@ -433957,9 +433707,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "congestion control: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -433985,9 +433733,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "congestion control: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "TCP",
     "congestion control"
@@ -460571,8 +460317,7 @@
   ],
   "gaps": [],
   "review": [
-   "text truncated at 300000 characters",
-   "NETCONF: quote not found in the text"
+   "text truncated at 300000 characters"
   ],
   "reviewed": false,
   "paths": [
@@ -460600,8 +460345,7 @@
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
    "notes": [
-    "text truncated at 300000 characters",
-    "NETCONF: quote not found in the text"
+    "text truncated at 300000 characters"
    ],
    "tags": [
     "YANG",
@@ -465622,9 +465366,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "P2P: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -465656,9 +465398,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "P2P: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "HIP",
     "P2P"
@@ -465713,9 +465453,7 @@
     "why": "The document's main subject is device auto-configuration (provisioning) of SIP user agents, which has no specific tag in the taxonomy beyond SIP."
    }
   ],
-  "review": [
-   "SIP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -465736,9 +465474,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "SIP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "SIP"
    ],
@@ -468066,9 +467802,7 @@
     "why": "The taxonomy has no Kerberos tag in the form needed here. The only entries are 'Kerberos [tech]' under security, which exists, so no gap in practice; listed to flag PKINIT, which has no dedicated tag."
    }
   ],
-  "review": [
-   "privacy: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -468100,9 +467834,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "privacy: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "Kerberos",
     "GSS-API",
@@ -470548,9 +470280,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "SIP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -470571,9 +470301,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "SIP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "SIP"
    ],
@@ -478341,9 +478069,7 @@
     "why": "Anonymization of network trace and flow data (truncation, permutation, prefix-preserving pseudonymization) is a major subject here. The taxonomy has only the generic privacy topic for it."
    }
   ],
-  "review": [
-   "IPFIX: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -478374,9 +478100,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "IPFIX: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "IPFIX",
     "privacy"
@@ -479657,9 +479381,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "Kerberos: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -479690,9 +479412,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "Kerberos: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "Kerberos",
     "transport mapping"
@@ -481662,9 +481382,7 @@
     "why": "A large part of the document (Section 4.1) addresses fragment reassembly attacks and countermeasures, and the taxonomy has no fragmentation tag."
    }
   ],
-  "review": [
-   "operational security: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -481694,9 +481412,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "operational security: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "IPv4",
     "operational security"
@@ -501518,9 +501234,7 @@
     "why": "The document's core mechanism is identity-based encryption and certificateless signatures, with no matching tag in the taxonomy."
    }
   ],
-  "review": [
-   "MIKEY: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -501557,9 +501271,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "MIKEY: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "MIKEY",
     "tel URI"
@@ -509236,9 +508948,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "DHCPv6: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -509265,9 +508975,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "DHCPv6: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "DHCP",
     "DHCPv6"
@@ -511809,9 +511517,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "RFC series: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -511831,9 +511537,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "RFC series: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "RFC series"
    ],
@@ -524078,9 +523782,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "NAT64: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -524139,9 +523841,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "NAT64: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "IPv6 transition",
     "6rd",
@@ -528417,9 +528117,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "IANA: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -528455,9 +528153,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "IANA: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "media types",
     "IANA"
@@ -530875,9 +530571,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "vCard: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -530898,9 +530592,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "vCard: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "vCard"
    ],
@@ -545663,9 +545355,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "NAT64: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -545746,9 +545436,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "NAT64: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "NAT64",
     "DNS64",
@@ -547901,9 +547589,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "Diameter: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -547931,9 +547617,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "Diameter: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "Diameter"
    ],
@@ -551800,9 +551484,7 @@
     "why": "The document covers AYIYA and the Tunnel Broker with TSP as tunnelling mechanisms, and the taxonomy has no tag for either."
    }
   ],
-  "review": [
-   "6to4: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -551866,9 +551548,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "6to4: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "IPv6 transition",
     "operational security",
@@ -555360,9 +555040,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "MPLS-TP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -555402,9 +555080,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "MPLS-TP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "MPLS-TP",
     "GMPLS",
@@ -556650,9 +556326,7 @@
     "why": "The taxonomy has no tag for OLSR or NHDP. Under routing > MANET there are OLSR, AODV, DSR, DLEP, NHDP and TBRPF. The ids I used, MIB and OLSR, are not listed in the taxonomy, so the tags may not be valid. The closest valid tags are MANET and SNMP."
    }
   ],
-  "review": [
-   "OLSR: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -556695,9 +556369,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "OLSR: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "MIB",
     "OLSR"
@@ -559537,9 +559209,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "SEND: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -559579,9 +559249,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "SEND: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "SAVI",
     "SEND"
@@ -562470,9 +562138,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "multicast: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -562508,9 +562174,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "multicast: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "ANCP",
     "multicast"
@@ -563706,9 +563370,7 @@
     "why": "The document is about Cisco NetFlow v9 compatibility, but the taxonomy has no NetFlow tag. IPFIX is the closest fit."
    }
   ],
-  "review": [
-   "IPFIX: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -563730,9 +563392,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "IPFIX: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "IPFIX"
    ],
@@ -569951,9 +569611,7 @@
     "why": "The OGA ID field provides hash-algorithm agility for identifiers. There is no specific tag for cryptographic identifiers or agility, though the cryptography parent might partly cover it."
    }
   ],
-  "review": [
-   "HIP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -569981,9 +569639,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "HIP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "addressing",
     "HIP"
@@ -581613,9 +581269,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "SSH: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -581660,9 +581314,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "SSH: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "DNS",
     "SSH",
@@ -592375,9 +592027,7 @@
     "why": "The document is about this registry and its port number ranges. The taxonomy has IANA but no specific tag for port number or service name assignment."
    }
   ],
-  "review": [
-   "transport: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -592401,9 +592051,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "transport: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "IANA",
     "transport"
@@ -600913,9 +600561,7 @@
     "why": "The central subject has no dedicated tag; it is closest to operational security, but readers browsing for reconnaissance and scanning would want a specific page."
    }
   ],
-  "review": [
-   "addressing: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -600956,9 +600602,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "addressing: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "IPv6",
     "operational security",
@@ -609375,9 +609019,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "HTTP APIs: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -609419,9 +609061,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "HTTP APIs: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "HTTP APIs",
     "media types"
@@ -609566,9 +609206,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "time zones: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -609602,9 +609240,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "time zones: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "CalDAV",
     "time zones"
@@ -612527,9 +612163,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "DHCPv6: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -612565,9 +612199,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "DHCPv6: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "DHCPv6",
     "DHCP",
@@ -625608,9 +625240,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "BGP communities: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -625646,9 +625276,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "BGP communities: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "BGP communities",
     "DDoS"
@@ -626174,9 +625802,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "CDN: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -626197,9 +625823,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "CDN: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "CDN"
    ],
@@ -660894,9 +660518,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "BGPsec: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -660929,9 +660551,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "BGPsec: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "RPKI",
     "BGPsec"
@@ -670882,9 +670502,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "OAM: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -670910,9 +670528,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "OAM: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "YANG",
     "OAM"
@@ -673052,9 +672668,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "VPLS: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -673087,9 +672701,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "VPLS: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "EVPN",
     "VPLS"
@@ -688661,9 +688273,7 @@
     "why": "The central subject is Web Packaging (bundled exchanges and signed HTTP exchanges) and the AMP format. The taxonomy has no tag for these."
    }
   ],
-  "review": [
-   "workshop reports: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -688687,9 +688297,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "workshop reports: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "workshop reports",
     "web"
@@ -689861,9 +689469,7 @@
     "why": "The document specifies proxy behavior for LLQ and DNS Push subscriptions, but the taxonomy has no tag for DNS Stateful Operations or Push Notifications."
    }
   ],
-  "review": [
-   "DNS-SD: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -689904,9 +689510,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "DNS-SD: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "DNS-SD",
     "mDNS",
@@ -704794,9 +704398,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "randomness: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -704818,9 +704420,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "randomness: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "randomness"
    ],
@@ -710760,9 +710360,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "overlay networks: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -710797,9 +710395,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "overlay networks: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "BGP",
     "tunneling",
@@ -722772,8 +722368,7 @@
    }
   ],
   "review": [
-   "model chose 'CMC', which is not a tag",
-   "EST: quote not found in the text"
+   "model chose 'CMC', which is not a tag"
   ],
   "reviewed": false,
   "paths": [
@@ -722802,8 +722397,7 @@
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
    "notes": [
-    "model chose 'CMC', which is not a tag",
-    "EST: quote not found in the text"
+    "model chose 'CMC', which is not a tag"
    ],
    "tags": [
     "EST"
@@ -734489,9 +734083,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "CoAP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -734547,9 +734139,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "CoAP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "CoAP",
     "CBOR",
@@ -746927,9 +746517,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "SCHC: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -746965,9 +746553,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "SCHC: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "SCHC",
     "YANG"
@@ -752036,9 +751622,7 @@
     "why": "The taxonomy has no tag for IGP Flexible Algorithm (RFC 9350), which is the core subject. IS-IS and OSPF are the closest tags, but readers browsing Flex-Algorithm would want this RFC."
    }
   ],
-  "review": [
-   "IS-IS: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -752070,9 +751654,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "IS-IS: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "IS-IS",
     "OSPF",
@@ -755891,9 +755473,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "SR-MPLS: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -755929,9 +755509,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "SR-MPLS: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "SR-MPLS",
     "performance measurement"
@@ -783207,9 +782785,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "ECDSA: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -783256,9 +782832,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "ECDSA: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "JOSE",
     "COSE",
@@ -790328,7 +789902,6 @@
   ],
   "gaps": [],
   "review": [
-   "TLS: quote not found in the text",
    "humor beside other tags (R16)"
   ],
   "reviewed": false,
@@ -790355,9 +789928,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "TLS: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "humor",
     "TLS"
@@ -797499,9 +797070,7 @@
     "why": "The taxonomy has an EVPN tag under VPN, but the id list above must match it exactly; it appears as EVPN under VPN. No gap if used as given."
    }
   ],
-  "review": [
-   "L3VPN: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -797539,9 +797108,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "L3VPN: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "EVPN",
     "L3VPN",
@@ -798671,9 +798238,7 @@
     "why": "The document's main subject is ACL-based, group-identity access control. The taxonomy has no ACL or group-based policy tag, only the general 'authorization' topic and the unrelated 'firewall' tag."
    }
   ],
-  "review": [
-   "YANG: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -798710,9 +798275,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "YANG: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "YANG",
     "RADIUS"
