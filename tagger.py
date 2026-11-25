@@ -161,6 +161,23 @@ def tag_one(tax, rfc, corpus, prompt_file, prompt_hash, model, tries=3):
     return {'summary': out['summary'], 'tags': tags, 'rejected': out.get('rejected', []), 'gaps': out.get('gaps', []),
             'meta': {'model': used, 'date': datetime.date.today().isoformat(), 'prompt': prompt_hash, 'notes': notes}, 'cost': cost}
 
+# The model fills in a tag's id before its quote and reasoning and cannot take the id back. So a
+# tag it cannot support is sometimes left in with "placeholder" where the reasoning belongs, or
+# with reasoning that argues against the tag ("this id is invalid and must be dropped"), often
+# wrongly claiming the tag is not in the taxonomy. Such a tag is kept but flagged.
+EMPTY_FIELD = re.compile(r'^\s*(placeholder|tbd|todo|x|n/?a|-+|\.+)?\s*$', re.I)
+SELF_REJECT = re.compile(r'\b(?:placeholder|(?:this|the) (?:id|tag|entry) is (?:invalid|not valid)|not a valid (?:id|tag)'
+                         r'|must be (?:dropped|rejected|removed)|should be (?:disregarded|dropped|removed)'
+                         r'|replaced below|choose \S+(?: \S+)? instead)', re.I)
+
+def unfinished(why):
+    """The review note for a tag whose reasoning the model did not finish or argued against, or None."""
+    w = why.get('why') or ''
+    if EMPTY_FIELD.match(w) or EMPTY_FIELD.match(why.get('quote') or ''): return 'the model gave no reasoning (placeholder)'
+    if SELF_REJECT.search(w) and not re.search(r'placeholder (record|notice|value|field)', w, re.I):
+        return "the model's reasoning argues against this tag"
+    return None
+
 # ---- the store: model results, kept in rfc-tags.json ----------------------------
 def from_entry(e):
     """The model's result as recorded in an rfc-tags.json entry, or None if the entry has none."""
@@ -184,6 +201,7 @@ def build(tax, rfcs, store):
                 if t['id'] not in tax.by_id:
                     review.append(f"{t['id']}: no longer in the taxonomy; tag this RFC again"); removed[t['id']] = why; continue
                 tags.append(t['id']); reasons[t['id']] = why
+                if (note := unfinished(why)): review.append(f"{t['id']}: {note}")
         else:
             review.append(UNTAGGED)
         hand = {'why': ov.get('reason'), 'by': str(ov.get('by', '')), 'date': str(ov.get('date', ''))}

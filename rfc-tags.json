@@ -964,43 +964,46 @@
  "RFC20": {
   "title": "ASCII format for network interchange",
   "year": 1969,
-  "summary": "RFC 20 specifies 7-bit ASCII, embedded in 8-bit bytes with the high bit 0, as the standard character code for ARPANET host-to-host interchange, and reproduces the USASCII code table, control character definitions and usage notes.",
+  "summary": "RFC 20 specifies standard 7-bit ASCII (USAS X3.4-1968) embedded in 8-bit bytes as the character code for ARPANET network interchange over HOST-HOST connections, reproducing the code table, legend and definitions.",
   "tags": [
    "ASCII",
-   "HTTP"
+   "ARPANET"
   ],
   "reasons": {
    "ASCII": {
     "role": "primary",
-    "why": "The whole document defines and reproduces the ASCII code set, its table, control characters and notation for network interchange.",
-    "quote": "we suggest the use of standard 7-bit ASCII embedded in an 8 bit byte whose high order bit is always 0.",
+    "why": "The document exists to define ASCII as the network interchange character code and reproduces the full code table, control character legend and definitions.",
+    "quote": "we suggest the use of standard 7-bit ASCII embedded in an 8 bit byte whose high order bit is always 0",
     "section": "Introduction"
    },
-   "HTTP": {
+   "ARPANET": {
     "role": "secondary",
-    "why": "PLACEHOLDER",
+    "why": "It sets an early ARPANET host-level convention, including per-host end-of-line characters at SRI and UCLA, so ARPANET readers would want it.",
     "quote": "This code will be used over HOST-HOST primary connections.",
     "section": "Introduction"
    }
   },
   "rejected": [
    {
-    "id": "NCP",
-    "why": "HOST-HOST connections are mentioned only as where the code is used; the RFC does not specify NCP."
-   },
-   {
     "id": "character sets",
-    "why": "ASCII is the more specific child tag and already covers this."
+    "why": "ASCII is a child of character sets and the more specific tag fits, so the parent is implied."
    },
    {
-    "id": "ARPANET",
-    "why": "Only a passing reference to HOST-HOST connections and SRI/UCLA end-of-line choices; the document is about the character code, not ARPANET operations."
+    "id": "NCP",
+    "why": "HOST-HOST connections are mentioned only as the carrier for the code. The document does not specify the protocol."
+   },
+   {
+    "id": "Unicode",
+    "why": "The document predates Unicode and says nothing about it."
    }
   ],
   "gaps": [],
   "review": [],
   "reviewed": false,
   "paths": [
+   [
+    "ARPANET"
+   ],
    [
     "data formats"
    ],
@@ -1018,33 +1021,25 @@
     "internationalization",
     "character sets",
     "ASCII"
-   ],
-   [
-    "web"
-   ],
-   [
-    "web",
-    "HTTP"
    ]
   ],
   "technology": [
    "ASCII",
-   "HTTP",
    "character sets"
   ],
   "topic": [
+   "ARPANET",
    "data formats",
-   "internationalization",
-   "web"
+   "internationalization"
   ],
   "tagged": {
    "model": "claude-sonnet-5-5",
-   "date": "2026-11-24",
+   "date": "2026-11-25",
    "prompt": "5568eab4951d",
    "notes": [],
    "tags": [
     "ASCII",
-    "HTTP"
+    "ARPANET"
    ],
    "removed": {}
   }
@@ -66119,23 +66114,46 @@
  "RFC1095": {
   "title": "Common Management Information Services and Protocol over TCP/IP (CMOT)",
   "year": 1989,
-  "summary": "RFC 1095 specifies CMOT, which carries ISO CMIS/CMIP network management (with ACSE and ROSE) over TCP/UDP using a lightweight presentation protocol, and maps the Internet SMI/MIB onto CMIP.",
+  "summary": "RFC 1095 specifies CMOT, a network management architecture running ISO CMIS/CMIP (with ACSE, ROSE and a lightweight presentation layer) over TCP/UDP, including an interpretation of the Internet SMI/MIB for CMIP.",
   "tags": [
    "CMIP"
   ],
   "reasons": {
    "CMIP": {
     "role": "primary",
-    "why": "",
-    "quote": "",
-    "section": ""
+    "why": "The whole document is the CMOT profile of CMIS/CMIP over TCP/IP, specifying protocol agreements, functional units and the mapping of Internet MIB objects onto CMIP.",
+    "quote": "this memo defines the means for implementing the Draft International Standard (DIS) version of CMIS/CMIP on top of Internet transport protocols",
+    "section": "1. Status of this Memo"
    }
   },
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "CMIP: quote not found in the text"
+  "rejected": [
+   {
+    "id": "SNMP",
+    "why": "SNMP is mentioned only as the competing short-term protocol; the document does not specify it."
+   },
+   {
+    "id": "MIB",
+    "why": "The Internet MIB (RFC 1066) is reinterpreted as object classes for CMIP, but no MIB module is defined; this is secondary to the CMIP profile."
+   },
+   {
+    "id": "TCP",
+    "why": "TCP and UDP are only the transport substrate for the lightweight presentation protocol."
+   },
+   {
+    "id": "ASN.1",
+    "why": "ASN.1 is the notation used by the protocols, not the subject."
+   },
+   {
+    "id": "network management",
+    "why": "The parent topic is implied by the CMIP tag, so it is not listed separately."
+   },
+   {
+    "id": "OSI",
+    "why": "The OSI tag covers network-layer protocols, and this document uses OSI only at the application layer."
+   }
   ],
+  "gaps": [],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -66154,11 +66172,9 @@
   ],
   "tagged": {
    "model": "claude-sonnet-5-5",
-   "date": "2026-11-24",
+   "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "CMIP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "CMIP"
    ],
@@ -74887,76 +74903,83 @@
  "RFC1210": {
   "title": "Network and infrastructure user requirements for transatlantic research collaboration: Brussels, July 16-18, and Washington July 24-25, 1990",
   "year": 1991,
-  "summary": "Workshop report from the Networks and Infrastructure Working Group summarising user requirements, one- and three-year targets and recommended actions for transatlantic US/European research collaboration (email, directories, login, file transfer, video conferencing, network management, multi-protocol support, links).",
+  "summary": "Workshop report summarising user requirements, targets and recommended actions for networking and infrastructure services (email, directory, file transfer, login, video conferencing, network management, multi-protocol support, transatlantic links) to support US-European research collaboration under ESPRIT and DARPA/NSF.",
   "tags": [
-   "internet governance",
-   "network management",
    "email",
    "directory services",
-   "OSI"
+   "OSI",
+   "network management",
+   "workshop reports",
+   "conferencing"
   ],
   "reasons": {
-   "internet governance": {
-    "role": "secondary",
-    "why": "Placeholder removed below.",
-    "quote": "Convene an international research network operations, planning and management team to develop and apply procedural and technical recommendations for international network management",
-    "section": "6.11.3 Recommended Actions"
-   },
-   "network management": {
-    "role": "primary",
-    "why": "A dedicated section sets targets for international network operations centres, fault management and automation, and CERTs.",
-    "quote": "Current network management technology and practice are not adequate to support large scale, international research networks.",
-    "section": "6.11 Network Management"
-   },
    "email": {
     "role": "primary",
-    "why": "Email is the first and most emphasised requirement: operations forum, gateway specifications, interoperability among X.400, UUCP, SMTP and BITNET.",
-    "quote": "The current email services between the US and Europe suffer from gaps in connectivity, lack of reliability and poor responsiveness.",
+    "why": "Email interoperability, gateways and operations across X.400, SMTP, UUCP, BITNET are the first and most prominent recommendation; readers of email history would want this.",
+    "quote": "Initiate an intercontinental email operations forum involving email service providers in the US and Europe to define and implement operational procedures leading to high reliability.",
     "section": "6.1 Electronic Mail"
    },
    "directory services": {
     "role": "secondary",
-    "why": "A dedicated section recommends US/European collaboration on directories, including X.500 and WHOIS access.",
-    "quote": "White pages services to assist network users to find email addresses, computer services and other on-line facilities are, at best, only lightly deployed",
+    "why": "A full section on white pages and directory services (X.500, WHOIS, NRS) with targets and actions.",
+    "quote": "Initiate a formal collaboration between ongoing US and European efforts to implement and maintain the relevant directory databases.",
     "section": "6.3 Directory Services"
    },
    "OSI": {
     "role": "secondary",
-    "why": "Multi-protocol support and OSI/TCP-IP coexistence, including CLNP versus CONS, is a major theme.",
-    "quote": "support campus-to-campus communication for a subset of coexisting protocol suites (at least OSI and TCP/IP) at a minimum of 64 Kb/s",
+    "why": "Multi-protocol support and OSI/TCP-IP coexistence, including CLNP vs CONS debate, is a central theme.",
+    "quote": "Support campus-to-campus communication for a subset of coexisting protocol suites (at least OSI and TCP/IP) at a minimum of 64 Kb/s;",
     "section": "6.12.1 One Year Targets"
+   },
+   "network management": {
+    "role": "secondary",
+    "why": "A dedicated section on international network operations centres and coordination, including emergency response teams.",
+    "quote": "Convene an international research network operations, planning and management team to develop and apply procedural and technical recommendations for international network management;",
+    "section": "6.11.3 Recommended Actions"
+   },
+   "workshop reports": {
+    "role": "primary",
+    "why": "The document is the report of a workshop (Brussels and Washington, 1990) giving requirements and recommendations.",
+    "quote": "This report summarises user requirements for networking and related infrastructure facilities needed to enable effective cooperation between US and European research teams",
+    "section": "Abstract"
+   },
+   "conferencing": {
+    "role": "secondary",
+    "why": "Video conferencing and multimedia group collaboration are covered in sections 6.6-6.8.",
+    "quote": "Within a year install existing technology at a limited number of sites in both regions",
+    "section": "6.7 Video Conferencing"
    }
   },
   "rejected": [
    {
     "id": "X.400",
-    "why": "Mentioned as an email protocol needing interoperability work, but the document does not specify or analyse it."
+    "why": "Mentioned as one of several email systems to interoperate, but the document does not specify or analyse it."
    },
    {
-    "id": "X.500",
-    "why": "Named as a directory standard to work with, but only briefly and without technical content; the broader directory services tag covers it."
-   },
-   {
-    "id": "conferencing",
-    "why": "Video conferencing is a requirement section, but only at the needs level with no framework or protocol content."
+    "id": "FTP",
+    "why": "File transfer is discussed generically (staged, multi-protocol), not FTP itself."
    },
    {
     "id": "X Window System",
-    "why": "Intercontinental X-windows support is a target, but only briefly and as an application requirement."
+    "why": "Remote X-windows support is a target, but only briefly mentioned among client-server needs."
    },
    {
-    "id": "TCP",
-    "why": "TCP/IP is mentioned as one of the protocol suites in use, not as a subject of the document."
+    "id": "X.500",
+    "why": "Named as the standard for directory work, but the document discusses directory services generally rather than the protocol."
+   },
+   {
+    "id": "internet architecture",
+    "why": "Concerns requirements and infrastructure provisioning, not architectural principles."
    },
    {
     "id": "ONC RPC",
-    "why": "RPC is mentioned only as a protocol to be agreed upon; no ONC RPC content."
+    "why": "RPC and XDR appear only as items needing agreement; not a subject of the document."
    }
   ],
   "gaps": [
    {
-    "name": "Research networking policy and funding coordination (CCIRN, ESPRIT, NSF/DARPA)",
-    "why": "The document is mainly about coordinating international research networks and funding. The taxonomy has no tag for research and education networking or international infrastructure planning."
+    "name": "Research network infrastructure and transatlantic link provisioning",
+    "why": "A large part of the document covers international research network capacity, funding, and coordination (CCIRN, IXI, NSFNET), which the taxonomy has no tag for."
    }
   ],
   "review": [],
@@ -74971,6 +74994,10 @@
    ],
    [
     "internet governance"
+   ],
+   [
+    "internet governance",
+    "workshop reports"
    ],
    [
     "internet layer"
@@ -74988,6 +75015,13 @@
    ],
    [
     "network management"
+   ],
+   [
+    "real-time communications"
+   ],
+   [
+    "real-time communications",
+    "conferencing"
    ]
   ],
   "technology": [
@@ -74996,23 +75030,27 @@
   ],
   "topic": [
    "applications",
+   "conferencing",
    "directory services",
    "internet governance",
    "internet layer",
    "messaging",
-   "network management"
+   "network management",
+   "real-time communications",
+   "workshop reports"
   ],
   "tagged": {
    "model": "claude-sonnet-5-5",
-   "date": "2026-11-24",
+   "date": "2026-11-25",
    "prompt": "5568eab4951d",
    "notes": [],
    "tags": [
-    "internet governance",
-    "network management",
     "email",
     "directory services",
-    "OSI"
+    "OSI",
+    "network management",
+    "workshop reports",
+    "conferencing"
    ],
    "removed": {}
   }
@@ -80588,17 +80626,33 @@
   "year": 1992,
   "summary": "Defines the SNMP MIB module for managing FDDI devices (SMT, MAC, PATH, PORT, ATTACHMENT and chip set groups), derived from the ANSI X3T9.5 SMT standard.",
   "tags": [
+   "MIB",
    "FDDI"
   ],
   "reasons": {
+   "MIB": {
+    "role": "primary",
+    "why": "The document is an SNMP MIB module defining managed objects for FDDI interfaces, so it belongs under MIB.",
+    "quote": "it defines objects for managing devices which implement the FDDI.",
+    "section": "1. Abstract"
+   },
    "FDDI": {
     "role": "primary",
-    "why": "placeholder",
-    "quote": "In particular, it defines objects for managing devices which implement the FDDI.",
-    "section": "1. Abstract"
+    "why": "The managed objects cover FDDI station management, MAC, PORT and attachment behaviour, so FDDI readers would want this RFC.",
+    "quote": "This document defines the managed objects for FDDI devices which are to be accessible via the Simple Network Management Protocol (SNMP).",
+    "section": "4. Overview"
    }
   },
-  "rejected": [],
+  "rejected": [
+   {
+    "id": "SNMP",
+    "why": "SNMP is the management protocol used to access the objects. The document does not extend or specify it beyond the MIB module."
+   },
+   {
+    "id": "ASN.1",
+    "why": "ASN.1 is only the notation used to write the MIB definitions."
+   }
+  ],
   "gaps": [],
   "review": [],
   "reviewed": false,
@@ -80609,20 +80663,36 @@
    [
     "link layer",
     "FDDI"
+   ],
+   [
+    "network management"
+   ],
+   [
+    "network management",
+    "SNMP"
+   ],
+   [
+    "network management",
+    "SNMP",
+    "MIB"
    ]
   ],
   "technology": [
-   "FDDI"
+   "FDDI",
+   "MIB",
+   "SNMP"
   ],
   "topic": [
-   "link layer"
+   "link layer",
+   "network management"
   ],
   "tagged": {
    "model": "claude-sonnet-5-5",
-   "date": "2026-11-24",
+   "date": "2026-11-25",
    "prompt": "5568eab4951d",
    "notes": [],
    "tags": [
+    "MIB",
     "FDDI"
    ],
    "removed": {}
@@ -108891,7 +108961,9 @@
     "why": "The document defines a new Telnet option and uses other Telnet options and commands, but the taxonomy has a Telnet tech entry under applications that I could not tag correctly in this output; no, the Telnet tag exists as 'Telnet'."
    }
   ],
-  "review": [],
+  "review": [
+   "Telnet: the model's reasoning argues against this tag"
+  ],
   "reviewed": false,
   "paths": [
    [
@@ -144349,20 +144421,56 @@
  "RFC2102": {
   "title": "Multicast Support for Nimrod :  Requirements and Solution Approaches",
   "year": 1997,
-  "summary": "Informational memo stating the requirements Nimrod places on a multicast solution, comparing DVMRP, CBT, PIM, MOSPF and IDPR approaches, and outlining how PIM sparse-mode style multicast could be realised using Nimrod flow setup.",
+  "summary": "Informational memo stating the requirements Nimrod places on a multicast solution, comparing DVMRP, CBT, PIM, MOSPF and IDPR, and outlining how PIM sparse-mode style multicast could be implemented in Nimrod using flow setup.",
   "tags": [
-   "Nimrod"
+   "Nimrod",
+   "multicast",
+   "PIM-SM"
   ],
   "reasons": {
    "Nimrod": {
     "role": "primary",
-    "why": "placeholder",
+    "why": "The document is about multicast support within the Nimrod routing architecture: its requirements and a PIM-based mechanism (Nimpim) built on Nimrod flow setup.",
     "quote": "Nimrod does not specify a particular solution for multicasting. Rather, Nimrod may use any of a number of emerging multicast techniques.",
     "section": "Abstract"
+   },
+   "multicast": {
+    "role": "primary",
+    "why": "Core subject is multicast routing: goals and requirements, and a comparison of DVMRP, CBT, PIM, MOSPF and IDPR.",
+    "quote": "We compare existing approaches for multicasting within an internetwork and discuss their advantages and disadvantages.",
+    "section": "Abstract"
+   },
+   "PIM-SM": {
+    "role": "secondary",
+    "why": "Section 5 describes implementing PIM sparse mode (RP, shared tree, switch to source tree) in Nimrod, a substantial part of the document.",
+    "quote": "We only discuss sparse-mode multicasting, as described in [DEF+94a] here.",
+    "section": "5.1 Overview"
    }
   },
-  "rejected": [],
-  "gaps": [],
+  "rejected": [
+   {
+    "id": "MOSPF",
+    "why": "Only one of several approaches surveyed in Section 4, not specified or analysed in depth."
+   },
+   {
+    "id": "IDPR",
+    "why": "Surveyed as one approach and used as an analogy for sender-initiated trees. The document is not about IDPR."
+   },
+   {
+    "id": "PIM",
+    "why": "PIM-SM is the more specific tag, and the document only covers sparse mode."
+   },
+   {
+    "id": "QoS",
+    "why": "QoS and policy appear as requirements for the multicast solution, but the document is not about QoS architectures."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "Nimrod",
+    "why": "The document is about the Nimrod routing architecture, but the taxonomy has a Nimrod tag that I used from the list. If it were missing, this would be a gap. No gap exists, so ignore this entry."
+   }
+  ],
   "review": [],
   "reviewed": false,
   "paths": [
@@ -144372,21 +144480,41 @@
    [
     "routing",
     "Nimrod"
+   ],
+   [
+    "routing",
+    "multicast"
+   ],
+   [
+    "routing",
+    "multicast",
+    "PIM"
+   ],
+   [
+    "routing",
+    "multicast",
+    "PIM",
+    "PIM-SM"
    ]
   ],
   "technology": [
-   "Nimrod"
+   "Nimrod",
+   "PIM",
+   "PIM-SM"
   ],
   "topic": [
+   "multicast",
    "routing"
   ],
   "tagged": {
    "model": "claude-sonnet-5-5",
-   "date": "2026-11-24",
+   "date": "2026-11-25",
    "prompt": "5568eab4951d",
    "notes": [],
    "tags": [
-    "Nimrod"
+    "Nimrod",
+    "multicast",
+    "PIM-SM"
    ],
    "removed": {}
   }
@@ -196478,7 +196606,9 @@
   },
   "rejected": [],
   "gaps": [],
-  "review": [],
+  "review": [
+   "RPSL: the model's reasoning argues against this tag"
+  ],
   "reviewed": false,
   "paths": [
    [
@@ -329359,7 +329489,9 @@
   },
   "rejected": [],
   "gaps": [],
-  "review": [],
+  "review": [
+   "iFCP: the model's reasoning argues against this tag"
+  ],
   "reviewed": false,
   "paths": [
    [
@@ -363863,21 +363995,23 @@
  "RFC4826": {
   "title": "Extensible Markup Language (XML) Formats for Representing Resource Lists",
   "year": 2007,
-  "summary": "Defines two XML document formats (resource-lists and rls-services) for representing lists of resources and SIP resource list server service definitions, with XCAP application usages, media types and URN registrations.",
+  "summary": "Defines two XML document formats (resource-lists and rls-services) for representing lists of resources and SIP resource list server service URIs, with XCAP application usages, media types and namespaces.",
   "tags": [
    "SIMPLE"
   ],
   "reasons": {
    "SIMPLE": {
     "role": "primary",
-    "why": "Placeholder",
+    "why": "placeholder",
     "quote": "this document defines two Extensible Markup Language (XML) document formats.",
     "section": "1. Introduction"
    }
   },
   "rejected": [],
   "gaps": [],
-  "review": [],
+  "review": [
+   "SIMPLE: the model gave no reasoning (placeholder)"
+  ],
   "reviewed": false,
   "paths": [
    [
@@ -369948,21 +370082,23 @@
  "RFC4901": {
   "title": "Protocol Extensions for Header Compression over MPLS",
   "year": 2007,
-  "summary": "Specifies how header-compressed packets (ROHC, CRTP, ECRTP, IPHC) are carried over MPLS pseudowires set up with LDP, including PW types, reused PPP configuration options as interface parameter sub-TLVs, and an HC control parameter encapsulation.",
+  "summary": "Specifies how header-compressed packets (ROHC, CRTP, ECRTP, IPHC) are carried over MPLS pseudowires, including LDP-signalled PW types, reuse of PPP HC configuration options as interface parameter sub-TLVs, and an HC control parameter encapsulation.",
   "tags": [
    "header compression"
   ],
   "reasons": {
    "header compression": {
     "role": "primary",
-    "why": "Placeholder",
+    "why": "Not a valid id; see below.",
     "quote": "This specification defines how to use Multi-Protocol Label Switching (MPLS) to route Header-Compressed (HC) packets over an MPLS label switched path.",
     "section": "Abstract"
    }
   },
   "rejected": [],
   "gaps": [],
-  "review": [],
+  "review": [
+   "header compression: the model's reasoning argues against this tag"
+  ],
   "reviewed": false,
   "paths": [
    [
@@ -385193,30 +385329,51 @@
  "RFC5087": {
   "title": "Time Division Multiplexing over IP (TDMoIP)",
   "year": 2007,
-  "summary": "Informational RFC specifying TDMoIP, a structure-aware pseudowire method for transporting TDM circuits (T1/E1/T3/E3) over UDP/IP, MPLS, L2TPv3 and Ethernet using AAL1, AAL2 and HDLC payload formats, with defect handling and OAM.",
+  "summary": "RFC 5087 specifies TDMoIP, a structure-aware pseudowire method for transporting TDM circuits (T1/E1/T3/E3) over UDP/IP, MPLS, L2TPv3 and Ethernet PSNs, using AAL1/AAL2/HDLC payload adaptation, a control word, defect handling and OAM.",
   "tags": [
-   "pseudowire",
-   "DTN"
+   "pseudowire"
   ],
   "reasons": {
    "pseudowire": {
     "role": "primary",
-    "why": "The whole document defines a TDM pseudowire encapsulation, control word, payload adaptation, defect handling and OAM; pseudowire emulation is the subject.",
-    "quote": "TDMoIP is a structure-aware method for transporting Time Division Multiplexed (TDM) signals using pseudowires (PWs).",
+    "why": "The document defines a TDM pseudowire encapsulation, with PW labels, a PWE3 control word, sequencing and PW OAM, so it belongs under pseudowire.",
+    "quote": "Time Division Multiplexing over IP (TDMoIP) is a structure-aware method for transporting Time Division Multiplexed (TDM) signals using pseudowires (PWs).",
     "section": "Abstract"
-   },
-   "DTN": {
-    "role": "primary",
-    "why": "placeholder",
-    "quote": "placeholder",
-    "section": "x"
    }
   },
-  "rejected": [],
-  "gaps": [],
-  "review": [
-   "DTN: quote not found in the text"
+  "rejected": [
+   {
+    "id": "MPLS",
+    "why": "MPLS is one of several PSNs (UDP/IP, L2TPv3, Ethernet) over which TDMoIP runs. It is a substrate, not the subject."
+   },
+   {
+    "id": "L2TP",
+    "why": "L2TPv3 is only one encapsulation option in Section 4.3, used as a substrate."
+   },
+   {
+    "id": "RTP",
+    "why": "An optional RTP header is reused purely formally for timestamps. The document says RTP mechanisms are not applicable."
+   },
+   {
+    "id": "ATM",
+    "why": "AAL1 and AAL2 are reused as payload adaptation formats. The document does not cover IP over ATM."
+   },
+   {
+    "id": "UDP",
+    "why": "UDP is only a transport substrate, and the document defines nothing new about UDP usage beyond a port label."
+   },
+   {
+    "id": "Ethernet",
+    "why": "Ethernet is one of the PSN encapsulations. The document is not about IP over Ethernet."
+   }
   ],
+  "gaps": [
+   {
+    "name": "TDM circuit emulation / structure-aware TDM over packet",
+    "why": "The taxonomy has no tag for TDM circuit emulation. The nearest is pseudowire, which is under routing > MPLS. TDM transport is the document's main subject."
+   }
+  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -385230,35 +385387,23 @@
     "routing",
     "MPLS",
     "pseudowire"
-   ],
-   [
-    "transport"
-   ],
-   [
-    "transport",
-    "DTN"
    ]
   ],
   "technology": [
-   "DTN",
    "MPLS",
    "pseudowire"
   ],
   "topic": [
    "routing",
-   "transport",
    "tunneling"
   ],
   "tagged": {
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "DTN: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
-    "pseudowire",
-    "DTN"
+    "pseudowire"
    ],
    "removed": {}
   }
@@ -415973,20 +416118,46 @@
  "RFC5474": {
   "title": "A Framework for Packet Selection and Reporting",
   "year": 2009,
-  "summary": "Informational framework document for PSAMP, describing the architecture, terminology, and generic requirements for selecting packets (sampling, filtering, hash-based selection), forming reports, and exporting them to a Collector using IPFIX.",
+  "summary": "RFC 5474 is the informational PSAMP framework describing the architecture, terminology, and requirements for selecting packets (sampling, filtering, hash-based selection), reporting on them, and exporting reports to a Collector via IPFIX.",
   "tags": [
    "PSAMP"
   ],
   "reasons": {
    "PSAMP": {
     "role": "primary",
-    "why": "placeholder",
+    "why": "The whole document defines the PSAMP architecture, selectors, reporting and export requirements.",
     "quote": "This document specifies a framework for the PSAMP (Packet SAMPling) protocol.",
     "section": "Abstract"
    }
   },
-  "rejected": [],
-  "gaps": [],
+  "rejected": [
+   {
+    "id": "IPFIX",
+    "why": "PSAMP uses IPFIX as the export protocol, but the document is not specifying or extending IPFIX itself; it is the substrate for export."
+   },
+   {
+    "id": "SCTP",
+    "why": "Mentioned as a congestion-aware transport option for export; only substrate."
+   },
+   {
+    "id": "MIB",
+    "why": "Configuration via a MIB is mentioned briefly; no MIB is defined here."
+   },
+   {
+    "id": "performance measurement",
+    "why": "Passive performance measurement is one application discussed, but the document is about the sampling framework, and PSAMP is already tagged."
+   },
+   {
+    "id": "hash-based selection",
+    "why": "Not a taxonomy tag; not applicable."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "PSAMP (Packet Sampling)",
+    "why": "The taxonomy has PSAMP only as a child under IPFIX; the id I used above is not in the taxonomy listing, which includes only 'PSAMP packet sampling and reporting' under IPFIX with id 'PSAMP'. Verified: 'PSAMP' appears under IPFIX."
+   }
+  ],
   "review": [],
   "reviewed": false,
   "paths": [
@@ -416039,7 +416210,9 @@
   },
   "rejected": [],
   "gaps": [],
-  "review": [],
+  "review": [
+   "PSAMP: the model's reasoning argues against this tag"
+  ],
   "reviewed": false,
   "paths": [
    [
@@ -416154,21 +416327,23 @@
  "RFC5477": {
   "title": "Information Model for Packet Sampling Exports",
   "year": 2009,
-  "summary": "Defines the PSAMP information model: IPFIX-based Information Elements for exporting sampled packet data, selector/sampling/hash configuration, timestamps, and statistics, as an extension of the IPFIX information model.",
+  "summary": "Defines the PSAMP information model: a set of new IPFIX Information Elements (selector identifiers, sampling and hash configuration, timestamps, packet sections, statistics) used to export sampled packet data and sampling process information.",
   "tags": [
    "PSAMP"
   ],
   "reasons": {
    "PSAMP": {
     "role": "primary",
-    "why": "placeholder",
+    "why": "PSAMP is not in the taxonomy, so this tag is invalid and is replaced below.",
     "quote": "This memo defines an information model for the Packet SAMPling (PSAMP) protocol.",
     "section": "Abstract"
    }
   },
   "rejected": [],
   "gaps": [],
-  "review": [],
+  "review": [
+   "PSAMP: the model's reasoning argues against this tag"
+  ],
   "reviewed": false,
   "paths": [
    [
@@ -453937,20 +454112,46 @@
  "RFC5941": {
   "title": "Sharing Transaction Fraud Data",
   "year": 2010,
-  "summary": "Defines Thraud, an IODEF extension and profile for sharing transaction fraud reports (payment, transfer, identity, other) between financial organizations, with a media type and XML namespace registration.",
+  "summary": "RFC 5941 defines the Thraud XML document format, an IODEF extension, for sharing transaction fraud reports (payment, transfer, identity and other events) between financial organizations, and it registers the thraud+xml media type and XML namespace.",
   "tags": [
    "IODEF"
   ],
   "reasons": {
    "IODEF": {
     "role": "primary",
-    "why": "IODEF is not a tag id in the taxonomy, so this placeholder must be rejected; see the gaps and the replacement tag below.",
+    "why": "The whole document is an extension and profile of IODEF. It defines new AdditionalData classes, mandatory, recommended and deprecated IODEF components, and new Incident.purpose values.",
     "quote": "This document describes a document format for exchanging transaction fraud (Thraud) information.  It extends the Incident Handling Working Group (INCH WG) Incident Object Description Exchange Format (IODEF)",
     "section": "Abstract"
    }
   },
-  "rejected": [],
-  "gaps": [],
+  "rejected": [
+   {
+    "id": "XML",
+    "why": "The schema is XML, but XML is only the encoding. The document does not address XML usage in general."
+   },
+   {
+    "id": "media types",
+    "why": "It registers application/thraud+xml, but that is boilerplate IANA material, not the subject of the document."
+   },
+   {
+    "id": "incident response",
+    "why": "IODEF sits under this topic, and the more specific IODEF tag already covers it. The document is about fraud data exchange, not incident response coordination."
+   },
+   {
+    "id": "e-commerce",
+    "why": "The financial fraud context is only the setting. The document defines no payment protocol."
+   },
+   {
+    "id": "SMTP",
+    "why": "Email and SOAP are mentioned only as possible push transports for reports. The document specifies nothing about them."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "Transaction fraud reporting / Thraud",
+    "why": "The taxonomy has no tag for financial or transaction fraud intelligence sharing. The IODEF tag is the nearest fit. IODEF is not in the taxonomy as shown either, so this tag may not be valid."
+   }
+  ],
   "review": [],
   "reviewed": false,
   "paths": [
@@ -456659,7 +456860,9 @@
   },
   "rejected": [],
   "gaps": [],
-  "review": [],
+  "review": [
+   "NSIS: the model's reasoning argues against this tag"
+  ],
   "reviewed": false,
   "paths": [
    [
@@ -456819,14 +457022,14 @@
  "RFC5977": {
   "title": "RMD-QOSM: The NSIS Quality-of-Service Model for Resource Management in Diffserv",
   "year": 2010,
-  "summary": "RFC 5977 specifies RMD-QOSM, an NSIS QoS model and RMD-specific QSPEC for adding edge-to-edge admission control, preemption and severe-congestion handling to Diffserv domains using QoS-NSLP with stateless or reduced-state interior nodes.",
+  "summary": "RFC 5977 defines RMD-QOSM, an NSIS QoS Model and RMD-QSPEC for adding admission control, reservation, and severe-congestion handling to Diffserv domains, using stateless or reduced-state interior nodes and stateful edge nodes.",
   "tags": [
    "NSIS"
   ],
   "reasons": {
    "NSIS": {
     "role": "primary",
-    "why": "placeholder",
+    "why": "The document is an NSIS QoS Model, but the taxonomy has no NSIS tag, so this id is invalid and must be dropped.",
     "quote": "This document describes a Next Steps in Signaling (NSIS) Quality-of-Service (QoS) Model for networks that use the Resource Management in Diffserv (RMD) concept.",
     "section": "Abstract"
    }
@@ -456834,7 +457037,8 @@
   "rejected": [],
   "gaps": [],
   "review": [
-   "text truncated at 300000 characters"
+   "text truncated at 300000 characters",
+   "NSIS: the model's reasoning argues against this tag"
   ],
   "reviewed": false,
   "paths": [
@@ -457108,23 +457312,67 @@
  "RFC5981": {
   "title": "Authorization for NSIS Signaling Layer Protocols",
   "year": 2011,
-  "summary": "Defines a generic SESSION_AUTH object and attribute formats for per-session authorization in NSIS signaling layer protocols (QoS NSLP and NATFW NSLP), with integrity options (shared key, Kerberos, public key, HMAC) and processing rules.",
+  "summary": "Defines a generic SESSION_AUTH object and attribute formats for per-session authorization of NSIS signaling layer protocols (QoS NSLP, NATFW NSLP), with integrity options (shared keys, Kerberos, public key, HMAC) and processing rules.",
   "tags": [
-   "NSIS"
+   "NSIS",
+   "authorization"
   ],
   "reasons": {
    "NSIS": {
     "role": "primary",
-    "why": "placeholder",
+    "why": "The document specifies an NSLP-layer authorization object for NSIS signaling.",
     "quote": "This document presents a generic model and object formats for session authorization within the NSIS signaling layer protocols.",
+    "section": "Abstract"
+   },
+   "authorization": {
+    "role": "secondary",
+    "why": "The document is about authorizing resource requests via third-party tokens and policy decision points, so it fits the authorization topic.",
+    "quote": "The goal of session authorization is to allow the exchange of information between network elements in order to authorize the use of resources for a service",
     "section": "Abstract"
    }
   },
-  "rejected": [],
-  "gaps": [],
+  "rejected": [
+   {
+    "id": "Kerberos",
+    "why": "Kerberos is only one of several ways to protect the SESSION_AUTH object. The document does not specify or extend it."
+   },
+   {
+    "id": "HMAC",
+    "why": "HMAC is used as an integrity mechanism for the object. The document does not define anything new about HMAC itself."
+   },
+   {
+    "id": "QoS",
+    "why": "QoS NSLP is a consumer of the object. The document is about authorization, not QoS signalling."
+   },
+   {
+    "id": "Diameter",
+    "why": "Diameter and RADIUS are only mentioned as ways to talk to the policy decision point."
+   },
+   {
+    "id": "X.509",
+    "why": "Certificates are one option for signing the object. The document does not profile them."
+   },
+   {
+    "id": "OpenPGP",
+    "why": "PGP certificates are one option for signing the object. The document does not specify or extend OpenPGP."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "NSIS / GIST / NSLP signaling",
+    "why": "The taxonomy has an NSIS tech tag under QoS, but I used the id as listed. This document covers NSIS signaling layer protocol authorization, and there is no separate tag for GIST or NSLP."
+   }
+  ],
   "review": [],
   "reviewed": false,
   "paths": [
+   [
+    "security"
+   ],
+   [
+    "security",
+    "authorization"
+   ],
    [
     "transport"
    ],
@@ -457143,6 +457391,8 @@
   ],
   "topic": [
    "QoS",
+   "authorization",
+   "security",
    "transport"
   ],
   "tagged": {
@@ -457151,7 +457401,8 @@
    "prompt": "5568eab4951d",
    "notes": [],
    "tags": [
-    "NSIS"
+    "NSIS",
+    "authorization"
    ],
    "removed": {}
   }
@@ -488426,7 +488677,9 @@
   },
   "rejected": [],
   "gaps": [],
-  "review": [],
+  "review": [
+   "MPTCP: the model's reasoning argues against this tag"
+  ],
   "reviewed": false,
   "paths": [
    [
@@ -585739,25 +585992,71 @@
  "RFC7532": {
   "title": "Namespace Database (NSDB) Protocol for Federated File Systems",
   "year": 2015,
-  "summary": "Specifies the NSDB protocol for federated file systems: an LDAP-based namespace database schema (FSNs, FSLs, NFS URI locations) and operations by which administrators and fileservers define and resolve filesets for NFSv4 referrals.",
+  "summary": "Defines the NSDB protocol for federated file systems: an LDAP schema and operations by which administrators and fileservers store and look up fileset names and locations (FSN to FSL mappings) to build a cross-server NFS namespace via referrals.",
   "tags": [
+   "LDAP",
    "NFS"
   ],
   "reasons": {
+   "LDAP": {
+    "role": "primary",
+    "why": "The document specifies an LDAP schema (attributes, object classes, DIT layout) and the LDAP operations used to manage and query the NSDB, so it is an LDAP application profile.",
+    "quote": "Each NSDB node supports an LDAP [RFC4510] interface. An NSDB client is software that uses the LDAP protocol to access or update namespace information stored on an NSDB node.",
+    "section": "2.9.1"
+   },
    "NFS": {
     "role": "primary",
-    "why": "The taxonomy has no NFS child tag listed under that id; see rejected. Placeholder not valid.",
-    "quote": "The federated file system protocols in this document define how to construct a namespace accessible by a Network File System (NFS) version 4.0",
-    "section": "1. Introduction"
+    "why": "The federation namespace, FSL subtype, NFS URI extension and referral generation (fs_locations, fs_locations_info) are all NFSv4-specific.",
+    "quote": "The federated file system protocols in this document define how to construct a namespace accessible by a Network File System (NFS) version 4.0 [RFC7530], NFSv4.1 [RFC5661], or newer client",
+    "section": "1"
    }
   },
-  "rejected": [],
-  "gaps": [],
+  "rejected": [
+   {
+    "id": "UUID",
+    "why": "UUIDs are used for FSN/FSL identification, with some guidance on version choice, but the document is not about UUIDs themselves."
+   },
+   {
+    "id": "URI",
+    "why": "It defines an NFS URI extension, but this is a minor part; NFS is the better fit."
+   },
+   {
+    "id": "TLS",
+    "why": "TLS is only recommended as a security mechanism for LDAP connections; nothing new is defined."
+   },
+   {
+    "id": "DNS",
+    "why": "DNS is mentioned only as an analogy for NSDB service vs node, not used or specified."
+   },
+   {
+    "id": "ONC RPC",
+    "why": "The ONC RPC administration protocol is defined in RFC 7533, not in this document."
+   },
+   {
+    "id": "directory services",
+    "why": "LDAP is the more specific tag and covers the directory aspect."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "Federated file systems (FedFS) / NFSv4 namespace",
+    "why": "The taxonomy has no tag for NFS-specific federation or file-system namespace management; the NFS tag is the closest fit."
+   }
+  ],
   "review": [],
   "reviewed": false,
   "paths": [
    [
     "applications"
+   ],
+   [
+    "applications",
+    "directory services"
+   ],
+   [
+    "applications",
+    "directory services",
+    "LDAP"
    ],
    [
     "applications",
@@ -585770,10 +586069,12 @@
    ]
   ],
   "technology": [
+   "LDAP",
    "NFS"
   ],
   "topic": [
    "applications",
+   "directory services",
    "storage"
   ],
   "tagged": {
@@ -585782,6 +586083,7 @@
    "prompt": "5568eab4951d",
    "notes": [],
    "tags": [
+    "LDAP",
     "NFS"
    ],
    "removed": {}
@@ -601454,19 +601756,55 @@
  "RFC7717": {
   "title": "IKEv2-Derived Shared Secret Key for the One-Way Active Measurement Protocol (OWAMP) and Two-Way Active Measurement Protocol (TWAMP)",
   "year": 2015,
-  "summary": "RFC 7717 specifies deriving the OWAMP/TWAMP shared secret key from an IKEv2 security association (prf(SK_d, \"IPPM\")), updating the Server Greeting and Set-Up-Response messages and adding an IKEv2Derived bit to the TWAMP-Modes registry.",
+  "summary": "RFC 7717 specifies deriving the OWAMP/TWAMP shared secret key from an IKEv2 security association (prf(SK_d, \"IPPM\")), adds an IKEv2Derived mode bit to the TWAMP-Modes registry, and updates the Server Greeting and Set-Up-Response messages.",
   "tags": [
-   "OWAMP"
+   "TWAMP",
+   "IKE"
   ],
   "reasons": {
-   "OWAMP": {
+   "TWAMP": {
     "role": "primary",
-    "why": "x",
-    "quote": "This document describes the use of keys derived from an IKEv2 security association (SA) as the shared key in OWAMP or TWAMP.",
-    "section": "Abstract"
+    "why": "The document extends OWAMP/TWAMP security by adding a new mode and updating the Server Greeting and Set-Up-Response messages (updates RFC 4656 and 5357).",
+    "quote": "This document specifies a method using keys derived from an IKEv2 SA as the shared key in O/TWAMP.",
+    "section": "3. Scope"
+   },
+   "IKE": {
+    "role": "secondary",
+    "why": "The key derivation draws on the IKEv2 SA, and the SPIs identify the SA in the KeyID field. This is a new use of IKEv2 keying material, so IKE readers would want it.",
+    "quote": "Shared secret key = prf( SK_d, \"IPPM\" )",
+    "section": "5.1. Shared Key Derivation"
    }
   },
-  "rejected": [],
+  "rejected": [
+   {
+    "id": "OWAMP",
+    "why": "OWAMP is not a tag in the taxonomy. The performance measurement protocol tags that exist are OWAMP, TWAMP, STAMP and the like, and I've used the TWAMP tag, which covers both."
+   },
+   {
+    "id": "IPsec",
+    "why": "IPsec is the context. The document relies on IPsec and IKEv2 SAs and discusses running O/TWAMP over a tunnel, but it does not specify IPsec itself."
+   },
+   {
+    "id": "AES",
+    "why": "AES-CBC is only recapped as part of the existing O/TWAMP security. The document adds nothing about AES."
+   },
+   {
+    "id": "HMAC",
+    "why": "HMAC-SHA1 is mentioned only as a recap of the existing O/TWAMP authentication."
+   },
+   {
+    "id": "PBKDF2",
+    "why": "PBKDF2 is mentioned only in the recap of the existing passphrase-based key derivation, which this document replaces with IKEv2 derivation."
+   },
+   {
+    "id": "key management",
+    "why": "Automatic key management is a stated benefit, but the document is about a specific key derivation for O/TWAMP, and IKE already covers that."
+   },
+   {
+    "id": "performance measurement",
+    "why": "The parent topic is implied by the TWAMP tag, so it should not be listed separately."
+   }
+  ],
   "gaps": [],
   "review": [],
   "reviewed": false,
@@ -601481,15 +601819,30 @@
    [
     "network management",
     "performance measurement",
-    "OWAMP"
+    "TWAMP"
+   ],
+   [
+    "security"
+   ],
+   [
+    "security",
+    "IPsec"
+   ],
+   [
+    "security",
+    "IPsec",
+    "IKE"
    ]
   ],
   "technology": [
-   "OWAMP"
+   "IKE",
+   "IPsec",
+   "TWAMP"
   ],
   "topic": [
    "network management",
-   "performance measurement"
+   "performance measurement",
+   "security"
   ],
   "tagged": {
    "model": "claude-sonnet-5-5",
@@ -601497,7 +601850,8 @@
    "prompt": "5568eab4951d",
    "notes": [],
    "tags": [
-    "OWAMP"
+    "TWAMP",
+    "IKE"
    ],
    "removed": {}
   }
@@ -635218,16 +635572,16 @@
  "RFC8116": {
   "title": "Security Threats to the Optimized Link State Routing Protocol Version 2 (OLSRv2)",
   "year": 2017,
-  "summary": "Informational analysis of security threats to OLSRv2 (jittering, hop count/limit, wormholes, sequence numbers, indirect jamming, identity and link spoofing) and how RFC 7183 integrity protection mitigates them.",
+  "summary": "Informational analysis of security threats to OLSRv2 (topology acquisition, effective topology, inconsistent topology attacks) and how RFC 7183 integrity protection mitigates them in MANETs.",
   "tags": [
    "OLSR"
   ],
   "reasons": {
    "OLSR": {
     "role": "primary",
-    "why": "placeholder",
-    "quote": "analyzes common security threats to the Optimized Link State Routing Protocol version 2 (OLSRv2) and describes their potential impacts on Mobile Ad Hoc Network (MANET) operations",
-    "section": "Abstract"
+    "why": "The entire document analyses attacks on OLSRv2 and their mitigation.",
+    "quote": "this document analyzes OLSRv2 in order to understand its inherent vulnerabilities and resilience.",
+    "section": "1. Introduction"
    }
   },
   "rejected": [],
@@ -660197,7 +660551,9 @@
   },
   "rejected": [],
   "gaps": [],
-  "review": [],
+  "review": [
+   "NEA: the model's reasoning argues against this tag"
+  ],
   "reviewed": false,
   "paths": [
    [
@@ -675242,7 +675598,7 @@
  "RFC8592": {
   "title": "Key Performance Indicator (KPI) Stamping for the Network Service Header (NSH)",
   "year": 2019,
-  "summary": "Informational RFC defining how to carry latency (timestamp) and QoS-marking KPIs in NSH MD Type 2 metadata, with detection and extended modes, to monitor service function chains.",
+  "summary": "Informational independent-submission RFC defining NSH metadata (MD Type 2) encodings for KPI stamping, carrying timestamps and QoS markings in Service Function Chains to monitor latency and QoS consistency, with detection and extended modes and hybrid-chain handling.",
   "tags": [
    "SFC",
    "performance measurement"
@@ -675250,36 +675606,45 @@
   "reasons": {
    "SFC": {
     "role": "primary",
-    "why": "The document defines NSH metadata TLVs for stamping KPIs along service function chains, extending the NSH and the SFC architecture.",
+    "why": "The document extends the Network Service Header with new MD Type 2 TLVs for KPI stamping in service function chains, so it belongs on the SFC/NSH page.",
     "quote": "This document describes generic methods to monitor and debug Service Function Chains (SFCs) in terms of latency and QoS marking of the flows within an SFC.",
     "section": "1. Introduction"
    },
    "performance measurement": {
     "role": "secondary",
-    "why": "Placeholder",
-    "quote": "This allows for flexibility and programmability",
-    "section": "1. Introduction"
+    "why": "In-band timestamping and QoS stamping measure per-hop latency and detect KPI violations, which is a performance measurement method for service chains.",
+    "quote": "KPI stamping:  The insertion of latency-related and/or QoS-related information into a packet using NSH MD.",
+    "section": "2.2.1. Terms Defined in This Document"
    }
   },
   "rejected": [
    {
     "id": "NTP",
-    "why": "NTP is only used for clock synchronization and the 64-bit timestamp format; the document does not specify NTP."
+    "why": "NTP is used only for clock synchronization and the 64-bit timestamp format; the document does not specify or extend it."
    },
    {
     "id": "PTP",
-    "why": "PTP is a synchronization prerequisite (Level B), not the subject."
+    "why": "PTP (IEEE 1588) is cited as an option for high-accuracy synchronization but is not what the document is about."
    },
    {
     "id": "OAM",
-    "why": "The document explicitly says it is not an OAM protocol and defines no OAM packet types."
+    "why": "The introduction explicitly says the methods are not OAM protocols and define no new OAM packet types."
    },
    {
     "id": "QoS",
-    "why": "QoS marking is the thing measured, but the document does not define a QoS architecture or signalling."
+    "why": "QoS fields (DSCP, VLAN, MPLS EXP) are only observed and recorded for consistency checks; no QoS architecture or signalling is defined."
+   },
+   {
+    "id": "time synchronization",
+    "why": "Synchronization is a prerequisite for timestamping, not a subject the document addresses in its own right."
    }
   ],
-  "gaps": [],
+  "gaps": [
+   {
+    "name": "Network Service Header (NSH)",
+    "why": "The taxonomy has an SFC tag that covers NSH, but no separate NSH tag; NSH metadata encoding is the core of this document."
+   }
+  ],
   "review": [],
   "reviewed": false,
   "paths": [
@@ -701100,20 +701465,64 @@
  "RFC8899": {
   "title": "Packetization Layer Path MTU Discovery for Datagram Transports",
   "year": 2020,
-  "summary": "Specifies DPLPMTUD, a robust packetization-layer Path MTU discovery method for datagram transports, with a state machine, probing and black-hole detection, and protocol-specific details for UDP applications, SCTP (including SCTP/UDP and SCTP/DTLS) and QUIC; it updates RFCs 4821, 4960, 6951, 8085 and 8261.",
+  "summary": "Specifies DPLPMTUD, a Packetization Layer Path MTU Discovery method for datagram transports (UDP, SCTP, QUIC, etc.) using probe packets, a state machine, and black hole detection, updating RFC 4821, 8085, 4960, 6951 and 8261.",
   "tags": [
-   "PMTUD"
+   "PMTUD",
+   "SCTP",
+   "UDP"
   ],
   "reasons": {
    "PMTUD": {
     "role": "primary",
-    "why": "x",
-    "quote": "This document specifies Datagram Packetization Layer Path MTU Discovery (DPLPMTUD).",
+    "why": "The whole document specifies a PMTUD method, including probing, state machine and PTB handling.",
+    "quote": "This document specifies Datagram Packetization Layer Path MTU Discovery (DPLPMTUD). This is a robust method for Path MTU Discovery (PMTUD) for datagram Packetization Layers (PLs).",
     "section": "Abstract"
+   },
+   "SCTP": {
+    "role": "secondary",
+    "why": "A substantial section specifies DPLPMTUD for SCTP, including SCTP/UDP and SCTP/DTLS, and updates the SCTP RFCs.",
+    "quote": "Section 6 also provides recommendations for SCTP endpoints, updating [RFC4960], [RFC6951], and [RFC8261] to use the method specified in this document",
+    "section": "1.3"
+   },
+   "UDP": {
+    "role": "secondary",
+    "why": "It updates the UDP Usage Guidelines (RFC 8085) and gives guidance for applications using UDP or UDP-Lite.",
+    "quote": "also updates [BCP145] to refer to the method specified in this document for use with UDP datagrams instead of the method in [RFC4821]",
+    "section": "1.2"
    }
   },
-  "rejected": [],
-  "gaps": [],
+  "rejected": [
+   {
+    "id": "QUIC",
+    "why": "QUIC is covered only in a short subsection that defers to the QUIC specification."
+   },
+   {
+    "id": "ICMP",
+    "why": "PTB messages are validated and used, but ICMP itself is not specified or extended."
+   },
+   {
+    "id": "DTLS",
+    "why": "DTLS is only the encapsulation for SCTP in one subsection and is not itself addressed."
+   },
+   {
+    "id": "DCCP",
+    "why": "DCCP is mentioned as a datagram transport that can use the method, but gets no specification."
+   },
+   {
+    "id": "TCP",
+    "why": "TCP PLPMTUD (RFC 4821) is referenced for context only, not specified here."
+   },
+   {
+    "id": "UDP-Lite",
+    "why": "It is mentioned together with UDP in guidance, but there is no UDP-Lite-specific content."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "Path MTU Discovery",
+    "why": "The taxonomy has a PMTUD tag under internet layer, but this specific document is not covered by a more specific one. If PMTUD is not a valid id here, 'transport' or 'internet layer' would be the fallback."
+   }
+  ],
   "review": [],
   "reviewed": false,
   "paths": [
@@ -701123,13 +701532,27 @@
    [
     "internet layer",
     "PMTUD"
+   ],
+   [
+    "transport"
+   ],
+   [
+    "transport",
+    "SCTP"
+   ],
+   [
+    "transport",
+    "UDP"
    ]
   ],
   "technology": [
-   "PMTUD"
+   "PMTUD",
+   "SCTP",
+   "UDP"
   ],
   "topic": [
-   "internet layer"
+   "internet layer",
+   "transport"
   ],
   "tagged": {
    "model": "claude-sonnet-5-5",
@@ -701137,7 +701560,9 @@
    "prompt": "5568eab4951d",
    "notes": [],
    "tags": [
-    "PMTUD"
+    "PMTUD",
+    "SCTP",
+    "UDP"
    ],
    "removed": {}
   }
@@ -781868,7 +782293,9 @@
   },
   "rejected": [],
   "gaps": [],
-  "review": [],
+  "review": [
+   "RPL: the model's reasoning argues against this tag"
+  ],
   "reviewed": false,
   "paths": [
    [
@@ -783988,25 +784415,72 @@
  "RFC9879": {
   "title": "Use of Password-Based Message Authentication Code 1 (PBMAC1) in PKCS #12 Syntax",
   "year": 2025,
-  "summary": "Defines how to use PBMAC1 (from PKCS #5) for integrity protection of PKCS #12 files, with PBKDF2/scrypt key derivation, UTF-8 password encoding, recommended parameters, test vectors and an ASN.1 module; obsoletes RFC 9579.",
+  "summary": "Defines how to use PBMAC1 (from PKCS #5) with PBKDF2 or scrypt for integrity protection of PKCS #12 files, updating RFCs 7292 and 8018, obsoleting RFC 9579, with password encoding rules, recommended parameters, test vectors and an ASN.1 module.",
   "tags": [
-   "PBKDF2"
+   "PBKDF2",
+   "password hashing",
+   "HMAC",
+   "ASN.1"
   ],
   "reasons": {
    "PBKDF2": {
     "role": "primary",
-    "why": "PLACEHOLDER",
+    "why": "The document specifies how PBKDF2 (with HMAC PRFs and mandatory keyLength) is used to derive MAC keys for PKCS #12 integrity protection, including its parameters and test vectors.",
     "quote": "This change allows for the use of PBKDF2 [RFC8018] or scrypt PBKDFs [RFC7914] for derivation of MAC keys and future extensibility.",
+    "section": "2. Rationale"
+   },
+   "password hashing": {
+    "role": "secondary",
+    "why": "The document concerns password-based key derivation function choice and parameters for PKCS #12; scrypt is permitted as an alternative KDF.",
+    "quote": "implementations MAY use other KDF methods, like the scrypt PBKDF [RFC7914].",
+    "section": "5. Recommended Parameters"
+   },
+   "HMAC": {
+    "role": "secondary",
+    "why": "The PBMAC1 construction uses HMAC as MAC and PRF; the document fixes mandatory HMAC-SHA-256 and deprecates SHA-1 HMAC use.",
+    "quote": "MUST support the PBKDF2 key derivation function paired with SHA-256 HMAC [SHA2] [RFC2104] for both integrity check and the PBKDF2 pseudorandom function (PRF).",
+    "section": "5. Recommended Parameters"
+   },
+   "ASN.1": {
+    "role": "secondary",
+    "why": "Appendix B defines an ASN.1 module (PKCS12-PBMAC1-2023) as a substantive part of the specification.",
+    "quote": "We included an ASN.1 module [x680] [x681] [x682] [x683] [x690] that can be combined with the ASN.1 modules in [RFC7292] and [RFC8018]",
     "section": "2. Rationale"
    }
   },
-  "rejected": [],
-  "gaps": [],
+  "rejected": [
+   {
+    "id": "CMS",
+    "why": "PKCS #12 is a related but distinct syntax; the document does not specify CMS usage."
+   },
+   {
+    "id": "SHA",
+    "why": "SHA-2 and SHA-3 are only referenced as hash choices for HMAC; the document is not about the hash functions."
+   },
+   {
+    "id": "UTF-8",
+    "why": "Password encoding requires UTF-8 but the document does not address the encoding itself."
+   },
+   {
+    "id": "PKI",
+    "why": "PKCS #12 carries certificates and keys, but the document only concerns password-based MAC integrity protection, not PKI."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "PKCS #12 (Personal Information Exchange Syntax)",
+    "why": "The document is chiefly about amending the PKCS #12 file format's integrity protection, and the taxonomy has no PKCS #12 or PKCS #5 tag."
+   }
+  ],
   "review": [],
   "reviewed": false,
   "paths": [
    [
     "cryptography"
+   ],
+   [
+    "cryptography",
+    "HMAC"
    ],
    [
     "cryptography",
@@ -784016,14 +784490,24 @@
     "cryptography",
     "password hashing",
     "PBKDF2"
+   ],
+   [
+    "data formats"
+   ],
+   [
+    "data formats",
+    "ASN.1"
    ]
   ],
   "technology": [
+   "ASN.1",
+   "HMAC",
    "PBKDF2",
    "password hashing"
   ],
   "topic": [
    "cryptography",
+   "data formats",
    "security"
   ],
   "tagged": {
@@ -784032,7 +784516,10 @@
    "prompt": "5568eab4951d",
    "notes": [],
    "tags": [
-    "PBKDF2"
+    "PBKDF2",
+    "password hashing",
+    "HMAC",
+    "ASN.1"
    ],
    "removed": {}
   }
@@ -784535,55 +785022,66 @@
  "RFC9886": {
   "title": "DRIP Entity Tags (DETs) in the Domain Name System",
   "year": 2025,
-  "summary": "Defines how DRIP Entity Tags (IPv6 HHITs) are registered and looked up in the DNS under 3.0.0.1.0.0.2.ip6.arpa., including two new RR types (HHIT and BRID) and IANA registries for RAA allocations and HHIT entity types.",
+  "summary": "Defines the DNS functionality of a DRIP Identity Management Entity: maps DRIP Entity Tags (IPv6 addresses under 2001:30::/28) into ip6.arpa, defines two new RR types (HHIT and BRID, CBOR-encoded), and creates IANA registries for RAA allocations and HHIT entity types.",
   "tags": [
    "DNS",
-   "DRIP"
+   "DRIP",
+   "domain registration"
   ],
   "reasons": {
    "DNS": {
     "role": "primary",
-    "why": "The document specifies new DNS resource record types, reverse-zone delegation of the DET prefix, and a registry hierarchy mapped onto DNS.",
+    "why": "The document defines new DNS resource record types, reverse-zone delegation under ip6.arpa, and how DETs are published and looked up in authoritative servers.",
     "quote": "This document defines two new RRTypes, one for HHIT metadata (HHIT, Section 5.1) and another for UAS Broadcast RID information (BRID, Section 5.2).",
     "section": "4. Public Information Registry"
    },
    "DRIP": {
+    "role": "primary",
+    "why": "This is a DRIP document, but the taxonomy has the DRIP tag only under internet layer as 'DRIP'; it is the core subject (DETs, DIME registries).",
+    "quote": "The scope of this document is the DNS registration of DETs with the DNS delegation of the reverse domain of the IPv6 prefix",
+    "section": "1.2. Scope"
+   },
+   "domain registration": {
     "role": "secondary",
-    "why": "placeholder",
-    "quote": "DRIP Entity Tags (DETs) embed a hierarchy scheme that is mapped onto the Domain Name System (DNS)",
-    "section": "1.1. General Concept"
+    "why": "A substantial part discusses registry/registrar/registrant models, RAA/HDA delegation and registration policy.",
+    "quote": "DRIP relies on the DNS and as such roughly follows the registrant-registrar-registry model.",
+    "section": "3.1. Use of Existing DNS Models"
    }
   },
   "rejected": [
    {
-    "id": "DRIP",
-    "why": "Not in the taxonomy; DRIP is the closest fit to a subject but only a related tag (DRIP) exists under internet layer, and it is a different id than the one I should have used."
-   },
-   {
     "id": "DNSSEC",
-    "why": "Required for apex entities and recommended elsewhere, but the document does not specify DNSSEC itself."
-   },
-   {
-    "id": "RDAP",
-    "why": "Mentioned as the expected registry lookup service but not specified here."
+    "why": "DNSSEC is required or recommended for DRIP zones, but the document does not specify DNSSEC itself."
    },
    {
     "id": "EPP",
-    "why": "Mentioned only as expected registry-registrar protocol; interfaces are explicitly out of scope."
+    "why": "EPP is only mentioned as the expected registry-registrar protocol in Security Considerations."
+   },
+   {
+    "id": "RDAP",
+    "why": "RDAP is mentioned as a lookup service the registry should offer, but the document does not specify it."
    },
    {
     "id": "CBOR",
-    "why": "Used as the encoding of the RR data; substrate, not the subject."
+    "why": "CBOR encodes the RR data, so it is substrate. The document defines no new CBOR usage that CBOR readers need."
+   },
+   {
+    "id": "IPv6",
+    "why": "DETs are IPv6 addresses, but the document is about DNS registration, not IPv6 addressing."
    },
    {
     "id": "X.509",
-    "why": "The Canonical Registration Certificate is X.509 DER, but only as a carried object."
+    "why": "Certificates are carried inside the HHIT record, but the document does not profile X.509."
+   },
+   {
+    "id": "HIP",
+    "why": "The HHIT RR is compared with the HIP RR, but HIP is not specified or extended here."
    }
   ],
   "gaps": [
    {
     "name": "DRIP (Drone Remote Identification Protocol) / UAS Remote ID",
-    "why": "The document is about DRIP Entity Tags for unmanned aircraft remote identification, and the taxonomy has no tag for drone remote ID beyond the DRIP tech tag under internet layer."
+    "why": "The whole document is about DRIP Entity Tags and the DIME registry for UAS Remote ID. I used a 'DRIP' tag above, but the taxonomy lists it only under internet layer, so check that this id is valid."
    }
   ],
   "review": [],
@@ -784602,6 +785100,10 @@
    [
     "naming",
     "DNS"
+   ],
+   [
+    "naming",
+    "domain registration"
    ]
   ],
   "technology": [
@@ -784609,6 +785111,7 @@
    "DRIP"
   ],
   "topic": [
+   "domain registration",
    "internet layer",
    "naming"
   ],
@@ -784619,7 +785122,8 @@
    "notes": [],
    "tags": [
     "DNS",
-    "DRIP"
+    "DRIP",
+    "domain registration"
    ],
    "removed": {}
   }
@@ -788392,21 +788896,21 @@
  "RFC9931": {
   "title": "Security Considerations for Optimistic Protocol Transitions in HTTP/1.1",
   "year": 2026,
-  "summary": "Discusses security risks (request smuggling, parser exploits) of clients optimistically sending data before an HTTP/1.1 Upgrade or CONNECT transition is confirmed, and updates RFC 9112 and RFC 9298 with new requirements.",
+  "summary": "Updates RFC 9112 and RFC 9298 with security guidance and new requirements for optimistic sending of data before an HTTP/1.1 Upgrade or CONNECT protocol transition is confirmed, addressing request smuggling and parser exploits.",
   "tags": [
    "HTTP",
-   "web linking"
+   "MASQUE"
   ],
   "reasons": {
    "HTTP": {
     "role": "primary",
-    "why": "The document updates HTTP/1.1 (RFC 9112) with new CONNECT requirements and analyses Upgrade/101 semantics, so it is about HTTP itself.",
+    "why": "The document updates HTTP/1.1 (RFC 9112) with new normative requirements for CONNECT and Upgrade handling, and analyses request smuggling in HTTP/1.1. Its subject is HTTP semantics and security.",
     "quote": "Proxy clients that send CONNECT requests on behalf of untrusted TCP clients MUST do one or both of the following",
     "section": "8. Requirements for HTTP CONNECT"
    },
-   "web linking": {
+   "MASQUE": {
     "role": "secondary",
-    "why": "placeholder",
+    "why": "It updates RFC 9298 (connect-udp) and evaluates connect-ip, both MASQUE proxying mechanisms. It forbids optimistic sending in HTTP/1.x.",
     "quote": "A client MAY optimistically start sending UDP packets in HTTP Datagrams before receiving the response to its UDP proxying request",
     "section": "6.3. \"connect-udp\""
    }
@@ -788414,23 +788918,23 @@
   "rejected": [
    {
     "id": "WebSocket",
-    "why": "Only evaluated as an existing upgrade token that already forbids optimistic sending; not specified or extended here."
+    "why": "WebSocket is only reviewed as an existing upgrade token that already forbids optimistic use. The document specifies nothing new for it."
    },
    {
     "id": "TLS",
-    "why": "The 'TLS' upgrade token is reviewed briefly, but TLS is not the subject."
-   },
-   {
-    "id": "MASQUE",
-    "why": "connect-udp and connect-ip are assessed, and RFC 9298 is updated with one sentence, but the document is about HTTP/1.1 transitions generally, not MASQUE."
-   },
-   {
-    "id": "HTTP/2",
-    "why": "Mentioned only as an alternative that avoids the problem."
+    "why": "The TLS upgrade token (RFC 2817) is briefly analysed, but TLS is not the subject of the document."
    },
    {
     "id": "web security",
-    "why": "Considered because of the smuggling attacks, but the security content is specific to HTTP and is covered by the HTTP tag."
+    "why": "The tag is for web platform mechanisms such as HSTS. The HTTP tag already covers this document's security content."
+   },
+   {
+    "id": "HTTP authentication",
+    "why": "Authentication is mentioned only in passing, as a reason for rejection and in the smuggling example."
+   },
+   {
+    "id": "TCP",
+    "why": "CONNECT tunnels TCP, but the document does not address TCP itself."
    }
   ],
   "gaps": [],
@@ -788447,14 +788951,16 @@
    [
     "web",
     "HTTP",
-    "web linking"
+    "MASQUE"
    ]
   ],
   "technology": [
    "HTTP",
-   "web linking"
+   "MASQUE"
   ],
   "topic": [
+   "privacy",
+   "tunneling",
    "web"
   ],
   "tagged": {
@@ -788464,7 +788970,7 @@
    "notes": [],
    "tags": [
     "HTTP",
-    "web linking"
+    "MASQUE"
    ],
    "removed": {}
   }
@@ -794125,25 +794631,116 @@
  "RFC9999": {
   "title": "Remote ATtestation procedureS (RATS) Conceptual Message Wrapper (CMW)",
   "year": 2026,
-  "summary": "Defines the RATS Conceptual Message Wrapper (CMW), a CBOR/JSON container (Record, Tag, Collection) for RATS conceptual messages, with a CBOR tag, JWT/CWT claims, an X.509 extension, media types and CoAP Content-Formats.",
+  "summary": "Defines the RATS Conceptual Message Wrapper (CMW), a CBOR/JSON container format (Record, Tag, Collection) for RATS conceptual messages, with a CBOR tag, CWT/JWT claims, an X.509 extension, media types and CoAP Content-Formats.",
   "tags": [
-   "remote attestation"
+   "remote attestation",
+   "CBOR",
+   "media types",
+   "X.509",
+   "JWT"
   ],
   "reasons": {
    "remote attestation": {
     "role": "primary",
-    "why": "placeholder",
-    "quote": "The conceptual messages introduced by the Remote ATtestation procedureS (RATS) architecture [RFC9334] are protocol-agnostic data units",
-    "section": "1. Introduction"
+    "why": "The document exists to wrap RATS conceptual messages (Evidence, Attestation Results, Endorsements, Reference Values) so remote attestation protocols can interoperate.",
+    "quote": "This document introduces the Conceptual Message Wrapper (CMW) that provides a common structure to encapsulate these messages.",
+    "section": "Abstract"
+   },
+   "CBOR": {
+    "role": "secondary",
+    "why": "Defines CBOR Record, Tag and Collection CMWs with a TN-derived CBOR tag, specified in CDDL.",
+    "quote": "It defines a dedicated Concise Binary Object Representation (CBOR) tag, corresponding JSON Web Token (JWT) and CBOR Web Token (CWT) claims, and an X.509 extension.",
+    "section": "Abstract"
+   },
+   "media types": {
+    "role": "secondary",
+    "why": "Registers four new media types and the +jws structured syntax suffix, a substantial part of the document.",
+    "quote": "this document defines media types and CoAP Content-Formats that may be used to identify CMWs when transported over protocols such as HTTP, MIME, and CoAP",
+    "section": "Abstract"
+   },
+   "X.509": {
+    "role": "secondary",
+    "why": "Defines a new X.509 extension (id-pe-cmw) with an ASN.1 module.",
+    "quote": "The CMW extension MAY be included in X.509 certificates, CRLs [RFC5280], and CSRs.",
+    "section": "4.4"
+   },
+   "JWT": {
+    "role": "secondary",
+    "why": "Registers a new JWT claim and specifies how CMWs are carried in JWTs, with an example.",
+    "quote": "this document defines two \"cmw\" claims for use with JWT and CWT.",
+    "section": "4.3"
    }
   },
-  "rejected": [],
-  "gaps": [],
+  "rejected": [
+   {
+    "id": "COSE",
+    "why": "COSE_Sign1 is used for signing and a CWT claim is defined, but COSE is a relied-on mechanism, not extended."
+   },
+   {
+    "id": "CDDL",
+    "why": "CDDL is only the notation used to describe the formats."
+   },
+   {
+    "id": "CoAP",
+    "why": "Content-Format IDs are registered, but CoAP is only a registry and transport context."
+   },
+   {
+    "id": "JOSE",
+    "why": "JWS is used for signing and a +jws suffix is registered, but JOSE is the substrate."
+   },
+   {
+    "id": "TLS",
+    "why": "Attested TLS is mentioned only as a possible use case."
+   }
+  ],
+  "gaps": [
+   {
+    "name": "Entity Attestation Token (EAT) / RATS conceptual messages",
+    "why": "The taxonomy has no tag for EAT or RATS-specific message formats beyond the general remote attestation tag."
+   }
+  ],
   "review": [],
   "reviewed": false,
   "paths": [
    [
+    "data formats"
+   ],
+   [
+    "data formats",
+    "CBOR"
+   ],
+   [
+    "messaging"
+   ],
+   [
+    "messaging",
+    "MIME"
+   ],
+   [
+    "messaging",
+    "MIME",
+    "media types"
+   ],
+   [
     "security"
+   ],
+   [
+    "security",
+    "OAuth"
+   ],
+   [
+    "security",
+    "OAuth",
+    "JWT"
+   ],
+   [
+    "security",
+    "PKI"
+   ],
+   [
+    "security",
+    "PKI",
+    "X.509"
    ],
    [
     "security",
@@ -794151,9 +794748,19 @@
    ]
   ],
   "technology": [
+   "CBOR",
+   "JWT",
+   "MIME",
+   "OAuth",
+   "PKI",
+   "X.509",
+   "media types",
    "remote attestation"
   ],
   "topic": [
+   "authorization",
+   "data formats",
+   "messaging",
    "security"
   ],
   "tagged": {
@@ -794162,7 +794769,11 @@
    "prompt": "5568eab4951d",
    "notes": [],
    "tags": [
-    "remote attestation"
+    "remote attestation",
+    "CBOR",
+    "media types",
+    "X.509",
+    "JWT"
    ],
    "removed": {}
   }

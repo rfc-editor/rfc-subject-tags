@@ -157,7 +157,7 @@ The taxonomy is `taxonomy.yaml` — one entry per tag with its place in the tree
 
 - 638 tags: 19 roots, 290 at level 2, 280 at level 3, 49 at level 4.
 - 556 technologies and 82 topics in the tree (76 topics reach the served view; six composite topics decompose into their parts).
-- Mean 3.68 tags per RFC including ancestors; 52 RFCs untagged (45 for which the model found no fitting tag, 7 that have no text version for it to read); no tag unused.
+- Mean 3.69 tags per RFC including ancestors; 52 RFCs untagged (45 for which the model found no fitting tag, 7 that have no text version for it to read); no tag unused.
 
 ### The roots
 

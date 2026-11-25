@@ -176,7 +176,7 @@ A run over the whole corpus sends every RFC's text to the model: budget for it. 
 
 The model's list is kept as given, in its order, apart from the checks above. In particular a tag may sit beside its own ancestor when the model judged the document to be about both. Nothing enforces R16: a document tagged `humor` beside other tags gets a review reason, not a correction.
 
-Every RFC's `review` list says what a person should check: the model has not tagged it; a quote was not found in the text; the text was cut; the model chose a tag that does not exist, or one since removed from the taxonomy; the result has no tags (R7), no topic (R8) or `humor` beside other tags (R16); or it shares no tag, counting ancestors, with the RFC that obsoletes it or that it obsoletes. An empty list does not mean the assignment is right.
+Every RFC's `review` list says what a person should check: the model has not tagged it; a quote was not found in the text; the model left a tag's reasoning or quote as a placeholder ("placeholder", "x" or empty), or wrote reasoning that argues against the tag ("this id is invalid and must be dropped", often wrongly claiming the tag is not in the taxonomy), which happens because the model names a tag before writing its evidence and cannot take it back; the text was cut; the model chose a tag that does not exist, or one since removed from the taxonomy; the result has no tags (R7), no topic (R8) or `humor` beside other tags (R16); or it shares no tag, counting ancestors, with the RFC that obsoletes it or that it obsoletes. An empty list does not mean the assignment is right.
 
 `closure(tags)` expands tags to their root-anchored paths, which appear as `paths` in `rfc-tags.json` (R4).
 
