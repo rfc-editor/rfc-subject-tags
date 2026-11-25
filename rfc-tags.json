@@ -12600,7 +12600,7 @@
    }
   ],
   "review": [
-   "Telnet: quote not found in the text"
+   "Telnet: possible quote error"
   ],
   "reviewed": false,
   "paths": [
@@ -12632,7 +12632,7 @@
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
    "notes": [
-    "Telnet: quote not found in the text"
+    "Telnet: possible quote error"
    ],
    "tags": [
     "NCP",
@@ -31035,8 +31035,8 @@
    }
   ],
   "review": [
-   "Telnet: quote not found in the text",
-   "ARPANET: quote not found in the text"
+   "Telnet: possible quote error",
+   "ARPANET: possible quote error"
   ],
   "reviewed": false,
   "paths": [
@@ -31063,8 +31063,8 @@
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
    "notes": [
-    "Telnet: quote not found in the text",
-    "ARPANET: quote not found in the text"
+    "Telnet: possible quote error",
+    "ARPANET: possible quote error"
    ],
    "tags": [
     "Telnet",
@@ -51260,9 +51260,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "ICMP: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -51297,9 +51295,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
-   "notes": [
-    "ICMP: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "TCP",
     "congestion control",
@@ -70071,7 +70067,7 @@
    }
   ],
   "review": [
-   "SLIP: quote not found in the text"
+   "SLIP: possible quote error"
   ],
   "reviewed": false,
   "paths": [
@@ -70108,7 +70104,7 @@
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
    "notes": [
-    "SLIP: quote not found in the text"
+    "SLIP: possible quote error"
    ],
    "tags": [
     "header compression",
@@ -137762,7 +137758,7 @@
    }
   ],
   "review": [
-   "applications: quote not found in the text"
+   "applications: possible quote error"
   ],
   "reviewed": false,
   "paths": [
@@ -137789,7 +137785,7 @@
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
    "notes": [
-    "applications: quote not found in the text"
+    "applications: possible quote error"
    ],
    "tags": [
     "applications",
@@ -138868,7 +138864,7 @@
   ],
   "gaps": [],
   "review": [
-   "IPR: quote not found in the text"
+   "IPR: possible quote error"
   ],
   "reviewed": false,
   "paths": [
@@ -138895,7 +138891,7 @@
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
    "notes": [
-    "IPR: quote not found in the text"
+    "IPR: possible quote error"
    ],
    "tags": [
     "IETF process",
@@ -149388,7 +149384,7 @@
    }
   ],
   "review": [
-   "message format: quote not found in the text"
+   "message format: possible quote error"
   ],
   "reviewed": false,
   "paths": [
@@ -149422,7 +149418,7 @@
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
    "notes": [
-    "message format: quote not found in the text"
+    "message format: possible quote error"
    ],
    "tags": [
     "X.400",
@@ -154765,7 +154761,7 @@
   ],
   "gaps": [],
   "review": [
-   "IPsec: quote not found in the text"
+   "IPsec: possible quote error"
   ],
   "reviewed": false,
   "paths": [
@@ -154803,7 +154799,7 @@
    "date": "2026-11-24",
    "prompt": "5568eab4951d",
    "notes": [
-    "IPsec: quote not found in the text"
+    "IPsec: possible quote error"
    ],
    "tags": [
     "DNS",
@@ -268581,7 +268577,7 @@
   ],
   "gaps": [],
   "review": [
-   "GSS-API: quote not found in the text"
+   "GSS-API: possible quote error"
   ],
   "reviewed": false,
   "paths": [
@@ -268614,7 +268610,7 @@
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
    "notes": [
-    "GSS-API: quote not found in the text"
+    "GSS-API: possible quote error"
    ],
    "tags": [
     "DNS",
@@ -319120,7 +319116,7 @@
   ],
   "gaps": [],
   "review": [
-   "BGP: quote not found in the text"
+   "BGP: possible quote error"
   ],
   "reviewed": false,
   "paths": [
@@ -319182,7 +319178,7 @@
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
    "notes": [
-    "BGP: quote not found in the text"
+    "BGP: possible quote error"
    ],
    "tags": [
     "BGP",
@@ -326416,9 +326412,7 @@
    }
   ],
   "gaps": [],
-  "review": [
-   "MPLS: quote not found in the text"
-  ],
+  "review": [],
   "reviewed": false,
   "paths": [
    [
@@ -326455,9 +326449,7 @@
    "model": "claude-sonnet-5-5",
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
-   "notes": [
-    "MPLS: quote not found in the text"
-   ],
+   "notes": [],
    "tags": [
     "L3VPN",
     "BGP",
@@ -367385,7 +367377,7 @@
   ],
   "gaps": [],
   "review": [
-   "SDP: quote not found in the text"
+   "SDP: possible quote error"
   ],
   "reviewed": false,
   "paths": [
@@ -367445,7 +367437,7 @@
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
    "notes": [
-    "SDP: quote not found in the text"
+    "SDP: possible quote error"
    ],
    "tags": [
     "AMR",
@@ -441556,7 +441548,7 @@
   ],
   "gaps": [],
   "review": [
-   "Diameter: quote not found in the text"
+   "Diameter: possible quote error"
   ],
   "reviewed": false,
   "paths": [
@@ -441601,7 +441593,7 @@
    "date": "2026-11-25",
    "prompt": "5568eab4951d",
    "notes": [
-    "Diameter: quote not found in the text"
+    "Diameter: possible quote error"
    ],
    "tags": [
     "Diameter",

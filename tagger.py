@@ -93,7 +93,7 @@ def squash(s):
     spacing, hyphenation or punctuation, which the model tidies when it copies a passage."""
     return re.sub(r'[^a-z0-9]+', '', s.lower())
 
-CITATION = re.compile(r'\[[A-Za-z0-9.\-]{1,20}\]')                  # [1], [RFC4741], [I-D.foo]
+CITATION = re.compile(r'\[[A-Za-z0-9.\-]{1,20}(?:,\s*[A-Za-z0-9.\-]{1,20})*\]')   # [1], [RFC4741], [I-D.foo], [MPLS-ARCH, MPLS-BGP]
 BULLET = re.compile(r'(?m)^[ \t]*(?:o|\*|-|\d+\.|\([a-z0-9]\))[ \t]+')  # o, *, -, 1., (a) opening a line
 
 def unmark(s):
@@ -103,8 +103,13 @@ def unmark(s):
 def quotable(text):
     """The text as a quote is looked for in it: without the running header and footer of each
     page, which otherwise interrupt any passage that crosses a page break."""
-    keep = [l for l in text.split('\n') if not re.search(r'\[Page \d+\]\s*$', l) and not re.match(r'^RFC \d+ .{10,} \w+ \d{4}\s*$', l)]
+    keep = [l for l in text.split('\n') if not re.search(r'\[Page \d+\]\s*$', l) and not PAGE_HEADER.match(l)]
     return squash(unmark('\n'.join(keep)))
+
+# A running page header: "RFC 5087  TDMoIP  December 2007", or in older RFCs "RFC 896  ...  1/6/84"
+PAGE_HEADER = re.compile(r'^RFC \d+ .{10,} (?:\w+ \d{4}|\d{1,2}/\d{1,2}/\d{2,4})\s*$')
+QUOTE_NOTE = 'possible quote error'
+OLD_QUOTE_NOTES = ('quote not found', QUOTE_NOTE)     # notes the quote check writes, under either name
 
 QUOTE_MATCH = 0.90   # share of a quote's letters and digits that must line up with the text where it fits best
 
@@ -131,8 +136,8 @@ def recheck(store, corpus):
         text, _ = rfc_text(corpus, rid)
         if text is None: continue
         body = quotable(text)
-        notes = [x for x in rec['meta']['notes'] if 'quote not found' not in x]
-        notes += [f"{t['id']}: quote not found in the text" for t in rec['tags'] if not quote_found(t['quote'], body)]
+        notes = [x for x in rec['meta']['notes'] if not any(o in x for o in OLD_QUOTE_NOTES)]
+        notes += [f"{t['id']}: {QUOTE_NOTE}" for t in rec['tags'] if not quote_found(t['quote'], body)]
         n += notes != rec['meta']['notes']; rec['meta']['notes'] = notes
     return n
 
@@ -156,7 +161,7 @@ def tag_one(tax, rfc, corpus, prompt_file, prompt_hash, model, tries=3):
         if not tid: notes.append(f"model chose {t['id']!r}, which is not a tag"); continue
         if any(x['id'] == tid for x in tags): continue
         if not quote_found(t.get('quote'), body):
-            notes.append(f'{tid}: quote not found in the text')
+            notes.append(f'{tid}: {QUOTE_NOTE}')
         tags.append({'id': tid, 'role': t['role'], 'why': t['why'], 'quote': t.get('quote', ''), 'section': t.get('section', '')})
     return {'summary': out['summary'], 'tags': tags, 'rejected': out.get('rejected', []), 'gaps': out.get('gaps', []),
             'meta': {'model': used, 'date': datetime.date.today().isoformat(), 'prompt': prompt_hash, 'notes': notes}, 'cost': cost}
