@@ -486,8 +486,9 @@ footer code{font-size:12px}
             are named protocols, systems and formats, shown as teal pills in the RFC series' own
             typewriter face. Roots are always topics. Hover any tag, anywhere on the page, to see its
             place in the hierarchy; switch on <b>Full tag path</b> at the top to show every tag with
-            its ancestors. <b>Tree</b> shows the hierarchy, each tag&rsquo;s children in alphabetical order; <b>List</b> shows every tag in one list, sorted by any
-            column &mdash; click a column heading, and click it again to reverse the order. Search
+            its ancestors. <b>Tree</b> shows the hierarchy; <b>List</b> shows every tag in one list. Both are sorted by
+            tag name to start with: click a column heading to sort by it instead, and click it again to reverse
+            the order. In the tree the sort applies among the roots and among each tag&rsquo;s children. Search
             matches tag names and descriptions on whole words.
             Two measures, kept apart: <b>Corpus</b> is how many RFCs carry a tag; <b>Per year</b>
             is how many notifications a subscriber would have received per year since January
@@ -763,7 +764,7 @@ tabs.forEach(function(b){b.addEventListener('click',function(){
 });});
 
 /* tag list */
-var sel=[], view='tree', sortCol='total', sortDir=-1, kindF='all', filter='', mode='or', folded={};
+var sel=[], view='tree', sortCol='name', sortDir=1, kindF='all', filter='', mode='or', folded={};
 /* the tree: ANC[id] is a tag's ancestors; BELOW[id] counts every tag under it, at any depth. A tag is shown when
    none of its ancestors is folded. The tree opens, and Collapse all leaves it, with every level folded. */
 var ANC={},BELOW={};
@@ -816,15 +817,15 @@ var IMPLIED_BY={};TAGS.forEach(function(t){t.im.forEach(function(x){(IMPLIED_BY[
 function impliesPills(t,short){
   return t.im.map(function(x){return pill(byId[x],{short:short,cls:'imp',note:'Implied by '+t.id});}).join('');
 }
-/* the tree's order: roots as taxonomy.yaml has them, every tag's children A-Z beneath it, each tag followed by
-   all the tags under it (the fold filter and the indentation rely on that) */
-var TREE_ORDER=null;
-function childrenOf(id){return TAGS.filter(function(k){return k.parent===id;}).sort(byName);}
+/* the tree's order: the roots, and every tag's children beneath it, sorted by the column heading chosen (shared with
+   the List view; Tag A-Z by default), each tag followed by all the tags under it (the fold filter and the
+   indentation rely on that) */
+var KIDS={};TAGS.forEach(function(t){if(t.parent)(KIDS[t.parent]=KIDS[t.parent]||[]).push(t);});
+function childrenOf(id){return (KIDS[id]||[]).slice().sort(byName);}
 function treeOrder(){
-  if(TREE_ORDER)return TREE_ORDER;
-  TREE_ORDER=[];
-  (function walk(list){list.forEach(function(t){TREE_ORDER.push(t);walk(childrenOf(t.id));});})(ROOTS);
-  return TREE_ORDER;
+  var out=[];
+  (function walk(list){list.slice().sort(listCmp).forEach(function(t){out.push(t);walk(KIDS[t.id]||[]);});})(ROOTS);
+  return out;
 }
 function drawTags(){
   var tree=(view==='tree')&&!filter;
@@ -880,7 +881,7 @@ function listCmp(a,b){
 }
 var headEl=document.getElementById('listHead');
 function drawListHead(){
-  headEl.hidden=(view!=='list');
+  headEl.hidden=!(view==='list'||!filter);   // a tree search lists matches by relevance, so no column order
   headEl.querySelectorAll('[data-col]').forEach(function(b){
     var on=b.dataset.col===sortCol;
     if(on)b.setAttribute('aria-sort',sortDir>0?'ascending':'descending');else b.removeAttribute('aria-sort');
