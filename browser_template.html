@@ -370,6 +370,16 @@ tr:hover td{background:var(--surface-2)}
 .rfccard .miss{font-family:var(--ff-serif);color:var(--ink-2);margin:0}
 .axes{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center;margin-top:12px}
 .rfccard .why{margin-top:12px}
+.controls .switch.rsw{order:0;margin-left:0}
+tr.rsn>td{padding-top:0;border-top:0}
+.rsnlist{list-style:none;margin:0 0 4px;padding:8px 12px;font-size:12.5px;line-height:1.45;color:var(--ink-2);background:var(--surface-2);border-left:2px solid var(--rule);border-radius:2px}
+.rsnlist li{margin:0 0 7px}.rsnlist li:last-child{margin-bottom:0}
+.rsnlist .rtag{margin-right:6px}.rsnlist .rrole{font-size:11px;color:var(--ink-3);margin-right:6px;text-transform:uppercase;letter-spacing:.04em}
+.rsnlist q{display:block;margin-top:2px;font-family:var(--ff-serif);font-style:italic;color:var(--ink-2)}
+.rsnlist .rsec{font-style:normal;font-size:11.5px;color:var(--ink-3);margin-left:6px}
+.rsnlist .rhand{display:block;margin-top:2px;font-size:12px}
+.rsnlist li.rx .rtag{text-decoration:line-through}
+.rfccard .rsnlist{margin-top:12px}
 .axes .axcell{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
 .axes .axcell .rev{margin-left:0}
 .axes .lab{font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
@@ -615,8 +625,8 @@ footer code{font-size:12px}
       <div class="card">
         <div class="card-head"><h2>Assignments to look at</h2></div>
         <p class="card-note">RFCs whose tags a person should check, newest first. The <b>Why</b> column gives
-          the tagger&rsquo;s reason and the buttons filter by it; the reasoning for every tag is in
-          <code>rfc-tags.json</code>. A document that is not listed is not thereby right, only unremarkable.
+          the tagger&rsquo;s reason and the buttons filter by it. Turn on <b>Reasoning</b> to see, under
+          each RFC, why each tag was set, with the passage quoted as evidence. A document that is not listed is not thereby right, only unremarkable.
           Corrections go in <code>assignments.yaml</code>, which marks the RFC reviewed.</p>
         <div class="controls">
           <div class="seg" role="group" aria-label="Reason" id="revSeg">
@@ -628,6 +638,7 @@ footer code{font-size:12px}
             <button data-rev="rule" aria-pressed="false">Breaks a requirement</button>
             <button data-rev="obsolete" aria-pressed="false">Disagrees with successor</button>
           </div>
+          <label class="switch rsw" title="Show the reason given for each tag by whoever set it: the model, or a person in assignments.yaml"><input type="checkbox" class="rsnToggle" role="switch"><span class="sw-track"></span>Reasoning</label>
           <span class="count" id="revCount"></span>
         </div>
         <div class="legend">
@@ -656,6 +667,7 @@ footer code{font-size:12px}
             <button data-rsort="desc" aria-pressed="true">Newest</button>
             <button data-rsort="asc" aria-pressed="false">Oldest</button>
           </div>
+          <label class="switch rsw" title="Show the reason given for each tag by whoever set it: the model, or a person in assignments.yaml"><input type="checkbox" class="rsnToggle" role="switch"><span class="sw-track"></span>Reasoning</label>
           <span class="count" id="rfcCount"></span>
         </div>
         <div class="legend">
@@ -679,6 +691,7 @@ footer code{font-size:12px}
 <footer><div class="wrap">Generated on __DATE__ from taxonomy.yaml and including RFCs to RFC <span id="maxRfc"></span>.</div></footer>
 
 <script id="viz-data" type="application/json">__DATA__</script>
+<script id="why-data" type="application/json">__REASONING__</script>
 <script>
 (function(){
 "use strict";
@@ -1071,6 +1084,29 @@ function rfcTags(r,o){
   }).join('');
   return '<span class="tagchips">'+html+'</span>';
 }
+/* Reasoning: the setter's account of each tag, parsed from its own data block the first time it is shown */
+var RSN=false,WHYD=null;
+try{RSN=localStorage.getItem('rfctags.reasoning')==='1';}catch(e){}
+function whyOf(num){
+  if(!WHYD){try{WHYD=JSON.parse(document.getElementById('why-data').textContent);}catch(e){WHYD={};}}
+  return WHYD[String(num)];
+}
+var ROLE={p:'primary',s:'secondary',h:'by hand',x:'removed'};
+function reasonList(num){
+  var L=whyOf(num);
+  if(!L)return '<ul class="rsnlist"><li>No reasoning recorded: the model has not tagged this RFC.</li></ul>';
+  if(!L.length)return '<ul class="rsnlist"><li>No reasoning recorded: the model tagged this RFC, but chose no tag that is in the taxonomy.</li></ul>';
+  return '<ul class="rsnlist">'+L.map(function(e){
+    var t=typeof e[0]==='number'?TAGS[e[0]]:null,h=e[5];
+    var name=t?pill(t,{button:true,attr:'data-goto="'+esc(t.id)+'"',cls:(e[1]==='s'?'sec':'')}):'<span class="tag">'+esc(e[0])+'</span>';
+    return '<li'+(e[1]==='x'?' class="rx"':'')+'><span class="rtag">'+name+'</span><span class="rrole">'+ROLE[e[1]]+'</span>'+
+      (e[2]?esc(e[2]):'')+
+      (e[3]?'<q>'+esc(e[3])+(e[4]?'<span class="rsec">&sect; '+esc(e[4])+'</span>':'')+'</q>':'')+
+      (h?'<span class="rhand"><b>'+(e[1]==='x'?'Removed':e[1]==='h'?'Assigned':'Confirmed')+(h[1]?' by '+esc(h[1]):'')+(h[2]?', '+esc(h[2]):'')+':</b> '+esc(h[0])+'</span>':'')+
+      '</li>';
+  }).join('')+'</ul>';
+}
+function reasonRow(r,cols){return RSN?'<tr class="rsn"><td></td><td colspan="'+(cols-1)+'">'+reasonList(r[0])+'</td></tr>':'';}
 function revKind(s){return /not tagged by the model/.test(s)?'untagged':/quote not found/.test(s)?'quote':/text truncated/.test(s)?'truncated':/not a tag|no longer in the taxonomy/.test(s)?'unknown':/no tag in common/.test(s)?'obsolete':/\(R\d+\)/.test(s)?'rule':'other';}
 var revMode='all',revShown=200;
 function drawReview(){
@@ -1080,7 +1116,7 @@ function drawReview(){
   document.getElementById('revCount').textContent=rows.length.toLocaleString()+' documents · '+ROWS.filter(function(r){return r[8];}).length+' reviewed';
   var cap=Math.min(revShown,rows.length);
   document.getElementById('revBody').innerHTML=rows.slice(0,cap).map(function(r){
-    return '<tr data-rfc="'+r[0]+'"><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+'</td><td>'+rfcTags(r)+'</td><td class="why"><ul>'+r[6].map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ul></td></tr>';}).join('');
+    return '<tr data-rfc="'+r[0]+'"><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+'</td><td>'+rfcTags(r)+'</td><td class="why"><ul>'+r[6].map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ul></td></tr>'+reasonRow(r,5);}).join('');
   var mb=document.getElementById('revMore');mb.hidden=cap>=rows.length;if(!mb.hidden)mb.textContent='Show more of '+rows.length.toLocaleString();
 }
 document.querySelectorAll('#revSeg button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#revSeg button').forEach(function(o){o.setAttribute('aria-pressed',String(o===b));});revMode=b.dataset.rev;revShown=200;drawReview();});});
@@ -1119,13 +1155,13 @@ function drawCorpus(){
     card.innerHTML=r?('<div class="rfccard"><button type="button" class="xbtn" data-rfcclear aria-label="Close this RFC" title="Close">&times;</button><div class="num">RFC '+r[0]+' &middot; '+r[1]+'</div><h3>'+esc(r[2])+'</h3>'+
       '<div class="axes"><span class="lab">tags</span><span class="axcell">'+rfcTags(r)+revMark(r)+'</span>'+
       '<span class="lab">technology</span>'+(r[4].length?chips(r[4],r[3]):'<span style="font-size:12px;color:var(--ink-3)">none &mdash; a subject or process document</span>')+
-      '<span class="lab">topics</span>'+topicChips(r)+'</div>'+(r[6]&&r[6].length?'<div class="why"><b>Why a person should look at this:</b><ul>'+r[6].map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ul></div>':'')+(r[8]?'<div class="why">'+esc(D.reviewNote)+'</div>':'')+'</div>')
+      '<span class="lab">topics</span>'+topicChips(r)+'</div>'+(r[6]&&r[6].length?'<div class="why"><b>Why a person should look at this:</b><ul>'+r[6].map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ul></div>':'')+(r[8]?'<div class="why">'+esc(D.reviewNote)+'</div>':'')+(RSN?reasonList(r[0]):'')+'</div>')
       :('<div class="rfccard"><p class="miss">No RFC '+n+' in the corpus. Published RFCs run from 1 to '+ROWS[ROWS.length-1][0]+', with gaps for numbers never issued.</p></div>');
   }else card.innerHTML='';
   document.getElementById('rfcCount').textContent=rows.length.toLocaleString()+' of '+ROWS.length.toLocaleString();
   var cap=Math.min(rfcShown,rows.length);
   document.getElementById('rfcBody').innerHTML=rows.slice(0,cap).map(function(r){
-    return '<tr class="'+(n!==null?'hitrow':'')+'"><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+revMark(r)+'</td><td>'+rfcTags(r)+'</td></tr>';}).join('');
+    return '<tr class="'+(n!==null?'hitrow':'')+'"><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+revMark(r)+'</td><td>'+rfcTags(r)+'</td></tr>'+(n===null?reasonRow(r,4):'');}).join('');
   var mb=document.getElementById('rfcMore');
   mb.hidden=cap>=rows.length;
   if(!mb.hidden)mb.textContent='Show '+Math.min(RSTEP,rows.length-cap)+' more of '+rows.length.toLocaleString();
@@ -1197,6 +1233,11 @@ fp.addEventListener('change',function(){
   hideTip();drawTags();drawDetail();drawPairs();drawCorpus();drawOverlap();drawReview();drawLife();
 });
 
+document.querySelectorAll('.rsnToggle').forEach(function(cb){cb.checked=RSN;cb.addEventListener('change',function(){
+  RSN=cb.checked;try{localStorage.setItem('rfctags.reasoning',RSN?'1':'0');}catch(e){}
+  document.querySelectorAll('.rsnToggle').forEach(function(o){o.checked=RSN;});
+  hideTip();drawCorpus();drawReview();
+});});
 document.getElementById('maxRfc').textContent=ROWS[ROWS.length-1][0];
 drawTags();drawDetail();drawPairs();drawCorpus();drawOverlap();drawReview();
 document.querySelectorAll('.card>.card-head').forEach(function(hd){var card=hd.parentNode;var b=document.createElement('button');b.className='fold';b.type='button';b.title='Hide the controls above the list';b.setAttribute('aria-expanded','true');b.textContent='\u25B4';

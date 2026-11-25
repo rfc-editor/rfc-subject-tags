@@ -76,6 +76,22 @@ for k in sorted(RT, key=lambda x:int(x[3:])):
     EV={'primary':'p','secondary':'s','hand':'h'}   # per tag: the model's role for it, plus h when a person assigned it
     rows.append([int(k[3:]), v['year'], v['title'], [tag_index[t] for t in v['tags']], [tag_index[t] for t in v['technology']], [tag_index[t] for t in v['topic']],
                  v.get('review',[]), {str(tag_index[t]):EV[w['role']]+('h' if 'hand' in w else '') for t,w in v.get('reasons',{}).items()}, 1 if v.get('reviewed') else 0])
+# the setter's reasoning, per RFC, for the page's Reasoning switch: one entry per tag carried, in the order of the
+# tags, then one per tag the model chose that the entry does not carry. Entry: [tag, role, why, quote, section, hand]
+# where tag is a tag index (or the id, for a tag no longer in the taxonomy), role is p/s/h/x (x: removed) and hand is
+# [why, by, date] when a person assigned it (or, for x, removed it), else 0.
+tax.load_overrides('assignments.yaml')
+reasoning={}
+for k,v in RT.items():
+    ov=tax.overrides.get(k,{}); out=[]
+    def hand_of(h): return [h.get('why') or '',h.get('by',''),h.get('date','')] if h else 0
+    for t in v['tags']:
+        w=v.get('reasons',{}).get(t,{}); role=EV.get(w.get('role'),'p')
+        out.append([tag_index[t],role,w.get('why','') if role!='h' else '',w.get('quote',''),w.get('section',''),hand_of(w.get('hand') or (w if role=='h' else None))])
+    for t,w in ((v.get('tagged') or {}).get('removed') or {}).items():
+        h=({'why':ov.get('reason'),'by':str(ov.get('by','')),'date':str(ov.get('date',''))} if t in (ov.get('remove') or []) else {'why':'no longer in the taxonomy','by':'','date':''})
+        out.append([tag_index.get(t,t),'x',w.get('why',''),w.get('quote',''),w.get('section',''),hand_of(h)])
+    if out or v.get('tagged'): reasoning[k[3:]]=out   # present but empty: tagged, but no tag the model chose is in the taxonomy
 pair_c=collections.Counter()
 for v in RT.values():
     ids=sorted(tag_index[t] for t in v['tags'])
@@ -86,6 +102,7 @@ data={'version':f'taxonomy.yaml, {len(tax.by_id)} tags in {len(ROOTS)} roots, bu
       'window':[W0, today.year],'reviewNote':'A document with an entry in assignments.yaml has been reviewed by a person.','windowYears':window_years,'yearMin':min(years_all),'yearMax':max(years_all)}
 html=open('browser_template.html').read()
 html=html.replace('__DATA__', json.dumps(data, separators=(',',':')).replace('</','<\\/'))
+html=html.replace('__REASONING__', json.dumps(reasoning, separators=(',',':'), ensure_ascii=False).replace('</','<\\/'))
 html=html.replace('__EYEBROW__', f'taxonomy.yaml &middot; {len(tax.by_id)} tags in {len(ROOTS)} roots &middot; corpus {len(rfcs):,} RFCs &middot; {today:%B %Y}')
 html=html.replace('__DATE__', f'{today:%-d %B %Y}')
 open('rfc-tags.html','w').write(html)
