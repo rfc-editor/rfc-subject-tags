@@ -317,14 +317,15 @@ input[type="search"]::placeholder{color:var(--ink-3)}
 li.root{background:var(--surface-2);border-top:1px solid var(--rule)}
 li.root .trow{padding:11px 16px 9px}
 li.root .tname .tag{font-size:13px;padding:2px 10px}
-/* a root's fold control: a square button with + (show the tags under it) or − (hide them) */
-.caret{flex:none;align-self:center;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-right:8px;
-  border:1.5px solid var(--accent);border-radius:4px;background:var(--surface);color:var(--accent);font-size:16px;font-weight:700;line-height:1;
+/* the fold control on every tag with tags under it: a small square with + (show them) or − (hide them);
+   a leaf gets an empty spacer of the same width so siblings line up */
+.caret{flex:none;align-self:center;display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;margin-right:6px;
+  border:1px solid var(--accent);border-radius:3px;background:var(--surface);color:var(--accent);font-size:12px;font-weight:700;line-height:1;
   cursor:pointer;user-select:none;transition:background .12s,color .12s}
 .caret:hover,.caret:focus-visible{background:var(--accent);color:var(--surface);outline:none}
-li.root .tdesc .fold-hint{cursor:pointer;white-space:nowrap;text-decoration:underline dotted;text-underline-offset:2px}
-li.root .tdesc .fold-hint:hover{text-decoration-style:solid}
-li.root .tdesc{padding-left:30px}
+.caret.leaf{visibility:hidden}
+.tname .below{flex:0 9999 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;font-family:var(--ff-ui);font-weight:500;font-size:11px;color:var(--ink-3);margin-left:8px}
+li.root .tdesc{padding-left:20px}
 li.root .tdesc{white-space:normal}
 .metric{display:flex;flex-direction:column;gap:3px}
 .metric b{font-family:var(--ff-mono);font-size:12.5px;font-weight:400;font-variant-numeric:tabular-nums;color:var(--ink-2)}
@@ -368,6 +369,8 @@ tr:hover td{background:var(--surface-2)}
 .tagchips{display:flex;flex-wrap:wrap;gap:4px}
 .hitrow td{background:var(--accent-soft)!important}
 .rfccard{margin:0;padding:16px;border-bottom:1px solid var(--rule-2);background:var(--surface-2)}
+a.rfclink{color:var(--accent);text-decoration:none;font-variant-numeric:tabular-nums}
+a.rfclink:hover,a.rfclink:focus-visible{text-decoration:underline}
 .rfccard .num{font-size:12px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase}
 .rfccard h3{font-size:19px;font-weight:600;letter-spacing:-.012em;margin:4px 0 0;line-height:1.25}
 .rfccard .miss{font-family:var(--ff-serif);color:var(--ink-2);margin:0}
@@ -498,7 +501,7 @@ footer code{font-size:12px}
               <button data-kind="technology" aria-pressed="false">Technology</button>
               <button data-kind="topic" aria-pressed="false">Topic</button>
             </div>
-            <div class="seg" role="group" aria-label="Fold roots">
+            <div class="seg" role="group" aria-label="Fold the tree">
               <button data-foldall="collapse">Collapse all</button>
               <button data-foldall="expand">Expand all</button>
             </div>
@@ -761,7 +764,13 @@ tabs.forEach(function(b){b.addEventListener('click',function(){
 
 /* tag list */
 var sel=[], view='tree', sortCol='total', sortDir=-1, kindF='all', filter='', mode='or', folded={};
-ROOTS.forEach(function(r){folded[r.id]=true;});   // open with the top-level subjects collapsed
+/* the tree: ANC[id] is a tag's ancestors; BELOW[id] counts every tag under it, at any depth. A tag is shown when
+   none of its ancestors is folded. The tree opens, and Collapse all leaves it, with every level folded. */
+var ANC={},BELOW={};
+TAGS.forEach(function(t){ANC[t.id]=t.path.split(' / ').slice(0,-1);ANC[t.id].forEach(function(a){BELOW[a]=(BELOW[a]||0)+1;});});
+function foldAll(){folded={};TAGS.forEach(function(t){if(BELOW[t.id])folded[t.id]=true;});}
+function unfoldTo(id){ANC[id].forEach(function(a){folded[a]=false;});}
+foldAll();
 /* info popover on the hierarchy card */
 (function(){
   var btn=document.getElementById('hierInfoBtn'),pop=document.getElementById('hierInfo');
@@ -771,7 +780,6 @@ ROOTS.forEach(function(r){folded[r.id]=true;});   // open with the top-level sub
   document.addEventListener('click',function(){if(!pop.hidden)setOpen(false);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!pop.hidden){setOpen(false);btn.focus();}});
 })();
-var descCount={};TAGS.forEach(function(t){if(t.d>0)descCount[t.root]=(descCount[t.root]||0)+1;});
 var listEl=document.getElementById('tagList');
 function words(s){return String(s||'').toLowerCase().split(/[^a-z0-9.+#/]+/).filter(Boolean);}
 function subs(s){return String(s||'').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);}
@@ -819,15 +827,16 @@ function drawTags(){
   if(view==='list')list.sort(listCmp);
   drawListHead();
   if(kindF!=='all')list=list.filter(function(t){return t.kind===kindF||(tree&&t.d===0);});
-  if(tree)list=list.filter(function(t){return t.d===0||!folded[t.root];});
+  if(tree)list=list.filter(function(t){return !ANC[t.id].some(function(a){return folded[a];});});
   listEl.innerHTML=list.map(function(t){
     var on=sel.indexOf(t.id)>=0, flat=!tree, root=tree&&t.d===0;
     var second=flat&&WHY[t.id]?esc(t.desc)+' <em class="hit">'+esc(WHY[t.id])+'</em>':esc(t.desc);
-    if(root&&folded[t.id])second+=' <em class="hit fold-hint" data-fold="'+esc(t.id)+'" title="Show the '+descCount[t.id]+' tags under '+esc(t.id)+'">'+descCount[t.id]+' tags folded &mdash; show</em>';
     var kind=t.d===0?'<span class="kind">root</span>':'';   // the pill colour and the legend give the kind
+    var n=BELOW[t.id]||0, below=n?'<span class="below" title="'+n+' tag'+(n===1?'':'s')+' below">'+n+' tag'+(n===1?'':'s')+' below</span>':'';
+    var fold=!tree?'':n?'<span class="caret" role="button" data-fold="'+esc(t.id)+'" aria-expanded="'+(!folded[t.id])+'" aria-label="'+(folded[t.id]?'Show':'Hide')+' the tags under '+esc(t.id)+'" title="'+(folded[t.id]?'Show':'Hide')+' the tags under '+esc(t.id)+'">'+(folded[t.id]?'+':'&minus;')+'</span>':'<span class="caret leaf" aria-hidden="true"></span>';
     return '<li class="d'+(flat?0:t.d)+(root?' root':'')+(root&&folded[t.id]?' folded':'')+'">'+
       '<button class="trow" aria-pressed="'+on+'" data-id="'+esc(t.id)+'">'+
-        '<span><span class="tline">'+(tree&&t.d>0?'<i class="conn">└</i>':'')+(root?'<span class="caret" role="button" data-fold="'+esc(t.id)+'" aria-expanded="'+(!folded[t.id])+'" aria-label="'+(folded[t.id]?'Show':'Hide')+' the tags under '+esc(t.id)+'" title="'+(folded[t.id]?'Show':'Hide')+' the '+descCount[t.id]+' tags under '+esc(t.id)+'">'+(folded[t.id]?'+':'&minus;')+'</span>':'')+'<span class="tname">'+pill(t,{short:tree,cls:root?'big':''})+kind+impliesPills(t,tree)+'</span></span>'+
+        '<span><span class="tline">'+(tree&&t.d>0?'<i class="conn">└</i>':'')+fold+'<span class="tname">'+pill(t,{short:tree,cls:root?'big':''})+kind+impliesPills(t,tree)+below+'</span></span>'+
         '<span class="tdesc" title="'+esc(t.desc)+'">'+second+'</span></span>'+
         '<span class="metric"><b>'+t.total.toLocaleString()+'</b>'+
           '<span class="bar"><span class="fill-count" style="width:'+pct(t.total,maxCorpus)+'%"></span></span></span>'+
@@ -841,9 +850,9 @@ listEl.addEventListener('click',function(e){
   if(c){folded[c.dataset.fold]=!folded[c.dataset.fold];drawTags();return;}
   var b=e.target.closest('.trow');if(!b)return;toggle(b.dataset.id);});
 document.querySelectorAll('[data-foldall]').forEach(function(b){b.addEventListener('click',function(){
-  folded={};if(b.dataset.foldall==='collapse')ROOTS.forEach(function(r){folded[r.id]=true;});
+  if(b.dataset.foldall==='collapse')foldAll();else folded={};
   drawTags();});});
-function toggle(id){var i=sel.indexOf(id);if(i>=0)sel.splice(i,1);else{sel.push(id);folded[byId[id].root]=false;}shown=LIMIT;drawTags();drawDetail();}
+function toggle(id){var i=sel.indexOf(id);if(i>=0)sel.splice(i,1);else{sel.push(id);unfoldTo(id);}shown=LIMIT;drawTags();drawDetail();}
 function revealSelected(){
   var row=listEl.querySelector('.trow[aria-pressed="true"]'),cb=listEl.parentNode;if(!row)return;
   var off=row.getBoundingClientRect().top-cb.getBoundingClientRect().top;
@@ -949,7 +958,7 @@ function drawDetail(){
     (sel.length>1?' &middot; '+(mode==='and'?'all selected tags':'any selected tag'):'')+'</div>'+
     '<div class="rfcs"><table><thead><tr><th>RFC</th><th>Year</th><th>Title</th><th>Other tags</th></tr></thead><tbody>'+
     rows.slice(0,cap).map(function(r){
-      return '<tr><td class="num">'+r[0]+'</td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+revMark(r)+'</td>'+
+      return '<tr><td class="num"><a href="#" class="rfclink" data-rfcgo="'+r[0]+'" title="Open RFC '+r[0]+' on the All RFCs tab">'+r[0]+'</a></td><td class="yr">'+r[1]+'</td><td class="ttl">'+esc(r[2])+revMark(r)+'</td>'+
         '<td>'+rfcTags(r,{click:'data-add',skip:sel})+'</td></tr>';}).join('')+
     '</tbody></table></div>'+
     (cap<rows.length?'<button class="more" id="moreBtn">Show '+Math.min(LIMIT,rows.length-cap)+' more of '+rows.length.toLocaleString()+'</button>':'');
@@ -959,12 +968,20 @@ function drawDetail(){
   el.querySelectorAll('[data-add]').forEach(function(b){b.addEventListener('click',function(){toggle(b.dataset.add);});});
   el.querySelectorAll('[data-remove]').forEach(function(b){b.addEventListener('click',function(){toggle(b.dataset.remove);});});
 }
+/* an RFC number in the selection pane opens that RFC on the All RFCs tab */
+document.getElementById('detailBody').addEventListener('click',function(e){
+  var a=e.target.closest('[data-rfcgo]');if(!a)return;e.preventDefault();openRfc(a.dataset.rfcgo);});
+function openRfc(num){
+  var i=document.getElementById('rfcSearch');i.value=String(num);rfcQ=i.value;rfcShown=RSTEP;
+  document.querySelector('.tab[data-panel="corpus"]').click();
+  document.getElementById('panel-corpus').scrollIntoView({block:'start'});
+}
 function isKin(a,b){return a.path.indexOf(b.path+' / ')===0||b.path.indexOf(a.path+' / ')===0;}
 function jumpTo(ids,andMode){
   sel=ids;mode=andMode?'and':'or';shown=LIMIT;filter='';
   document.getElementById('tagSearch').value='';
   document.querySelectorAll('[data-mode]').forEach(function(o){o.setAttribute('aria-pressed',String(o.dataset.mode===mode));});
-  ids.forEach(function(id){folded[byId[id].root]=false;});
+  ids.forEach(unfoldTo);
   tabs[0].click();drawTags();drawDetail();revealSelected();
   document.getElementById('detail').scrollIntoView({behavior:'smooth',block:'start'});
 }
